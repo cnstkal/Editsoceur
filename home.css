@@ -9,3 +9,6 @@ nav{display:grid;grid-template-columns:1fr 1fr;gap:14px}
 .ig{background:linear-gradient(45deg,#f9ce34,#ee2a7b 55%,#6228d7)}
 .tw{background:#000}.fb{background:#1877f2}.yt{background:#f00}.tt{background:#111}.th{background:#222}
 .off{opacity:.35;cursor:not-allowed}
+
+html,body,button,a,input,textarea,label{touch-action:manipulation}
+input,textarea,select{font-size:16px!important}

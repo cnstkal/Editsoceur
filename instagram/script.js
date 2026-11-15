@@ -16,7 +16,7 @@
     var m=$('vMusic');m.style.display=S.musicOn&&S.music.trim()?'':'none';$('vMusicTxt').textContent=S.music;
     $('vBadge').style.display=S.badge?'':'none';renderBub();
     $('vAvatar').style.backgroundImage=avatar?'url('+avatar+')':'';
-    $('vAvatar').classList.toggle('has',!!avatar);$('vMiniA').style.backgroundImage='';
+    $('vAvatar').classList.toggle('has',!!avatar);
     $('vLike').textContent=S.like;$('vCmt').textContent=S.cmt;$('vRep').textContent=S.rep;$('vShr').textContent=S.shr;
     $('vLikedRow').style.display=S.liker.trim()?'':'none';
     $('vLiked').innerHTML='<b>'+esc(S.liker)+'</b>님 외 <b>여러 명</b>이 좋아합니다';
@@ -61,3 +61,5 @@
     (document.fonts&&document.fonts.ready?document.fonts.ready:Promise.resolve()).then(run)};
   load();
 })();
+
+document.addEventListener('gesturestart',function(e){e.preventDefault()},{passive:false});
