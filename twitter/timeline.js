@@ -8,7 +8,8 @@
     ic=function(d){return '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="'+G+'" stroke-width="1.900" stroke-linecap="round" stroke-linejoin="round">'+d+'</svg>'},
     P=['<path d="M12 3a9 9 0 1 0 4.500 16.800L21 21l-1.200-4.500A9 9 0 0 0 12 3z"/>','<path d="m17 2.500 3.500 3.500-3.500 3.500M4 11V9.500A3.500 3.500 0 0 1 7.500 6h13M7 21.500 3.500 18 7 14.500M20 13v1.500a3.500 3.500 0 0 1-3.500 3.500h-13"/>','<path d="M12 21s-8.500-5.200-8.500-11A4.800 4.800 0 0 1 12 7.200 4.800 4.800 0 0 1 20.500 10c0 5.800-8.500 11-8.500 11z"/>','<path d="M5 20V11M10 20V4M15 20V13M20 20V8"/>','<path d="M6 3h12v18l-6-4.500L6 21z"/>','<path d="M12 15V3M7.500 7.500 12 3l4.500 4.500M5 12v7a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2v-7"/>'];
   function ac(x){var v=[x.r,x.rt,x.lk,x.vw,'',''],h='<div class="xac">';P.forEach(function(p,i){h+='<span>'+ic(p)+(v[i]?'<em>'+esc(v[i])+'</em>':'')+'</span>'});return h+'</div>'}
-  var S;
+  var S, STORE='editsoceur-twitter-timeline-v1';
+  function persist(){try{localStorage.setItem(STORE,JSON.stringify(S))}catch(e){console.warn('트위터 데이터 저장 실패',e)}}
   function esc(t){return String(t==null?'':t).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;')}
   function bgi(u){return u?"background-image:url('"+u+"')":''}
   function render(){
@@ -23,19 +24,19 @@
     '<div class="row"><button type="button" class="xb" data-a="u">↑</button><button type="button" class="xb" data-a="d">↓</button><button type="button" class="xb" data-a="x">✕ 삭제</button></div></div>'});
     $('xlist').innerHTML=h}
   function set(){for(var i=0;i<2;i++)$('iT'+i).value=S.tabs[i];$('iAct').value=S.act;$('iBadge').value=S.badge;$('iDot').checked=S.dot}
-  function load(){S=JSON.parse(JSON.stringify(DEF));set();list();render()}
+  function load(reset){if(reset){try{localStorage.removeItem(STORE)}catch(e){} S=JSON.parse(JSON.stringify(DEF))}else{try{var saved=localStorage.getItem(STORE);S=saved?JSON.parse(saved):JSON.parse(JSON.stringify(DEF));if(!S||!Array.isArray(S.t)||!Array.isArray(S.tabs))throw new Error('invalid saved data')}catch(e){S=JSON.parse(JSON.stringify(DEF))}}set();list();render()}
   function rd(f,cb){var r=new FileReader();r.onload=function(){cb(r.result)};r.readAsDataURL(f)}
-  function glob(){for(var i=0;i<2;i++)S.tabs[i]=$('iT'+i).value;S.act=$('iAct').value;S.badge=$('iBadge').value;S.dot=$('iDot').checked;render()}
+  function glob(){for(var i=0;i<2;i++)S.tabs[i]=$('iT'+i).value;S.act=$('iAct').value;S.badge=$('iBadge').value;S.dot=$('iDot').checked;persist();render()}
   ['iT0','iT1','iBadge','iDot','iAct'].forEach(function(id){$(id).addEventListener('input',glob);$(id).addEventListener('change',glob)});
   var L=$('xlist'),ix=function(e){return +e.target.closest('.xc').dataset.i};
-  L.addEventListener('input',function(e){var f=e.target.dataset.f;if(!f||e.target.type==='file'||e.target.type==='checkbox')return;S.t[ix(e)][f]=e.target.value;render()});
+  L.addEventListener('input',function(e){var f=e.target.dataset.f;if(!f||e.target.type==='file'||e.target.type==='checkbox')return;S.t[ix(e)][f]=e.target.value;persist();render()});
   L.addEventListener('change',function(e){var t=e.target,f=t.dataset.f;if(!f)return;var o=S.t[ix(e)];
-    if(t.type==='checkbox'){o.lock=t.checked;render()}else if(t.type==='file'&&t.files[0])rd(t.files[0],function(d){o.av=d;render()})});
+    if(t.type==='checkbox'){o.lock=t.checked;persist();render()}else if(t.type==='file'&&t.files[0])rd(t.files[0],function(d){o.av=d;persist();render()})});
   L.addEventListener('click',function(e){var a=e.target.dataset.a;if(!a)return;var i=ix(e),m=S.t;
     if(a==='x')m.splice(i,1);else if(a==='u'&&i>0){var t=m[i];m[i]=m[i-1];m[i-1]=t}else if(a==='d'&&i<m.length-1){var t2=m[i];m[i]=m[i+1];m[i+1]=t2}
-    list();render()});
-  $('addT').onclick=function(){var l=S.t[S.t.length-1]||{n:'사용자',h:'@username',lock:true};S.t.push({n:l.n,h:l.h,lock:l.lock,av:l.av,time:'1분',x:'',r:'',rt:'',lk:'',vw:''});list();render()};
-  $('reset').onclick=load;
+    persist();list();render()});
+  $('addT').onclick=function(){var l=S.t[S.t.length-1]||{n:'사용자',h:'@username',lock:true};S.t.push({n:l.n,h:l.h,lock:l.lock,av:l.av,time:'1분',x:'',r:'',rt:'',lk:'',vw:''});persist();list();render()};
+  $('reset').onclick=function(){load(true)};
   $('savePng').onclick=function(){var b=this,t=b.textContent;b.disabled=true;b.textContent='저장 중...';
     (document.fonts&&document.fonts.ready?document.fonts.ready:Promise.resolve()).then(function(){
       return html2canvas($('xf'),{scale:4,useCORS:true,backgroundColor:'#fff',logging:false})}).then(function(c){
@@ -43,5 +44,5 @@
         document.body.appendChild(a);a.click();a.remove();b.disabled=false;b.textContent=t},'image/png')
     }).catch(function(){b.disabled=false;b.textContent=t;alert('PNG 저장에 실패했습니다.')})};
   document.addEventListener('gesturestart',function(e){e.preventDefault()},{passive:false});
-  load();
+  load(false);
 })();
