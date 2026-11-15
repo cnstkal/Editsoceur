@@ -7,7 +7,7 @@ nav{display:grid;grid-template-columns:1fr 1fr;gap:14px}
 .btn{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;height:92px;border-radius:18px;color:#fff;font-weight:700;font-size:17px;text-decoration:none}
 .btn small{font-size:12px;font-weight:400}
 .ig{background:linear-gradient(45deg,#f9ce34,#ee2a7b 55%,#6228d7)}
-.tw{background:#000}.gpt{background:#10a37f}.fb{background:#1877f2}.yt{background:#f00}.im{background:#1685f8}.call{background:#34c759}.tt{background:#111}.th{background:#222}
+.tw{background:#000}.gpt{background:#10a37f}.fb{background:#1877f2}.yt{background:#f00}.im{background:#1685f8}.call{background:#34c759}.gallery{background:#8e8e93}.memo{background:#f4c542;color:#262626}.netflix{background:#e50914}.tt{background:#111}.th{background:#222}
 .off{opacity:.35;cursor:not-allowed}
 
 html,body,button,a,input,textarea,label{touch-action:manipulation}
