@@ -1,0 +1,6 @@
+body,body *{font-family:Pretendard,-apple-system,sans-serif!important;letter-spacing:-.02em;touch-action:manipulation}
+#pf{position:relative;width:100%;aspect-ratio:2556/1179;overflow:hidden;background:#00ff00 center/cover;border-radius:14px;margin-top:12px;color:#fff}
+#pf .a{position:absolute;display:flex;align-items:center;white-space:nowrap}
+#pf s{text-decoration:none;display:block}
+#pf svg{display:block;flex:none;fill:none;stroke:#fff;stroke-width:1.800;stroke-linecap:round;stroke-linejoin:round}
+.xk{display:flex!important;align-items:center;gap:8px;white-space:nowrap}.xk input{width:20px;height:20px}

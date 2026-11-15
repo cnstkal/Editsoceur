@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no,viewport-fit=cover">
+<title>넷플릭스 재생</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.css">
+<link rel="stylesheet" href="../instagram/story.css?v=3">
+<link rel="stylesheet" href="player.css?v=1">
+</head>
+<body>
+<div class="phone">
+<div class="navbar" data-html2canvas-ignore><a href="index.html">‹ 선택화면</a></div>
+<div id="pf"></div>
+<section class="editor">
+<h2>재생화면 편집</h2>
+<div class="row"><label>배경 사진(그린스크린)<input id="iBg" type="file" accept="image/*"></label><label class="xk"><input id="iClr" type="checkbox"> 초록 복원</label></div>
+<div class="row"><label>제목<input id="iTi"></label><label>남은 시간<input id="iTm"></label></div>
+<div class="row"><label>진행(%)<input id="iPg"></label><label>밝기(%)<input id="iBr"></label></div>
+<label>자막<input id="iSb"></label>
+<div class="musicbox"><div class="trow"><span>재생 중(일시정지 아이콘)</span><label class="sw"><input id="iPl" type="checkbox"><i></i></label></div></div>
+</section>
+</div>
+<div class="bar"><button id="savePng" class="primary">PNG로 저장</button><button id="reset" class="secondary">초기화</button></div>
+<script src="https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js"></script>
+<script src="player.js?v=1"></script>
+</body>
+</html>
