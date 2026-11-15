@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>트윗 편집기</title>
+<link rel="stylesheet" href="tweet.css">
+</head>
+<body>
+<main class="wrap">
+  <section class="stage"><div id="capture" class="phone"></div></section>
+
+  <section class="editor">
+    <h2>상단 제목</h2>
+    <label>제목<input id="title" type="text"></label>
+
+    <h2>본문 트윗</h2>
+    <div class="card">
+      <div class="grid2">
+        <label>이름<input id="name" type="text"></label>
+        <label>아이디<input id="handle" type="text"></label>
+      </div>
+      <label>내용<input id="text" type="text"></label>
+      <div class="grid3">
+        <label>시간<input id="time" type="text"></label>
+        <label>날짜<input id="date" type="text"></label>
+        <label>조회수<input id="views" type="text"></label>
+      </div>
+      <div class="grid3">
+        <label>멘션<input id="reply" type="text"></label>
+        <label>리트윗<input id="rt" type="text"></label>
+        <label>마음<input id="like" type="text"></label>
+      </div>
+      <div class="grid2">
+        <label>프로필 사진<input id="avatarFile" type="file" accept="image/*"></label>
+        <label>버튼 글자<input id="btn" type="text"></label>
+      </div>
+      <div class="switches">
+        <label class="sw"><input id="showBtn" type="checkbox"><span class="knob"></span>쪽지 버튼 표시</label>
+        <label class="sw"><input id="lockT" type="checkbox"><span class="knob"></span>이름 옆 자물쇠</label>
+      </div>
+    </div>
+
+    <h2>인용 트윗</h2>
+    <div class="card">
+      <div class="switches" style="margin-bottom:12px">
+        <label class="sw"><input id="showQuote" type="checkbox"><span class="knob"></span>인용 트윗 표시</label>
+      </div>
+      <div class="grid3">
+        <label>이름<input id="qname" type="text"></label>
+        <label>아이디<input id="qhandle" type="text"></label>
+        <label>시간<input id="qtime" type="text"></label>
+      </div>
+      <label>내용<input id="qtext" type="text"></label>
+      <label>프로필 사진<input id="qavatarFile" type="file" accept="image/*"></label>
+    </div>
+
+    <h2>화면 옵션</h2>
+    <div class="card">
+      <div class="switches">
+        <label class="sw"><input id="showNotice" type="checkbox"><span class="knob"></span>답글 제한 안내</label>
+      </div>
+      <label style="margin-top:12px">안내 문구<input id="notice" type="text"></label>
+      <div class="switches">
+        <label class="sw"><input id="showNav" type="checkbox"><span class="knob"></span>하단 메뉴</label>
+        <label class="sw"><input id="navDot" type="checkbox"><span class="knob"></span>홈 파란 점</label>
+      </div>
+    </div>
+
+    <h2>답글</h2>
+    <div id="replyList"></div>
+    <button id="addReply" class="ghost" type="button">+ 답글 추가</button>
+    <button id="addChain" class="ghost" type="button" style="margin-top:10px">+ 답멘션 추가 (앞 답글에 이어짐)</button>
+  </section>
+</main>
+
+<div class="bar">
+  <button id="save" class="primary" type="button">PNG로 저장</button>
+  <button id="reset" class="ghost" type="button">초기화</button>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+<script src="tweet.js"></script>
+</body>
+</html>
