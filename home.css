@@ -1,5 +1,5 @@
 *{box-sizing:border-box;margin:0;padding:0}
-body{font-family:-apple-system,BlinkMacSystemFont,"Apple SD Gothic Neo","Noto Sans KR",Arial,sans-serif;background:#fafafa;min-height:100vh;display:flex;justify-content:center}
+body{font-family:'Pretendard',-apple-system,sans-serif;letter-spacing:-0.02em;background:#fafafa;min-height:100vh;display:flex;justify-content:center}
 main{width:100%;max-width:430px;padding:72px 20px;text-align:center}
 h1{font-size:28px}
 p{color:#737373;margin:8px 0 32px}
