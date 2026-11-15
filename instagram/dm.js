@@ -4,32 +4,59 @@
     ['r','야 어떡해 너무 무서워...'],['s','난알고잇엇직ㅋ'],['s','그래서마지막에 노래할때 조개카레라고만 햇자나'],
     ['r','씨이아앙.........'],['r','나 티켓팅하느라 못봤나봐........'],['s','ㅋㅋㅋㅋㅋㅋㅋㅋㅋ'],
     ['r','넘무무서워........'],['r','아니 치이카와는 원작만화를 봐야 하네'],['r','지금 알고리즘이'],['r','치이카와로 점령됐는데'],
-    ['r','원작만화 파묘할수록 미친 만화야'],['r','너무 무섭고 재밌다']].map(function(a){return{s:a[0],t:a[1]}})};
-  var S,av;
-  function esc(t){return String(t).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;')}
+    ['r','원작만화 파묘할수록 미친 만화야'],['r','너무 무섭고 재밌다']].map(function(a){return{k:'t',s:a[0],t:a[1]}})};
+  var SH='<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#000" stroke-width="2" stroke-linejoin="round"><path d="M22 3 2.5 10.3l7.300 3 3 7.200z"/><path d="m9.800 13.300 12.200-10.300"/></svg>',
+    BK='<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#000" stroke-width="2.200" stroke-linejoin="round"><path d="M6 3h12v18l-6-4.500L6 21z"/></svg>',
+    VB='<svg width="18" height="18" viewBox="0 0 40 40"><path fill="#c9c9c9" d="M19.998 3.094 14.638 0l-2.972 5.150H5.432v6.354L0 14.640 3.094 20 0 25.359l5.432 3.137v5.905h5.975L14.638 40l5.360-3.094L25.359 40l3.232-5.600h6.162v-6.010L40 25.359 36.905 20 40 14.641l-5.248-3.030v-6.460h-6.419L25.359 0z"/><path d="m11.500 20.600 6 6 11-12.600" fill="none" stroke="#fff" stroke-width="3.500" stroke-linecap="round" stroke-linejoin="round"/></svg>',
+    PL='<svg width="46" height="46" viewBox="0 0 24 24"><path fill="#fff" stroke="#fff" stroke-width="3" stroke-linejoin="round" d="M7 4.500v15l12.500-7.500z"/></svg>',
+    PS='<svg width="18" height="18" viewBox="0 0 24 24"><path fill="#000" stroke="#000" stroke-width="2.500" stroke-linejoin="round" d="M7 4.500v15l12.500-7.500z"/></svg>';
+  var S,av,lt=0,li=-1;
+  function esc(t){return String(t==null?'':t).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;')}
+  function bgi(u){return u?"background-image:url('"+u+"')":''}
   function chat(){
     $('vNick').textContent=S.nick;$('vId').textContent=S.id;$('vPh').textContent=S.ph;
-    var bg=av?'background-image:url('+av+')':'';$('vHav').style.cssText=bg;
-    var h='';S.m.forEach(function(x,i){var pv=S.m[i-1],nx=S.m[i+1],first=!pv||pv.s!==x.s,last=!nx||nx.s!==x.s;
-      h+='<div class="m '+x.s+(first&&i?' gap':'')+'">'+(x.s==='r'?'<div class="mav'+(last?'':' hid')+'" style="'+bg+'"></div>':'')+'<div class="b">'+esc(x.t)+'</div></div>'});
+    $('vHav').style.cssText=bgi(av);
+    var h='';S.m.forEach(function(x,i){
+      if(x.k==='d'){h+='<div class="dt">'+esc(x.t)+'</div>';return}
+      var pv=S.m[i-1],nx=S.m[i+1],first=!pv||pv.s!==x.s,last=!nx||nx.s!==x.s,gap=first&&i&&pv.k!=='d',inner;
+      if(x.k==='t')inner='<div class="b">'+esc(x.t)+'</div>';
+      else if(x.k==='p')inner='<div class="med p" style="'+bgi(x.img)+'"></div>';
+      else inner='<div class="med r" style="'+bgi(x.img)+'"><div class="rs"></div><div class="rh"><i style="'+bgi(x.rav)+'"></i><span>'+esc(x.rid)+'</span>'+VB+'</div><div class="rc">'+PL+'</div><div class="rp">'+PS+'</div></div>';
+      var w='<div class="w '+x.s+(x.k==='t'?'':' mw')+'">'+inner+(x.h?'<span class="hrt">❤️</span>':'')+'</div>';
+      var sc=x.k==='p'?'<div class="sc cen">'+SH+'</div>':x.k==='r'?'<div class="scs"><div class="sc">'+SH+'</div><div class="sc">'+BK+'</div></div>':'';
+      var a=x.s==='r'?'<div class="mav'+(last?'':' hid')+'" style="'+bgi(av)+'"></div>':'';
+      h+='<div class="m '+x.s+(gap?' gap':'')+(x.h?' hh':'')+'" data-i="'+i+'">'+(x.s==='s'?sc+w:a+w+sc)+'</div>'});
     var c=$('chat');c.innerHTML=h;var H=c.offsetHeight||1;
     c.querySelectorAll('.m.s .b').forEach(function(b){var t=Math.max(0,Math.min(1,(b.offsetTop+b.offsetHeight/2)/H));
       b.style.background='rgb('+Math.round(160-55*t)+','+Math.round(56+4*t)+','+Math.round(210+30*t)+')'})}
   function list(){var h='';S.m.forEach(function(x,i){
-    h+='<div class="mi" data-i="'+i+'"><select><option value="r"'+(x.s==='r'?' selected':'')+'>받은</option><option value="s"'+(x.s==='s'?' selected':'')+'>보낸</option></select><input class="mt" value="'+esc(x.t)+'"><button type="button" class="mb" data-a="u">↑</button><button type="button" class="mb" data-a="d">↓</button><button type="button" class="mb" data-a="x">✕</button></div>'});
+    var sel='<select><option value="r"'+(x.s==='r'?' selected':'')+'>받은</option><option value="s"'+(x.s==='s'?' selected':'')+'>보낸</option></select>';
+    var f=function(n,l){return '<label class="fl">'+l+'<input type="file" accept="image/*" data-f="'+n+'"></label>'};
+    h+='<div class="mi" data-i="'+i+'">'+(x.k==='d'?'<span class="tg">날짜</span><input class="mt" data-f="t" value="'+esc(x.t)+'">':
+      sel+(x.k==='t'?'<input class="mt" data-f="t" value="'+esc(x.t)+'">':x.k==='p'?f('img','사진'):f('img','릴스 화면')+'<input class="mt" data-f="rid" placeholder="릴스 아이디" value="'+esc(x.rid)+'">'+f('rav','프사')))+
+      '<button type="button" class="mb" data-a="u">↑</button><button type="button" class="mb" data-a="d">↓</button><button type="button" class="mb" data-a="x">✕</button></div>'});
     $('mlist').innerHTML=h}
   function load(){S=JSON.parse(JSON.stringify(DEF));av=null;$('iAv').value='';
     $('iNick').value=S.nick;$('iId').value=S.id;$('iPh').value=S.ph;list();chat()}
   [['iNick','nick'],['iId','id'],['iPh','ph']].forEach(function(p){$(p[0]).addEventListener('input',function(){S[p[1]]=this.value;chat()})});
   $('iAv').onchange=function(){var f=this.files[0];if(!f)return;var r=new FileReader();r.onload=function(){av=r.result;chat()};r.readAsDataURL(f)};
   var ml=$('mlist');
-  ml.addEventListener('input',function(e){if(e.target.className==='mt'){S.m[+e.target.parentNode.dataset.i].t=e.target.value;chat()}});
-  ml.addEventListener('change',function(e){if(e.target.tagName==='SELECT'){S.m[+e.target.parentNode.dataset.i].s=e.target.value;chat()}});
+  ml.addEventListener('input',function(e){var f=e.target.dataset.f;if(f&&e.target.type!=='file'){S.m[+e.target.parentNode.dataset.i][f]=e.target.value;chat()}});
+  ml.addEventListener('change',function(e){var t=e.target,m=S.m[+t.closest('.mi').dataset.i];
+    if(t.tagName==='SELECT'){m.s=t.value;chat()}
+    else if(t.type==='file'&&t.files[0]){var r=new FileReader();r.onload=function(){m[t.dataset.f]=r.result;chat()};r.readAsDataURL(t.files[0])}});
   ml.addEventListener('click',function(e){var a=e.target.dataset.a;if(!a)return;var i=+e.target.parentNode.dataset.i,m=S.m;
     if(a==='x')m.splice(i,1);else if(a==='u'&&i>0){var t=m[i];m[i]=m[i-1];m[i-1]=t}else if(a==='d'&&i<m.length-1){var t2=m[i];m[i]=m[i+1];m[i+1]=t2}
     list();chat()});
-  $('addR').onclick=function(){S.m.push({s:'r',t:''});list();chat()};
-  $('addS').onclick=function(){S.m.push({s:'s',t:''});list();chat()};
+  $('chat').addEventListener('click',function(e){var m=e.target.closest('.m');if(!m||!e.target.closest('.w'))return;
+    var i=+m.dataset.i,n=Date.now();
+    if(li===i&&n-lt<400){S.m[i].h=!S.m[i].h;lt=0;li=-1;chat()}else{lt=n;li=i}});
+  function add(o){return function(){S.m.push(o());list();chat()}}
+  $('addR').onclick=add(function(){return{k:'t',s:'r',t:''}});
+  $('addS').onclick=add(function(){return{k:'t',s:'s',t:''}});
+  $('addP').onclick=add(function(){return{k:'p',s:'s'}});
+  $('addV').onclick=add(function(){return{k:'r',s:'s',rid:'username'}});
+  $('addD').onclick=add(function(){return{k:'d',s:'d',t:'11월 4일 오전 9:56'}});
   $('reset').onclick=load;
   $('savePng').onclick=function(){var b=this,t=b.textContent;b.disabled=true;b.textContent='저장 중...';
     (document.fonts&&document.fonts.ready?document.fonts.ready:Promise.resolve()).then(function(){
