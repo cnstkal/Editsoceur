@@ -45,3 +45,6 @@ button{background:none;border:0;font:inherit;letter-spacing:inherit;color:inheri
 
 html,body,button,a,input,textarea,label{touch-action:manipulation}
 input,textarea,select{font-size:16px!important}
+
+.navbar{height:44px;display:flex;align-items:center;padding:0 14px;background:#fff;border-bottom:1px solid #efefef}
+.navbar a{color:#0095f6;font-weight:600;font-size:16px;text-decoration:none}
