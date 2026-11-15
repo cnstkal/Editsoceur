@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <title>Instagram 게시물</title>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.css">
-<link rel="stylesheet" href="style.css?v=4">
+<link rel="stylesheet" href="style.css?v=5">
 </head>
 <body>
 <div class="phone">
@@ -18,7 +18,7 @@
     <div class="avatar" id="vAvatar"></div>
     <div class="who">
       <div class="name"><span id="vName"></span>
-        <svg class="verified" width="16" height="16" viewBox="0 0 24 24"><path fill="#0095f6" d="M12 1l2.6 1.9 3.2-.1 1 3 2.6 1.9-1 3.1 1 3.1-2.6 1.9-1 3-3.2-.1L12 23l-2.6-1.9-3.2.1-1-3-2.6-1.9 1-3.1-1-3.1 2.6-1.9 1-3 3.2.1z"/><path d="m7.8 12.3 3 3 5.6-6" fill="none" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        <svg class="verified" id="vBadge" width="16" height="16" viewBox="0 0 24 24"><path fill="#0095f6" d="M12 1l2.6 1.9 3.2-.1 1 3 2.6 1.9-1 3.1 1 3.1-2.6 1.9-1 3-3.2-.1L12 23l-2.6-1.9-3.2.1-1-3-2.6-1.9 1-3.1-1-3.1 2.6-1.9 1-3 3.2.1z"/><path d="m7.8 12.3 3 3 5.6-6" fill="none" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
       </div>
       <div class="sub" id="vMusic"><span class="arrow">↗</span> <span id="vMusicTxt"></span></div>
     </div>
@@ -27,11 +27,7 @@
   <div class="media" id="media">
     <div class="slides" id="slides"></div>
     <div class="counter" id="counter"></div>
-    <div class="likers">
-      <div class="liker l1"><svg class="hrt" viewBox="0 0 24 22"><defs><linearGradient id="g" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#ff3d77"/><stop offset="1" stop-color="#ff7a45"/></linearGradient></defs><path fill="url(#g)" d="M12 21S1 14.500 1 7.500A5.500 5.500 0 0 1 12 5a5.500 5.500 0 0 1 11 2.500C23 14.500 12 21 12 21z"/></svg></div>
-      <div class="liker l2"><svg class="hrt" viewBox="0 0 24 22"><path fill="url(#g)" d="M12 21S1 14.500 1 7.500A5.500 5.500 0 0 1 12 5a5.500 5.500 0 0 1 11 2.500C23 14.500 12 21 12 21z"/></svg></div>
-    </div>
-    <button class="mute" id="vMute" aria-label="음소거"><svg viewBox="0 0 24 24" fill="#fff"><path d="M3 9v6h4l5 5V4L7 9z"/><path d="M3 3l18 18" stroke="#fff" stroke-width="2.4" stroke-linecap="round"/></svg></button>
+    <div class="likers" id="vBubbles"></div>
   </div>
   <div class="dots" id="dots"></div>
   <div class="actions">
@@ -69,6 +65,16 @@
   </div>
   <button class="ghost" id="clearPhotos" type="button">첨부 사진 비우기</button>
   <div class="musicbox">
+    <div class="trow"><span>파란딱지(인증 배지)</span><label class="sw"><input id="iBadge" type="checkbox"><i></i></label></div>
+  </div>
+  <div class="musicbox" style="margin-top:12px">
+    <div class="trow"><span>사진 위 좋아요 프로필</span><label class="sw"><input id="iBub" type="checkbox"><i></i></label></div>
+    <label>표시 개수 (1~3)<input id="iBubN" type="number" min="1" max="3"></label>
+    <label class="file">프로필 1<input id="iB0" type="file" accept="image/*"></label>
+    <label class="file">프로필 2<input id="iB1" type="file" accept="image/*"></label>
+    <label class="file">프로필 3<input id="iB2" type="file" accept="image/*"></label>
+  </div>
+  <div class="musicbox" style="margin-top:12px">
     <div class="trow"><span>음악 표시</span><label class="sw"><input id="iMusicOn" type="checkbox"><i></i></label></div>
     <label>음악 정보<input id="iMusic"></label>
   </div>
@@ -79,6 +85,6 @@
   <button id="reset" class="secondary">초기화</button>
 </div>
 <script src="https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js"></script>
-<script src="script.js?v=4"></script>
+<script src="script.js?v=5"></script>
 </body>
 </html>

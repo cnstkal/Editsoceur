@@ -87,3 +87,7 @@ body{background:#fff}
 .bar{position:fixed;left:50%;transform:translateX(-50%);bottom:0;width:100%;max-width:430px;display:flex;gap:10px;padding:12px 16px calc(12px + env(safe-area-inset-bottom));background:rgba(255,255,255,.96);border-top:1px solid #dbdbdb;z-index:10}
 .bar button{flex:1;height:48px;border-radius:12px;font-weight:700;font-size:16px}
 .bar .primary{background:#0095f6;color:#fff;flex:2}.bar .secondary{background:#efefef}
+.likers{width:130px}
+.liker{width:42px;height:42px}
+.liker.l1,.liker.l2{all:unset}
+.editor .musicbox>label{margin-bottom:8px}
