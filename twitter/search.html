@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>검색 결과 편집기</title>
+<link rel="stylesheet" href="search.css">
+</head>
+<body>
+<main class="wrap">
+  <section class="stage"><div id="capture" class="phone"></div></section>
+  <section class="editor">
+    <h2>검색창</h2>
+    <div class="card">
+      <label>검색어 (본문에서 굵게 표시돼요)<input id="query" type="text"></label>
+      <label>탭 이름 (쉼표로 구분)<input id="tabs" type="text"></label>
+      <label>선택된 탭 번호 (1부터)<input id="sel" type="text"></label>
+    </div>
+    <h2>트윗</h2>
+    <div id="list"></div>
+    <button id="add" class="ghost" type="button">+ 트윗 추가</button>
+    <h2>화면 옵션</h2>
+    <div class="card"><div class="switches">
+      <label class="sw"><input id="fab" type="checkbox"><span class="knob"></span>글쓰기 버튼</label>
+      <label class="sw"><input id="nav" type="checkbox"><span class="knob"></span>하단 메뉴</label>
+    </div></div>
+  </section>
+</main>
+<div class="bar">
+  <button id="save" class="primary" type="button">PNG로 저장</button>
+  <button id="reset" class="ghost" type="button">초기화</button>
+</div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+<script src="search.js"></script>
+</body>
+</html>
