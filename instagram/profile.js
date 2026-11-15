@@ -1,28 +1,33 @@
 (function(){
   var $=function(i){return document.getElementById(i)};
-  var DEF={un:'yunou._.u',nm:'윤호 (YUNHO)',po:'167',fr:'712만',fg:'8',bio:'ATEEZ',mut:'choi3an님, wooyounggg__님 외 7명이 팔로우합니다',f1:'팔로잉',f2:'메시지',badge:true,cnt:9};
+  var DEF={un:'yunou._.u',nm:'윤호 (YUNHO)',po:'167',fr:'712만',fg:'8',bio:'ATEEZ',mut:'choi3an님, wooyounggg__님 외 7명이 팔로우합니다',mutOn:true,f1:'팔로잉',f2:'메시지',badge:true,cnt:9};
   var S,av,mav,ph;
-  var ICON='<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2"><rect x="8" y="3" width="13" height="13" rx="3.500" fill="#fff"/><path d="M4 8v9a3 3 0 0 0 3 3h9"/></svg>';
+  var ICON='<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2"><rect x="8" y="3" width="13" height="13" rx="3.5" fill="#fff"/><path d="M4 8v9a3 3 0 0 0 3 3h9"/></svg>';
   var K=['un','nm','po','fr','fg','bio','mut','f1','f2'],I={un:'iUn',nm:'iNm',po:'iPo',fr:'iFr',fg:'iFg',bio:'iBio',mut:'iMut',f1:'iF1',f2:'iF2'};
-  function set(){K.forEach(function(k){$(I[k]).value=S[k]});$('iBadge').checked=S.badge;$('iCnt').value=S.cnt}
-  function read(){K.forEach(function(k){S[k]=$(I[k]).value});S.badge=$('iBadge').checked;S.cnt=Math.max(3,Math.min(30,parseInt($('iCnt').value)||9))}
-  function load(){S=JSON.parse(JSON.stringify(DEF));av=null;mav=[];ph=[];['iAv','iMav','iPh'].forEach(function(i){$(i).value=''});set();render()}
+  function rd(file,cb){var r=new FileReader();r.onload=function(){cb(r.result)};r.readAsDataURL(file)}
+  function buildInputs(){
+    var h='';for(var i=0;i<S.cnt;i++)h+='<label class="file">게시물 '+(i+1)+' 사진<input type="file" accept="image/*" data-i="'+i+'"></label>';
+    $('pInputs').innerHTML=h;
+    document.querySelectorAll('#pInputs input').forEach(function(inp){
+      inp.onchange=function(){var i=+this.dataset.i;if(!this.files[0])return;rd(this.files[0],function(d){ph[i]=d;render()})}})}
+  function set(){K.forEach(function(k){$(I[k]).value=S[k]});$('iBadge').checked=S.badge;$('iMutOn').checked=S.mutOn;$('iCnt').value=S.cnt}
+  function read(){K.forEach(function(k){S[k]=$(I[k]).value});S.badge=$('iBadge').checked;S.mutOn=$('iMutOn').checked;
+    var c=Math.max(3,Math.min(30,parseInt($('iCnt').value)||9));if(c!==S.cnt){S.cnt=c;buildInputs()}else S.cnt=c}
+  function load(){S=JSON.parse(JSON.stringify(DEF));av=null;mav=[];ph=[];set();buildInputs();render()}
   function render(){
     var m={vUn:'un',vNm:'nm',vPo:'po',vFr:'fr',vFg:'fg',vBio:'bio',vMut:'mut',vF1:'f1',vF2:'f2'};
     for(var id in m)$(id).textContent=S[m[id]];
     $('vBadge').style.display=S.badge?'':'none';
     $('vBio').style.display=S.bio?'':'none';
-    $('vMutBox').style.display=S.mut?'':'none';
+    $('vMutBox').style.display=S.mutOn?'':'none';
     $('vAv').style.backgroundImage=av?'url('+av+')':'';
     var a='';for(var i=0;i<3;i++)a+='<i style="background-image:'+(mav[i]?'url('+mav[i]+')':'none')+'"></i>';
     $('vMav').innerHTML=a;
     var g='';for(var j=0;j<S.cnt;j++)g+='<div class="cell"'+(ph[j]?' style="background-image:url('+ph[j]+')"':'')+'>'+ICON+'</div>';
     $('grid').innerHTML=g}
-  function rd(files,cb){var out=[],n=files.length;if(!n)return cb(out);
-    Array.prototype.forEach.call(files,function(f,i){var r=new FileReader();r.onload=function(){out[i]=r.result;if(--n===0)cb(out)};r.readAsDataURL(f)})}
-  $('iAv').onchange=function(){rd(this.files,function(o){av=o[0]||null;render()})};
-  $('iMav').onchange=function(){rd(this.files,function(o){mav=o.slice(0,3);render()})};
-  $('iPh').onchange=function(){rd(this.files,function(o){ph=o;if(o.length>S.cnt){S.cnt=Math.min(30,o.length);$('iCnt').value=S.cnt}render()})};
+  $('iAv').onchange=function(){if(this.files[0])rd(this.files[0],function(d){av=d;render()})};
+  $('iMav').onchange=function(){var fs=Array.prototype.slice.call(this.files,0,3),out=[],n=fs.length;if(!n)return;
+    fs.forEach(function(f,i){rd(f,function(d){out[i]=d;if(--n===0){mav=out;render()}})})};
   document.querySelectorAll('.editor input:not([type=file]),.editor textarea').forEach(function(e){
     e.addEventListener('input',function(){read();render()});e.addEventListener('change',function(){read();render()})});
   $('reset').onclick=load;

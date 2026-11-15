@@ -1,12 +1,12 @@
 (function(){
   var $=function(i){return document.getElementById(i)};
   var DEF={user:'username',time:'1일',badge:true,seg:3,cur:2,pct:30,ph:'메시지 보내기...'};
-  var S,av,photo,grad,T,ratio=1;
+  var S,av,photo,grad,T,ratio=1,rot=0;
   function set(){$('iUser').value=S.user;$('iTime').value=S.time;$('iPh').value=S.ph;
     $('iSeg').value=S.seg;$('iCur').value=S.cur;$('iPct').value=S.pct;$('iBadge').checked=S.badge}
   function read(){S.user=$('iUser').value;S.time=$('iTime').value;S.ph=$('iPh').value;
     S.seg=Math.max(1,Math.min(30,parseInt($('iSeg').value)||1));S.cur=Math.max(1,Math.min(S.seg,parseInt($('iCur').value)||1));S.pct=Math.max(0,Math.min(100,parseFloat($('iPct').value)||0));S.badge=$('iBadge').checked}
-  function load(){S=JSON.parse(JSON.stringify(DEF));av=photo=grad=null;T={x:0,y:0,s:1};$('iZoom').value=100;$('iPhoto').value='';$('iAv').value='';$('iPhoto').value='';set();render()}
+  function load(){S=JSON.parse(JSON.stringify(DEF));av=photo=grad=null;rot=0;T={x:0,y:0,s:1};$('iZoom').value=100;$('iPhoto').value='';$('iAv').value='';$('iPhoto').value='';set();render()}
   function render(){
     $('vNm').textContent=S.user;$('vTm').textContent=S.time;$('vPh').textContent=S.ph;
     $('vBadge').style.display=S.badge?'':'none';
@@ -20,8 +20,8 @@
     f.style.background=photo?'linear-gradient('+g[0]+','+g[1]+')':'#000'}
   function place(){var f=$('frame'),w=f.clientWidth,h=f.clientHeight,p=$('photo');if(!photo||!w)return;
     var k=Math.max(w/(ratio),h)/1;var bw,bh;if(w/h>ratio){bw=w;bh=w/ratio}else{bh=h;bw=h*ratio}
-    p.style.width=bw+'px';p.style.height=bh+'px';
-    p.style.transform='translate(-50%,-50%) translate('+T.x*w+'px,'+T.y*w+'px) scale('+T.s+')'}
+    if(rot%180){var t=bw;bw=bh;bh=t}p.style.width=bw+'px';p.style.height=bh+'px';
+    p.style.transform='translate(-50%,-50%) translate('+T.x*w+'px,'+T.y*w+'px) rotate('+rot+'deg) scale('+T.s+')'}
   function colors(src){var im=new Image();im.onload=function(){
     var w=24,h=Math.max(2,Math.round(w*im.height/im.width)),c=document.createElement('canvas');c.width=w;c.height=h;
     var x=c.getContext('2d');x.drawImage(im,0,0,w,h);var n=Math.max(1,Math.round(h*.15));
@@ -50,6 +50,7 @@
   window.addEventListener('resize',place);
   document.querySelectorAll('.editor input:not([type=file]):not([type=range])').forEach(function(e){
     e.addEventListener('input',function(){read();render()});e.addEventListener('change',function(){read();render()})});
+  $('rot').onclick=function(){rot=(rot+90)%360;place()};
   $('reset').onclick=load;
   $('savePng').onclick=function(){var b=this,t=b.textContent;b.disabled=true;b.textContent='저장 중...';
     (document.fonts&&document.fonts.ready?document.fonts.ready:Promise.resolve()).then(function(){
