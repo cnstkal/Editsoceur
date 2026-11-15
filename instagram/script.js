@@ -4,13 +4,13 @@
     cap:'UP💪\n#Yunhois3gram',date:'2일 전',count:8,musicOn:true,music:'ATEEZ · UP',badge:true,bub:true,bubN:2};
   var S={},bimg=[null,null,null],avatar=null,photos=[],idx=0;
   function esc(t){return t.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;')}
-  function load(){S=JSON.parse(JSON.stringify(DEF));avatar=null;bimg=[null,null,null];['iB0','iB1','iB2'].forEach(function(i){$(i).value=''});$('iBadge').checked=true;$('iBub').checked=true;$('iBubN').value=2;photos=[];idx=0;
+  function load(){S=JSON.parse(JSON.stringify(DEF));avatar=null;bimg=[null,null,null];['iB0','iB1','iB2'].forEach(function(i){$(i).value=''});$('iBadge').checked=true;$('iBubN').value=2;photos=[];idx=0;
     ['user','liker','like','cmt','rep','shr','cap','date','count','music'].forEach(function(k){$('i'+k.charAt(0).toUpperCase()+k.slice(1)).value=S[k]});
     $('iMusicOn').checked=S.musicOn;$('iAvatar').value='';$('iPhotos').value='';render()}
   function read(){
     S.user=$('iUser').value;S.liker=$('iLiker').value;S.like=$('iLike').value;S.cmt=$('iCmt').value;
     S.rep=$('iRep').value;S.shr=$('iShr').value;S.cap=$('iCap').value;S.date=$('iDate').value;
-    S.count=Math.max(1,Math.min(20,parseInt($('iCount').value)||1));S.musicOn=$('iMusicOn').checked;S.music=$('iMusic').value;S.badge=$('iBadge').checked;S.bub=$('iBub').checked;S.bubN=Math.max(1,Math.min(3,parseInt($('iBubN').value)||1))}
+    S.count=Math.max(1,Math.min(20,parseInt($('iCount').value)||1));S.musicOn=$('iMusicOn').checked;S.music=$('iMusic').value;S.badge=$('iBadge').checked;S.bubN=Math.max(1,Math.min(3,parseInt($('iBubN').value)||1))}
   function render(){
     $('vHead').textContent=S.user;$('vName').textContent=S.user;
     var m=$('vMusic');m.style.display=S.musicOn&&S.music.trim()?'':'none';$('vMusicTxt').textContent=S.music;
@@ -26,10 +26,9 @@
     var h='';for(var i=0;i<S.count;i++)h+=photos[i]?'<div class="slide" style="background-image:url('+photos[i]+')"></div>':'<div class="slide ph'+(i%5)+'"></div>';
     $('slides').innerHTML=h;go(idx)}
   var BG=['radial-gradient(circle at 50% 40%,#bbb,#333 60%,#111)','radial-gradient(circle at 50% 38%,#e7c9b0 0 30%,#222 32% 60%,#f2f2f2 62%)','radial-gradient(circle at 50% 40%,#d9d9d9,#777 60%,#333)'];
-  function renderBub(){var b=$('vBubbles'),h='';b.style.display=S.bub?'':'none';
-    for(var i=0;i<S.bubN;i++){var bg=bimg[i]?'url('+bimg[i]+')':BG[i];
-      h+='<div class="liker" style="left:'+(i*34)+'px;bottom:'+(i===1?17:0)+'px;background:'+bg+';background-size:cover;background-position:center"><svg class="hrt" viewBox="0 0 24 22"><defs><linearGradient id="g'+i+'" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#ff3d77"/><stop offset="1" stop-color="#ff7a45"/></linearGradient></defs><path fill="url(#g'+i+')" d="M12 21S1 14.500 1 7.500A5.500 5.500 0 0 1 12 5a5.500 5.500 0 0 1 11 2.500C23 14.500 12 21 12 21z"/></svg></div>'}
-    b.innerHTML=h}
+  function renderBub(){var h='';
+    for(var i=0;i<S.bubN;i++){h+='<span class="mini" style="background:'+(bimg[i]?'url('+bimg[i]+')':BG[i])+';background-size:cover;background-position:center"></span>'}
+    $('vMinis').innerHTML=h}
   [0,1,2].forEach(function(i){file($('iB'+i),function(o){bimg[i]=o[0];render()})});
   function go(k){
     idx=Math.max(0,Math.min(S.count-1,k));

@@ -91,3 +91,7 @@ body{background:#fff}
 .liker{width:42px;height:42px}
 .liker.l1,.liker.l2{all:unset}
 .editor .musicbox>label{margin-bottom:8px}
+.minis{display:flex;flex:none}
+.minis .mini{margin-right:-8px;width:20px;height:20px;background-color:#999}
+.likedby span:last-child{margin-left:14px}
+.likers{display:none}
