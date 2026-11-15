@@ -10,7 +10,7 @@
 .bio{padding:14px 16px 0;font-size:15px;line-height:1.35;white-space:pre-wrap;min-height:0}
 .mut{display:flex;align-items:center;gap:10px;padding:18px 16px 0}
 .mav{display:flex;flex:none}.mav i{width:33px;height:33px;border-radius:50%;background:#ccc center/cover;border:2px solid #fff;margin-left:-10px}.mav i:first-child{margin-left:0}
-.mt{font-size:15px;line-height:1.35}.mt b{font-weight:800}
+.mt{font-size:15px;line-height:1.35}.mt b{font-weight:700}
 .btns{display:flex;gap:6px;padding:16px 16px 0}
 .b{flex:1;height:38px;border-radius:10px;background:#efefef;display:flex;align-items:center;justify-content:center;gap:6px;font-weight:600;font-size:15px}
 .b.sm{flex:none;width:44px}
