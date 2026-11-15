@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no,viewport-fit=cover">
+<title>전화 화면</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.css">
+<link rel="stylesheet" href="../instagram/story.css?v=3">
+<link rel="stylesheet" href="call.css?v=1">
+</head>
+<body>
+<div class="phone">
+<div class="navbar" data-html2canvas-ignore><a href="index.html">‹ 선택화면</a></div>
+<div id="cf" class="c0">
+<div class="cst" id="cS"></div>
+<div class="cnum" id="cN"></div>
+<div class="csub" id="cSub"></div>
+
+<div class="ci" style="left:20.1cqw;top:146cqw"><i class="cb"><svg viewBox="0 0 52 40" style="width:8.9cqw"><path d="M3 14h8l13-11v34L11 26H3z" fill="#fff" stroke="#fff" stroke-width="3" stroke-linejoin="round"/><path d="M31 13c4 4.500 4 9.500 0 14M38 7c7 8 7 18 0 26" fill="none" stroke="#fff" stroke-width="3.200" stroke-linecap="round"/></svg></i><span>스피커</span></div>
+
+<div class="ci" style="left:50cqw;top:146cqw"><i class="cb cft"><svg viewBox="0 0 52 36" style="width:8.1cqw"><rect x="1" y="2" width="34" height="32" rx="6" fill="currentColor"/><path d="M39 12.500 49 6c1.200-.7 2 0 2 1v22c0 1-.8 1.700-2 1L39 23.500z" fill="currentColor"/><path d="M13.500 14.500c0-2.400 1.600-4 4.200-4s4.300 1.500 4.300 3.600c0 3.500-4.200 3.300-4.200 6.300" fill="none" stroke="var(--cq)" stroke-width="3.400" stroke-linecap="round"/><circle cx="17.800" cy="27.200" r="2" fill="var(--cq)"/></svg></i><span>FaceTime</span></div>
+
+<div class="ci" style="left:79.9cqw;top:146cqw"><i class="cb"><svg viewBox="0 0 30 36" style="width:6.4cqw"><path d="M15 2a5 5 0 0 1 5 5v8a5 5 0 0 1-10 0V7a5 5 0 0 1 5-5z" fill="none" stroke="#fff" stroke-width="2.600"/><path d="M4.500 15a10.500 10.500 0 0 0 21 0M15 26v6M9 32h12" fill="none" stroke="#fff" stroke-width="2.600" stroke-linecap="round"/><path d="M3 2l24 29" stroke="var(--cm)" stroke-width="7" stroke-linecap="round"/><path d="M3 2l24 29" stroke="#fff" stroke-width="2.800" stroke-linecap="round"/></svg></i><span>소리 끔</span></div>
+
+<div class="ci" style="left:20.1cqw;top:177.700cqw"><i class="cb"><svg viewBox="0 0 30 8" style="width:6.4cqw"><circle cx="4" cy="4" r="3.300" fill="#fff"/><circle cx="15" cy="4" r="3.300" fill="#fff"/><circle cx="26" cy="4" r="3.300" fill="#fff"/></svg></i><span>더 보기</span></div>
+
+<div class="ci" style="left:50cqw;top:177.700cqw"><i class="cb ce"><svg viewBox="0 0 24 24" style="width:8.800cqw"><path d="M12 9c-1.600 0-3.150.25-4.600.72v3.100c0 .39-.23.74-.56.9-.98.49-1.870 1.120-2.660 1.850-.18.18-.43.28-.7.28-.28 0-.53-.11-.71-.29L.29 13.080a.99.99 0 0 1-.29-.7c0-.28.11-.53.29-.71C3.340 8.780 7.460 7 12 7s8.660 1.780 11.710 4.670c.18.18.29.43.29.71 0 .28-.11.53-.29.71l-2.480 2.480c-.18.18-.43.29-.71.29-.27 0-.52-.11-.7-.28a11.270 11.270 0 0 0-2.670-1.850.996.996 0 0 1-.56-.9v-3.100C15.150 9.250 13.600 9 12 9z" fill="#fff"/></svg></i><span>종료</span></div>
+
+<div class="ci" style="left:79.9cqw;top:177.700cqw"><i class="cb"><svg viewBox="0 0 32 40" style="width:6.6cqw"><g fill="#fff"><circle cx="4" cy="4" r="3.600"/><circle cx="16" cy="4" r="3.600"/><circle cx="28" cy="4" r="3.600"/><circle cx="4" cy="15" r="3.600"/><circle cx="16" cy="15" r="3.600"/><circle cx="28" cy="15" r="3.600"/><circle cx="4" cy="26" r="3.600"/><circle cx="16" cy="26" r="3.600"/><circle cx="28" cy="26" r="3.600"/><circle cx="16" cy="36.500" r="3.600"/></g></svg></i><span>키패드</span></div>
+
+<i class="chb"></i>
+</div>
+<section class="editor">
+<h2>전화 화면 편집</h2>
+<div class="row"><label>화면 상태<select id="iSt"><option value="0">연결 중</option><option value="1">연결 후 (통화 중)</option></select></label><label>전화번호/이름<input id="iNum"></label></div>
+<div class="row"><label>연결 중 문구<input id="iCn"></label><label>국가(연결 중, 비우면 숨김)<input id="iSub"></label></div>
+<div class="row"><label>통화 시간<input id="iTm"></label></div>
+<div class="row"><label>배경 위쪽 색<input id="iC1" type="color"></label><label>배경 아래쪽 색<input id="iC2" type="color"></label></div>
+</section>
+</div>
+<div class="bar"><button id="savePng" class="primary">PNG로 저장</button><button id="reset" class="secondary">초기화</button></div>
+<script src="https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js"></script>
+<script src="call.js?v=1"></script>
+</body>
+</html>
