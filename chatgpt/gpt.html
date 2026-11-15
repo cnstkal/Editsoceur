@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>GPT 화면 편집기</title>
+<link rel="stylesheet" href="gpt.css">
+</head>
+<body>
+<main class="wrap">
+  <section class="stage"><div id="capture" class="phone"></div></section>
+  <section class="editor">
+    <h2>대화</h2>
+    <div id="list"></div>
+    <button id="addUser" class="ghost" type="button">+ 내 말풍선</button>
+    <button id="addBot" class="ghost" type="button" style="margin-top:10px">+ 답변</button>
+    <h2>화면 옵션</h2>
+    <div class="card">
+      <label>입력창 글자<input id="placeholder" type="text"></label>
+      <label>오른쪽 버튼<select id="sendMode"><option value="wave">음성(파형)</option><option value="send">전송(화살표)</option></select></label>
+      <div class="switches">
+        <label class="sw"><input id="showHeader" type="checkbox"><span class="knob"></span>상단 버튼</label>
+        <label class="sw"><input id="showInput" type="checkbox"><span class="knob"></span>입력창</label>
+      </div>
+    </div>
+  </section>
+</main>
+<div class="bar">
+  <button id="save" class="primary" type="button">PNG로 저장</button>
+  <button id="reset" class="ghost" type="button">초기화</button>
+</div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+<script src="gpt.js"></script>
+</body>
+</html>
