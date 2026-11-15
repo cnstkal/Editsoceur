@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no,viewport-fit=cover">
+<title>사진</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.css">
+<link rel="stylesheet" href="../instagram/story.css?v=3">
+<link rel="stylesheet" href="photos.css?v=1">
+</head>
+<body>
+<div class="phone">
+<div class="navbar" data-html2canvas-ignore><a href="index.html">‹ 선택화면</a></div>
+<div id="pf">
+<div class="pt" id="pT"></div>
+<div class="pn" id="pN"></div>
+<i class="pbt pf1"><svg viewBox="0 0 36 24" style="width:6.1cqw"><path d="M2 3h32M8 12h20M14 21h8" fill="none" stroke="#000" stroke-width="3" stroke-linecap="round"/></svg></i>
+<i class="pbt pf2">선택</i>
+<div class="pg"><div class="pgi" id="pG"></div></div>
+<div class="ptb">
+<div class="pti on" id="pA"><svg viewBox="0 0 46 38" style="width:7.3cqw"><rect x="1" y="1" width="33" height="25" rx="6" fill="currentColor"/><rect x="11" y="10" width="34" height="26" rx="6" fill="currentColor" stroke="#eeeef0" stroke-width="2.400"/><circle cx="21" cy="19" r="3" fill="#fff"/><path d="M13 34l9-8.500 6 5 5-5 9 8.500z" fill="#fff"/></svg><em>보관함</em></div>
+<div class="pti" id="pB"><svg viewBox="0 0 30 32" style="width:6.2cqw"><path d="M7 2h16M4 7h22" fill="none" stroke="currentColor" stroke-width="2.200" stroke-linecap="round"/><rect x="1" y="11" width="28" height="20" rx="5" fill="currentColor"/></svg><em>모음</em></div>
+</div>
+<i class="pbt psr"><svg viewBox="0 0 26 26" style="width:5.8cqw"><circle cx="10.500" cy="10.500" r="8" fill="none" stroke="#000" stroke-width="3"/><path d="m16.500 16.500 7 7" stroke="#000" stroke-width="3" stroke-linecap="round"/></svg></i>
+</div>
+<section class="editor">
+<h2>사진 앱 편집</h2>
+<div class="row"><label>제목<input id="iT"></label><label>항목 수 문구<input id="iN"></label></div>
+<div class="row"><label>선택된 하단 탭<select id="iTab"><option value="0">보관함</option><option value="1">모음</option></select></label><label class="xk"><input type="checkbox" id="iCut"> 첫 줄 위쪽 잘림(스크롤)</label></div>
+<div class="row"><label class="file">사진 추가(여러 장)<input type="file" accept="image/*" multiple id="iP"></label></div>
+<div id="plist"></div>
+</section>
+</div>
+<div class="bar"><button id="savePng" class="primary">PNG로 저장</button><button id="reset" class="secondary">초기화</button></div>
+<script src="https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js"></script>
+<script src="photos.js?v=1"></script>
+</body>
+</html>
