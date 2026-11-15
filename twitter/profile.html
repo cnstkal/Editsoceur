@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>프로필 편집기</title>
+<link rel="stylesheet" href="profile.css">
+</head>
+<body>
+<main class="wrap">
+  <section class="stage"><div id="capture" class="phone"></div></section>
+
+  <section class="editor">
+    <h2>프로필 편집</h2>
+    <div class="grid2">
+      <label>이름<input id="name" type="text"></label>
+      <label>아이디<input id="handle" type="text"></label>
+    </div>
+    <label>소개글<input id="bio" type="text"></label>
+    <div class="grid2">
+      <label>직업<input id="job" type="text"></label>
+      <label>생일<input id="birth" type="text"></label>
+    </div>
+    <div class="grid3">
+      <label>가입일<input id="joined" type="text"></label>
+      <label>팔로잉<input id="following" type="text"></label>
+      <label>팔로워<input id="followers" type="text"></label>
+    </div>
+    <div class="grid2">
+      <label>프로필 사진<input id="avatarFile" type="file" accept="image/*"></label>
+      <label>배너 이미지<input id="bannerFile" type="file" accept="image/*"></label>
+    </div>
+    <div class="grid2">
+      <label>배너 색<input id="bannerColor" type="color" value="#999999"></label>
+      <label>알림 숫자(비우면 숨김)<input id="badge" type="text"></label>
+    </div>
+    <div class="switches">
+      <label class="sw"><input id="lock" type="checkbox"><span class="knob"></span>자물쇠</label>
+      <label class="sw"><input id="verify" type="checkbox"><span class="knob"></span>인증받기 버튼</label>
+      <label class="sw"><input id="dot" type="checkbox"><span class="knob"></span>홈 파란 점</label>
+      <label class="sw"><input id="fab" type="checkbox"><span class="knob"></span>글쓰기 버튼</label>
+      <label class="sw"><input id="nav" type="checkbox"><span class="knob"></span>하단 메뉴</label>
+    </div>
+
+    <h2>트윗</h2>
+    <div id="tweetList"></div>
+    <button id="addTweet" class="ghost" type="button">+ 트윗 추가</button>
+  </section>
+</main>
+
+<div class="bar">
+  <button id="save" class="primary" type="button">PNG로 저장</button>
+  <button id="reset" class="ghost" type="button">초기화</button>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+<script src="profile.js"></script>
+</body>
+</html>
