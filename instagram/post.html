@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Instagram 게시물</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.css">
+<link rel="stylesheet" href="style.css?v=6">
+</head>
+<body>
+<div class="phone">
+<div id="post">
+  <header class="nav">
+    <button class="back" aria-label="뒤로" onclick="location.href='index.html'"><svg width="12" height="20" viewBox="0 0 12 20" fill="none" stroke="#000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 1 2 10l8 9"/></svg></button>
+    <div class="title"><strong>게시물</strong><span id="vHead"></span></div>
+  </header>
+  <div class="author">
+    <div class="avatar" id="vAvatar"></div>
+    <div class="who">
+      <div class="name"><span id="vName"></span>
+        <svg class="verified" id="vBadge" width="16" height="16" viewBox="0 0 24 24"><path fill="#0095f6" d="M12 1l2.6 1.9 3.2-.1 1 3 2.6 1.9-1 3.1 1 3.1-2.6 1.9-1 3-3.2-.1L12 23l-2.6-1.9-3.2.1-1-3-2.6-1.9 1-3.1-1-3.1 2.6-1.9 1-3 3.2.1z"/><path d="m7.8 12.3 3 3 5.6-6" fill="none" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </div>
+      <div class="sub" id="vMusic"><span class="arrow">↗</span> <span id="vMusicTxt"></span></div>
+    </div>
+    <button class="more" aria-label="더보기"><i></i><i></i></button>
+  </div>
+  <div class="media" id="media">
+    <div class="slides" id="slides"></div>
+    <div class="counter" id="counter"></div>
+    
+  </div>
+  <div class="dots" id="dots"></div>
+  <div class="actions">
+    <button class="act like" id="like"><svg viewBox="0 0 24 24" fill="none" stroke="#000" stroke-width="1.9" stroke-linejoin="round"><path d="M12 21s-8.500-5.200-8.500-11A4.800 4.800 0 0 1 12 7.200 4.800 4.800 0 0 1 20.500 10c0 5.800-8.500 11-8.500 11z"/></svg><b id="vLike"></b></button>
+    <button class="act"><svg viewBox="0 0 24 24" fill="none" stroke="#000" stroke-width="1.9" stroke-linejoin="round"><path d="M20.700 12a8.700 8.700 0 1 0-4.200 7.400l4.200 1.100-1.100-4.100A8.700 8.700 0 0 0 20.700 12z"/></svg><b id="vCmt"></b></button>
+    <button class="act"><svg viewBox="0 0 24 24" fill="none" stroke="#000" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M17 2l4 4-4 4"/><path d="M3 11V9a3 3 0 0 1 3-3h15"/><path d="M7 22l-4-4 4-4"/><path d="M21 13v2a3 3 0 0 1-3 3H3"/></svg><b id="vRep"></b></button>
+    <button class="act"><svg viewBox="0 0 24 24" fill="none" stroke="#000" stroke-width="1.9" stroke-linejoin="round"><path d="M21.500 3.200 2.800 10.400l6.900 2.700 2.800 7.500z"/><path d="m9.700 13.100 11.800-9.900"/></svg><b id="vShr"></b></button>
+    <button class="act save"><svg viewBox="0 0 24 24" fill="none" stroke="#000" stroke-width="1.9" stroke-linejoin="round"><path d="M5 3h14v18l-7-5.500L5 21z"/></svg></button>
+  </div>
+  <div class="meta">
+    <div class="likedby" id="vLikedRow"><span class="minis" id="vMinis"></span><span id="vLiked"></span></div>
+    <div class="cap" id="vCap"></div>
+    <div class="ago" id="vDate"></div>
+  </div>
+</div>
+
+<section class="editor">
+  <h2>게시물 편집</h2>
+  <label>사용자 아이디<input id="iUser"></label>
+  <label>좋아요 누른 사람 아이디<input id="iLiker"></label>
+  <div class="row">
+    <label>좋아요 수<input id="iLike"></label>
+    <label>댓글 수<input id="iCmt"></label>
+  </div>
+  <div class="row">
+    <label>리포스트 수<input id="iRep"></label>
+    <label>공유 수<input id="iShr"></label>
+  </div>
+  <label>게시물 본문 (#해시태그는 파란색, 줄바꿈 반영)<textarea id="iCap" rows="5"></textarea></label>
+  <label>게시물 날짜<input id="iDate"></label>
+  <label>첨부 사진 장수<input id="iCount" type="number" min="1" max="20"></label>
+  <div class="row">
+    <label class="file">프로필 사진<input id="iAvatar" type="file" accept="image/*"></label>
+    <label class="file">첨부 사진 (여러 장)<input id="iPhotos" type="file" accept="image/*" multiple></label>
+  </div>
+  <button class="ghost" id="clearPhotos" type="button">첨부 사진 비우기</button>
+  <div class="musicbox">
+    <div class="trow"><span>파란딱지(인증 배지)</span><label class="sw"><input id="iBadge" type="checkbox"><i></i></label></div>
+  </div>
+  <div class="musicbox" style="margin-top:12px">
+    <div class="trow"><span>좋아요 프로필 사진 (최대 3개)</span></div>
+    <label>표시 개수 (1~3)<input id="iBubN" type="number" min="1" max="3"></label>
+    <label class="file">프로필 1<input id="iB0" type="file" accept="image/*"></label>
+    <label class="file">프로필 2<input id="iB1" type="file" accept="image/*"></label>
+    <label class="file">프로필 3<input id="iB2" type="file" accept="image/*"></label>
+  </div>
+  <div class="musicbox" style="margin-top:12px">
+    <div class="trow"><span>음악 표시</span><label class="sw"><input id="iMusicOn" type="checkbox"><i></i></label></div>
+    <label>음악 정보<input id="iMusic"></label>
+  </div>
+</section>
+</div>
+<div class="bar">
+  <button id="savePng" class="primary">PNG로 저장</button>
+  <button id="reset" class="secondary">초기화</button>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js"></script>
+<script src="script.js?v=6"></script>
+</body>
+</html>
