@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>알림 편집기</title>
+<link rel="stylesheet" href="notify.css">
+</head>
+<body>
+<main class="wrap">
+  <section class="stage"><div id="capture" class="phone"></div></section>
+  <section class="editor">
+    <h2>상단</h2>
+    <div class="card">
+      <div class="grid2">
+        <label>프로필 사진<input id="avatarFile" type="file" accept="image/*"></label>
+        <label>제목<input id="title" type="text"></label>
+      </div>
+      <div class="grid2">
+        <label>왼쪽 탭<input id="tab1" type="text"></label>
+        <label>오른쪽 탭<input id="tab2" type="text"></label>
+      </div>
+      <label>선택된 탭<select id="sel"><option value="1">왼쪽 탭</option><option value="2">오른쪽 탭</option></select></label>
+    </div>
+    <h2>알림</h2>
+    <div id="list"></div>
+    <button id="addLike" class="ghost" type="button">+ 좋아요 알림</button>
+    <button id="addRt" class="ghost" type="button" style="margin-top:10px">+ 재게시 알림</button>
+    <button id="addMention" class="ghost" type="button" style="margin-top:10px">+ 멘션 알림</button>
+    <h2>화면 옵션</h2>
+    <div class="card"><div class="switches">
+      <label class="sw"><input id="dot" type="checkbox"><span class="knob"></span>홈 파란 점</label>
+      <label class="sw"><input id="fab" type="checkbox"><span class="knob"></span>글쓰기 버튼</label>
+      <label class="sw"><input id="nav" type="checkbox"><span class="knob"></span>하단 메뉴</label>
+    </div></div>
+  </section>
+</main>
+<div class="bar">
+  <button id="save" class="primary" type="button">PNG로 저장</button>
+  <button id="reset" class="ghost" type="button">초기화</button>
+</div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+<script src="notify.js"></script>
+</body>
+</html>
