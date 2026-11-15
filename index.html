@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Instagram 게시물</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="phone">
+  <div class="status">
+    <span class="time">10:01</span>
+    <span class="sys">
+      <svg width="20" height="13" viewBox="0 0 20 13"><rect x="0" y="8" width="3" height="5" rx="1"/><rect x="5" y="5" width="3" height="8" rx="1"/><rect x="10" y="2.5" width="3" height="10.5" rx="1"/><rect x="15" y="0" width="3" height="13" rx="1"/></svg>
+      <svg width="18" height="13" viewBox="0 0 18 13" fill="none" stroke="#000" stroke-width="2" stroke-linecap="round"><path d="M1.5 4.5a11 11 0 0 1 15 0M4 7.5a7.5 7.5 0 0 1 10 0"/><circle cx="9" cy="10.5" r="1.3" fill="#000" stroke="none"/></svg>
+      <span class="batt"><b>53</b></span>
+    </span>
+  </div>
+
+  <header class="nav">
+    <button class="back" aria-label="뒤로"><svg width="12" height="20" viewBox="0 0 12 20" fill="none" stroke="#000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 1 2 10l8 9"/></svg></button>
+    <div class="title"><strong>게시물</strong><span>yunou._.u</span></div>
+  </header>
+
+  <div class="author">
+    <div class="avatar"></div>
+    <div class="who">
+      <div class="name">yunou._.u
+        <svg class="verified" width="16" height="16" viewBox="0 0 24 24"><path fill="#0095f6" d="M12 1l2.6 1.9 3.2-.1 1 3 2.6 1.9-1 3.1 1 3.1-2.6 1.9-1 3-3.2-.1L12 23l-2.6-1.9-3.2.1-1-3-2.6-1.9 1-3.1-1-3.1 2.6-1.9 1-3 3.2.1z"/><path d="m7.8 12.3 3 3 5.6-6" fill="none" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </div>
+      <div class="sub"><span class="arrow">↗</span> ATEEZ · UP</div>
+    </div>
+    <button class="more" aria-label="더보기"><i></i><i></i></button>
+  </div>
+
+  <div class="media" id="media">
+    <div class="slides" id="slides">
+      <div class="slide s1"></div><div class="slide s2"></div><div class="slide s3"></div>
+      <div class="slide s4"></div><div class="slide s5"></div>
+    </div>
+    <div class="counter" id="counter">1/8</div>
+    <div class="likers">
+      <div class="liker l1"><span class="hrt"></span></div>
+      <div class="liker l2"><span class="hrt"></span></div>
+    </div>
+    <button class="mute" aria-label="음소거"><svg width="20" height="20" viewBox="0 0 24 24" fill="#fff"><path d="M3 9v6h4l5 5V4L7 9z"/><path d="M3 3l18 18" stroke="#fff" stroke-width="2.4" stroke-linecap="round"/></svg></button>
+  </div>
+
+  <div class="dots" id="dots"><i class="on"></i><i></i><i></i><i class="sm"></i><i class="xs"></i></div>
+
+  <div class="actions">
+    <button class="act like" id="like"><svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="#000" stroke-width="1.9" stroke-linejoin="round"><path d="M12 21s-8.5-5.2-8.5-11A4.8 4.8 0 0 1 12 7.2 4.8 4.8 0 0 1 20.5 10c0 5.800-8.500 11-8.500 11z"/></svg><b id="likeN">23.6만</b></button>
+    <button class="act"><svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="#000" stroke-width="1.9" stroke-linejoin="round"><path d="M20.7 12a8.700 8.700 0 1 0-4.200 7.400l4.200 1.100-1.100-4.100A8.700 8.700 0 0 0 20.700 12z"/></svg><b>2,232</b></button>
+    <button class="act"><svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="#000" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M17 2l4 4-4 4"/><path d="M3 11V9a3 3 0 0 1 3-3h15"/><path d="M7 22l-4-4 4-4"/><path d="M21 13v2a3 3 0 0 1-3 3H3"/></svg><b>2.4만</b></button>
+    <button class="act"><svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="#000" stroke-width="1.9" stroke-linejoin="round"><path d="M22 3 2.500 10.300l7.300 3 3 7.200z"/><path d="m9.800 13.300 12.200-10.300"/></svg><b>2.2만</b></button>
+    <button class="act save"><svg width="30" height="34" viewBox="0 0 24 24" fill="none" stroke="#000" stroke-width="1.9" stroke-linejoin="round"><path d="M5 3h14v18l-7-5.500L5 21z"/></svg></button>
+  </div>
+
+  <div class="meta">
+    <div class="likedby"><span class="mini a"></span><span class="mini b"></span><span><b>_starhwa_</b>님 외 <b>여러 명</b>이 좋아합니다</span></div>
+    <div class="cap"><b>yunou._.u</b> UP💪</div>
+    <a class="tag" href="#">#Yunhois3gram</a>
+    <div class="ago">2일 전</div>
+  </div>
+</div>
+<script src="script.js"></script>
+</body>
+</html>
