@@ -1,17 +1,17 @@
 (function(){
   var $=function(i){return document.getElementById(i)};
-  var DEF={user:'username',time:'1일',badge:true,seg:3,cur:2,ph:'메시지 보내기...'};
+  var DEF={user:'username',time:'1일',badge:true,seg:3,cur:2,pct:30,ph:'메시지 보내기...'};
   var S,av,photo,grad,T,ratio=1;
   function set(){$('iUser').value=S.user;$('iTime').value=S.time;$('iPh').value=S.ph;
-    $('iSeg').value=S.seg;$('iCur').value=S.cur;$('iBadge').checked=S.badge}
+    $('iSeg').value=S.seg;$('iCur').value=S.cur;$('iPct').value=S.pct;$('iBadge').checked=S.badge}
   function read(){S.user=$('iUser').value;S.time=$('iTime').value;S.ph=$('iPh').value;
-    S.seg=Math.max(1,Math.min(30,parseInt($('iSeg').value)||1));S.cur=Math.max(1,Math.min(S.seg,parseInt($('iCur').value)||1));S.badge=$('iBadge').checked}
+    S.seg=Math.max(1,Math.min(30,parseInt($('iSeg').value)||1));S.cur=Math.max(1,Math.min(S.seg,parseInt($('iCur').value)||1));S.pct=Math.max(0,Math.min(100,parseFloat($('iPct').value)||0));S.badge=$('iBadge').checked}
   function load(){S=JSON.parse(JSON.stringify(DEF));av=photo=grad=null;T={x:0,y:0,s:1};$('iZoom').value=100;$('iPhoto').value='';$('iAv').value='';$('iPhoto').value='';set();render()}
   function render(){
     $('vNm').textContent=S.user;$('vTm').textContent=S.time;$('vPh').textContent=S.ph;
     $('vBadge').style.display=S.badge?'':'none';
     $('vAv').style.backgroundImage=av?'url('+av+')':'';
-    var b='';for(var i=0;i<S.seg;i++)b+='<span><i style="width:'+(i<S.cur-1?100:i===S.cur-1?30:0)+'%"></i></span>';
+    var b='';for(var i=0;i<S.seg;i++)b+='<span><i style="width:'+(i<S.cur-1?100:i===S.cur-1?S.pct:0)+'%"></i></span>';
     $('bars').innerHTML=b;
     var f=$('frame'),p=$('photo');
     $('empty').style.display=photo?'none':'';p.style.display=photo?'':'none';
@@ -53,7 +53,7 @@
   $('reset').onclick=load;
   $('savePng').onclick=function(){var b=this,t=b.textContent;b.disabled=true;b.textContent='저장 중...';
     (document.fonts&&document.fonts.ready?document.fonts.ready:Promise.resolve()).then(function(){
-      return html2canvas($('story'),{scale:5,useCORS:true,backgroundColor:'#0c1014',logging:false})}).then(function(c){
+      return html2canvas($('story'),{scale:5,useCORS:true,backgroundColor:null,logging:false})}).then(function(c){
       c.toBlob(function(bl){var a=document.createElement('a');a.href=URL.createObjectURL(bl);a.download='instagram-story.png';
         document.body.appendChild(a);a.click();a.remove();b.disabled=false;b.textContent=t},'image/png')
     }).catch(function(){b.disabled=false;b.textContent=t;alert('PNG 저장에 실패했습니다.')})};
