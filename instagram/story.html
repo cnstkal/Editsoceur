@@ -5,14 +5,14 @@
 <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no,viewport-fit=cover">
 <title>Instagram 스토리</title>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.css">
-<link rel="stylesheet" href="story.css?v=1">
+<link rel="stylesheet" href="story.css?v=2">
 </head>
 <body>
 <div class="phone">
 <div class="navbar" data-html2canvas-ignore><a href="index.html">‹ 선택화면</a></div>
 <div id="story">
   <div class="frame" id="frame">
-    <div class="photo" id="photo"></div>
+    <div class="empty" id="empty"></div><img class="photo" id="photo" alt="" style="display:none">
     <div class="scrim"></div>
     <div class="bars" id="bars"></div>
     <div class="head">
@@ -34,15 +34,15 @@
   <label>사용자 아이디<input id="iUser"></label>
   <label>업로드 시간<input id="iTime"></label>
   <label>메시지 입력창 문구<input id="iPh"></label>
-  <label>사진 배치
-    <select id="iMode"><option value="fill">1. 화면 꽉 채우기</option><option value="fit">2. 여백 + 그라데이션 배경</option></select></label>
-  <div class="row"><label>막대 개수<input id="iSeg" type="number" min="1" max="30"></label><label>현재 순서<input id="iCur" type="number" min="1" max="30"></label></div>
+    <div class="row"><label>막대 개수<input id="iSeg" type="number" min="1" max="30"></label><label>현재 순서<input id="iCur" type="number" min="1" max="30"></label></div>
   <div class="musicbox"><div class="trow"><span>파란딱지(인증 배지)</span><label class="sw"><input id="iBadge" type="checkbox"><i></i></label></div></div>
+  <label>사진 확대/축소 (손가락 두 개·마우스 휠도 가능, 드래그로 이동)<input id="iZoom" type="range" min="20" max="500" value="100" style="padding:0"></label>
+  <button class="ghost" id="posReset" type="button">사진 위치·크기 초기화</button>
   <div class="row" style="margin-top:12px"><label class="file">프로필 사진<input id="iAv" type="file" accept="image/*"></label><label class="file">스토리 사진<input id="iPhoto" type="file" accept="image/*"></label></div>
 </section>
 </div>
 <div class="bar"><button id="savePng" class="primary">PNG로 저장</button><button id="reset" class="secondary">초기화</button></div>
 <script src="https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js"></script>
-<script src="story.js?v=1"></script>
+<script src="story.js?v=2"></script>
 </body>
 </html>
