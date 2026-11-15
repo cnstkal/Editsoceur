@@ -8,8 +8,8 @@
 .rlact>div{display:flex;flex-direction:column;align-items:center;gap:6px;font-size:15px;font-weight:600;text-shadow:0 0 6px rgba(0,0,0,.35)}
 .rlbot{position:absolute;left:16px;right:76px;bottom:14%}
 .rlu{display:flex;align-items:center;gap:12px;margin-bottom:14px}.rlu b{font-size:18px;font-weight:600;white-space:nowrap}
-.rlring{flex:none;width:50px;height:50px;border-radius:50%;padding:3px;background:linear-gradient(45deg,#f9ce34,#ee2a7b,#6228d7)}
-.rlring i{display:block;width:100%;height:100%;border-radius:50%;background:#888 center/cover;border:2px solid #222}
+.rlring{flex:none;width:50px;height:50px;border-radius:50%;padding:3px;background:linear-gradient(45deg,#f9ce34,#ee2a7b,#6228d7)}.rlring.off{background:none;padding:0}
+.rlring i{display:block;width:100%;height:100%;border-radius:50%;background:#888 center/cover}
 .rlfw{border:1.5px solid rgba(255,255,255,.7);border-radius:10px;padding:5px 12px;font-size:15px;font-weight:600;white-space:nowrap}
 .rlcap{font-size:16px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .rlpg{position:absolute;left:16px;right:16px;bottom:11.5%;height:3px;background:rgba(255,255,255,.3);border-radius:2px}
@@ -17,5 +17,4 @@
 .rlnav{position:absolute;left:13%;right:13%;bottom:3.4%;height:52px;border-radius:26px;background:#000;display:flex;align-items:center;justify-content:space-around;padding:0 4px}
 .ni{position:relative;width:46px;height:40px;display:flex;align-items:center;justify-content:center}
 .ni.on{width:64px;background:#3a3a3c;border-radius:20px}
-.dot{position:absolute;top:6px;right:6px;width:8px;height:8px;border-radius:50%;background:#ff3040}
 .me{width:30px;height:30px;border-radius:50%;background:#888 center/cover}
