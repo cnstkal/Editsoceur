@@ -12,7 +12,7 @@
   function esc(t){return String(t==null?'':t).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;')}
   function bgi(u){return u?"background-image:url('"+u+"')":''}
   function render(){
-    for(var i=0;i<2;i++){var e=$('xT'+i);e.textContent=S.tabs[i];e.className='xtab'+(String(i)===S.act?' on':'')}
+    for(var i=0;i<2;i++){var e=$('xT'+i);e.innerHTML=esc(S.tabs[i])+(i===0&&S.act==='0'?'<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#536471" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>':'');e.className='xtab'+(String(i)===S.act?' on':'')}
     $('xD2').style.display=S.dot?'':'none';
     $('xBg').style.display=S.badge?'':'none';$('xBg').textContent=S.badge;
     var h='';S.t.forEach(function(x){h+='<div class="xw"><i class="xa" style="'+bgi(x.av)+'"></i><div class="xc2"><div class="xn"><b>'+esc(x.n)+'</b>'+(x.lock?LK:'')+'<span>'+esc(x.h)+' · '+esc(x.time)+'</span>'+XL+'</div><div class="xtx">'+esc(x.x)+'</div>'+ac(x)+'</div></div>'});
