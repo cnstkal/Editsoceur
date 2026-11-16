@@ -1,6 +1,6 @@
 (function(){
   var $=function(i){return document.getElementById(i)},STORE='pin_home_v1';
-  var H={s:.7,n:1.0,t:1.35,l:1.8},DOTS='<svg width="24" height="24" viewBox="0 0 24 24" fill="#111"><circle cx="5" cy="12" r="1.800"/><circle cx="12" cy="12" r="1.800"/><circle cx="19" cy="12" r="1.800"/></svg>';
+  var DOTS='<svg width="24" height="24" viewBox="0 0 24 24" fill="#111"><circle cx="5" cy="12" r="1.800"/><circle cx="12" cy="12" r="1.800"/><circle cx="19" cy="12" r="1.800"/></svg>';
   var DEF={dot:true,nav:false,p:[['',  'l'],['핀 제목','t'],['','n'],['핀 제목','l'],['','t'],['핀 제목','n']].map(function(a){return{x:a[0],h:a[1],img:''}})};
   var S;
   function persist(){try{localStorage.setItem(STORE,JSON.stringify(S))}catch(e){}}
@@ -31,7 +31,7 @@
   L.addEventListener('click',function(e){var a=e.target.dataset.a;if(!a)return;var i=ix(e),m=S.p;
     if(a==='x')m.splice(i,1);else if(a==='u'&&i>0){var t=m[i];m[i]=m[i-1];m[i-1]=t}else if(a==='d'&&i<m.length-1){var t2=m[i];m[i]=m[i+1];m[i+1]=t2}
     persist();list();render()});
-  $('addP').onclick=function(){S.p.push({x:'',h:'t',img:''});persist();list();render()};
+  function readImage(file,cb){var r=new FileReader();r.onload=function(){var im=new Image();im.onload=function(){cb(r.result,im.height/im.width)};im.src=r.result};r.readAsDataURL(file)}\n  $('batchPins').onchange=function(){var fs=[].slice.call(this.files);fs.forEach(function(f){readImage(f,function(data,ratio){S.p.push({x:'',h:'t',img:data,ratio:ratio});persist();list();render()})});this.value=''};\n  $('addP').onclick=function(){S.p.push({x:'',h:'t',img:'',ratio:1.25});persist();list();render()};
   $('reset').onclick=function(){load(true)};
   $('savePng').onclick=function(){var b=this,t=b.textContent;b.disabled=true;b.textContent='저장 중...';
     (document.fonts&&document.fonts.ready?document.fonts.ready:Promise.resolve()).then(function(){
