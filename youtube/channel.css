@@ -1,4 +1,4 @@
-#cf{position:relative;aspect-ratio:1179/2556;overflow:hidden;background:#fff;border-radius:14px;margin-top:12px;color:#0f0f0f;font-family:Pretendard,-apple-system,sans-serif;letter-spacing:-.02em}
+#cf{width:393px;margin:12px auto 0;position:relative;aspect-ratio:1179/2556;overflow:hidden;background:#fff;border-radius:14px;margin-top:12px;color:#0f0f0f;font-family:Pretendard,-apple-system,sans-serif;letter-spacing:-.02em}
 .cs{position:absolute;left:0;top:0;width:100%;height:1600px}
 .cs>*{position:absolute}
 .cbk{left:15.500px;top:71px}
@@ -43,7 +43,7 @@
 .lm{margin-top:-3.500px;font-size:13px;line-height:18px;color:#606060;white-space:nowrap}
 .lc+.lm{margin-top:0}
 .ld{position:absolute;left:350px;top:7.500px}
-.ccv{position:absolute;left:0;right:0;top:0;height:58px;background:#fff}
+.ccv{display:none;position:absolute;left:0;right:0;top:0;height:58px;background:#fff}
 .ct{position:absolute;left:51px;top:20px;font-size:16px;font-weight:700;line-height:18px}
 .csg{position:absolute;left:282px;top:23px;fill:#0f0f0f}
 .cwf{position:absolute;left:307px;top:23px;fill:#0f0f0f}
@@ -64,3 +64,5 @@
 .ec{background:#fff;border:1px solid #dbdbdb;border-radius:12px;padding:12px 12px 0;margin-bottom:12px}
 .ec .row{margin-bottom:0}.ek{display:flex!important;align-items:center;gap:8px;white-space:nowrap}.ek input{width:20px;height:20px}
 .eb{flex:1;height:38px;border:1px solid #dbdbdb;border-radius:8px;background:#f6f6f6;font-weight:700;margin-bottom:12px}
+
+.csg,.cwf,.cbt,.ct{display:none!important}

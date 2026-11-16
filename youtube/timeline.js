@@ -25,12 +25,12 @@ h+='<div class="ec" data-i="'+i+'"><label>제목<input data-f="n" value="'+esc(x
 '<div class="row" style="align-items:center"><label class="file">썸네일<input type="file" accept="image/*" data-f="th"></label><label class="file">채널 사진<input type="file" accept="image/*" data-f="av"></label><label class="ek"><input type="checkbox" data-f="mu"'+(x.mu?' checked':'')+'> 음표</label></div>'+
 '<div class="row"><button type="button" class="eb" data-a="u">↑</button><button type="button" class="eb" data-a="d">↓</button><button type="button" class="eb" data-a="x">✕ 삭제</button></div></div>'});
 $('ylist').innerHTML=h}
-function set(){$('iTime').value=S.time;$('iBat').value=S.bat;$('iChg').checked=S.chg;$('iBadge').value=S.badge;$('iTabs').value=S.tabs.join(',');
+function set(){$('iChg').checked=S.chg;$('iBadge').value=S.badge;$('iTabs').value=S.tabs.join(',');
 var o='';S.tabs.forEach(function(n,i){o+='<option value="'+i+'">'+esc(n)+'</option>'});$('iAct').innerHTML=o;$('iAct').value=S.act}
 function load(reset){if(reset){try{localStorage.removeItem(STORE)}catch(e){}S=JSON.parse(JSON.stringify(DEF))}else{try{var saved=localStorage.getItem(STORE);S=saved?JSON.parse(saved):JSON.parse(JSON.stringify(DEF));if(!S||!Array.isArray(S.v)||!Array.isArray(S.tabs)||S.tabs.length!==6)throw new Error('invalid saved data')}catch(e){S=JSON.parse(JSON.stringify(DEF))}}set();list();render()}
 function rd(f,cb){var r=new FileReader();r.onload=function(){cb(r.result)};r.readAsDataURL(f)}
-function glob(){S.time=$('iTime').value;S.bat=$('iBat').value;S.chg=$('iChg').checked;S.badge=$('iBadge').value;S.act=$('iAct').value;persist();render()}
-['iTime','iBat','iChg','iBadge','iAct'].forEach(function(id){$(id).addEventListener('input',glob);$(id).addEventListener('change',glob)});
+function glob(){S.chg=$('iChg').checked;S.badge=$('iBadge').value;S.act=$('iAct').value;persist();render()}
+['iChg','iBadge','iAct'].forEach(function(id){$(id).addEventListener('input',glob);$(id).addEventListener('change',glob)});
 $('iTabs').addEventListener('change',function(){var a=this.value.split(',').map(function(s){return s.trim()});while(a.length<6)a.push('');S.tabs=a.slice(0,6);persist();set();render()});
 $('iMy').addEventListener('change',function(){if(this.files[0])rd(this.files[0],function(d){S.my=d;persist();render()})});
 var L=$('ylist'),ix=function(e){return +e.target.closest('.ec').dataset.i};
