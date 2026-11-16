@@ -37,7 +37,8 @@ var I={
 };
 function esc(s){return String(s==null?'':s).replace(/[&<>"]/g,function(c){return{'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]})}
 function cnt(v){return v?esc(v):''}
-function render(){\n ['job','birth'].forEach(function(k){var on=S[k+'On'];var el=document.getElementById(k);el.disabled=!on;el.closest('label').style.opacity=on?'1':'.4'});
+function render(){
+ ['job','birth'].forEach(function(k){var on=S[k+'On'];var el=document.getElementById(k);el.disabled=!on;el.closest('label').style.opacity=on?'1':'.4'});
  var bn=S.banner?'background-image:url('+S.banner+')':'background-color:#999999';
  var h='<div class="banner" style="'+bn+'"><div class="cb l">'+I.back+'</div><div class="cb r">'+I.search+'</div><div class="pavatar"><img src="'+esc(S.avatar||CORGI)+'"></div></div>';
  h+='<div class="prof"><div class="pname">'+esc(S.name)+(S.lock?I.lock:'')+'</div>';
