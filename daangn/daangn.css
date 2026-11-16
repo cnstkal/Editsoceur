@@ -22,3 +22,33 @@
 .it .cn{position:absolute;right:0;bottom:calc(50*var(--u));display:flex;align-items:center;font-size:calc(30*var(--u));color:#9a9ea3}
 .it .cn svg{width:calc(36*var(--u));height:calc(36*var(--u));margin-right:calc(6*var(--u))}
 .wr{position:absolute;right:calc(47*var(--u));bottom:calc(243*var(--u));height:calc(110*var(--u));padding:0 calc(46*var(--u));border-radius:calc(55*var(--u));background:#ee6a21;color:#fff;font-size:calc(40*var(--u));line-height:calc(110*var(--u));font-weight:700;box-shadow:0 calc(6*var(--u)) calc(20*var(--u)) rgba(0,0,0,.2);z-index:4}
+.dd{--u:calc(100cqw/1179);aspect-ratio:1179/2556;background:#fff}
+.dd .scr{position:absolute;left:0;right:0;top:0}
+.dd .im2{position:relative;height:calc(1178*var(--u));background-size:cover;background-position:center}
+.dd .im2 .cv{z-index:0}
+.dd .gray{position:absolute;left:0;right:0;top:0;height:calc(177*var(--u));background:linear-gradient(180deg,rgba(150,150,150,.95),rgba(170,170,170,.9));z-index:2}
+.dd .pg{position:absolute;right:calc(37*var(--u));bottom:calc(38*var(--u));height:calc(74*var(--u));padding:0 calc(34*var(--u));border-radius:calc(37*var(--u));background:rgba(40,40,40,.72);color:#fff;font-size:calc(40*var(--u));line-height:calc(74*var(--u));z-index:2}
+.dd .sl{position:relative;height:calc(240*var(--u));border-bottom:calc(3*var(--u)) solid #eee;margin:0 calc(48*var(--u))}
+.dd .av2{position:absolute;left:0;top:calc(57*var(--u));width:calc(126*var(--u));height:calc(126*var(--u));border-radius:50%;background:linear-gradient(135deg,#8a8fe0,#c7b6f0) center/cover}
+.dd .av2 i{position:absolute;right:calc(-6*var(--u));bottom:calc(-6*var(--u));width:calc(54*var(--u));height:calc(54*var(--u));border-radius:50%;background:#fff;box-shadow:0 0 0 calc(2*var(--u)) #eee}
+.dd .av2 i::after{content:'';position:absolute;left:calc(15*var(--u));top:calc(15*var(--u));width:calc(24*var(--u));height:calc(24*var(--u));border-radius:calc(6*var(--u));background:#f5a25d}
+.dd .sn{position:absolute;left:calc(157*var(--u));top:calc(52*var(--u));font-size:calc(48*var(--u));line-height:calc(64*var(--u));font-weight:800;white-space:nowrap}
+.dd .sc2{position:absolute;left:calc(157*var(--u));top:calc(120*var(--u));font-size:calc(40*var(--u));line-height:calc(52*var(--u));color:#8a8a8f}
+.dd .tp{position:absolute;right:0;top:calc(48*var(--u));display:flex;align-items:center;font-size:calc(50*var(--u));font-weight:800;color:#ff6f0f}
+.dd .tp i{width:calc(68*var(--u));height:calc(68*var(--u));border-radius:50%;background:radial-gradient(circle at 40% 35%,#ffe08a,#f7a24b);margin-left:calc(16*var(--u));text-align:center;line-height:calc(68*var(--u));font-size:calc(40*var(--u))}
+.dd .mn{position:absolute;right:0;top:calc(122*var(--u));font-size:calc(38*var(--u));line-height:calc(50*var(--u));color:#8a8a8f;text-decoration:underline}
+.dd .tl{margin:calc(82*var(--u)) calc(48*var(--u)) 0;font-size:calc(66*var(--u));line-height:calc(90*var(--u));font-weight:800}
+.dd .pc{margin:calc(22*var(--u)) calc(48*var(--u)) 0;display:flex;align-items:center;font-size:calc(70*var(--u));line-height:calc(96*var(--u));font-weight:800}
+.dd .pay{display:flex;align-items:center;margin-left:calc(34*var(--u));color:#ff6600;font-size:calc(46*var(--u));font-weight:800}
+.dd .pay svg{width:calc(34*var(--u));margin-right:calc(6*var(--u))}
+.dd .mt2{margin:calc(22*var(--u)) calc(48*var(--u)) 0;font-size:calc(44*var(--u));line-height:calc(56*var(--u));color:#8a8a8f}
+.dd .mt2 u{text-decoration:underline}
+.dd .ds2{margin:calc(66*var(--u)) calc(48*var(--u)) 0;font-size:calc(46*var(--u));line-height:calc(76*var(--u));color:#111;white-space:pre-wrap;word-break:keep-all}
+.dd .st2{margin:calc(76*var(--u)) calc(48*var(--u)) 0;font-size:calc(40*var(--u));line-height:calc(56*var(--u));color:#8a8a8f}
+.dd .rp{margin:calc(64*var(--u)) calc(48*var(--u)) 0;font-size:calc(40*var(--u));line-height:calc(56*var(--u));color:#8a8a8f;text-decoration:underline;display:inline-block}
+.dd .hb{position:absolute;left:0;right:0;top:0;height:calc(335*var(--u));background:#fff;z-index:4}
+.dd .sb{z-index:6}
+.dd .ic{z-index:7;top:calc(212*var(--u))}
+.dd .bt{position:absolute;left:0;right:0;bottom:0;height:calc(316*var(--u));background:#fff;border-top:calc(3*var(--u)) solid #f1f1f3;z-index:6}
+.dd .bt svg{position:absolute;left:calc(50*var(--u));top:calc(68*var(--u));width:calc(68*var(--u));height:calc(68*var(--u))}
+.dd .bt b{position:absolute;left:calc(162*var(--u));right:calc(49*var(--u));top:calc(32*var(--u));height:calc(155*var(--u));border-radius:calc(50*var(--u));background:#ff6600;color:#fff;font-size:calc(52*var(--u));line-height:calc(155*var(--u));text-align:center;font-weight:800}

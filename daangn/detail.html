@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no,viewport-fit=cover">
+<title>당근 상세</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.css">
+<link rel="stylesheet" href="../instagram/story.css?v=3">
+<link rel="stylesheet" href="../webtoon/webtoon.css?v=1">
+<link rel="stylesheet" href="daangn.css?v=1">
+</head>
+<body>
+<div class="phone">
+<div class="navbar" data-html2canvas-ignore><a href="index.html">‹ 메인 화면</a></div>
+<div id="df" class="wt d dd">
+  <div class="scr" id="dScr">
+    <div class="im2"><i class="cv" id="dIm"></i><div class="gray" id="dGray"></div><div class="pg" id="dPg"></div></div>
+    <div class="sl"><i class="av2" id="dAv"><i></i></i><b class="sn" id="dSn"></b><span class="sc2" id="dLoc"></span><div class="tp"><span id="dTp"></span><i>😝</i></div><span class="mn">매너온도</span></div>
+    <div class="tl" id="dTl"></div>
+    <div class="pc"><span id="dPc"></span><span class="pay" id="dPay"></span></div>
+    <div class="mt2"><u id="dCat"></u> · <span id="dWh"></span></div>
+    <div class="ds2" id="dDs"></div>
+    <div class="st2" id="dSt"></div>
+    <div class="rp">이 게시글 신고하기</div>
+    <div style="height:600px"></div>
+  </div>
+  <div class="hb" id="dHb"></div>
+  <div class="sb"><b id="dTime"></b></div>
+  <div id="dIcs"></div>
+  <div class="bt"><svg viewBox="0 0 24 24" fill="none" stroke="#333" stroke-width="1.600" stroke-linejoin="round"><path d="M12 20.500s-8.500-5-8.500-11A4.800 4.800 0 0 1 12 6.500a4.800 4.800 0 0 1 8.500 3C20.500 15.500 12 20.500 12 20.500z"/></svg><b>채팅하기</b></div>
+</div>
+<section class="editor">
+  <h2>제품 상세 편집</h2>
+  <div class="row"><label>시간<input id="iTime"></label><label>스크롤(0=맨 위, 1215=아래로)<input id="iSc" type="number" min="0"></label></div>
+  <label>대표 사진<input id="iIm" type="file" accept="image/*"></label>
+  <div class="row"><label>사진 번호<input id="iPg"></label><label>프로필 사진<input id="iAv" type="file" accept="image/*"></label></div>
+  <div class="row"><label>판매자<input id="iSn"></label><label>동네<input id="iLoc"></label></div>
+  <div class="row"><label>매너온도<input id="iTp"></label><label>제목<input id="iTl"></label></div>
+  <div class="row"><label>가격<input id="iPc"></label><label>페이 표시<select id="iPay"><option value="1">표시</option><option value="0">숨김</option></select></label></div>
+  <div class="row"><label>카테고리<input id="iCat"></label><label>올린 시간<input id="iWh"></label></div>
+  <div class="row"><label>관심 수<input id="iLk"></label><label>조회 수<input id="iVw"></label></div>
+  <label>본문<textarea id="iDs" rows="10"></textarea></label>
+</section>
+</div>
+<div class="bar"><button id="savePng" class="primary">PNG로 저장</button><button id="reset" class="secondary">초기화</button></div>
+<script src="https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js"></script>
+<script src="../webtoon/common.js?v=1"></script>
+<script src="detail.js?v=1"></script>
+</body>
+</html>
