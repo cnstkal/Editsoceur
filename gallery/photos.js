@@ -7,7 +7,7 @@ function esc(t){return String(t==null?'':t).replace(/&/g,'&amp;').replace(/</g,'
 function bg(u){return "background-image:url('"+u+"')"}
 function render(){
 $('pT').textContent='보관함';$('pN').textContent=S.n;
-$('pf').classList.toggle('cut',!!S.cut);$('bottomTabs').style.display=S.nav?'flex':'none';$('psr').style.display=S.nav?'flex':'none';
+$('pf').classList.toggle('cut',!!S.cut);$('bottomTabs').style.display=S.nav?'flex':'none';
 $('pA').classList.toggle('on',S.tab==='0');$('pB').classList.toggle('on',S.tab==='1');
 var h='';S.p.forEach(function(u){h+='<i style="'+bg(u)+'"></i>'});
 
