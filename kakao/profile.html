@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no,viewport-fit=cover">
+<title>카카오톡 프로필</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.css">
+<link rel="stylesheet" href="../instagram/story.css?v=3">
+<link rel="stylesheet" href="friends.css?v=1">
+<link rel="stylesheet" href="profile.css?v=1">
+</head>
+<body>
+<div class="phone">
+<div class="navbar" data-html2canvas-ignore><a href="index.html">‹ 선택화면</a></div>
+<div id="kp">
+  <div class="kpt">
+    <span class="kx"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#111" stroke-width="2" stroke-linecap="round"><path d="M5 5l14 14M19 5 5 19"/></svg></span>
+    <span class="kpill">
+      <svg width="28" height="28" viewBox="0 0 24 24"><path d="M12 7 4 10v8l8 3 8-3v-8z" fill="#fff" stroke="#111" stroke-width="1.600" stroke-linejoin="round"/><path d="M12 8c-2-4-6-3-6 0 0 2 3 3 6 5 3-2 6-3 6-5 0-3-4-4-6 0z" fill="#fff" stroke="#111" stroke-width="1.400"/></svg>
+      <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#111" stroke-width="1.800"><circle cx="12" cy="12" r="9.500"/><path d="M7.500 9l2.200 6 2.300-4.500L14.300 15l2.200-6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      <svg width="28" height="28" viewBox="0 0 24 24" fill="#111"><circle cx="5" cy="12" r="2"/><circle cx="12" cy="12" r="2"/><circle cx="19" cy="12" r="2"/></svg>
+    </span>
+  </div>
+  <div class="kdd" id="kDd"></div>
+  <div class="kmid"></div>
+  <i class="av c3 kpa" id="kPa"></i>
+  <div class="kpn" id="kPn"></div>
+  <div class="kcall"><span><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.800" stroke-linejoin="round"><path d="M7 3 4 5c-1 8 5 15 14 16l2-3-4-3-2 1.500c-2-1-4-3-5-5L8.500 9z"/></svg>통화</span><span><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.800" stroke-linejoin="round"><rect x="2.500" y="6" width="14" height="12" rx="2"/><path d="M17 11l4.500-3v8L17 13z"/></svg>페이스톡</span></div>
+  <div class="kgrid" id="kGrid"></div>
+</div>
+<section class="editor">
+  <h2>프로필 편집</h2>
+  <label>이름<input id="iName"></label>
+  <div class="row"><label>배경색<input id="iBg" type="color" style="padding:2px;height:44px"></label><label class="file">배경 사진<input id="iBgImg" type="file" accept="image/*"></label></div>
+  <label class="file">프로필 사진<input id="iPa" type="file" accept="image/*"></label>
+  <h2 style="margin-top:14px">D+ (오른쪽 위)</h2><div id="elDd"></div><button class="ghost" id="addD" type="button">+ 줄 추가</button>
+  <h2 style="margin-top:14px">게시물 사진 (3열)</h2><div id="elG"></div>
+  <label class="file">사진 여러 장 추가<input id="iG" type="file" accept="image/*" multiple></label>
+</section>
+</div>
+<div class="bar"><button id="savePng" class="primary">PNG로 저장</button><button id="reset" class="secondary">초기화</button></div>
+<script src="https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js"></script>
+<script src="profile.js?v=1"></script>
+</body>
+</html>
