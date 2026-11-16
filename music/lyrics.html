@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no,viewport-fit=cover">
+<title>음악 가사</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.css">
+<link rel="stylesheet" href="../instagram/story.css?v=3">
+<link rel="stylesheet" href="lyrics.css?v=1">
+</head>
+<body>
+<div class="phone">
+<div class="navbar" data-html2canvas-ignore><a href="index.html">‹ 선택화면</a></div>
+<div id="mf">
+  <i class="mh"></i>
+  <div class="mt">
+    <i class="art" id="mArt"></i>
+    <div class="mi"><b id="mT"></b><span id="mA"></span></div>
+    <span class="mb"><svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.800" stroke-linejoin="round"><path d="m12 3.500 2.600 5.400 5.900.8-4.300 4.100 1 5.800L12 16.800l-5.200 2.800 1-5.800L3.500 9.700l5.900-.8z"/></svg></span>
+    <span class="mb"><svg width="30" height="30" viewBox="0 0 24 24" fill="#fff"><circle cx="5.500" cy="12" r="1.700"/><circle cx="12" cy="12" r="1.700"/><circle cx="18.500" cy="12" r="1.700"/></svg></span>
+  </div>
+  <div class="ml" id="mL"></div>
+</div>
+<section class="editor">
+  <h2>가사 화면 편집</h2>
+  <div class="row"><label>곡 제목<input id="iT"></label><label>아티스트<input id="iA"></label></div>
+  <label class="file">앨범 이미지<input id="iArt" type="file" accept="image/*"></label>
+  <div class="row"><label>위쪽 색<input id="iC1" type="color" style="padding:2px;height:44px"></label><label>아래쪽 색<input id="iC2" type="color" style="padding:2px;height:44px"></label><label>포인트 색<input id="iC3" type="color" style="padding:2px;height:44px"></label></div>
+  <label>현재 재생 중인 줄 번호(1부터)<input id="iAct" type="number" min="1"></label>
+  <h2 style="margin-top:14px">가사</h2><div id="el"></div>
+  <button class="ghost" id="addR" type="button">+ 줄 추가</button>
+</section>
+</div>
+<div class="bar"><button id="savePng" class="primary">PNG로 저장</button><button id="reset" class="secondary">초기화</button></div>
+<script src="https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js"></script>
+<script src="lyrics.js?v=1"></script>
+</body>
+</html>

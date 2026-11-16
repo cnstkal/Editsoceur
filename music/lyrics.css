@@ -1,0 +1,14 @@
+#mf{position:relative;aspect-ratio:9/19;overflow:hidden;border-radius:14px;margin-top:12px;color:#fff;padding-top:62px;background:#3f2d26}
+.mh{position:absolute;left:50%;top:78px;width:62px;height:5px;margin-left:-31px;border-radius:3px;background:rgba(255,255,255,.45)}
+.mt{display:flex;align-items:center;gap:14px;padding:0 18px;margin-top:36px}
+.art{flex:none;width:62px;height:62px;border-radius:7px;background:linear-gradient(135deg,#f6a5c0,#5b8fd6) center/cover}
+.mi{flex:1;min-width:0}
+.mi b{display:block;font-size:19px;font-weight:600;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.mi span{display:block;font-size:19px;color:rgba(255,255,255,.7);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;margin-top:2px}
+.mb{flex:none;width:52px;height:52px;border-radius:50%;background:rgba(255,255,255,.16);display:flex;align-items:center;justify-content:center}
+.ml{padding:44px 26px 0}
+.ln{margin-bottom:34px;font-weight:800;font-size:35px;line-height:1.2;letter-spacing:-.02em}
+.ln.r{text-align:right;padding-left:70px}
+.ln .tr{font-size:18px;font-weight:600;letter-spacing:0;margin-top:9px;opacity:.7;line-height:1.3}
+.pe{background:#fff;border:1px solid #dbdbdb;border-radius:12px;padding:12px;margin-bottom:12px}
+.pe .xb{flex:1;height:38px;border:1px solid #dbdbdb;border-radius:10px;background:#fff;font-weight:600}
