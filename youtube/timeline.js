@@ -17,7 +17,7 @@ $('yBf').style.width=b+'%';$('yBt').textContent=b;$('yBz').style.display=S.chg?'
 $('yBg').style.display=S.badge?'':'none';$('yBg').textContent=S.badge;
 var t='';S.tabs.forEach(function(n,i){t+='<span class="yb'+(String(i)===S.act?' on':'')+'" style="left:'+LEFT[i]+'px">'+esc(n)+'</span>'});$('yTabs').innerHTML=t;
 $('yMy').style.cssText=S.my?bgi(S.my):'';
-var h='';S.v.forEach(function(x,i){h+='<div class="yc"><div class="yv" style="'+bgi(x.th,BG[i%2])+'">'+(x.dur?'<div class="yu">'+(x.mu?NOTE:'')+esc(x.dur)+'</div>':'')+'</div><div class="yi"><i class="ya" style="'+bgi(x.av)+'"></i><div class="yx"><div class="yn">'+esc(x.n)+'</div><div class="ym">'+esc(x.ch)+'<span>▷'+esc(x.vw)+'</span><span>'+esc(x.time)+'</span></div></div></div>'+DOTS+'</div>'});
+var h='';S.v.forEach(function(x,i){h+='<div class="yc"><div class="yv" style="'+bgi(x.th,BG[i%2])+'">'+(x.dur?'<div class="yu">'+(x.mu?NOTE:'')+esc(x.dur)+'</div>':'')+'</div><div class="yi"><i class="ya" style="'+bgi(x.av)+'"></i><div class="yx"><div class="yn">'+esc(x.n)+'</div><div class="ym">'+esc(x.ch)+'<span>▷'+esc(x.vw)+'</span><span>'+esc(x.time)+'</span></div></div>'+DOTS+'</div></div>'});
 $('yL').innerHTML=h}
 function list(){var h='';S.v.forEach(function(x,i){
 h+='<div class="ec" data-i="'+i+'"><label>제목<input data-f="n" value="'+esc(x.n)+'"></label><label>채널명<input data-f="ch" value="'+esc(x.ch)+'"></label>'+
