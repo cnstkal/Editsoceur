@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Pinterest PC 홈</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.css">
+<link rel="stylesheet" href="../twitter/back.css?v=1">
+<link rel="stylesheet" href="home-pc.css?v=1">
+</head>
+<body>
+<div class="pw" id="pw"><div id="pf"></div></div>
+<section class="ed">
+  <h2>상단</h2>
+  <div class="row"><label>검색창 문구<input id="iSr"></label><label>탭 이름<input id="iTb"></label></div>
+  <h2>핀 (순서대로 6열에 나뉘어 배치)</h2><div id="xlist"></div>
+  <button class="ghost" id="addP" type="button">+ 핀 추가</button>
+</section>
+<div class="bar"><button id="savePng" class="primary">PNG로 저장</button><button id="reset" class="secondary">초기화</button></div>
+<a class="tback" href="index.html" aria-label="선택 화면으로">‹</a>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+<script src="home-pc.js?v=1"></script>
+<script src="../twitter/back.js?v=1"></script>
+</body>
+</html>
