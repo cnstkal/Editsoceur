@@ -13,11 +13,11 @@ var CARET='<svg viewBox="0 0 12 8" style="width:2.8cqw"><path d="M1 1h10L6 7z" f
 var PENG='<svg viewBox="0 0 40 40"><rect width="40" height="40" fill="#5a2ec2"/><path d="M6 26a14 14 0 0 1 28 0v7a4 4 0 0 1-4 4H10a4 4 0 0 1-4-4z" fill="#fff"/><circle cx="14.500" cy="22" r="4.600" fill="#fff" stroke="#2a1470" stroke-width="1.200"/><circle cx="25.500" cy="22" r="4.600" fill="#fff" stroke="#2a1470" stroke-width="1.200"/><circle cx="14.500" cy="22.500" r="1.700" fill="#111"/><circle cx="25.500" cy="22.500" r="1.700" fill="#111"/></svg>';
 function poster(x){var g='';if(x.red||x.white)g='<div class="ntg">'+(x.red?'<span class="r">'+esc(x.red)+'</span>':'')+(x.white?'<span class="w">'+esc(x.white)+'</span>':'')+'</div>';
 return '<div class="np" style="'+bg(x.img)+'">'+(x.top?'<b class="tb"><i>TOP</i>10</b>':'')+g+'</div>'}
-function render(){ $('nHc').style.display='none';
+function render(){
 $('nCh').innerHTML='<i>'+esc(S.c0)+'</i><i>'+esc(S.c1)+'</i><i>'+esc(S.c2)+'</i><i><span>'+esc(S.c3)+'</span>'+CARET+'</i>';
 var hc=$('nHc');hc.style.backgroundImage=S.hero?"url('"+S.hero+"')":'';
 $('nHt').textContent=S.ht;$('nB1').textContent=S.b1;$('nB2').textContent=S.b2;
-$('nT1').innerHTML=tt(S.t1);$('nT2').innerHTML=tt(S.t2);$('nT3').innerHTML='';
+$('nT1').innerHTML=tt(S.t1);$('nT2').innerHTML=tt(S.t2);
 var h='';S.r1.forEach(function(x,i){var n=i+1;h+='<div class="ni"><i class="nn" style="left:-'+(n===1?8:12.3)+'cqw">'+n+'</i>'+poster(x)+'</div>'});$('nR1').innerHTML=h;
 h='';S.r2.forEach(function(x){h+=poster(x)});$('nR2').innerHTML=h;
 $('nBn').style.backgroundImage=S.ban?"url('"+S.ban+"')":'';$('nBk').style.display=S.bk?'':'none';
