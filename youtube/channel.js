@@ -1,6 +1,6 @@
 (function(){
 var $=function(i){return document.getElementById(i)};
-var CX=[36,107,183,258,338],SCROLL_MID=592.5,STICKY=72.5,TAB_Y=463;
+var CX=[36,107,183,258,338],SCROLL_MID=592.5,STICKY=72.5,TAB_Y=420;
 var BG=['linear-gradient(#1b1740,#c92d78)','linear-gradient(#fbe3f1,#f2a6cf)','linear-gradient(#f6efd8,#d9d0f2)','linear-gradient(#fdd3e6,#e84c8f)','linear-gradient(#5a3a7a,#c43a5a)'];
 var DEF={time:'9:41',bat:'80',chg:false,sc:0,
 nm:'샘플 채널',hd:'@samplechannel',su:'구독자 1만명',vd:'동영상 120개',sb:'구독',
