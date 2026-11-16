@@ -2,7 +2,7 @@
 var FACE='data:image/svg+xml;utf8,'+encodeURIComponent('<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><rect width="100" height="100" fill="#6b7a99"/><circle cx="50" cy="44" r="20" fill="#e8c3a0"/><path d="M28 42Q30 18 52 20Q74 20 72 44Q64 30 50 32Q36 30 28 42Z" fill="#2a2420"/><path d="M14 100Q18 70 50 68Q82 70 86 100Z" fill="#c9a98c"/></svg>');
 function M(t,x,u){return{t:t,x:x,u:!!u}}
 function defaults(){return{
- name:'렙',avatar:FACE,showCall:true,showRead:true,readText:'읽음',placeholder:'쪽지',showInput:true,showNav:true,navDot:false,
+ name:'렙',avatar:FACE,showCall:true,showRead:true,readText:'읽음',placeholder:'쪽지',showInput:true,showNav:true,
  msgs:[
   M('them','아까 말한 거 생각해봤는데 그냥 내일 가는 게 나을 듯'),
   M('me','오 나도 그게 편해ㅋㅋ'),
@@ -43,12 +43,12 @@ function render(){
  if(S.showRead&&last&&last.t==='me')h+='<div class="rd">'+esc(S.readText)+'</div>';
  h+='</div>';
  if(S.showInput)h+='<div class="inp"><div class="plus">'+I.plus+'</div><div class="box"><span>'+esc(S.placeholder)+'</span>'+I.mic+'</div></div>';
- if(S.showNav)h+='<div class="nv"><div>'+I.home+(S.navDot?'<i class="dt"></i>':'')+'</div><div>'+I.search+'</div><div>'+I.eye+'</div><div>'+I.bell+'</div><div>'+I.msg+'</div></div>';
+ if(S.showNav)h+='<div class="nv"><div>'+I.home+'</div><div>'+I.search+'</div><div>'+I.eye+'</div><div>'+I.bell+'</div><div>'+I.msg+'</div></div>';
  document.getElementById('capture').innerHTML=h;
 }
 function readFile(f,cb){if(!f)return;var r=new FileReader();r.onload=function(){cb(r.result)};r.readAsDataURL(f)}
 var ids=['name','readText','placeholder'];
-var sw=['showCall','showRead','showInput','showNav','navDot'];
+var sw=['showCall','showRead','showInput','showNav'];
 function sync(){
  ids.forEach(function(k){document.getElementById(k).value=S[k]});
  sw.forEach(function(k){document.getElementById(k).checked=S[k]});
