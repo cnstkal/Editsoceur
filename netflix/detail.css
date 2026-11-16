@@ -1,8 +1,8 @@
 body,body *{font-family:Pretendard,-apple-system,sans-serif!important;letter-spacing:-.02em;touch-action:manipulation}
-#nf{position:relative;aspect-ratio:1179/2556;overflow:hidden;background:#000;border-radius:14px;margin-top:12px;color:#fff}
+#nf{position:relative;width:393px;max-width:100%;margin:12px auto 0;height:auto;overflow:visible;background:#000;border-radius:14px;color:#fff}
 #nf *{box-sizing:border-box}
 #nf p{margin:0}
-.nc{position:absolute;left:0;right:0;top:0;bottom:0}
+.nc{position:relative;height:960px}
 .nc.sc{transform:translateY(-439px)}
 .nc>*{position:absolute}
 .nv{position:absolute;top:59px;left:0;right:0;height:221px;border-radius:12px 12px 0 0;background:#2a1e14 center/cover;overflow:hidden;z-index:5}
