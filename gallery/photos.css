@@ -10,13 +10,13 @@ html,body{touch-action:manipulation;-webkit-text-size-adjust:100%}
 .pgi{display:grid;grid-template-columns:repeat(3,1fr);gap:.42cqw}
 .cut .pgi{margin-top:-5.77cqw}
 .pgi i{display:block;aspect-ratio:1;background:#e5e5ea center/cover no-repeat}
-.ptb{position:absolute;left:5.3cqw;bottom:3cqw;top:auto;width:48cqw;height:15.5cqw;border-radius:7.75cqw;background:#fff;border:1px solid #e6e6e9;box-shadow:0 .8cqw 2.6cqw rgba(0,0,0,.1);box-sizing:border-box;padding:1cqw;display:flex;z-index:2}
+.ptb{position:absolute;left:5.3cqw;bottom:3cqw;top:auto;width:68cqw;height:15.5cqw;border-radius:7.75cqw;background:#fff;border:1px solid #e6e6e9;box-shadow:0 .8cqw 2.6cqw rgba(0,0,0,.1);box-sizing:border-box;padding:1cqw;display:flex;z-index:2}
 .pti{display:flex;flex-direction:column;align-items:center;justify-content:flex-start;padding-top:1.9cqw;height:100%;box-sizing:border-box;border-radius:6.7cqw;color:#000;flex:1}
 .pti.on{flex:none;width:23.9cqw;background:#eeeef0;color:#1a7cf5}
 .pti svg{display:block;height:auto;max-height:6.4cqw}
 .pti em{font-style:normal;margin-top:1.1cqw;font-size:3.6cqw;line-height:3.8cqw;font-weight:500;color:#000;white-space:nowrap}
 .pti.on em{color:#1a7cf5}
-.psr{left:78.8cqw;top:auto;bottom:3cqw;width:15.9cqw;height:15.9cqw;border-radius:50%}
+
 .pk{display:flex;gap:8px;align-items:center;background:#fff;border:1px solid #dbdbdb;border-radius:12px;padding:8px;margin-bottom:8px}
 .pk i{flex:none;width:56px;height:56px;border-radius:8px;background:#e5e5ea center/cover}
 .pk button{flex:1;height:38px;border:1px solid #dbdbdb;border-radius:8px;background:#f6f6f6;font-weight:700}
