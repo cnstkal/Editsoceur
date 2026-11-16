@@ -39,7 +39,7 @@
   function angle(){var a=Object.values(P);return Math.atan2(a[1].y-a[0].y,a[1].x-a[0].x)*180/Math.PI}
   function mid(){var a=Object.values(P);return{x:(a[0].x+a[1].x)/2,y:(a[0].y+a[1].y)/2}}
   fr.addEventListener('pointerdown',function(e){fr.setPointerCapture(e.pointerId);P[e.pointerId]={x:e.clientX,y:e.clientY};
-    last=Object.keys(P).length===2?{d:dist(),m:mid()}:null});
+    last=Object.keys(P).length===2?{d:dist(),m:mid(),a:angle()}:null});
   fr.addEventListener('pointermove',function(e){if(!P[e.pointerId]||!photo)return;var w=fr.clientWidth,n=Object.keys(P).length;
     if(n===1){T.x+=(e.clientX-P[e.pointerId].x)/w;T.y+=(e.clientY-P[e.pointerId].y)/w;P[e.pointerId]={x:e.clientX,y:e.clientY}}
     else if(n===2){P[e.pointerId]={x:e.clientX,y:e.clientY};var d=dist(),m=mid();
