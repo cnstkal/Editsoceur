@@ -2,17 +2,16 @@
 var $=function(i){return document.getElementById(i)};
 var CX=[36,107,183,258,338],SCROLL_MID=592.5,STICKY=72.5,TAB_Y=463;
 var BG=['linear-gradient(#1b1740,#c92d78)','linear-gradient(#fbe3f1,#f2a6cf)','linear-gradient(#f6efd8,#d9d0f2)','linear-gradient(#fdd3e6,#e84c8f)','linear-gradient(#5a3a7a,#c43a5a)'];
-var DEF={time:'11:56',bat:'66',chg:true,sc:0,
-nm:'(Love Live! series)ラブライブ！シリーズ公式チャンネル',hd:'@lovelive_series',su:'구독자 90.5만명',vd:'동영상 2.9천개',sb:'구독',
-ds:'オールメディア展開するスクールアイドルプロジェクト、ラブライブ！シリーズの公式アカウントです。',lk:'lovelive-anime.jp 외 링크 3개',
+var DEF={time:'9:41',bat:'80',chg:false,sc:0,
+nm:'Sample Channel',hd:'@samplechannel',su:'구독자 10K명',vd:'동영상 120개',sb:'구독',
+ds:'This is a sample channel description. Replace this text with your own.',lk:'example.com 외 링크 1개',
 tabs:['홈','동영상','Shorts','라이브','재생목록'],act:'0',
-f:{n:'#AiScReam『NEXT CARD』Official Lyric Video【ラブカテーマソング】',ch:'(Love Live! series)ラブライブ！シリーズ公式チャンネル 외 3명',vw:'101만',time:'5개월 전',dur:'3:13',mu:true,cb:true},
+f:{n:'My Featured Video: Sample Title Goes Here',ch:'Sample Channel',vw:'10K',time:'1 month ago',dur:'3:13',mu:false,cb:false},
 l:[
-{n:'【限定公開】SUNNY DAY SONG / ラブライブ！シリーズ【LoveLive! Series Official】',ch:'',sc:false,vw:'1.5만',time:'2시간 전',dur:'4:46',mu:true,pg:'10'},
-{n:'ラブライブ！フェスアンコール公演 in 東京ドーム 開催決定！！',ch:'(Love Live! series)ラブライブ！シリーズ公式チャンネル',sc:true,vw:'2.8만',time:'4시간 전',dur:'0:56',mu:false,pg:'0'},
-{n:'【試聴動画】映画『ラブライブ！虹ヶ咲学園スクールアイドル同好会 完結編 最終章』主題歌「Dreaming Free」',ch:'',sc:false,vw:'1.5만',time:'13시간 전',dur:'1:37',mu:false,pg:'0'},
-{n:'【第17回】ラブライブ！フェス開催&ブースターパック まじかる♡とり〜と 発売記念',ch:'',sc:false,vw:'2.5만',time:'2일 전',dur:'25:07',mu:false,pg:'0'},
-{n:'【新ストーリー】『あなたの一番になりたい！』公開記念スペシャル映像',ch:'',sc:false,vw:'1.2만',time:'3일 전',dur:'6:39',mu:false,pg:'0'}]};
+{n:'Sample Video One: A Short Example Title',ch:'',sc:false,vw:'5K',time:'2 hours ago',dur:'4:46',mu:false,pg:'0'},
+{n:'Sample Short Video Title',ch:'',sc:true,vw:'2.8K',time:'4 hours ago',dur:'0:56',mu:false,pg:'0'},
+{n:'Another Sample Video With a Longer Title for Testing',ch:'',sc:false,vw:'1.5K',time:'13 hours ago',dur:'1:37',mu:false,pg:'0'},
+{n:'Example Video Four',ch:'',sc:false,vw:'2.5K',time:'2 days ago',dur:'25:07',mu:false,pg:'0'}]};
 var NOTE='<svg width="14" height="14" viewBox="0 0 24 24" fill="#fff"><path d="M9 3v11.500A4 4 0 1 0 12 18V8h6V3z"/></svg>',
 DOTS='<svg class="ld" width="13" height="4" viewBox="0 0 13 4" fill="#0f0f0f"><circle cx="2" cy="2" r="1.900"/><circle cx="6.500" cy="2" r="1.900"/><circle cx="11" cy="2" r="1.900"/></svg>',
 DOTS2='<svg class="cdd" width="16" height="5" viewBox="0 0 16 5" fill="#0f0f0f"><circle cx="2.500" cy="2.500" r="2.300"/><circle cx="8" cy="2.500" r="2.300"/><circle cx="13.500" cy="2.500" r="2.300"/></svg>',
@@ -34,7 +33,7 @@ var T=Math.max(TAB_Y-sc,STICKY);$('cTb').style.top=T+'px';
 var tf=$('cTf');tf.style.height=T>STICKY?'0px':(STICKY-58)+'px';
 var t='';S.tabs.forEach(function(n,i){t+='<span class="cb'+(String(i)===S.act?' on':'')+'" style="left:'+CX[i]+'px">'+esc(n)+'</span>'});$('cTb').innerHTML=t;
 var f=S.f;
-$('cFd').innerHTML='<div class="cfv" style="'+bgi(f.th,BG[0])+'">'+(f.dur?'<div class="cfu">'+(f.mu?NOTE:'')+esc(f.dur)+'</div>':'')+'</div><div class="cfi">'+(f.cb?CC:'<i class="cfa"></i>')+'<div class="cfx"><div class="cft">'+esc(f.n)+'</div><div class="cfm">'+esc(f.ch)+'<span>▷'+esc(f.vw)+'</span><span>'+esc(f.time)+'</span></div></div></div>'+DOTS2;
+$('cFd').innerHTML='<div class="cfv" style="'+bgi(f.th,BG[0])+'">'+(f.dur?'<div class="cfu">'+(f.mu?NOTE:'')+esc(f.dur)+'</div>':'')+'</div><div class="cfi">'+'<i class="cfa"></i>'+'<div class="cfx"><div class="cft">'+esc(f.n)+'</div><div class="cfm">'+esc(f.ch)+'<span>▷'+esc(f.vw)+'</span><span>'+esc(f.time)+'</span></div></div></div>'+DOTS2;
 var h='';S.l.forEach(function(x,i){h+='<div class="li"><div class="lt" style="'+bgi(x.th,BG[(i+1)%5])+'">'+(x.dur?'<div class="lu">'+(x.mu?NOTE:'')+esc(x.dur)+'</div>':'')+(pc(x.pg)?'<div class="lp"><i style="width:'+pc(x.pg)+'%"></i></div>':'')+'</div><div class="lx"><div class="ln">'+esc(x.n)+'</div>'+(x.sc?'<div class="lc">'+esc(x.ch)+'</div>':'')+'<div class="lm">'+esc(x.vw)+' · '+esc(x.time)+'</div></div>'+DOTS+'</div>'});
 $('cL').innerHTML=h}
 function get(p){return p.split('.').reduce(function(o,k){return o&&o[k]},S)}
