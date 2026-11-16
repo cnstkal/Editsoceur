@@ -52,3 +52,33 @@
 .dd .bt{position:absolute;left:0;right:0;bottom:0;height:calc(316*var(--u));background:#fff;border-top:calc(3*var(--u)) solid #f1f1f3;z-index:6}
 .dd .bt svg{position:absolute;left:calc(50*var(--u));top:calc(68*var(--u));width:calc(68*var(--u));height:calc(68*var(--u))}
 .dd .bt b{position:absolute;left:calc(162*var(--u));right:calc(49*var(--u));top:calc(32*var(--u));height:calc(155*var(--u));border-radius:calc(50*var(--u));background:#ff6600;color:#fff;font-size:calc(52*var(--u));line-height:calc(155*var(--u));text-align:center;font-weight:800}
+.ch{background:#fff}
+.ch .nm{position:absolute;left:0;right:0;top:calc(196*var(--u));text-align:center;font-size:calc(50*var(--u));line-height:calc(68*var(--u));font-weight:800;display:flex;justify-content:center;align-items:center}
+.ch .nm i{margin-left:calc(18*var(--u));height:calc(56*var(--u));padding:0 calc(22*var(--u));border-radius:calc(28*var(--u));background:#fdeee6;color:#ee6a21;font-size:calc(36*var(--u));line-height:calc(56*var(--u));font-weight:700}
+.ch .sub{position:absolute;left:0;right:0;top:calc(272*var(--u));text-align:center;font-size:calc(38*var(--u));line-height:calc(50*var(--u));color:#8a8a8f}
+.ch .pd{position:absolute;left:calc(48*var(--u));right:calc(48*var(--u));top:calc(375*var(--u));height:calc(115*var(--u));display:flex}
+.ch .pd .th{position:relative;flex:none;width:calc(114*var(--u));height:calc(114*var(--u));border-radius:calc(10*var(--u));overflow:hidden}
+.ch .pd .pt{margin-left:calc(30*var(--u));flex:1;min-width:0;font-size:calc(40*var(--u));line-height:calc(52*var(--u))}
+.ch .pd .l1{display:flex;white-space:nowrap}
+.ch .pd .l1 b{flex:none;font-weight:800;margin-right:calc(14*var(--u))}
+.ch .pd .l1 span{overflow:hidden;text-overflow:ellipsis}
+.ch .pd .l2{font-weight:800;font-size:calc(44*var(--u));line-height:calc(60*var(--u));margin-top:calc(4*var(--u))}
+.ch .ms{position:absolute;left:0;right:0;top:calc(530*var(--u));bottom:calc(320*var(--u));display:flex;flex-direction:column;justify-content:flex-end;overflow:hidden;padding:0 calc(48*var(--u))}
+.ch .dl{text-align:center;font-size:calc(42*var(--u));line-height:calc(56*var(--u));color:#8a8a8f;margin:calc(20*var(--u)) 0 calc(40*var(--u))}
+.ch .mr{display:flex;align-items:flex-end;margin-top:calc(24*var(--u))}
+.ch .mr.g{margin-top:calc(44*var(--u))}
+.ch .mr.r{justify-content:flex-end}
+.ch .pf{flex:none;width:calc(96*var(--u));height:calc(96*var(--u));border-radius:50%;background:#d7d9dd;position:relative;overflow:hidden;margin-right:calc(26*var(--u));align-self:flex-start}
+.ch .pf::before{content:'';position:absolute;left:calc(30*var(--u));top:calc(20*var(--u));width:calc(36*var(--u));height:calc(36*var(--u));border-radius:50%;background:#fff}
+.ch .pf::after{content:'';position:absolute;left:calc(20*var(--u));top:calc(62*var(--u));width:calc(56*var(--u));height:calc(40*var(--u));border-radius:50%;background:#fff}
+.ch .sp{flex:none;width:calc(122*var(--u))}
+.ch .bb{max-width:calc(800*var(--u));padding:calc(30*var(--u)) calc(36*var(--u));border-radius:calc(46*var(--u));background:#f2f3f5;font-size:calc(48*var(--u));line-height:calc(68*var(--u));word-break:break-all;white-space:pre-wrap}
+.ch .r .bb{max-width:calc(920*var(--u));background:#ee7230;color:#fff}
+.ch .tm{flex:none;font-size:calc(36*var(--u));line-height:calc(44*var(--u));color:#a0a4a8;margin:0 calc(14*var(--u)) calc(4*var(--u))}
+.ch .dn{position:absolute;right:calc(37*var(--u));bottom:calc(313*var(--u));width:calc(120*var(--u));height:calc(120*var(--u));border-radius:50%;background:#fff;box-shadow:0 calc(4*var(--u)) calc(18*var(--u)) rgba(0,0,0,.18);z-index:3}
+.ch .dn svg{position:absolute;left:calc(30*var(--u));top:calc(30*var(--u));width:calc(60*var(--u));height:calc(60*var(--u))}
+.ch .in{position:absolute;left:0;right:0;bottom:0;height:calc(290*var(--u));background:#fff;z-index:2}
+.ch .in .pl{position:absolute;left:calc(46*var(--u));top:calc(66*var(--u));width:calc(54*var(--u));height:calc(54*var(--u))}
+.ch .in .bx{position:absolute;left:calc(145*var(--u));top:calc(26*var(--u));width:calc(888*var(--u));height:calc(118*var(--u));border-radius:calc(59*var(--u));background:#f2f3f5;color:#a0a4a8;font-size:calc(46*var(--u));line-height:calc(118*var(--u));padding-left:calc(36*var(--u))}
+.ch .in .sm{position:absolute;left:calc(942*var(--u));top:calc(48*var(--u));width:calc(66*var(--u));height:calc(66*var(--u))}
+.ch .in .sd{position:absolute;left:calc(1078*var(--u));top:calc(50*var(--u));width:calc(62*var(--u));height:calc(62*var(--u))}
