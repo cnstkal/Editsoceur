@@ -14,16 +14,16 @@ var selected=0,color='#efefef',opacity=96;
 function rgba(hex,a){var n=parseInt(hex.slice(1),16);return 'rgba('+(n>>16)+','+((n>>8)&255)+','+(n&255)+','+(a/100)+')'}
 function render(){
  var n=data[selected],stage=$('stage');
- stage.innerHTML='<div class="banner" id="banner"><div class="ico">'+icons[n.icon]+'</div><div class="txt"><b></b><p></p></div><span class="time"></span></div>';
+ stage.innerHTML='<div class="banner" id="banner"><div class="ico">'+icons[n.icon]+'</div><div class="txt"><small class="app"></small><b></b><p></p></div><span class="time"></span></div>';
  $('banner').style.background=rgba(color,opacity);
- $('banner').querySelector('b').textContent=n.title;$('banner').querySelector('p').textContent=n.body;$('banner').querySelector('.time').textContent=n.time;
+ $('banner').querySelector('.app').textContent=n.app;$('banner').querySelector('b').textContent=n.title;$('banner').querySelector('p').textContent=n.body;$('banner').querySelector('.time').textContent=n.time;
  $('appName').value=n.app;$('title').value=n.title;$('bodyText').value=n.body;$('timeText').value=n.time;
  $('bgColor').value=color;$('opacity').value=opacity;$('opacityValue').textContent=opacity+'%';
  Array.prototype.forEach.call($('picker').children,function(b,i){b.classList.toggle('on',i===selected)});
 }
 data.forEach(function(n,i){var b=document.createElement('button');b.textContent=n.label;b.onclick=function(){selected=i;render()};$('picker').appendChild(b)});
 [['appName','app'],['title','title'],['bodyText','body'],['timeText','time']].forEach(function(p){$(p[0]).addEventListener('input',function(){data[selected][p[1]]=this.value;renderKeepFocus(p[0])})});
-function renderKeepFocus(id){var n=data[selected];var b=$('banner');if(!b)return;b.style.background=rgba(color,opacity);b.querySelector('b').textContent=n.title;b.querySelector('p').textContent=n.body;b.querySelector('.time').textContent=n.time}
+function renderKeepFocus(id){var n=data[selected];var b=$('banner');if(!b)return;b.style.background=rgba(color,opacity);b.querySelector('.app').textContent=n.app;b.querySelector('b').textContent=n.title;b.querySelector('p').textContent=n.body;b.querySelector('.time').textContent=n.time}
 $('bgColor').oninput=function(){color=this.value;renderKeepFocus()};
 $('opacity').oninput=function(){opacity=+this.value;$('opacityValue').textContent=opacity+'%';renderKeepFocus()};
 $('reset').onclick=function(){data[selected].app=data[selected].label;data[selected].title='알림 제목';data[selected].body='알림 내용을 입력하세요';data[selected].time='지금';color='#efefef';opacity=96;render()};
