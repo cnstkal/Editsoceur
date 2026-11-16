@@ -6,7 +6,7 @@
 <title>포털 PC 메인</title>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.css">
 <link rel="stylesheet" href="../twitter/back.css?v=1">
-<link rel="stylesheet" href="main-pc.css?v=1">
+<link rel="stylesheet" href="main-pc.css?v=2">
 </head>
 <body>
 <div class="pw" id="pw"><div id="pf"></div></div>
@@ -15,9 +15,13 @@
   <div class="row"><label>포털 이름(로고 글자)<input id="iLg"></label><label>검색창 문구<input id="iSr"></label></div>
   <label>빠른 메뉴 (쉼표로 구분, 8개)<input id="iQk"></label>
   <label>알림 개수<input id="iBd"></label>
+  <h2>검색 패널</h2>
+  <label class="xk" style="display:flex;align-items:center;gap:8px"><input id="iSp" type="checkbox" style="width:20px;height:20px;margin:0"> 검색 패널 켜기 (검색창 클릭 시 표시)</label>
+  <div id="xh"></div>
+  <button class="ghost" id="addH" type="button" style="height:38px;border:1px solid #dbdbdb;border-radius:8px;background:#f6f6f6;font-weight:700;width:100%;margin-bottom:12px">+ 검색어 추가</button>
   <h2>뉴스</h2>
   <label>언론사 탭 (쉼표로 구분)<input id="iTb"></label>
-  <label>뉴스 제목 (줄마다 한 개, 줄바꿈으로 구분)<textarea id="iNw" rows="6" style="width:100%;margin-top:5px;padding:10px;border:1px solid #dbdbdb;border-radius:10px;font-size:15px"></textarea></label>
+  <label>뉴스 제목 (줄마다 한 개)<textarea id="iNw" rows="6" style="width:100%;margin-top:5px;padding:10px;border:1px solid #dbdbdb;border-radius:10px;font-size:15px"></textarea></label>
   <h2>프로필 · 날씨</h2>
   <div class="row"><label>이름<input id="iNm"></label><label>이메일<input id="iEm"></label></div>
   <div class="row"><label>기온<input id="iTp"></label><label>날씨 문구<input id="iSt"></label></div>
@@ -25,7 +29,7 @@
 <div class="bar"><button id="savePng" class="primary">PNG로 저장</button><button id="reset" class="secondary">초기화</button></div>
 <a class="tback" href="index.html" aria-label="선택 화면으로">‹</a>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
-<script src="main-pc.js?v=1"></script>
+<script src="main-pc.js?v=2"></script>
 <script src="../twitter/back.js?v=1"></script>
 </body>
 </html>

@@ -36,3 +36,17 @@ html,body{background:#fff;color:#111}
 .bar button{height:48px;border-radius:12px;font-weight:700;font-size:16px;width:200px}
 .bar .primary{background:#3d8ef0;color:#fff}.bar .secondary{background:#efefef}
 .tback{top:auto;bottom:96px;left:14px}
+.sp{position:absolute;left:357px;top:62px;width:884px;height:550px;background:#fff;border-radius:16px;box-shadow:0 4px 18px rgba(0,0,0,.18);z-index:5;padding:0 0}
+.sp .hdr{position:absolute;left:34px;top:34px;font-size:20px;font-weight:700}
+.sp .del{position:absolute;right:34px;top:38px;font-size:16px;color:#888}
+.sp .row{position:absolute;left:34px;right:34px;height:46px;display:flex;align-items:center;font-size:20px}
+.sp .row i{width:34px;height:34px;border-radius:50%;background:#f2f2f2;margin-right:14px;flex:none}
+.sp .row .d{margin-left:auto;font-size:16px;color:#888;margin-right:24px}
+.sp .row .x{color:#888;font-size:20px}
+.sp .ft{position:absolute;left:34px;right:34px;bottom:22px;border-top:1px solid #eee;padding-top:18px;display:flex;justify-content:space-between;font-size:16px;color:#888}
+.sp .tg{position:absolute;left:34px;right:34px;top:428px;height:40px;display:flex;align-items:center;justify-content:space-between;font-size:17px;color:#888;border-top:1px solid #eee;padding-top:18px}
+.sp .sw{width:44px;height:24px;border-radius:12px;background:#ddd;position:relative}
+.sp .sw:after{content:'';position:absolute;left:3px;top:3px;width:18px;height:18px;border-radius:50%;background:#fff}
+.ed .hi{margin-top:6px}
+.sp .sbin{position:absolute;left:0;right:0;top:0;height:76px;border-bottom:1px solid #eee;padding:0 34px;display:flex;align-items:center;font-size:22px;color:#999;border-radius:16px 16px 0 0}
+.sp .hdr{top:104px}.sp .del{top:108px}
