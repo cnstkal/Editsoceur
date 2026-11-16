@@ -12,7 +12,7 @@ var TU='<path d="M7 10v12M15 5.880 14 10h5.830a2 2 0 0 1 1.920 2.560l-2.330 8A2 
 TD='<path d="M17 14V2M9 18.120 10 14H4.170a2 2 0 0 1-1.920-2.560l2.330-8A2 2 0 0 1 6.500 2H20a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2h-2.760a2 2 0 0 0-1.790 1.110L12 22a3.130 3.130 0 0 1-3-3.880z"/>',
 CA='<path d="M2 8V6a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2h-6M2 12a9 9 0 0 1 8 8M2 16a5 5 0 0 1 4 4M2 20h.01"/>',
 RP='<svg viewBox="0 0 40 40" style="width:40em;height:40em;stroke-width:2.400%s"><path d="M8 10A17 17 0 1 0 15.600 5.600M4 4v6h6"/></svg>';
-function bi(l,ic,w,t){return A(l,342,200,22,sv(ic,w)+'<s style="font-size:14.500em;font-weight:500;margin-left:9em">'+t+'</s>')}
+function bi(l,ic,w,t){return A(l,342,200,22,sv(ic,w)+'<s style="font-size:14.500em;font-weight:500;margin-left:.62em">'+t+'</s>')}
 function build(){
 pf.innerHTML=
 A(0,333,852,28,tx('',19,500,'pSb'),'',"justify-content:center;opacity:.3")+
