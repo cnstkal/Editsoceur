@@ -12,3 +12,4 @@ nav{display:grid;grid-template-columns:1fr 1fr;gap:14px}
 
 html,body,button,a,input,textarea,label{touch-action:manipulation}
 input,textarea,select{font-size:16px!important}
+.btn.pin{background:#e60023}
