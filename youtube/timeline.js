@@ -13,7 +13,7 @@ function bgi(u,d){return u?"background-image:url('"+u+"')":(d?'background-image:
 function render(){
 $('yTime').textContent=S.time;
 var b=parseInt(S.bat,10);b=isNaN(b)?0:Math.max(0,Math.min(100,b));
-$('yBf').style.width=b+'%';$('yBt').textContent=b;$('yBz').style.display=S.chg?'':'none';
+$('yBf').style.width=b+'%';$('yBt').textContent=b;
 
 var t='';S.tabs.forEach(function(n,i){t+='<span class="yb'+(String(i)===S.act?' on':'')+'" style="left:'+LEFT[i]+'px">'+esc(n)+'</span>'});$('yTabs').innerHTML=t;
 if($('yMy'))$('yMy').style.cssText=S.my?bgi(S.my):'';
@@ -25,12 +25,12 @@ h+='<div class="ec" data-i="'+i+'"><label>제목<input data-f="n" value="'+esc(x
 '<div class="row" style="align-items:center"><label class="file">썸네일<input type="file" accept="image/*" data-f="th"></label><label class="file">채널 사진<input type="file" accept="image/*" data-f="av"></label></div>'+
 '<div class="row"><button type="button" class="eb" data-a="u">↑</button><button type="button" class="eb" data-a="d">↓</button><button type="button" class="eb" data-a="x">✕ 삭제</button></div></div>'});
 $('ylist').innerHTML=h}
-function set(){$('iChg').checked=S.chg;
+function set(){
 var o='';S.tabs.forEach(function(n,i){o+='<option value="'+i+'">'+esc(n)+'</option>'});$('iAct').innerHTML=o;$('iAct').value=S.act}
 function load(reset){if(reset){try{localStorage.removeItem(STORE)}catch(e){}S=JSON.parse(JSON.stringify(DEF))}else{try{var saved=localStorage.getItem(STORE);S=saved?JSON.parse(saved):JSON.parse(JSON.stringify(DEF));if(!S||!Array.isArray(S.v)||!Array.isArray(S.tabs)||S.tabs.length!==6)throw new Error('invalid saved data')}catch(e){S=JSON.parse(JSON.stringify(DEF))}}set();list();render()}
 function rd(f,cb){var r=new FileReader();r.onload=function(){cb(r.result)};r.readAsDataURL(f)}
-function glob(){S.chg=$('iChg').checked;S.act=$('iAct').value;persist();render()}
-['iChg','iAct'].forEach(function(id){$(id).addEventListener('input',glob);$(id).addEventListener('change',glob)});
+function glob(){S.act=$('iAct').value;persist();render()}
+['iAct'].forEach(function(id){$(id).addEventListener('input',glob);$(id).addEventListener('change',glob)});
 $('iMy').addEventListener('change',function(){if(this.files[0])rd(this.files[0],function(d){S.my=d;persist();render()})});
 var L=$('ylist'),ix=function(e){return +e.target.closest('.ec').dataset.i};
 L.addEventListener('input',function(e){var f=e.target.dataset.f;if(!f||e.target.type==='file'||e.target.type==='checkbox')return;S.v[ix(e)][f]=e.target.value;persist();render()});
