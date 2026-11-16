@@ -15,14 +15,14 @@
   function render(){
     var h='<span class="lg">'+XL.replace('44','34').replace('44','34')+'</span>';
     N.forEach(function(n,i){h+='<div class="pn'+(i===1?' on':'')+(n[2]?' hm':'')+'" style="top:'+(88+i*69)+'px">'+sv(n[0],n[2]?0:2.2,30,'#0f1419',n[2]?'#0f1419':'none')+'<span>'+n[1]+'</span></div>'});
-    h+='<div class="pb">게시하기</div><div class="me"><i class="pa" style="width:55px;height:55px"></i><div><b>'+esc(S.me.n)+LK+'</b>'+esc(S.me.h)+'</div><span class="dt">'+sv(DT,2,26,'#0f1419','#0f1419')+'</span></div>';
+    if(!window.getXCompose||window.getXCompose())h+='<div class="pb">게시하기</div><div class="me"><i class="pa" style="width:55px;height:55px"></i><div><b>'+esc(S.me.n)+LK+'</b>'+esc(S.me.h)+'</div><span class="dt">'+sv(DT,2,26,'#0f1419','#0f1419')+'</span></div>';
     $('pl').innerHTML=h;
     for(var i=0;i<2;i++){$('pT'+i).textContent=S.tabs[i];$('pT'+i).className=i===1?'on':''}
-    $('pPlus').innerHTML=sv('<path d="M12 4v16M4 12h16"/>',2.2,26);
+    $('pPlus').innerHTML=window.getXCompose&&window.getXCompose()?sv('<path d="M12 4v16M4 12h16"/>',2.2,26):'';
     $('cpA').className='pa';
     $('cpI').innerHTML=['<rect x="3" y="3" width="18" height="18" rx="3"/><circle cx="9" cy="9" r="1.500"/><path d="m4 18 5-5 4 4 3-3 4 4"/>','<rect x="3" y="5" width="18" height="14" rx="3"/>','<path d="M4 6h2M10 6h10M4 12h2M10 12h10M4 18h2M10 18h10"/>','<circle cx="12" cy="12" r="9"/><path d="M8 14s1.500 3 4 3 4-3 4-3M9 9.500h.1M15 9.500h.1"/>','<rect x="3" y="4" width="18" height="17" rx="3"/><path d="M3 9h18M8 2v4M16 2v4"/>','<path d="M12 22s7-7 7-12a7 7 0 0 0-14 0c0 5 7 12 7 12z"/><circle cx="12" cy="10" r="2.500"/>','<path d="M5 3v18M5 4h14l-4 5 4 5H5"/>'].map(function(d){return sv(d,2,28,'#1d9bf0')}).join('');
     $('pS').innerHTML=sv(N[1][0],2.2,22,G)+'검색';
-    var t='<h2>무슨 일이 일어나고 있나요?</h2>';['국내 선예매','다른 노래','#임시트렌드'].forEach(function(x){t+='<div class="tr">대한민국에서 트렌드 중<b>'+x+'</b><i>'+sv(DT,2,24,G,G)+'</i></div>'});
+    var t='<h2>무슨 일이 일어나고 있나요?</h2>';['국내 선예매','다른 노래','#임시트렌드','ATEEZ','오늘의 추천','실시간 화제'].forEach(function(x){t+='<div class="tr">대한민국에서 트렌드 중<b>'+x+'</b><i>'+sv(DT,2,24,G,G)+'</i></div>'});
     $('pTr').innerHTML=t+'<div style="color:#1d9bf0;font-size:21px;margin:36px 0 6px">더 보기</div>';
     $('fl0').innerHTML=sv(GK,2,34);$('fl1').innerHTML=sv(P[0],2,34);
     var L='';S.t.forEach(function(x){
@@ -33,11 +33,11 @@
     h+='<div class="xc" data-i="'+i+'"><div class="row"><label>이름<input data-f="n" value="'+esc(x.n)+'"></label><label>아이디<input data-f="h" value="'+esc(x.h)+'"></label><label>시간<input data-f="time" value="'+esc(x.time)+'"></label></div><label>내용<input data-f="x" value="'+esc(x.x)+'"></label><label>재게시한 사람(비우면 숨김)<input data-f="rtby" value="'+esc(x.rtby)+'"></label><div class="row"><label>답글<input data-f="r" value="'+esc(x.r)+'"></label><label>재게시<input data-f="rt" value="'+esc(x.rt)+'"></label><label>마음<input data-f="lk" value="'+esc(x.lk)+'"></label><label>조회수<input data-f="vw" value="'+esc(x.vw)+'"></label></div><div class="row" style="align-items:center"><label>프로필 사진<input type="file" accept="image/*" data-f="av"></label><label class="xk"><input type="checkbox" data-f="lock"'+(x.lock?' checked':'')+'> 자물쇠</label></div><div class="row"><button type="button" class="xb" data-a="u">↑</button><button type="button" class="xb" data-a="d">↓</button><button type="button" class="xb" data-a="x">✕ 삭제</button></div></div>'});
     $('xlist').innerHTML=h}
   function persist(){try{localStorage.setItem(STORE,JSON.stringify(S))}catch(e){}}
-  function fit(){var k=Math.min(1,$('pw').clientWidth/1920);$('pf').style.transform='scale('+k+')';$('pw').style.height=1080*k+'px'}
-  function set(){$('iT0').value=S.tabs[0];$('iT1').value=S.tabs[1];$('iMn').value=S.me.n;$('iMh').value=S.me.h}
+  function fit(){var k=Math.min(1,$('pw').clientWidth/1920);$('pf').style.transform='scale('+k+')';$('pw').style.height=$('pf').offsetHeight*k+'px'}
+  function set(){$('iT0').value=S.tabs[0];$('iT1').value=S.tabs[1];$('iMn').value=S.me.n;$('iMh').value=S.me.h;$('iCompose').checked=window.getXCompose?window.getXCompose():true}
   function load(r){if(r)try{localStorage.removeItem(STORE)}catch(e){}try{var s=!r&&localStorage.getItem(STORE);S=s?JSON.parse(s):JSON.parse(JSON.stringify(DEF));if(!Array.isArray(S.t)||!S.me)throw 0}catch(e){S=JSON.parse(JSON.stringify(DEF))}set();list();render();fit()}
   function glob(){S.tabs=[$('iT0').value,$('iT1').value];S.me={n:$('iMn').value,h:$('iMh').value};persist();render()}
-  ['iT0','iT1','iMn','iMh'].forEach(function(id){$(id).addEventListener('input',glob)});
+  $('iCompose').addEventListener('change',function(){if(window.setXCompose)window.setXCompose(this.checked);render()});\n  ['iT0','iT1','iMn','iMh'].forEach(function(id){$(id).addEventListener('input',glob)});
   var L=$('xlist'),ix=function(e){return +e.target.closest('.xc').dataset.i};
   L.addEventListener('input',function(e){var f=e.target.dataset.f;if(!f||e.target.type==='file'||e.target.type==='checkbox')return;S.t[ix(e)][f]=e.target.value;persist();render()});
   L.addEventListener('change',function(e){var t=e.target,f=t.dataset.f;if(!f)return;var o=S.t[ix(e)];
