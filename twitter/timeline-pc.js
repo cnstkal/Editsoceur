@@ -15,7 +15,8 @@
   function render(){
     var h='<span class="lg">'+XL.replace('44','34').replace('44','34')+'</span>';
     N.forEach(function(n,i){h+='<div class="pn'+(i===1?' on':'')+(n[2]?' hm':'')+'" style="top:'+(88+i*69)+'px">'+sv(n[0],n[2]?0:2.2,30,'#0f1419',n[2]?'#0f1419':'none')+'<span>'+n[1]+'</span></div>'});
-    if(!window.getXCompose||window.getXCompose())if(!window.getXCompose||window.getXCompose())h+='<div class="pb">게시하기</div>'<div class="me"><i class="pa" style="width:55px;height:55px"></i><div><b>'+esc(S.me.n)+LK+'</b>'+esc(S.me.h)+'</div><span class="dt">'+sv(DT,2,26,'#0f1419','#0f1419')+'</span></div>';
+    if(!window.getXCompose||window.getXCompose())h+='<div class="pb">게시하기</div>';
+    h+='<div class="me"><i class="pa" style="width:55px;height:55px"></i><div><b>'+esc(S.me.n)+LK+'</b>'+esc(S.me.h)+'</div><span class="dt">'+sv(DT,2,26,'#0f1419','#0f1419')+'</span></div>';
     $('pl').innerHTML=h;
     for(var i=0;i<2;i++){$('pT'+i).textContent=S.tabs[i];$('pT'+i).className=i===1?'on':''}
     $('pPlus').innerHTML=window.getXCompose&&window.getXCompose()?sv('<path d="M12 4v16M4 12h16"/>',2.2,26):'';
