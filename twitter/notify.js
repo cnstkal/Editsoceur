@@ -54,12 +54,12 @@ function render(){
   }
  });
  h+='</div>';
- if(S.fab)h+='<div class="fabbtn">'+I.plus+'</div>';
+ h+='<div class="fabbtn">'+I.plus+'</div>';
  if(false)h+='<div class="nv"><div>'+I.home+'</div><div>'+I.search+'</div><div>'+I.eye+'</div><div>'+I.bell+'</div><div>'+I.msg+'</div></div>';
  document.getElementById('capture').innerHTML=h;
 }
 function readFile(f,cb){if(!f)return;var r=new FileReader();r.onload=function(){cb(r.result)};r.readAsDataURL(f)}
-var ids=['sel'],sw=['fab'];
+var ids=['sel'],sw=[];
 function sync(){ids.forEach(function(k){document.getElementById(k).value=S[k]});sw.forEach(function(k){document.getElementById(k).checked=S[k]})}
 var FL={react:[['name','이름'],['time','시간'],['pv','미리보기 글 (비우면 숨김)'],['obj','대상 (게시물/재게시물)']],
  mention:[['name','이름'],['handle','아이디'],['time','시간'],['to','답글 대상(비우면 숨김)'],['text','내용'],['reply','멘션'],['rt','리트윗'],['like','마음'],['view','조회수']]};
