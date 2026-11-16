@@ -1,5 +1,5 @@
-#wf{--t:#ffa500;position:relative;aspect-ratio:9/19;overflow:hidden;border-radius:14px;margin-top:12px;background:#fff;color:#222}
-.wc{position:absolute;left:0;right:0;top:0;padding-top:86px;padding-bottom:140px}
+#wf{--t:#ffa500;position:relative;border-radius:14px;margin-top:12px;background:#fff;color:#222}
+.wc{position:relative;padding-top:86px;padding-bottom:24px}
 .wtop{position:absolute;left:0;right:0;top:0;height:86px;background:#00a495;color:#fff;text-align:center;font-size:13px;padding-top:62px;opacity:.97;z-index:3}
 .wtop .du{opacity:.8}.wtop .dx{position:absolute;right:16px;top:60px;opacity:.8}
 .wh{display:flex;align-items:center;gap:20px;height:56px;padding:0 18px;background:#00a495;color:#fff}
@@ -38,7 +38,5 @@
 .ib .tl{flex:none;width:80px;background:var(--t);color:#fff;font-weight:700;font-size:16px;display:flex;align-items:center;justify-content:center;text-align:center;padding:6px 4px;border-top:1px solid #fff;word-break:break-all}
 .ib .tv{flex:1;min-width:0;padding:10px 12px;font-size:17px;line-height:1.5;word-break:break-word}
 .ib sup{color:#1a5fb4;font-size:12px}
-.wup{position:absolute;right:12px;bottom:100px;width:42px;height:42px;border-radius:50%;background:#fff;box-shadow:0 1px 8px rgba(0,0,0,.3);display:flex;align-items:center;justify-content:center;z-index:3}
-.wbr{position:absolute;left:0;right:0;bottom:0;height:88px;display:flex;justify-content:space-between;align-items:flex-start;padding:16px 22px 0;border-top:1px solid #e5e5e5;background:#fafafa;z-index:3}
 .pe{background:#fff;border:1px solid #dbdbdb;border-radius:12px;padding:12px;margin-bottom:12px}
 .pe .xb{flex:1;height:38px;border:1px solid #dbdbdb;border-radius:10px;background:#fff;font-weight:600}
