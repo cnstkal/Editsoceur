@@ -35,7 +35,7 @@
     $('xlist').innerHTML=h}
   function persist(){try{localStorage.setItem(STORE,JSON.stringify(S))}catch(e){}}
   function fit(){var k=Math.min(1,$('pw').clientWidth/1920);$('pf').style.transform='scale('+k+')';$('pf').style.height='auto';$('pf').style.overflow='visible';var base=$('pf').getBoundingClientRect().top,bottom=Math.max(1080,$('pf').scrollHeight);$('pf').querySelectorAll('*').forEach(function(el){var r=el.getBoundingClientRect();bottom=Math.max(bottom,(r.bottom-base)/k)});var h=Math.max(1080,bottom+40);$('pf').style.height=h+'px';$('pw').style.height=h*k+'px'}
-  function set(){$('iT0').value=S.tabs[0];$('iT1').value=S.tabs[1];$('iMn').value=S.me.n;$('iMh').value=S.me.h;$('iCompose').checked=window.getXCompose?window.getXCompose():true}
+  function set(){$('iT0').value=S.tabs[0];$('iT1').value=S.tabs[1];$('iMn').value=S.me.n;$('iMh').value=S.me.h;$('iCompose').checked=localStorage.getItem('editsoceur-twitter-compose-enabled')!=='false'}
   function load(r){if(r)try{localStorage.removeItem(STORE)}catch(e){}try{var s=!r&&localStorage.getItem(STORE);S=s?JSON.parse(s):JSON.parse(JSON.stringify(DEF));if(!Array.isArray(S.t)||!S.me)throw 0}catch(e){S=JSON.parse(JSON.stringify(DEF))}set();list();render();fit()}
   function glob(){S.tabs=[$('iT0').value,$('iT1').value];S.me={n:$('iMn').value,h:$('iMh').value};persist();render()}
   $('iCompose').addEventListener('change',function(){if(window.setXCompose)window.setXCompose(this.checked);render()});
