@@ -1,13 +1,13 @@
 (function(){
-  var $=function(i){return document.getElementById(i)},STORE='naver_profile_v1';
-  var DEF={q:'이름',tabs:'전체,프로필,수상,최근영상,필모그래피,뉴스',act:1,ph:'',ft:'본인 또는 대리인이 직접 관리하는 정보입니다.\n본인참여 2026.01.01.',
+  var $=function(i){return document.getElementById(i)},STORE='naver_profile_v2';
+  var DEF={q:'이름',cat:'배우',tc:'#a8766a',tabs:'전체,프로필,수상,최근영상,필모그래피,뉴스',act:1,ph:'',ft:'본인 또는 대리인이 직접 관리하는 정보입니다.\n본인참여 2026.01.01.',
     r:[{l:'출생',v:'2000.01.01.',k:0},{l:'신체',v:'180cm',k:0},{l:'소속사',v:'○○엔터테인먼트',k:1},{l:'학력',v:'○○대학교',k:1},{l:'수상',v:'2025년 ○○ 시상식 신인상\n2025년 ○○ 시상식 베스트 액터',k:0},{l:'사이트',v:'공식홈페이지, 인스타그램, 팬카페',k:1},{l:'활동',v:'방송, 영화, 공연',k:1}]};
   var S;
   function persist(){try{localStorage.setItem(STORE,JSON.stringify(S))}catch(e){}}
   function esc(t){return String(t).replace(/[&<>"]/g,function(c){return{'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]})}
   function val(x){return x.k?String(x.v).split(/,\s*/).map(function(p){return '<a>'+esc(p)+'</a>'}).join(', '):esc(x.v)}
   function render(){
-    $('pQ').textContent=S.q;$('pT').textContent=S.q;
+    $('pQ').textContent=S.q;$('pT').textContent=S.q;$('pCat').textContent=S.cat;$('pf').style.setProperty('--tc',S.tc);
     $('pTabs').innerHTML=S.tabs.split(',').map(function(t,i){return '<span'+(i+1===+S.act?' class="on"':'')+'>'+esc(t.trim())+'</span>'}).join('');
     $('pRows').innerHTML=S.r.map(function(x){return '<div class="pro"><span class="l">'+esc(x.l)+'</span><span class="v">'+val(x)+'</span></div>'}).join('');
     $('pPh').style.backgroundImage=S.ph?'url('+S.ph+')':'';
@@ -16,8 +16,8 @@
   function load(reset){
     if(reset){try{localStorage.removeItem(STORE)}catch(e){}S=JSON.parse(JSON.stringify(DEF))}
     else{try{var v=localStorage.getItem(STORE);S=v?JSON.parse(v):JSON.parse(JSON.stringify(DEF));if(!S||!Array.isArray(S.r))throw 0}catch(e){S=JSON.parse(JSON.stringify(DEF))}}
-    $('iQ').value=S.q;$('iTabs').value=S.tabs;$('iAct').value=S.act;$('iFt').value=S.ft;list();render()}
-  [['iQ','q'],['iTabs','tabs'],['iAct','act'],['iFt','ft']].forEach(function(a){$(a[0]).addEventListener('input',function(){S[a[1]]=this.value;persist();render()})});
+    $('iQ').value=S.q;$('iCat').value=S.cat;$('iTc').value=S.tc;$('iTabs').value=S.tabs;$('iAct').value=S.act;$('iFt').value=S.ft;list();render()}
+  [['iQ','q'],['iCat','cat'],['iTc','tc'],['iTabs','tabs'],['iAct','act'],['iFt','ft']].forEach(function(a){$(a[0]).addEventListener('input',function(){S[a[1]]=this.value;persist();render()})});
   $('iPh').addEventListener('change',function(){var f=this.files[0];if(!f)return;var r=new FileReader();r.onload=function(){S.ph=r.result;persist();render()};r.readAsDataURL(f)});
   var L=$('el'),ix=function(e){return +e.target.closest('.pe').dataset.i};
   L.addEventListener('input',function(e){var f=e.target.dataset.f;if(!f||f==='k')return;S.r[ix(e)][f]=e.target.value;persist();render()});
