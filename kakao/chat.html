@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no,viewport-fit=cover">
+<title>카카오톡 채팅방</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.css">
+<link rel="stylesheet" href="../instagram/story.css?v=3">
+<link rel="stylesheet" href="friends.css?v=1">
+<link rel="stylesheet" href="chat.css?v=1">
+</head>
+<body>
+<div class="phone">
+<div class="navbar" data-html2canvas-ignore><a href="index.html">‹ 선택화면</a></div>
+<div id="kc">
+  <div class="cht">
+    <span class="cb"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#111" stroke-width="2.200" stroke-linecap="round" stroke-linejoin="round"><path d="m15 5-7 7 7 7"/></svg><b id="cBack"></b></span>
+    <b class="ctt" id="cName"></b>
+    <span class="cpill">
+      <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#111" stroke-width="2" stroke-linecap="round"><circle cx="10.500" cy="10.500" r="7"/><path d="m21 21-5.500-5.500"/></svg>
+      <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#111" stroke-width="1.900" stroke-linejoin="round"><path d="M7 3 4 5c-1 8 5 15 14 16l2-3-4-3-2 1.500c-2-1-4-3-5-5L8.500 9z"/></svg>
+      <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#111" stroke-width="2.200" stroke-linecap="round"><path d="M3 6h18M3 12h18M3 18h18"/></svg>
+    </span>
+  </div>
+  <div class="cm" id="cM"></div>
+  <div class="cin"><span class="cp"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#111" stroke-width="2" stroke-linecap="round"><path d="M12 4v16M4 12h16"/></svg></span><em>메시지 입력</em><span class="ce"><svg width="22" height="22" viewBox="0 0 24 24"><circle cx="12" cy="12" r="11" fill="#dfe2e6"/><circle cx="8.500" cy="10" r="1.500" fill="#222"/><circle cx="15.500" cy="10" r="1.500" fill="#222"/><path d="M7.500 14c2 3 7 3 9 0" stroke="#222" stroke-width="2" fill="none" stroke-linecap="round"/></svg></span><span class="ch">#</span></div>
+</div>
+<section class="editor">
+  <h2>채팅방 편집</h2>
+  <div class="row"><label>상대 이름<input id="iName"></label><label>뒤로가기 숫자<input id="iBack"></label></div>
+  <div class="row"><label>배경색<input id="iBg" type="color" style="padding:2px;height:44px"></label><label class="file">상대 프로필 사진<input id="iAv" type="file" accept="image/*"></label></div>
+  <h2 style="margin-top:14px">메시지 (위→아래)</h2><div id="cl"></div>
+  <button class="ghost" id="addM" type="button">+ 메시지 추가</button>
+</section>
+</div>
+<div class="bar"><button id="savePng" class="primary">PNG로 저장</button><button id="reset" class="secondary">초기화</button></div>
+<script src="https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js"></script>
+<script src="chat.js?v=1"></script>
+</body>
+</html>
