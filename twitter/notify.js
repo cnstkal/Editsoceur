@@ -39,8 +39,8 @@ var I={
 function esc(s){return String(s==null?'':s).replace(/[&<>"]/g,function(c){return{'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]})}
 function render(){
  var s=S.sel==='2'?2:1;
- var h='<div class="top"><div class="av"><img src="'+esc(S.avatar)+'"></div><b>'+esc(S.title)+'</b>'+I.gear+'</div>';
- h+='<div class="tabs"><div><span'+(s===1?' class="on"':'')+'>'+I.bellS+esc(S.tab1)+'</span></div><div><span'+(s===2?' class="on"':'')+'>'+esc(S.tab2)+'</span></div></div><div class="items">';
+ var h='<div class="top"><div class="av"><img src="'+esc(S.avatar)+'"></div><b>알림</b>'+I.gear+'</div>';
+ h+='<div class="tabs"><div><span'+(s===1?' class="on"':'')+'>'+I.bellS+'모두'+'</span></div><div><span'+(s===2?' class="on"':'')+'>'+'멘션'+'</span></div></div><div class="items">';
  S.items.forEach(function(it){
   if(it.t==='react'){
    var cnt=Math.max(1,it.avatars.length),more=cnt>1?' 외 '+(cnt-1)+'명이':'이';
@@ -59,7 +59,7 @@ function render(){
  document.getElementById('capture').innerHTML=h;
 }
 function readFile(f,cb){if(!f)return;var r=new FileReader();r.onload=function(){cb(r.result)};r.readAsDataURL(f)}
-var ids=['title','tab1','tab2','sel'],sw=['fab','nav'];
+var ids=['sel'],sw=['fab','nav'];
 function sync(){ids.forEach(function(k){document.getElementById(k).value=S[k]});sw.forEach(function(k){document.getElementById(k).checked=S[k]})}
 var FL={react:[['name','이름'],['time','시간'],['pv','미리보기 글 (비우면 숨김)'],['obj','대상 (게시물/재게시물)']],
  mention:[['name','이름'],['handle','아이디'],['time','시간'],['to','답글 대상(비우면 숨김)'],['text','내용'],['reply','멘션'],['rt','리트윗'],['like','마음'],['view','조회수']]};
