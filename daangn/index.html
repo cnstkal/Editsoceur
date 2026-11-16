@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no,viewport-fit=cover">
+<title>당근</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.css">
+<link rel="stylesheet" href="../instagram/story.css?v=3">
+<link rel="stylesheet" href="../webtoon/webtoon.css?v=1">
+<link rel="stylesheet" href="daangn.css?v=1">
+</head>
+<body>
+<div class="phone">
+<div class="navbar" data-html2canvas-ignore><a href="../index.html">‹ 메인</a></div>
+<div id="gf" class="wt dg">
+  <div class="sb"><b id="gTime"></b><svg class="lc" viewBox="0 0 24 24"><circle cx="12" cy="12" r="12" fill="#3b82f6"/><path d="M17.500 6.500 6.500 11l4.600 1.900L13 17.500z" fill="#fff"/></svg></div>
+  <div class="gh">
+    <div class="loc"><svg viewBox="0 0 24 24"><path d="M12 1.500a7.500 7.500 0 0 0-7.500 7.500c0 5.500 7.500 13.500 7.500 13.500s7.500-8 7.500-13.500A7.500 7.500 0 0 0 12 1.500z" fill="#111"/><circle cx="12" cy="9" r="2.800" fill="#fff"/></svg><b id="gDong"></b><s id="gSub"></s></div>
+    <svg class="gi" style="left:calc(627*var(--u))" viewBox="0 0 24 24" fill="none" stroke="#111" stroke-width="2" stroke-linecap="round"><circle cx="10.500" cy="10.500" r="7.500"/><path d="m16 16 5 5"/></svg>
+    <svg class="gi bl" style="left:calc(728*var(--u))" viewBox="0 0 24 24" fill="none" stroke="#111" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 9a6 6 0 0 0-12 0c0 6-2.500 7.500-2.500 7.500h17S18 15 18 9zM10 20a2 2 0 0 0 4 0"/></svg>
+    <svg class="gi" style="left:calc(832*var(--u))" viewBox="0 0 24 24" fill="none" stroke="#111" stroke-width="2" stroke-linecap="round"><path d="M3 6h18M3 12h18M3 18h18"/></svg>
+  </div>
+  <div class="chips" id="gChips"></div>
+  <div class="ls" id="gLs"></div>
+  <div class="wr" id="gWr"></div>
+  <div id="gNav"></div>
+</div>
+<section class="editor">
+  <h2>당근 메인 편집</h2>
+  <div class="row"><label>시간<input id="iTime"></label><label>글쓰기 버튼<input id="iWr"></label></div>
+  <div class="row"><label>동네<input id="iDong"></label><label>옆 동네<input id="iSub"></label></div>
+  <label>카테고리 칩 (쉼표 구분)<input id="iChips"></label>
+  <div class="row"><label>선택된 칩 번호(1부터)<input id="iAct" type="number" min="1"></label><label>채팅 알림 숫자<input id="iCh"></label></div>
+  <h2 style="margin-top:14px">게시글</h2><div id="el"></div>
+  <button class="ghost" id="addE" type="button">+ 게시글 추가</button>
+</section>
+</div>
+<div class="bar"><button id="savePng" class="primary">PNG로 저장</button><button id="reset" class="secondary">초기화</button></div>
+<script src="https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js"></script>
+<script src="../webtoon/common.js?v=1"></script>
+<script src="daangn.js?v=1"></script>
+</body>
+</html>
