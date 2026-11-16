@@ -15,3 +15,4 @@ nav{display:grid;grid-template-columns:1fr 1fr;gap:14px}
 html,body,button,a,input,textarea,label{touch-action:manipulation}
 input,textarea,select{font-size:16px!important}
 .btn.pin{background:linear-gradient(135deg,#ff2d4a,#bd081c)}
+.btn.kk{background:linear-gradient(135deg,#ffe812,#f7c600);color:#3c1e1e}
