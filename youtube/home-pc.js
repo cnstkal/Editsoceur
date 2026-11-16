@@ -25,7 +25,7 @@
       '<div class="sec"><div style="font-size:16px;font-weight:600;padding:8px 12px">구독</div>'+['서재로36','침착맨','ATEEZ','강유미','킥서비스','케인 TV','예예 yehyeh'].map(function(n,i){return '<div class="sub"><i></i>'+esc(n)+(i%2===0?'<span class="d"></span>':'')+'</div>'}).join('')+'</div></div>';
     h+='<div class="main"><div class="chips">'+S.chips.map(function(c,i){return '<span class="chip'+(i===0?' on':'')+'">'+esc(c)+'</span>'}).join('')+'</div><div class="grid">'+
       S.v.map(function(v){return '<div><div class="th" style="'+(v.th?"background-image:url('"+esc(v.th)+"')":'')+'"><span class="dur">'+esc(v.d)+'</span></div><div class="meta"><i></i><div><div class="tt">'+esc(v.t)+'</div><div class="ch">'+esc(v.c)+'<br>조회수 '+esc(v.vw)+'회 · '+esc(v.ago)+'</div></div></div></div>'}).join('')+'</div></div>';
-    $('pf').innerHTML=h}
+    $('pf').innerHTML=h;fit()}
   var CAT=[];
   function list(){var h='';S.v.forEach(function(v,i){
     h+='<div class="xc" data-i="'+i+'"><div class="row"><label>제목<input data-f="t" value="'+esc(v.t)+'"></label><label>채널<input data-f="c" value="'+esc(v.c)+'"></label></div><div class="row"><label>길이<input data-f="d" value="'+esc(v.d)+'"></label><label>조회수<input data-f="vw" value="'+esc(v.vw)+'"></label><label>올린 시기<input data-f="ago" value="'+esc(v.ago)+'"></label></div><label>썸네일 사진<input type="file" accept="image/*" data-f="th"></label><div class="row"><button type="button" class="xb" data-a="u">↑</button><button type="button" class="xb" data-a="d">↓</button><button type="button" class="xb" data-a="x">✕ 삭제</button></div></div>'});
