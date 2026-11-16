@@ -1,15 +1,15 @@
 (function(){
 var CORGI='data:image/svg+xml;utf8,'+encodeURIComponent('<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><rect width="100" height="100" fill="#2b3a55"/><rect width="22" height="100" fill="#444a55"/><ellipse cx="50" cy="88" rx="44" ry="22" fill="#d9964f"/><ellipse cx="30" cy="48" rx="11" ry="16" fill="#c98a52" transform="rotate(-25 30 48)"/><ellipse cx="72" cy="48" rx="11" ry="16" fill="#c98a52" transform="rotate(25 72 48)"/><ellipse cx="51" cy="58" rx="24" ry="25" fill="#e5a85f"/><path d="M51 38C40 48 40 70 51 80C62 70 62 48 51 38Z" fill="#fff"/><ellipse cx="38" cy="52" rx="3" ry="3.5" fill="#1c1410"/><ellipse cx="64" cy="52" rx="3" ry="3.5" fill="#1c1410"/><ellipse cx="51" cy="62" rx="5" ry="3.5" fill="#1c1410"/><path d="M44 69Q51 80 58 69Z" fill="#d95a6a"/><path d="M26 34Q51 12 76 34Q51 40 26 34Z" fill="#8a6a55"/><ellipse cx="51" cy="35" rx="26" ry="5" fill="#7a5c48"/></svg>');
 function defaults(){return{
- name:'sa',handle:'jukee_3',bio:'🌭',job:'기업가',birth:'1994년 1월 16일',joined:'2020년 2월',
- following:'55',followers:'0',avatar:CORGI,banner:'',bannerColor:'#999999',badge:'1',
+ name:'샘플 사용자',handle:'sample_user',bio:'안녕하세요! 샘플 소개 문구입니다.',job:'디자이너',birth:'1995년 1월 1일',joined:'2020년 1월',
+ following:'120',followers:'350',avatar:CORGI,banner:'',bannerColor:'#999999',badge:'1',
  lock:true,verify:true,dot:true,fab:true,nav:true,
  tweets:[
-  {name:'sa',handle:'jukee_3',time:'9분',text:'학교가기히러',reply:'',rt:'',like:'',view:'3',avatar:'',lock:true},
-  {name:'sa',handle:'jukee_3',time:'9분',text:'끼야소',reply:'',rt:'',like:'',view:'4',avatar:'',lock:true},
-  {name:'sa',handle:'jukee_3',time:'9분',text:'안녕와세여',reply:'',rt:'',like:'',view:'5',avatar:'',lock:true},
-  {name:'sa',handle:'jukee_3',time:'1시간',text:'점심 뭐 먹지 고민중',reply:'1',rt:'',like:'2',view:'18',avatar:'',lock:true},
-  {name:'sa',handle:'jukee_3',time:'3시간',text:'오늘 날씨 진짜 좋다',reply:'',rt:'',like:'1',view:'12',avatar:'',lock:true}
+  {name:'샘플 사용자',handle:'sample_user',time:'9분',text:'첫 번째 샘플 게시물입니다',reply:'',rt:'',like:'',view:'3',avatar:'',lock:true},
+  {name:'샘플 사용자',handle:'sample_user',time:'9분',text:'두 번째 샘플 게시물입니다',reply:'',rt:'',like:'',view:'4',avatar:'',lock:true},
+  {name:'샘플 사용자',handle:'sample_user',time:'9분',text:'세 번째 샘플 게시물입니다',reply:'',rt:'',like:'',view:'5',avatar:'',lock:true},
+  {name:'샘플 사용자',handle:'sample_user',time:'1시간',text:'답글이 달린 샘플 게시물입니다',reply:'1',rt:'',like:'2',view:'18',avatar:'',lock:true},
+  {name:'샘플 사용자',handle:'sample_user',time:'3시간',text:'마지막 샘플 게시물입니다',reply:'',rt:'',like:'1',view:'12',avatar:'',lock:true}
  ]};}
 var S=defaults();
 var I={
