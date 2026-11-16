@@ -61,7 +61,4 @@
 .nz .cm .ft svg{width:calc(52*var(--u));height:calc(52*var(--u));margin:0 calc(8*var(--u)) 0 calc(40*var(--u))}
 .nz .tp2{position:absolute;right:calc(31*var(--u));bottom:calc(273*var(--u));width:calc(114*var(--u));height:calc(114*var(--u));border-radius:50%;background:#fff;border:calc(2*var(--u)) solid #ddd;box-shadow:0 calc(4*var(--u)) calc(14*var(--u)) rgba(0,0,0,.12);z-index:6}
 .nz .tp2 svg{position:absolute;left:calc(27*var(--u));top:calc(27*var(--u));width:calc(60*var(--u));height:calc(60*var(--u))}
-.nz .bn2{position:absolute;left:0;right:0;bottom:0;height:calc(248*var(--u));background:#fff;border-top:calc(3*var(--u)) solid #eee;z-index:6}
-.nz .bn2 div{position:absolute;left:calc(70*var(--u));right:calc(70*var(--u));top:calc(26*var(--u));display:flex;justify-content:space-between}
-.nz .bn2 svg{width:calc(70*var(--u));height:calc(70*var(--u))}
 .nz .rp u{left:calc(562*var(--u))}
