@@ -17,7 +17,7 @@
     $('pf').innerHTML=h;fit();
   }
   function persist(){try{localStorage.setItem(STORE,JSON.stringify(S))}catch(e){}}
-  function fit(){var k=Math.min(1,$('pw').clientWidth/1920);$('pf').style.transform='scale('+k+')';$('pf').style.height='auto';$('pf').style.overflow='visible';$('pw').style.height=Math.max(1080,$('pf').scrollHeight)*k+'px'}
+  function fit(){var k=Math.min(1,$('pw').clientWidth/1920);$('pf').style.transform='scale('+k+')';$('pf').style.height='auto';$('pf').style.overflow='visible';var base=$('pf').getBoundingClientRect().top,bottom=Math.max(1080,$('pf').scrollHeight);$('pf').querySelectorAll('*').forEach(function(el){var r=el.getBoundingClientRect();bottom=Math.max(bottom,(r.bottom-base)/k)});var h=Math.max(1080,bottom+40);$('pf').style.height=h+'px';$('pw').style.height=h*k+'px'}
   var TX={iTg:'tg',iHt:'ht',iHd:'hd',iPl:'pl',iLs:'ls',iRw:'rw',iRw2:'rw2',iCn:'cn'};
   function buildCards(){['cards1','cards2'].forEach(function(id,k){var arr=S[k?'cards2':'cards1'];$(id).innerHTML=arr.map(function(u,i){return '<label>카드 '+(i+1)+' 사진<input type="file" data-row="'+k+'" data-card="'+i+'" accept="image/*"></label>'}).join('')})}
   function set(){Object.keys(TX).forEach(function(id){$(id).value=S[TX[id]]});$('iNOn').checked=!!S.nOn;buildCards()}
