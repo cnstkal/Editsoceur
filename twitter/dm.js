@@ -43,7 +43,7 @@ function render(){
  if(S.showRead&&last&&last.t==='me')h+='<div class="rd">'+esc(S.readText)+'</div>';
  h+='</div>';
  if(S.showInput)h+='<div class="inp"><div class="plus">'+I.plus+'</div><div class="box"><span>'+esc(S.placeholder)+'</span>'+I.mic+'</div></div>';
- if(false)h+='<div class="nv"><div>'+I.home+'</div><div>'+I.search+'</div><div>'+I.eye+'</div><div>'+I.bell+'</div><div>'+I.msg+'</div></div>';
+
  document.getElementById('capture').innerHTML=h;
 }
 function readFile(f,cb){if(!f)return;var r=new FileReader();r.onload=function(){cb(r.result)};r.readAsDataURL(f)}
