@@ -1,0 +1,10 @@
+body{animation:pgIn .28s ease-out both}
+body.leaving{opacity:0!important;transition:opacity .16s ease-in}
+@keyframes pgIn{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
+.tback{position:fixed;top:12px;left:12px;z-index:999;width:44px;height:44px;border-radius:50%;background:rgba(15,20,25,.85);color:#fff;display:flex;align-items:center;justify-content:center;text-decoration:none;font-size:28px;line-height:1;box-shadow:0 2px 8px rgba(0,0,0,.2);will-change:transform;transition:transform .2s cubic-bezier(.2,.8,.2,1),background .2s,opacity .2s;-webkit-tap-highlight-color:transparent}
+.tback:hover{background:#000;transform:translateX(-3px)}
+.tback:active{transform:scale(.9)}
+.navbar a{display:inline-block;transition:transform .2s cubic-bezier(.2,.8,.2,1),opacity .2s}
+.navbar a:hover{transform:translateX(-3px)}
+.navbar a:active{transform:scale(.94);opacity:.7}
+@media (prefers-reduced-motion:reduce){body,.tback,.navbar a{animation:none;transition:none}}

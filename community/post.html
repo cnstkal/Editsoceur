@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
+<title>커뮤니티 게시글</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.css">
+<link rel="stylesheet" href="post.css?v=1">
+<link rel="stylesheet" href="back.css?v=1">
+</head>
+<body>
+<main class="wrap">
+  <div id="cap" class="phone"></div>
+  <section class="ed">
+    <h2>상단 탭</h2>
+    <div class="row"><label>탭1<input id="t0"></label><label>탭2(선택)<input id="t1"></label></div>
+    <div class="row"><label>탭3<input id="t2"></label><label>탭4<input id="t3"></label></div>
+    <h2>게시판</h2>
+    <div class="row"><label>게시판 이름<input id="gal"></label><label>닉네임<input id="nick"></label></div>
+    <h2>게시글</h2>
+    <label>제목<input id="title"></label>
+    <label>작성일시<input id="date"></label>
+    <div class="row"><label>조회수<input id="view"></label><label>추천<input id="rec"></label><label>댓글<input id="cmt"></label></div>
+    <label>본문 (줄바꿈 가능)<textarea id="body" rows="5"></textarea></label>
+    <label>강조 문구(비우면 숨김)<input id="note"></label>
+    <label>사진<input id="img" type="file" accept="image/*"></label>
+    <label class="xk"><input id="showImg" type="checkbox"> 사진 영역 표시</label>
+  </section>
+</main>
+<div class="bar"><button id="save" class="primary">PNG로 저장</button><button id="reset" class="secondary">초기화</button></div>
+<a class="tback" href="index.html" aria-label="선택 화면으로">‹</a>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+<script src="post.js?v=1"></script>
+<script src="back.js?v=1"></script>
+</body>
+</html>
