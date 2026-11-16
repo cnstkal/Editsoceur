@@ -22,7 +22,7 @@
     '<label>내용<input data-f="x" value="'+esc(x.x)+'"></label><div class="row"><label>멘션<input data-f="r" value="'+esc(x.r)+'"></label><label>리트윗<input data-f="rt" value="'+esc(x.rt)+'"></label><label>마음<input data-f="lk" value="'+esc(x.lk)+'"></label><label>조회수<input data-f="vw" value="'+esc(x.vw)+'"></label></div>'+'<div class="row" style="align-items:center"><label class="file">프로필 사진<input type="file" accept="image/*" data-f="av"></label><label class="xk"><input type="checkbox" data-f="lock"'+(x.lock?' checked':'')+'> 자물쇠</label></div>'+
     '<div class="row"><button type="button" class="xb" data-a="u">↑</button><button type="button" class="xb" data-a="d">↓</button><button type="button" class="xb" data-a="x">✕ 삭제</button></div></div>'});
     $('xlist').innerHTML=h}
-  function set(){for(var i=0;i<2;i++)$('iT'+i).value=S.tabs[i];$('iAct').value=S.act;$('iCompose').checked=window.getXCompose?window.getXCompose():true}
+  function set(){for(var i=0;i<2;i++)$('iT'+i).value=S.tabs[i];$('iAct').value=S.act;$('iCompose').checked=localStorage.getItem('editsoceur-twitter-compose-enabled')!=='false'}
   function load(reset){if(reset){try{localStorage.removeItem(STORE)}catch(e){} S=JSON.parse(JSON.stringify(DEF))}else{try{var saved=localStorage.getItem(STORE);S=saved?JSON.parse(saved):JSON.parse(JSON.stringify(DEF));if(!S||!Array.isArray(S.t)||!Array.isArray(S.tabs))throw new Error('invalid saved data')}catch(e){S=JSON.parse(JSON.stringify(DEF))}}set();list();render()}
   function rd(f,cb){var r=new FileReader();r.onload=function(){cb(r.result)};r.readAsDataURL(f)}
   function glob(){for(var i=0;i<2;i++)S.tabs[i]=$('iT'+i).value;S.act=$('iAct').value;S.compose=$('iCompose').checked;if(window.setXCompose)window.setXCompose(S.compose);persist();render()}
