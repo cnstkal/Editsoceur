@@ -36,13 +36,14 @@
   $('posReset').onclick=function(){T={x:0,y:0,s:1};$('iZoom').value=100;place()};
   var P={},fr=$('frame'),last=null;
   function dist(){var a=Object.values(P);return Math.hypot(a[0].x-a[1].x,a[0].y-a[1].y)}
+  function angle(){var a=Object.values(P);return Math.atan2(a[1].y-a[0].y,a[1].x-a[0].x)*180/Math.PI}
   function mid(){var a=Object.values(P);return{x:(a[0].x+a[1].x)/2,y:(a[0].y+a[1].y)/2}}
   fr.addEventListener('pointerdown',function(e){fr.setPointerCapture(e.pointerId);P[e.pointerId]={x:e.clientX,y:e.clientY};
     last=Object.keys(P).length===2?{d:dist(),m:mid()}:null});
   fr.addEventListener('pointermove',function(e){if(!P[e.pointerId]||!photo)return;var w=fr.clientWidth,n=Object.keys(P).length;
     if(n===1){T.x+=(e.clientX-P[e.pointerId].x)/w;T.y+=(e.clientY-P[e.pointerId].y)/w;P[e.pointerId]={x:e.clientX,y:e.clientY}}
     else if(n===2){P[e.pointerId]={x:e.clientX,y:e.clientY};var d=dist(),m=mid();
-      if(last){T.x+=(m.x-last.m.x)/w;T.y+=(m.y-last.m.y)/w;setS(T.s*d/last.d)}last={d:d,m:m}}
+      if(last){T.x+=(m.x-last.m.x)/w;T.y+=(m.y-last.m.y)/w;setS(T.s*d/last.d);var da=angle()-last.a;rot+=((da+540)%360)-180}last={d:d,m:m,a:angle()}}
     place()});
   function up(e){delete P[e.pointerId];last=null}
   fr.addEventListener('pointerup',up);fr.addEventListener('pointercancel',up);
@@ -50,7 +51,7 @@
   window.addEventListener('resize',place);
   document.querySelectorAll('.editor input:not([type=file]):not([type=range])').forEach(function(e){
     e.addEventListener('input',function(){read();render()});e.addEventListener('change',function(){read();render()})});
-  $('rot').onclick=function(){rot=(rot+90)%360;place()};
+
   $('reset').onclick=load;
   $('savePng').onclick=function(){var b=this,t=b.textContent;b.disabled=true;b.textContent='저장 중...';
     (document.fonts&&document.fonts.ready?document.fonts.ready:Promise.resolve()).then(function(){
