@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>YouTube PC 영상 상세</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.css">
+<link rel="stylesheet" href="back.css?v=1">
+<link rel="stylesheet" href="detail-pc.css?v=1">
+</head>
+<body>
+<div class="pw" id="pw"><div id="pf"></div></div>
+<section class="ed">
+  <h2>영상</h2>
+  <label>썸네일 사진<input id="iTh" type="file" accept="image/*"></label>
+  <label>제목<input id="iTi"></label>
+  <div class="row"><label>채널 이름<input id="iCn"></label><label>구독자<input id="iSb"></label></div>
+  <div class="row"><label>좋아요<input id="iLk"></label><label>조회수<input id="iVw"></label><label>올린 시기<input id="iAg"></label></div>
+  <label>설명 (줄바꿈 가능)<textarea id="iDs" rows="4"></textarea></label>
+  <h2>댓글 수 · 나의 댓글 프로필</h2>
+  <div class="row"><label>댓글 수<input id="iCm"></label></div>
+  <h2>댓글</h2><div id="xc"></div><button class="ghost" id="addC" type="button">+ 댓글 추가</button>
+  <h2>추천 영상</h2><div id="xr"></div><button class="ghost" id="addR" type="button">+ 추천 영상 추가</button>
+</section>
+<div class="bar"><button id="savePng" class="primary">PNG로 저장</button><button id="reset" class="secondary">초기화</button></div>
+<a class="tback" href="index.html" aria-label="선택 화면으로">‹</a>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+<script src="detail-pc.js?v=1"></script>
+<script src="back.js?v=1"></script>
+</body>
+</html>
