@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no,viewport-fit=cover">
+<title>네이버 메인</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.css">
+<link rel="stylesheet" href="../instagram/story.css?v=3">
+<link rel="stylesheet" href="naver.css?v=1">
+</head>
+<body>
+<div class="phone">
+<div class="navbar" data-html2canvas-ignore><a href="index.html">‹ 선택화면</a></div>
+<div id="nf">
+  <div class="nh">
+    <svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="#111" stroke-width="2" stroke-linecap="round"><path d="M3 6h18M3 12h18M3 18h18"/></svg>
+    <span class="npay">pay</span><i style="flex:1"></i>
+    <span class="nbell"><svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#111" stroke-width="1.900" stroke-linejoin="round"><path d="M18 9a6 6 0 0 0-12 0c0 6-2.500 7.500-2.500 7.500h17S18 15 18 9zM10 20a2 2 0 0 0 4 0"/></svg><u id="nBadge"></u></span>
+  </div>
+  <div class="nsb"><b class="nN">N</b><i style="flex:1"></i>
+    <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="#11c5b4" stroke-width="2.400" stroke-linecap="round"><path d="M4 8V6a2 2 0 0 1 2-2h2M16 4h2a2 2 0 0 1 2 2v2M20 16v2a2 2 0 0 1-2 2h-2M8 20H6a2 2 0 0 1-2-2v-2"/><circle cx="12" cy="12" r="3" fill="#11c5b4"/></svg>
+    <span class="nai">✦ AI</span></div>
+  <div class="nsp"></div>
+  <div class="ncards" id="nCards"></div>
+  <div class="nbn" id="nBn"></div>
+  <div class="nfeed" id="nFeed"></div>
+  <div class="ntab"><span><i class="sh">N+</i>쇼핑</span><s></s><span class="on"><svg width="30" height="30" viewBox="0 0 24 24"><path d="M12 2.500 3 8.500v10A2.500 2.500 0 0 0 5.500 21h13a2.500 2.500 0 0 0 2.500-2.500v-10z" fill="#111"/><text x="12" y="16.500" font-size="9" font-weight="900" text-anchor="middle" fill="#fff">N</text></svg>홈</span><span><svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="#111" stroke-width="1.900" stroke-linejoin="round"><rect x="3.500" y="3.500" width="17" height="17" rx="4"/><path d="M8 9h8M8 13h5"/></svg>투데이</span><span><svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="#111" stroke-width="1.900" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M10 8.500v7l6-3.500z"/></svg>클립</span><span><svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="#111" stroke-width="1.900"><circle cx="12" cy="12" r="9.500"/><circle cx="12" cy="10" r="3.200"/><path d="M5.500 19c1.500-3 4-4 6.500-4s5 1 6.500 4"/></svg>마이</span></div>
+</div>
+<section class="editor">
+  <h2>네이버 메인 편집</h2>
+  <div class="row"><label>알림 숫자(비우면 숨김)<input id="iBadge"></label><label>배경색<input id="iBg" type="color" style="padding:2px;height:44px"></label></div>
+  <div class="row"><label>날씨<input id="iW"></label><label>위치<input id="iLoc"></label></div>
+  <div class="row"><label>미세먼지<input id="iD1"></label><label>초미세먼지<input id="iD2"></label></div>
+  <div class="row"><label>코스피 값<input id="iK"></label><label>배너 문구<input id="iBn"></label></div>
+  <h2 style="margin-top:14px">피드 카드 (2개)</h2><div id="el"></div>
+</section>
+</div>
+<div class="bar"><button id="savePng" class="primary">PNG로 저장</button><button id="reset" class="secondary">초기화</button></div>
+<script src="https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js"></script>
+<script src="main.js?v=1"></script>
+</body>
+</html>
