@@ -1,12 +1,12 @@
 (function(){
 var $=function(i){return document.getElementById(i)};
-var DEF={time:'11:49',bat:'65',chg:true,
-m:{n:'【限定公開】SUNNY DAY SONG / ラブライブ！シリーズ【LoveLive! Series Official】',h:'@lovelive_series',lk:'4.3천개',vw:'1.4만회',time:'2시간 전',sub:'구독',pg:'20'},
-c:{cnt:'350',x:'『スクールアイドルはμ\'sだけじゃない。』\nそれを伝えるために作ったμ\'sの願いが本当の姿になりますように、という気持ちを込めて'},
-u:{n:'ATEEZ(에이티즈) - 살려는 드릴게',ch:'ATEEZ',bd:true,vw:'20만',time:'5시간 전',dur:'28:40',pg:'100'}};
+var DEF={time:'9:41',bat:'80',chg:false,
+m:{n:'샘플 영상 제목입니다. 여기에 원하는 제목을 적어 주세요',h:'@samplechannel',lk:'4.3천개',vw:'1.2만회',time:'2시간 전',sub:'구독',pg:'20'},
+c:{cnt:'350',x:'샘플 댓글입니다.\n여기에 원하는 댓글 내용을 적어 주세요.'},
+u:{n:'다른 샘플 영상의 긴 제목 예시입니다',ch:'샘플 채널',bd:true,vw:'12만',time:'5시간 전',dur:'28:40',pg:'100'}};
 var BD='<svg width="12" height="12" viewBox="0 0 24 24"><circle cx="12" cy="12" r="12" fill="#606060"/><path d="M13 6v7.200a2.600 2.600 0 1 0 1.500 2.300V9h3V6z" fill="#fff"/></svg>',
 DOTS='<svg class="ddt" width="16" height="5" viewBox="0 0 16 5" fill="#0f0f0f"><circle cx="2.500" cy="2.500" r="2.300"/><circle cx="8" cy="2.500" r="2.300"/><circle cx="13.500" cy="2.500" r="2.300"/></svg>';
-var S,STORE='editsoceur-youtube-detail-v1';
+var S,STORE='editsoceur-youtube-detail-v2';
 function persist(){try{localStorage.setItem(STORE,JSON.stringify(S))}catch(e){console.warn('영상 세부 데이터 저장 실패',e)}}
 function esc(t){return String(t==null?'':t).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;')}
 function pc(v){v=parseFloat(v);return isNaN(v)?0:Math.max(0,Math.min(100,v))}

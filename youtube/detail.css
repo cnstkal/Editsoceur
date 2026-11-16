@@ -1,4 +1,4 @@
-#df{position:relative;aspect-ratio:1179/2556;overflow:hidden;background:#fff;border-radius:14px;margin-top:12px;color:#0f0f0f;font-family:Pretendard,-apple-system,sans-serif;letter-spacing:-.02em}
+#df{width:393px;margin:12px auto 0;position:relative;aspect-ratio:1179/2556;overflow:hidden;background:#fff;border-radius:14px;margin-top:12px;color:#0f0f0f;font-family:Pretendard,-apple-system,sans-serif;letter-spacing:-.02em}
 .dtop{position:absolute;left:0;right:0;top:0;height:60px;background:#000}
 .dt{position:absolute;left:51px;top:20px;font-size:16px;font-weight:700;line-height:18px;color:#fff}
 .dsg{position:absolute;left:282px;top:23px;fill:#fff}
@@ -21,7 +21,7 @@
 .dav0{position:absolute;left:12px;top:76px;width:36px;height:36px;border-radius:50%;background:#e8e8e8 center/cover}
 .dsb{position:absolute;left:52px;top:78px;min-width:49px;padding:0 14px;box-sizing:border-box;height:32px;border-radius:16px;background:#0f0f0f;color:#fff;font-size:14px;font-weight:700;line-height:32px;text-align:center;white-space:nowrap}
 .dic{position:absolute;top:82px}
-.dcm{position:absolute;left:12px;top:126px;width:369px;height:82px;border-radius:12px;background:#f2f2f2}
+.dcm{position:absolute;left:12px;right:12px;top:126px;height:82px;border-radius:12px;background:#f2f2f2}
 .dct{position:absolute;left:13px;top:9px;font-size:14px;line-height:20px;font-weight:700}
 .dct span{font-weight:400;color:#606060;margin-left:6px}
 .dpd{position:absolute;left:333px;top:15px;width:12px;height:5px;border-radius:3px;background:#0f0f0f}
