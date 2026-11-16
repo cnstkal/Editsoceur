@@ -2,7 +2,7 @@
 var CORGI='data:image/svg+xml;utf8,'+encodeURIComponent('<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><rect width="100" height="100" fill="#2b3a55"/><rect width="22" height="100" fill="#444a55"/><ellipse cx="50" cy="88" rx="44" ry="22" fill="#d9964f"/><ellipse cx="30" cy="48" rx="11" ry="16" fill="#c98a52" transform="rotate(-25 30 48)"/><ellipse cx="72" cy="48" rx="11" ry="16" fill="#c98a52" transform="rotate(25 72 48)"/><ellipse cx="51" cy="58" rx="24" ry="25" fill="#e5a85f"/><path d="M51 38C40 48 40 70 51 80C62 70 62 48 51 38Z" fill="#fff"/><ellipse cx="38" cy="52" rx="3" ry="3.5" fill="#1c1410"/><ellipse cx="64" cy="52" rx="3" ry="3.5" fill="#1c1410"/><ellipse cx="51" cy="62" rx="5" ry="3.5" fill="#1c1410"/><path d="M44 69Q51 80 58 69Z" fill="#d95a6a"/><path d="M26 34Q51 12 76 34Q51 40 26 34Z" fill="#8a6a55"/><ellipse cx="51" cy="35" rx="26" ry="5" fill="#7a5c48"/></svg>');
 function defaults(){return{
  name:'샘플 사용자',handle:'sample_user',bio:'안녕하세요! 샘플 소개 문구입니다.',job:'디자이너',birth:'1995년 1월 1일',joined:'2020년 1월',
- following:'120',followers:'350',avatar:CORGI,banner:'',bannerColor:'#999999',
+ following:'120',followers:'350',avatar:CORGI,banner:'',
  jobOn:true,birthOn:true,lock:true,fab:true,nav:true,
  tweets:[
   {name:'샘플 사용자',handle:'sample_user',time:'9분',text:'첫 번째 샘플 게시물입니다',reply:'',rt:'',like:'',view:'3',avatar:'',lock:true},
@@ -38,7 +38,7 @@ var I={
 function esc(s){return String(s==null?'':s).replace(/[&<>"]/g,function(c){return{'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]})}
 function cnt(v){return v?esc(v):''}
 function render(){
- var bn=S.banner?'background-image:url('+S.banner+')':'background-color:'+S.bannerColor;
+ var bn=S.banner?'background-image:url('+S.banner+')':'background-color:#999999';
  var h='<div class="banner" style="'+bn+'"><div class="cb l">'+I.back+'</div><div class="cb r">'+I.search+'</div><div class="pavatar"><img src="'+esc(S.avatar||CORGI)+'"></div></div>';
  h+='<div class="prof"><div class="pname">'+esc(S.name)+(S.lock?I.lock:'')+'</div>';
  h+='<div class="phandle">@'+esc(S.handle.replace(/^@/,''))+'</div><div class="pbio">'+esc(S.bio)+'</div><div class="meta">';
@@ -82,7 +82,7 @@ function renderList(){
  });
 }
 function readFile(f,cb){if(!f)return;var r=new FileReader();r.onload=function(){cb(r.result)};r.readAsDataURL(f)}
-var ids=['name','handle','bio','job','birth','joined','following','followers','bannerColor'];
+var ids=['name','handle','bio','job','birth','joined','following','followers'];
 var sw=['lock','jobOn','birthOn','fab','nav'];
 function sync(){
  ids.forEach(function(k){document.getElementById(k).value=S[k]});
@@ -93,8 +93,7 @@ function bind(){
  sw.forEach(function(k){var el=document.getElementById(k);el.onchange=function(){S[k]=el.checked;render()}});
  document.getElementById('avatarFile').onchange=function(e){readFile(e.target.files[0],function(u){S.avatar=u;render()})};
  document.getElementById('bannerFile').onchange=function(e){readFile(e.target.files[0],function(u){S.banner=u;render()})};
- document.getElementById('bannerColor').addEventListener('input',function(){S.banner='';render()});
- document.getElementById('addTweet').onclick=function(){
+  document.getElementById('addTweet').onclick=function(){
   S.tweets.push({name:S.name,handle:S.handle,time:'방금',text:'',reply:'',rt:'',like:'',view:'',avatar:'',lock:S.lock});
   renderList();render();
  };
