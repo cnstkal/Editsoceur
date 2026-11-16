@@ -3,7 +3,7 @@ var $=function(i){return document.getElementById(i)};
 var P=function(r,w,t){return{img:'',red:r||'',white:w||'',top:!!t}};
 var DEF={c0:'시리즈',c1:'영화',c2:'NEW & HOT',c3:'카테고리',hero:'',ht:'화요일 새로운 에피소드 공개',b1:'시리즈 재생',b2:'내가 찜한 리스트',t1:'오늘 대한민국의 TOP 10 시리즈',t2:'스릴러 & 미스터리 시리즈',t3:'',bm:'',bn:'',bk:false,ban:'',av:'',
 r1:[P('새로운 에피소드','지금 시청하기'),P('새로운 시즌'),P()],
-r2:[P('새로운 에피소드','지금 시청하기'),P('시즌 공개'),P('오늘의 추천'),P('새로운 에피소드'),P('인기 시리즈'),P()]};
+r2:[P('스릴러'),P('미스터리'),P('범죄'),P('심리 스릴러'),P('추리'),P('스릴러 시리즈')]};
 var S,STORE='editsoceur-netflix-main-v1',nx=$('nx'),sc=$('nSc');
 function persist(){try{localStorage.setItem(STORE,JSON.stringify(S))}catch(e){console.warn('저장 공간 부족 — 이미지 일부가 새로고침 시 사라질 수 있어요',e)}}
 function esc(t){return String(t==null?'':t).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;')}
