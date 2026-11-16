@@ -1,54 +1,32 @@
-// ===== 알림 데이터 (여기만 수정) =====
-const NOTIS = [
-  { id: "kakao",   label: "카카오톡", title: "띵화형",            body: "전화 좀 받아 ㅜㅜ",              time: "지금", icon: "kakao" },
-  { id: "message", label: "메시지",   title: "marspark",          body: "토요일에 정모하는데 올래요?",     time: "지금", icon: "message" },
-  { id: "discord", label: "디스코드", title: "호요호요 (#황잡이)", body: "유유님 같이 레이드 뛰실래여?ㅎㅎ", time: "지금", icon: "discord" }
-];
-
-// ===== 벡터 아이콘 =====
-const ICONS = {
-  kakao: `<svg viewBox="0 0 40 40"><defs><clipPath id="c"><circle cx="20" cy="20" r="20"/></clipPath></defs>
-    <g clip-path="url(#c)"><rect width="40" height="40" fill="#2a3a2a"/>
-    <path d="M2 40c1-9 7-13 18-13s17 4 18 13z" fill="#8f86c9"/>
-    <ellipse cx="22" cy="17" rx="7" ry="8" fill="#d9a98a"/>
-    <path d="M14 15c0-7 4-10 8-10s8 3 8 10c-2-3-5-4-8-4s-6 1-8 4z" fill="#2b2230"/></g></svg>
-    <svg class="badge" viewBox="0 0 19 19"><rect width="19" height="19" rx="5" fill="#fee500"/>
-    <ellipse cx="9.5" cy="9" rx="6.5" ry="5" fill="#3a1d1d"/><path d="M5 12.5 4.5 16l4-2.5z" fill="#3a1d1d"/>
-    <text x="9.5" y="10.6" font-size="4.6" font-weight="800" fill="#fee500" text-anchor="middle" font-family="Arial">TALK</text></svg>`,
-
-  message: `<svg viewBox="0 0 40 40"><defs><linearGradient id="g" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#5ff26b"/><stop offset="1" stop-color="#0bd01f"/></linearGradient></defs>
-    <rect width="40" height="40" rx="9" fill="url(#g)"/>
-    <ellipse cx="20" cy="19" rx="15" ry="11.5" fill="#fff"/><path d="M10 27 6 33l9-3z" fill="#fff"/></svg>`,
-
-  discord: `<svg viewBox="0 0 40 40"><defs><linearGradient id="d" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#7885f7"/><stop offset="1" stop-color="#5463ee"/></linearGradient></defs>
-    <rect width="40" height="40" rx="9" fill="url(#d)"/>
-    <path d="M9.5 15c1-2.4 2.6-3.7 4.5-4.2l.9 1.6c1.7-.3 3.4-.3 5.1 0l.9-1.6c1.9.5 3.5 1.8 4.5 4.2 1.8 4 2.3 8 1.8 12-1.6 1.2-3.4 1.9-5.3 2.3l-1.3-2.1c.8-.2 1.5-.6 2.2-1l-.5-.4c-3.4 1.5-6.8 1.5-10.2 0l-.5.400c.7.4 1.400.8 2.2 1l-1.3 2.1C9.2 29.900 7.4 29.2 5.8 28c-.5-4 0-8 1.800-12z" transform="translate(2 -1)" fill="#fff"/>
-    <circle cx="16.5" cy="19.5" r="2.2" fill="#5463ee"/><circle cx="25.500" cy="19.5" r="2.2" fill="#5463ee"/></svg>`
+(function(){
+var $=function(id){return document.getElementById(id)};
+var icons={
+ kakao:'<svg viewBox="0 0 40 40"><rect width="40" height="40" rx="20" fill="#fee500"/><path d="M20 8C11 8 5 13 5 19c0 4 3 8 8 10l-1 5 7-4c9 0 16-5 16-11S28 8 20 8z" fill="#3a1d1d"/></svg>',
+ message:'<svg viewBox="0 0 40 40"><rect width="40" height="40" rx="9" fill="#19c45a"/><path d="M20 7C11 7 5 12 5 19c0 4 3 8 8 10l-1 5 8-5c9 0 15-4 15-10S29 7 20 7z" fill="#fff"/></svg>',
+ discord:'<svg viewBox="0 0 40 40"><rect width="40" height="40" rx="9" fill="#5865f2"/><path d="M10 13c7-4 13-4 20 0l3 15c-5 4-8 4-11 2l-2-3-2 3c-4 2-7 1-11-2z" fill="#fff"/><circle cx="16" cy="21" r="2" fill="#5865f2"/><circle cx="25" cy="21" r="2" fill="#5865f2"/></svg>'
 };
-
-// ===== 렌더링 =====
-const stage = document.getElementById("stage");
-const picker = document.getElementById("picker");
-
-function show(id) {
-  const n = NOTIS.find(x => x.id === id);
-  stage.innerHTML = "";
-  const b = document.createElement("div");
-  b.className = "banner";
-  b.innerHTML = `<div class="ico">${ICONS[n.icon]}</div>
-    <div class="txt"><b></b><p></p></div><span class="time"></span>`;
-  b.querySelector("b").textContent = n.title;
-  b.querySelector("p").textContent = n.body;
-  b.querySelector(".time").textContent = n.time;
-  stage.append(b);
-  [...picker.children].forEach(btn => btn.classList.toggle("on", btn.dataset.id === id));
+var data=[
+{id:'kakao',label:'카카오톡',app:'카카오톡',title:'띵화형',body:'전화 좀 받아 ㅜㅜ',time:'지금',icon:'kakao'},
+{id:'message',label:'메시지',app:'메시지',title:'marspark',body:'토요일에 정모하는데 올래요?',time:'지금',icon:'message'},
+{id:'discord',label:'디스코드',app:'디스코드',title:'호요호요 (#황잡이)',body:'유유님 같이 레이드 뛰실래여?ㅎㅎ',time:'지금',icon:'discord'}
+];
+var selected=0,color='#efefef',opacity=96;
+function rgba(hex,a){var n=parseInt(hex.slice(1),16);return 'rgba('+(n>>16)+','+((n>>8)&255)+','+(n&255)+','+(a/100)+')'}
+function render(){
+ var n=data[selected],stage=$('stage');
+ stage.innerHTML='<div class="banner" id="banner"><div class="ico">'+icons[n.icon]+'</div><div class="txt"><b></b><p></p></div><span class="time"></span></div>';
+ $('banner').style.background=rgba(color,opacity);
+ $('banner').querySelector('b').textContent=n.title;$('banner').querySelector('p').textContent=n.body;$('banner').querySelector('.time').textContent=n.time;
+ $('appName').value=n.app;$('title').value=n.title;$('bodyText').value=n.body;$('timeText').value=n.time;
+ $('bgColor').value=color;$('opacity').value=opacity;$('opacityValue').textContent=opacity+'%';
+ Array.prototype.forEach.call($('picker').children,function(b,i){b.classList.toggle('on',i===selected)});
 }
-
-NOTIS.forEach(n => {
-  const btn = document.createElement("button");
-  btn.textContent = n.label;
-  btn.dataset.id = n.id;
-  btn.onclick = () => show(n.id);
-  picker.append(btn);
-});
-show(NOTIS[0].id);
+data.forEach(function(n,i){var b=document.createElement('button');b.textContent=n.label;b.onclick=function(){selected=i;render()};$('picker').appendChild(b)});
+[['appName','app'],['title','title'],['bodyText','body'],['timeText','time']].forEach(function(p){$(p[0]).addEventListener('input',function(){data[selected][p[1]]=this.value;renderKeepFocus(p[0])})});
+function renderKeepFocus(id){var n=data[selected];var b=$('banner');if(!b)return;b.style.background=rgba(color,opacity);b.querySelector('b').textContent=n.title;b.querySelector('p').textContent=n.body;b.querySelector('.time').textContent=n.time}
+$('bgColor').oninput=function(){color=this.value;renderKeepFocus()};
+$('opacity').oninput=function(){opacity=+this.value;$('opacityValue').textContent=opacity+'%';renderKeepFocus()};
+$('reset').onclick=function(){data[selected].app=data[selected].label;data[selected].title='알림 제목';data[selected].body='알림 내용을 입력하세요';data[selected].time='지금';color='#efefef';opacity=96;render()};
+$('savePng').onclick=function(){var b=this,t=b.textContent;b.disabled=true;b.textContent='저장 중...';(document.fonts&&document.fonts.ready?document.fonts.ready:Promise.resolve()).then(function(){return html2canvas($('banner'),{scale:3,useCORS:true,backgroundColor:null,logging:false})}).then(function(c){c.toBlob(function(blob){var a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download='notification.png';document.body.appendChild(a);a.click();a.remove();b.disabled=false;b.textContent=t},'image/png')}).catch(function(){b.disabled=false;b.textContent=t;alert('PNG 저장에 실패했습니다.')})};
+render();
+})();
