@@ -1,9 +1,9 @@
 (function(){
 var $=function(i){return document.getElementById(i)};
 var P=function(r,w,t){return{img:'',red:r||'',white:w||'',top:!!t}};
-var DEF={c0:'시리즈',c1:'영화',c2:'NEW & HOT',c3:'카테고리',hero:'',ht:'화요일 새로운 에피소드 공개',b1:'시리즈 재생',b2:'내가 찜한 리스트',t1:'오늘 대한민국의 TOP 10 시리즈',t2:'스릴러 & 미스터리 시리즈',t3:'넷플릭스에 새로 올라온 콘텐츠',bm:'1:01',bn:'데블스 플랜',bk:true,ban:'',av:'',
+var DEF={c0:'시리즈',c1:'영화',c2:'NEW & HOT',c3:'카테고리',hero:'',ht:'화요일 새로운 에피소드 공개',b1:'시리즈 재생',b2:'내가 찜한 리스트',t1:'오늘 대한민국의 TOP 10 시리즈',t2:'스릴러 & 미스터리 시리즈',t3:'',bm:'',bn:'',bk:false,ban:'',av:'',
 r1:[P('새로운 에피소드','지금 시청하기'),P('새로운 시즌'),P()],
-r2:[P('최신 등록'),P(),P('새로운 에피소드','지금 시청하기',true),P()]};
+r2:[P('새로운 에피소드','지금 시청하기'),P('시즌 공개'),P('오늘의 추천'),P('새로운 에피소드'),P('인기 시리즈'),P()]};
 var S,STORE='editsoceur-netflix-main-v1',nx=$('nx'),sc=$('nSc');
 function persist(){try{localStorage.setItem(STORE,JSON.stringify(S))}catch(e){console.warn('저장 공간 부족 — 이미지 일부가 새로고침 시 사라질 수 있어요',e)}}
 function esc(t){return String(t==null?'':t).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;')}
@@ -13,11 +13,11 @@ var CARET='<svg viewBox="0 0 12 8" style="width:2.8cqw"><path d="M1 1h10L6 7z" f
 var PENG='<svg viewBox="0 0 40 40"><rect width="40" height="40" fill="#5a2ec2"/><path d="M6 26a14 14 0 0 1 28 0v7a4 4 0 0 1-4 4H10a4 4 0 0 1-4-4z" fill="#fff"/><circle cx="14.500" cy="22" r="4.600" fill="#fff" stroke="#2a1470" stroke-width="1.200"/><circle cx="25.500" cy="22" r="4.600" fill="#fff" stroke="#2a1470" stroke-width="1.200"/><circle cx="14.500" cy="22.500" r="1.700" fill="#111"/><circle cx="25.500" cy="22.500" r="1.700" fill="#111"/></svg>';
 function poster(x){var g='';if(x.red||x.white)g='<div class="ntg">'+(x.red?'<span class="r">'+esc(x.red)+'</span>':'')+(x.white?'<span class="w">'+esc(x.white)+'</span>':'')+'</div>';
 return '<div class="np" style="'+bg(x.img)+'">'+(x.top?'<b class="tb"><i>TOP</i>10</b>':'')+g+'</div>'}
-function render(){
+function render(){ $('nHc').style.display='none';
 $('nCh').innerHTML='<i>'+esc(S.c0)+'</i><i>'+esc(S.c1)+'</i><i>'+esc(S.c2)+'</i><i><span>'+esc(S.c3)+'</span>'+CARET+'</i>';
 var hc=$('nHc');hc.style.backgroundImage=S.hero?"url('"+S.hero+"')":'';
 $('nHt').textContent=S.ht;$('nB1').textContent=S.b1;$('nB2').textContent=S.b2;
-$('nT1').innerHTML=tt(S.t1);$('nT2').innerHTML=tt(S.t2);$('nT3').innerHTML=tt(S.t3);
+$('nT1').innerHTML=tt(S.t1);$('nT2').innerHTML=tt(S.t2);$('nT3').innerHTML='';
 var h='';S.r1.forEach(function(x,i){var n=i+1;h+='<div class="ni"><i class="nn" style="left:-'+(n===1?8:12.3)+'cqw">'+n+'</i>'+poster(x)+'</div>'});$('nR1').innerHTML=h;
 h='';S.r2.forEach(function(x){h+=poster(x)});$('nR2').innerHTML=h;
 $('nBn').style.backgroundImage=S.ban?"url('"+S.ban+"')":'';$('nBk').style.display=S.bk?'':'none';
