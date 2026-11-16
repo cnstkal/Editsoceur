@@ -7,7 +7,7 @@
     $('pf').innerHTML=h}
   function list(){var h='';S.p.forEach(function(p,i){h+='<div class="xc" data-i="'+i+'"><div class="row"><label>이름<input data-f="n" value="'+esc(p.n)+'"></label><label>프로필 사진<input type="file" accept="image/*" data-f="img"></label></div><div class="row"><button type="button" class="xb" data-a="u">↑</button><button type="button" class="xb" data-a="d">↓</button><button type="button" class="xb" data-a="x">✕ 삭제</button></div></div>'});$('xlist').innerHTML=h;$('addP').disabled=S.p.length>=5}
   function persist(){try{localStorage.setItem(STORE,JSON.stringify(S))}catch(e){}}
-  function fit(){var k=Math.min(1,$('pw').clientWidth/1920);$('pf').style.transform='scale('+k+')';$('pf').style.height='auto';$('pf').style.overflow='visible';$('pw').style.height=Math.max(1080,$('pf').scrollHeight)*k+'px'}
+  function fit(){var k=Math.min(1,$('pw').clientWidth/1920);$('pf').style.transform='scale('+k+')';$('pf').style.height='auto';$('pf').style.overflow='visible';var base=$('pf').getBoundingClientRect().top,bottom=Math.max(1080,$('pf').scrollHeight);$('pf').querySelectorAll('*').forEach(function(el){var r=el.getBoundingClientRect();bottom=Math.max(bottom,(r.bottom-base)/k)});var h=Math.max(1080,bottom+40);$('pf').style.height=h+'px';$('pw').style.height=h*k+'px'}
   function load(r){if(r)try{localStorage.removeItem(STORE)}catch(e){}try{var s=!r&&localStorage.getItem(STORE);S=s?JSON.parse(s):JSON.parse(JSON.stringify(DEF));if(!Array.isArray(S.p))throw 0}catch(e){S=JSON.parse(JSON.stringify(DEF))}$('iTt').value=S.tt;list();render();fit()}
   $('iTt').addEventListener('input',function(){S.tt=this.value;persist();render()});
 
