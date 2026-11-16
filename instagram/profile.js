@@ -1,6 +1,6 @@
 (function(){
   var $=function(i){return document.getElementById(i)};
-  var DEF={un:'yunou._.u',nm:'윤호 (YUNHO)',po:'167',fr:'712만',fg:'8',bio:'ATEEZ',m1:'choi3an',m2:'wooyounggg__',mn:'7',mutOn:true,mi:[],f1:'팔로잉',f2:'메시지',badge:true,cnt:9};
+  var DEF={un:'seorin.archive',nm:'서린 | seorin',po:'48',fr:'1.8만',fg:'326',bio:'coffee, books & little moments ☕\n기록하는 일상\n📍 Seoul',m1:'daily.ju',m2:'mood__room',mn:'12',mutOn:true,mi:[],f1:'팔로잉',f2:'메시지',badge:true,cnt:9};
   var S,av,mav,ph;
   var ICON='<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2"><rect x="8" y="3" width="13" height="13" rx="3.5" fill="#fff"/><path d="M4 8v9a3 3 0 0 0 3 3h9"/></svg>';
   var K=['un','nm','po','fr','fg','bio','f1','f2','m1','m2','mn'],I={un:'iUn',nm:'iNm',po:'iPo',fr:'iFr',fg:'iFg',bio:'iBio',f1:'iF1',f2:'iF2',m1:'iM1',m2:'iM2',mn:'iMn'};
@@ -22,7 +22,7 @@
     $('vMut').innerHTML='<b>'+esc(S.m1)+'</b>님, <b>'+esc(S.m2)+'</b>님 외 '+esc(S.mn)+'명이 팔로우합니다';
     $('vBadge').style.display=S.badge?'':'none';
     $('vBio').style.display=S.bio?'':'none';
-    $('vMutBox').style.display=S.mutOn?'':'none';
+    $('vMutBox').style.display=S.mutOn?'':'none';['iM1','iM2','iMn'].forEach(function(id){$(id).disabled=!S.mutOn;$(id).closest('label').style.opacity=S.mutOn?'1':'.4'});
     $('vAv').style.backgroundImage=av?'url('+av+')':'';
     var a='';for(var i=0;i<3;i++)a+='<i style="background-image:'+(mav[i]?'url('+mav[i]+')':'none')+'"></i>';
     $('vMav').innerHTML=a;
