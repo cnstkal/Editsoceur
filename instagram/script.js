@@ -1,19 +1,19 @@
 (function(){
   var $=function(id){return document.getElementById(id)};
   var DEF={user:'yunou._.u',liker:'_starhwa_',like:'23.6만',cmt:'2,232',rep:'2.4만',shr:'2.2만',
-    cap:'UP💪\n#Yunhois3gram',date:'2일 전',count:8,musicOn:true,music:'ATEEZ · UP',badge:true,bub:true,bubN:2};
+    cap:'늦은 오후에 걷기 좋은 날 ☁️\n요즘 자주 듣는 노래와 함께\n#일상 #weekend #좋은날',date:'2026년 11월 15일',count:8,musicOn:true,artist:'wave to earth',song:'seasons',badge:true,bub:true,bubN:2};
   var S={},bimg=[null,null,null],avatar=null,photos=[],idx=0;
   function esc(t){return t.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;')}
   function load(){S=JSON.parse(JSON.stringify(DEF));avatar=null;bimg=[null,null,null];['iB0','iB1','iB2'].forEach(function(i){$(i).value=''});$('iBadge').checked=true;$('iBubN').value=2;photos=[];idx=0;
-    ['user','liker','like','cmt','rep','shr','cap','date','count','music'].forEach(function(k){$('i'+k.charAt(0).toUpperCase()+k.slice(1)).value=S[k]});
+    ['user','liker','like','cmt','rep','shr','cap','date','count','artist','song'].forEach(function(k){$('i'+k.charAt(0).toUpperCase()+k.slice(1)).value=S[k]});
     $('iMusicOn').checked=S.musicOn;$('iAvatar').value='';$('iPhotos').value='';render()}
   function read(){
     S.user=$('iUser').value;S.liker=$('iLiker').value;S.like=$('iLike').value;S.cmt=$('iCmt').value;
     S.rep=$('iRep').value;S.shr=$('iShr').value;S.cap=$('iCap').value;S.date=$('iDate').value;
-    S.count=Math.max(1,Math.min(20,parseInt($('iCount').value)||1));S.musicOn=$('iMusicOn').checked;S.music=$('iMusic').value;S.badge=$('iBadge').checked;S.bubN=Math.max(1,Math.min(3,parseInt($('iBubN').value)||1))}
+    S.count=Math.max(1,Math.min(20,parseInt($('iCount').value)||1));S.musicOn=$('iMusicOn').checked;S.artist=$('iArtist').value;S.song=$('iSong').value;S.badge=$('iBadge').checked;S.bubN=Math.max(1,Math.min(3,parseInt($('iBubN').value)||1))}
   function render(){
     $('vHead').textContent=S.user;$('vName').textContent=S.user;
-    var m=$('vMusic');m.style.display=S.musicOn&&S.music.trim()?'':'none';$('vMusicTxt').textContent=S.music;
+    var m=$('vMusic');var musicText=[S.artist.trim(),S.song.trim()].filter(Boolean).join(' · ');m.style.display=S.musicOn&&musicText?'':'none';$('vMusicTxt').textContent=musicText;
     $('vBadge').style.display=S.badge?'':'none';renderBub();
     $('vAvatar').style.backgroundImage=avatar?'url('+avatar+')':'';
     $('vAvatar').classList.toggle('has',!!avatar);
