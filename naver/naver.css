@@ -41,3 +41,22 @@
 .sr b{flex:1;font-weight:400}.sr s{text-decoration:none;color:#8a8a8f;font-size:16px}
 .sbt{flex:none;display:flex;align-items:center;height:76px;border-top:1px solid #e5e5e5;padding:0 16px 14px;background:#fff;font-weight:700;font-size:16px}
 .sbt b{flex:1}.sbt svg{margin-left:26px}
+.pb{position:relative;aspect-ratio:9/19;overflow:hidden;border-radius:14px;margin-top:12px;background:#fff;color:#111;padding-top:62px;display:flex;flex-direction:column}
+.pq{display:flex;align-items:center;gap:14px;height:60px;margin:12px 14px 0;background:#f4f4f5;border-radius:30px;padding:0 20px 0 18px;font-size:21px;font-weight:600;flex:none}
+.pq b{flex:1}.pq .x{width:32px;height:32px;border-radius:50%;background:#7b7b7e;display:flex;align-items:center;justify-content:center}
+.ph2{flex:none;background:#fcf9f8;margin-top:12px;padding:22px 18px 14px;box-shadow:0 2px 6px rgba(0,0,0,.06)}
+.ph2 h3{font-size:19px;font-weight:700;margin-bottom:12px}
+.ptabs{display:flex;gap:8px;margin-right:-18px;overflow:hidden;white-space:nowrap}
+.ptabs span{flex:none;padding:12px 19px;border:1px solid #eadcd8;border-radius:24px;font-size:17px;color:#444;background:#fff}
+.ptabs span.on{background:#a8766a;color:#fff;border-color:#a8766a;font-weight:600}
+.pbody{flex:1;overflow:hidden;padding:18px 18px 0;position:relative}
+.pinfo{display:flex;gap:10px;border-left:4px solid #ececec;padding-left:14px;position:relative}
+.ptb{flex:1;min-width:0}
+.pro{display:flex;gap:14px;font-size:19px;line-height:1.55;margin-bottom:8px}
+.pro .l{flex:none;width:68px;color:#888}
+.pro .v{flex:1;min-width:0;white-space:pre-wrap;word-break:break-word}
+.pro .v a{color:#1a56c4}
+.pph{flex:none;width:130px;height:162px;border-radius:16px;background:#c7ccd3 center/cover}
+.pft{border-top:1px solid #ececec;margin-top:20px;padding-top:16px;font-size:16px;color:#8a8a8f;line-height:1.6;white-space:pre-wrap}
+.pft u{display:block;margin-top:4px}
+.pbr{flex:none;display:flex;justify-content:space-between;align-items:center;height:88px;padding:0 22px 14px;border-top:1px solid #e5e5e5;background:#fafafa}
