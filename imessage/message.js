@@ -1,6 +1,6 @@
 (function(){
 var $=function(i){return document.getElementById(i)};
-var DEF={nm:'김민지',cnt:'681',time:'12:11',bat:'69',mode:'android',read:'읽음: 2026. 10. 29.',av:'',ic:'',m:[
+var DEF={ratio:'phone',nm:'김민지',cnt:'681',time:'12:11',bat:'69',mode:'android',read:'읽음: 2026. 10. 29.',av:'',ic:'',m:[
 {s:0,x:'리센느 인기준나많아....ㄹㅇ 인천 사람 다온듯',l:''},
 {s:0,x:'ㄹㅇ 리센느가 방탄 경복궁보다 많음',l:''},
 {s:1,x:'리센느나옴?그래서사람많구만',l:''},
@@ -15,7 +15,7 @@ function lk(t){return esc(t).replace(/(https?:\/\/[^\s<>가-힣]+)/g,'<u>$1</u>'
 function render(){
 $('mCnt').textContent=S.cnt;$('mNm').textContent=S.nm;
 var av=$('mAv');av.style.backgroundImage=bgi(S.av);av.textContent=S.av?'':String(S.nm).charAt(0);
-$('mf').classList.toggle('ios',S.mode==='ios');
+$('mf').classList.toggle('ios',S.mode==='ios');$('mf').style.aspectRatio={'16:9':'16/9','4:3':'4/3'}[S.ratio]||'1179/2556';
 $('mPh').textContent=S.mode==='ios'?'iMessage':'문자 메시지 · RCS';
 var h='',n=S.m.length;
 S.m.forEach(function(x,i){var nx=S.m[i+1],t=!nx||+nx.s!==+x.s||nx.l;
@@ -28,11 +28,11 @@ h+='<div class="mc" data-i="'+i+'"><div class="row"><label>보낸 사람<select 
 '<label>내용<textarea data-f="x" rows="3">'+esc(x.x)+'</textarea></label>'+
 '<div class="row"><button type="button" class="mb" data-a="u">↑</button><button type="button" class="mb" data-a="d">↓</button><button type="button" class="mb" data-a="x">✕ 삭제</button></div></div>'});
 $('mlist').innerHTML=h}
-function set(){$('iNm').value=S.nm;$('iCnt').value=S.cnt;$('iMode').value=S.mode;$('iRead').value=S.read}
+function set(){$('iRatio').value=S.ratio||'phone';$('iNm').value=S.nm;$('iCnt').value=S.cnt;$('iMode').value=S.mode;$('iRead').value=S.read}
 function load(reset){if(reset){try{localStorage.removeItem(STORE)}catch(e){}S=JSON.parse(JSON.stringify(DEF))}else{try{var sv=localStorage.getItem(STORE);S=sv?JSON.parse(sv):JSON.parse(JSON.stringify(DEF));if(!S||!Array.isArray(S.m))throw 0}catch(e){S=JSON.parse(JSON.stringify(DEF))}}set();list();render()}
 function rd(f,cb){var r=new FileReader();r.onload=function(){cb(r.result)};r.readAsDataURL(f)}
-function glob(){S.nm=$('iNm').value;S.cnt=$('iCnt').value;S.mode=$('iMode').value;S.read=$('iRead').value;persist();render()}
-['iNm','iCnt','iMode','iRead'].forEach(function(id){$(id).addEventListener('input',glob);$(id).addEventListener('change',glob)});
+function glob(){S.ratio=$('iRatio').value;S.nm=$('iNm').value;S.cnt=$('iCnt').value;S.mode=$('iMode').value;S.read=$('iRead').value;persist();render()}
+['iRatio','iNm','iCnt','iMode','iRead'].forEach(function(id){$(id).addEventListener('input',glob);$(id).addEventListener('change',glob)});
 $('iAv').addEventListener('change',function(e){var f=e.target.files[0];if(f)rd(f,function(d){S.av=d;persist();render()})});
 var L=$('mlist'),ix=function(e){return +e.target.closest('.mc').dataset.i};
 function ed(e){var f=e.target.dataset.f;if(!f)return;S.m[ix(e)][f]=f==='s'?+e.target.value:e.target.value;persist();render()}
