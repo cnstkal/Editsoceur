@@ -36,7 +36,7 @@ function esc(s){return String(s==null?'':s).replace(/[&<>"]/g,function(c){return
 function hd(s){return esc(String(s).replace(/^@/,''))}
 function render(){
  var h='<div class="hd">'+I.back+'<b>'+esc(S.title)+'</b>'+I.dots+'</div><div class="main">';
- h+='<div class="au"><div class="av"><img src="'+esc(S.avatar)+'"></div><div class="who"><div class="nm">'+esc(S.name)+(S.lockT?I.lock:'')+'</div><div class="hn">@'+hd(S.handle)+'</div></div>'+(S.showBtn?'<div class="pill">'+esc(S.btn)+'</div>':'')+'</div>';
+ h+='<div class="au"><div class="av"><img src="'+esc(S.avatar)+'"></div><div class="who"><div class="nm">'+esc(S.name)+(S.lockT?I.lock:'')+'</div><div class="hn">@'+hd(S.handle)+'</div></div>'+(S.showBtn?'<div class="pill">쪽지</div>':'')+'</div>';
  h+='<div class="body'+(S.showQuote?' hasq':'')+'">'+esc(S.text)+'</div>';
  if(S.showQuote)h+='<div class="quote"><div class="qh"><div class="av"><img src="'+esc(S.qavatar||S.avatar)+'"></div><b>'+esc(S.qname)+'</b><span class="m">@'+hd(S.qhandle)+'</span><span class="tm">· '+esc(S.qtime)+'</span></div><div class="qt">'+esc(S.qtext)+'</div></div>';
  var info=[];
@@ -59,7 +59,7 @@ function render(){
  document.getElementById('capture').innerHTML=h;
 }
 function readFile(f,cb){if(!f)return;var r=new FileReader();r.onload=function(){cb(r.result)};r.readAsDataURL(f)}
-var ids=['title','name','handle','text','time','date','views','reply','rt','like','btn','qname','qhandle','qtime','qtext','notice'];
+var ids=['title','name','handle','text','time','date','views','reply','rt','like','qname','qhandle','qtime','qtext','notice'];
 var sw=['showBtn','lockT','showQuote','showNotice','showNav'];
 function sync(){
  ids.forEach(function(k){document.getElementById(k).value=S[k]});
