@@ -18,7 +18,6 @@ pf.innerHTML=
 A(0,333,852,28,tx('',19,500,'pSb'),'',"justify-content:center;opacity:.3")+
 A(71,31,19,19,sv('<path d="M3 3l18 18M21 3 3 21"/>',19,'stroke-width:2.300'))+
 A(105,32,250,20,tx('',13,600,'pTi'))+
-[370,426,482].map(function(c,i){return A(c-20,22,40,40,'',0,'border-radius:50%;background:#333')+A(c-11,31,22,22,sv(i==0?TD:i==1?TU:'<g transform="translate(5 3) scale(.8)">'+TU+'</g><g transform="translate(-1 6) scale(.8)">'+TU+'</g>',22),0,'justify-content:center')}).join('')+
 A(648,31,22,22,sv(CA,22))+
 A(704,31,22,22,sv('<rect x="2" y="4" width="20" height="16" rx="2"/><rect x="11.500" y="12" width="8" height="5" rx="1"/>',22))+
 A(760,29,24,24,sv('<rect x="4" y="10.500" width="16" height="11" rx="2"/><path d="M8 10.500V7a4 4 0 0 1 8-1M10.500 16h3"/>',24))+
@@ -32,7 +31,7 @@ A(726,311,45,22,tx('',15,500,'pTm'))+
 bi(188,'<path d="M6 9a3 3 0 1 0 0-6 3 3 0 0 0 0 6zM6 21a3 3 0 1 0 0-6 3 3 0 0 0 0 6zM20 4 8.120 15.880M14.470 14.480 20 20M8.120 8.120 12 12"/>',22,'잘라내기')+
 bi(289,'<path d="M4.500 19.500A9.500 9.500 0 1 1 19.500 19.500"/><circle cx="12" cy="14" r="2" fill="#fff"/><path d="M12 14l3.500-4.500"/>',24,'속도(1x)')+
 bi(393,'<rect x="2" y="9" width="16" height="12" rx="2"/><path d="M6 5.500h14a2 2 0 0 1 2 2V16M9.500 2H21"/>',23,'회차')+
-bi(469,'<path d="M3 4h18v13H10l-5 4v-4H3zM7 9h4M13 9h4M7 12.500h4M13 12.500h4"/>',23,'음성 및 자막')+
+bi(469,'<path d="M4 4h16a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2h-6l-4 3v-3H4a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2z"/><path d="M7 10h3.500M13.500 10H17M7 13.500h10"/>',23,'음성 및 자막')+
 bi(592,'<path d="M5 4.500v15L17 12zM20 4v16"/>',21,'다음 화');
 var ps=pf.querySelectorAll('.a');for(var i=0;i<ps.length;i++)if(!ps[i].innerHTML&&!ps[i].id&&ps[i].style.width==='30em')ps[i].remove()}
 function fit(){pf.style.fontSize=pf.clientWidth/852+'px'}
