@@ -15,7 +15,7 @@
   function render(){
     var h='<span class="lg">'+XL.replace('44','34').replace('44','34')+'</span>';
     N.forEach(function(n,i){h+='<div class="pn'+(i===1?' on':'')+(n[2]?' hm':'')+'" style="top:'+(88+i*69)+'px">'+sv(n[0],n[2]?0:2.2,30,'#0f1419',n[2]?'#0f1419':'none')+'<span>'+n[1]+'</span></div>'});
-    if(!window.getXCompose||window.getXCompose())h+='<div class="pb">게시하기</div><div class="me"><i class="pa" style="width:55px;height:55px"></i><div><b>'+esc(S.me.n)+LK+'</b>'+esc(S.me.h)+'</div><span class="dt">'+sv(DT,2,26,'#0f1419','#0f1419')+'</span></div>';
+    if(!window.getXCompose||window.getXCompose())if(!window.getXCompose||window.getXCompose())h+='<div class="pb">게시하기</div>'<div class="me"><i class="pa" style="width:55px;height:55px"></i><div><b>'+esc(S.me.n)+LK+'</b>'+esc(S.me.h)+'</div><span class="dt">'+sv(DT,2,26,'#0f1419','#0f1419')+'</span></div>';
     $('pl').innerHTML=h;
     for(var i=0;i<2;i++){$('pT'+i).textContent=S.tabs[i];$('pT'+i).className=i===1?'on':''}
     $('pPlus').innerHTML=window.getXCompose&&window.getXCompose()?sv('<path d="M12 4v16M4 12h16"/>',2.2,26):'';
@@ -37,7 +37,9 @@
   function set(){$('iT0').value=S.tabs[0];$('iT1').value=S.tabs[1];$('iMn').value=S.me.n;$('iMh').value=S.me.h;$('iCompose').checked=window.getXCompose?window.getXCompose():true}
   function load(r){if(r)try{localStorage.removeItem(STORE)}catch(e){}try{var s=!r&&localStorage.getItem(STORE);S=s?JSON.parse(s):JSON.parse(JSON.stringify(DEF));if(!Array.isArray(S.t)||!S.me)throw 0}catch(e){S=JSON.parse(JSON.stringify(DEF))}set();list();render();fit()}
   function glob(){S.tabs=[$('iT0').value,$('iT1').value];S.me={n:$('iMn').value,h:$('iMh').value};persist();render()}
-  $('iCompose').addEventListener('change',function(){if(window.setXCompose)window.setXCompose(this.checked);render()});\n  ['iT0','iT1','iMn','iMh'].forEach(function(id){$(id).addEventListener('input',glob)});
+  $('iCompose').addEventListener('change',function(){if(window.setXCompose)window.setXCompose(this.checked);render()});
+  $('iCompose').addEventListener('change',function(){if(window.setXCompose)window.setXCompose(this.checked);render()});
+  ['iT0','iT1','iMn','iMh'].forEach(function(id){$(id).addEventListener('input',glob)});
   var L=$('xlist'),ix=function(e){return +e.target.closest('.xc').dataset.i};
   L.addEventListener('input',function(e){var f=e.target.dataset.f;if(!f||e.target.type==='file'||e.target.type==='checkbox')return;S.t[ix(e)][f]=e.target.value;persist();render()});
   L.addEventListener('change',function(e){var t=e.target,f=t.dataset.f;if(!f)return;var o=S.t[ix(e)];
