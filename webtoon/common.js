@@ -31,7 +31,7 @@ window.W=(function(){
     (o.fields||[]).forEach(function(a){var e=$(a[0]);
       function h(ev){
         if(e.type==='file'){if(ev.type!=='change'||!e.files[0])return;rd(e.files[0],function(d){S[a[1]]=d;persist();o.render(S)})}
-        else{S[a[1]]=e.value;persist();o.render(S)}}
+        else{S[a[1]]=a[2]==='c'?e.checked:e.value;persist();o.render(S)}}
       e.addEventListener('input',h);e.addEventListener('change',h)});
     (o.lists||[]).forEach(function(L){var c=$(L.el);
       function h(ev){var t=ev.target,f=t.dataset.f,pe=t.closest('.pe');if(!f||!pe)return;var x=S[L.p][+pe.dataset.i];
