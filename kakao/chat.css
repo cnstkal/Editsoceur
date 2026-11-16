@@ -6,7 +6,7 @@
 .ctt{position:absolute;left:0;right:0;text-align:center;font-size:19px;font-weight:700}
 .cm{flex:1;display:flex;flex-direction:column;justify-content:flex-end;padding:0 10px 10px;overflow:hidden}
 .mr{display:flex;align-items:flex-end;gap:6px;margin-top:5px}
-.mr.me{flex-direction:row-reverse}
+.mr.me{flex-direction:row;justify-content:flex-end}
 .mr.first{margin-top:16px}
 .bw{display:flex;flex-direction:column;max-width:72%}
 .mr.me .bw{align-items:flex-end}
