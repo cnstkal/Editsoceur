@@ -16,13 +16,13 @@ body{background:#f5f5f5;color:#111}
 .ti h1{font-size:20px;font-weight:800;line-height:1.3;word-break:break-word}
 .au{display:flex;align-items:center;justify-content:space-between;margin-top:10px;color:#666;font-size:14px}
 .au .l{display:flex;align-items:center;gap:6px}.au .l i{width:1px;height:10px;background:#ddd}
-.au .l b{color:#111;font-weight:500}.au .bd{width:11px;height:11px;border-radius:2px;background:#f5a623}
-.au .gl{height:28px;padding:0 12px;border:1.5px solid #dcdcec;border-radius:14px;font-size:12px;font-weight:700;color:#444;display:flex;align-items:center}
-.au .r{display:flex;align-items:center;gap:10px}.au .fd{width:20px;height:16px;border-radius:3px;background:#888}
+.au .l b{color:#111;font-weight:500}.au .gl{height:28px;padding:0 12px;border:1.5px solid #dcdcec;border-radius:14px;font-size:12px;font-weight:700;color:#444;display:flex;align-items:center}
+.au .r{display:flex;align-items:center;gap:10px}
 .st{display:flex;align-items:center;gap:7px;padding:14px 12px;font-size:14px;color:#666}
 .st i{width:1px;height:10px;background:#ddd}.st .cm{padding:2px 8px;border:1.5px solid #dcdcec;border-radius:12px;font-size:12px}.st .cm b{color:#e02424;font-weight:500}
-.im{margin:4px 12px 0;background:#ececec;background-size:cover;background-position:center;aspect-ratio:4/5}
+.im{margin:4px 12px 0;background:#ececec;min-height:300px}
 .im img{display:block;width:100%;height:auto}
+.im:empty{min-height:300px}
 .bd2{padding:16px 16px 0;font-size:18px;line-height:1.45;white-space:pre-wrap;word-break:break-word}
 .nt{padding:44px 20px 0;font-size:34px;font-weight:800;font-style:italic;color:#f01010;line-height:1.2;word-break:break-word}
 .ed{padding:20px 4px 0;font-size:14px}.ed h2{font-size:17px;margin:14px 0}
