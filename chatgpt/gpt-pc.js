@@ -10,7 +10,7 @@
     S.msgs.forEach(function(m){h+=m.t==='u'?'<div class="u"><div>'+esc(m.x)+'</div></div>':'<div class="a">'+esc(m.x)+'</div>'});
     h+='</div><div class="fade"></div>';
     if(S.input)h+='<div class="inp">'+PL+'<span class="ph">'+esc(S.ph)+'</span>'+MC+'<div class="go">'+WV+'</div></div>';
-    $('pf').innerHTML=h}
+    $('pf').innerHTML=h;fit()}
   function list(){var h='';S.msgs.forEach(function(m,i){
     h+='<div class="xc" data-i="'+i+'"><label>'+(m.t==='u'?'내 말풍선':'답변')+' (줄바꿈 가능)<textarea rows="2" data-f="x">'+esc(m.x)+'</textarea></label><div class="row"><button type="button" class="xb" data-a="u">↑</button><button type="button" class="xb" data-a="d">↓</button><button type="button" class="xb" data-a="x">✕ 삭제</button></div></div>'});
     $('xlist').innerHTML=h}
