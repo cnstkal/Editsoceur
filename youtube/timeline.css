@@ -16,7 +16,7 @@
 .yb{position:absolute;top:0;line-height:18px;font-size:16.5px;font-weight:500;white-space:nowrap}
 .yb.on::after{content:'';position:absolute;left:0;right:0;top:25px;height:2px;background:#f03;border-radius:1px}
 .yl{position:absolute;left:0;right:0;top:164px;bottom:0;overflow:hidden}
-.yc{position:relative;height:359px}
+.yc{position:relative;height:auto;padding-bottom:16px}
 .yv{position:relative;height:221px;background:#c4c4c4 center/cover}
 .yu{position:absolute;right:6px;bottom:7px;height:22px;padding:0 8px;border-radius:6px;background:rgba(0,0,0,.6);color:#fff;font-size:15px;font-weight:600;line-height:22px;display:flex;align-items:center;gap:4px}
 .yu svg{flex:none}

@@ -3,20 +3,20 @@ var $=function(i){return document.getElementById(i)};
 var CX=[36,107,183,258,338],SCROLL_MID=592.5,STICKY=72.5,TAB_Y=463;
 var BG=['linear-gradient(#1b1740,#c92d78)','linear-gradient(#fbe3f1,#f2a6cf)','linear-gradient(#f6efd8,#d9d0f2)','linear-gradient(#fdd3e6,#e84c8f)','linear-gradient(#5a3a7a,#c43a5a)'];
 var DEF={time:'9:41',bat:'80',chg:false,sc:0,
-nm:'Sample Channel',hd:'@samplechannel',su:'구독자 10K명',vd:'동영상 120개',sb:'구독',
-ds:'This is a sample channel description. Replace this text with your own.',lk:'example.com 외 링크 1개',
+nm:'샘플 채널',hd:'@samplechannel',su:'구독자 1만명',vd:'동영상 120개',sb:'구독',
+ds:'샘플 채널 소개 문구입니다. 원하는 내용으로 바꿔 주세요.',lk:'example.com 외 링크 1개',
 tabs:['홈','동영상','Shorts','라이브','재생목록'],act:'0',
-f:{n:'My Featured Video: Sample Title Goes Here',ch:'Sample Channel',vw:'10K',time:'1 month ago',dur:'3:13',mu:false,cb:false},
+f:{n:'대표 영상 샘플 제목입니다',ch:'샘플 채널',vw:'1만',time:'1개월 전',dur:'3:13',mu:false,cb:false},
 l:[
-{n:'Sample Video One: A Short Example Title',ch:'',sc:false,vw:'5K',time:'2 hours ago',dur:'4:46',mu:false,pg:'0'},
-{n:'Sample Short Video Title',ch:'',sc:true,vw:'2.8K',time:'4 hours ago',dur:'0:56',mu:false,pg:'0'},
-{n:'Another Sample Video With a Longer Title for Testing',ch:'',sc:false,vw:'1.5K',time:'13 hours ago',dur:'1:37',mu:false,pg:'0'},
-{n:'Example Video Four',ch:'',sc:false,vw:'2.5K',time:'2 days ago',dur:'25:07',mu:false,pg:'0'}]};
+{n:'샘플 영상 첫 번째 제목입니다',ch:'',sc:false,vw:'5천',time:'2시간 전',dur:'4:46',mu:false,pg:'0'},
+{n:'샘플 쇼츠 영상 제목',ch:'',sc:true,vw:'2.8천',time:'4시간 전',dur:'0:56',mu:false,pg:'0'},
+{n:'테스트용으로 조금 더 긴 샘플 영상 제목 예시입니다',ch:'',sc:false,vw:'1.5천',time:'13시간 전',dur:'1:37',mu:false,pg:'0'},
+{n:'샘플 영상 네 번째',ch:'',sc:false,vw:'2.5천',time:'2일 전',dur:'25:07',mu:false,pg:'0'}]};
 var NOTE='<svg width="14" height="14" viewBox="0 0 24 24" fill="#fff"><path d="M9 3v11.500A4 4 0 1 0 12 18V8h6V3z"/></svg>',
 DOTS='<svg class="ld" width="13" height="4" viewBox="0 0 13 4" fill="#0f0f0f"><circle cx="2" cy="2" r="1.900"/><circle cx="6.500" cy="2" r="1.900"/><circle cx="11" cy="2" r="1.900"/></svg>',
 DOTS2='<svg class="cdd" width="16" height="5" viewBox="0 0 16 5" fill="#0f0f0f"><circle cx="2.500" cy="2.500" r="2.300"/><circle cx="8" cy="2.500" r="2.300"/><circle cx="13.500" cy="2.500" r="2.300"/></svg>',
 CC='<div class="cc"><i class="c1"></i><i class="c2">T</i><i class="c3">連</i><i class="c4"></i></div>';
-var S,STORE='editsoceur-youtube-channel-v1';
+var S,STORE='editsoceur-youtube-channel-v2';
 function persist(){try{localStorage.setItem(STORE,JSON.stringify(S))}catch(e){console.warn('채널 데이터 저장 실패',e)}}
 function esc(t){return String(t==null?'':t).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;')}
 function pc(v){v=parseFloat(v);return isNaN(v)?0:Math.max(0,Math.min(100,v))}

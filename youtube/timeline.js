@@ -2,11 +2,11 @@
 var $=function(i){return document.getElementById(i)};
 var LEFT=[16,57,121,177,241,320],BG=['linear-gradient(#1b1740,#c92d78)','linear-gradient(#e4ecec,#7ea3a6)'];
 var DEF={time:'11:48',bat:'65',chg:true,badge:'7',act:'0',tabs:['홈','구독','음악','라이브','팟캐스트','더보기'],
-v:[{ch:'Sample Channel',n:'My First Video: A Quick Sample Title',vw:'1.2K',time:'2 hours ago',dur:'4:46',mu:true},
-{ch:'Another Channel',n:'Second Example Video Title That Spans Two Lines',vw:'12K',time:'3 days ago',dur:'12:36',mu:false}]};
+v:[{ch:'샘플 채널',n:'샘플 영상 제목입니다. 여기에 원하는 제목을 적어 주세요',vw:'1.2만',time:'2시간 전',dur:'4:46',mu:false},
+{ch:'다른 샘플 채널',n:'두 줄로 넘어가는 긴 샘플 영상 제목 예시입니다 테스트용 문구',vw:'12만',time:'3일 전',dur:'12:36',mu:false}]};
 var NOTE='<svg width="15" height="15" viewBox="0 0 24 24" fill="#fff"><path d="M9 3v11.500A4 4 0 1 0 12 18V8h6V3z"/></svg>',
 DOTS='<svg class="yd" width="16" height="5" viewBox="0 0 16 5" fill="#0f0f0f"><circle cx="2.500" cy="2.500" r="2.300"/><circle cx="8" cy="2.500" r="2.300"/><circle cx="13.500" cy="2.500" r="2.300"/></svg>';
-var S,STORE='editsoceur-youtube-timeline-v2';
+var S,STORE='editsoceur-youtube-timeline-v3';
 function persist(){try{localStorage.setItem(STORE,JSON.stringify(S))}catch(e){console.warn('유튜브 데이터 저장 실패',e)}}
 function esc(t){return String(t==null?'':t).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;')}
 function bgi(u,d){return u?"background-image:url('"+u+"')":(d?'background-image:'+d:'')}
