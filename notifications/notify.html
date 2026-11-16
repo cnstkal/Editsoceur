@@ -7,8 +7,21 @@
 <link rel="stylesheet" href="notify.css">
 </head>
 <body>
-<div class="stage" id="stage"></div>
-<nav class="picker" id="picker"></nav>
+<main class="wrap">
+  <section class="preview"><div class="stage" id="stage"></div></section>
+  <nav class="picker" id="picker"></nav>
+  <section class="editor">
+    <h2>알림 편집</h2>
+    <label>앱 이름<input id="appName"></label>
+    <label>보낸 사람 / 제목<input id="title"></label>
+    <label>알림 내용<input id="bodyText"></label>
+    <label>시간<input id="timeText"></label>
+    <h2>알림 카드 배경</h2>
+    <div class="row"><label>배경 색상<input id="bgColor" type="color" value="#efefef"></label><label>투명도 <output id="opacityValue">96%</output><input id="opacity" type="range" min="0" max="100" value="96"></label></div>
+    <div class="actions"><button id="savePng" type="button">PNG로 저장</button><button id="reset" type="button">초기화</button></div>
+  </section>
+</main>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
 <script src="notify.js"></script>
 </body>
 </html>
