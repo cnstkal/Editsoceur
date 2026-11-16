@@ -8,7 +8,7 @@ html,body{margin:0;background:#f5f5f5;color:#111;font-family:-apple-system,"Appl
 .hd svg{width:26px;height:26px;stroke:#0f1419;fill:none;stroke-width:2.4;stroke-linecap:round;stroke-linejoin:round}
 .hd b{font-size:19px;font-weight:800}
 .hd .dots{width:26px;height:26px;fill:#0f1419;stroke:none}
-.main{padding:46px 10px 0}
+.main{padding:20px 10px 0}
 .au{display:flex;align-items:center;gap:12px}
 .au .av{width:52px;height:52px;border-radius:50%;overflow:hidden;background:#ccc;flex:none}
 .av img{width:100%;height:100%;object-fit:cover;display:block}
@@ -17,7 +17,7 @@ html,body{margin:0;background:#f5f5f5;color:#111;font-family:-apple-system,"Appl
 .hn{color:#536471;font-size:17px;line-height:1.25;overflow:hidden;text-overflow:ellipsis}
 .pill{border:1.5px solid #cfd9de;border-radius:20px;padding:6px 18px;font-size:15px;font-weight:700;align-self:flex-start;margin-top:4px}
 .lk{width:15px;height:15px;fill:currentColor;flex:none}
-.body{font-size:24px;line-height:1.4;margin:50px 0 38px;white-space:pre-wrap;word-break:break-word}
+.body{font-size:24px;line-height:1.4;margin:16px 0 24px;white-space:pre-wrap;word-break:break-word}
 .body.hasq{margin-bottom:26px}
 .info{color:#536471;font-size:15.5px}
 .info b{color:#0f1419;font-weight:800}
