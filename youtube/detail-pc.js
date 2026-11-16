@@ -44,7 +44,7 @@
     S.r.forEach(function(x,i){r+='<div class="xc" data-i="'+i+'" data-k="r"><div class="row"><label>제목<input data-f="t" value="'+esc(x.t)+'"></label><label>채널<input data-f="c" value="'+esc(x.c)+'"></label></div><div class="row"><label>길이<input data-f="d" value="'+esc(x.d)+'"></label><label>조회수<input data-f="vw" value="'+esc(x.vw)+'"></label><label>시기<input data-f="ag" value="'+esc(x.ag)+'"></label></div><label>썸네일 사진<input type="file" accept="image/*" data-f="th"></label><div class="row"><button type="button" class="xb" data-a="u">↑</button><button type="button" class="xb" data-a="d">↓</button><button type="button" class="xb" data-a="x">✕ 삭제</button></div></div>'});
     $('xc').innerHTML=c;$('xr').innerHTML=r}
   function persist(){try{localStorage.setItem(STORE,JSON.stringify(S))}catch(e){}}
-  function fit(){var k=Math.min(1,$('pw').clientWidth/1920);$('pf').style.transform='scale('+k+')';$('pw').style.height=$('pf').offsetHeight*k+'px'}
+  function fit(){var k=Math.min(1,$('pw').clientWidth/1920);$('pf').style.transform='scale('+k+')';$('pf').style.height='auto';$('pf').style.overflow='visible';$('pw').style.height=$('pf').scrollHeight*k+'px'}
   function set(){$('iTi').value=S.ti;$('iCn').value=S.cn;$('iSb').value=S.sb;$('iLk').value=S.lk;$('iVw').value=S.vw;$('iAg').value=S.ag;$('iDs').value=S.ds;$('iCm').value=S.cm}
   function load(r){if(r)try{localStorage.removeItem(STORE)}catch(e){}try{var s=!r&&localStorage.getItem(STORE);S=s?JSON.parse(s):JSON.parse(JSON.stringify(DEF));if(!Array.isArray(S.c))throw 0}catch(e){S=JSON.parse(JSON.stringify(DEF))}set();list();render()}
   var TX={iTi:'ti',iCn:'cn',iSb:'sb',iLk:'lk',iVw:'vw',iAg:'ag',iDs:'ds',iCm:'cm'};
