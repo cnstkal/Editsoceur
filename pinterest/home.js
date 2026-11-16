@@ -1,7 +1,7 @@
 (function(){
   var $=function(i){return document.getElementById(i)},STORE='pin_home_v1';
   var H={s:.7,n:1.0,t:1.35,l:1.8},DOTS='<svg width="24" height="24" viewBox="0 0 24 24" fill="#111"><circle cx="5" cy="12" r="1.800"/><circle cx="12" cy="12" r="1.800"/><circle cx="19" cy="12" r="1.800"/></svg>';
-  var DEF={dot:true,p:[['',  'l'],['핀 제목','t'],['','n'],['핀 제목','l'],['','t'],['핀 제목','n']].map(function(a){return{x:a[0],h:a[1],img:''}})};
+  var DEF={dot:true,nav:false,p:[['',  'l'],['핀 제목','t'],['','n'],['핀 제목','l'],['','t'],['핀 제목','n']].map(function(a){return{x:a[0],h:a[1],img:''}})};
   var S;
   function persist(){try{localStorage.setItem(STORE,JSON.stringify(S))}catch(e){}}
   function esc(t){return String(t).replace(/[&<>"]/g,function(c){return{'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]})}
@@ -10,7 +10,7 @@
     S.p.forEach(function(p,i){
       c[i%2]+='<div class="pin"><div class="pi" style="padding-top:'+(H[p.h]||1)*100+'%'+(p.img?';background-image:url('+p.img+')':'')+'"></div><div class="pt"><span>'+esc(p.x)+'</span>'+DOTS+'</div></div>'});
     $('pc0').innerHTML=c[0];$('pc1').innerHTML=c[1];
-    $('pDot').style.display=S.dot?'block':'none'}
+    $('pDot').style.display=S.dot?'block':'none';$('pnav').classList.toggle('on',!!S.nav)}
   function list(){
     $('plist').innerHTML=S.p.map(function(p,i){
       return '<div class="pe" data-i="'+i+'"><label>제목(비우면 숨김)<input data-f="x" value="'+esc(p.x)+'"></label>'+
@@ -20,8 +20,9 @@
   function load(reset){
     if(reset){try{localStorage.removeItem(STORE)}catch(e){}S=JSON.parse(JSON.stringify(DEF))}
     else{try{var v=localStorage.getItem(STORE);S=v?JSON.parse(v):JSON.parse(JSON.stringify(DEF));if(!S||!Array.isArray(S.p))throw 0}catch(e){S=JSON.parse(JSON.stringify(DEF))}}
-    $('iDot').checked=S.dot;list();render()}
+    $('iDot').checked=S.dot;$('iNav').checked=!!S.nav;list();render()}
   $('iDot').addEventListener('change',function(){S.dot=this.checked;persist();render()});
+  $('iNav').addEventListener('change',function(){S.nav=this.checked;persist();render()});
   var L=$('plist'),ix=function(e){return +e.target.closest('.pe').dataset.i};
   L.addEventListener('input',function(e){var t=e.target;if(t.dataset.f!=='x')return;S.p[ix(e)].x=t.value;persist();render()});
   L.addEventListener('change',function(e){var t=e.target,f=t.dataset.f,o=S.p[ix(e)];
