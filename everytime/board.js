@@ -1,9 +1,9 @@
 (function(){
 var $=function(i){return document.getElementById(i)};
 var P=function(t,x,c,tm){return{t:t,x:x,c:c,tm:tm,a:'익명'}};
-var DEF={tm:'12:43',bt:'72',bd:'자유게시판',sc:'숭의여대',p:[P('채플 억울하게 결석처리 되어 본 사람','제발','1','40분 전'),P('Ai 과제','아니 미루고 미루다 이제 진짜 하려고 들어가니까 교안 비밀번호 또 있던데 앞으로 지난주처럼...','1','50분 전'),P('오사카 여행','각자 제일 재밌는 거 뭐였어?\n아님 젤 맛있었던 음식?','5','11/15'),P('하','번아웃 올거같다','','11/15'),P('하치와례 좋아하는 사람','ㅈㄱㄴ','','11/15')]};
+var DEF={tm:'12:43',bt:'72',bd:'자유게시판',sc:'한빛고등학교',p:[P('주말에 같이 영화 볼 사람','이번 주 토요일 오후에 시간 되는 분 계신가요? 팝콘은 제가 살게요','2','20분 전'),P('학식 메뉴 추천','오늘 돈까스 괜찮았나요? 다음 주 메뉴 궁금해요','4','1시간 전'),P('사진 동아리 신입 모집','가을 풍경 찍는 게 취미인 분 환영합니다. 관심 있으면 댓글 주세요!','','11/15'),P('과제 제출 기한 연장되나요','교수님께 메일 보내봤는데 아직 답장이 없네요','','11/15'),P('도서관 자리 팁','3층 열람실이 제일 조용하고 콘센트도 많아요','3','11/14')]};
 var G=[['iTm','tm'],['iBt','bt'],['iBd','bd'],['iSc','sc']];
-var S,STORE='editsoceur-everytime-board-v1';
+var S,STORE='editsoceur-everytime-board-v2';
 var IC='<svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#44bec5" stroke-width="2.300" stroke-linejoin="round"><path d="M12 3a8.500 8.500 0 1 1-4 16l-4.500 1.200L4.800 16A8.500 8.500 0 0 1 12 3z"/></svg>';
 function persist(){try{localStorage.setItem(STORE,JSON.stringify(S))}catch(e){console.warn('저장 실패',e)}}
 function esc(t){return String(t==null?'':t).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;')}
