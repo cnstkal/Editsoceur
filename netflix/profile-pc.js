@@ -1,6 +1,6 @@
 (function(){
   var $=function(i){return document.getElementById(i)},STORE='editsoceur-netflix-profile-pc-v1',S;
-  var DEF={tt:'Netflix를 시청할 프로필을 선택하세요.',mg:'프로필 관리',p:[{n:'선택 1',img:''},{n:'선택 2',img:''},{n:'선택 3',img:''},{n:'선택 4',img:''},{n:'선택 5',img:''}]};
+  var DEF={tt:'Netflix를 시청할 프로필을 선택하세요.',p:[{n:'선택 1',img:''},{n:'선택 2',img:''},{n:'선택 3',img:''},{n:'선택 4',img:''},{n:'선택 5',img:''}]};
   function esc(t){return String(t==null?'':t).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;')}
   function render(){
     var h='<div class="lg">Netflix</div><div class="tt">'+esc(S.tt)+'</div><div class="pr">'+S.p.map(function(p){return '<div class="pi"><div class="pb" style="'+(p.img?"background-image:url('"+esc(p.img)+"')":'')+'"></div><div class="pn">'+esc(p.n)+'</div></div>'}).join('')+'</div><div class="mg"><span>'+esc(S.mg)+'</span></div>';
@@ -8,9 +8,9 @@
   function list(){var h='';S.p.forEach(function(p,i){h+='<div class="xc" data-i="'+i+'"><div class="row"><label>이름<input data-f="n" value="'+esc(p.n)+'"></label><label>프로필 사진<input type="file" accept="image/*" data-f="img"></label></div><div class="row"><button type="button" class="xb" data-a="u">↑</button><button type="button" class="xb" data-a="d">↓</button><button type="button" class="xb" data-a="x">✕ 삭제</button></div></div>'});$('xlist').innerHTML=h;$('addP').disabled=S.p.length>=5}
   function persist(){try{localStorage.setItem(STORE,JSON.stringify(S))}catch(e){}}
   function fit(){var k=Math.min(1,$('pw').clientWidth/1920);$('pf').style.transform='scale('+k+')';$('pw').style.height=1080*k+'px'}
-  function load(r){if(r)try{localStorage.removeItem(STORE)}catch(e){}try{var s=!r&&localStorage.getItem(STORE);S=s?JSON.parse(s):JSON.parse(JSON.stringify(DEF));if(!Array.isArray(S.p))throw 0}catch(e){S=JSON.parse(JSON.stringify(DEF))}$('iTt').value=S.tt;$('iMg').value=S.mg;list();render();fit()}
+  function load(r){if(r)try{localStorage.removeItem(STORE)}catch(e){}try{var s=!r&&localStorage.getItem(STORE);S=s?JSON.parse(s):JSON.parse(JSON.stringify(DEF));if(!Array.isArray(S.p))throw 0}catch(e){S=JSON.parse(JSON.stringify(DEF))}$('iTt').value=S.tt;list();render();fit()}
   $('iTt').addEventListener('input',function(){S.tt=this.value;persist();render()});
-  $('iMg').addEventListener('input',function(){S.mg=this.value;persist();render()});
+
   var L=$('xlist'),ix=function(e){return +e.target.closest('.xc').dataset.i};
   L.addEventListener('input',function(e){var f=e.target.dataset.f;if(!f||e.target.type==='file')return;S.p[ix(e)][f]=e.target.value;persist();render()});
   L.addEventListener('change',function(e){var t=e.target;if(t.dataset.f!=='img'||!t.files[0])return;var o=S.p[ix(e)],r=new FileReader();r.onload=function(){o.img=r.result;persist();render()};r.readAsDataURL(t.files[0])});
