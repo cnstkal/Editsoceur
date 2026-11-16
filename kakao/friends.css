@@ -24,7 +24,8 @@
 .kp>div{min-width:0}.kp b{display:block;font-size:17px;font-weight:500}.kp small{display:block;font-size:15px;color:#888;margin-top:3px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .kp b i{font-style:normal;color:#888;margin-left:6px}
 #kFavL,#kFrL{padding-bottom:6px}
-.kn{position:absolute;left:0;right:0;bottom:0;height:78px;background:#fff;display:flex;padding-top:10px}
+.kn{position:absolute;left:0;right:0;bottom:0;height:78px;background:#fff;display:none;padding-top:10px}
+.kn.on{display:flex}
 .kn span{position:relative;flex:1;display:flex;justify-content:center}
 .kn em{position:absolute;top:-8px;left:52%;font-style:normal;background:#f0452d;color:#fff;font-size:12px;font-weight:700;min-width:22px;height:22px;border-radius:11px;padding:0 6px;display:flex;align-items:center;justify-content:center}
 .kn u{position:absolute;top:-2px;left:57%;width:8px;height:8px;border-radius:50%;background:#f0452d}

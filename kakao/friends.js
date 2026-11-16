@@ -1,7 +1,7 @@
 (function(){
   var $=function(i){return document.getElementById(i)},STORE='kakao_friends_v1';
   var F=[['가희(멜뮤양도자)','',0],['강서경','',1],['강주희','',2],['고노을','히키코모리 + 오타쿠 + 집순이 =고여울',0],['고여울','',3],['김규은','',2],['김민경','',3],['김아인','상태메시지를 입력해 주세요.',1],['김예지','',2]];
-  var DEF={name:'소윤',b1:'340',b2:'1',dot:true,bd:true,fav:true,bdN:'1',frN:'51',me:'',bdImg:'',
+  var DEF={name:'드',nav:false,b1:'340',b2:'1',dot:true,bd:true,fav:true,bdN:'1',frN:'51',me:'',bdImg:'',
     favs:[{n:'엄마',s:'',c:2},{n:'아빠',s:'쉽게 얻을 수 있는 것 중에, 가치 있는 것은 거의 없다',c:0}],
     fr:F.map(function(a){return{n:a[0],s:a[1],c:a[2]}})};
   var S;
@@ -16,20 +16,20 @@
     $('kFav').style.display=S.fav?'':'none';$('kFavT').textContent='즐겨찾는 친구 '+S.favs.length;$('kFavL').innerHTML=S.favs.map(row).join('');
     $('kFrT').textContent='친구 '+(S.frN||S.fr.length);$('kFrL').innerHTML=S.fr.map(row).join('');
     [['kB1',S.b1],['kB2',S.b2]].forEach(function(a){var e=$(a[0]);e.textContent=a[1];e.style.display=a[1]?'flex':'none'});
-    $('kDot').style.display=S.dot?'block':'none'}
+    $('kDot').style.display=S.dot?'block':'none';$('kNav').classList.toggle('on',!!S.nav)}
   function list(){['favs','fr'].forEach(function(k){
     $(k==='fr'?'elFr':'elFav').innerHTML=S[k].map(function(p,i){
       return '<div class="pe" data-k="'+k+'" data-i="'+i+'"><div class="row"><label>이름<input data-f="n" value="'+esc(p.n)+'"></label><label>색<select data-f="c">'+['파랑','보라','민트','연보라'].map(function(n,j){return '<option value="'+j+'"'+(+p.c===j?' selected':'')+'>'+n+'</option>'}).join('')+'</select></label></div>'+
       '<label>상태메시지<input data-f="s" value="'+esc(p.s)+'"></label><label class="file">사진<input type="file" accept="image/*" data-f="img"></label>'+
       '<div class="row"><button type="button" class="xb" data-a="u">↑</button><button type="button" class="xb" data-a="d">↓</button><button type="button" class="xb" data-a="x">✕ 삭제</button></div></div>'}).join('')})}
-  function set(){$('iName').value=S.name;$('iB1').value=S.b1;$('iB2').value=S.b2;$('iBd').checked=S.bd;$('iFav').checked=S.fav;$('iDot').checked=S.dot;$('iBdN').value=S.bdN;$('iFrN').value=S.frN}
+  function set(){$('iName').value=S.name;$('iB1').value=S.b1;$('iB2').value=S.b2;$('iBd').checked=S.bd;$('iFav').checked=S.fav;$('iDot').checked=S.dot;$('iNav').checked=!!S.nav;$('iBdN').value=S.bdN;$('iFrN').value=S.frN}
   function load(reset){
     if(reset){try{localStorage.removeItem(STORE)}catch(e){}S=JSON.parse(JSON.stringify(DEF))}
     else{try{var v=localStorage.getItem(STORE);S=v?JSON.parse(v):JSON.parse(JSON.stringify(DEF));if(!S||!Array.isArray(S.fr)||!Array.isArray(S.favs))throw 0}catch(e){S=JSON.parse(JSON.stringify(DEF))}}
     set();list();render()}
   function rd(f,cb){var r=new FileReader();r.onload=function(){cb(r.result)};r.readAsDataURL(f)}
   [['iName','name'],['iB1','b1'],['iB2','b2'],['iBdN','bdN'],['iFrN','frN']].forEach(function(a){$(a[0]).addEventListener('input',function(){S[a[1]]=this.value;persist();render()})});
-  [['iBd','bd'],['iFav','fav'],['iDot','dot']].forEach(function(a){$(a[0]).addEventListener('change',function(){S[a[1]]=this.checked;persist();render()})});
+  [['iBd','bd'],['iFav','fav'],['iDot','dot'],['iNav','nav']].forEach(function(a){$(a[0]).addEventListener('change',function(){S[a[1]]=this.checked;persist();render()})});
   [['iMe','me'],['iBdImg','bdImg']].forEach(function(a){$(a[0]).addEventListener('change',function(){if(this.files[0])rd(this.files[0],function(d){S[a[1]]=d;persist();render()})})});
   function ctx(e){var p=e.target.closest('.pe');return p&&{k:p.dataset.k,i:+p.dataset.i}}
   ['elFav','elFr'].forEach(function(id){var L=$(id);
