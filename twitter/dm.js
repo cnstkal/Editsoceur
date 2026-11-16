@@ -48,7 +48,7 @@ function render(){
 }
 function readFile(f,cb){if(!f)return;var r=new FileReader();r.onload=function(){cb(r.result)};r.readAsDataURL(f)}
 var ids=['name','readText','placeholder'];
-var sw=['showCall','showRead','showInput','showNav'];
+var sw=['showCall','showRead','showInput'];
 function sync(){
  ids.forEach(function(k){document.getElementById(k).value=S[k]});
  sw.forEach(function(k){document.getElementById(k).checked=S[k]});
