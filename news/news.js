@@ -9,8 +9,7 @@
     m:[{n:'sample****',t:'기대되네요 꼭 가볼게요.',d:'2026.11.16. 11:04',l:'0',x:'0'},{n:'demo****',t:'교통 대책이 잘 마련됐으면 좋겠습니다. 작년에는 주차가 많이 힘들었는데요…',d:'2026.11.16. 11:00',l:'12',x:'0'},{n:'test****',t:'가족들과 같이 가야겠어요',d:'2026.11.16. 10:52',l:'3',x:'0'}]};
   var TH='<svg viewBox="0 0 24 24" fill="none" stroke="#9a9ea3" stroke-width="1.500" stroke-linecap="round" stroke-linejoin="round"><path d="M7 11v9H4v-9zM7 11l4-8c2 0 3 1 2.500 3.500L13 9h6a2 2 0 0 1 2 2.300l-1.200 6.500A2 2 0 0 1 18 20H7"/></svg>';
   function render(S){
-    var sc=+S.sc||0,hide=sc>=2000;
-    $('nScr').style.top=U(-sc);$('nTime').textContent=S.time;
+    var hide=false;$('nScr').style.top='0';$('nTime').textContent=S.time;
     var sb=document.querySelector('#nf .sb');if(!sb.querySelector('svg'))sb.insertAdjacentHTML('beforeend',W.sb);
     $('nHd').style.top=U(177);
     $('nHd').innerHTML=(hide?'':'<div class="ub">'+esc(S.url)+'<svg viewBox="0 0 24 24" fill="none" stroke="#333" stroke-width="2" stroke-linecap="round"><path d="M5 5l14 14M19 5 5 19"/></svg></div>')+
