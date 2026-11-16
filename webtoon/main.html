@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no,viewport-fit=cover">
+<title>웹툰 메인</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.css">
+<link rel="stylesheet" href="../instagram/story.css?v=3">
+<link rel="stylesheet" href="webtoon.css?v=1">
+</head>
+<body>
+<div class="phone">
+<div class="navbar" data-html2canvas-ignore><a href="index.html">‹ 선택화면</a></div>
+<div id="wf" class="wt">
+  <div class="sb"><b id="wTime"></b></div>
+  <div class="hd"><b>웹툰</b><svg viewBox="0 0 24 24" fill="none" stroke="#111" stroke-width="2" stroke-linecap="round"><circle cx="10.500" cy="10.500" r="7"/><path d="m16 16 5 5"/></svg></div>
+  <div class="st"><b id="wSb"></b><span id="wSn"></span><svg viewBox="0 0 24 24" fill="none" stroke="#111" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 4 8 8-8 8"/></svg></div>
+  <div class="rk" id="wRk"></div>
+  <div class="tabs" id="wTabs"></div>
+  <div class="gr" id="wGr"></div>
+  <div id="wNav"></div>
+</div>
+<section class="editor">
+  <h2>웹툰 메인 편집</h2>
+  <div class="row"><label>시간<input id="iTime"></label></div>
+  <div class="row"><label>섹션 제목(굵게)<input id="iSb"></label><label>섹션 제목(보통)<input id="iSn"></label></div>
+  <label>요일 탭 (쉼표 구분, 뱃지는 이름|뱃지)<input id="iTabs"></label>
+  <label>선택된 탭 번호(1부터)<input id="iAct" type="number" min="1"></label>
+  <h2 style="margin-top:14px">인기 급상승 카드</h2><div id="el1"></div>
+  <button class="ghost" id="add1" type="button">+ 카드 추가</button>
+  <h2 style="margin-top:14px">작품 목록</h2><div id="el2"></div>
+  <button class="ghost" id="add2" type="button">+ 작품 추가</button>
+</section>
+</div>
+<div class="bar"><button id="savePng" class="primary">PNG로 저장</button><button id="reset" class="secondary">초기화</button></div>
+<script src="https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js"></script>
+<script src="common.js?v=1"></script>
+<script src="main.js?v=1"></script>
+</body>
+</html>
