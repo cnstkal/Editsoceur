@@ -2,7 +2,7 @@
 .nz .sb{background:#fff;z-index:7;height:calc(177*var(--u));color:#111}
 .nz .sb b{left:calc(112*var(--u));top:calc(56*var(--u))}
 .nz .isl{position:absolute;left:calc(300*var(--u));top:calc(34*var(--u));width:calc(568*var(--u));height:calc(110*var(--u));border-radius:calc(55*var(--u));background:#000;z-index:8}
-.nz .scr{position:absolute;left:0;right:0;top:0}
+.nz .scr{position:relative;left:0;right:0;top:0!important;height:auto;overflow:visible}
 .nz .hd2{position:absolute;left:0;right:0;top:calc(177*var(--u));background:#fff;z-index:6;box-shadow:0 calc(6*var(--u)) calc(14*var(--u)) rgba(0,0,0,.06)}
 .nz .ub{position:relative;height:calc(58*var(--u));border-bottom:calc(1.500*var(--u)) solid #eee;text-align:center;font-size:calc(42*var(--u));line-height:calc(50*var(--u));color:#8a8a8f}
 .nz .ub svg{position:absolute;right:calc(42*var(--u));top:calc(8*var(--u));width:calc(30*var(--u));height:calc(30*var(--u))}
