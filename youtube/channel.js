@@ -40,19 +40,18 @@ function get(p){return p.split('.').reduce(function(o,k){return o&&o[k]},S)}
 function put(p,v){var a=p.split('.'),l=a.pop();a.reduce(function(o,k){return o[k]},S)[l]=v}
 function rd(f,cb){var r=new FileReader();r.onload=function(){cb(r.result)};r.readAsDataURL(f)}
 var els=[].slice.call(document.querySelectorAll('[data-k]'));
-function setTabs(){$('iTabs').value=S.tabs.join(',');var o='';S.tabs.forEach(function(n,i){o+='<option value="'+i+'">'+esc(n)+'</option>'});$('iAct').innerHTML=o;$('iAct').value=S.act}
+function setTabs(){var o='';S.tabs.forEach(function(n,i){o+='<option value="'+i+'">'+esc(n)+'</option>'});$('iAct').innerHTML=o;$('iAct').value=S.act}
 function set(){els.forEach(function(e){if(e.type==='file')return;var v=get(e.dataset.k);if(e.type==='checkbox')e.checked=!!v;else e.value=v==null?'':v});setTabs()}
 els.forEach(function(e){
 if(e.type==='file')e.addEventListener('change',function(){if(e.files[0])rd(e.files[0],function(d){put(e.dataset.k,d);persist();render()})});
 else{var h=function(){put(e.dataset.k,e.type==='checkbox'?e.checked:e.value);persist();render()};e.addEventListener('input',h);e.addEventListener('change',h)}});
-$('iTabs').addEventListener('change',function(){var a=this.value.split(',').map(function(s){return s.trim()});while(a.length<5)a.push('');S.tabs=a.slice(0,5);persist();setTabs();render()});
 $('iAct').addEventListener('change',function(){S.act=this.value;persist();render()});
 function scr(v){S.sc=v;set();persist();render()}
 $('pTop').onclick=function(){scr(0)};$('pMid').onclick=function(){scr(SCROLL_MID)};
 function list(){var h='';S.l.forEach(function(x,i){
 h+='<div class="ec" data-i="'+i+'"><label>제목<input data-f="n" value="'+esc(x.n)+'"></label><label>채널명 줄<input data-f="ch" value="'+esc(x.ch)+'"></label>'+
 '<div class="row"><label>조회수<input data-f="vw" value="'+esc(x.vw)+'"></label><label>시간<input data-f="time" value="'+esc(x.time)+'"></label><label>길이<input data-f="dur" value="'+esc(x.dur)+'"></label><label>진행률 %<input data-f="pg" value="'+esc(x.pg)+'"></label></div>'+
-'<div class="row" style="align-items:center"><label class="file">썸네일<input type="file" accept="image/*" data-f="th"></label><label class="ek"><input type="checkbox" data-f="mu"'+(x.mu?' checked':'')+'> 음표</label><label class="ek"><input type="checkbox" data-f="sc"'+(x.sc?' checked':'')+'> 채널명 표시</label></div>'+
+'<div class="row" style="align-items:center"><label class="file">썸네일<input type="file" accept="image/*" data-f="th"></label><label class="ek"><input type="checkbox" data-f="sc"'+(x.sc?' checked':'')+'> 채널명 표시</label></div>'+
 '<div class="row"><button type="button" class="eb" data-a="u">↑</button><button type="button" class="eb" data-a="d">↓</button><button type="button" class="eb" data-a="x">✕ 삭제</button></div></div>'});
 $('clist').innerHTML=h}
 var L=$('clist'),ix=function(e){return +e.target.closest('.ec').dataset.i};
