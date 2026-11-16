@@ -46,12 +46,12 @@ function render(){
   h+='<div class="ac"><span>'+I.rep+esc(t.reply)+'</span><span>'+I.rt+esc(t.rt)+'</span><span>'+I.heart+esc(t.like)+'</span><span>'+I.view+esc(t.view)+'</span><span class="s">'+I.bm+'</span><span class="s">'+I.sh+'</span></div></div>'+I.x+'</div>';
  });
  h+='</div>';
- if(S.fab)h+='<div class="fabbtn">'+I.plus+'</div>';
+ h+='<div class="fabbtn">'+I.plus+'</div>';
  if(false)h+='<div class="nv"><div>'+I.home+'</div><div>'+I.search+'</div><div>'+I.eye+'</div><div>'+I.bell+'</div><div>'+I.msg+'</div></div>';
  document.getElementById('capture').innerHTML=h;
 }
 function readFile(f,cb){if(!f)return;var r=new FileReader();r.onload=function(){cb(r.result)};r.readAsDataURL(f)}
-var ids=['query','tabs','sel'],sw=['fab'];
+var ids=['query','tabs','sel'],sw=[];
 function sync(){ids.forEach(function(k){document.getElementById(k).value=S[k]});sw.forEach(function(k){document.getElementById(k).checked=S[k]})}
 function renderList(){
  var box=document.getElementById('list');box.innerHTML='';
