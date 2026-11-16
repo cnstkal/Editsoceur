@@ -19,7 +19,7 @@
     $('pf').innerHTML=h}
   function list(){var h='';S.v.forEach(function(v,i){h+='<div class="xc" data-i="'+i+'"><div class="row"><label>제목<input data-f="t" value="'+esc(v.t)+'"></label><label>길이<input data-f="d" value="'+esc(v.d)+'"></label></div><div class="row"><label>조회수<input data-f="vw" value="'+esc(v.vw)+'"></label><label>올린 시기<input data-f="ago" value="'+esc(v.ago)+'"></label></div><label>썸네일 사진<input type="file" accept="image/*" data-f="th"></label><div class="row"><button type="button" class="xb" data-a="u">↑</button><button type="button" class="xb" data-a="d">↓</button><button type="button" class="xb" data-a="x">✕ 삭제</button></div></div>'});$('xlist').innerHTML=h}
   function persist(){try{localStorage.setItem(STORE,JSON.stringify(S))}catch(e){}}
-  function fit(){var k=Math.min(1,$('pw').clientWidth/1920);$('pf').style.transform='scale('+k+')';$('pw').style.height=1080*k+'px'}
+  function fit(){var k=Math.min(1,$('pw').clientWidth/1920);$('pf').style.transform='scale('+k+')';$('pf').style.height='auto';$('pf').style.overflow='visible';$('pw').style.height=Math.max(1080,$('pf').scrollHeight)*k+'px'}
   function set(){$('iNm').value=S.nm;$('iHd').value=S.hd;$('iSb').value=S.sb;$('iCn').value=S.cn;$('iDs').value=S.ds;$('iFt').value=S.ft;$('iFm').value=S.fm}
   function load(r){if(r)try{localStorage.removeItem(STORE)}catch(e){}try{var s=!r&&localStorage.getItem(STORE);S=s?JSON.parse(s):JSON.parse(JSON.stringify(DEF));if(!Array.isArray(S.v))throw 0}catch(e){S=JSON.parse(JSON.stringify(DEF))}set();list();render();fit()}
   var TX={iNm:'nm',iHd:'hd',iSb:'sb',iCn:'cn',iDs:'ds',iFt:'ft',iFm:'fm'};
@@ -36,7 +36,7 @@
   $('addV').onclick=function(){S.v.push({t:'임시 영상 제목입니다',d:'0:00',vw:'1만',ago:'1일 전',th:''});persist();list();render()};
   $('reset').onclick=function(){load(true)};
   $('savePng').onclick=function(){var b=this,t=b.textContent;b.disabled=true;b.textContent='저장 중...';
-    (document.fonts&&document.fonts.ready||Promise.resolve()).then(function(){return html2canvas($('pf'),{scale:2,width:1920,height:1080,useCORS:true,backgroundColor:'#fff',logging:false})}).then(function(c){
+    (document.fonts&&document.fonts.ready||Promise.resolve()).then(function(){return html2canvas($('pf'),{scale:2,width:1920,height:Math.max(1080,$('pf').scrollHeight),useCORS:true,backgroundColor:'#fff',logging:false})}).then(function(c){
       c.toBlob(function(bl){var a=document.createElement('a');a.href=URL.createObjectURL(bl);a.download='youtube-channel-pc.png';document.body.appendChild(a);a.click();a.remove();b.disabled=false;b.textContent=t})
     }).catch(function(){b.disabled=false;b.textContent=t;alert('PNG 저장에 실패했습니다.')})};
   addEventListener('resize',fit);
