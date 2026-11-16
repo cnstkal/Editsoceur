@@ -18,7 +18,7 @@
     down:'<svg width="24" height="24" viewBox="0 0 24 24"><path d="m6 9 6 6 6-6"/></svg>'};
   function esc(t){return String(t==null?'':t).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;')}
   function render(){
-    var h='<div class="hd"><div class="hm">'+IC.menu+'</div><div class="logo"><b><svg width="20" height="14" viewBox="0 0 20 14"><path d="M0 0h2v14H0zM6 0l10 7-10 7z" fill="#fff" stroke="none"/></svg></b>Premium<small>KR</small></div>'+
+    var h='<div class="hd"><div class="hm">'+IC.menu+'</div><div class="logo"><svg width="44" height="31" viewBox="0 0 44 31"><rect width="44" height="31" rx="9" fill="#ff0033"/><path d="M18 9.5v12l10.5-6z" fill="#fff"/></svg>Premium<small>KR</small></div>'+
       '<div class="sr"><div class="in">'+esc(S.sr)+'</div><div class="bt">'+IC.search+'</div></div><div class="mic">'+IC.mic+'</div>'+
       '<div class="mk">'+IC.plus+'만들기</div><div class="bell">'+IC.bell+(S.bl?'<em>'+esc(S.bl)+'</em>':'')+'</div><div class="av" style="'+(S.av?"background-image:url('"+esc(S.av)+"')":'')+'"></div></div>';
     h+='<div class="sd"><div style="height:18px"></div><div class="si on">'+IC.home+'홈</div><div class="si">'+IC.shorts+'Shorts</div>'+
