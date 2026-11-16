@@ -1,7 +1,7 @@
 (function(){
-  var $=function(i){return document.getElementById(i)},STORE='music_lyrics_v1';
+  var $=function(i){return document.getElementById(i)},STORE='music_lyrics_v2';
   var L=[['여기에 가사를 입력하세요','Type your lyrics here',0],['두 번째 줄은 이렇게 보여요','The second line looks like this',0],['세 번째 줄부터는 점점 흐려져요','From the third line it fades out',0],['멀어질수록 더 번져 보이고','The farther it is, the blurrier',0],['오른쪽 정렬도 쓸 수 있어요','Right-aligned lines work too',1],['마지막 줄까지 이어져요','It goes on to the last line',1]];
-  var DEF={title:'곡 제목',artist:'아티스트',c1:'#5b4034',c2:'#252c45',c3:'#6e3b39',art:'',act:1,l:L.map(function(a){return{t:a[0],tr:a[1],r:a[2]}})};
+  var DEF={title:'곡 제목',artist:'아티스트',c1:'#5b4034',c2:'#252c45',c3:'#6e3b39',art:'',act:1,fd:true,l:L.map(function(a){return{t:a[0],tr:a[1],r:a[2]}})};
   var S;
   function persist(){try{localStorage.setItem(STORE,JSON.stringify(S))}catch(e){}}
   function esc(t){return String(t).replace(/[&<>"]/g,function(c){return{'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]})}
@@ -13,7 +13,7 @@
     for(var i=start;i<S.l.length;i++){
       var x=S.l[i],d=i-act,st;
       if(d===0)st='color:#fff';
-      else if(d===1)st='color:rgba(255,255,255,.6)';
+      else if(d===1||!S.fd)st='color:rgba(255,255,255,.6)';
       else{var bl=d<0?3.5:Math.min(9,(d-1)*2.4+1),op=d<0?.45:Math.max(.22,.55-(d-2)*.09);st='color:transparent;text-shadow:0 0 '+bl+'px rgba(255,255,255,'+op+')'}
       h+='<div class="ln'+(x.r?' r':'')+'" style="'+st+'">'+esc(x.t).replace(/\n/g,'<br>')+(x.tr?'<div class="tr">'+esc(x.tr)+'</div>':'')+'</div>'}
     $('mL').innerHTML=h}
@@ -23,8 +23,9 @@
   function load(reset){
     if(reset){try{localStorage.removeItem(STORE)}catch(e){}S=JSON.parse(JSON.stringify(DEF))}
     else{try{var v=localStorage.getItem(STORE);S=v?JSON.parse(v):JSON.parse(JSON.stringify(DEF));if(!S||!Array.isArray(S.l))throw 0}catch(e){S=JSON.parse(JSON.stringify(DEF))}}
-    F.forEach(function(a){$(a[0]).value=S[a[1]]});list();render()}
+    F.forEach(function(a){$(a[0]).value=S[a[1]]});$('iFd').checked=!!S.fd;list();render()}
   F.forEach(function(a){$(a[0]).addEventListener('input',function(){S[a[1]]=this.value;persist();render()})});
+  $('iFd').addEventListener('change',function(){S.fd=this.checked;persist();render()});
   $('iArt').addEventListener('change',function(){var f=this.files[0];if(!f)return;var r=new FileReader();r.onload=function(){S.art=r.result;persist();render()};r.readAsDataURL(f)});
   var E=$('el'),ix=function(e){return +e.target.closest('.pe').dataset.i};
   E.addEventListener('input',function(e){var f=e.target.dataset.f;if(!f||f==='r')return;S.l[ix(e)][f]=e.target.value;persist();render()});
