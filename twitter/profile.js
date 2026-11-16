@@ -3,7 +3,7 @@ var CORGI='data:image/svg+xml;utf8,'+encodeURIComponent('<svg xmlns="http://www.
 function defaults(){return{
  name:'샘플 사용자',handle:'sample_user',bio:'안녕하세요! 샘플 소개 문구입니다.',job:'디자이너',birth:'1995년 1월 1일',joined:'2020년 1월',
  following:'120',followers:'350',avatar:CORGI,banner:'',
- jobOn:true,birthOn:true,lock:true,fab:true,nav:true,
+ jobOn:true,birthOn:true,lock:true,fab:true,
  tweets:[
   {name:'샘플 사용자',handle:'sample_user',time:'9분',text:'첫 번째 샘플 게시물입니다',reply:'',rt:'',like:'',view:'3',avatar:'',lock:true},
   {name:'샘플 사용자',handle:'sample_user',time:'9분',text:'두 번째 샘플 게시물입니다',reply:'',rt:'',like:'',view:'4',avatar:'',lock:true},
@@ -54,7 +54,7 @@ function render(){
   h+='<div class="ac"><span>'+I.rep+cnt(t.reply)+'</span><span>'+I.rt+cnt(t.rt)+'</span><span>'+I.heart+cnt(t.like)+'</span><span>'+I.view+cnt(t.view)+'</span><span style="min-width:0">'+I.bm+'</span><span style="min-width:0">'+I.sh+'</span></div></div>'+I.x+'</div>';
  });
  if(S.fab)h+='<div class="fabbtn"><svg viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg></div>';
- if(S.nav)h+='<div class="nv"><div>'+I.home+'</div><div>'+I.search+'</div><div>'+I.feather+'</div><div>'+I.bell+'</div><div>'+I.msg+'</div></div>';
+ if(false)h+='<div class="nv"><div>'+I.home+'</div><div>'+I.search+'</div><div>'+I.feather+'</div><div>'+I.bell+'</div><div>'+I.msg+'</div></div>';
  document.getElementById('capture').innerHTML=h;
 }
 function renderList(){
@@ -84,7 +84,7 @@ function renderList(){
 }
 function readFile(f,cb){if(!f)return;var r=new FileReader();r.onload=function(){cb(r.result)};r.readAsDataURL(f)}
 var ids=['name','handle','bio','job','birth','joined','following','followers'];
-var sw=['lock','jobOn','birthOn','fab','nav'];
+var sw=['lock','jobOn','birthOn','fab'];
 function sync(){
  ids.forEach(function(k){document.getElementById(k).value=S[k]});
  sw.forEach(function(k){document.getElementById(k).checked=S[k]});
