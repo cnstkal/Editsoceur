@@ -7,7 +7,7 @@ function thumb(c1,c2){return 'data:image/svg+xml;utf8,'+encodeURIComponent('<svg
 function R(kind,name,n,obj,time,pv,hasTh,th){return{t:'react',kind:kind,name:name,n:String(n),obj:obj,time:time,pv:pv,hasTh:hasTh,th:th,avatars:avs(n)}}
 function Mn(n,h,time,to,text,r,rt,l,v,lock,av){return{t:'mention',name:n,handle:h,time:time,to:to,text:text,reply:r,rt:rt,like:l,view:v,lock:!!lock,avatar:av}}
 function defaults(){return{
- avatar:ME,title:'알림',tab1:'모두',tab2:'멘션',sel:'1',fab:true,nav:true,
+ avatar:ME,title:'알림',tab1:'모두',tab2:'멘션',sel:'1',fab:true,
  items:[
   R('like','하루',1,'재게시물','48분','이 장면 보니까 갑자기 생각나서 웃김..',true,thumb('#3a5a8a','#1f2f4d')),
   R('rt','몽실',1,'재게시물','1시',"",true,thumb('#8a9a6a','#4d5a3a')),
@@ -55,11 +55,11 @@ function render(){
  });
  h+='</div>';
  if(S.fab)h+='<div class="fabbtn">'+I.plus+'</div>';
- if(S.nav)h+='<div class="nv"><div>'+I.home+'</div><div>'+I.search+'</div><div>'+I.eye+'</div><div>'+I.bell+'</div><div>'+I.msg+'</div></div>';
+ if(false)h+='<div class="nv"><div>'+I.home+'</div><div>'+I.search+'</div><div>'+I.eye+'</div><div>'+I.bell+'</div><div>'+I.msg+'</div></div>';
  document.getElementById('capture').innerHTML=h;
 }
 function readFile(f,cb){if(!f)return;var r=new FileReader();r.onload=function(){cb(r.result)};r.readAsDataURL(f)}
-var ids=['sel'],sw=['fab','nav'];
+var ids=['sel'],sw=['fab'];
 function sync(){ids.forEach(function(k){document.getElementById(k).value=S[k]});sw.forEach(function(k){document.getElementById(k).checked=S[k]})}
 var FL={react:[['name','이름'],['time','시간'],['pv','미리보기 글 (비우면 숨김)'],['obj','대상 (게시물/재게시물)']],
  mention:[['name','이름'],['handle','아이디'],['time','시간'],['to','답글 대상(비우면 숨김)'],['text','내용'],['reply','멘션'],['rt','리트윗'],['like','마음'],['view','조회수']]};
