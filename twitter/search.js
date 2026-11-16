@@ -2,7 +2,7 @@
 function pic(bg,fg){return 'data:image/svg+xml;utf8,'+encodeURIComponent('<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><rect width="100" height="100" fill="'+bg+'"/><circle cx="50" cy="42" r="20" fill="'+fg+'"/><path d="M14 100Q18 68 50 66Q82 68 86 100Z" fill="'+fg+'"/></svg>')}
 function T(n,h,t,x,r,rt,l,v,a,m){return{name:n,handle:h,time:t,text:x,reply:r,rt:rt,like:l,view:v,avatar:a,more:!!m}}
 function defaults(){return{
- query:'고양이',tabs:'인기,최근,사용자,동영상,사진',sel:'1',fab:true,nav:true,
+ query:'고양이',tabs:'인기,최근,사용자,동영상,사진',sel:'1',fab:true,
  items:[
   T('집사일기','nyang_diary_01','4시','오늘 처음으로 고양이가 무릎 위에 올라와서 잤다\n\n움직이면 깰까봐 두 시간 동안 꼼짝 못함\n\n다리 저린데 행복해서 괜찮음','1','21','38','1197',pic('#c58f8f','#f3d9d9')),
   T('주말의 집사','sunday_butler_xyz123abc','55분','고양이 사료 바꿨더니 갑자기 밥그릇을 핥아먹기 시작함\n\n그동안 입맛에 안 맞았던 건가 싶어서 미안해지네요\n\n추천해주신 제품 리스트는 다음과 같습니다\n사료 A - 연어 맛\n사료 B - 닭고기 맛\n사료 C - 참치 맛\n\n는 기호성이 좋다고 하니 참고해보세요',  '1','','5','142',pic('#555','#999'),true),
@@ -47,11 +47,11 @@ function render(){
  });
  h+='</div>';
  if(S.fab)h+='<div class="fabbtn">'+I.plus+'</div>';
- if(S.nav)h+='<div class="nv"><div>'+I.home+'</div><div>'+I.search+'</div><div>'+I.eye+'</div><div>'+I.bell+'</div><div>'+I.msg+'</div></div>';
+ if(false)h+='<div class="nv"><div>'+I.home+'</div><div>'+I.search+'</div><div>'+I.eye+'</div><div>'+I.bell+'</div><div>'+I.msg+'</div></div>';
  document.getElementById('capture').innerHTML=h;
 }
 function readFile(f,cb){if(!f)return;var r=new FileReader();r.onload=function(){cb(r.result)};r.readAsDataURL(f)}
-var ids=['query','tabs','sel'],sw=['fab','nav'];
+var ids=['query','tabs','sel'],sw=['fab'];
 function sync(){ids.forEach(function(k){document.getElementById(k).value=S[k]});sw.forEach(function(k){document.getElementById(k).checked=S[k]})}
 function renderList(){
  var box=document.getElementById('list');box.innerHTML='';
