@@ -22,7 +22,7 @@
     $('nCt').innerHTML='댓글 '+esc(S.cc)+'<i></i><u>MY댓글</u>';
     $('nCs').innerHTML='현재 댓글 <b>'+esc(S.c1)+'</b> 작성자 삭제 <b>'+esc(S.c2)+'</b> 규정 미준수 <b>'+esc(S.c3)+'</b>';
     $('nCm').innerHTML=S.m.map(function(x){return '<div class="cm"><i class="pf"></i><div class="nk">'+esc(x.n)+' ›</div><span class="fl">팔로우</span><svg class="kb" viewBox="0 0 4 16" fill="#333"><circle cx="2" cy="2" r="1.700"/><circle cx="2" cy="8" r="1.700"/><circle cx="2" cy="14" r="1.700"/></svg><div class="tx">'+esc(x.t)+'</div><div class="da">'+esc(x.d)+'</div><div class="ft"><b>답글</b>'+TH+esc(x.l)+'<span style="display:inline-block;transform:scaleY(-1);margin-left:0">'+TH+'</span>'+esc(x.x)+'</div></div>'}).join('');
-    $('nTop').style.display='none';$('nf').style.height=$('nScr').scrollHeight+'px'}
+    $('nTop').style.display='none';$('nf').style.height=Math.max($('nScr').scrollHeight,$('nScr').getBoundingClientRect().height)+'px'}
   W.start({key:'news_v1',def:DEF,frame:'nf',name:'news',render:render,
     fields:[['iTime','time'],['iUrl','url'],['iOut','out'],['iTabs','tabs'],['iAct','act'],['iTi','ti'],['iRp','rp'],['iDt','dt'],['iRe','re'],['iCc','cc'],['iSb','sb'],['iBd','bd'],['iEm','em'],['iCp','cp'],['iC1','c1'],['iC2','c2'],['iC3','c3']],
     lists:[{p:'m',el:'el',add:'addE',blank:{n:'user****',t:'',d:'2026.11.16. 11:10',l:'0',x:'0'},f:[['n','닉네임'],['t','내용'],['d','날짜'],['l','좋아요'],['x','싫어요']]}]});
