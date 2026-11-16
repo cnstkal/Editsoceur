@@ -24,11 +24,12 @@
     S.p.forEach(function(p,i){var c=0;for(var j=1;j<6;j++)if(ys[j]<ys[c])c=j;cols[c].push(p);ys[c]+=(p.ratio||1.4)*278+60});
     cols.forEach(function(col,ci){
       var x=108+ci*299;var html='';
-      col.forEach(function(p){html+='<div style="margin-bottom:16px"><div class="pin" style="height:'+p.h+'px;background-color:'+esc(p.c)+';'+(p.img?"background-image:url('"+esc(p.img)+"')":'')+'"></div><div class="pn"><b>'+esc(p.t)+'</b>'+I.dots+'</div></div>'});
+      col.forEach(function(p){html+='<div style="margin-bottom:16px"><div class="pin" style="aspect-ratio:1 / '+(p.ratio||1.4)+';background-color:'+esc(p.c)+';'+(p.img?"background-image:url('"+esc(p.img)+"')":'')+'"></div><div class="pn"><b>'+esc(p.t)+'</b>'+I.dots+'</div></div>'});
       h+='<div class="col" style="left:'+x+'px">'+html+'</div>'});
     $('pf').innerHTML=h;fit()}
-  function list(){var h='';S.p.forEach(function(p,i){h+='<div class="xc" data-i="'+i+'"><div class="row"><label>높이(px)<input data-f="h" type="number" value="'+p.h+'"></label><label>제목<input data-f="t" value="'+esc(p.t)+'"></label></div><label>사진<input type="file" accept="image/*" data-f="img"></label><div class="row"><button type="button" class="xb" data-a="u">↑</button><button type="button" class="xb" data-a="d">↓</button><button type="button" class="xb" data-a="x">✕ 삭제</button></div></div>'});$('xlist').innerHTML=h}
-  function readImage(file,cb){var r=new FileReader();r.onload=function(){var im=new Image();im.onload=function(){cb(r.result,im.height/im.width)};im.src=r.result};r.readAsDataURL(file)}\n  function persist(){try{localStorage.setItem(STORE,JSON.stringify(S))}catch(e){}}
+  function list(){var h='';S.p.forEach(function(p,i){h+='<div class="xc" data-i="'+i+'"><div class="row"><label>제목<input data-f="t" value="'+esc(p.t)+'"></label></div><label>사진<input type="file" accept="image/*" data-f="img"></label><div class="row"><button type="button" class="xb" data-a="u">↑</button><button type="button" class="xb" data-a="d">↓</button><button type="button" class="xb" data-a="x">✕ 삭제</button></div></div>'});$('xlist').innerHTML=h}
+  function readImage(file,cb){var r=new FileReader();r.onload=function(){var im=new Image();im.onload=function(){cb(r.result,im.height/im.width)};im.src=r.result};r.readAsDataURL(file)}
+  function persist(){try{localStorage.setItem(STORE,JSON.stringify(S))}catch(e){}}
   function fit(){var k=Math.min(1,$('pw').clientWidth/1920);$('pf').style.transform='scale('+k+')';$('pf').style.height='auto';$('pf').style.overflow='visible';var h=Math.max(1080,$('pf').scrollHeight);$('pw').style.height=h*k+'px'}
   function load(r){if(r)try{localStorage.removeItem(STORE)}catch(e){}try{var s=!r&&localStorage.getItem(STORE);S=s?JSON.parse(s):JSON.parse(JSON.stringify(DEF));if(!Array.isArray(S.p))throw 0}catch(e){S=JSON.parse(JSON.stringify(DEF))}$('iSr').value=S.sr;$('iTb').value=S.tb;list();render()}
   $('iSr').addEventListener('input',function(){S.sr=this.value;persist();render()});
@@ -39,7 +40,8 @@
   L.addEventListener('click',function(e){var a=e.target.dataset.a;if(!a)return;var i=ix(e),m=S.p,t;
     if(a==='x')m.splice(i,1);else if(a==='u'&&i>0){t=m[i];m[i]=m[i-1];m[i-1]=t}else if(a==='d'&&i<m.length-1){t=m[i];m[i]=m[i+1];m[i+1]=t}
     persist();list();render()});
-  $('batchPins').onchange=function(){[].slice.call(this.files).forEach(function(f){readImage(f,function(data,ratio){S.p.push({ratio:ratio,img:data,t:'',c:'#d9d9d9'});persist();list();render()})});this.value=''};\n  $('addP').onclick=function(){S.p.push({ratio:1.4,img:'',t:'',c:'#d9d9d9'});persist();list();render()};
+  $('batchPins').onchange=function(){[].slice.call(this.files).forEach(function(f){readImage(f,function(data,ratio){S.p.push({ratio:ratio,img:data,t:'',c:'#d9d9d9'});persist();list();render()})});this.value=''};
+  $('addP').onclick=function(){S.p.push({ratio:1.4,img:'',t:'',c:'#d9d9d9'});persist();list();render()};
   $('reset').onclick=function(){load(true)};
   $('savePng').onclick=function(){var b=this,t=b.textContent;b.disabled=true;b.textContent='저장 중...';
     (document.fonts&&document.fonts.ready||Promise.resolve()).then(function(){return html2canvas($('pf'),{scale:2,width:1920,height:$('pf').scrollHeight,useCORS:true,backgroundColor:'#fff',logging:false,onclone:function(d){d.getElementById('pf').style.transform='none';var w=d.getElementById('pw');w.style.height='1080px';w.style.overflow='visible'}})}).then(function(c){
