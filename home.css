@@ -23,3 +23,15 @@ input,textarea,select{font-size:16px!important}
 .btn.wtn{background:linear-gradient(135deg,#1fdd75,#00b050)}
 .btn.dgn{background:linear-gradient(135deg,#ff8a3d,#ee6a21)}
 .btn.nws{background:linear-gradient(135deg,#4c8dff,#2a5bd7)}
+
+/* Refined tile buttons */
+main{padding-top:88px}
+h1{background:linear-gradient(180deg,#fff,#a8a8b3);-webkit-background-clip:text;background-clip:text;color:transparent}
+p{font-size:14px;letter-spacing:.02em}
+nav{gap:16px}
+.btn{position:relative;overflow:hidden;height:104px;border-radius:26px;font-size:17px;font-weight:700;letter-spacing:-.01em;text-shadow:0 1px 2px rgba(0,0,0,.25);box-shadow:0 10px 24px rgba(0,0,0,.4),inset 0 1px 0 rgba(255,255,255,.3),inset 0 -2px 0 rgba(0,0,0,.12);transition:transform .15s,box-shadow .15s}
+.btn::before{content:"";position:absolute;inset:0;background:linear-gradient(160deg,rgba(255,255,255,.22),rgba(255,255,255,0) 55%);pointer-events:none}
+.btn:hover{transform:translateY(-2px);box-shadow:0 14px 30px rgba(0,0,0,.45),inset 0 1px 0 rgba(255,255,255,.3)}
+.btn:active{transform:scale(.95)}
+.btn small{font-size:11px;font-weight:500;opacity:.85;letter-spacing:.02em}
+.memo,.kk{text-shadow:none}
