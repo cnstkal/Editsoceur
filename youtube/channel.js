@@ -25,7 +25,7 @@ function img(el,u){el.style.backgroundImage=u?"url('"+u+"')":''}
 function render(){
 $('cTime').textContent=S.time;
 var b=pc(S.bat);$('cBf').style.width=b+'%';$('cBt').textContent=Math.round(b);$('cBz').style.display=S.chg?'':'none';
-img($('cMy'),S.my);img($('cBn'),S.bn);img($('cAv'),S.av);
+img($('cBn'),S.bn);img($('cAv'),S.av);
 $('cNm').textContent=S.nm;$('cHd').textContent=S.hd;$('cSu').textContent=S.su;$('cVd').textContent=S.vd;
 $('cDs').innerHTML=esc(S.ds)+'<b>...더보기</b>';$('cLk').textContent=S.lk;$('cSb').textContent=S.sb;
 var sc=Math.max(0,parseFloat(S.sc)||0);$('cS').style.transform='translateY('+(-sc)+'px)';
