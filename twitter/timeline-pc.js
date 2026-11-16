@@ -39,7 +39,6 @@
   function load(r){if(r)try{localStorage.removeItem(STORE)}catch(e){}try{var s=!r&&localStorage.getItem(STORE);S=s?JSON.parse(s):JSON.parse(JSON.stringify(DEF));if(!Array.isArray(S.t)||!S.me)throw 0}catch(e){S=JSON.parse(JSON.stringify(DEF))}set();list();render();fit()}
   function glob(){S.tabs=[$('iT0').value,$('iT1').value];S.me={n:$('iMn').value,h:$('iMh').value};persist();render()}
   $('iCompose').addEventListener('change',function(){if(window.setXCompose)window.setXCompose(this.checked);render()});
-  $('iCompose').addEventListener('change',function(){if(window.setXCompose)window.setXCompose(this.checked);render()});
   ['iT0','iT1','iMn','iMh'].forEach(function(id){$(id).addEventListener('input',glob)});
   var L=$('xlist'),ix=function(e){return +e.target.closest('.xc').dataset.i};
   L.addEventListener('input',function(e){var f=e.target.dataset.f;if(!f||e.target.type==='file'||e.target.type==='checkbox')return;S.t[ix(e)][f]=e.target.value;persist();render()});
