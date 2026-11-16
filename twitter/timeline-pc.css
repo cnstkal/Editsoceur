@@ -1,7 +1,7 @@
 *{box-sizing:border-box;margin:0;font-family:Pretendard,sans-serif;letter-spacing:-.02em}
 body{background:#f6f6f6;color:#0f1419}
 .pw{width:100%;overflow:hidden;position:relative;background:#000}
-#pf{position:absolute;left:0;top:0;width:1920px;height:1080px;background:#fff;transform-origin:0 0;overflow:hidden}
+#pf{position:absolute;left:0;top:0;width:1920px;height:auto;min-height:1080px;background:#fff;transform-origin:0 0;overflow:visible}
 #pf svg{display:block;flex:none}
 .pl{position:absolute;left:92px;top:0;width:320px;height:100%}
 .pl .lg{position:absolute;left:16px;top:18px}
