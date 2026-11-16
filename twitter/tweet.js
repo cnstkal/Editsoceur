@@ -49,7 +49,7 @@ function render(){
  S.replies.forEach(function(r,i){
   var pre=r.chain&&i>0,nx=S.replies[i+1]&&S.replies[i+1].chain;
   var cls='rp'+(pre?' haspre':'')+(nx?' hasnext':'');
-  var top=r.icon==='x'?I.x:(r.icon==='hidden'?I.eye+I.more:'');
+  var top=r.icon==='hidden'?I.more:'';
   h+='<div class="'+cls+'"><div class="av"><img src="'+esc(r.avatar||S.avatar)+'"></div><div class="rb"><div class="rh"><b>'+esc(r.name)+'</b>'+(r.lock?I.lock:'')+'<span class="m">@'+hd(r.handle)+'</span><span class="m tm">· '+esc(r.time)+'</span></div><div class="rt">'+esc(r.text)+'</div>';
   h+='<div class="ra"><span class="fade">'+I.rep+esc(r.reply)+'</span><span>'+I.rt+esc(r.rt)+'</span><span>'+I.heart+esc(r.like)+'</span><span>'+I.view+esc(r.view)+'</span><span class="s">'+I.bm+'</span><span class="s">'+I.sh+'</span></div></div>';
   if(top)h+='<div class="rtop">'+top+'</div>';
