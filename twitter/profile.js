@@ -54,7 +54,7 @@ function render(){
   h+='<div class="ac"><span>'+I.rep+cnt(t.reply)+'</span><span>'+I.rt+cnt(t.rt)+'</span><span>'+I.heart+cnt(t.like)+'</span><span>'+I.view+cnt(t.view)+'</span><span style="min-width:0">'+I.bm+'</span><span style="min-width:0">'+I.sh+'</span></div></div>'+I.x+'</div>';
  });
  h+='<div class="fabbtn"><svg viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg></div>';
- if(false)h+='<div class="nv"><div>'+I.home+'</div><div>'+I.search+'</div><div>'+I.feather+'</div><div>'+I.bell+'</div><div>'+I.msg+'</div></div>';
+
  document.getElementById('capture').innerHTML=h;
 }
 function renderList(){
