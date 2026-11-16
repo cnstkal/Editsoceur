@@ -53,7 +53,7 @@ function render(){
   h+='<div class="post"><div class="av"><img src="'+esc(t.avatar||S.avatar||CORGI)+'"></div><div class="pb"><div class="ph"><b>'+esc(t.name)+'</b>'+(t.lock?I.lock:'')+'<span class="m">@'+esc(t.handle.replace(/^@/,''))+' · '+esc(t.time)+'</span></div><div class="pt">'+esc(t.text)+'</div>';
   h+='<div class="ac"><span>'+I.rep+cnt(t.reply)+'</span><span>'+I.rt+cnt(t.rt)+'</span><span>'+I.heart+cnt(t.like)+'</span><span>'+I.view+cnt(t.view)+'</span><span style="min-width:0">'+I.bm+'</span><span style="min-width:0">'+I.sh+'</span></div></div>'+I.x+'</div>';
  });
- if(S.fab)h+='<div class="fabbtn"><svg viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg></div>';
+ h+='<div class="fabbtn"><svg viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg></div>';
  if(false)h+='<div class="nv"><div>'+I.home+'</div><div>'+I.search+'</div><div>'+I.feather+'</div><div>'+I.bell+'</div><div>'+I.msg+'</div></div>';
  document.getElementById('capture').innerHTML=h;
 }
@@ -84,7 +84,7 @@ function renderList(){
 }
 function readFile(f,cb){if(!f)return;var r=new FileReader();r.onload=function(){cb(r.result)};r.readAsDataURL(f)}
 var ids=['name','handle','bio','job','birth','joined','following','followers'];
-var sw=['lock','jobOn','birthOn','fab'];
+var sw=['lock','jobOn','birthOn'];
 function sync(){
  ids.forEach(function(k){document.getElementById(k).value=S[k]});
  sw.forEach(function(k){document.getElementById(k).checked=S[k]});
