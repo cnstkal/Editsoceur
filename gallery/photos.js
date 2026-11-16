@@ -10,7 +10,7 @@ $('pT').textContent='보관함';$('pN').textContent=S.n;
 $('pf').classList.toggle('cut',!!S.cut);$('bottomTabs').style.display=S.nav?'flex':'none';$('psr').style.display=S.nav?'flex':'none';
 $('pA').classList.toggle('on',S.tab==='0');$('pB').classList.toggle('on',S.tab==='1');
 var h='';S.p.forEach(function(u){h+='<i style="'+bg(u)+'"></i>'});
-for(var i=S.p.length;i<18;i++)h+='<i></i>';
+
 $('pG').innerHTML=h}
 function list(){var h='';S.p.forEach(function(u,i){h+='<div class="pk" data-i="'+i+'"><i style="'+bg(u)+'"></i><button type="button" data-a="u">↑</button><button type="button" data-a="d">↓</button><button type="button" data-a="x">✕</button></div>'});$('plist').innerHTML=h}
 function set(){$('iN').value=S.n;$('iTab').value=S.tab;$('iCut').checked=!!S.cut;$('iNav').checked=!!S.nav}
