@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>X 타임라인 PC</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.css">
+<link rel="stylesheet" href="timeline-pc.css?v=1">
+</head>
+<body>
+<div class="pw" id="pw"><div id="pf">
+  <div class="pl" id="pl"></div>
+  <div class="pc">
+    <div class="pt"><div id="pT0"></div><div id="pT1"></div><div class="pp" id="pPlus"></div></div>
+    <div class="cp"><i class="pa" id="cpA" style="width:55px;height:55px"></i><span class="tx0">무슨 일이 일어나고 있나요?</span><div class="ic" id="cpI"></div><span class="bt">게시하기</span></div>
+    <div id="pL"></div>
+  </div>
+  <div class="pr">
+    <div class="sb" id="pS"></div>
+    <div class="bx"><h2 style="font-size:28px">Premium 구독하기</h2><p>광고 제거, 애널리틱스 확인, 내 답글 부스트 외에도 20가지 이상의 기능을 활용하세요.</p><span class="bl">구독하기</span></div>
+    <div class="bx" id="pTr"></div>
+    <div class="bx"><h2>팔로우 추천</h2></div>
+  </div>
+  <div class="fl" style="top:686px" id="fl0"></div><div class="fl" style="top:778px" id="fl1"></div>
+</div></div>
+<section class="ed">
+  <h2>타임라인 편집</h2>
+  <div class="row"><label>왼쪽 탭<input id="iT0"></label><label>오른쪽 탭<input id="iT1"></label></div>
+  <div class="row"><label>내 이름<input id="iMn"></label><label>내 아이디<input id="iMh"></label></div>
+  <h2>트윗</h2><div id="xlist"></div>
+  <button class="ghost" id="addT" type="button">+ 트윗 추가</button>
+</section>
+<div class="bar"><button id="savePng" class="primary">PNG로 저장</button><button id="reset" class="secondary">초기화</button></div>
+<script src="https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js"></script>
+<script src="timeline-pc.js?v=1"></script>
+</body>
+</html>

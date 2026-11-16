@@ -1,7 +1,7 @@
 *{box-sizing:border-box}
 html,body{margin:0;background:#f5f5f5;color:#111;font-family:-apple-system,"Apple SD Gothic Neo","Noto Sans KR",system-ui,sans-serif}
 .wrap{max-width:460px;margin:0 auto;padding:12px 12px 110px}
-.stage{display:flex;justify-content:center;position:sticky;top:0;z-index:5;background:#f5f5f5;max-height:52vh;overflow:hidden;padding-top:4px}
+.stage{display:flex;justify-content:center;background:#f5f5f5;padding-top:4px;margin-bottom:16px}
 /* ---- 미리보기 ---- */
 .phone{width:100%;max-width:430px;background:#fff;color:#0f1419;position:relative;overflow:hidden;border-radius:6px;padding-bottom:6px}
 .banner{height:160px;background-size:cover;background-position:center;position:relative}
