@@ -7,7 +7,7 @@ function defaults(){return{
  time:'오전 10:52',date:'2026. 11. 12.',views:'1085',reply:'1',rt:'10',like:'11',
  avatar:A1,btn:'쪽지',showBtn:true,lockT:false,
  showQuote:true,qname:'지몬냥이',qhandle:'NippleMon',qtime:'3일',qtext:'엉.주사맞을때어디까지내려야해요?',qavatar:A2,
- showNotice:true,notice:'일부 계정만 답글을 쓸 수 있습니다.',showNav:true,navDot:true,
+ showNotice:true,notice:'일부 계정만 답글을 쓸 수 있습니다.',showNav:true,
  replies:[
   {name:'지몬냥이',handle:'NippleMon',time:'3일',text:'감사합니다 덕분에 구속됐습니다',reply:'1',rt:'',like:'5',view:'90',avatar:A2,icon:'x',lock:false,chain:false},
   {name:'성체인 고양이',handle:'nangmanmeowmeow',time:'3일',text:'간호사님이 화끈하다고 좋아하시죠?',reply:'',rt:'',like:'2',view:'73',avatar:'',icon:'hidden',lock:false,chain:true}
@@ -55,12 +55,12 @@ function render(){
   if(top)h+='<div class="rtop">'+top+'</div>';
   h+='</div>';
  });
- if(S.showNav)h+='<div class="nv"><div>'+I.home+(S.navDot?'<i class="dt"></i>':'')+'</div><div>'+I.search+'</div><div>'+I.eye+'</div><div>'+I.bell+'</div><div>'+I.msg+'</div></div>';
+ if(S.showNav)h+='<div class="nv"><div>'+I.home+'</div><div>'+I.search+'</div><div>'+I.eye+'</div><div>'+I.bell+'</div><div>'+I.msg+'</div></div>';
  document.getElementById('capture').innerHTML=h;
 }
 function readFile(f,cb){if(!f)return;var r=new FileReader();r.onload=function(){cb(r.result)};r.readAsDataURL(f)}
 var ids=['title','name','handle','text','time','date','views','reply','rt','like','btn','qname','qhandle','qtime','qtext','notice'];
-var sw=['showBtn','lockT','showQuote','showNotice','showNav','navDot'];
+var sw=['showBtn','lockT','showQuote','showNotice','showNav'];
 function sync(){
  ids.forEach(function(k){document.getElementById(k).value=S[k]});
  sw.forEach(function(k){document.getElementById(k).checked=S[k]});
