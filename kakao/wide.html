@@ -2,39 +2,35 @@
 <html lang="ko">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<title>카카오톡 대화 (16:9)</title>
-<link rel="stylesheet" href="wide.css">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>카카오톡 채팅 16:9</title>
+<link rel="stylesheet" href="wide.css?v=1">
 </head>
 <body>
-
-<div class="stage-wrap">
-  <div class="stage" id="stage">
-    <div class="stage-inner">
-      <div class="header">
-        <svg viewBox="0 0 24 24"><path d="M15 3 6 12l9 9"/></svg>
-        <div class="title" id="title">윤둥이</div>
-        <div class="right">
-          <svg viewBox="0 0 24 24"><circle cx="10.5" cy="10.5" r="7"/><path d="m16 16 5 5"/></svg>
-          <svg viewBox="0 0 24 24"><path d="M3 6h18M3 12h18M3 18h18"/></svg>
-        </div>
-      </div>
-      <div class="chat" id="chat"></div>
-    </div>
+<a class="tback" href="index.html" data-html2canvas-ignore>‹ 선택화면</a>
+<div class="stage" id="cap">
+  <header class="head">
+    <div class="back" id="back"></div>
+    <div class="title" id="title"></div>
+    <div class="tools" id="tools"></div>
+  </header>
+  <main id="chat"></main>
+</div>
+<p class="hint" data-html2canvas-ignore>가로 16 고정 · 세로는 대화가 길어지는 만큼 늘어나요 (최소 16:9). 저장 시 가로 1920px.</p>
+<section class="editor">
+  <h2>채팅방 편집</h2>
+  <div class="r2"><label>상대 이름<input id="iRoom"></label><label>뒤로가기 숫자(비우면 숨김)<input id="iUn"></label></div>
+  <label class="file">상대 프로필 사진<input id="iAv" type="file" accept="image/*"></label>
+  <h2>대화</h2>
+  <div id="list"></div>
+  <div class="adds">
+    <button type="button" class="ghost" data-add="f">+ 상대 말풍선</button>
+    <button type="button" class="ghost" data-add="m">+ 내 말풍선</button>
+    <button type="button" class="ghost" data-add="d">+ 날짜 구분선</button>
   </div>
-</div>
-
-<div class="panel">
-  <textarea id="src"></textarea>
-  <button id="apply">적용</button>
-  <button id="ratio">16:9 영역 보기 토글</button>
-  <small>
-    한 줄 = 말풍선 1개. <b>나: 내용</b> / <b>상대: 내용</b> / <b>상대: [스티커]</b> (이모지 쓰려면 [스티커:😍]).<br>
-    <b>---</b> 한 줄은 대화 묶음 구분. 같은 사람이 연속이면 자동으로 묶임. 가로는 16 고정, 세로는 대화가 길어지는 만큼 늘어남.<br>
-    첫 줄 <b>제목: 이름</b> 으로 상단 이름 변경.
-  </small>
-</div>
-
-<script src="wide.js"></script>
+</section>
+<div class="bar" data-html2canvas-ignore><button id="save" class="primary">PNG로 저장</button><button id="reset" class="secondary">초기화</button></div>
+<script src="https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js"></script>
+<script src="wide.js?v=1"></script>
 </body>
 </html>

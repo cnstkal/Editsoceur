@@ -1,58 +1,111 @@
-const DEFAULT = `제목: 윤둥이
-나: 이번일로 뭐라하는 놈 있으면 나한테 데려와
-나: 내가 처리할게
-상대: 배고팡
-나: 무뼈국물닭발에 치즈 주먹밥 계란찜 추가 맞지?
-상대: [스티커:😍]
-상대: 빨리와`;
+(function () {
+  var $ = function (i) { return document.getElementById(i); }, STORE = "kakao_wide_v1", S;
+  // ===== 기본 데이터 =====
+  var DEF = { room: "윤둥이", un: "", av: "", items: [
+    { k: "m", me: 1, t: "이번일로 뭐라하는 놈 있으면 나한테 데려와" },
+    { k: "m", me: 1, t: "내가 처리할게" },
+    { k: "m", t: "배고팡" },
+    { k: "m", me: 1, t: "무뼈국물닭발에 치즈 주먹밥 계란찜 추가 맞지?" },
+    { k: "m", t: "빨리와" }
+  ]};
+  var G = function (p, w) { return '<svg viewBox="0 0 24 24" fill="none" stroke="#111" stroke-width="' + (w || 2) + '" stroke-linecap="round" stroke-linejoin="round">' + p + "</svg>"; };
+  var IC = {
+    back: G('<path d="M15 5l-7 7 7 7"/>', 2.4), search: G('<circle cx="11" cy="11" r="7"/><path d="M20 20l-4-4"/>'),
+    call: G('<path d="M5 4h4l2 5-2.5 1.5a11 11 0 005 5L15 13l5 2v4a2 2 0 01-2 2A16 16 0 013 6a2 2 0 012-2z"/>'),
+    menu: G('<path d="M4 7h16M4 12h16M4 17h16"/>'), plus: G('<path d="M12 5v14M5 12h14"/>', 2.4),
+    hash: G('<path d="M9.5 4 7.5 20M16.5 4l-2 16M4.5 9h16M3.5 15h16"/>', 2.2), chev: G('<path d="M9 5l7 7-7 7"/>', 3),
+    smile: '<svg viewBox="0 0 24 24"><circle cx="9" cy="10" r="1.6" fill="#2b2f36"/><circle cx="15" cy="10" r="1.6" fill="#2b2f36"/><path d="M7.5 14c1.2 3 7.8 3 9 0" stroke="#2b2f36" stroke-width="2" fill="none" stroke-linecap="round"/></svg>'
+  };
+  var AVATAR = '<svg viewBox="0 0 100 100"><rect width="100" height="100" fill="#cfd6dc"/><circle cx="50" cy="38" r="17" fill="#fff"/><path d="M14 100c2-26 20-38 36-38s34 12 36 38z" fill="#fff"/></svg>';
+  function el(tag, cls, text) { var n = document.createElement(tag); if (cls) n.className = cls; if (text != null) n.textContent = text; return n; }
+  function esc(t) { return String(t == null ? "" : t).replace(/[&<>"]/g, function (c) { return { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]; }); }
+  function persist() { try { localStorage.setItem(STORE, JSON.stringify(S)); } catch (e) {} }
 
-const AVATAR = `<svg viewBox="0 0 100 100"><rect width="100" height="100" fill="#cfd6dc"/><circle cx="50" cy="38" r="17" fill="#fff"/><path d="M14 100c2-26 20-38 36-38s34 12 36 38z" fill="#fff"/></svg>`;
-let name = "윤둥이";
+  function fit() { var c = $("cap"); c.style.setProperty("--u", (c.clientWidth / 100) + "px"); }
+  window.addEventListener("resize", fit);
 
-function parse(t){
-  const out=[];
-  t.split("\n").forEach(l=>{
-    l=l.trim(); if(!l) return;
-    if(l.startsWith("제목:")){ name=l.slice(3).trim(); return; }
-    if(l==="---"){ out.push({gap:true}); return; }
-    const m=l.match(/^(나|상대)\s*:\s*(.*)$/); if(!m) return;
-    const who=m[1]==="나"?"me":"you", body=m[2];
-    const s=body.match(/^\[스티커(?::(.*))?\]$/);
-    out.push(s?{who,sticker:s[1]||"😍"}:{who,text:body});
+  // ===== 미리보기 렌더링 =====
+  function render() {
+    $("back").innerHTML = IC.back + (S.un ? esc(S.un) : ""); $("title").textContent = S.room;
+    $("tools").innerHTML = IC.search + IC.menu;
+    fit();
+    var chat = $("chat"); chat.innerHTML = ""; var prev = null;
+    S.items.forEach(function (m) {
+      if (m.k === "d") { var d = el("div", "date", m.t); d.insertAdjacentHTML("beforeend", IC.chev); chat.append(d); prev = null; return; }
+      var me = !!m.me, first = me !== prev; prev = me;
+      var row = el("div", "row" + (me ? " me" : "") + (first ? " first tail" : "")), col = el("div", "col");
+      if (!me) {
+        if (first) { var av = el("div", "av"); if (S.av) av.style.backgroundImage = "url(" + S.av + ")"; else av.innerHTML = AVATAR; row.append(av); col.append(el("div", "name", S.room)); }
+        else row.append(el("div", "sp"));
+      }
+      var line = el("div", "line"), bb = el("div", "b" + (m.img ? " img" : ""), m.img ? null : m.t);
+      if (m.img) { var im = document.createElement("img"); im.src = m.img; bb.append(im); }
+      line.append(bb);
+      if (m.tm || (me && m.rd)) { var tm = el("div", "tm"); if (me && m.rd) tm.append(el("span", "rd", "1")); tm.append(m.tm || ""); line.append(tm); }
+      col.append(line); row.append(col); chat.append(row);
+    });
+  }
+
+  // ===== 편집기 =====
+  function list() {
+    $("list").innerHTML = S.items.map(function (m, i) {
+      var ops = '<div class="ops"><button type="button" class="xb" data-a="u">↑</button><button type="button" class="xb" data-a="d">↓</button><button type="button" class="xb" data-a="x">✕ 삭제</button></div>';
+      if (m.k === "d") return '<div class="pe" data-i="' + i + '"><label>날짜 구분선<input data-f="t" value="' + esc(m.t) + '"></label>' + ops + "</div>";
+      return '<div class="pe" data-i="' + i + '"><div class="r2"><label>보낸 사람<select data-f="me"><option value="0"' + (m.me ? "" : " selected") + '>상대</option><option value="1"' + (m.me ? " selected" : "") + '>나</option></select></label>' +
+        '<label>시간(비우면 숨김)<input data-f="tm" value="' + esc(m.tm) + '"></label><label class="chk"><input type="checkbox" data-f="rd"' + (m.rd ? " checked" : "") + '>안읽음 1</label></div>' +
+        '<label>내용<textarea rows="2" data-f="t">' + esc(m.t) + "</textarea></label>" +
+        '<label class="file">사진 보내기(올리면 말풍선 대신 사진)<input type="file" accept="image/*" data-f="img"></label>' +
+        (m.img ? '<button type="button" class="xb sm" data-a="ri">사진 빼기</button>' : "") + ops + "</div>";
+    }).join("");
+  }
+  function load(reset) {
+    if (reset) { try { localStorage.removeItem(STORE); } catch (e) {} S = JSON.parse(JSON.stringify(DEF)); }
+    else { try { var v = localStorage.getItem(STORE); S = v ? JSON.parse(v) : JSON.parse(JSON.stringify(DEF)); if (!S || !Array.isArray(S.items)) throw 0; } catch (e) { S = JSON.parse(JSON.stringify(DEF)); } }
+    $("iRoom").value = S.room; $("iUn").value = S.un; list(); render();
+  }
+  $("iRoom").oninput = function () { S.room = this.value; persist(); render(); };
+  $("iUn").oninput = function () { S.un = this.value; persist(); render(); };
+  $("iAv").onchange = function () { var f = this.files[0]; if (!f) return; var r = new FileReader(); r.onload = function () { S.av = r.result; persist(); render(); }; r.readAsDataURL(f); };
+  $("list").addEventListener("input", function (e) {
+    var pe = e.target.closest(".pe"), f = e.target.dataset.f; if (!pe || !f) return;
+    if (f === "img") return;
+    var m = S.items[+pe.dataset.i];
+    m[f] = f === "me" ? +e.target.value : f === "rd" ? (e.target.checked ? 1 : 0) : e.target.value;
+    persist(); render();
   });
-  return out;
-}
-
-function render(){
-  const items=parse(document.getElementById("src").value);
-  document.getElementById("title").textContent=name;
-  const chat=document.getElementById("chat"); chat.innerHTML="";
-  let prev=null, forceGap=false, shownName=false;
-  items.forEach(it=>{
-    if(it.gap){ forceGap=true; return; }
-    const newGroup = forceGap || !prev || prev.who!==it.who;
-    const row=document.createElement("div");
-    row.className="row "+it.who+(newGroup&&prev?" gap":"");
-    const bubbleHTML = it.sticker
-      ? `<div class="sticker">${it.sticker}</div>`
-      : `<div class="bubble ${(newGroup||prev?.sticker)?"tail":""}"></div>`;
-    if(it.who==="me"){
-      row.innerHTML=bubbleHTML;
-    }else{
-      row.innerHTML = (newGroup ? `<div class="avatar">${AVATAR}</div>` : `<div class="avatar-space"></div>`)
-        + `<div class="col">${newGroup?`<div class="name"></div>`:""}${bubbleHTML}</div>`;
-      if(newGroup) row.querySelector(".name").textContent=name;
-    }
-    const b=row.querySelector(".bubble"); if(b) b.textContent=it.text;
-    chat.appendChild(row);
-    prev=it; forceGap=false;
+  $("list").addEventListener("click", function (e) {
+    var b = e.target.closest("[data-a]"), pe = e.target.closest(".pe"); if (!b || !pe) return;
+    var i = +pe.dataset.i, a = b.dataset.a;
+    if (a === "ri") delete S.items[i].img;
+    else if (a === "x") S.items.splice(i, 1);
+    else { var j = a === "u" ? i - 1 : i + 1; if (j < 0 || j >= S.items.length) return; var t = S.items[i]; S.items[i] = S.items[j]; S.items[j] = t; }
+    persist(); list(); render();
   });
-}
-
-const src=document.getElementById("src"); src.value=DEFAULT;
-document.getElementById("apply").onclick=render;
-document.getElementById("ratio").onclick=()=>{
-  const s=document.getElementById("stage");
-  s.style.outline = s.style.outline ? "" : "3px dashed red";
-};
-render();
+  function shrink(file, cb) {
+    var r = new FileReader();
+    r.onload = function () { var im = new Image(); im.onload = function () {
+      var k = Math.min(1, 800 / Math.max(im.width, im.height)), c = document.createElement("canvas");
+      c.width = im.width * k; c.height = im.height * k; c.getContext("2d").drawImage(im, 0, 0, c.width, c.height); cb(c.toDataURL("image/jpeg", 0.85));
+    }; im.src = r.result; };
+    r.readAsDataURL(file);
+  }
+  $("list").addEventListener("change", function (e) {
+    var pe = e.target.closest(".pe"); if (!pe || e.target.dataset.f !== "img" || !e.target.files[0]) return;
+    shrink(e.target.files[0], function (u) { S.items[+pe.dataset.i].img = u; persist(); list(); render(); });
+  });
+  document.querySelectorAll("[data-add]").forEach(function (b) {
+    b.onclick = function () {
+      var k = b.dataset.add;
+      S.items.push(k === "d" ? { k: "d", t: "2026년 1월 1일 목요일" } : { k: "m", me: k === "m" ? 1 : 0, t: "", tm: "" });
+      persist(); list(); render(); window.scrollTo(0, document.body.scrollHeight);
+    };
+  });
+  $("reset").onclick = function () { load(true); };
+  $("save").onclick = function () {
+    var b = this, t = b.textContent; b.disabled = true; b.textContent = "저장 중...";
+    fit(); html2canvas($("cap"), { scale: 1920 / $("cap").clientWidth, useCORS: true, backgroundColor: null, logging: false }).then(function (c) {
+      c.toBlob(function (bl) { var a = document.createElement("a"); a.href = URL.createObjectURL(bl); a.download = "kakao-chat-16x9.png"; document.body.appendChild(a); a.click(); a.remove(); b.disabled = false; b.textContent = t; });
+    }).catch(function () { b.disabled = false; b.textContent = t; alert("PNG 저장에 실패했습니다."); });
+  };
+  load(false);
+})();

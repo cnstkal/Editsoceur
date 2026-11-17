@@ -1,65 +1,51 @@
-  :root{ --bg:#9dbfd5; --yellow:#fee500; --line:#8fb1c9; }
-  *{box-sizing:border-box;margin:0;padding:0}
-  body{background:#222;font-family:"Apple SD Gothic Neo","Malgun Gothic","Noto Sans KR",sans-serif;color:#000}
+*{box-sizing:border-box;margin:0;padding:0}
+body{max-width:980px;margin:0 auto;padding:10px 10px 90px;background:#f5f5f5;color:#111;font-family:-apple-system,"Apple SD Gothic Neo","Noto Sans KR",sans-serif;letter-spacing:-.02em}
+svg{display:block}
+.tback{display:inline-block;margin:2px 0 8px;color:#3c1e1e;font-weight:600;text-decoration:none}
+.hint{font-size:12px;color:#777;margin:8px 2px 0}
 
-  /* 가로 16 고정 / 세로는 내용만큼 자동으로 늘어남 (최소 9) */
-  .stage-wrap{width:min(100vw,1600px);margin:0 auto}
-  .stage{
-    container-type:inline-size;
-    width:100%;
-    aspect-ratio:16/9;      /* 최소 높이 = 16:9 */
-    height:auto;
-    min-height:0;
-    background:var(--bg);
-    position:relative;
-    overflow:hidden;
-  }
-  /* aspect-ratio는 내용이 넘치면 자동으로 늘어남 */
-  .stage-inner{display:flex;flex-direction:column;min-height:100%}
+/* ===== 16:9 미리보기: 모든 크기는 가로폭(--u = 가로 1%) 기준 ===== */
+.stage{--u:9.6px;width:100%;min-height:calc(var(--u)*56.25);display:flex;flex-direction:column;background:#9dbfd5;overflow:hidden}
+.head{flex:none;position:relative;height:calc(var(--u)*10.1);display:flex;align-items:center;justify-content:space-between;padding:0 calc(var(--u)*4.3);border-bottom:calc(var(--u)*.12) solid rgba(0,0,0,.1)}
+.back{display:flex;align-items:center;gap:calc(var(--u)*.6);font-size:calc(var(--u)*3);font-weight:500}.back svg{width:calc(var(--u)*4.2);height:calc(var(--u)*4.2)}
+.tools{display:flex;align-items:center;gap:calc(var(--u)*3)}.tools svg{width:calc(var(--u)*4.2);height:calc(var(--u)*4.2)}
+.title{position:absolute;left:0;right:0;text-align:center;font-size:calc(var(--u)*3.6);font-weight:600;pointer-events:none}
+#chat{flex:1;padding:calc(var(--u)*2.5) calc(var(--u)*6) calc(var(--u)*6) calc(var(--u)*4.3)}
+.date{margin:calc(var(--u)*2.6) auto calc(var(--u)*1.6);width:max-content;height:calc(var(--u)*4);padding:0 calc(var(--u)*2.2) 0 calc(var(--u)*2.6);border-radius:calc(var(--u)*2);background:rgba(110,130,150,.28);display:flex;align-items:center;gap:calc(var(--u)*.5);font-size:calc(var(--u)*2.1);color:#222}
+.date svg{width:calc(var(--u)*1.6);height:calc(var(--u)*1.6)}
+.row{display:flex;margin-top:calc(var(--u)*.8)}
+.row.first{margin-top:calc(var(--u)*2.4)}
+.row.me{justify-content:flex-end}
+.av,.sp{width:calc(var(--u)*8.3);height:calc(var(--u)*8.3);margin-right:calc(var(--u)*3.4);flex:none}
+.av{border-radius:50%;overflow:hidden;background:#d7dde2 center/cover}.av svg{width:100%;height:100%}
+.col{min-width:0}
+.name{font-size:calc(var(--u)*2.3);line-height:1.2;margin:calc(var(--u)*.3) 0 calc(var(--u)*.8) calc(var(--u)*.1)}
+.line{display:flex;align-items:flex-end;gap:calc(var(--u)*1.2)}
+.me .line{flex-direction:row-reverse}
+.tm{flex:none;font-size:calc(var(--u)*1.9);color:#4d6173;line-height:1.25;padding-bottom:calc(var(--u)*.3);text-align:right;white-space:nowrap}
+.tm .rd{display:block;color:#f2b400;font-weight:600}
+.b{position:relative;background:#fff;border-radius:calc(var(--u)*2.8);padding:calc(var(--u)*1.75) calc(var(--u)*1.9);font-size:calc(var(--u)*2.85);line-height:1.3;font-weight:500;max-width:calc(var(--u)*46.5);word-break:keep-all;overflow-wrap:anywhere;white-space:pre-wrap;min-height:calc(var(--u)*5.2)}
+.me .b{background:#fee500}
+.tail .b{border-top-left-radius:0}
+.me.tail .b{border-top-left-radius:calc(var(--u)*2.8);border-top-right-radius:0}
+.tail .b::before{content:"";position:absolute;top:0;left:calc(var(--u)*-1.1);width:calc(var(--u)*1.3);height:calc(var(--u)*1);
+  background:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 8 6'><path d='M8 0H0C1.2 1.6 3.4 4.4 8 5.4z' fill='%23fff'/></svg>") no-repeat;background-size:100% 100%}
+.me.tail .b::before{left:auto;right:calc(var(--u)*-1.1);
+  background:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 8 6'><path d='M0 0H8C6.8 1.6 4.6 4.4 0 5.4z' fill='%23fee500'/></svg>") no-repeat;background-size:100% 100%}
+.b.img{padding:0;background:none;min-height:0;border-radius:calc(var(--u)*2.2)!important}
+.b.img::before{display:none}
+.b.img img{display:block;max-width:calc(var(--u)*30);max-height:calc(var(--u)*30);border-radius:calc(var(--u)*2.2)}
 
-  /* 모든 크기는 가로폭(cqw) 기준 → 어떤 해상도에서도 같은 비율 */
-  .header{
-    height:10.1cqw;display:flex;align-items:center;justify-content:space-between;
-    padding:0 4.3cqw;border-bottom:.12cqw solid var(--line);position:relative;flex:none;
-  }
-  .header .title{position:absolute;left:0;right:0;text-align:center;font-size:3.6cqw;font-weight:600;pointer-events:none}
-  .header svg{width:4.2cqw;height:4.2cqw;stroke:#000;fill:none;stroke-width:2.4;stroke-linecap:round;stroke-linejoin:round}
-  .header .right{display:flex;gap:3cqw;align-items:center}
-
-  .chat{padding:2.5cqw 6cqw 6cqw 4.3cqw;flex:1}
-  .row{display:flex;margin-bottom:.8cqw;position:relative}
-  .row.gap{margin-top:2.4cqw}
-
-  /* 내 말풍선 */
-  .row.me{justify-content:flex-end}
-  .row.me .bubble{background:var(--yellow)}
-  .row.me .bubble.tail::after{
-    content:"";position:absolute;right:-.9cqw;top:0;width:1.6cqw;height:1.6cqw;
-    background:var(--yellow);clip-path:polygon(0 0,100% 38%,0 100%);
-  }
-
-  /* 상대 */
-  .row.you{align-items:flex-start}
-  .avatar{width:8.3cqw;height:8.3cqw;border-radius:50%;background:#d7dde2;flex:none;overflow:hidden;margin-right:3.4cqw}
-  .avatar svg{width:100%;height:100%;display:block}
-  .avatar-space{width:11.7cqw;flex:none}
-  .col{display:flex;flex-direction:column;align-items:flex-start}
-  .name{font-size:2.3cqw;margin:.3cqw 0 .8cqw .1cqw}
-  .row.you .bubble{background:#fff}
-  .row.you .bubble.tail::after{
-    content:"";position:absolute;left:-.9cqw;top:0;width:1.6cqw;height:1.6cqw;
-    background:#fff;clip-path:polygon(100% 0,0 38%,100% 100%);
-  }
-
-  .bubble{
-    position:relative;font-size:2.85cqw;line-height:1.3;font-weight:500;
-    padding:1.75cqw 1.9cqw;border-radius:2.8cqw;max-width:46.5cqw;
-    word-break:keep-all;overflow-wrap:anywhere;white-space:pre-wrap;
-  }
-  .sticker{width:12.2cqw;height:12.2cqw;display:flex;align-items:center;justify-content:center;font-size:9cqw;margin-bottom:1cqw}
-
-  /* 편집 패널 (캡처 영역 밖) */
-  .panel{width:min(100vw,1600px);margin:12px auto;padding:12px;background:#fff;border-radius:8px;font-size:14px}
-  .panel textarea{width:100%;height:170px;font:14px/1.5 monospace;padding:8px}
-  .panel button{margin:6px 6px 0 0;padding:8px 14px;border:0;border-radius:6px;background:#fee500;font-weight:700;cursor:pointer}
-  .panel small{color:#555;display:block;margin-top:6px;line-height:1.5}
+/* ===== 편집기 ===== */
+.editor{max-width:560px;margin:0 auto;padding:20px 2px 0;font-size:14px}.editor h2{font-size:17px;margin:14px 0 10px}
+.editor label{display:block;font-weight:600;margin-bottom:10px;font-size:13px}
+.editor input:not([type=checkbox]):not([type=file]),.editor textarea,.editor select{display:block;width:100%;margin-top:5px;padding:9px 11px;border:1px solid #dbdbdb;border-radius:10px;background:#fff;font:inherit;font-size:15px;font-weight:400}
+.editor .file input{margin-top:5px;font-size:14px}.xb.sm{flex:none;width:100%;margin-bottom:8px}
+.editor .r2,.r2{display:flex;gap:8px;align-items:flex-end}.editor .r2>label,.r2>label{flex:1;min-width:0}
+.pe{background:#fff;border:1px solid #e6e6e6;border-radius:12px;padding:10px;margin-bottom:10px}
+.pe .chk{display:flex;align-items:center;gap:6px;flex:none;white-space:nowrap}.pe .chk input{width:18px;height:18px;margin:0}
+.pe .ops{display:flex;gap:8px}.xb{flex:1;height:34px;border:1px solid #dbdbdb;border-radius:8px;background:#f6f6f6;font-weight:600}
+.adds{display:flex;gap:8px;flex-wrap:wrap}.ghost{flex:1;min-width:110px;height:42px;border:1px dashed #aaa;border-radius:10px;background:none;font-weight:600}
+.bar{position:fixed;left:0;right:0;bottom:0;display:flex;gap:10px;justify-content:center;padding:12px 16px;background:rgba(255,255,255,.96);border-top:1px solid #dbdbdb;z-index:10}
+.bar button{height:48px;width:180px;border:0;border-radius:12px;font-weight:700;font-size:16px}
+.bar .primary{background:#fee500;color:#3c1e1e}.bar .secondary{background:#efefef}
