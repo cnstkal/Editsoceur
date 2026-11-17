@@ -51,7 +51,7 @@ $('iClr').addEventListener('change',function(){S.bg='';this.checked=false;persis
 $('reset').onclick=function(){load(true)};
 $('savePng').onclick=function(){var b=this,t=b.textContent;b.disabled=true;b.textContent='저장 중...';
 (document.fonts&&document.fonts.ready?document.fonts.ready:Promise.resolve()).then(function(){
-return html2canvas(pf,{scale:3,useCORS:true,backgroundColor:'#000',logging:false,onclone:function(d){var c=d.getElementById('pf');c.style.width='852px';c.style.fontSize='1px';c.style.borderRadius='0'}})}).then(function(c){
+return html2canvas(pf,{scale:4,useCORS:true,backgroundColor:'#000',logging:false,onclone:function(d){var c=d.getElementById('pf');c.style.width='852px';c.style.fontSize='1px';c.style.borderRadius='0'}})}).then(function(c){
 c.toBlob(function(bl){var a=document.createElement('a');a.href=URL.createObjectURL(bl);a.download='netflix-player.png';
 document.body.appendChild(a);a.click();a.remove();b.disabled=false;b.textContent=t},'image/png')
 }).catch(function(){b.disabled=false;b.textContent=t;alert('PNG 저장에 실패했습니다.')})};
