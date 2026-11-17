@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>가상 회원증</title>
+<link rel="stylesheet" href="card.css?v=1">
+</head>
+<body>
+<a class="tback" href="index.html" data-html2canvas-ignore>‹ 선택화면</a>
+<div class="card" id="cap">
+  <div class="lat"></div>
+  <div class="logo"></div>
+  <div class="t" id="vTitle"></div>
+  <div class="nm" id="vName"></div>
+  <div class="no" id="vNo"></div>
+  <div class="ph" id="vPhoto"></div>
+  <div class="dt" id="vDate"></div>
+  <div class="is" id="vIssuer"></div>
+  <div class="sm" id="vSample">SAMPLE · 소품용</div>
+</div>
+<section class="editor">
+  <h2>가상 회원증 편집</h2>
+  <label>카드 이름<input id="iTitle"></label>
+  <div class="r2"><label>이름<input id="iName"></label><label>번호<input id="iNo"></label></div>
+  <div class="r2"><label>날짜<input id="iDate"></label><label>발급처<input id="iIssuer"></label></div>
+  <label>사진 칸
+    <select id="iMode"><option value="blank">비워두기</option><option value="green">그린스크린</option><option value="photo">사진 넣기</option></select>
+  </label>
+  <label class="file">사진 올리기<input id="iPhoto" type="file" accept="image/*"></label>
+  <label class="file">배경 직접 올리기(선택, 안 올리면 기본 무늬)<input id="iBg" type="file" accept="image/*"></label>
+  <div class="r2"><button type="button" class="ghost" id="rmPhoto">사진 빼기</button><button type="button" class="ghost" id="rmBg">배경 빼기</button></div>
+  <label class="chk"><input id="iSample" type="checkbox"> 우측 하단 "SAMPLE · 소품용" 표시</label>
+</section>
+<div class="bar" data-html2canvas-ignore><button id="save" class="primary">PNG로 저장</button><button id="reset" class="secondary">초기화</button></div>
+<script src="https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js"></script>
+<script src="card.js?v=1"></script>
+</body>
+</html>
