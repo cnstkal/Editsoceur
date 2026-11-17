@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>사진 상세</title>
+<link rel="stylesheet" href="detail.css?v=1">
+</head>
+<body>
+<a class="tback" href="index.html" data-html2canvas-ignore>‹ 선택화면</a>
+<div class="phone" id="cap">
+  <div class="stage" id="stage"></div>
+  <header class="top">
+    <div class="c" id="bBack"></div>
+    <div class="dp"><b id="vDate"></b><span id="vTime"></span></div>
+    <div class="c" id="bMore"></div>
+  </header>
+  <footer class="bot">
+    <div class="c" id="bShare"></div>
+    <div class="mid" id="bMid"></div>
+    <div class="c" id="bTrash"></div>
+  </footer>
+</div>
+<section class="editor">
+  <h2>사진 상세 편집</h2>
+  <div class="r2"><label>날짜<input id="iDate"></label><label>시간<input id="iTime"></label></div>
+  <label>흰 영역 모드
+    <select id="iMode"><option value="photo">사진 넣기</option><option value="green">그린스크린</option><option value="white">흰색(비움)</option></select>
+  </label>
+  <div class="r2"><label>사진 맞춤<select id="iFit"><option value="contain">전체 보이게</option><option value="cover">꽉 채우기</option></select></label>
+  <label>그린스크린 색<input id="iGreen" type="color" value="#00ff00"></label></div>
+  <label class="file">사진 올리기<input id="iImg" type="file" accept="image/*"></label>
+  <button type="button" class="ghost" id="rmImg">사진 빼기</button>
+</section>
+<div class="bar" data-html2canvas-ignore><button id="save" class="primary">PNG로 저장</button><button id="reset" class="secondary">초기화</button></div>
+<script src="https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js"></script>
+<script src="detail.js?v=1"></script>
+</body>
+</html>
