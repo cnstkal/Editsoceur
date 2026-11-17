@@ -6,11 +6,11 @@ svg{display:block}.tback{display:inline-block;margin:2px 0 8px;color:#555;font-w
 .top{position:absolute;left:0;right:0;top:2.5%;display:flex;align-items:center;justify-content:space-between;padding:0 5.5%}
 .c{width:11%;aspect-ratio:1;border-radius:50%;background:#f2f2f2;box-shadow:0 3px 10px rgba(0,0,0,.12);display:grid;place-items:center}
 .c svg{width:56%;height:56%}
-.dp{width:39.5%;height:9.5%;border-radius:99px;background:#f2f2f2;box-shadow:0 3px 10px rgba(0,0,0,.12);display:flex;flex-direction:column;align-items:center;justify-content:center;line-height:1.25}
+.dp{width:39.5%;aspect-ratio:2.4;border-radius:99px;background:#f2f2f2;box-shadow:0 3px 10px rgba(0,0,0,.12);display:flex;flex-direction:column;align-items:center;justify-content:center;line-height:1.25}
 .dp b{font-size:15px;font-weight:700}.dp span{font-size:13px;font-weight:500}
 .bot{position:absolute;left:0;right:0;bottom:2.5%;display:flex;align-items:center;justify-content:space-between;padding:0 8%}
 .bot .c{width:12%}
-.mid{width:41%;height:8%;border-radius:99px;background:#f2f2f2;box-shadow:0 3px 10px rgba(0,0,0,.12);display:flex;align-items:center;justify-content:space-around;padding:0 3%}
+.mid{width:41%;aspect-ratio:3;border-radius:99px;background:#f2f2f2;box-shadow:0 3px 10px rgba(0,0,0,.12);display:flex;align-items:center;justify-content:space-around;padding:0 3%}
 .mid svg{width:25px;height:25px}
 .editor{padding:20px 2px 0;font-size:14px}.editor h2{font-size:17px;margin:0 0 12px}
 .editor label{display:block;font-weight:600;margin-bottom:10px;font-size:13px}
