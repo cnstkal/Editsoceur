@@ -7,15 +7,17 @@
 <link rel="stylesheet" href="chat.css">
 </head>
 <body>
-<div class="head" id="title"></div>
+<header class="head">
+  <div class="pill back" id="back"></div>
+  <div class="title" id="title"></div>
+  <div class="pill tools" id="tools"></div>
+</header>
 <main id="chat"></main>
 <footer class="comp">
-  <button class="btn" aria-label="추가"><svg viewBox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke="#111" stroke-width="2.4" stroke-linecap="round"/></svg></button>
-  <div class="field">
-    <input placeholder="메시지 입력">
-    <span class="smile"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9" fill="#111"/><circle cx="9" cy="10" r="1.4" fill="#ccc"/><circle cx="15" cy="10" r="1.4" fill="#ccc"/><path d="M8.5 14c1 2 6 2 7 0" stroke="#ccc" stroke-width="1.6" fill="none" stroke-linecap="round"/></svg></span>
-  </div>
-  <button class="btn" aria-label="해시태그"><svg viewBox="0 0 24 24"><path d="M9.5 4 7.5 20M16.5 4l-2 16M4.5 9h16M3.5 15h16" stroke="#111" stroke-width="2.2" stroke-linecap="round"/></svg></button>
+  <button class="btn" id="plus" aria-label="추가"></button>
+  <input placeholder="메시지 입력">
+  <span class="smile" id="smile"></span>
+  <button class="btn hash" id="hash" aria-label="해시태그"></button>
 </footer>
 <script src="chat.js"></script>
 </body>
