@@ -3,7 +3,7 @@
   var DEF={tt:'Netflix를 시청할 프로필을 선택하세요.',p:[{n:'선택 1',img:''},{n:'선택 2',img:''},{n:'선택 3',img:''},{n:'선택 4',img:''},{n:'선택 5',img:''}]};
   function esc(t){return String(t==null?'':t).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;')}
   function render(){
-    var h='<div class="lg">Netflix</div><div class="tt">'+esc(S.tt)+'</div><div class="pr">'+S.p.map(function(p){return '<div class="pi"><div class="pb" style="'+(p.img?"background-image:url('"+esc(p.img)+"')":'')+'"></div><div class="pn">'+esc(p.n)+'</div></div>'}).join('')+'</div>';
+    var h='<div class="lg">Netflix</div><div class="pc"><div class="tt">'+esc(S.tt)+'</div><div class="pr">'+S.p.map(function(p){return '<div class="pi"><div class="pb" style="'+(p.img?"background-image:url('"+esc(p.img)+"')":'')+'"></div><div class="pn">'+esc(p.n)+'</div></div>'}).join('')+'</div></div>';
     $('pf').innerHTML=h;fit()}
   function list(){var h='';S.p.forEach(function(p,i){h+='<div class="xc" data-i="'+i+'"><div class="row"><label>이름<input data-f="n" value="'+esc(p.n)+'"></label><label>프로필 사진<input type="file" accept="image/*" data-f="img"></label></div><div class="row"><button type="button" class="xb" data-a="u">↑</button><button type="button" class="xb" data-a="d">↓</button><button type="button" class="xb" data-a="x">✕ 삭제</button></div></div>'});$('xlist').innerHTML=h;$('addP').disabled=S.p.length>=5}
   function persist(){try{localStorage.setItem(STORE,JSON.stringify(S))}catch(e){}}

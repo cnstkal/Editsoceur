@@ -19,7 +19,7 @@ var hc=$('nHc');hc.style.backgroundImage=S.hero?"url('"+S.hero+"')":'';
 $('nHt').textContent=S.ht;$('nB1').textContent=S.b1;$('nB2').textContent=S.b2;
 $('nT1').innerHTML=tt(S.t1);$('nT2').innerHTML=tt(S.t2);
 var h='';S.r1.forEach(function(x,i){var n=i+1;h+='<div class="ni"><i class="nn" style="left:-'+(n===1?8:12.3)+'cqw">'+n+'</i>'+poster(x)+'</div>'});$('nR1').innerHTML=h;
-h='';S.r2.forEach(function(x){h+=poster(x)});$('nR2').innerHTML=h;
+h='';S.r2.forEach(function(x){h+=poster(x)});$('nR2').innerHTML=h+h;
 
 var av=$('nAv');if(S.av){av.innerHTML='';av.style.backgroundImage="url('"+S.av+"')"}else{av.style.backgroundImage='';av.innerHTML=PENG}}
 function card(r,x,i){return '<div class="nk" data-r="'+r+'" data-i="'+i+'"><div class="row"><label class="file">포스터 '+(i+1)+' 이미지<input type="file" accept="image/*" data-f="img"></label><label class="xk"><input type="checkbox" data-f="top"'+(x.top?' checked':'')+'> TOP10 배지</label></div><div class="row"><label>빨간 라벨<input data-f="red" value="'+esc(x.red)+'"></label><label>흰 라벨<input data-f="white" value="'+esc(x.white)+'"></label></div><div class="row"><button type="button" class="nkb" data-a="u">↑</button><button type="button" class="nkb" data-a="d">↓</button><button type="button" class="nkb" data-a="x">✕ 삭제</button></div></div>'}

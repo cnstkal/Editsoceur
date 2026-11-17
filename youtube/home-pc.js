@@ -1,6 +1,6 @@
 (function(){
   var $=function(i){return document.getElementById(i)},STORE='editsoceur-youtube-home-pc-v1',S;
-  var DEF={sr:'검색',av:'',bl:'0',chips:['전체','음악','믹스','라이브','요리','최근에 업로드된 동영상','감상한 동영상','새로운 맞춤 동영상'],v:[
+  var DEF={sr:'검색',av:'',chips:['전체','음악','믹스','라이브','요리','최근에 업로드된 동영상','감상한 동영상','새로운 맞춤 동영상'],v:[
     {th:'',d:'3:27',t:'임시 영상 제목입니다',c:'임시 채널',vw:'58만',ago:'3개월 전'},
     {th:'',d:'32:55',t:'임시 영상 제목입니다. 두 줄까지 보입니다',c:'임시 채널',vw:'49만',ago:'4개월 전'},
     {th:'',d:'9:30',t:'임시 영상 제목입니다',c:'임시 채널',vw:'12만',ago:'1주 전'},
@@ -20,7 +20,7 @@
   function render(){
     var h='<div class="hd"><div class="hm">'+IC.menu+'</div><div class="logo"><svg width="44" height="31" viewBox="0 0 44 31"><rect width="44" height="31" rx="9" fill="#ff0033"/><path d="M18 9.5v12l10.5-6z" fill="#fff"/></svg>Premium<small>KR</small></div>'+
       '<div class="sr"><div class="in">'+esc(S.sr)+'</div><div class="bt">'+IC.search+'</div></div><div class="mic">'+IC.mic+'</div>'+
-      '<div class="mk">'+IC.plus+'만들기</div><div class="bell">'+IC.bell+'<em>0</em>'+'</div><div class="av" style="'+(S.av?"background-image:url('"+esc(S.av)+"')":'')+'"></div></div>';
+      '<div class="mk">'+IC.plus+'만들기</div><div class="bell">'+IC.bell+'</div><div class="av" style="'+(S.av?"background-image:url('"+esc(S.av)+"')":'')+'"></div></div>';
     h+='<div class="sd"><div style="height:18px"></div><div class="si on">'+IC.home+'홈</div><div class="si">'+IC.shorts+'Shorts</div>'+
       '<div class="sec"><div style="font-size:16px;font-weight:600;padding:8px 12px">구독</div>'+['서재로36','침착맨','ATEEZ','강유미','킥서비스','케인 TV','예예 yehyeh'].map(function(n,i){return '<div class="sub"><i></i>'+esc(n)+(i%2===0?'<span class="d"></span>':'')+'</div>'}).join('')+'</div></div>';
     h+='<div class="main"><div class="chips">'+S.chips.map(function(c,i){return '<span class="chip'+(i===0?' on':'')+'">'+esc(c)+'</span>'}).join('')+'</div><div class="grid">'+
@@ -36,7 +36,7 @@
   function fit(){var k=Math.min(1,$('pw').clientWidth/1920);$('pf').style.transform='scale('+k+')';$('pf').style.height='auto';$('pf').style.overflow='visible';var base=$('pf').getBoundingClientRect().top,bottom=Math.max(1080,$('pf').scrollHeight);$('pf').querySelectorAll('*').forEach(function(el){var r=el.getBoundingClientRect();bottom=Math.max(bottom,(r.bottom-base)/k)});var h=Math.max(1080,bottom+40);$('pf').style.height=h+'px';$('pw').style.height=h*k+'px'}
   function set(){$('iSr').value=S.sr;$('iAv').value=S.av;renderChips()}
   function load(r){if(r)try{localStorage.removeItem(STORE)}catch(e){}try{var s=!r&&localStorage.getItem(STORE);S=s?JSON.parse(s):JSON.parse(JSON.stringify(DEF));if(!Array.isArray(S.v))throw 0}catch(e){S=JSON.parse(JSON.stringify(DEF))}set();list();render();fit()}
-  function glob(){S.sr=$('iSr').value;S.av=$('iAv').value;S.bl='0';persist();render()}
+  function glob(){S.sr=$('iSr').value;S.av=$('iAv').value;persist();render()}
   ['iSr','iAv'].forEach(function(id){$(id).addEventListener('input',glob)});
   var L=$('xlist'),ix=function(e){return +e.target.closest('.xc').dataset.i};
   L.addEventListener('input',function(e){var f=e.target.dataset.f;if(!f||e.target.type==='file')return;S.v[ix(e)][f]=e.target.value;persist();render()});
