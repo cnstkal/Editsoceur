@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>카카오톡 대화 (16:9)</title>
+<link rel="stylesheet" href="wide.css">
+</head>
+<body>
+
+<div class="stage-wrap">
+  <div class="stage" id="stage">
+    <div class="stage-inner">
+      <div class="header">
+        <svg viewBox="0 0 24 24"><path d="M15 3 6 12l9 9"/></svg>
+        <div class="title" id="title">윤둥이</div>
+        <div class="right">
+          <svg viewBox="0 0 24 24"><circle cx="10.5" cy="10.5" r="7"/><path d="m16 16 5 5"/></svg>
+          <svg viewBox="0 0 24 24"><path d="M3 6h18M3 12h18M3 18h18"/></svg>
+        </div>
+      </div>
+      <div class="chat" id="chat"></div>
+    </div>
+  </div>
+</div>
+
+<div class="panel">
+  <textarea id="src"></textarea>
+  <button id="apply">적용</button>
+  <button id="ratio">16:9 영역 보기 토글</button>
+  <small>
+    한 줄 = 말풍선 1개. <b>나: 내용</b> / <b>상대: 내용</b> / <b>상대: [스티커]</b> (이모지 쓰려면 [스티커:😍]).<br>
+    <b>---</b> 한 줄은 대화 묶음 구분. 같은 사람이 연속이면 자동으로 묶임. 가로는 16 고정, 세로는 대화가 길어지는 만큼 늘어남.<br>
+    첫 줄 <b>제목: 이름</b> 으로 상단 이름 변경.
+  </small>
+</div>
+
+<script src="wide.js"></script>
+</body>
+</html>

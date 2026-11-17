@@ -1,0 +1,65 @@
+  :root{ --bg:#9dbfd5; --yellow:#fee500; --line:#8fb1c9; }
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{background:#222;font-family:"Apple SD Gothic Neo","Malgun Gothic","Noto Sans KR",sans-serif;color:#000}
+
+  /* 가로 16 고정 / 세로는 내용만큼 자동으로 늘어남 (최소 9) */
+  .stage-wrap{width:min(100vw,1600px);margin:0 auto}
+  .stage{
+    container-type:inline-size;
+    width:100%;
+    aspect-ratio:16/9;      /* 최소 높이 = 16:9 */
+    height:auto;
+    min-height:0;
+    background:var(--bg);
+    position:relative;
+    overflow:hidden;
+  }
+  /* aspect-ratio는 내용이 넘치면 자동으로 늘어남 */
+  .stage-inner{display:flex;flex-direction:column;min-height:100%}
+
+  /* 모든 크기는 가로폭(cqw) 기준 → 어떤 해상도에서도 같은 비율 */
+  .header{
+    height:10.1cqw;display:flex;align-items:center;justify-content:space-between;
+    padding:0 4.3cqw;border-bottom:.12cqw solid var(--line);position:relative;flex:none;
+  }
+  .header .title{position:absolute;left:0;right:0;text-align:center;font-size:3.6cqw;font-weight:600;pointer-events:none}
+  .header svg{width:4.2cqw;height:4.2cqw;stroke:#000;fill:none;stroke-width:2.4;stroke-linecap:round;stroke-linejoin:round}
+  .header .right{display:flex;gap:3cqw;align-items:center}
+
+  .chat{padding:2.5cqw 6cqw 6cqw 4.3cqw;flex:1}
+  .row{display:flex;margin-bottom:.8cqw;position:relative}
+  .row.gap{margin-top:2.4cqw}
+
+  /* 내 말풍선 */
+  .row.me{justify-content:flex-end}
+  .row.me .bubble{background:var(--yellow)}
+  .row.me .bubble.tail::after{
+    content:"";position:absolute;right:-.9cqw;top:0;width:1.6cqw;height:1.6cqw;
+    background:var(--yellow);clip-path:polygon(0 0,100% 38%,0 100%);
+  }
+
+  /* 상대 */
+  .row.you{align-items:flex-start}
+  .avatar{width:8.3cqw;height:8.3cqw;border-radius:50%;background:#d7dde2;flex:none;overflow:hidden;margin-right:3.4cqw}
+  .avatar svg{width:100%;height:100%;display:block}
+  .avatar-space{width:11.7cqw;flex:none}
+  .col{display:flex;flex-direction:column;align-items:flex-start}
+  .name{font-size:2.3cqw;margin:.3cqw 0 .8cqw .1cqw}
+  .row.you .bubble{background:#fff}
+  .row.you .bubble.tail::after{
+    content:"";position:absolute;left:-.9cqw;top:0;width:1.6cqw;height:1.6cqw;
+    background:#fff;clip-path:polygon(100% 0,0 38%,100% 100%);
+  }
+
+  .bubble{
+    position:relative;font-size:2.85cqw;line-height:1.3;font-weight:500;
+    padding:1.75cqw 1.9cqw;border-radius:2.8cqw;max-width:46.5cqw;
+    word-break:keep-all;overflow-wrap:anywhere;white-space:pre-wrap;
+  }
+  .sticker{width:12.2cqw;height:12.2cqw;display:flex;align-items:center;justify-content:center;font-size:9cqw;margin-bottom:1cqw}
+
+  /* 편집 패널 (캡처 영역 밖) */
+  .panel{width:min(100vw,1600px);margin:12px auto;padding:12px;background:#fff;border-radius:8px;font-size:14px}
+  .panel textarea{width:100%;height:170px;font:14px/1.5 monospace;padding:8px}
+  .panel button{margin:6px 6px 0 0;padding:8px 14px;border:0;border-radius:6px;background:#fee500;font-weight:700;cursor:pointer}
+  .panel small{color:#555;display:block;margin-top:6px;line-height:1.5}
