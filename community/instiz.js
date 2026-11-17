@@ -42,8 +42,7 @@ const $ = id => document.getElementById(id);
 $("topIcons").innerHTML = ICON.login + ICON.search + ICON.menu;
 
 const tabs = $("tabs");
-tabs.innerHTML = '<div class="nav-face"><i></i></div>' +
-  POST.tabs.map(t => `<div class="t${t === POST.active ? " on" : ""}">${t}</div>`).join("") +
+tabs.innerHTML = POST.tabs.map(t => `<div class="t${t === POST.active ? " on" : ""}">${t}</div>`).join("") +
   '<div class="sp"></div><div class="chev">' + ICON.chev + "</div>";
 
 $("title").innerHTML = "";
