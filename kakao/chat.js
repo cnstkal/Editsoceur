@@ -43,7 +43,9 @@
         if (first) { var av = el("div", "av"); if (S.av) av.style.backgroundImage = "url(" + S.av + ")"; else av.innerHTML = AVATAR; row.append(av); col.append(el("div", "name", S.room)); }
         else row.append(el("div", "sp"));
       }
-      var line = el("div", "line"); line.append(el("div", "b", m.t));
+      var line = el("div", "line"), bb = el("div", "b" + (m.img ? " img" : ""), m.img ? null : m.t);
+      if (m.img) { var im = document.createElement("img"); im.src = m.img; bb.append(im); }
+      line.append(bb);
       if (m.tm || (me && m.rd)) { var tm = el("div", "tm"); if (me && m.rd) tm.append(el("span", "rd", "1")); tm.append(m.tm || ""); line.append(tm); }
       col.append(line); row.append(col); chat.append(row);
     });
@@ -56,7 +58,9 @@
       if (m.k === "d") return '<div class="pe" data-i="' + i + '"><label>날짜 구분선<input data-f="t" value="' + esc(m.t) + '"></label>' + ops + "</div>";
       return '<div class="pe" data-i="' + i + '"><div class="r2"><label>보낸 사람<select data-f="me"><option value="0"' + (m.me ? "" : " selected") + '>상대</option><option value="1"' + (m.me ? " selected" : "") + '>나</option></select></label>' +
         '<label>시간(비우면 숨김)<input data-f="tm" value="' + esc(m.tm) + '"></label><label class="chk"><input type="checkbox" data-f="rd"' + (m.rd ? " checked" : "") + '>안읽음 1</label></div>' +
-        '<label>내용<textarea rows="2" data-f="t">' + esc(m.t) + "</textarea></label>" + ops + "</div>";
+        '<label>내용<textarea rows="2" data-f="t">' + esc(m.t) + "</textarea></label>" +
+        '<label class="file">사진 보내기(올리면 말풍선 대신 사진)<input type="file" accept="image/*" data-f="img"></label>' +
+        (m.img ? '<button type="button" class="xb sm" data-a="ri">사진 빼기</button>' : "") + ops + "</div>";
     }).join("");
   }
   function load(reset) {
@@ -69,6 +73,7 @@
   $("iAv").onchange = function () { var f = this.files[0]; if (!f) return; var r = new FileReader(); r.onload = function () { S.av = r.result; persist(); render(); }; r.readAsDataURL(f); };
   $("list").addEventListener("input", function (e) {
     var pe = e.target.closest(".pe"), f = e.target.dataset.f; if (!pe || !f) return;
+    if (f === "img") return;
     var m = S.items[+pe.dataset.i];
     m[f] = f === "me" ? +e.target.value : f === "rd" ? (e.target.checked ? 1 : 0) : e.target.value;
     persist(); render();
@@ -76,9 +81,22 @@
   $("list").addEventListener("click", function (e) {
     var b = e.target.closest("[data-a]"), pe = e.target.closest(".pe"); if (!b || !pe) return;
     var i = +pe.dataset.i, a = b.dataset.a;
-    if (a === "x") S.items.splice(i, 1);
+    if (a === "ri") delete S.items[i].img;
+    else if (a === "x") S.items.splice(i, 1);
     else { var j = a === "u" ? i - 1 : i + 1; if (j < 0 || j >= S.items.length) return; var t = S.items[i]; S.items[i] = S.items[j]; S.items[j] = t; }
     persist(); list(); render();
+  });
+  function shrink(file, cb) {
+    var r = new FileReader();
+    r.onload = function () { var im = new Image(); im.onload = function () {
+      var k = Math.min(1, 800 / Math.max(im.width, im.height)), c = document.createElement("canvas");
+      c.width = im.width * k; c.height = im.height * k; c.getContext("2d").drawImage(im, 0, 0, c.width, c.height); cb(c.toDataURL("image/jpeg", 0.85));
+    }; im.src = r.result; };
+    r.readAsDataURL(file);
+  }
+  $("list").addEventListener("change", function (e) {
+    var pe = e.target.closest(".pe"); if (!pe || e.target.dataset.f !== "img" || !e.target.files[0]) return;
+    shrink(e.target.files[0], function (u) { S.items[+pe.dataset.i].img = u; persist(); list(); render(); });
   });
   document.querySelectorAll("[data-add]").forEach(function (b) {
     b.onclick = function () {

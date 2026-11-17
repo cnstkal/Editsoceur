@@ -11,7 +11,7 @@ svg{display:block}
 .tools{padding:0 14px;gap:20px}.tools svg{width:24px;height:24px}
 .title{position:absolute;left:0;right:0;text-align:center;font-size:19px;font-weight:700;pointer-events:none}
 #chat{flex:1;min-height:0;overflow:hidden;display:flex;flex-direction:column;justify-content:flex-end;padding:6px 12px 10px}
-.date{align-self:center;margin:16px 0 12px;height:26px;padding:0 10px 0 12px;border-radius:13px;background:rgba(110,130,150,.28);display:flex;align-items:center;gap:3px;font-size:13px;color:#222}
+.date{align-self:center;margin:16px 0 12px;height:26px;padding:0 16px 0 20px;min-width:190px;justify-content:center;border-radius:13px;background:rgba(110,130,150,.28);display:flex;align-items:center;gap:3px;font-size:13px;color:#222}
 .date svg{width:11px;height:11px}
 .row{display:flex;margin-top:4px;flex:none}
 .row.first{margin-top:14px}
@@ -30,10 +30,13 @@ svg{display:block}
 /* 말풍선 꼬리: 윗모서리에서 바깥으로 살짝 튀어나온 뾰족한 조각 (SVG) */
 .tail .b{border-top-left-radius:0}
 .me.tail .b{border-top-left-radius:18px;border-top-right-radius:0}
-.tail .b::before{content:"";position:absolute;top:0;left:-9px;width:10px;height:11px;
-  background:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 10 11'><path d='M10 0H2.2C.9 0 .3 1.1 1 2.1 2.7 4.8 6 8.6 10 10.2z' fill='%23fff'/></svg>") no-repeat}
-.me.tail .b::before{left:auto;right:-9px;
-  background:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 10 11'><path d='M0 0H7.8C9.1 0 9.7 1.1 9 2.1 7.3 4.8 4 8.6 0 10.2z' fill='%23fae84c'/></svg>") no-repeat}
+.tail .b::before{content:"";position:absolute;top:0;left:-7px;width:8px;height:6px;
+  background:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 8 6'><path d='M8 0H0C1.2 1.6 3.4 4.4 8 5.4z' fill='%23fff'/></svg>") no-repeat}
+.me.tail .b::before{left:auto;right:-7px;
+  background:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 8 6'><path d='M0 0H8C6.8 1.6 4.6 4.4 0 5.4z' fill='%23fae84c'/></svg>") no-repeat}
+.b.img{padding:0;background:none;min-height:0;border-radius:14px!important;overflow:visible}
+.b.img::before{display:none}
+.b.img img{display:block;max-width:230px;max-height:300px;border-radius:14px}
 .comp{flex:none;margin:6px 8px 12px;height:54px;border-radius:27px;background:rgba(255,255,255,.95);display:flex;align-items:center;gap:6px;padding:0 8px;box-shadow:0 1px 6px rgba(0,0,0,.06)}
 .btn{flex:none;width:40px;height:40px;border:0;border-radius:50%;background:none;display:grid;place-items:center}.btn svg{width:24px;height:24px}
 .ph{flex:1;font-size:18px;color:#b4b9bf;padding-left:6px}
@@ -43,6 +46,7 @@ svg{display:block}
 .editor{padding:20px 2px 0;font-size:14px}.editor h2{font-size:17px;margin:14px 0 10px}
 .editor label{display:block;font-weight:600;margin-bottom:10px;font-size:13px}
 .editor input:not([type=checkbox]):not([type=file]),.editor textarea,.editor select{display:block;width:100%;margin-top:5px;padding:9px 11px;border:1px solid #dbdbdb;border-radius:10px;background:#fff;font:inherit;font-size:15px;font-weight:400}
+.editor .file input{margin-top:5px;font-size:14px}.xb.sm{flex:none;width:100%;margin-bottom:8px}
 .editor .r2{display:flex;gap:8px;align-items:flex-end}.editor .r2>label{flex:1;min-width:0}
 .pe{background:#fff;border:1px solid #e6e6e6;border-radius:12px;padding:10px;margin-bottom:10px}
 .pe .chk{display:flex;align-items:center;gap:6px;flex:none;white-space:nowrap}.pe .chk input{width:18px;height:18px;margin:0}
