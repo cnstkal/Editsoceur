@@ -5,7 +5,7 @@ svg{display:block}.tback{display:inline-block;margin:2px 0 8px;color:#555;font-w
 .stage{position:absolute;left:0;right:0;top:15%;bottom:12%;background:#fff center/contain no-repeat}
 .top{position:absolute;left:0;right:0;top:2.5%;display:flex;align-items:center;justify-content:space-between;padding:0 5.5%}
 .c{width:11%;aspect-ratio:1;border-radius:50%;background:#f2f2f2;box-shadow:0 3px 10px rgba(0,0,0,.12);display:grid;place-items:center}
-.c svg{width:56%;height:56%}
+.c svg{width:46%;height:46%}
 .dp{width:39.5%;aspect-ratio:2.4;border-radius:99px;background:#f2f2f2;box-shadow:0 3px 10px rgba(0,0,0,.12);display:flex;flex-direction:column;align-items:center;justify-content:center;line-height:1.25}
 .dp b{font-size:15px;font-weight:700}.dp span{font-size:13px;font-weight:500}
 .bot{position:absolute;left:0;right:0;bottom:2.5%;display:flex;align-items:center;justify-content:space-between;padding:0 8%}
