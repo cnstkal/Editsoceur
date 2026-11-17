@@ -1,6 +1,6 @@
 (function(){
   var $=function(i){return document.getElementById(i)};
-  var DEF={un:'seorin.archive',nm:'서린 | seorin',po:'48',fr:'1.8만',fg:'326',bio:'coffee, books & little moments ☕\n기록하는 일상\n📍 Seoul',m1:'daily.ju',m2:'mood__room',mn:'12',mutOn:true,mi:[],f1:'팔로잉',f2:'메시지',badge:true,cnt:9};
+  var DEF={un:'hyunwoo.film',nm:'현우 | film & road',po:'72',fr:'3.1만',fg:'412',bio:'필름 카메라로 찍는 여행 기록 🎞️\n느리게 걷는 하루\n📍 Busan',m1:'soo.lens',m2:'trip_yeonji',mn:'27',mutOn:true,mi:[],f1:'팔로잉',f2:'메시지',badge:true,cnt:9};
   var S,av,mav,ph;
   var ICON='<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2"><rect x="8" y="3" width="13" height="13" rx="3.5" fill="#fff"/><path d="M4 8v9a3 3 0 0 0 3 3h9"/></svg>';
   var K=['un','nm','po','fr','fg','bio','f1','f2','m1','m2','mn'],I={un:'iUn',nm:'iNm',po:'iPo',fr:'iFr',fg:'iFg',bio:'iBio',f1:'iF1',f2:'iF2',m1:'iM1',m2:'iM2',mn:'iMn'};

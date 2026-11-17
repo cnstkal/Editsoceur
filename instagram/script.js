@@ -1,7 +1,7 @@
 (function(){
   var $=function(id){return document.getElementById(id)};
-  var DEF={user:'yunou._.u',liker:'_starhwa_',like:'23.6만',cmt:'2,232',rep:'2.4만',shr:'2.2만',
-    cap:'늦은 오후에 걷기 좋은 날 ☁️\n요즘 자주 듣는 노래와 함께\n#일상 #weekend #좋은날',date:'2026년 11월 15일',count:8,musicOn:true,artist:'wave to earth',song:'seasons',badge:true,bub:true,bubN:2};
+  var DEF={user:'minji.log',liker:'_haru_k',like:'8.4만',cmt:'1,873',rep:'6,215',shr:'9,402',
+    cap:'주말 아침 카페에서 읽은 책 한 권 📖\n창가 자리가 제일 좋아요\n#카페 #독서 #주말일상',date:'2026년 11월 16일',count:8,musicOn:true,artist:'10cm',song:'오늘 같은 날',badge:true,bub:true,bubN:2};
   var S={},bimg=[null,null,null],avatar=null,photos=[],idx=0;
   function esc(t){return t.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;')}
   function load(){S=JSON.parse(JSON.stringify(DEF));avatar=null;bimg=[null,null,null];['iB0','iB1','iB2'].forEach(function(i){$(i).value=''});$('iBadge').checked=true;$('iBubN').value=2;photos=[];idx=0;
