@@ -3,22 +3,39 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-<title>채팅방</title>
-<link rel="stylesheet" href="chat.css">
+<title>카카오톡 채팅방</title>
+<link rel="stylesheet" href="chat.css?v=2">
 </head>
 <body>
-<header class="head">
-  <div class="pill back" id="back"></div>
-  <div class="title" id="title"></div>
-  <div class="pill tools" id="tools"></div>
-</header>
-<main id="chat"></main>
-<footer class="comp">
-  <button class="btn" id="plus" aria-label="추가"></button>
-  <input placeholder="메시지 입력">
-  <span class="smile" id="smile"></span>
-  <button class="btn hash" id="hash" aria-label="해시태그"></button>
-</footer>
-<script src="chat.js"></script>
+<a class="tback" href="index.html" data-html2canvas-ignore>‹ 선택화면</a>
+<div class="phone" id="cap">
+  <header class="head">
+    <div class="pill back" id="back"></div>
+    <div class="title" id="title"></div>
+    <div class="pill tools" id="tools"></div>
+  </header>
+  <main id="chat"></main>
+  <footer class="comp">
+    <button class="btn" id="plus" aria-label="추가"></button>
+    <span class="ph">메시지 입력</span>
+    <span class="smile" id="smile"></span>
+    <button class="btn" id="hash" aria-label="해시태그"></button>
+  </footer>
+</div>
+<section class="editor">
+  <h2>채팅방 편집</h2>
+  <div class="row"><label>상대 이름<input id="iRoom"></label><label>뒤로가기 숫자(비우면 숨김)<input id="iUn"></label></div>
+  <label class="file">상대 프로필 사진<input id="iAv" type="file" accept="image/*"></label>
+  <h2>대화</h2>
+  <div id="list"></div>
+  <div class="adds">
+    <button type="button" class="ghost" data-add="f">+ 상대 말풍선</button>
+    <button type="button" class="ghost" data-add="m">+ 내 말풍선</button>
+    <button type="button" class="ghost" data-add="d">+ 날짜 구분선</button>
+  </div>
+</section>
+<div class="bar" data-html2canvas-ignore><button id="save" class="primary">PNG로 저장</button><button id="reset" class="secondary">초기화</button></div>
+<script src="https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js"></script>
+<script src="chat.js?v=2"></script>
 </body>
 </html>
