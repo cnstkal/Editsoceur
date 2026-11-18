@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>올드폰</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.css">
+<link rel="stylesheet" href="oldphone.css">
+<style id="ed-font">html,body,body *{font-family:Pretendard,-apple-system,"Apple SD Gothic Neo","Noto Sans KR",sans-serif!important;letter-spacing:-.02em!important}</style>
+</head>
+<body class="studio">
+<div class="ps-wrap">
+<header class="ps-top"><span></span><button class="ps-pvbtn" id="pvBtn" type="button">미리보기 모드</button></header>
+<div class="ps-grid">
+<section class="ps-card ps-main">
+<div class="ps-lbl">Live Preview</div>
+<h2>올드폰</h2>
+<p class="ps-sub">화면 안쪽을 확인하고, 오른쪽에서 바로 수정해요</p>
+<div class="ps-stage"><div class="ps-frame" id="frame"><div class="zw" id="zw">
+<div class="zs" id="zoom">
+<img class="frm" id="vFrm" alt="">
+<div class="scr" id="scr">
+  <div class="lcd"></div>
+  <div class="sb">
+    <svg id="sSig" viewBox="0 0 40 54" fill="#222" style="left:0"><path d="M18 2v22M10 2l8 8 8-8" stroke="#222" stroke-width="3" fill="none"/><rect x="20" y="40" width="5" height="6"/><rect x="27" y="32" width="5" height="14"/><rect x="34" y="22" width="5" height="24"/></svg>
+    <svg id="sMail" viewBox="0 0 52 44" style="left:100px;top:5px" fill="none" stroke="#222" stroke-width="3.500"><rect x="2" y="2" width="48" height="36" rx="2"/><path d="m3 4 23 19L49 4"/></svg>
+    <svg id="sVib" viewBox="0 0 72 54" style="left:166px" fill="none" stroke="#222" stroke-width="3"><circle cx="36" cy="27" r="9" fill="#222"/><path d="M20 12a22 22 0 0 0 0 30M10 6a32 32 0 0 0 0 42M52 12a22 22 0 0 1 0 30M62 6a32 32 0 0 1 0 42"/></svg>
+    <svg class="bat" viewBox="0 0 64 44" style="top:5px" fill="#222"><rect x="2" y="3" width="54" height="38" rx="6" fill="none" stroke="#222" stroke-width="4"/><rect x="56" y="14" width="6" height="16"/><rect x="30" y="10" width="7" height="24"/><rect x="42" y="10" width="7" height="24"/></svg>
+  </div>
+  <div class="ttl"><i class="l"></i><span id="vT"></span><i class="r"></i></div>
+  <div class="msg" id="vM"></div>
+  <div class="sk l" id="vL"></div><div class="sk r" id="vR"></div>
+</div>
+</div>
+</div></div></div>
+</section>
+<section class="ps-card ps-side">
+<div class="ps-lbl">Edit Panel</div>
+<h2>화면 내용 수정</h2>
+<div class="ps-edwrap"><div class="editor">
+<div class="ps-pn" data-t="기본">
+<label>상단 제목<input id="iT"></label>
+<label>본문 (줄바꿈 반영)<textarea id="iM" rows="3"></textarea></label>
+<label>왼쪽 키<input id="iL"></label>
+<label>오른쪽 키<input id="iR"></label>
+</div>
+<div class="ps-pn" data-t="이미지" hidden>
+<label>폰 틀 사진<input id="iF" type="file" accept="image/*"></label>
+<button class="ps-ghost" id="clearF" type="button">틀 사진 제거</button>
+<label>화면 X 위치<input id="iX" type="range" min="-400" max="400" value="0"></label>
+<label>화면 Y 위치<input id="iY" type="range" min="-400" max="400" value="0"></label>
+<label>화면 크기<input id="iS" type="range" min="50" max="150" value="100"></label>
+</div>
+<div class="ps-pn" data-t="기타" hidden>
+<div class="ps-tg"><span>신호 아이콘</span><label class="sw"><input id="iSig" type="checkbox"><i></i></label></div>
+<div class="ps-tg"><span>메일 아이콘</span><label class="sw"><input id="iMail" type="checkbox"><i></i></label></div>
+<div class="ps-tg"><span>진동 아이콘</span><label class="sw"><input id="iVib" type="checkbox"><i></i></label></div>
+<div class="ps-tg"><span>배터리 아이콘</span><label class="sw"><input id="iBat" type="checkbox"><i></i></label></div>
+</div>
+</div></div>
+<div class="ps-acts"><button id="reset" type="button">초기화</button><button id="savePng" type="button">PNG 저장</button></div>
+</section>
+</div>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js"></script>
+<script src="oldphone.js"></script>
+</body>
+</html>
