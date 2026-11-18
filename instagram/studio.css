@@ -58,4 +58,4 @@ body.pvmode .ps-grid{grid-template-columns:1fr;gap:0}
 body.pvmode .ps-main{padding:0;border-radius:0;box-shadow:none}
 body.pvmode .ps-main .ps-lbl,body.pvmode .ps-main h2,body.pvmode .ps-main .ps-sub{display:none}
 body.pvmode .ps-stage{padding-top:0}
-body.pvmode .ps-frame .phone{max-width:none;width:100%}
+body.pvmode{background:#fff}
