@@ -6,7 +6,7 @@
 *{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent}
 html,body{background:#111;font-family:-apple-system,"SF Pro Text","Apple SD Gothic Neo","Noto Sans KR",sans-serif;touch-action:manipulation;-webkit-user-select:none;user-select:none}
 input,select{font-size:16px!important;-webkit-user-select:auto;user-select:auto}
-.phone{position:relative;max-width:430px;margin:0 auto;min-height:100dvh;overflow:hidden;color:#fff;
+.phone{position:relative;max-width:430px;margin:0 auto;min-height:calc(100dvh - 72px - env(safe-area-inset-bottom,0px));overflow:hidden;color:#fff;
  background:radial-gradient(120% 60% at 15% 12%,#3f86d6 0,transparent 60%),radial-gradient(90% 50% at 90% 40%,#1d5fc4 0,transparent 65%),radial-gradient(110% 60% at 20% 62%,#5fb5a8 0,transparent 60%),radial-gradient(100% 55% at 85% 88%,#f0a35a 0,transparent 62%),radial-gradient(90% 50% at 25% 95%,#e8d36a 0,transparent 60%),linear-gradient(180deg,#2f78c8,#4aa0a6 55%,#c9b46a);background-size:cover;background-position:center}
 /* ===== Liquid Glass ===== */
 .glass{position:relative;isolation:isolate;
@@ -36,57 +36,63 @@ input,select{font-size:16px!important;-webkit-user-select:auto;user-select:auto}
 .fd .ic{border-radius:23%;font-size:0;box-shadow:none}
 .bd{position:absolute;top:-8px;right:-8px;min-width:26px;height:26px;padding:0 7px;border-radius:13px;background:#ff3b30;color:#fff;font-size:16px;font-weight:500;line-height:26px;text-align:center;z-index:4;box-shadow:0 1px 3px rgba(0,0,0,.25)}
 .lb{margin-top:6px;font-size:13px;line-height:16px;max-width:100%;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;text-shadow:0 1px 3px rgba(0,0,0,.35);letter-spacing:-.01em}
-.search{position:absolute;left:50%;bottom:122px;transform:translateX(-50%);height:34px;padding:0 16px;border-radius:17px;display:flex;align-items:center;gap:6px;font-size:14px;color:rgba(255,255,255,.95);white-space:nowrap}
-.search:active{transform:translateX(-50%) scale(.95)}
-.dock{position:absolute;left:13px;right:13px;bottom:22px;height:92px;border-radius:46px;padding:14px 16px;display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
-.dock .ico{width:100%}
+.bottom{position:absolute;left:0;right:0;bottom:22px;display:flex;flex-direction:column;align-items:center;gap:18px}
+.search{height:34px;padding:0 16px;border-radius:17px;display:flex;align-items:center;gap:6px;font-size:14px;color:rgba(255,255,255,.95);white-space:nowrap}
+.dock{width:calc(100% - 26px);border-radius:44px;padding:14px;display:grid;grid-template-columns:repeat(4,1fr);gap:27px;min-height:92px}
+.dock .cell{min-width:0}
 .hi{position:absolute;left:50%;bottom:8px;width:136px;height:5px;margin-left:-68px;border-radius:3px;background:#000;opacity:.9;z-index:5}
-/* ===== 편집 패널 ===== */
-.panel{max-width:430px;margin:0 auto;padding:20px 16px 60px;background:#f5f5f7;color:#111}
-.panel h2{font-size:16px;margin:22px 0 10px}.panel h2:first-child{margin-top:0}
-.panel label{display:block;font-size:13px;font-weight:600;margin-bottom:10px}
-.panel input:not([type=file]),.panel select{display:block;width:100%;height:42px;margin-top:5px;padding:8px 10px;border:1px solid #d8d8dc;border-radius:10px;background:#fff}
-.panel input[type=file]{display:block;margin-top:5px;font-size:13px;max-width:100%}
-.panel button{height:42px;padding:0 16px;border:0;border-radius:10px;background:#222;color:#fff;font:inherit;font-weight:700}
-.panel button.g{background:#e4e4e7;color:#222}
-.row{display:flex;gap:10px}.row>*{flex:1;min-width:0}
-.it{display:flex;align-items:center;gap:8px;padding:8px 0;border-bottom:1px solid #e3e3e6;font-size:14px}
-.it.k{padding-left:22px}.it b{flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
-.it button{height:32px;padding:0 10px;font-size:12px}.it .f{position:relative;overflow:hidden}.it .f input{position:absolute;inset:0;opacity:0;width:100%;height:100%;margin:0;padding:0}
-.f{display:inline-flex;align-items:center;height:32px;padding:0 10px;border-radius:10px;background:#e4e4e7;font-size:12px;font-weight:700}
+/* ===== 편집 패널 (인스타그램 편집창 스타일) ===== */
+.editor{max-width:430px;margin:0 auto;padding:20px 16px 110px;background:#f6f6f6;color:#262626;font-size:14px}
+.editor h2{font-size:17px;margin:26px 0 14px}.editor h2:first-child{margin-top:0}
+.editor label{display:block;font-weight:600;margin-bottom:12px;font-size:13px}
+.editor input:not([type=checkbox]),.editor select{display:block;width:100%;margin-top:5px;padding:10px 12px;border:1px solid #dbdbdb;border-radius:10px;background:#fff;font:inherit;font-weight:400;height:auto}
+.editor input[type=file]{padding:8px;font-size:12px}
+.editor .row{display:flex;gap:10px}.editor .row label{flex:1;min-width:0}
+.hint{font-size:12px;color:#8e8e8e;margin:-6px 0 12px}
+.mini{height:36px;padding:0 14px;border:0;border-radius:10px;background:#efefef;font:inherit;font-weight:600;font-size:13px;color:#262626}
+.add{width:100%;height:46px;border:0;border-radius:12px;background:#0095f6;color:#fff;font:inherit;font-weight:700;font-size:15px}
+.it{display:flex;align-items:center;gap:10px;padding:9px 10px;margin-bottom:8px;background:#fff;border:1px solid #dbdbdb;border-radius:12px;font-size:14px}
+.it.k{margin-left:26px;background:#fafafa}.it b{flex:1;min-width:0;font-weight:600;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.it .th{width:36px;height:36px;flex:none}.it .th .ic{font-size:15px;box-shadow:none}
+.it input[type=checkbox]{width:22px;height:22px;flex:none;accent-color:#0095f6;margin:0}
+.it .mini{height:32px;padding:0 10px;font-size:12px}.it .f{position:relative;overflow:hidden;display:inline-flex;align-items:center;height:32px;padding:0 10px;margin:0;border-radius:10px;background:#efefef;font-size:12px;font-weight:600}
+.it .f input{position:absolute;inset:0;opacity:0;width:100%;height:100%;margin:0;padding:0}
+.gbox{padding:14px;background:#fff;border:1px solid #dbdbdb;border-radius:12px;margin-top:14px}.gbox label{margin-bottom:10px}
+.add:disabled{background:#b2dffc}
+.bar{position:fixed;left:50%;transform:translateX(-50%);bottom:0;width:100%;max-width:430px;display:flex;gap:10px;padding:12px 16px calc(12px + env(safe-area-inset-bottom));background:rgba(255,255,255,.96);border-top:1px solid #dbdbdb;z-index:10}
+.bar button{flex:1;height:48px;border:0;border-radius:12px;font:inherit;font-weight:700;font-size:16px}
+.bar .primary{background:#0095f6;color:#fff;flex:2}.bar .secondary{background:#efefef;color:#262626}
 </style></head><body>
 <div class="phone" id="phone">
  <div class="sb"><span id="clock"></span><div class="isl"></div><span class="r"><svg width="20" height="14" viewBox="0 0 20 14" fill="#fff"><path d="M10 3c2.6 0 5 1 6.800 2.700l1.400-1.500A12 12 0 0010 1 12 12 0 001.800 4.200l1.400 1.500A9.800 9.800 0 0110 3zm0 4c1.600 0 3 .6 4.100 1.600l1.400-1.500A8.200 8.200 0 0010 5a8.200 8.200 0 00-5.500 2.100l1.400 1.500C7 7.600 8.400 7 10 7zm0 4a3 3 0 012 .8L10 14l-2-2.200A3 3 0 0110 11z"/></svg><span class="bat">54</span></span></div>
  <div class="grid" id="grid"></div>
- <div class="search glass"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="M20 20l-4-4"/></svg>검색</div>
- <div class="dock glass" id="dock"></div><div class="hi"></div>
+ <div class="bottom"><div class="search glass"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="M20 20l-4-4"/></svg>검색</div>
+ <div class="dock glass" id="dock"></div></div><div class="hi"></div>
 </div>
-<section class="panel">
+<section class="editor">
  <h2>배경 / 시간</h2>
  <label>배경 사진<input id="wall" type="file" accept="image/*"></label>
- <div class="row"><label>시간 (비우면 현재 시간)<input id="timeIn" placeholder="5:01"></label><button class="g" id="wallReset" style="align-self:end;margin-bottom:10px">기본 배경</button></div>
+ <div class="row"><label>시간 (비우면 현재 시간)<input id="timeIn" placeholder="5:01" inputmode="numeric"></label></div>
+ <button class="mini" id="wallReset" type="button">기본 배경으로</button>
  <h2>앱 추가</h2>
  <label>앱 이름<input id="aName"></label>
  <label>앱 아이콘 사진<input id="aIcon" type="file" accept="image/*"></label>
  <div class="row"><label>배지 숫자 (0=없음)<input id="aBadge" type="number" inputmode="numeric" value="0"></label><label>위치<select id="aWhere"></select></label></div>
- <button id="addApp">앱 추가</button>
- <h2>폴더 추가</h2>
- <div class="row"><label>폴더 이름<input id="fName"></label><label>배지<input id="fBadge" type="number" inputmode="numeric" value="0"></label></div>
- <button id="addFolder">폴더 추가</button>
- <h2>목록 (아이콘 변경 / 삭제)</h2><div id="list"></div>
+ <button class="add" id="addApp" type="button">앱 추가</button>
+ <h2>내 앱</h2><p class="hint">홈 화면 앱을 체크한 뒤 아래에서 폴더로 묶을 수 있어요</p>
+ <div id="list"></div>
+ <div class="gbox"><label>폴더 이름<input id="fName" placeholder="폴더"></label><button class="add" id="group" type="button" disabled>폴더로 묶기</button></div>
 </section>
+<div class="bar"><button id="savePng" class="primary" type="button">PNG로 저장</button><button id="reset" class="secondary" type="button">초기화</button></div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
 <script>
 (function(){
-var $=function(s){return document.querySelector(s)},KEY='editsoceur-homescreen-v1';
+var sel=[];var $=function(s){return document.querySelector(s)},KEY='editsoceur-homescreen-v2';
 var A=function(n,c,i,b){return{name:n,color:c,icon:i||'',badge:b||0}};
 var F=function(n,b,cs){return{name:n,badge:b,kids:cs.map(function(c,i){return{name:'앱'+(i+1),color:c,icon:'',badge:0}})}};
 var N='../notifications/images/';
-var DEF={wall:'',time:'',home:[
-F('소셜 미디어',653,['#34c759','#8e8e93','#ff5a5f','#111','#fff']),F('엔터테인먼트',1,['#2fb36b','#e60023','#fff','#10a37f','#111','#4285f4','#e8d9c5','#ddd','#d98a5a']),F('게임',0,['#111','#f1c40f','#3b82f6']),F('비디오 및 사진',7,['#ff0000','#e11','#6c5ce7','#000','#111','#000','#8a2be2']),
-F('금융',73,['#ffe812','#ffcc00','#222','#14c36a','#0064ff']),F('교육',1,['#3aa0ff','#888','#5ac8fa','#78c850','#aaa']),F('라이프스타일',7,['#007aff','#ff375f','#34c759','#fff','#5ac8fa','#ff9f0a','#e5484d','#c7a2ff','#fff']),F('쇼핑',28,['#111','#a78bfa','#ff6b00','#4fd1c5','#111','#ff9f0a','#14c8c0','#ef4444','#6366f1']),
-A('X','#000',N+'twitter/sl_z_072523_61700_01.jpg'),A('Instagram','#e1306c',N+'instagram/Instagram_logo_2016.svg',2),A('Safari','#fff'),A('사진','#fff'),
-A('토스','#0064ff'),A('설정','#8e8e93','',2),A('메모','#fffbe6'),A('NAVER','#03c75a',N+'naver/IMG_0673.png',20),A('시계','#fff')],
-dock:[A('카메라','#9a9aa0'),A('전화','#34c759',N+'call/phone.svg',6),A('음악','#fff'),A('카카오톡','#fee500',N+'kakao/KakaoTalk_logo.svg',347)]};
+var DEF={wall:'',time:'',home:[A('Instagram','#e1306c',N+'instagram/Instagram_logo_2016.svg',2),A('X','#000',N+'twitter/sl_z_072523_61700_01.jpg'),A('NAVER','#03c75a',N+'naver/IMG_0673.png',20)],
+dock:[A('전화','#34c759',N+'call/phone.svg',6),A('카카오톡','#fee500',N+'kakao/KakaoTalk_logo.svg',347)]};
 var S;try{S=JSON.parse(localStorage.getItem(KEY))}catch(e){}
 if(!S||!S.home)S=JSON.parse(JSON.stringify(DEF));
 function save(){try{localStorage.setItem(KEY,JSON.stringify(S))}catch(e){}}
@@ -109,11 +115,20 @@ function render(){
  var w=$('#aWhere'),v=w.value;w.innerHTML='<option value="h">홈 화면</option><option value="d">독</option>';
  S.home.forEach(function(a,i){if(a.kids){var o=document.createElement('option');o.value='f'+i;o.textContent='폴더: '+a.name;w.appendChild(o)}});if(v)w.value=v;
  var L=$('#list');L.innerHTML='';
- function row(a,arr,i,k){var r=document.createElement('div');r.className='it'+(k?' k':'');var b=document.createElement('b');b.textContent=a.name;r.appendChild(b);
-  if(!a.kids){var f=document.createElement('label');f.className='f';f.textContent='아이콘 변경';var inp=document.createElement('input');inp.type='file';inp.accept='image/*';inp.onchange=function(){if(this.files[0])pickImg(this.files[0],160,'ic',function(u){a.icon=u;save();render()})};f.appendChild(inp);r.appendChild(f)}
-  var x=document.createElement('button');x.textContent='삭제';x.onclick=function(){arr.splice(i,1);save();render()};r.appendChild(x);L.appendChild(r);
+ sel=sel.filter(function(a){return S.home.indexOf(a)>-1});
+ function row(a,arr,i,k){var r=document.createElement('div');r.className='it'+(k?' k':'');
+  if(!k&&!a.kids&&arr===S.home){var c=document.createElement('input');c.type='checkbox';c.checked=sel.indexOf(a)>-1;c.onchange=function(){var p=sel.indexOf(a);if(this.checked&&p<0)sel.push(a);if(!this.checked&&p>-1)sel.splice(p,1);gbtn()};r.appendChild(c)}
+  var th=document.createElement('span');th.className='th';th.appendChild(tile(a.kids?{name:'폴더',color:'#6aa9e8'}:a));r.appendChild(th);
+  var b=document.createElement('b');b.textContent=a.name+(a.kids?' ('+a.kids.length+')':'');r.appendChild(b);
+  if(!a.kids){var f=document.createElement('label');f.className='f';f.textContent='아이콘';var inp=document.createElement('input');inp.type='file';inp.accept='image/*';inp.onchange=function(){if(this.files[0])pickImg(this.files[0],160,'ic',function(u){a.icon=u;save();render()})};f.appendChild(inp);r.appendChild(f)}
+  else{var u=document.createElement('button');u.className='mini';u.textContent='풀기';u.onclick=function(){Array.prototype.splice.apply(arr,[i,1].concat(a.kids));save();render()};r.appendChild(u)}
+  var x=document.createElement('button');x.className='mini';x.textContent='삭제';x.onclick=function(){arr.splice(i,1);save();render()};r.appendChild(x);L.appendChild(r);
   if(a.kids)a.kids.forEach(function(kk,j){row(kk,a.kids,j,1)})}
- S.home.forEach(function(a,i){row(a,S.home,i)});S.dock.forEach(function(a,i){row(a,S.dock,i)})}
+ S.home.forEach(function(a,i){row(a,S.home,i)});S.dock.forEach(function(a,i){row(a,S.dock,i)});gbtn()}
+function gbtn(){var g=$('#group');g.disabled=!sel.length;g.textContent=sel.length?'선택한 '+sel.length+'개를 폴더로 묶기':'폴더로 묶기'}
+$('#group').onclick=function(){if(!sel.length)return;var first=Math.min.apply(null,sel.map(function(a){return S.home.indexOf(a)}));
+ var f={name:$('#fName').value.trim()||'폴더',badge:sel.reduce(function(n,a){return n+(a.badge||0)},0),kids:sel.slice().sort(function(a,b){return S.home.indexOf(a)-S.home.indexOf(b)})};
+ S.home=S.home.filter(function(a){return sel.indexOf(a)<0});S.home.splice(first,0,f);sel=[];$('#fName').value='';save();render()};
 $('#wall').onchange=function(){if(this.files[0])pickImg(this.files[0],1200,'wall',function(u){S.wall=u;save();render()})};
 $('#wallReset').onclick=function(){S.wall='';save();render()};
 $('#timeIn').value=S.time||'';$('#timeIn').oninput=function(){S.time=this.value;save();render()};
@@ -123,8 +138,20 @@ $('#addApp').onclick=function(){var n=$('#aName').value.trim();if(!n){alert('앱
   if(w==='d'){if(S.dock.length>=4){alert('독에는 4개까지 넣을 수 있어요');return}S.dock.push(a)}else if(w[0]==='f')S.home[+w.slice(1)].kids.push(a);else S.home.push(a);
   $('#aName').value='';$('#aIcon').value='';$('#aBadge').value=0;save();render()}
  f?pickImg(f,160,'ic',done):done('')};
-$('#addFolder').onclick=function(){var n=$('#fName').value.trim();if(!n){alert('폴더 이름을 입력하세요');return}
- S.home.push({name:n,badge:+$('#fBadge').value||0,kids:[]});$('#fName').value='';save();render()};
+$('#reset').onclick=function(){if(!confirm('처음 상태로 되돌릴까요?'))return;S=JSON.parse(JSON.stringify(DEF));sel=[];$('#timeIn').value='';save();render()};
+$('#savePng').onclick=function(){var b=this,t=b.textContent,k=3;b.disabled=true;b.textContent='저장 중...';
+ function cap(css){return html2canvas($('#phone'),{scale:k,useCORS:true,backgroundColor:null,logging:false,onclone:function(d){var st=d.createElement('style');st.textContent=css;d.head.appendChild(st)}})}
+ function rr(x,X,Y,W,H,R){x.beginPath();x.moveTo(X+R,Y);x.arcTo(X+W,Y,X+W,Y+H,R);x.arcTo(X+W,Y+H,X,Y+H,R);x.arcTo(X,Y+H,X,Y,R);x.arcTo(X,Y,X+W,Y,R);x.closePath()}
+ Promise.all([cap('.phone>*{visibility:hidden!important}'),cap('.phone{background:none!important}.glass{background:none!important;box-shadow:none!important;border:0!important}.glass::before,.glass::after{display:none!important}.ic{box-shadow:none!important}.bd{box-shadow:none!important}')]).then(function(r){
+  var A=r[0],B=r[1],pr=$('#phone').getBoundingClientRect(),c=document.createElement('canvas');c.width=A.width;c.height=A.height;var x=c.getContext('2d');x.drawImage(A,0,0);
+  Array.prototype.forEach.call(document.querySelectorAll('.glass'),function(g){var q=g.getBoundingClientRect(),X=(q.left-pr.left)*k,Y=(q.top-pr.top)*k,W=q.width*k,H=q.height*k,rs=getComputedStyle(g).borderTopLeftRadius,R=rs.indexOf('%')>-1?parseFloat(rs)/100*W:parseFloat(rs)*k;R=Math.min(R,W/2,H/2);
+   x.save();rr(x,X,Y,W,H,R);x.clip();var P=60*k;try{x.filter='blur('+(12*k)+'px) saturate(190%) brightness(1.1)'}catch(e){}
+   x.drawImage(A,X-P,Y-P,W+2*P,H+2*P,X-P,Y-P,W+2*P,H+2*P);x.filter='none';
+   var gr=x.createLinearGradient(0,Y,0,Y+H);gr.addColorStop(0,'rgba(255,255,255,.38)');gr.addColorStop(.5,'rgba(255,255,255,.12)');gr.addColorStop(1,'rgba(255,255,255,.22)');x.fillStyle=gr;x.fillRect(X,Y,W,H);x.restore();
+   rr(x,X+k,Y+k,W-2*k,H-2*k,Math.max(R-k,0));x.lineWidth=1.6*k;var sg=x.createLinearGradient(X,Y,X+W,Y+H);sg.addColorStop(0,'rgba(255,255,255,.9)');sg.addColorStop(.5,'rgba(255,255,255,.25)');sg.addColorStop(1,'rgba(255,255,255,.8)');x.strokeStyle=sg;x.stroke()});
+  x.drawImage(B,0,0);
+  c.toBlob(function(bl){var a=document.createElement('a');a.href=URL.createObjectURL(bl);a.download='homescreen.png';document.body.appendChild(a);a.click();a.remove();b.disabled=false;b.textContent=t},'image/png')
+ }).catch(function(){b.disabled=false;b.textContent=t;alert('PNG 저장에 실패했습니다.')})};
 function glow(e){var g=e.target.closest&&e.target.closest('.glass');if(!g)return;var r=g.getBoundingClientRect();g.style.setProperty('--mx',((e.clientX-r.left)/r.width*100)+'%');g.style.setProperty('--my',((e.clientY-r.top)/r.height*100)+'%')}
 document.addEventListener('pointermove',glow);document.addEventListener('pointerdown',glow);
 render();
