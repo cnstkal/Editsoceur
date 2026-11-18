@@ -2,7 +2,7 @@
 var $=function(i){return document.getElementById(i)};
 var DEF={t:'메시지',m:'너무 보고싶다',l:'메뉴',r:'확인'};
 var zs=$('zoom'),zw=$('zw'),fr=$('frame'),W=2176,H=1700,frm=null;
-var ICON={iSig:'sSig',iMail:'sMail',iVib:'sVib',iBat:null};
+var ICON={iSig:'sSig',iMail:'sMail',iVib:'sVib',iBat:null};\nvar frameSelect=$('frameSelect');
 
 function fit(){var s=fr.clientWidth/W;zs.style.transform='scale('+s+')';zw.style.height=(H*s)+'px'}
 if(window.ResizeObserver)new ResizeObserver(fit).observe(fr);window.addEventListener('resize',fit);
@@ -16,12 +16,12 @@ function render(){
 function setDefaults(){
  $('iT').value=DEF.t;$('iM').value=DEF.m;$('iL').value=DEF.l;$('iR').value=DEF.r;
  Object.keys(ICON).forEach(function(k){$(k).checked=true});
- $('iX').value=0;$('iY').value=0;$('iS').value=100;frm=null;$('iF').value='';render();
+ $('iX').value=0;$('iY').value=0;$('iS').value=100;frm=null;$('iF').value='';frameSelect.value='';render();
 }
 ['iT','iM','iL','iR','iX','iY','iS','iSig','iMail','iVib','iBat'].forEach(function(id){$(id).addEventListener('input',render)});
 $('iF').addEventListener('change',function(){var f=this.files[0];if(!f)return;var r=new FileReader();
  r.onload=function(e){frm=e.target.result;render()};r.readAsDataURL(f)});
-$('clearF').onclick=function(){frm=null;$('iF').value='';render()};
+$('clearF').onclick=function(){frm=null;$('iF').value='';frameSelect.value='';render()};
 $('reset').onclick=setDefaults;
 
 (function(){
