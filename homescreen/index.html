@@ -20,6 +20,7 @@ input,select{font-size:16px!important;-webkit-user-select:auto;user-select:auto}
 .glass::after{content:"";position:absolute;left:8%;right:8%;top:2px;height:38%;border-radius:inherit;pointer-events:none;z-index:1;background:linear-gradient(180deg,rgba(255,255,255,.32),rgba(255,255,255,0))}
 .glass:active{transform:scale(.95)}
 /* ===== 상태바 ===== */
+.phone.nobar .sb{display:none}
 .sb{position:absolute;top:0;left:0;right:0;height:60px;display:flex;justify-content:space-between;align-items:center;padding:6px 34px 0 40px;font-weight:600;font-size:17px;z-index:5}
 .isl{position:absolute;left:50%;top:11px;width:122px;height:36px;margin-left:-61px;border-radius:20px;background:#000}
 .sb .r{display:flex;gap:6px;align-items:center}
@@ -37,12 +38,13 @@ input,select{font-size:16px!important;-webkit-user-select:auto;user-select:auto}
 .bd{position:absolute;top:-8px;right:-8px;min-width:26px;height:26px;padding:0 7px;border-radius:13px;background:#ff3b30;color:#fff;font-size:16px;font-weight:500;line-height:26px;text-align:center;z-index:4;box-shadow:0 1px 3px rgba(0,0,0,.25)}
 .lb{margin-top:6px;font-size:13px;line-height:16px;max-width:100%;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;text-shadow:0 1px 3px rgba(0,0,0,.35);letter-spacing:-.01em}
 .bottom{position:absolute;left:0;right:0;bottom:22px;display:flex;flex-direction:column;align-items:center;gap:18px}
-.search{height:34px;padding:0 16px;border-radius:17px;display:flex;align-items:center;gap:6px;font-size:14px;color:rgba(255,255,255,.95);white-space:nowrap}
 .dock{width:calc(100% - 26px);border-radius:44px;padding:14px;display:grid;grid-template-columns:repeat(4,1fr);gap:27px;min-height:92px}
 .dock .cell{min-width:0}
 .hi{position:absolute;left:50%;bottom:8px;width:136px;height:5px;margin-left:-68px;border-radius:3px;background:#000;opacity:.9;z-index:5}
 /* ===== 편집 패널 (인스타그램 편집창 스타일) ===== */
 .editor{max-width:430px;margin:0 auto;padding:20px 16px 110px;background:#f6f6f6;color:#262626;font-size:14px}
+.trow{display:flex;justify-content:space-between;align-items:center;padding:12px 0;margin-bottom:12px;border-bottom:1px solid #e5e5e5;font-size:14px;font-weight:600}
+.sw{position:relative;display:inline-block;width:51px;height:31px;margin:0}.sw input{position:absolute;inset:0;opacity:0;margin:0;z-index:2;cursor:pointer;width:100%;height:100%}.sw i{position:absolute;inset:0;border-radius:31px;background:#e9e9ea;transition:.2s}.sw i::after{content:"";position:absolute;top:2px;left:2px;width:27px;height:27px;border-radius:50%;background:#fff;box-shadow:0 2px 4px rgba(0,0,0,.2);transition:.2s}.sw input:checked+i{background:#34c759}.sw input:checked+i::after{left:22px}
 .editor h2{font-size:17px;margin:26px 0 14px}.editor h2:first-child{margin-top:0}
 .editor label{display:block;font-weight:600;margin-bottom:12px;font-size:13px}
 .editor input:not([type=checkbox]),.editor select{display:block;width:100%;margin-top:5px;padding:10px 12px;border:1px solid #dbdbdb;border-radius:10px;background:#fff;font:inherit;font-weight:400;height:auto}
@@ -64,13 +66,13 @@ input,select{font-size:16px!important;-webkit-user-select:auto;user-select:auto}
 .bar .primary{background:#0095f6;color:#fff;flex:2}.bar .secondary{background:#efefef;color:#262626}
 </style></head><body>
 <div class="phone" id="phone">
- <div class="sb"><span id="clock"></span><div class="isl"></div><span class="r"><svg width="20" height="14" viewBox="0 0 20 14" fill="#fff"><path d="M10 3c2.6 0 5 1 6.800 2.700l1.400-1.500A12 12 0 0010 1 12 12 0 001.800 4.200l1.400 1.500A9.800 9.800 0 0110 3zm0 4c1.600 0 3 .6 4.100 1.600l1.400-1.500A8.200 8.200 0 0010 5a8.200 8.200 0 00-5.500 2.100l1.400 1.500C7 7.600 8.400 7 10 7zm0 4a3 3 0 012 .8L10 14l-2-2.200A3 3 0 0110 11z"/></svg><span class="bat">54</span></span></div>
+ <div class="sb" id="sb"><span id="clock"></span><div class="isl"></div><span class="r"><svg width="20" height="14" viewBox="0 0 20 14" fill="#fff"><path d="M10 3c2.6 0 5 1 6.800 2.700l1.400-1.500A12 12 0 0010 1 12 12 0 001.800 4.200l1.400 1.500A9.800 9.800 0 0110 3zm0 4c1.600 0 3 .6 4.100 1.600l1.400-1.500A8.200 8.200 0 0010 5a8.200 8.200 0 00-5.500 2.100l1.400 1.500C7 7.600 8.400 7 10 7zm0 4a3 3 0 012 .8L10 14l-2-2.200A3 3 0 0110 11z"/></svg><span class="bat">54</span></span></div>
  <div class="grid" id="grid"></div>
- <div class="bottom"><div class="search glass"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="M20 20l-4-4"/></svg>검색</div>
- <div class="dock glass" id="dock"></div></div><div class="hi"></div>
+ <div class="bottom"><div class="dock glass" id="dock"></div></div><div class="hi"></div>
 </div>
 <section class="editor">
  <h2>배경 / 시간</h2>
+ <div class="trow"><span>상단바 (시간·섬·와이파이) 표시</span><label class="sw"><input id="barOn" type="checkbox" checked><i></i></label></div>
  <label>배경 사진<input id="wall" type="file" accept="image/*"></label>
  <div class="row"><label>시간 (비우면 현재 시간)<input id="timeIn" placeholder="5:01" inputmode="numeric"></label></div>
  <button class="mini" id="wallReset" type="button">기본 배경으로</button>
@@ -131,14 +133,14 @@ $('#group').onclick=function(){if(!sel.length)return;var first=Math.min.apply(nu
  S.home=S.home.filter(function(a){return sel.indexOf(a)<0});S.home.splice(first,0,f);sel=[];$('#fName').value='';save();render()};
 $('#wall').onchange=function(){if(this.files[0])pickImg(this.files[0],1200,'wall',function(u){S.wall=u;save();render()})};
 $('#wallReset').onclick=function(){S.wall='';save();render()};
-$('#timeIn').value=S.time||'';$('#timeIn').oninput=function(){S.time=this.value;save();render()};
+$('#timeIn').value=S.time||'';$('#barOn').checked=S.bar!==false;$('#phone').classList.toggle('nobar',S.bar===false);$('#barOn').onchange=function(){S.bar=this.checked;$('#phone').classList.toggle('nobar',!this.checked);save()};$('#timeIn').oninput=function(){S.time=this.value;save();render()};
 $('#addApp').onclick=function(){var n=$('#aName').value.trim();if(!n){alert('앱 이름을 입력하세요');return}
  var f=$('#aIcon').files[0],b=+$('#aBadge').value||0,w=$('#aWhere').value;
  function done(u){var a={name:n,color:'#8e8e93',icon:u||'',badge:b};
   if(w==='d'){if(S.dock.length>=4){alert('독에는 4개까지 넣을 수 있어요');return}S.dock.push(a)}else if(w[0]==='f')S.home[+w.slice(1)].kids.push(a);else S.home.push(a);
   $('#aName').value='';$('#aIcon').value='';$('#aBadge').value=0;save();render()}
  f?pickImg(f,160,'ic',done):done('')};
-$('#reset').onclick=function(){if(!confirm('처음 상태로 되돌릴까요?'))return;S=JSON.parse(JSON.stringify(DEF));sel=[];$('#timeIn').value='';save();render()};
+$('#reset').onclick=function(){if(!confirm('처음 상태로 되돌릴까요?'))return;S=JSON.parse(JSON.stringify(DEF));sel=[];$('#timeIn').value='';$('#barOn').checked=true;$('#phone').classList.remove('nobar');save();render()};
 $('#savePng').onclick=function(){var b=this,t=b.textContent,k=3;b.disabled=true;b.textContent='저장 중...';
  function cap(css){return html2canvas($('#phone'),{scale:k,useCORS:true,backgroundColor:null,logging:false,onclone:function(d){var st=d.createElement('style');st.textContent=css;d.head.appendChild(st)}})}
  function rr(x,X,Y,W,H,R){x.beginPath();x.moveTo(X+R,Y);x.arcTo(X+W,Y,X+W,Y+H,R);x.arcTo(X+W,Y+H,X,Y+H,R);x.arcTo(X,Y+H,X,Y,R);x.arcTo(X,Y,X+W,Y,R);x.closePath()}
