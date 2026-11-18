@@ -125,3 +125,5 @@ body.studio{background:#fff}
 .ps-edwrap .editor .ps-pn>h2:first-child{display:none}
 .ps-edwrap .editor label>input:not([type=checkbox]):not([type=file]):not([type=range]),.ps-edwrap .editor label>textarea,.ps-edwrap .editor label>input[type=file],.ps-edwrap .editor label>input[type=range]{flex-basis:56%;width:56%}
 .ps-edwrap .editor label>textarea{min-height:84px}
+
+@media(max-width:1099px){.ps-acts{position:static!important;margin:16px 0 8px!important;padding:0!important;background:none!important;border:0!important}}
