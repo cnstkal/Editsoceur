@@ -7,14 +7,10 @@
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.css">
 <link rel="stylesheet" href="story.css?v=3">
 <link rel="stylesheet" href="profile.css?v=1">
-<style data-hide-status>:is(span,b)[id$="Time"],#eTm,.isl,.ys,.ysig,.ywf,.ybt,.dsg,.dwf,#df .dbt,.msg,.mwf,.mbt,.ewf,.ebt,.nwf,.nbt,.sb:has([id$="Time"])>svg:not(.lc),.sb:has([id$="Time"])+.bt,.sb:has([id$="Time"]) .bt{display:none!important}</style><style id="ed-font">html,body,body *{font-family:Pretendard,-apple-system,"Apple SD Gothic Neo","Noto Sans KR",sans-serif!important;letter-spacing:-.02em!important}</style><link rel="stylesheet" href="studio.css?v=1">
-</head>
-<body class="studio"><div class="ps-wrap">
-<header class="ps-top"><div class="ps-brand"><a class="ps-back" href="../index.html">‹ 선택화면</a><h1>EDITSOCEUR</h1><p>Social Post Studio / Instagram</p></div></header>
-<div class="ps-grid">
-<section class="ps-card ps-main"><div class="ps-lbl">Live Preview</div><h2>인스타그램 프로필</h2><p class="ps-sub">실제 앱 화면 비율로 확인하고, 오른쪽에서 바로 수정해요</p>
-<div class="ps-stage"><div class="ps-frame">
+<style data-hide-status>:is(span,b)[id$="Time"],#eTm,.isl,.ys,.ysig,.ywf,.ybt,.dsg,.dwf,#df .dbt,.msg,.mwf,.mbt,.ewf,.ebt,.nwf,.nbt,.sb:has([id$="Time"])>svg:not(.lc),.sb:has([id$="Time"])+.bt,.sb:has([id$="Time"]) .bt{display:none!important}</style><style id="ed-font">html,body,body *{font-family:Pretendard,-apple-system,"Apple SD Gothic Neo","Noto Sans KR",sans-serif!important;letter-spacing:-.02em!important}</style></head>
+<body>
 <div class="phone">
+<div class="navbar" data-html2canvas-ignore><a href="index.html">‹ 선택화면</a></div>
 <div id="prof">
   <div class="ph">
     <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#000" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="m15 4-8 8 8 8"/></svg>
@@ -38,11 +34,7 @@
   </div>
   <div class="grid" id="grid"></div>
 </div>
-
-</div>
-
-</div></div></section>
-<section class="ps-card ps-side"><div class="ps-lbl">Edit Panel</div><h2>프로필 내용 수정</h2><div class="ps-edwrap"><section class="editor">
+<section class="editor">
   <h2>프로필 편집</h2>
   <label>사용자 아이디<input id="iUn"></label>
   <label>이름<input id="iNm"></label>
@@ -56,8 +48,9 @@
   <div class="row" style="margin-top:12px"><label class="file">친구 1 사진<input data-m="0" type="file" accept="image/*"></label><label class="file">친구 2 사진<input data-m="1" type="file" accept="image/*"></label><label class="file">친구 3 사진<input data-m="2" type="file" accept="image/*"></label></div>
   <label>게시물 칸 수<input id="iCnt" type="number" min="3" max="30"></label>
   <div id="pInputs"></div>
-</section></div><div class="ps-acts"><button id="savePng" class="primary">PNG로 저장</button><button id="reset" class="secondary">초기화</button></div></section>
-</div></div>
+</section>
+</div>
+<div class="bar"><button id="savePng" class="primary">PNG로 저장</button><button id="reset" class="secondary">초기화</button></div>
 <script src="https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js"></script>
 <script src="profile.js?v=5"></script>
 </body>
