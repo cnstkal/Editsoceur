@@ -14,7 +14,7 @@ body.studio{display:block;margin:0;background:#f2f3f5;color:#111;min-height:100v
 .frame{width:400px;height:660px;margin:0 auto;border:2px solid #e3e5e8;border-radius:34px;overflow-y:auto;overflow-x:hidden;background:#fff}
 .frame .phone{width:100%;max-width:none;min-height:0;padding-top:0;background:#fff}
 .frame .nav{height:56px}
-.float{position:absolute;bottom:40px;width:188px;background:#f6f7f9;border-radius:16px;padding:14px 16px;font-size:15px;font-weight:600}
+.float{position:absolute;bottom:40px;width:164px;background:#f6f7f9;border-radius:16px;padding:12px 14px;font-size:14px;font-weight:600}
 .float b{display:block;font-size:11px;letter-spacing:.12em;color:#0095f6;margin-bottom:4px}
 .float small{display:block;font-size:13px;color:#8a8f98;font-weight:500;margin-top:2px}
 .float.l{left:0}.float.r{right:0}
