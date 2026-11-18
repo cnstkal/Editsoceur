@@ -261,3 +261,35 @@ body.studio{background:#fff}
  .ps-edwrap .editor #eList .ecard .row{grid-template-columns:repeat(2,minmax(0,1fr))!important;}
  .ps-edwrap .editor #mlist .mi{gap:8px!important;}
 }
+
+
+/* 2026 profile editor layout cleanup: aligned cards and native-file UI replacement */
+@media(max-width:1099px){
+  .ps-side{padding:18px 16px 0!important;border-top:8px solid #f4f4f6!important}
+  .ps-edwrap .editor .pf-card{margin:0 0 14px!important;padding:16px!important;border:1px solid #e8e9ed!important;border-radius:18px!important;background:#fff!important}
+  .ps-edwrap .editor .pf-card h3{font-size:15px!important;line-height:1.3!important;margin:0 0 16px!important;padding:0!important;color:#202124!important}
+  .ps-edwrap .editor .pf-card>label:not(.sw){display:flex!important;flex-direction:column!important;align-items:stretch!important;gap:8px!important;margin:0 0 14px!important;color:#626873!important;font-size:13px!important;font-weight:600!important}
+  .ps-edwrap .editor .pf-card>label:last-child{margin-bottom:0!important}
+  .ps-edwrap .editor .pf-card input:not([type=checkbox]):not([type=file]),.ps-edwrap .editor .pf-card textarea{height:44px!important;border:1px solid #e4e6eb!important;border-radius:12px!important;background:#fafafa!important;padding:0 12px!important;font-size:16px!important;box-sizing:border-box!important;width:100%!important}
+  .ps-edwrap .editor .pf-card textarea{height:auto!important;min-height:90px!important;padding:12px!important}
+  .ps-edwrap .editor .pf-card .row{display:grid!important;grid-template-columns:repeat(2,minmax(0,1fr))!important;gap:12px 10px!important;margin:0 0 14px!important}
+  .ps-edwrap .editor .pf-card .row label{display:flex!important;flex-direction:column!important;align-items:stretch!important;gap:7px!important;margin:0!important;min-width:0!important;font-size:12px!important;color:#68707b!important}
+  .ps-edwrap .editor .pf-card .row label:nth-child(3){grid-column:auto!important}
+  .ps-edwrap .editor .pf-card .row label input{width:100%!important;min-width:0!important;max-width:100%!important}
+  .ps-edwrap .editor .pf-card .trow{margin:12px 0!important;padding:12px 0!important;border-top:1px solid #f0f1f3!important}
+  .ps-edwrap .editor .pf-card .file{display:flex!important;flex-direction:column!important;align-items:stretch!important;gap:8px!important;margin:0!important;color:#626873!important;font-size:13px!important;font-weight:600!important}
+  .ps-edwrap .editor .pf-card input[type=file]{display:block!important;width:100%!important;min-width:0!important;max-width:100%!important;box-sizing:border-box!important;font-size:12px!important;color:#8b9099!important;overflow:hidden!important}
+  .ps-edwrap .editor .pf-card input[type=file]::file-selector-button{height:40px!important;padding:0 14px!important;margin:0 10px 0 0!important;border:1px solid #e3e5e9!important;border-radius:11px!important;background:#f4f5f7!important;color:#222!important;font:inherit!important;font-size:13px!important;font-weight:700!important}
+  .ps-edwrap .editor .pf-friends{display:grid!important;grid-template-columns:repeat(2,minmax(0,1fr))!important;gap:10px!important}
+  .ps-edwrap .editor .pf-friends label{min-width:0!important;padding:12px!important;border:1px solid #e8e9ed!important;border-radius:14px!important;background:#fafbfc!important;overflow:hidden!important}
+  .ps-edwrap .editor .pf-friends label:nth-child(3){grid-column:1/-1!important}
+  .ps-acts{display:grid!important;grid-template-columns:.85fr 1.35fr!important;gap:10px!important;margin:14px 0 0!important;padding:12px 0 calc(12px + env(safe-area-inset-bottom))!important;background:#fff!important;border-top:1px solid #e8e9ed!important}
+  .ps-acts button{width:100%!important;height:54px!important;border-radius:15px!important;margin:0!important}
+  .ps-acts #reset{background:#f1f2f4!important;color:#242424!important}
+  .ps-acts #savePng{background:#d94d7b!important;color:#fff!important}
+}
+@media(min-width:1100px){
+  .ps-edwrap .editor .pf-card{margin-bottom:16px!important;padding:20px!important}
+  .ps-edwrap .editor .pf-friends{grid-template-columns:repeat(2,minmax(0,1fr))!important}
+  .ps-edwrap .editor .pf-friends label:nth-child(3){grid-column:1/-1!important}
+}
