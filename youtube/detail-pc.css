@@ -17,7 +17,7 @@ body{background:#f6f6f6;color:#0f0f0f}
 .av{position:absolute;left:1831px;top:13px;width:40px;height:40px;border-radius:50%;background:#bbb center/cover}
 .vd{position:absolute;left:30px;top:83px;width:1287px;height:723px;border-radius:14px;background:#222 center/cover;overflow:hidden}
 .ti{position:absolute;left:30px;top:822px;width:1287px;font-size:24px;font-weight:600;line-height:34px}
-.ch{position:absolute;left:30px;top:893px;width:1287px;height:56px;display:flex;align-items:center}
+.ch{position:absolute;left:30px;top:866px;width:1287px;height:56px;display:flex;align-items:center}
 .ch .pf{width:40px;height:40px;border-radius:50%;background:#bbb center/cover;flex:none}
 .ch .nm{margin-left:16px;line-height:22px}
 .ch .nm b{font-size:17px;font-weight:600;display:flex;align-items:center;gap:4px}
@@ -28,10 +28,10 @@ body{background:#f6f6f6;color:#0f0f0f}
 .pill{height:40px;border-radius:20px;background:#f2f2f2;display:flex;align-items:center;gap:8px;font-size:15px;font-weight:600;padding:0 14px}
 .pill.round{width:40px;padding:0;justify-content:center}
 .pill i{width:1px;height:24px;background:#ccc;margin:0 8px}
-.ds{position:absolute;left:30px;top:968px;width:1287px;height:200px;border-radius:12px;background:#f2f2f2;padding:12px 16px;font-size:15px;line-height:24px}
+.ds{position:absolute;left:30px;top:930px;width:1287px;height:auto;border-radius:12px;background:#f2f2f2;padding:10px 14px 12px;font-size:15px;line-height:24px}
 .ds b{font-weight:600}
 .ds .more{font-weight:600;margin-left:6px}
-.cm{position:absolute;left:30px;top:1195px;width:1287px}
+.cm{position:absolute;left:30px;top:1050px;width:1287px}
 .cm h4{font-size:20px;font-weight:600;display:flex;align-items:center;gap:30px;height:30px}
 .cm h4 span{font-size:15px;font-weight:500;display:flex;align-items:center;gap:8px}
 .add{display:flex;gap:16px;margin-top:22px;align-items:center}
@@ -42,7 +42,7 @@ body{background:#f6f6f6;color:#0f0f0f}
 .c1 .b{flex:1}
 .c1 .h{font-size:13px;color:#606060}.c1 .h b{color:#0f0f0f;font-size:13px;font-weight:600;margin-right:6px}
 .c1 .t{font-size:16px;margin-top:6px;line-height:22px}
-.c1 .l{font-size:13px;color:#606060;margin-top:10px;display:flex;gap:22px}
+.c1 .l{font-size:13px;color:#606060;margin-top:10px;display:flex;gap:22px;align-items:center}.c1 .l>span{display:flex;align-items:center;gap:6px}
 .rl{position:absolute;left:1337px;top:83px;width:523px}
 .rc{display:flex;gap:6px;height:40px;align-items:center}
 .rc .c{height:32px;padding:0 13px;border-radius:8px;background:#f2f2f2;font-size:14px;font-weight:500;display:flex;align-items:center;white-space:nowrap}
