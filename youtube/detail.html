@@ -44,7 +44,7 @@
 
 </div></div></section>
 <section class="ps-card ps-side"><div class="ps-lbl">Edit Panel</div><h2>영상 세부 내용 수정</h2><div class="ps-edwrap"><section class="editor">
-<h2>영상 세부 편집</h2>
+<div class="ps-pn" data-t="기본"><h2>영상 세부 편집</h2>
 <h2 style="margin-top:14px">재생 중인 영상</h2>
 <div class="ec">
 <label>제목<input data-k="m.n"></label>
@@ -52,7 +52,7 @@
 <div class="row"><label>좋아요<input data-k="m.lk"></label><label>조회수<input data-k="m.vw"></label><label>시간<input data-k="m.time"></label></div>
 <div class="row"><label>재생 진행률 %<input data-k="m.pg"></label><label class="file">영상 화면<input type="file" accept="image/*" data-k="m.th"></label><label class="file">채널 사진<input type="file" accept="image/*" data-k="m.av"></label></div>
 </div>
-<h2>댓글</h2>
+</div><div class="ps-pn" data-t="상호작용" hidden><h2>댓글</h2>
 <div class="ec">
 <label>댓글 수<input data-k="c.cnt"></label>
 <label>내용(줄바꿈 가능)<textarea rows="3" data-k="c.x"></textarea></label>
@@ -66,7 +66,7 @@
 <div class="row"><label>길이<input data-k="u.dur"></label><label>시청 진행률 %<input data-k="u.pg"></label></div>
 <div class="row"><label class="file">썸네일<input type="file" accept="image/*" data-k="u.th"></label><label class="file">채널 사진<input type="file" accept="image/*" data-k="u.av"></label></div>
 </div>
-</section></div><div class="ps-acts"><button id="savePng" class="primary">PNG 저장</button><button id="reset" class="secondary">초기화</button></div></section>
+</div></section></div><div class="ps-acts"><button id="savePng" class="primary">PNG 저장</button><button id="reset" class="secondary">초기화</button></div></section>
 </div></div>
 <script src="https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js"></script>
 <script src="detail.js?v=1"></script>
