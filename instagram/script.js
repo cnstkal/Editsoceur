@@ -25,7 +25,7 @@
     if(idx>=S.count)idx=S.count-1;
     var h='';for(var i=0;i<S.count;i++)h+=photos[i]?'<div class="slide" style="background-image:url('+photos[i]+')"></div>':'<div class="slide ph'+(i%5)+'"></div>';
     $('slides').innerHTML=h;go(idx)}
-  var BG=['radial-gradient(circle at 50% 40%,#bbb,#333 60%,#111)','radial-gradient(circle at 50% 38%,#e7c9b0 0 30%,#222 32% 60%,#f2f2f2 62%)','radial-gradient(circle at 50% 40%,#d9d9d9,#777 60%,#333)'];
+  var BG=['#9a9a9a','#111111','#9a9a9a'];
   function renderBub(){var h='';
     for(var i=0;i<S.bubN;i++){h+='<span class="mini" style="background:'+(bimg[i]?'url('+bimg[i]+')':BG[i])+';background-size:cover;background-position:center"></span>'}
     $('vMinis').innerHTML=h}
