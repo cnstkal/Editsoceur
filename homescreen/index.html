@@ -118,9 +118,9 @@ function render(){
  var w=$('#aWhere'),v=w.value;w.innerHTML='<option value="h">홈 화면</option><option value="d">독</option>';
  S.home.forEach(function(a,i){if(a.kids){var o=document.createElement('option');o.value='f'+i;o.textContent='폴더: '+a.name;w.appendChild(o)}});if(v)w.value=v;
  var L=$('#list');L.innerHTML='';
- sel=sel.filter(function(a){return S.home.indexOf(a)>-1});
+ sel=sel.filter(function(a){return S.home.indexOf(a)>-1||S.dock.indexOf(a)>-1});
  function row(a,arr,i,k){var r=document.createElement('div');r.className='it'+(k?' k':'');
-  if(!k&&!a.kids&&arr===S.home){var c=document.createElement('input');c.type='checkbox';c.checked=sel.indexOf(a)>-1;c.onchange=function(){var p=sel.indexOf(a);if(this.checked&&p<0)sel.push(a);if(!this.checked&&p>-1)sel.splice(p,1);gbtn()};r.appendChild(c)}
+  if(!k&&!a.kids){var c=document.createElement('input');c.type='checkbox';c.checked=sel.indexOf(a)>-1;c.onchange=function(){var p=sel.indexOf(a);if(this.checked&&p<0)sel.push(a);if(!this.checked&&p>-1)sel.splice(p,1);gbtn()};r.appendChild(c)}
   var th=document.createElement('span');th.className='th';th.appendChild(tile(a.kids?{name:'폴더',color:'#6aa9e8'}:a));r.appendChild(th);
   var b=document.createElement('b');b.textContent=a.name+(a.kids?' ('+a.kids.length+')':'');r.appendChild(b);
   if(!a.kids){var f=document.createElement('label');f.className='f';f.textContent='아이콘';var inp=document.createElement('input');inp.type='file';inp.accept='image/*';inp.onchange=function(){if(this.files[0])pickImg(this.files[0],160,'ic',function(u){a.icon=u;save();render()})};f.appendChild(inp);r.appendChild(f)}
@@ -129,27 +129,38 @@ function render(){
   var x=document.createElement('button');x.className='mini';x.textContent='삭제';x.onclick=function(){if(arr===S.dock&&S.dock.length<=1){alert('독에는 최소 1개가 필요해요');return}arr.splice(arr.indexOf(a),1);save();render()};r.appendChild(x);L.appendChild(r);if(editing===a)L.appendChild(editForm(a));
   if(a.kids)a.kids.forEach(function(kk,j){row(kk,a.kids,j,1)})}
  S.home.forEach(function(a,i){row(a,S.home,i)});S.dock.forEach(function(a,i){row(a,S.dock,i)});gbtn()}
-function where(a){if(S.home.indexOf(a)>-1)return 'h';if(S.dock.indexOf(a)>-1)return 'd';for(var i=0;i<S.home.length;i++)if(S.home[i].kids&&S.home[i].kids.indexOf(a)>-1)return 'f'+i;return 'h'}
+function locate(a){var zs=['home','dock'];for(var z=0;z<2;z++){var arr=S[zs[z]];if(arr.indexOf(a)>-1)return{z:zs[z],f:null};for(var i=0;i<arr.length;i++)if(arr[i].kids&&arr[i].kids.indexOf(a)>-1)return{z:zs[z],f:arr[i]}}return{z:'home',f:null}}
 function editForm(a){var f=document.createElement('div');f.className='edf';
- f.innerHTML='<label>이름<input id="eN"></label><div class="row"><label>배지 숫자 (0=없음)<input id="eB" type="number" inputmode="numeric"></label>'+(a.kids?'':'<label>아이콘 사진<input id="eI" type="file" accept="image/*"></label>')+'</div><div class="row"><label>위치<select id="eW"></select></label></div><div class="row"><button class="mini" id="eC" type="button">닫기</button><button class="add" id="eS" type="button">저장</button></div>';
- f.querySelector('#eN').value=a.name;
- var ws=f.querySelector('#eW'),cur=where(a);ws.innerHTML='<option value="h">홈 화면</option><option value="d">독</option>';
- if(!a.kids)S.home.forEach(function(o,i){if(o.kids){var op=document.createElement('option');op.value='f'+i;op.textContent='폴더: '+o.name;ws.appendChild(op)}});ws.value=cur;
-f.querySelector('#eB').value=a.badge||0;
+ var L=locate(a),cur=L.f?'f'+S[L.z].indexOf(L.f):(L.z==='dock'?'d':'h');
+ f.innerHTML='<label>이름<input id="eN"></label><div class="row"><label>배지 숫자 (0=없음)<input id="eB" type="number" inputmode="numeric"></label>'+(a.kids?'':'<label>아이콘 사진<input id="eI" type="file" accept="image/*"></label>')+'</div>'+(a.kids?'':'<label>위치<select id="eW"></select></label>')+'<div class="row"><button class="mini" id="eC" type="button">닫기</button><button class="add" id="eS" type="button">저장</button></div>';
+ f.querySelector('#eN').value=a.name;f.querySelector('#eB').value=a.badge||0;
  var fi=f.querySelector('#eI');if(fi)fi.onchange=function(){if(this.files[0])pickImg(this.files[0],160,'ic',function(u){a.icon=u;save();render()})};
+ var ws=f.querySelector('#eW');
+ if(ws){ws.innerHTML='<option value="h">홈 화면</option><option value="d">독</option>';
+  S[L.z].forEach(function(o,i){if(o.kids){var op=document.createElement('option');op.value='f'+i;op.textContent='폴더: '+o.name;ws.appendChild(op)}});
+  ws.value=cur}
  f.querySelector('#eS').onclick=function(){var n=f.querySelector('#eN').value.trim();if(n)a.name=n;a.badge=+f.querySelector('#eB').value||0;
-  var nw=ws.value;if(nw!==cur){var src=cur==='h'?S.home:cur==='d'?S.dock:S.home[+cur.slice(1)].kids,tf=nw[0]==='f'?S.home[+nw.slice(1)]:null;
-   if(nw==='d'&&S.dock.length>=4){alert('독에는 최대 4개까지 넣을 수 있어요');return}
-   if(cur==='d'&&S.dock.length<=1){alert('독에는 최소 1개가 필요해요');return}
-   var sf=cur[0]==='f'?S.home[+cur.slice(1)]:null;src.splice(src.indexOf(a),1);if(sf&&!sf.kids.length)S.home.splice(S.home.indexOf(sf),1);
-   (tf?tf.kids:nw==='d'?S.dock:S.home).push(a)}
+  var nw=ws?ws.value:cur;
+  if(!a.kids&&nw!==cur){
+   var tz=nw==='d'?'dock':nw==='h'?'home':L.z,tf=nw[0]==='f'?S[L.z][+nw.slice(1)]:null;
+   var topDock=!L.f&&L.z==='dock',toTopDock=!tf&&tz==='dock';
+   if(toTopDock&&!topDock&&S.dock.length>=4){alert('독에는 최대 4개까지 넣을 수 있어요');return}
+   if(topDock&&!toTopDock&&S.dock.length<=1){alert('독에는 최소 1개가 필요해요');return}
+   var tgt=tf?tf.kids:S[tz];
+   var src=L.f?L.f.kids:S[L.z];src.splice(src.indexOf(a),1);
+   if(L.f&&!L.f.kids.length)S[L.z].splice(S[L.z].indexOf(L.f),1);
+   tgt.push(a);
+  }
   editing=null;save();render()};
  f.querySelector('#eC').onclick=function(){editing=null;render()};
  return f}
 function gbtn(){var g=$('#group');g.disabled=!sel.length;g.textContent=sel.length?'선택한 '+sel.length+'개를 폴더로 묶기':'폴더로 묶기'}
-$('#group').onclick=function(){if(!sel.length)return;var first=Math.min.apply(null,sel.map(function(a){return S.home.indexOf(a)}));
- var f={name:$('#fName').value.trim()||'폴더',badge:sel.reduce(function(n,a){return n+(a.badge||0)},0),kids:sel.slice().sort(function(a,b){return S.home.indexOf(a)-S.home.indexOf(b)})};
- S.home=S.home.filter(function(a){return sel.indexOf(a)<0});S.home.splice(first,0,f);sel=[];$('#fName').value='';save();render()};
+$('#group').onclick=function(){if(!sel.length)return;
+ var inH=sel.every(function(a){return S.home.indexOf(a)>-1}),inD=sel.every(function(a){return S.dock.indexOf(a)>-1});
+ if(!inH&&!inD){alert('홈 화면과 독의 앱은 한 폴더로 묶을 수 없어요');return}
+ var key=inH?'home':'dock',arr=S[key];var first=Math.min.apply(null,sel.map(function(a){return arr.indexOf(a)}));
+ var f={name:$('#fName').value.trim()||'폴더',badge:sel.reduce(function(n,a){return n+(a.badge||0)},0),kids:sel.slice().sort(function(a,b){return arr.indexOf(a)-arr.indexOf(b)})};
+ S[key]=arr.filter(function(a){return sel.indexOf(a)<0});S[key].splice(first,0,f);sel=[];$('#fName').value='';save();render()};
 $('#wall').onchange=function(){if(this.files[0])pickImg(this.files[0],1200,'wall',function(u){S.wall=u;save();render()})};
 $('#wallReset').onclick=function(){S.wall='';save();render()};
 $('#addApp').onclick=function(){var n=$('#aName').value.trim();if(!n){alert('앱 이름을 입력하세요');return}
