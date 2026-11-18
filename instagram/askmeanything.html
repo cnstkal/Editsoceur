@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Ask me anything</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.css">
+<link rel="stylesheet" href="askmeanything.css">
+<style id="ed-font">html,body,body *{font-family:Pretendard,-apple-system,"Apple SD Gothic Neo","Noto Sans KR",sans-serif!important;letter-spacing:-.02em!important}</style>
+</head>
+<body class="studio">
+<div class="ps-wrap">
+<header class="ps-top"><span></span><button class="ps-pvbtn" id="pvBtn" type="button">미리보기 모드</button></header>
+<div class="ps-grid">
+<section class="ps-card ps-main">
+<div class="ps-lbl">Live Preview</div>
+<h2>Ask me anything</h2>
+<p class="ps-sub">질문 카드를 확인하고, 오른쪽에서 바로 수정해요</p>
+<div class="ps-stage"><div class="ps-frame" id="frame"><div class="zw" id="zw">
+<div class="zs" id="zoom"><div class="card">
+<div class="who"><div class="av" id="vAv"></div><div class="nm" id="vName"></div></div>
+<div class="q" id="vQ"></div>
+<div class="rb" id="vBtn"></div>
+</div></div>
+</div></div></div>
+</section>
+<section class="ps-card ps-side">
+<div class="ps-lbl">Edit Panel</div>
+<h2>내용 수정</h2>
+<div class="ps-edwrap"><div class="editor">
+<div class="ps-pn" data-t="기본">
+<label>사용자 아이디<input id="iName"></label>
+<label>질문 (줄바꿈 반영)<textarea id="iQ" rows="3"></textarea></label>
+<label>버튼 문구<input id="iBtn"></label>
+</div>
+<div class="ps-pn" data-t="이미지" hidden>
+<label>프로필 사진<input id="iAv" type="file" accept="image/*"></label>
+<button class="ps-ghost" id="clearAv" type="button">기본 프로필로 되돌리기</button>
+</div>
+<div class="ps-pn" data-t="기타" hidden>
+<label>버튼 색상<input id="iBar" type="color"></label>
+<label>배경 색상<input id="iBg" type="color"></label>
+</div>
+</div></div>
+<div class="ps-acts"><button id="reset" type="button">초기화</button><button id="savePng" type="button">PNG 저장</button></div>
+</section>
+</div>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js"></script>
+<script src="askmeanything.js"></script>
+</body>
+</html>
