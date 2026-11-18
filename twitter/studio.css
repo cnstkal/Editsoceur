@@ -60,5 +60,28 @@ body.pvmode .ps-main .ps-lbl,body.pvmode .ps-main h2,body.pvmode .ps-main .ps-su
 body.pvmode .ps-stage{padding-top:0}
 body.pvmode{background:#fff}
 .ps-frame .divd{display:none!important}
-.ps-edwrap .ed{max-width:none;margin:0;padding:0;font-size:14px;background:none;border:0}
-.ps-edwrap .ed h2{font-size:17px;margin:18px 0 10px}
+.ps-pn[hidden]{display:none!important}
+/* 모바일(1100px 미만): 탭형 모바일 편집 화면 */
+@media(max-width:1099px){
+body.studio{background:#fff}
+.ps-wrap{padding:0;max-width:none}
+.ps-top{margin:0;padding:14px 16px;background:#fff;border-bottom:1px solid #eee;position:sticky;top:0;z-index:5}
+.ps-pvbtn{display:none}
+.ps-grid{grid-template-columns:1fr;gap:0}
+.ps-card{border-radius:0;box-shadow:none;padding:0;background:#fff}
+.ps-main{padding-bottom:8px}
+.ps-main>.ps-lbl,.ps-main>h2,.ps-main>.ps-sub{display:none}
+.ps-stage{padding-top:0}
+.ps-frame{display:block}
+.ps-side>.ps-lbl,.ps-side>h2{display:none}
+.ps-seg{display:flex;overflow-x:auto;gap:8px;margin:0;padding:12px 16px;background:#fff;border-bottom:1px solid #f0f0f0;border-radius:0;scrollbar-width:none}
+.ps-seg::-webkit-scrollbar{display:none}
+.ps-seg button{flex:none;height:auto;padding:8px 14px;border-radius:999px;background:#f3f3f5;color:#555;font-size:14px;font-weight:500;border:0}
+.ps-seg button.on{background:#fde8ef;color:#e8457a;font-weight:700;box-shadow:none}
+.ps-edwrap .editor{padding:16px}
+.ps-edwrap .editor label{margin-bottom:14px}
+.ps-acts{position:sticky;bottom:0;margin:0;padding:12px 16px;background:#fff;border-top:1px solid #eee;z-index:5;display:flex;gap:10px}
+.ps-acts button{flex:1;height:50px;border-radius:14px}
+.ps-acts #savePng{background:#e8457a;color:#fff;flex:2}
+.ps-acts #reset{background:#f1f1f3;color:#222}
+}
