@@ -96,7 +96,7 @@ function addR(chain){
  renderList();render();
 }
 function bind(){
- ids.forEach(function(k){var el=document.getElementById(k);el.oninput=function(){S[k]=el.value;render()}});
+ ids.forEach(function(k){var el=document.getElementById(k);if(!el)return;el.oninput=function(){S[k]=el.value;render()}});
  sw.forEach(function(k){var el=document.getElementById(k);el.onchange=function(){S[k]=el.checked;render()}});
  document.getElementById('avatarFile').onchange=function(e){readFile(e.target.files[0],function(u){S.avatar=u;render()})};
  document.getElementById('qavatarFile').onchange=function(e){readFile(e.target.files[0],function(u){S.qavatar=u;render()})};
