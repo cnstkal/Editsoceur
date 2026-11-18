@@ -168,3 +168,5 @@ body.studio{background:#fff}
   #dm.phone,#dm .phone{min-height:0!important;height:auto!important;}
   #dm{height:auto!important;min-height:0!important;}
 }
+
+@media(max-width:1099px){.ps-frame>.phone{min-height:0!important;height:auto!important}}
