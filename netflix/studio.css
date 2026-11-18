@@ -118,3 +118,13 @@ body.pvmode{background:#fff}
 
 @media(max-width:1099px){.ps-frame,.stage{width:100%!important;max-width:100%!important;overflow:hidden}.phone{width:100%!important;max-width:100%!important}}
 @media(max-width:1099px){.phone{overflow:hidden}.phone *{box-sizing:border-box;max-width:100%}.phone img,.phone video{max-width:100%}}
+
+
+/* Global mobile preview centering fix */
+@media(max-width:1099px){
+  body.studio{overflow-x:hidden;width:100%;max-width:100%;}
+  .ps-wrap,.ps-grid,.ps-main,.ps-stage,.ps-frame{width:100%;max-width:100%;min-width:0;box-sizing:border-box;}
+  .ps-frame{display:flex!important;justify-content:center!important;align-items:flex-start!important;}
+  .ps-frame>*{margin-left:auto!important;margin-right:auto!important;max-width:100%;min-width:0;}
+  .ps-frame .phone{width:min(100%,430px)!important;margin-inline:auto!important;}
+}
