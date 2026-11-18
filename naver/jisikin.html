@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>지식iN 질문</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.css">
+<link rel="stylesheet" href="jisikin.css">
+</head>
+<body class="studio">
+<div class="ps-wrap">
+<header class="ps-top"><span></span><button class="ps-pvbtn" id="pvBtn" type="button">미리보기 모드</button></header>
+<div class="ps-grid">
+<section class="ps-card ps-main">
+<div class="ps-lbl">Live Preview</div>
+<h2>지식iN 질문</h2>
+<p class="ps-sub">9:16 화면으로 확인하고, 오른쪽에서 바로 수정해요</p>
+<div class="ps-stage"><div class="ps-frame">
+<div class="phone" id="shot">
+  <header class="top"><div class="logo"><svg viewBox="0 0 24 24"><path fill="#fff" d="M3 3h6.5l5 8V3H21v18h-6.500L9.500 13v8H3z"/></svg></div><span>지식iN</span></header>
+  <div class="q"><b>Q</b><h1 id="vTitle"></h1></div>
+  <div class="meta"><span id="vUser"></span> · 마감률 <em id="vClose"></em> · 채택률 <em id="vPick"></em> · <span id="vDate"></span></div>
+  <p class="body" id="vBody"></p>
+  <div class="btns"><span>의견</span><span>나도 궁금해요 <span id="vWant"></span></span></div>
+  <div class="cnt">답변 <em id="vCnt"></em>개</div>
+  <div class="ans"><div class="av" id="vAv"></div>
+    <div><div class="an" id="vName"></div><div class="as"><em id="vGrade"></em> · 채택답변수 <em id="vAdopt"></em></div></div></div>
+  <hr>
+  <p class="atx" id="vAns"></p>
+</div>
+</div></div>
+</section>
+<section class="ps-card ps-side">
+<div class="ps-lbl">Edit Panel</div>
+<h2>질문 내용 수정</h2>
+<div class="ps-seg" id="seg"></div>
+<div class="ps-edwrap"><div class="editor">
+<div class="ps-pn" data-t="질문">
+<label>질문 제목<input id="iTitle"></label>
+<label>질문 내용<textarea id="iBody" rows="3"></textarea></label>
+<label>질문자 아이디<input id="iUser"></label>
+<label>날짜<input id="iDate"></label>
+</div>
+<div class="ps-pn" data-t="수치" hidden>
+<div class="row"><label>마감률<input id="iClose"></label><label>채택률<input id="iPick"></label></div>
+<div class="row"><label>나도 궁금해요<input id="iWant"></label><label>답변 수<input id="iCnt"></label></div>
+</div>
+<div class="ps-pn" data-t="답변" hidden>
+<label>답변자 이름<input id="iName"></label>
+<div class="row"><label>등급<input id="iGrade"></label><label>채택답변수<input id="iAdopt"></label></div>
+<label>답변 내용<textarea id="iAns" rows="3"></textarea></label>
+</div>
+<div class="ps-pn" data-t="이미지" hidden>
+<div class="ps-pic"><div class="th"></div><div><b id="picTxt">기본 프로필</b><span>미리보기에 반영됩니다</span></div></div>
+<label class="ps-addp">+ 프로필 사진 추가<input class="ps-sr" id="iAv" type="file" accept="image/*"></label>
+<button class="ps-ghost" id="clearAv" type="button">프로필 사진 비우기</button>
+</div>
+</div></div>
+<div class="ps-acts"><button id="savePng" type="button">PNG 저장</button><button id="reset" type="button">초기화</button></div>
+</section>
+</div></div>
+<script src="https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js"></script>
+<script src="jisikin.js"></script>
+</body>
+</html>
