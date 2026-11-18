@@ -1,36 +1,53 @@
 (function(){
-  var $=function(i){return document.getElementById(i)},STORE='editsoceur-netflix-main-pc-v1',S;
-  var DEF={tg:'시리즈',nOn:true,bg:'',ht:'임시 제목입니다',hd:'임시 설명 문구입니다. 이 자리에 작품 소개가 들어갑니다.',pl:'재생',ls:'내가 찜한 콘텐츠',rw:'넷플릭스 인기 콘텐츠',rw2:'스릴러 & 미스터리 시리즈',cn:7,cards1:['','','','','','',''],cards2:['','','','','','','']};
-  function esc(t){return String(t==null?'':t).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;')}
-  var PLAY='<svg width="20" height="20" viewBox="0 0 24 24" style="fill:#000;stroke:none"><path d="M6 4l14 8-14 8z"/></svg>',
-    CAST='<svg viewBox="0 0 24 24"><path d="M2 16a6 6 0 0 1 6 6M2 11a11 11 0 0 1 11 11M2 6h2a14 14 0 0 1 14 14v2"/><path d="M2 20h.01"/></svg>',
-    SRCH='<svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="m21 21-5-5"/></svg>',
-    BELL='<svg viewBox="0 0 24 24"><path d="M6 9a6 6 0 0 1 12 0c0 6 3 7 3 7H3s3-1 3-7M10 20h4"/></svg>';
-  function render(){
-    var menu=['홈','시리즈','영화','NEW & HOT','내가 찜한 콘텐츠'];
-    var h='<div class="hero" style="'+(S.bg?"background-image:url('"+esc(S.bg)+"')":'')+'"><div class="sh"></div></div>';
-    h+='<div class="nv"><span class="lg">NETFLIX</span><div class="m">'+menu.map(function(m){return '<span>'+m+'</span>'}).join('')+'</div><div class="r">'+CAST+SRCH+BELL+'<span class="pf2"></span></div></div>';
-    h+='<div class="ct"><div class="tg">'+(S.nOn?'<b>N</b>':'')+esc(S.tg)+'</div><div class="ht">'+esc(S.ht)+'</div><div class="hd">'+esc(S.hd)+'</div><div class="bt"><span class="p">'+PLAY+esc(S.pl)+'</span><span class="s">✓ '+esc(S.ls)+'</span></div></div>';
-    function row(arr){return arr.map(function(u){return '<div class="cd" style="'+(u?"background-image:url('"+esc(u)+"')":'')+'"></div>'}).join('')}
-    h+='<div class="rw"><h3>'+esc(S.rw)+'</h3><div class="cards">'+row(S.cards1.slice(0,Math.max(1,Math.min(7,+S.cn||7))))+'</div></div>';
-    h+='<div class="rw rw2"><h3>'+esc(S.rw2)+'</h3><div class="cards">'+row(S.cards2)+'</div></div>';
-    $('pf').innerHTML=h;fit();
-  }
-  function persist(){try{localStorage.setItem(STORE,JSON.stringify(S))}catch(e){}}
-  function fit(){var k=Math.min(1,$('pw').clientWidth/1920);$('pf').style.transform='scale('+k+')';$('pf').style.height='auto';$('pf').style.overflow='visible';var base=$('pf').getBoundingClientRect().top,bottom=Math.max(1080,$('pf').scrollHeight);$('pf').querySelectorAll('*').forEach(function(el){var r=el.getBoundingClientRect();bottom=Math.max(bottom,(r.bottom-base)/k)});var h=Math.max(1080,bottom+40);$('pf').style.height=h+'px';$('pw').style.height=h*k+'px'}
-  var TX={iTg:'tg',iHt:'ht',iHd:'hd',iPl:'pl',iLs:'ls',iRw:'rw',iRw2:'rw2',iCn:'cn'};
-  function buildCards(){['cards1','cards2'].forEach(function(id,k){var arr=S[k?'cards2':'cards1'];$(id).innerHTML=arr.map(function(u,i){return '<label>카드 '+(i+1)+' 사진<input type="file" data-row="'+k+'" data-card="'+i+'" accept="image/*"></label>'}).join('')})}
-  function set(){Object.keys(TX).forEach(function(id){$(id).value=S[TX[id]]});$('iNOn').checked=!!S.nOn;buildCards()}
-  function load(reset){if(reset)try{localStorage.removeItem(STORE)}catch(e){}try{var v=!reset&&localStorage.getItem(STORE);S=v?JSON.parse(v):JSON.parse(JSON.stringify(DEF));if(!Array.isArray(S.cards1))S.cards1=['','','','','','',''];if(!Array.isArray(S.cards2))S.cards2=['','','','','','',''];if(typeof S.tg!=='string')throw 0}catch(e){S=JSON.parse(JSON.stringify(DEF))}set();render();fit()}
-  Object.keys(TX).forEach(function(id){$(id).addEventListener('input',function(){S[TX[id]]=this.value;persist();render()})});
-  $('iNOn').onchange=function(){S.nOn=this.checked;persist();render()};
-  document.querySelector('.ed').addEventListener('change',function(e){if(e.target.type!=='file'||!e.target.dataset.card||!e.target.files[0])return;var row=+e.target.dataset.row,idx=+e.target.dataset.card,fr=new FileReader();fr.onload=function(){S[row?'cards2':'cards1'][idx]=fr.result;persist();render()};fr.readAsDataURL(e.target.files[0])});
-  $('iBg').addEventListener('change',function(){var f=this.files[0];if(!f)return;var r=new FileReader();r.onload=function(){S.bg=r.result;persist();render()};r.readAsDataURL(f)});
-  $('reset').onclick=function(){load(true)};
-  $('savePng').onclick=function(){var b=this,t=b.textContent;b.disabled=true;b.textContent='저장 중...';
-    (document.fonts&&document.fonts.ready||Promise.resolve()).then(function(){return html2canvas($('pf'),{scale:2,width:1920,height:Math.max(1080,$('pf').scrollHeight),useCORS:true,backgroundColor:'#141414',logging:false,onclone:function(d){d.getElementById('pf').style.transform='none';var w=d.getElementById('pw');w.style.height='auto';w.style.overflow='visible'}})}).then(function(c){
-      c.toBlob(function(bl){var a=document.createElement('a');a.href=URL.createObjectURL(bl);a.download='netflix-main-pc.png';document.body.appendChild(a);a.click();a.remove();b.disabled=false;b.textContent=t})
-    }).catch(function(){b.disabled=false;b.textContent=t;alert('PNG 저장에 실패했습니다.')})};
-  addEventListener('resize',fit);
-  load(false);
+var $=function(i){return document.getElementById(i)};
+var P=function(r,w,t){return{img:'',red:r||'',white:w||'',top:!!t}};
+var DEF={c0:'시리즈',c1:'영화',c2:'NEW & HOT',c3:'카테고리',hero:'',ht:'화요일 새로운 에피소드 공개',b1:'시리즈 재생',b2:'내가 찜한 리스트',t1:'오늘 대한민국의 TOP 10 시리즈',t2:'스릴러 & 미스터리 시리즈',av:'',
+r1:[P('새로운 에피소드','지금 시청하기'),P('새로운 시즌'),P()],
+r2:[P('스릴러'),P('미스터리'),P('범죄'),P('심리 스릴러'),P('추리'),P('스릴러 시리즈')]};
+var S,STORE='editsoceur-netflix-main-pc-v1',nx=$('nx'),sc=$('nSc');
+function persist(){try{localStorage.setItem(STORE,JSON.stringify(S))}catch(e){console.warn('저장 공간 부족 — 이미지 일부가 새로고침 시 사라질 수 있어요',e)}}
+function esc(t){return String(t==null?'':t).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;')}
+function bg(u){return u?"background-image:url('"+u+"')":''}
+function tt(t){return esc(t).replace(/TOP 10/g,'<b>TOP 10</b>')}
+var CARET='<svg viewBox="0 0 12 8" style="width:2.8cqw"><path d="M1 1h10L6 7z" fill="#fff"/></svg>';
+var PENG='<svg viewBox="0 0 40 40"><rect width="40" height="40" fill="#5a2ec2"/><path d="M6 26a14 14 0 0 1 28 0v7a4 4 0 0 1-4 4H10a4 4 0 0 1-4-4z" fill="#fff"/><circle cx="14.500" cy="22" r="4.600" fill="#fff" stroke="#2a1470" stroke-width="1.200"/><circle cx="25.500" cy="22" r="4.600" fill="#fff" stroke="#2a1470" stroke-width="1.200"/><circle cx="14.500" cy="22.500" r="1.700" fill="#111"/><circle cx="25.500" cy="22.500" r="1.700" fill="#111"/></svg>';
+function poster(x){var g='';if(x.red||x.white)g='<div class="ntg">'+(x.red?'<span class="r">'+esc(x.red)+'</span>':'')+(x.white?'<span class="w">'+esc(x.white)+'</span>':'')+'</div>';
+return '<div class="np" style="'+bg(x.img)+'">'+(x.top?'<b class="tb"><i>TOP</i>10</b>':'')+g+'</div>'}
+function render(){
+$('nCh').innerHTML='<i>'+esc(S.c0)+'</i><i>'+esc(S.c1)+'</i><i>'+esc(S.c2)+'</i><i><span>'+esc(S.c3)+'</span>'+CARET+'</i>';
+var hc=$('nHc');hc.style.backgroundImage=S.hero?"url('"+S.hero+"')":'';
+$('nHt').textContent=S.ht;$('nB1').textContent=S.b1;$('nB2').textContent=S.b2;
+$('nT1').innerHTML=tt(S.t1);$('nT2').innerHTML=tt(S.t2);
+var h='';S.r1.forEach(function(x,i){var n=i+1;h+='<div class="ni"><i class="nn" style="left:-'+(n===1?8:12.3)+'cqw">'+n+'</i>'+poster(x)+'</div>'});$('nR1').innerHTML=h;
+h='';S.r2.forEach(function(x){h+=poster(x)});$('nR2').innerHTML=h+h;
+
+var av=$('nAv');if(S.av){av.innerHTML='';av.style.backgroundImage="url('"+S.av+"')"}else{av.style.backgroundImage='';av.innerHTML=PENG}}
+function card(r,x,i){return '<div class="nk" data-r="'+r+'" data-i="'+i+'"><div class="row"><label class="file">포스터 '+(i+1)+' 이미지<input type="file" accept="image/*" data-f="img"></label><label class="xk"><input type="checkbox" data-f="top"'+(x.top?' checked':'')+'> TOP10 배지</label></div><div class="row"><label>빨간 라벨<input data-f="red" value="'+esc(x.red)+'"></label><label>흰 라벨<input data-f="white" value="'+esc(x.white)+'"></label></div><div class="row"><button type="button" class="nkb" data-a="u">↑</button><button type="button" class="nkb" data-a="d">↓</button><button type="button" class="nkb" data-a="x">✕ 삭제</button></div></div>'}
+function list(){[1,2].forEach(function(r){var h='';S['r'+r].forEach(function(x,i){h+=card(r,x,i)});$('l'+r).innerHTML=h})}
+function set(){Array.prototype.forEach.call(document.querySelectorAll('[data-g]'),function(e){var k=e.dataset.g;if(e.type==='checkbox')e.checked=!!S[k];else e.value=S[k]})}
+function load(reset){if(reset){try{localStorage.removeItem(STORE)}catch(e){}S=JSON.parse(JSON.stringify(DEF))}else{try{var sv=localStorage.getItem(STORE);S=sv?JSON.parse(sv):JSON.parse(JSON.stringify(DEF));if(!S||!Array.isArray(S.r1)||!Array.isArray(S.r2))throw 0}catch(e){S=JSON.parse(JSON.stringify(DEF))}}set();list();render()}
+function shrink(f){return new Promise(function(ok){var r=new FileReader();r.onload=function(){var im=new Image();im.onload=function(){var m=1000,k=Math.min(1,m/Math.max(im.width,im.height)),c=document.createElement('canvas');c.width=Math.round(im.width*k);c.height=Math.round(im.height*k);c.getContext('2d').drawImage(im,0,0,c.width,c.height);ok(c.toDataURL('image/jpeg',.82))};im.onerror=function(){ok(null)};im.src=r.result};r.onerror=function(){ok(null)};r.readAsDataURL(f)})}
+document.querySelector('.editor').addEventListener('input',function(e){var t=e.target,k=t.dataset.g;
+if(k){S[k]=t.type==='checkbox'?t.checked:t.value;persist();render();return}
+var f=t.dataset.f,c=t.closest('.nk');if(!f||!c||t.type==='file')return;var o=S['r'+c.dataset.r][+c.dataset.i];o[f]=t.type==='checkbox'?t.checked:t.value;persist();render()});
+document.querySelector('.editor').addEventListener('change',function(e){var t=e.target;if(t.type!=='file'||!t.files[0])return;var f=t.dataset.f,c=t.closest('.nk'),k=t.dataset.i;
+shrink(t.files[0]).then(function(u){if(!u)return;if(k)S[k]=u;else if(c)S['r'+c.dataset.r][+c.dataset.i][f]=u;t.value='';persist();render()})});
+document.querySelector('.editor').addEventListener('click',function(e){var t=e.target;
+if(t.dataset.add){S['r'+t.dataset.add].push(P());persist();list();render();return}
+var a=t.dataset.a,c=t.closest('.nk');if(!a||!c)return;var m=S['r'+c.dataset.r],i=+c.dataset.i;
+if(a==='x')m.splice(i,1);else if(a==='u'&&i>0){var x=m[i];m[i]=m[i-1];m[i-1]=x}else if(a==='d'&&i<m.length-1){var y=m[i];m[i]=m[i+1];m[i+1]=y}
+persist();list();render()});
+sc.addEventListener('scroll',function(){nx.classList.toggle('sc',sc.scrollTop>4)});
+$('reset').onclick=function(){load(true)};
+$('savePng').onclick=function(){var b=this,t=b.textContent,s=sc.scrollTop,inn=sc.firstElementChild;b.disabled=true;b.textContent='저장 중...';
+inn.style.transform='translateY('+(-s)+'px)';sc.style.overflow='hidden';
+var done=function(){inn.style.transform='';sc.style.overflow='';sc.scrollTop=s;b.disabled=false;b.textContent=t};
+(document.fonts&&document.fonts.ready?document.fonts.ready:Promise.resolve()).then(function(){
+return html2canvas(nx,{scale:4,useCORS:true,backgroundColor:'#000',logging:false})}).then(function(c){
+c.toBlob(function(bl){var a=document.createElement('a');a.href=URL.createObjectURL(bl);a.download='netflix.png';
+document.body.appendChild(a);a.click();a.remove();done()},'image/png')
+}).catch(function(){done();alert('PNG 저장에 실패했습니다.')})};
+document.addEventListener('gesturestart',function(e){e.preventDefault()},{passive:false});
+document.addEventListener('dblclick',function(e){e.preventDefault()},{passive:false});
+load(false);
 })();
