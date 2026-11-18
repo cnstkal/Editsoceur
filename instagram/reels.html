@@ -7,7 +7,7 @@
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.css">
 <link rel="stylesheet" href="story.css?v=3">
 <link rel="stylesheet" href="reels.css?v=1">
-<style data-hide-status>:is(span,b)[id$="Time"],#eTm,.isl,.ys,.ysig,.ywf,.ybt,.dsg,.dwf,#df .dbt,.msg,.mwf,.mbt,.ewf,.ebt,.nwf,.nbt,.sb:has([id$="Time"])>svg:not(.lc),.sb:has([id$="Time"])+.bt,.sb:has([id$="Time"]) .bt{display:none!important}</style><style id="ed-font">html,body,body *{font-family:Pretendard,-apple-system,"Apple SD Gothic Neo","Noto Sans KR",sans-serif!important;letter-spacing:-.02em!important}</style><link rel="stylesheet" href="studio.css?v=2">
+<style data-hide-status>:is(span,b)[id$="Time"],#eTm,.isl,.ys,.ysig,.ywf,.ybt,.dsg,.dwf,#df .dbt,.msg,.mwf,.mbt,.ewf,.ebt,.nwf,.nbt,.sb:has([id$="Time"])>svg:not(.lc),.sb:has([id$="Time"])+.bt,.sb:has([id$="Time"]) .bt{display:none!important}</style><style id="ed-font">html,body,body *{font-family:Pretendard,-apple-system,"Apple SD Gothic Neo","Noto Sans KR",sans-serif!important;letter-spacing:-.02em!important}</style><link rel="stylesheet" href="studio.css?v=3">
 </head>
 <body class="studio"><div class="ps-wrap">
 <header class="ps-top"><a class="ps-back" href="index.html">‹ 뒤로</a><button class="ps-pvbtn" id="pvBtn" type="button">미리보기 모드</button></header>
@@ -44,18 +44,21 @@
 
 </div></div></section>
 <section class="ps-card ps-side"><div class="ps-lbl">Edit Panel</div><h2>릴스 내용 수정</h2><div class="ps-edwrap"><section class="editor">
-  <h2>릴스 편집</h2>
-  <label class="file">메인 사진 (비우면 그린스크린)<input id="iPhoto" type="file" accept="image/*"></label>
-  <div class="musicbox"><div class="trow"><span>스토리 링 표시</span><label class="sw"><input id="iRing" type="checkbox"><i></i></label></div><div class="trow" style="margin:10px 0 0"><span>상단 릴스·친구 표시</span><label class="sw"><input id="iHd" type="checkbox"><i></i></label></div></div>
-  <label>아이디<input id="iUn"></label>
-  <div class="musicbox"><div class="trow"><span>팔로우 버튼 표시</span><label class="sw"><input id="iFwOn" type="checkbox"><i></i></label></div></div>
-  <label>팔로우 버튼 문구<input id="iFw"></label>
-  <label>캡션<input id="iCap"></label>
-  <div class="row"><label>좋아요<input id="iC0"></label><label>댓글<input id="iC1"></label><label>리포스트<input id="iC2"></label></div>
-  <div class="row"><label>공유<input id="iC3"></label><label>저장<input id="iC4"></label><label>진행률(%)<input id="iPg" type="number" min="0" max="100"></label></div>
-  <label class="file">프로필 사진<input id="iAv" type="file" accept="image/*"></label>
-  <div class="row" style="margin-top:12px"><label class="file">친구 1<input id="iF0" type="file" accept="image/*"></label><label class="file">친구 2<input id="iF1" type="file" accept="image/*"></label><label class="file">친구 3<input id="iF2" type="file" accept="image/*"></label></div>
-  <label class="file">내 프로필(하단 메뉴)<input id="iMe" type="file" accept="image/*"></label>
+  <div class="ps-pn" data-t="기본">
+    <div class="musicbox"><div class="trow"><span>스토리 링 표시</span><label class="sw"><input id="iRing" type="checkbox"><i></i></label></div><div class="trow" style="margin:10px 0 0"><span>상단 릴스·친구 표시</span><label class="sw"><input id="iHd" type="checkbox"><i></i></label></div></div>
+    <label>아이디<input id="iUn"></label>
+    <div class="musicbox"><div class="trow"><span>팔로우 버튼 표시</span><label class="sw"><input id="iFwOn" type="checkbox"><i></i></label></div></div>
+    <label>팔로우 버튼 문구<input id="iFw"></label>
+    <label>캡션<input id="iCap"></label>
+    <div class="row"><label>좋아요<input id="iC0"></label><label>댓글<input id="iC1"></label><label>리포스트<input id="iC2"></label></div>
+    <div class="row"><label>공유<input id="iC3"></label><label>저장<input id="iC4"></label><label>진행률(%)<input id="iPg" type="number" min="0" max="100"></label></div>
+    <label class="file">프로필 사진<input id="iAv" type="file" accept="image/*"></label>
+    <div class="row" style="margin-top:12px"><label class="file">친구 1<input id="iF0" type="file" accept="image/*"></label><label class="file">친구 2<input id="iF1" type="file" accept="image/*"></label><label class="file">친구 3<input id="iF2" type="file" accept="image/*"></label></div>
+    <label class="file">내 프로필(하단 메뉴)<input id="iMe" type="file" accept="image/*"></label>
+  </div>
+  <div class="ps-pn" data-t="이미지" hidden>
+    <label class="file">메인 사진 (비우면 그린스크린)<input id="iPhoto" type="file" accept="image/*"></label>
+  </div>
 </section></div><div class="ps-acts"><button id="savePng" class="primary">PNG 저장</button><button id="reset" class="secondary">초기화</button></div></section>
 </div></div>
 <script src="https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js"></script>
