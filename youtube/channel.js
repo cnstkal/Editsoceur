@@ -47,7 +47,6 @@ if(e.type==='file')e.addEventListener('change',function(){if(e.files[0])rd(e.fil
 else{var h=function(){put(e.dataset.k,e.type==='checkbox'?e.checked:e.value);persist();render()};e.addEventListener('input',h);e.addEventListener('change',h)}});
 $('iAct').addEventListener('change',function(){S.act=this.value;persist();render()});
 function scr(v){S.sc=v;set();persist();render()}
-$('pTop').onclick=function(){scr(0)};$('pMid').onclick=function(){scr(SCROLL_MID)};
 function list(){var h='';S.l.forEach(function(x,i){
 h+='<div class="ec" data-i="'+i+'"><label>제목<input data-f="n" value="'+esc(x.n)+'"></label><label>채널명 줄<input data-f="ch" value="'+esc(x.ch)+'"></label>'+
 '<div class="row"><label>조회수<input data-f="vw" value="'+esc(x.vw)+'"></label><label>시간<input data-f="time" value="'+esc(x.time)+'"></label><label>길이<input data-f="dur" value="'+esc(x.dur)+'"></label><label>진행률 %<input data-f="pg" value="'+esc(x.pg)+'"></label></div>'+

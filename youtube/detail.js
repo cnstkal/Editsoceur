@@ -12,8 +12,6 @@ function esc(t){return String(t==null?'':t).replace(/&/g,'&amp;').replace(/</g,'
 function pc(v){v=parseFloat(v);return isNaN(v)?0:Math.max(0,Math.min(100,v))}
 function bgi(u){return u?"background-image:url('"+u+"')":''}
 function render(){
-$('dTime').textContent=S.time;
-var b=pc(S.bat);$('dBf').style.width=b+'%';$('dBt').textContent=Math.round(b);$('dBz').style.display=S.chg?'':'none';
 var m=S.m,p=pc(m.pg);
 $('dV').style.cssText=bgi(m.th);
 $('dPi').style.width=p+'%';$('dPu').style.left=p+'%';$('dPu').style.width=Math.min(7,100-p)+'%';
