@@ -7,7 +7,7 @@
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.css">
 <link rel="stylesheet" href="story.css?v=3">
 <link rel="stylesheet" href="dm.css?v=2">
-<style data-hide-status>:is(span,b)[id$="Time"],#eTm,.isl,.ys,.ysig,.ywf,.ybt,.dsg,.dwf,#df .dbt,.msg,.mwf,.mbt,.ewf,.ebt,.nwf,.nbt,.sb:has([id$="Time"])>svg:not(.lc),.sb:has([id$="Time"])+.bt,.sb:has([id$="Time"]) .bt{display:none!important}</style><style id="ed-font">html,body,body *{font-family:Pretendard,-apple-system,"Apple SD Gothic Neo","Noto Sans KR",sans-serif!important;letter-spacing:-.02em!important}</style><link rel="stylesheet" href="studio.css?v=2">
+<style data-hide-status>:is(span,b)[id$="Time"],#eTm,.isl,.ys,.ysig,.ywf,.ybt,.dsg,.dwf,#df .dbt,.msg,.mwf,.mbt,.ewf,.ebt,.nwf,.nbt,.sb:has([id$="Time"])>svg:not(.lc),.sb:has([id$="Time"])+.bt,.sb:has([id$="Time"]) .bt{display:none!important}</style><style id="ed-font">html,body,body *{font-family:Pretendard,-apple-system,"Apple SD Gothic Neo","Noto Sans KR",sans-serif!important;letter-spacing:-.02em!important}</style><link rel="stylesheet" href="studio.css?v=3">
 </head>
 <body class="studio"><div class="ps-wrap">
 <header class="ps-top"><a class="ps-back" href="index.html">‹ 뒤로</a><button class="ps-pvbtn" id="pvBtn" type="button">미리보기 모드</button></header>
@@ -39,15 +39,17 @@
 
 </div></div></section>
 <section class="ps-card ps-side"><div class="ps-lbl">Edit Panel</div><h2>DM 내용 수정</h2><div class="ps-edwrap"><section class="editor">
-  <h2>DM 편집</h2>
-  <label>상대 이름(닉네임·이모지)<input id="iNick"></label>
-  <label>상대 아이디<input id="iId"></label>
-  <label>입력창 문구<input id="iPh"></label>
-  <label class="file">상대 프로필 사진<input id="iAv" type="file" accept="image/*"></label>
-  <h2 style="margin-top:6px">메시지</h2>
-  <div id="mlist"></div>
-  <div class="row" style="margin-bottom:10px"><button class="ghost" id="addR" type="button">+ 상대 말</button><button class="ghost" id="addS" type="button">+ 나 말</button></div>
-  <div class="row"><button class="ghost" id="addP" type="button">+ 사진</button><button class="ghost" id="addV" type="button">+ 릴스</button><button class="ghost" id="addD" type="button">+ 날짜</button></div>
+  <div class="ps-pn" data-t="기본">
+    <label>상대 이름(닉네임·이모지)<input id="iNick"></label>
+    <label>상대 아이디<input id="iId"></label>
+    <label>입력창 문구<input id="iPh"></label>
+    <label class="file">상대 프로필 사진<input id="iAv" type="file" accept="image/*"></label>
+  </div>
+  <div class="ps-pn" data-t="채팅" hidden>
+    <div id="mlist"></div>
+    <div class="row" style="margin-bottom:10px"><button class="ghost" id="addR" type="button">+ 상대 말</button><button class="ghost" id="addS" type="button">+ 나 말</button></div>
+    <div class="row"><button class="ghost" id="addP" type="button">+ 사진</button><button class="ghost" id="addV" type="button">+ 릴스</button><button class="ghost" id="addD" type="button">+ 날짜</button></div>
+  </div>
 </section></div><div class="ps-acts"><button id="savePng" class="primary">PNG 저장</button><button id="reset" class="secondary">초기화</button></div></section>
 </div></div>
 <script src="https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js"></script>
