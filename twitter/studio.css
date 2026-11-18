@@ -24,6 +24,10 @@ body.studio{display:block;margin:0;background:#f2f3f5;color:#111;min-height:100v
 .ps-edwrap .editor .row{display:flex;gap:14px}
 .ps-edwrap .editor .row label{flex:1;min-width:0}
 .ps-edwrap .editor label.sw{display:inline-block;margin:0}
+/* PINK */
+.ps-seg{display:flex;gap:8px;overflow-x:auto;background:none;border:0;border-bottom:1px solid #f0f0f0;border-radius:0;padding:4px 0 14px;margin:0 0 18px}
+.ps-seg button{flex:none;height:38px;padding:0 16px;border-radius:999px;background:#fff0f5;color:#e8457a;border:1px solid #f8c9d9;font-size:14px;font-weight:600;cursor:pointer;box-shadow:none}
+.ps-seg button.on{background:#e8457a;color:#fff;border-color:#e8457a}
 .ps-pn[hidden]{display:none!important}
 .ps-tg{display:flex;align-items:center;justify-content:space-between;margin-bottom:18px;font-size:14px;color:#111;font-weight:500}
 .ps-pic{display:flex;gap:16px;align-items:center;padding:14px;border:1px solid #e3e5e8;border-radius:16px;margin-bottom:14px}
