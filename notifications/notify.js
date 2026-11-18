@@ -13,7 +13,7 @@ var data=[
 {id:'twitter',label:'트위터',app:'X',title:'marspark',body:'새 댓글이 달렸어요',time:'지금',icon:'twitter',img:'images/twitter/sl_z_072523_61700_01.jpg'},
 {id:'discord',label:'디스코드',app:'디스코드',title:'호요호요 (#황잡이)',body:'유유님 같이 레이드 뛰실래여?ㅎㅎ',time:'지금',icon:'discord',img:'images/discord/discordapp_tile_logo_icon_171263.svg'}
 ];
-data.forEach(function(n){n.noSmall=['twitter','discord','youtube','chatgpt','naver','daangn','everytime'].indexOf(n.id)>-1;n.style='normal';n.appImg='';n.avatar=''});
+data.forEach(function(n){n.noSmall=false;n.style='normal';n.appImg='';n.avatar=''});
 var selected=0,color='#efefef',opacity=96;
 function rgba(hex,a){var n=parseInt(hex.slice(1),16);return 'rgba('+(n>>16)+','+((n>>8)&255)+','+(n&255)+','+(a/100)+')'}
 function appIcon(n){var u=n.appImg||n.img;return u?'<img src="'+u+'" alt="" style="width:100%;height:100%;object-fit:cover;border-radius:22%;display:block">':icons[n.icon]}
