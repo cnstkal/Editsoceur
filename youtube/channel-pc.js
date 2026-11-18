@@ -1,6 +1,6 @@
 (function(){
   var $=function(i){return document.getElementById(i)},STORE='editsoceur-youtube-channel-pc-v1',S;
-  var DEF={nm:'임시 채널',hd:'@tempchannel',sb:'48.9만명',cn:'301개',ds:'임시 채널 설명입니다. 이 줄은 설명 미리보기 영역입니다.',bn:'',av:'',ft:'임시 대표 영상 제목입니다',fm:'1.9백만회 · 2년 전',v:[{t:'임시 영상 제목입니다',d:'24:51',vw:'62만',ago:'11일 전',th:''},{t:'임시 영상 제목입니다',d:'23:33',vw:'46만',ago:'8일 전',th:''},{t:'임시 영상 제목입니다',d:'20:33',vw:'49만',ago:'6개월 전',th:''}]};
+  var DEF={nm:'임시 채널',hd:'@tempchannel',sb:'48.9만명',cn:'301개',ds:'임시 채널 설명입니다. 이 줄은 설명 미리보기 영역입니다.',lk:'Instagram',lu:'https://www.instagram.com/',bn:'',av:'',ft:'임시 대표 영상 제목입니다',fm:'1.9백만회 · 2년 전',v:[{t:'임시 영상 제목입니다',d:'24:51',vw:'62만',ago:'11일 전',th:''},{t:'임시 영상 제목입니다',d:'23:33',vw:'46만',ago:'8일 전',th:''},{t:'임시 영상 제목입니다',d:'20:33',vw:'49만',ago:'6개월 전',th:''}]};
   var SIDE='<div style="height:18px"></div><div class="si">'+'<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#0f0f0f" stroke-width="1.8"><path d="M3 11l9-8 9 8v10h-6v-6H9v6H3z"/></svg>홈</div><div class="si" style="gap:24px"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#0f0f0f" stroke-width="1.8"><path d="M9 3l6 9-6 9M15 12h6"/></svg>Shorts</div>';
   var SUBS=['서재로36','침착맨','ATEEZ','강유미','킥서비스','케인 TV','예예 yehyeh'];
   function esc(t){return String(t==null?'':t).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;')}
@@ -11,7 +11,7 @@
     h+='<div class="sd">'+SIDE+'<div class="sec"><div style="font-size:16px;font-weight:600;padding:8px 12px">구독</div>'+SUBS.map(function(n,i){return '<div class="sub"><i></i>'+esc(n)+(i%2===0?'<span class="d"></span>':'')+'</div>'}).join('')+'</div></div>';
     h+='<div class="ch-bn" style="'+bg(S.bn)+'"></div><div class="ch-av" style="'+bg(S.av)+'"></div>';
     h+='<div class="ch-nm">'+esc(S.nm)+'</div><div class="ch-hd">'+esc(S.hd)+' · 구독자 '+esc(S.sb)+' · 동영상 '+esc(S.cn)+'</div>';
-    h+='<div class="ch-ds">'+esc(S.ds)+'<span class="l">Instagram</span></div><div class="ch-sub">구독</div>';
+    h+='<div class="ch-ds">'+esc(S.ds)+'<a class="l" href="'+esc(S.lu||'#')+'" target="_blank" rel="noopener">'+esc(S.lk||'')+'</a></div><div class="ch-sub">구독</div>';
     h+='<div class="ch-tabs"><div class="on">홈</div><div>동영상</div><div>Shorts</div><div>재생목록</div><div>게시물</div><div class="sr"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#606060" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="m21 21-5-5"/></svg></div></div>';
     h+='<div class="fv"><div class="th" style="'+bg(S.v[0]&&S.v[0].th)+'"></div><div class="info"><h3>'+esc(S.ft)+'</h3><p>'+esc(S.fm)+'</p></div></div>';
     h+='<div class="sr-row" style="top:985px">동영상</div>';
@@ -20,9 +20,9 @@
   function list(){var h='';S.v.forEach(function(v,i){h+='<div class="xc" data-i="'+i+'"><div class="row"><label>제목<input data-f="t" value="'+esc(v.t)+'"></label><label>길이<input data-f="d" value="'+esc(v.d)+'"></label></div><div class="row"><label>조회수<input data-f="vw" value="'+esc(v.vw)+'"></label><label>올린 시기<input data-f="ago" value="'+esc(v.ago)+'"></label></div><label>썸네일 사진<input type="file" accept="image/*" data-f="th"></label><div class="row"><button type="button" class="xb" data-a="u">↑</button><button type="button" class="xb" data-a="d">↓</button><button type="button" class="xb" data-a="x">✕ 삭제</button></div></div>'});$('xlist').innerHTML=h}
   function persist(){try{localStorage.setItem(STORE,JSON.stringify(S))}catch(e){}}
   function fit(){var k=Math.min(1,$('pw').clientWidth/1920);$('pf').style.transform='scale('+k+')';$('pf').style.height='auto';$('pf').style.overflow='visible';var base=$('pf').getBoundingClientRect().top,bottom=Math.max(1080,$('pf').scrollHeight);$('pf').querySelectorAll('*').forEach(function(el){var r=el.getBoundingClientRect();bottom=Math.max(bottom,(r.bottom-base)/k)});var h=Math.max(1080,bottom+40);$('pf').style.height=h+'px';$('pw').style.height=h*k+'px'}
-  function set(){$('iNm').value=S.nm;$('iHd').value=S.hd;$('iSb').value=S.sb;$('iCn').value=S.cn;$('iDs').value=S.ds;$('iFt').value=S.ft;$('iFm').value=S.fm}
+  function set(){$('iNm').value=S.nm;$('iHd').value=S.hd;$('iSb').value=S.sb;$('iCn').value=S.cn;$('iDs').value=S.ds;$('iLk').value=S.lk||'';$('iLu').value=S.lu||'';$('iFt').value=S.ft;$('iFm').value=S.fm}
   function load(r){if(r)try{localStorage.removeItem(STORE)}catch(e){}try{var s=!r&&localStorage.getItem(STORE);S=s?JSON.parse(s):JSON.parse(JSON.stringify(DEF));if(!Array.isArray(S.v))throw 0}catch(e){S=JSON.parse(JSON.stringify(DEF))}set();list();render();fit()}
-  var TX={iNm:'nm',iHd:'hd',iSb:'sb',iCn:'cn',iDs:'ds',iFt:'ft',iFm:'fm'};
+  var TX={iNm:'nm',iHd:'hd',iSb:'sb',iCn:'cn',iDs:'ds',iLk:'lk',iLu:'lu',iFt:'ft',iFm:'fm'};
   Object.keys(TX).forEach(function(id){$(id).addEventListener('input',function(){S[TX[id]]=this.value;persist();render()})});
   function readFile(f,cb){var r=new FileReader();r.onload=function(){cb(r.result)};r.readAsDataURL(f)}
   $('iBn').addEventListener('change',function(){if(this.files[0])readFile(this.files[0],function(d){S.bn=d;persist();render()})});
