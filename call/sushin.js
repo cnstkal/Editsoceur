@@ -1,0 +1,32 @@
+(function(){
+var $=function(i){return document.getElementById(i)};
+var DEF={st:'2',rn:'성화',rs:'휴대전화',c3:'#303030',num:'1588-3819',sub:'대한민국',cn:'연결 중...',tm:'00:00',c1:'#465b55',c2:'#2d453f'};
+var S,STORE='editsoceur-sushin-v1';
+var IDS={iSt:'st',iRn:'rn',iRs:'rs',iC3:'c3',iNum:'num',iSub:'sub',iCn:'cn',iTm:'tm',iC1:'c1',iC2:'c2'};
+function persist(){try{localStorage.setItem(STORE,JSON.stringify(S))}catch(e){}}
+function render(){
+var f=$('cf');
+f.classList.toggle('c0',S.st==='0');f.classList.toggle('c2',S.st==='2');
+f.style.setProperty('--c1',S.c1);f.style.setProperty('--c2',S.c2);f.style.setProperty('--c3',S.c3);
+$('cS').textContent=S.st==='0'?S.cn:S.tm;
+$('cN').textContent=S.num;
+$('cSub').textContent=S.sub;$('cSub').style.display=(S.st==='0'&&S.sub)?'':'none';
+$('rN').textContent=S.rn;$('rS').textContent=S.rs;$('rS').style.display=S.rs?'':'none'}
+function set(){for(var k in IDS)$(k).value=S[IDS[k]]}
+function load(reset){
+if(reset){try{localStorage.removeItem(STORE)}catch(e){}S=JSON.parse(JSON.stringify(DEF))}
+else{try{var sv=localStorage.getItem(STORE);S=sv?JSON.parse(sv):JSON.parse(JSON.stringify(DEF));if(!S||typeof S.st!=='string')throw 0}catch(e){S=JSON.parse(JSON.stringify(DEF))}}
+set();render()}
+function glob(){for(var k in IDS)S[IDS[k]]=$(k).value;persist();render()}
+Object.keys(IDS).forEach(function(id){$(id).addEventListener('input',glob);$(id).addEventListener('change',glob)});
+$('reset').onclick=function(){load(true)};
+$('savePng').onclick=function(){var b=this,t=b.textContent;b.disabled=true;b.textContent='저장 중...';
+(document.fonts&&document.fonts.ready?document.fonts.ready:Promise.resolve()).then(function(){
+return html2canvas($('cf'),{scale:4,useCORS:true,backgroundColor:null,logging:false})}).then(function(c){
+c.toBlob(function(bl){var a=document.createElement('a');a.href=URL.createObjectURL(bl);a.download='sushin.png';
+document.body.appendChild(a);a.click();a.remove();b.disabled=false;b.textContent=t},'image/png')
+}).catch(function(){b.disabled=false;b.textContent=t;alert('PNG 저장에 실패했습니다.')})};
+document.addEventListener('gesturestart',function(e){e.preventDefault()},{passive:false});
+document.addEventListener('dblclick',function(e){e.preventDefault()},{passive:false});
+load(false);
+})();

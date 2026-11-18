@@ -1,0 +1,16 @@
+/* 수신 화면 추가분 — call.css 뒤에 로드 */
+#cf{--c3:#303030}
+.rin{display:none}
+.c2{background:var(--c3)!important}
+.c2 .rin{display:block}
+.c2 .cst,.c2 .cnum,.c2 .csub,.c2 .ci,.c2 .chb{display:none!important}
+.rn{position:absolute;left:0;right:0;top:25.500cqw;line-height:9cqw;text-align:center;font-size:6.600cqw;font-weight:500;color:#fff;white-space:nowrap}
+.rs{position:absolute;left:0;right:0;top:34cqw;line-height:6cqw;text-align:center;font-size:3.600cqw;font-weight:400;color:#9b9b9b}
+.rq{position:absolute;width:30cqw;margin-left:-15cqw;display:flex;flex-direction:column;align-items:center}
+.rq svg{display:block;height:auto}
+.rq span{margin-top:2.600cqw;font-size:3.800cqw;line-height:5cqw;font-weight:400;color:#fff;white-space:nowrap}
+.rb{position:absolute;top:164.800cqw;width:22cqw;height:22cqw;margin-left:-11cqw;border-radius:50%;display:flex;align-items:center;justify-content:center}
+.rb svg{display:block;height:auto}
+.rd{left:22.900cqw;background:#ee3a2c}
+.ra{left:77.900cqw;background:#4cc764}
+.rt{position:absolute;top:188.600cqw;width:30cqw;margin-left:-15cqw;text-align:center;font-size:3.800cqw;line-height:5cqw;font-weight:400;color:#fff}
