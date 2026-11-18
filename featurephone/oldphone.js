@@ -13,20 +13,21 @@ function detectScreen(src,cb){
   if(best)cb({x:best.x/cw*W,y:best.y/ch*H,w:best.w/cw*W,h:best.h/ch*H});else cb(null);
  };im.onerror=function(){cb(null)};im.src=src;
 }
-files.forEach(function(name,i){var url='frames/'+name;var btn=document.createElement('button');btn.type='button';btn.className='frame-choice';btn.innerHTML='<img src="'+url+'" alt="폰 틀 '+(i+1)+'"><span>폰 틀 '+(i+1)+'</span>';btn.onclick=function(){frm=url; $('vFrm').src=url;$('vFrm').style.display='block';[].forEach.call(picker.children,function(x){x.classList.remove('active')});btn.classList.add('active');detectScreen(url,function(rect){if(rect){var sc=$('scr');sc.style.left=rect.x+'px';sc.style.top=rect.y+'px';sc.style.width=rect.w+'px';sc.style.height=rect.h+'px';sc.style.transformOrigin='0 0';sc.style.transform='scale('+($('iS').value/100)+') translate('+($('iX').value)+'px,'+($('iY').value)+'px)';}render()})};picker.appendChild(btn)});
+function chooseFrame(index){var btn=picker.children[index];if(!btn)return;var url='frames/'+files[index];frm=url;$('vFrm').src=url;$('vFrm').style.display='block';[].forEach.call(picker.children,function(x){x.classList.remove('active')});btn.classList.add('active');detectScreen(url,function(rect){if(rect){var sc=$('scr');sc.dataset.baseX=rect.x;sc.dataset.baseY=rect.y;sc.dataset.baseW=rect.w;sc.dataset.baseH=rect.h;sc.style.left=rect.x+'px';sc.style.top=rect.y+'px';sc.style.width=rect.w+'px';sc.style.height=rect.h+'px';sc.style.transformOrigin='0 0'}render()})}
+files.forEach(function(name,i){var url='frames/'+name;var btn=document.createElement('button');btn.type='button';btn.className='frame-choice';btn.innerHTML='<img src="'+url+'" alt="폰 틀 '+(i+1)+'"><span>폰 틀 '+(i+1)+'</span>';btn.onclick=function(){chooseFrame(i)};picker.appendChild(btn)});
 function render(){
 $('vT').textContent=$('iT').value;$('vM').textContent=$('iM').value;$('vL').textContent=$('iL').value;$('vR').textContent=$('iR').value;
 Object.keys(ICON).forEach(function(k){var e=ICON[k]?$(ICON[k]):document.querySelector('#scr .bat');e.style.display=$(k).checked?'':'none'});
-$('scr').style.transform='translate('+$('iX').value+'px,'+$('iY').value+'px) scale('+($('iS').value/100)+')';
+var sc=$('scr'),bx=Number(sc.dataset.baseX||818),by=Number(sc.dataset.baseY||498);sc.style.transform='translate('+($('iX').value)+'px,'+($('iY').value)+'px) scale('+($('iS').value/100)+')';$('xVal').textContent=$('iX').value;$('yVal').textContent=$('iY').value;$('sVal').textContent=$('iS').value+'%';
 $('vFrm').style.display=frm?'block':'none';if(frm)$('vFrm').src=frm;fit();
 }
 function reset(){ $('iT').value='메시지';$('iM').value='너무 보고싶다';$('iL').value='메뉴';$('iR').value='확인';Object.keys(ICON).forEach(function(k){$(k).checked=true});$('iX').value=0;$('iY').value=0;$('iS').value=100;frm=null;$('vFrm').src='';$('vFrm').style.display='none';[].forEach.call(picker.children,function(x){x.classList.remove('active')});render()}
-['iT','iM','iL','iR','iX','iY','iS','iSig','iMail','iVib','iBat'].forEach(function(id){$(id).addEventListener('input',render)});
+['iT','iM','iL','iR','iX','iY','iS','iSig','iMail','iVib','iBat'].forEach(function(id){var el=$(id);if(el)el.addEventListener('input',render)});
 
 
 $('reset').onclick=reset;
 (function(){var ed=document.querySelector('.editor'),panels=[].slice.call(ed.querySelectorAll('.ps-pn')),bar=document.createElement('div');bar.className='ps-seg';panels.forEach(function(p,i){var b=document.createElement('button');b.type='button';b.textContent=p.getAttribute('data-t');if(!i)b.className='on';b.onclick=function(){panels.forEach(function(x,j){x.hidden=j!==i});[].forEach.call(bar.children,function(x,j){x.classList.toggle('on',j===i)})};bar.appendChild(b)});ed.parentNode.insertBefore(bar,ed)})();
 $('pvBtn').onclick=function(){var on=document.body.classList.toggle('pvmode');this.textContent=on?'편집 모드':'미리보기 모드';setTimeout(fit,50)};
 $('savePng').onclick=function(){var btn=this,oldTransform=zs.style.transform;btn.disabled=true;btn.textContent='저장 중…';zs.style.transform='none';function finish(){zs.style.transform=oldTransform;btn.disabled=false;btn.textContent='PNG 저장'}html2canvas(zs,{width:W,height:H,scale:1,backgroundColor:null,useCORS:true,allowTaint:false,logging:false}).then(function(canvas){canvas.toBlob(function(blob){finish();if(!blob){alert('PNG 생성에 실패했어. 다시 시도해줘.');return;}var url=URL.createObjectURL(blob),a=document.createElement('a');a.href=url;a.download='oldphone.png';a.style.display='none';document.body.appendChild(a);a.click();a.remove();setTimeout(function(){URL.revokeObjectURL(url)},15000);},'image/png')}).catch(function(err){finish();alert('PNG 저장에 실패했어. 미리보기 이미지를 불러온 뒤 다시 시도해줘.');console.error(err)})};
-if(window.ResizeObserver)new ResizeObserver(fit).observe(fr);window.addEventListener('resize',fit);reset();setTimeout(fit,100);setTimeout(fit,500);
+if(window.ResizeObserver)new ResizeObserver(fit).observe(fr);window.addEventListener('resize',fit);reset();chooseFrame(0);setTimeout(fit,100);setTimeout(fit,500);
 })();
