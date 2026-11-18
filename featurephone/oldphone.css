@@ -14,7 +14,7 @@ button{font:inherit;cursor:pointer}
 .ps-frame{width:100%}
 
 /* 올드폰: 2176x1700 기준 (틀 사진 위에 화면을 올림) */
-.zw{position:relative;width:100%;overflow:hidden;background:#fff;border-radius:6px}
+.zw{position:relative;width:100%;aspect-ratio:2176/1700;overflow:hidden;background:#fff;border-radius:6px}
 .zs{position:absolute;left:0;top:0;width:2176px;height:1700px;background:#fff;transform-origin:0 0;overflow:hidden;user-select:none}
 .frm{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:none}
 .scr{position:absolute;left:818px;top:498px;width:548px;height:692px;transform-origin:0 0;overflow:hidden;color:#111;background:linear-gradient(135deg,#efd3d6,#e2dcae 55%,#cfe0c4)}
