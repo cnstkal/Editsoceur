@@ -62,7 +62,7 @@ function readFile(f,cb){if(!f)return;var r=new FileReader();r.onload=function(){
 var ids=['title','name','handle','text','time','date','views','reply','rt','like','qname','qhandle','qtime','qtext','notice'];
 var sw=['showBtn','lockT','showQuote'];
 function sync(){
- ids.forEach(function(k){document.getElementById(k).value=S[k]});
+ ids.forEach(function(k){var el=document.getElementById(k);if(el)el.value=S[k]});
  sw.forEach(function(k){document.getElementById(k).checked=S[k]});
 }
 function renderList(){

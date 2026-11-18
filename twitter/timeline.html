@@ -8,10 +8,14 @@
 <link rel="stylesheet" href="../instagram/story.css?v=3">
 <link rel="stylesheet" href="timeline.css?v=3">
 <style data-hide-status>:is(span,b)[id$="Time"],#eTm,.isl,.ys,.ysig,.ywf,.ybt,.dsg,.dwf,#df .dbt,.msg,.mwf,.mbt,.ewf,.ebt,.nwf,.nbt,.sb:has([id$="Time"])>svg:not(.lc),.sb:has([id$="Time"])+.bt,.sb:has([id$="Time"]) .bt{display:none!important}</style><link rel="stylesheet" href="back.css?v=1">
-<style id="ed-font">html,body,body *{font-family:Pretendard,-apple-system,"Apple SD Gothic Neo","Noto Sans KR",sans-serif!important;letter-spacing:-.02em!important}</style></head>
-<body>
+<style id="ed-font">html,body,body *{font-family:Pretendard,-apple-system,"Apple SD Gothic Neo","Noto Sans KR",sans-serif!important;letter-spacing:-.02em!important}</style><link rel="stylesheet" href="studio.css?v=1">
+</head>
+<body class="studio"><div class="ps-wrap">
+<header class="ps-top"><a class="ps-back" href="index.html">‹ 뒤로</a><button class="ps-pvbtn" id="pvBtn" type="button">미리보기 모드</button></header>
+<div class="ps-grid">
+<section class="ps-card ps-main"><div class="ps-lbl">Live Preview</div><h2>X 타임라인</h2><p class="ps-sub">실제 앱 화면 비율로 확인하고, 오른쪽에서 바로 수정해요</p>
+<div class="ps-stage"><div class="ps-frame">
 <div class="phone">
-<div class="navbar" data-html2canvas-ignore><a href="index.html">‹ 선택화면</a></div>
 <div id="xf">
   <div class="xh"><svg width="26" height="26" viewBox="0 0 24 24"><path d="M18.244 2.250h3.308l-7.227 8.260 8.502 11.240H16.170l-5.214-6.817L4.990 21.750H1.680l7.730-8.835L1.254 2.250H8.080l4.713 6.231zm-1.161 17.520h1.833L7.084 4.126H5.117z"/></svg></div>
   <div class="xtb"><span class="xs"></span><span class="xtab" id="xT0"></span><span class="xtab" id="xT1"></span><span class="xplus"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#0f1419" stroke-width="2.200" stroke-linecap="round"><path d="M12 4v16M4 12h16"/></svg></span></div>
@@ -19,7 +23,11 @@
   <div class="xfab"><svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.200" stroke-linecap="round"><path d="M12 4v16M4 12h16"/></svg></div>
   
 </div>
-<section class="editor">
+
+</div>
+
+</div></div></section>
+<section class="ps-card ps-side"><div class="ps-lbl">Edit Panel</div><h2>타임라인 내용 수정</h2><div class="ps-edwrap"><section class="editor">
   <h2>타임라인 편집</h2>
   <div class="row"><label>왼쪽 탭 이름<input id="iT0"></label><label>오른쪽 탭 이름<input id="iT1"></label></div>
   <div class="row"><label>선택된 탭<select id="iAct"><option value="0">왼쪽 탭</option><option value="1">오른쪽 탭</option></select></label></div>
@@ -27,12 +35,12 @@
   <h2 style="margin-top:14px">트윗</h2>
   <div id="xlist"></div>
   <button class="ghost" id="addT" type="button">+ 트윗 추가</button>
-</section>
-</div>
-<div class="bar"><button id="savePng" class="primary">PNG로 저장</button><button id="reset" class="secondary">초기화</button></div>
+</section></div><div class="ps-acts"><button id="savePng" class="primary">PNG로 저장</button><button id="reset" class="secondary">초기화</button></div></section>
+</div></div>
 <script src="https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js"></script>
 <script src="timeline.js?v=3"></script>
 <script src="back.js?v=1"></script>
 <script src="common.js"></script>
+<script>(function(){var b=document.getElementById("pvBtn");b.onclick=function(){var on=document.body.classList.toggle("pvmode");this.textContent=on?"편집 모드":"미리보기 모드"}})();</script>
 </body>
 </html>
