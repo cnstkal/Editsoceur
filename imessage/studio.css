@@ -88,7 +88,7 @@ body.pvmode{background:#fff}
 .ps-edwrap .editor .row .ghost{flex:1 1 0;min-width:0;margin-bottom:0;padding:0 6px;white-space:nowrap}
 .ps-edwrap .editor .musicbox{padding:0;border:0;background:none;margin-bottom:12px}
 .ps-edwrap .editor .trow,.ps-tg{display:flex;align-items:center;justify-content:space-between;min-height:44px;margin:0 0 6px;font-size:14px;font-weight:500;color:#222}
-.ps-edwrap .editor label.sw{display:block;flex:none;width:50px;height:30px;margin:0}
+.ps-edwrap .editor label.sw:not(:has(.knob)){display:block;flex:none;width:50px;height:30px;margin:0}
 .ps-edwrap .editor .sw input:checked+i{background:var(--pk)}
 .ps-edwrap .editor .ghost,.ps-ghost{height:44px;padding:0 12px;border:1px solid var(--ln);border-radius:12px;background:#f5f5f7;color:#333;font-size:14px;font-weight:600;margin:0 0 12px}
 .ps-edwrap .editor .hint{font-size:12px;line-height:1.4;color:#8a8f98;margin:-4px 0 10px}
