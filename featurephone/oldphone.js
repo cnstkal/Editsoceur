@@ -11,10 +11,10 @@ Object.keys(ICON).forEach(function(k){var e=ICON[k]?$(ICON[k]):document.querySel
 $('scr').style.transform='translate('+$('iX').value+'px,'+$('iY').value+'px) scale('+($('iS').value/100)+')';
 $('vFrm').style.display=frm?'block':'none';if(frm)$('vFrm').src=frm;fit();
 }
-function reset(){ $('iT').value='메시지';$('iM').value='너무 보고싶다';$('iL').value='메뉴';$('iR').value='확인';Object.keys(ICON).forEach(function(k){$(k).checked=true});$('iX').value=0;$('iY').value=0;$('iS').value=100;frm=null;$('iF').value='';$('vFrm').src='';$('vFrm').style.display='none';[].forEach.call(picker.children,function(x){x.classList.remove('active')});render()}
+function reset(){ $('iT').value='메시지';$('iM').value='너무 보고싶다';$('iL').value='메뉴';$('iR').value='확인';Object.keys(ICON).forEach(function(k){$(k).checked=true});$('iX').value=0;$('iY').value=0;$('iS').value=100;frm=null;$('vFrm').src='';$('vFrm').style.display='none';[].forEach.call(picker.children,function(x){x.classList.remove('active')});render()}
 ['iT','iM','iL','iR','iX','iY','iS','iSig','iMail','iVib','iBat'].forEach(function(id){$(id).addEventListener('input',render)});
-$('iF').addEventListener('change',function(){var f=this.files[0];if(!f)return;var r=new FileReader();r.onload=function(e){frm=e.target.result;$('vFrm').src=frm;[].forEach.call(picker.children,function(x){x.classList.remove('active')});render()};r.readAsDataURL(f)});
-$('clearF').onclick=function(){frm=null;$('iF').value='';$('vFrm').src='';[].forEach.call(picker.children,function(x){x.classList.remove('active')});render()};
+
+
 $('reset').onclick=reset;
 (function(){var ed=document.querySelector('.editor'),panels=[].slice.call(ed.querySelectorAll('.ps-pn')),bar=document.createElement('div');bar.className='ps-seg';panels.forEach(function(p,i){var b=document.createElement('button');b.type='button';b.textContent=p.getAttribute('data-t');if(!i)b.className='on';b.onclick=function(){panels.forEach(function(x,j){x.hidden=j!==i});[].forEach.call(bar.children,function(x,j){x.classList.toggle('on',j===i)})};bar.appendChild(b)});ed.parentNode.insertBefore(bar,ed)})();
 $('pvBtn').onclick=function(){var on=document.body.classList.toggle('pvmode');this.textContent=on?'편집 모드':'미리보기 모드';setTimeout(fit,50)};
