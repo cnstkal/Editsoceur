@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Google 검색</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.css">
+<link rel="stylesheet" href="google_search.css">
+</head>
+<body class="studio">
+<div class="ps-wrap">
+<header class="ps-top"><b class="ps-brand">Google 검색</b><button class="ps-pvbtn" id="pvBtn" type="button">미리보기 모드</button></header>
+<div class="ps-grid">
+<section class="ps-card ps-main">
+<div class="ps-lbl">Live Preview</div>
+<h2>구글 검색</h2>
+<p class="ps-sub">16:9 비율로 확인하고, 오른쪽에서 바로 수정해요</p>
+<div class="ps-stage"><div class="ps-fit" id="fit"><div id="gp">
+<div class="logo"><b>G</b><b>o</b><b>o</b><b>g</b><b>l</b><b>e</b></div>
+<div class="bx">
+<svg class="si" width="24" height="24" viewBox="0 0 24 24" fill="#3c4043"><path d="M15.500 14h-.8l-.3-.3A6.500 6.500 0 1 0 14 15.500l.3.3v.8l5 5 1.500-1.500zm-6 0a4.500 4.500 0 1 1 0-9 4.500 4.500 0 0 1 0 9z"/></svg>
+<div class="ai"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#202124" stroke-width="2.400" stroke-linecap="round"><path d="M9 18a7 7 0 1 1 7-7M5 21l4-3M20 3v6M17 6h6"/></svg><span data-b="ai"></span></div>
+<div class="rows" id="rows"></div>
+</div>
+</div></div></div>
+</section>
+<section class="ps-card ps-side">
+<div class="ps-lbl">Edit Panel</div>
+<h2>검색 화면 내용 수정</h2>
+<div class="ps-edwrap"><div class="editor" id="ed"></div></div>
+<div class="ps-acts"><button id="reset" type="button">초기화</button><button id="savePng" type="button">PNG 저장</button></div>
+</section>
+</div>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js"></script>
+<script src="google_search.js"></script>
+</body>
+</html>
