@@ -23,7 +23,7 @@
 
 </div></div></section>
 <section class="ps-card ps-side"><div class="ps-lbl">Edit Panel</div><h2>프로필 내용 수정</h2><div class="ps-edwrap"><section class="editor">
-    <h2>프로필 편집</h2>
+    <div class="ps-pn" data-t="기본">
     <div class="grid2">
       <label>이름<input id="name" type="text"></label>
       <label>아이디<input id="handle" type="text"></label>
@@ -42,19 +42,16 @@
       <label>프로필 사진<input id="avatarFile" type="file" accept="image/*"></label>
       <label>배너 사진<input id="bannerFile" type="file" accept="image/*"></label>
     </div>
-    <div class="grid2">
-    </div>
     <div class="switches">
       <label class="sw"><input id="lock" type="checkbox"><span class="knob"></span>자물쇠</label>
       <label class="sw"><input id="jobOn" type="checkbox"><span class="knob"></span>직업 표시</label>
       <label class="sw"><input id="birthOn" type="checkbox"><span class="knob"></span>생일 표시</label>
-      
-      
     </div>
-
-    <h2>트윗</h2>
+    </div>
+    <div class="ps-pn" data-t="트윗" hidden>
+    <button id="addTweet" class="addc" type="button">+ 트윗 추가</button>
     <div id="tweetList"></div>
-    <button id="addTweet" class="ghost" type="button">+ 트윗 추가</button>
+    </div>
   </section></div><div class="ps-acts">
   <button id="save" class="primary" type="button">PNG 저장</button>
   <button id="reset" class="ghost" type="button">초기화</button>
