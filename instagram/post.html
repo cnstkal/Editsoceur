@@ -6,7 +6,7 @@
 <title>Instagram 게시물</title>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.css">
 <link rel="stylesheet" href="style.css?v=8">
-<link rel="stylesheet" href="studio.css?v=1">
+<link rel="stylesheet" href="studio.css?v=2">
 <style id="ed-font">html,body,body *{font-family:Pretendard,-apple-system,"Apple SD Gothic Neo","Noto Sans KR",sans-serif!important;letter-spacing:-.02em!important}</style>
 </head>
 <body class="studio">
@@ -59,7 +59,7 @@
   <section class="ps-card ps-side">
     <div class="ps-lbl">Edit Panel</div>
     <h2>게시물 내용 수정</h2>
-    <div class="editor">
+    <div class="ps-edwrap"><div class="editor">
       <div class="ps-pn" data-t="기본">
         <label>사용자 아이디<input id="iUser"></label>
         <label>게시물 본문 (#해시태그는 파란색, 줄바꿈 반영)<textarea id="iCap" rows="5"></textarea></label>
@@ -86,8 +86,8 @@
         <div class="ps-tg"><span>음악 표시</span><label class="sw"><input id="iMusicOn" type="checkbox"><i></i></label></div>
         <div class="row"><label>가수<input id="iArtist"></label><label>노래 제목<input id="iSong"></label></div>
       </div>
-    </div>
-    <div class="ps-acts"><button id="savePng" type="button">PNG로 저장</button><button id="reset" type="button">초기화</button></div>
+    </div></div>
+    <div class="ps-acts"><button id="savePng" type="button">PNG 저장</button><button id="reset" type="button">초기화</button></div>
   </section>
 </div>
 </div>
