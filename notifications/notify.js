@@ -9,11 +9,11 @@ var icons={
 var data=[
 {id:'imessage',label:'아이메시지',app:'메시지',title:'엄마',body:'저녁 뭐 먹을래?',time:'지금',icon:'imessage',img:'images/imessage/ios-message.svg'},
 {id:'kakao',label:'카카오톡',app:'카카오톡',title:'띵화형',body:'전화 좀 받아 ㅜㅜ',time:'지금',icon:'kakao',img:'images/kakao/KakaoTalk_logo.svg'},
-{id:'instagram',label:'인스타그램',app:'인스타그램',title:'marspark',body:'좋아요를 눌렀습니다',time:'지금',icon:'instagram',img:''},
+{id:'instagram',label:'인스타그램',app:'인스타그램',title:'marspark',body:'좋아요를 눌렀습니다',time:'지금',icon:'instagram',img:'images/instagram/Instagram_logo_2016.svg'},
 {id:'twitter',label:'트위터',app:'X',title:'marspark',body:'새 댓글이 달렸어요',time:'지금',icon:'twitter',img:'images/twitter/sl_z_072523_61700_01.jpg'},
 {id:'discord',label:'디스코드',app:'디스코드',title:'호요호요 (#황잡이)',body:'유유님 같이 레이드 뛰실래여?ㅎㅎ',time:'지금',icon:'discord',img:'images/discord/discordapp_tile_logo_icon_171263.svg'}
 ];
-data.forEach(function(n){n.style='normal';n.appImg='';n.avatar=''});
+data.forEach(function(n){n.noSmall=n.id==='twitter'||n.id==='discord';n.style='normal';n.appImg='';n.avatar=''});
 var selected=0,color='#efefef',opacity=96;
 function rgba(hex,a){var n=parseInt(hex.slice(1),16);return 'rgba('+(n>>16)+','+((n>>8)&255)+','+(n&255)+','+(a/100)+')'}
 function appIcon(n){var u=n.appImg||n.img;return u?'<img src="'+u+'" alt="" style="width:100%;height:100%;object-fit:cover;border-radius:22%;display:block">':icons[n.icon]}
@@ -25,7 +25,7 @@ function render(){
  stage.innerHTML='<div class="banner" id="banner">'+icoHtml(n)+'<div class="txt"><b></b><p></p></div><span class="time"></span></div>';
  $('banner').style.background=rgba(color,opacity);
  $('banner').querySelector('b').textContent=n.title;$('banner').querySelector('p').textContent=n.body;$('banner').querySelector('.time').textContent=n.time;
- $('iconStyle').value=n.style;$('avatarRow').style.display=n.style==='small'?'block':'none';$('appName').value=n.app;$('title').value=n.title;$('bodyText').value=n.body;$('timeText').value=n.time;
+ $('iconStyle').value=n.style;$('iconStyle').parentNode.style.display=n.noSmall?'none':'block';$('avatarRow').style.display=n.style==='small'?'block':'none';$('appName').value=n.app;$('title').value=n.title;$('bodyText').value=n.body;$('timeText').value=n.time;
  $('bgColor').value=color;$('opacity').value=opacity;$('opacityValue').textContent=opacity+'%';
  Array.prototype.forEach.call($('picker').children,function(b,i){b.classList.toggle('on',i===selected)});
 }
