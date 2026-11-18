@@ -2,7 +2,7 @@
 var $=function(id){return document.getElementById(id)};
 var W=2176,H=1700,zs=$('zoom'),zw=$('zw'),fr=$('frame'),frm=null;
 var ICON={iSig:'sSig',iMail:'sMail',iVib:'sVib',iBat:null};
-var files=["1E7DB810-32DC-4DB3-8322-FD4BD0A647BA.png","5A1E9D06-731A-4B35-81ED-7BE87A4CAA8B.png","B2517DB5-A38B-48BE-BFE5-2F9366727072.png","BAA32941-7946-4EE5-9992-8CB9766D1C4F.png","DD8F6F1F-FB46-48E0-9471-45BD59D3BD01.png"],picker=$('framePicker');
+var files=["1E7DB810-32DC-4DB3-8322-FD4BD0A647BA.png","41E19F89-5516-4045-ABA1-DA8802EAF773.png","5A1E9D06-731A-4B35-81ED-7BE87A4CAA8B.png","B2517DB5-A38B-48BE-BFE5-2F9366727072.png","BAA32941-7946-4EE5-9992-8CB9766D1C4F.png","DD8F6F1F-FB46-48E0-9471-45BD59D3BD01.png","33691128-E1B3-4EEA-B919-9D8F61095F27.png","lg_cyon_pink_phone_background_removed.png","nokia7600_clean_transparent.png","xelibri_background_removed.png"],picker=$('framePicker');
 function fit(){var w=fr.clientWidth;if(!w)return;var s=w/W;zs.style.transform='scale('+s+')';zw.style.height=(H*s)+'px';}
 function detectScreen(src,cb){
  var im=new Image();im.crossOrigin='anonymous';im.onload=function(){
@@ -13,7 +13,7 @@ function detectScreen(src,cb){
   if(best)cb({x:best.x/cw*W,y:best.y/ch*H,w:best.w/cw*W,h:best.h/ch*H});else cb(null);
  };im.onerror=function(){cb(null)};im.src=src;
 }
-function chooseFrame(index){var btn=picker.children[index];if(!btn)return;var url='frames/'+files[index];frm=url;$('vFrm').src=url;$('vFrm').style.display='block';[].forEach.call(picker.children,function(x){x.classList.remove('active')});btn.classList.add('active');detectScreen(url,function(rect){if(rect){var sc=$('scr');sc.dataset.baseX=rect.x;sc.dataset.baseY=rect.y;sc.dataset.baseW=rect.w;sc.dataset.baseH=rect.h;sc.style.left=rect.x+'px';sc.style.top=rect.y+'px';sc.style.width=rect.w+'px';sc.style.height=rect.h+'px';sc.style.transformOrigin='0 0'}render()})}
+function chooseFrame(index){var btn=picker.children[index];if(!btn)return;var url='frames/'+files[index];frm=url;$('vFrm').src=url;$('vFrm').style.display='block';[].forEach.call(picker.children,function(x){x.classList.remove('active')});btn.classList.add('active');render()}
 files.forEach(function(name,i){var url='frames/'+name;var btn=document.createElement('button');btn.type='button';btn.className='frame-choice';btn.innerHTML='<img src="'+url+'" alt="폰 틀 '+(i+1)+'"><span>폰 틀 '+(i+1)+'</span>';btn.onclick=function(){chooseFrame(i)};picker.appendChild(btn)});
 function render(){
 $('vT').textContent=$('iT').value;$('vM').textContent=$('iM').value;$('vL').textContent=$('iL').value;$('vR').textContent=$('iR').value;
