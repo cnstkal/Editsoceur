@@ -115,3 +115,13 @@ body.pvmode{background:#fff}
 .ps-edwrap .editor input[type=file]{font-size:13px;color:#8a8f98;padding:0}.ps-edwrap .editor input[type=file]::file-selector-button{height:36px;padding:0 14px;margin-right:10px;border:1px solid #e3e5e8;border-radius:10px;background:#fff;color:#222;font:inherit;font-size:13px;font-weight:600;cursor:pointer}.ps-edwrap .editor label:has(input[type=file]){align-items:center}
 
 .ps-edwrap .editor .ps-addp,.ps-addp{display:flex;align-items:center;justify-content:center;gap:4px;height:52px;margin:0 0 12px;text-align:center;border:0}
+
+
+/* Global mobile preview centering fix */
+@media(max-width:1099px){
+  body.studio{overflow-x:hidden;width:100%;max-width:100%;}
+  .ps-wrap,.ps-grid,.ps-main,.ps-stage,.ps-frame{width:100%;max-width:100%;min-width:0;box-sizing:border-box;}
+  .ps-frame{display:flex!important;justify-content:center!important;align-items:flex-start!important;}
+  .ps-frame>*{margin-left:auto!important;margin-right:auto!important;max-width:100%;min-width:0;}
+  .ps-frame .phone{width:min(100%,430px)!important;margin-inline:auto!important;}
+}
