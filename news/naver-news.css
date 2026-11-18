@@ -1,0 +1,56 @@
+*{box-sizing:border-box;margin:0;padding:0}
+html,body,body *{font-family:Pretendard,-apple-system,"Apple SD Gothic Neo","Noto Sans KR",sans-serif;letter-spacing:-.02em}
+body.studio{background:#f2f3f5;color:#111;min-height:100vh}
+button{border:0;background:none;font:inherit;cursor:pointer}
+.ps-wrap{max-width:1560px;margin:0 auto;padding:32px 40px 48px}
+.ps-top{display:flex;justify-content:space-between;align-items:center;margin-bottom:24px;font-size:22px}
+.ps-pvbtn{height:44px;padding:0 24px;border-radius:12px;background:#15161a;color:#fff;font-weight:600}
+.ps-grid{display:grid;grid-template-columns:minmax(0,1.7fr) minmax(340px,1fr);gap:24px}
+.ps-card{background:#fff;border-radius:24px;padding:30px;min-width:0}
+.ps-lbl{font-size:12px;letter-spacing:.14em;color:#8a8f98;text-transform:uppercase}
+.ps-card h2{font-size:24px;font-weight:700;margin:8px 0 6px}
+.ps-sub{font-size:14px;color:#8a8f98}
+.ps-stage{padding-top:22px}
+.ps-fit{position:relative;width:100%;aspect-ratio:16/9;overflow:hidden;border:1px solid #e6e8ed;background:#fff}
+/* 16:9 캔버스 1600x900 */
+.canvas{position:absolute;left:0;top:0;width:1600px;height:900px;background:#fff;padding:34px 64px;transform-origin:0 0;overflow:hidden;color:#111}
+.logo{font-size:24px;font-weight:800;line-height:1;background:linear-gradient(90deg,#f39800,#e8457a,#2ab,#2a5bd7);-webkit-background-clip:text;background-clip:text;color:transparent}
+.canvas h1{font-size:38px;font-weight:800;line-height:1.2;margin:8px 0 6px;white-space:pre-wrap}
+.date{font-size:15px;color:#888}
+.pill{display:inline-flex;align-items:center;gap:8px;height:34px;padding:0 16px;border:1px solid #e5e5e5;border-radius:999px;margin:10px 0 12px;font-size:15px;color:#555}
+.pill b{font-weight:600}
+.body{font-size:21px;line-height:1.55;white-space:pre-wrap;min-height:60px}
+.rx{display:flex;justify-content:space-between;margin:14px 0 12px;padding:0 10px}
+.rx div{flex:1;text-align:center;font-size:14px;color:#888}
+.rx .em{display:block;width:44px;height:44px;margin:0 auto 4px;border-radius:50%;background:#ffd23f;font-size:26px;line-height:44px}
+.rx b{display:block;font-size:20px;font-weight:400;color:#111;margin-top:1px}
+.ch{display:flex;justify-content:space-between;align-items:center;padding:6px 0 8px;border-bottom:2px solid #e6e6e6;font-size:16px}
+.ch i{width:22px;height:22px;border:1.5px solid #bbb;border-radius:50%;color:#bbb;font-size:13px;text-align:center;line-height:19px;font-style:normal}
+.cm .c{position:relative;display:grid;grid-template-columns:44px 1fr;column-gap:12px;padding:9px 0 7px;border-bottom:1px solid #eee}
+.av{width:44px;height:44px;border-radius:50%;background:#d0d3d9;grid-row:span 3;position:relative;overflow:hidden}
+.av:before{content:"";position:absolute;left:14px;top:8px;width:16px;height:16px;border-radius:50%;background:#fff}
+.av:after{content:"";position:absolute;left:8px;top:27px;width:28px;height:24px;border-radius:50%;background:#fff}
+.c .id{font-size:17px;font-weight:700}
+.c .tm{font-size:14px;color:#aaa;margin-top:-2px}
+.c .tx{font-size:16px;margin:4px 0 2px;white-space:pre-wrap}
+.c .rp{font-size:14px;font-weight:700;margin-top:2px}
+.c .dt{position:absolute;right:6px;top:12px;width:4px;height:4px;border-radius:50%;background:#666;box-shadow:0 7px #666,0 -7px #666}
+/* 편집 패널 */
+.ps-seg{display:flex;gap:4px;padding:5px;border:1px solid #e9eaee;border-radius:16px;margin:16px 0}
+.ps-seg button{flex:1;height:40px;border-radius:12px;font-size:14px;color:#333}
+.ps-seg button.on{background:#fde8ef;color:#e8457a;font-weight:700}
+.ps-pn[hidden]{display:none}
+.editor label{display:block;font-size:13px;font-weight:500;color:#6b717b;margin-bottom:14px}
+.editor input,.editor textarea{display:block;width:100%;margin-top:6px;padding:0 14px;height:44px;border:1px solid #e3e5e8;border-radius:12px;font:inherit;font-size:16px;color:#111}
+.editor textarea{height:auto;padding:11px 14px;resize:vertical}
+.row{display:flex;gap:10px}.row label{flex:1;min-width:0}
+.ecard{border:1px solid #e9eaee;border-radius:16px;padding:14px;margin-bottom:12px}
+.ecard h3{display:flex;justify-content:space-between;font-size:14px;margin-bottom:12px}
+.ecard h3 button{color:#e0245e;font-size:13px;font-weight:600}
+.addc{width:100%;height:46px;border-radius:14px;background:#e8457a;color:#fff;font-weight:700}
+.ps-acts{display:flex;gap:10px;margin-top:18px}
+.ps-acts button{height:52px;border-radius:14px;font-size:15px;font-weight:700}
+#reset{flex:1;background:#f2f3f5}#savePng{flex:1.6;background:#e8457a;color:#fff}
+body.pvmode .ps-side{display:none}
+body.pvmode .ps-grid{grid-template-columns:1fr}
+@media(max-width:1099px){.ps-wrap{padding:14px}.ps-grid{grid-template-columns:1fr}.ps-card{padding:18px;border-radius:18px}.ps-pvbtn{display:none}.ps-acts{position:sticky;bottom:0;background:#fff;padding:10px 0}}
