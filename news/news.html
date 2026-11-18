@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>뉴스 기사</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.css">
+<link rel="stylesheet" href="news.css">
+</head>
+<body class="studio">
+<div class="ps-wrap">
+<header class="ps-top"><a class="ps-back" href="index.html">‹ 뒤로</a><button class="ps-pvbtn" id="pvBtn" type="button">미리보기 모드</button></header>
+<div class="ps-grid">
+<section class="ps-card ps-main">
+<div class="ps-lbl">Live Preview</div>
+<h2>뉴스 기사</h2>
+<p class="ps-sub">기사 화면을 확인하고, 아래·오른쪽에서 바로 수정해요</p>
+<div class="ps-stage"><div class="ps-fit" id="fit"><div class="art" id="art">
+<div class="cat" id="vCat"></div>
+<h1 class="ttl" id="vTitle"></h1>
+<div class="meta"><span id="vPress"></span><i class="bar"></i><span id="vIn"></span><span class="up" id="vUp"></span></div>
+<div class="rep" id="vRep"></div>
+<div class="photo" id="vPhoto"><img id="vImg" alt=""></div>
+<div class="body" id="vBody"></div>
+</div></div></div>
+</section>
+<section class="ps-card ps-side">
+<div class="ps-lbl">Edit Panel</div>
+<h2>기사 내용 수정</h2>
+<div class="ps-seg" id="seg"><button type="button" class="on">기본</button><button type="button">본문</button><button type="button">이미지</button></div>
+<div class="ps-edwrap"><div class="editor">
+<div class="ps-pn">
+<label>카테고리<input id="iCat"></label>
+<label>제목 (줄바꿈 반영)<textarea id="iTitle" rows="2"></textarea></label>
+<label>언론사<input id="iPress"></label>
+<label>입력 일시<input id="iIn"></label>
+<label>업데이트 일시<input id="iUp"></label>
+<label>기자<input id="iRep"></label>
+</div>
+<div class="ps-pn" hidden>
+<label>본문 (빈 줄로 문단 구분)<textarea id="iBody" rows="14"></textarea></label>
+</div>
+<div class="ps-pn" hidden>
+<div class="ps-tg"><span>기사 사진 표시</span><label class="sw"><input id="iImgOn" type="checkbox" checked><i></i></label></div>
+<label class="ps-addp">+ 사진 변경<input class="ps-sr" id="iPhoto" type="file" accept="image/*"></label>
+</div>
+</div></div>
+<div class="ps-acts"><button id="reset" type="button">초기화</button><button id="savePng" type="button">PNG 저장</button></div>
+</section>
+</div>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js"></script>
+<script src="news.js"></script>
+</body>
+</html>
