@@ -7,7 +7,7 @@
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.css">
 <link rel="stylesheet" href="../instagram/story.css?v=3">
 <link rel="stylesheet" href="main.css?v=1">
-<style data-hide-status>:is(span,b)[id$="Time"],#eTm,.isl,.ys,.ysig,.ywf,.ybt,.dsg,.dwf,#df .dbt,.msg,.mwf,.mbt,.ewf,.ebt,.nwf,.nbt,.sb:has([id$="Time"])>svg:not(.lc),.sb:has([id$="Time"])+.bt,.sb:has([id$="Time"]) .bt{display:none!important}</style><style>#nHc{display:none!important}</style><style id="ed-font">html,body,body *{font-family:Pretendard,-apple-system,"Apple SD Gothic Neo","Noto Sans KR",sans-serif!important;letter-spacing:-.02em!important}</style><link rel="stylesheet" href="studio.css?v=2">
+<style data-hide-status>:is(span,b)[id$="Time"],#eTm,.isl,.ys,.ysig,.ywf,.ybt,.dsg,.dwf,#df .dbt,.msg,.mwf,.mbt,.ewf,.ebt,.nwf,.nbt,.sb:has([id$="Time"])>svg:not(.lc),.sb:has([id$="Time"])+.bt,.sb:has([id$="Time"]) .bt{display:none!important}</style><style>#nHc{display:none!important}</style><style id="ed-font">html,body,body *{font-family:Pretendard,-apple-system,"Apple SD Gothic Neo","Noto Sans KR",sans-serif!important;letter-spacing:-.02em!important}</style><link rel="stylesheet" href="studio.css?v=3">
 </head>
 <body class="studio"><div class="ps-wrap">
 <header class="ps-top"><a class="ps-back" href="index.html">‹ 뒤로</a><button class="ps-pvbtn" id="pvBtn" type="button">미리보기 모드</button></header>
@@ -49,12 +49,14 @@
 
 </div></div></section>
 <section class="ps-card ps-side"><div class="ps-lbl">Edit Panel</div><h2>넷플릭스 내용 수정</h2><div class="ps-edwrap"><section class="editor">
+<div class="ps-pn" data-t="기본">
 <h2>넷플릭스 홈 편집</h2>
-<div class="row"><label>칩 1<input data-g="c0"></label><label>칩 2<input data-g="c1"></label></div>
-<div class="row"><label>칩 3<input data-g="c2"></label><label>칩 4<input data-g="c3"></label></div>
 <div class="row"><label class="file">히어로 이미지<input type="file" accept="image/*" data-i="hero"></label><label class="file">프로필 이미지(선택)<input type="file" accept="image/*" data-i="av"></label></div>
 <div class="row"><label>히어로 문구<input data-g="ht"></label></div>
 <div class="row"><label>재생 버튼<input data-g="b1"></label><label>찜 버튼<input data-g="b2"></label></div>
+</div>
+<div class="ps-pn" data-t="작품" hidden><div class="row"><label>칩 1<input data-g="c0"></label><label>칩 2<input data-g="c1"></label></div>
+<div class="row"><label>칩 3<input data-g="c2"></label><label>칩 4<input data-g="c3"></label></div>
 <h2 style="margin-top:14px">섹션 1 (큰 숫자 TOP 10)</h2>
 <div class="row"><label>제목<input data-g="t1"></label></div>
 <div id="l1"></div><button class="ghost" data-add="1" type="button">+ 포스터 추가</button>
@@ -65,6 +67,7 @@
 
 
 
+</div>
 </section></div><div class="ps-acts"><button id="savePng" class="primary">PNG 저장</button><button id="reset" class="secondary">초기화</button></div></section>
 </div></div>
 <script src="https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js"></script>

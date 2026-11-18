@@ -31,3 +31,5 @@ html,body{background:#141414;color:#fff}
 .bar button{height:48px;border-radius:12px;font-weight:700;font-size:16px;width:200px}
 .bar .primary{background:#3d8ef0;color:#fff}.bar .secondary{background:#efefef}
 .tback{top:auto;bottom:96px;left:14px}
+
+.nr2{animation:none!important;transform:none!important}

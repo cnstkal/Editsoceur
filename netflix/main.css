@@ -54,3 +54,5 @@ html,body{touch-action:manipulation;-webkit-text-size-adjust:100%}
 .nk .row{margin-bottom:0}
 .nkb{flex:1;height:38px;border:1px solid #dbdbdb;border-radius:8px;background:#f6f6f6;font-weight:700;margin-bottom:12px}
 .xk{display:flex!important;align-items:center;gap:8px;white-space:nowrap}.xk input{width:20px;height:20px}
+
+.nr2{animation:none!important;transform:none!important}

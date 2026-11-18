@@ -21,3 +21,6 @@ html,body{touch-action:manipulation;-webkit-text-size-adjust:100%}
 .pk i{flex:none;width:56px;height:56px;border-radius:8px;background:#e5e5ea center/cover}
 .pk button{flex:1;height:38px;border:1px solid #dbdbdb;border-radius:8px;background:#f6f6f6;font-weight:700}
 .xk{display:flex!important;align-items:center;gap:8px;white-space:nowrap}.xk input{width:20px;height:20px}
+
+.pgi i{display:block;aspect-ratio:1/1;background-size:cover;background-position:center}
+.pgi i.ph{background:#e4e4e4}

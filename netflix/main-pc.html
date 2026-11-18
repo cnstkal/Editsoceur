@@ -11,7 +11,8 @@
 </head>
 <body>
 <div class="pw" id="pw"><div id="pf"></div></div>
-<section class="ed">
+<section class="editor ed">
+<div class="ps-pn" data-t="기본">
   <h2>상단</h2>
   
   <h2>히어로</h2>
@@ -19,8 +20,10 @@
   <label>제목<input id="iHt"></label>
   <label>설명<input id="iHd"></label>
   <div class="row"><label>재생 버튼<input id="iPl"></label><label>찜 버튼<input id="iLs"></label></div>
-  <h2>가로 줄</h2>
+  </div>
+<div class="ps-pn" data-t="작품" hidden><h2>가로 줄</h2>
   <div class="row"><label>줄 제목<input id="iRw"></label><label>카드 개수 (1~7)<input id="iCn" type="number" min="1" max="7"></label></div><div id="cards1"></div><h2>두 번째 가로 줄</h2><label>줄 제목<input id="iRw2"></label><div id="cards2"></div>
+</div>
 </section>
 <div class="bar"><button id="savePng" class="primary">PNG 저장</button><button id="reset" class="secondary">초기화</button></div>
 <a class="tback" href="index.html" aria-label="선택 화면으로">‹</a>
