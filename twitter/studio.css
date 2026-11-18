@@ -150,3 +150,13 @@ body.studio{background:#fff}
 .ps-edwrap .editor .xadd input{position:absolute;inset:0;opacity:0;width:100%;height:100%;cursor:pointer}
 .ps-edwrap .editor .xc .row .xb{flex:1 1 0;height:40px;border:1px solid #e3e5e8;border-radius:10px;background:#fff;font-weight:600;font-size:14px;cursor:pointer}
 .ps-edwrap .editor .xc .row .xb:last-child{color:#e0245e}
+
+
+/* Global mobile preview centering fix */
+@media(max-width:1099px){
+  body.studio{overflow-x:hidden;width:100%;max-width:100%;}
+  .ps-wrap,.ps-grid,.ps-main,.ps-stage,.ps-frame{width:100%;max-width:100%;min-width:0;box-sizing:border-box;}
+  .ps-frame{display:flex!important;justify-content:center!important;align-items:flex-start!important;}
+  .ps-frame>*{margin-left:auto!important;margin-right:auto!important;max-width:100%;min-width:0;}
+  .ps-frame .phone{width:min(100%,430px)!important;margin-inline:auto!important;}
+}
