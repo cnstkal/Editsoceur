@@ -118,4 +118,4 @@ body.pvmode{background:#fff}
 
 .ps-edwrap .editor .ps-addp,.ps-addp{display:flex;align-items:center;justify-content:center;gap:4px;height:52px;margin:0 0 12px;text-align:center;border:0}
 
-@media(max-width:1099px){.ps-frame .phone{width:100%!important;max-width:100%!important;height:760px!important;min-height:0!important;margin:0!important}.ps-frame{overflow:hidden;width:100%}}
+@media(max-width:1099px){.stage,.ps-frame{width:100%!important;overflow:hidden}.phone{width:100%!important;max-width:100%!important;height:760px!important;min-height:0!important;margin:0!important}}
