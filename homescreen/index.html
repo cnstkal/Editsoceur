@@ -66,13 +66,21 @@ input,select{font-size:16px!important;-webkit-user-select:auto;user-select:auto}
 .edf{margin:-4px 0 10px;padding:14px;background:#fff;border:1px solid #dbdbdb;border-radius:12px}
 .edf .row{display:flex;gap:10px;align-items:flex-end}.edf .row>*{flex:1;min-width:0}
 .edf .mini{height:42px}.edf .add{height:42px}
-</style><link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.css"><style id="ed-font">html,body,body *{font-family:Pretendard,-apple-system,"Apple SD Gothic Neo","Noto Sans KR",sans-serif!important;letter-spacing:-.02em!important}</style><style id="ed-back">.ed-back{position:fixed;top:0;left:0;right:0;z-index:99999;height:44px;display:flex;align-items:center;padding:0 16px;background:rgba(255,255,255,.92);border-bottom:1px solid #e5e5e5;color:#0095f6;font-weight:600;font-size:15px;text-decoration:none;backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px)}</style></head><body>
+</style><link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.css"><style id="ed-font">html,body,body *{font-family:Pretendard,-apple-system,"Apple SD Gothic Neo","Noto Sans KR",sans-serif!important;letter-spacing:-.02em!important}</style><style id="ed-back">.ed-back{position:fixed;top:0;left:0;right:0;z-index:99999;height:44px;display:flex;align-items:center;padding:0 16px;background:rgba(255,255,255,.92);border-bottom:1px solid #e5e5e5;color:#0095f6;font-weight:600;font-size:15px;text-decoration:none;backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px)}</style><link rel="stylesheet" href="studio.css?v=1">
+</head><body class="studio"><div class="ps-wrap">
+<header class="ps-top"><a class="ps-back" href="../apple/index.html">‹ 뒤로</a><button class="ps-pvbtn" id="pvBtn" type="button">미리보기 모드</button></header>
+<div class="ps-grid">
+<section class="ps-card ps-main"><div class="ps-lbl">Live Preview</div><h2>홈 화면</h2><p class="ps-sub">실제 앱 화면 비율로 확인하고, 오른쪽에서 바로 수정해요</p>
+<div class="ps-stage"><div class="ps-frame">
 <div class="phone" id="phone">
  <div class="grid" id="grid"></div>
  <div class="bottom"><div class="dock glass" id="dock"></div></div>
 </div>
 <div class="divd"></div>
-<section class="editor">
+
+
+</div></div></section>
+<section class="ps-card ps-side"><div class="ps-lbl">Edit Panel</div><h2>홈 화면 내용 수정</h2><div class="ps-edwrap"><section class="editor">
  <h2>배경</h2>
  <label>배경 사진<input id="wall" type="file" accept="image/*"></label>
 
@@ -85,8 +93,8 @@ input,select{font-size:16px!important;-webkit-user-select:auto;user-select:auto}
  <h2>내 앱</h2><p class="hint">홈 화면 앱을 체크한 뒤 아래에서 폴더로 묶을 수 있어요</p>
  <div id="list"></div>
  <div class="gbox"><label>폴더 이름<input id="fName" placeholder="폴더"></label><button class="add" id="group" type="button" disabled>폴더로 묶기</button></div>
-</section>
-<div class="bar"><button id="savePng" class="primary" type="button">PNG로 저장</button><button id="reset" class="secondary" type="button">초기화</button></div>
+</section></div><div class="ps-acts"><button id="savePng" class="primary" type="button">PNG로 저장</button><button id="reset" class="secondary" type="button">초기화</button></div></section>
+</div></div>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
 <script>
 (function(){
@@ -187,4 +195,5 @@ function glow(e){var g=e.target.closest&&e.target.closest('.glass');if(!g)return
 
 render();
 })();
-</script><a class="ed-back" href="../index.html">&#8249; 선택화면</a></body></html>
+</script><script>(function(){var b=document.getElementById("pvBtn");b.onclick=function(){var on=document.body.classList.toggle("pvmode");this.textContent=on?"편집 모드":"미리보기 모드"}})();</script>
+</body></html>

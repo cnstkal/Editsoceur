@@ -8,10 +8,14 @@
 <link rel="stylesheet" href="../instagram/story.css?v=3">
 <link rel="stylesheet" href="../webtoon/webtoon.css?v=1">
 <link rel="stylesheet" href="daangn.css?v=1">
-<style data-hide-status>:is(span,b)[id$="Time"],#eTm,.isl,.ys,.ysig,.ywf,.ybt,.dsg,.dwf,#df .dbt,.msg,.mwf,.mbt,.ewf,.ebt,.nwf,.nbt,.sb:has([id$="Time"])>svg:not(.lc),.sb:has([id$="Time"])+.bt,.sb:has([id$="Time"]) .bt{display:none!important}</style><style id="ed-font">html,body,body *{font-family:Pretendard,-apple-system,"Apple SD Gothic Neo","Noto Sans KR",sans-serif!important;letter-spacing:-.02em!important}</style></head>
-<body>
+<style data-hide-status>:is(span,b)[id$="Time"],#eTm,.isl,.ys,.ysig,.ywf,.ybt,.dsg,.dwf,#df .dbt,.msg,.mwf,.mbt,.ewf,.ebt,.nwf,.nbt,.sb:has([id$="Time"])>svg:not(.lc),.sb:has([id$="Time"])+.bt,.sb:has([id$="Time"]) .bt{display:none!important}</style><style id="ed-font">html,body,body *{font-family:Pretendard,-apple-system,"Apple SD Gothic Neo","Noto Sans KR",sans-serif!important;letter-spacing:-.02em!important}</style><link rel="stylesheet" href="studio.css?v=1">
+</head>
+<body class="studio"><div class="ps-wrap">
+<header class="ps-top"><a class="ps-back" href="index.html">‹ 뒤로</a><button class="ps-pvbtn" id="pvBtn" type="button">미리보기 모드</button></header>
+<div class="ps-grid">
+<section class="ps-card ps-main"><div class="ps-lbl">Live Preview</div><h2>당근 상세</h2><p class="ps-sub">실제 앱 화면 비율로 확인하고, 오른쪽에서 바로 수정해요</p>
+<div class="ps-stage"><div class="ps-frame">
 <div class="phone">
-<div class="navbar" data-html2canvas-ignore><a href="index.html">‹ 메인 화면</a></div>
 <div id="df" class="wt d dd">
   <div class="scr" id="dScr">
     <div class="im2"><i class="cv" id="dIm"></i><div class="gray" id="dGray"></div><div class="pg" id="dPg"></div></div>
@@ -29,7 +33,11 @@
   <div id="dIcs"></div>
   <div class="bt"><svg viewBox="0 0 24 24" fill="none" stroke="#333" stroke-width="1.600" stroke-linejoin="round"><path d="M12 20.500s-8.500-5-8.500-11A4.800 4.800 0 0 1 12 6.500a4.800 4.800 0 0 1 8.500 3C20.500 15.500 12 20.500 12 20.500z"/></svg><b>채팅하기</b></div>
 </div>
-<section class="editor">
+
+</div>
+
+</div></div></section>
+<section class="ps-card ps-side"><div class="ps-lbl">Edit Panel</div><h2>당근 상세 내용 수정</h2><div class="ps-edwrap"><section class="editor">
   <h2>제품 상세 편집</h2>
   <div class="row"><label>시간<input id="iTime"></label><label>스크롤(0=맨 위, 1215=아래로)<input id="iSc" type="number" min="0"></label></div>
   <label>대표 사진<input id="iIm" type="file" accept="image/*"></label>
@@ -40,11 +48,11 @@
   <div class="row"><label>카테고리<input id="iCat"></label><label>올린 시간<input id="iWh"></label></div>
   <div class="row"><label>관심 수<input id="iLk"></label><label>조회 수<input id="iVw"></label></div>
   <label>본문<textarea id="iDs" rows="10"></textarea></label>
-</section>
-</div>
-<div class="bar"><button id="savePng" class="primary">PNG로 저장</button><button id="reset" class="secondary">초기화</button></div>
+</section></div><div class="ps-acts"><button id="savePng" class="primary">PNG로 저장</button><button id="reset" class="secondary">초기화</button></div></section>
+</div></div>
 <script src="https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js"></script>
 <script src="../webtoon/common.js?v=1"></script>
 <script src="detail.js?v=1"></script>
+<script>(function(){var b=document.getElementById("pvBtn");b.onclick=function(){var on=document.body.classList.toggle("pvmode");this.textContent=on?"편집 모드":"미리보기 모드"}})();</script>
 </body>
 </html>

@@ -5,12 +5,21 @@
 <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no,viewport-fit=cover">
 <title>알림</title>
 <link rel="stylesheet" href="notify.css">
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.css"><style id="ed-font">html,body,body *{font-family:Pretendard,-apple-system,"Apple SD Gothic Neo","Noto Sans KR",sans-serif!important;letter-spacing:-.02em!important}</style><style id="ed-back">.ed-back{position:fixed;top:0;left:0;right:0;z-index:99999;height:44px;display:flex;align-items:center;padding:0 16px;background:rgba(255,255,255,.92);border-bottom:1px solid #e5e5e5;color:#0095f6;font-weight:600;font-size:15px;text-decoration:none;backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px)}</style></head>
-<body>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.css"><style id="ed-font">html,body,body *{font-family:Pretendard,-apple-system,"Apple SD Gothic Neo","Noto Sans KR",sans-serif!important;letter-spacing:-.02em!important}</style><style id="ed-back">.ed-back{position:fixed;top:0;left:0;right:0;z-index:99999;height:44px;display:flex;align-items:center;padding:0 16px;background:rgba(255,255,255,.92);border-bottom:1px solid #e5e5e5;color:#0095f6;font-weight:600;font-size:15px;text-decoration:none;backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px)}</style><link rel="stylesheet" href="studio.css?v=1">
+</head>
+<body class="studio"><div class="ps-wrap">
+<header class="ps-top"><a class="ps-back" href="index.html">‹ 뒤로</a><button class="ps-pvbtn" id="pvBtn" type="button">미리보기 모드</button></header>
+<div class="ps-grid">
+<section class="ps-card ps-main"><div class="ps-lbl">Live Preview</div><h2>알림</h2><p class="ps-sub">실제 앱 화면 비율로 확인하고, 오른쪽에서 바로 수정해요</p>
+<div class="ps-stage"><div class="ps-frame">
 <main class="wrap">
   <section class="preview"><div class="stage" id="stage"></div></section>
   <nav class="picker" id="picker"></nav>
-  <section class="editor">
+  
+</main>
+
+</div></div></section>
+<section class="ps-card ps-side"><div class="ps-lbl">Edit Panel</div><h2>알림 내용 수정</h2><div class="ps-edwrap"><section class="editor">
     <h2>아이콘</h2>
     <label>아이콘 종류<select id="iconStyle"><option value="normal">기본 (앱 아이콘만)</option><option value="small">작은 아이콘 (프사 + 앱 아이콘)</option></select></label>
     <label>앱 아이콘 직접 넣기<input id="appImgFile" type="file" accept="image/*"></label>
@@ -24,9 +33,10 @@
     <h2>알림 카드 배경</h2>
     <div class="row"><label>배경 색상<input id="bgColor" type="color" value="#efefef"></label><label>투명도 <output id="opacityValue">96%</output><input id="opacity" type="range" min="0" max="100" value="96"></label></div>
     <div class="actions"><button id="savePng" type="button">PNG로 저장</button><button id="reset" type="button">초기화</button></div>
-  </section>
-</main>
+  </section></div><div class="ps-acts"></div></section>
+</div></div>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
 <script src="notify.js"></script>
-<a class="ed-back" href="../index.html">&#8249; 선택화면</a></body>
+<script>(function(){var b=document.getElementById("pvBtn");b.onclick=function(){var on=document.body.classList.toggle("pvmode");this.textContent=on?"편집 모드":"미리보기 모드"}})();</script>
+</body>
 </html>

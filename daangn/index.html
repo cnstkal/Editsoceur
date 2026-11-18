@@ -8,10 +8,14 @@
 <link rel="stylesheet" href="../instagram/story.css?v=3">
 <link rel="stylesheet" href="../webtoon/webtoon.css?v=1">
 <link rel="stylesheet" href="daangn.css?v=1">
-<style data-hide-status>:is(span,b)[id$="Time"],#eTm,.isl,.ys,.ysig,.ywf,.ybt,.dsg,.dwf,#df .dbt,.msg,.mwf,.mbt,.ewf,.ebt,.nwf,.nbt,.sb:has([id$="Time"])>svg:not(.lc),.sb:has([id$="Time"])+.bt,.sb:has([id$="Time"]) .bt{display:none!important}</style><style id="ed-font">html,body,body *{font-family:Pretendard,-apple-system,"Apple SD Gothic Neo","Noto Sans KR",sans-serif!important;letter-spacing:-.02em!important}</style></head>
-<body>
+<style data-hide-status>:is(span,b)[id$="Time"],#eTm,.isl,.ys,.ysig,.ywf,.ybt,.dsg,.dwf,#df .dbt,.msg,.mwf,.mbt,.ewf,.ebt,.nwf,.nbt,.sb:has([id$="Time"])>svg:not(.lc),.sb:has([id$="Time"])+.bt,.sb:has([id$="Time"]) .bt{display:none!important}</style><style id="ed-font">html,body,body *{font-family:Pretendard,-apple-system,"Apple SD Gothic Neo","Noto Sans KR",sans-serif!important;letter-spacing:-.02em!important}</style><link rel="stylesheet" href="studio.css?v=1">
+</head>
+<body class="studio"><div class="ps-wrap">
+<header class="ps-top"><a class="ps-back" href="index.html">‹ 뒤로</a><button class="ps-pvbtn" id="pvBtn" type="button">미리보기 모드</button></header>
+<div class="ps-grid">
+<section class="ps-card ps-main"><div class="ps-lbl">Live Preview</div><h2>당근</h2><p class="ps-sub">실제 앱 화면 비율로 확인하고, 오른쪽에서 바로 수정해요</p>
+<div class="ps-stage"><div class="ps-frame">
 <div class="phone">
-<div class="navbar" data-html2canvas-ignore><a href="index.html" class="on">메인</a><a href="chat.html">채팅</a><a href="detail.html" style="margin-left:auto">제품 상세 ›</a></div>
 <div id="gf" class="wt dg">
   <div class="sb"><b id="gTime"></b><svg class="lc" viewBox="0 0 24 24"><circle cx="12" cy="12" r="12" fill="#3b82f6"/><path d="M17.500 6.500 6.500 11l4.600 1.900L13 17.500z" fill="#fff"/></svg></div>
   <div class="gh">
@@ -25,7 +29,11 @@
   <div class="wr" id="gWr"></div>
   <div id="gNav"></div>
 </div>
-<section class="editor">
+
+</div>
+
+</div></div></section>
+<section class="ps-card ps-side"><div class="ps-lbl">Edit Panel</div><h2>당근 내용 수정</h2><div class="ps-edwrap"><section class="editor">
   <h2>당근 메인 편집</h2>
   <div class="row"><label>시간<input id="iTime"></label><label>글쓰기 버튼<input id="iWr"></label></div>
   <div class="row"><label>동네<input id="iDong"></label><label>옆 동네<input id="iSub"></label></div>
@@ -33,11 +41,11 @@
   <div class="row"><label>선택된 칩 번호(1부터)<input id="iAct" type="number" min="1"></label><label>채팅 알림 숫자<input id="iCh"></label></div>
   <h2 style="margin-top:14px">게시글</h2><div id="el"></div>
   <button class="ghost" id="addE" type="button">+ 게시글 추가</button>
-</section>
-</div>
-<div class="bar"><button id="savePng" class="primary">PNG로 저장</button><button id="reset" class="secondary">초기화</button></div>
+</section></div><div class="ps-acts"><button id="savePng" class="primary">PNG로 저장</button><button id="reset" class="secondary">초기화</button></div></section>
+</div></div>
 <script src="https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js"></script>
 <script src="../webtoon/common.js?v=1"></script>
 <script src="daangn.js?v=1"></script>
+<script>(function(){var b=document.getElementById("pvBtn");b.onclick=function(){var on=document.body.classList.toggle("pvmode");this.textContent=on?"편집 모드":"미리보기 모드"}})();</script>
 </body>
 </html>
