@@ -151,3 +151,5 @@ body.pvmode{background:#fff}
 .ps-edwrap .editor label.sw .knob::after{content:"";position:absolute;top:3px;left:3px;width:24px;height:24px;border-radius:50%;background:#fff;transition:.2s}
 .ps-edwrap .editor label.sw input:checked~.knob{background:#e8457a}
 .ps-edwrap .editor label.sw input:checked~.knob::after{left:23px}
+
+@media(max-width:1099px){.ps-side{padding-left:20px!important;padding-right:20px!important;box-sizing:border-box}.ps-side .ps-seg{margin-left:0;margin-right:0;padding-left:0;padding-right:0}.ps-acts{padding-left:0!important;padding-right:0!important}}
