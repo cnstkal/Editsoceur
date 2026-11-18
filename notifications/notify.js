@@ -11,7 +11,13 @@ var data=[
 {id:'kakao',label:'카카오톡',app:'카카오톡',title:'띵화형',body:'전화 좀 받아 ㅜㅜ',time:'지금',icon:'kakao',img:'images/kakao/KakaoTalk_logo.svg'},
 {id:'instagram',label:'인스타그램',app:'인스타그램',title:'marspark',body:'좋아요를 눌렀습니다',time:'지금',icon:'instagram',img:'images/instagram/Instagram_logo_2016.svg'},
 {id:'twitter',label:'트위터',app:'X',title:'marspark',body:'새 댓글이 달렸어요',time:'지금',icon:'twitter',img:'images/twitter/sl_z_072523_61700_01.jpg'},
-{id:'discord',label:'디스코드',app:'디스코드',title:'호요호요 (#황잡이)',body:'유유님 같이 레이드 뛰실래여?ㅎㅎ',time:'지금',icon:'discord',img:'images/discord/discordapp_tile_logo_icon_171263.svg'}
+{id:'discord',label:'디스코드',app:'디스코드',title:'호요호요 (#황잡이)',body:'유유님 같이 레이드 뛰실래여?ㅎㅎ',time:'지금',icon:'discord',img:'images/discord/discordapp_tile_logo_icon_171263.svg'},
+{id:'call',label:'전화',app:'전화',title:'엄마',body:'부재중 전화가 있습니다',time:'지금',icon:'call',img:'images/call/phone.svg'},
+{id:'youtube',label:'유튜브',app:'YouTube',title:'침착맨',body:'새 동영상이 업로드되었습니다',time:'지금',icon:'youtube',img:'images/youtube/IMG_0674.png'},
+{id:'chatgpt',label:'챗GPT',app:'ChatGPT',title:'ChatGPT',body:'답변이 준비되었습니다',time:'지금',icon:'chatgpt',img:'images/chatgpt/ChatGPT_logo.svg'},
+{id:'naver',label:'네이버',app:'네이버',title:'네이버 알림',body:'관심 있는 뉴스가 도착했어요',time:'지금',icon:'naver',img:'images/naver/IMG_0673.png'},
+{id:'daangn',label:'당근',app:'당근',title:'동네 이웃',body:'관심 목록의 물건이 가격 인하되었어요',time:'지금',icon:'daangn',img:'images/daangn/IMG_0671.png'},
+{id:'everytime',label:'에브리타임',app:'에브리타임',title:'새 댓글',body:'내 글에 새 댓글이 달렸어요',time:'지금',icon:'everytime',img:'images/everytime/IMG_0672.png'}
 ];
 data.forEach(function(n){n.noSmall=false;n.style='normal';n.appImg='';n.avatar=''});
 var selected=0,color='#efefef',opacity=96;
