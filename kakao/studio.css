@@ -67,3 +67,45 @@ body.pvmode .ps-main .ps-lbl,body.pvmode .ps-main h2,body.pvmode .ps-main .ps-su
 body.pvmode .ps-stage{padding-top:0}
 body.pvmode{background:#fff}
 .ps-frame .divd{display:none!important}
+
+/* ===== Instagram 편집 패널 통일 (레퍼런스 스타일) — 프리뷰 영역은 건드리지 않음 ===== */
+.ps-side{--pk:#e8457a;--pk-bg:#fde8ef;--ln:#e9eaee}
+.ps-side .ps-seg{display:flex;gap:4px;overflow:visible;margin:0 0 14px;padding:5px;background:#fff;border:1px solid var(--ln);border-radius:16px;box-shadow:0 1px 3px rgba(0,0,0,.04)}
+.ps-side .ps-seg button{flex:1 1 0;min-width:0;height:40px;padding:0 4px;border:0;border-radius:12px;background:transparent;color:#333;font-size:14px;font-weight:500;white-space:nowrap}
+.ps-side .ps-seg button.on{background:var(--pk-bg);color:var(--pk);font-weight:700}
+.ps-edwrap .editor{display:block;padding:4px 2px 0!important}
+.ps-edwrap .editor>h2:first-child{display:none}
+.ps-edwrap .editor h2{font-size:14px;font-weight:700;margin:6px 0 12px}
+.ps-edwrap .editor label{display:flex;align-items:center;justify-content:space-between;gap:14px;margin:0 0 12px;font-size:14px;font-weight:500;color:#222}
+.ps-edwrap .editor label>input:not([type=checkbox]):not([type=file]):not([type=range]),.ps-edwrap .editor label>textarea{flex:0 0 62%;width:62%;margin:0;height:44px;padding:0 14px;font-size:15px;border:1px solid var(--ln);border-radius:12px;background:#fff}
+.ps-edwrap .editor label>textarea{height:auto;min-height:76px;padding:11px 14px}
+.ps-edwrap .editor label:has(textarea){align-items:flex-start}
+.ps-edwrap .editor label>input[type=file],.ps-edwrap .editor label>input[type=range]{flex:0 0 62%;width:62%;min-width:0;margin:0;font-size:13px}
+.ps-edwrap .editor .row{display:flex;gap:10px;margin-bottom:0}
+.ps-edwrap .editor .row label{flex:1 1 0;min-width:0;flex-direction:column;align-items:stretch;justify-content:flex-start;gap:6px;font-size:13px;color:#6b717b}
+.ps-edwrap .editor .row label>input:not([type=checkbox]):not([type=file]){flex:none;width:100%}
+.ps-edwrap .editor .row label>input[type=file]{flex:none;width:100%}
+.ps-edwrap .editor .row .ghost{flex:1 1 0;min-width:0;margin-bottom:0;padding:0 6px;white-space:nowrap}
+.ps-edwrap .editor .musicbox{padding:0;border:0;background:none;margin-bottom:12px}
+.ps-edwrap .editor .trow,.ps-tg{display:flex;align-items:center;justify-content:space-between;min-height:44px;margin:0 0 6px;font-size:14px;font-weight:500;color:#222}
+.ps-edwrap .editor label.sw:not(:has(.knob)){display:block;flex:none;width:50px;height:30px;margin:0}
+.ps-edwrap .editor .sw input:checked+i{background:var(--pk)}
+.ps-edwrap .editor .ghost,.ps-ghost{height:44px;padding:0 12px;border:1px solid var(--ln);border-radius:12px;background:#f5f5f7;color:#333;font-size:14px;font-weight:600;margin:0 0 12px}
+.ps-edwrap .editor .hint{font-size:12px;line-height:1.4;color:#8a8f98;margin:-4px 0 10px}
+.ps-pic{margin-bottom:12px}
+.ps-acts{gap:10px}
+.ps-acts #reset{order:1;flex:1 1 0;background:#f2f3f5;color:#222}
+.ps-acts #savePng{order:2;flex:1.6 1 0;background:var(--pk,#e8457a);color:#fff}
+.ps-acts button{height:52px;border-radius:14px;font-size:15px;white-space:nowrap}
+.ps-edwrap .editor .ps-pn>h2:first-child{display:none}
+.ps-edwrap .editor label>input:not([type=checkbox]):not([type=file]):not([type=range]),.ps-edwrap .editor label>textarea,.ps-edwrap .editor label>input[type=file],.ps-edwrap .editor label>input[type=range]{flex-basis:56%;width:56%}
+.ps-edwrap .editor label>textarea{min-height:84px}
+
+@media(max-width:1099px){.ps-acts{position:static!important;margin:16px 0 8px!important;padding:0!important;background:none!important;border:0!important}}
+
+.ps-edwrap .editor label.sw:has(.knob){display:flex;align-items:center;justify-content:space-between;width:100%;height:auto;min-height:44px;margin:0 0 6px;font-size:14px;font-weight:500;color:#222}
+.ps-edwrap .editor label.sw:has(.knob) input{position:absolute;opacity:0;pointer-events:none}
+.ps-edwrap .editor label.sw .knob{position:relative;flex:none;width:50px;height:30px;border-radius:15px;background:#c7c7c7;order:2}
+.ps-edwrap .editor label.sw .knob::after{content:"";position:absolute;top:3px;left:3px;width:24px;height:24px;border-radius:50%;background:#fff;transition:.2s}
+.ps-edwrap .editor label.sw input:checked~.knob{background:#e8457a}
+.ps-edwrap .editor label.sw input:checked~.knob::after{left:23px}
