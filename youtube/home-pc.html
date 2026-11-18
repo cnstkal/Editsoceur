@@ -19,13 +19,16 @@
 
 
 </div></div></section>
-<section class="ps-card ps-side"><div class="ps-lbl">Edit Panel</div><h2>YouTube PC 홈 내용 수정</h2><div class="ps-edwrap"><section class="ed">
+<section class="ps-card ps-side"><div class="ps-lbl">Edit Panel</div><h2>YouTube PC 홈 내용 수정</h2><div class="ps-edwrap"><section class="editor ed">
+<div class="ps-pn" data-t="기본">
   <h2>상단</h2>
   <div class="row"><label>검색창 안내 문구<input id="iSr"></label><label>프로필 사진 주소(선택)<input id="iAv"></label></div>
   
   <h2>카테고리</h2><div id="chipList"></div><button class="ghost" id="addChip" type="button">+ 카테고리 추가</button>
-  <h2>영상</h2><div id="xlist"></div>
+  </div>
+<div class="ps-pn" data-t="영상" hidden><h2>영상</h2><div id="xlist"></div>
   <button class="ghost" id="addV" type="button">+ 영상 추가</button>
+</div>
 </section></div><div class="ps-acts"><button id="savePng" class="primary">PNG 저장</button><button id="reset" class="secondary">초기화</button></div></section>
 </div></div>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
