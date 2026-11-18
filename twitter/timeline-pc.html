@@ -7,8 +7,13 @@
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.css">
 <link rel="stylesheet" href="timeline-pc.css?v=1">
 <link rel="stylesheet" href="back.css?v=1">
-<style id="ed-font">html,body,body *{font-family:Pretendard,-apple-system,"Apple SD Gothic Neo","Noto Sans KR",sans-serif!important;letter-spacing:-.02em!important}</style></head>
-<body>
+<style id="ed-font">html,body,body *{font-family:Pretendard,-apple-system,"Apple SD Gothic Neo","Noto Sans KR",sans-serif!important;letter-spacing:-.02em!important}</style><link rel="stylesheet" href="studio.css?v=1">
+</head>
+<body class="studio"><div class="ps-wrap">
+<header class="ps-top"><a class="ps-back" href="index.html">‹ 뒤로</a><button class="ps-pvbtn" id="pvBtn" type="button">미리보기 모드</button></header>
+<div class="ps-grid">
+<section class="ps-card ps-main"><div class="ps-lbl">Live Preview</div><h2>X 타임라인 PC</h2><p class="ps-sub">실제 앱 화면 비율로 확인하고, 오른쪽에서 바로 수정해요</p>
+<div class="ps-stage"><div class="ps-frame">
 <div class="pw" id="pw"><div id="pf">
   <div class="pl" id="pl"></div>
   <div class="pc">
@@ -23,18 +28,21 @@
   </div>
   <div class="fl" style="top:686px" id="fl0"></div><div class="fl" style="top:778px" id="fl1"></div>
 </div></div>
-<section class="ed">
+
+
+</div></div></section>
+<section class="ps-card ps-side"><div class="ps-lbl">Edit Panel</div><h2>X 타임라인 PC 내용 수정</h2><div class="ps-edwrap"><section class="ed">
   <h2>타임라인 편집</h2>
   <div class="row"><label>왼쪽 탭<input id="iT0"></label><label>오른쪽 탭<input id="iT1"></label></div>
   <div class="row"><label>내 이름<input id="iMn"></label><label>내 아이디<input id="iMh"></label></div><div class="switches"><label class="sw"><input id="iCompose" type="checkbox"><span class="knob"></span>트윗 쓰기 버튼 표시 (모든 X 화면 공통)</label></div>
   <h2>트윗</h2><div id="xlist"></div>
   <button class="ghost" id="addT" type="button">+ 트윗 추가</button>
-</section>
-<div class="bar"><button id="savePng" class="primary">PNG로 저장</button><button id="reset" class="secondary">초기화</button></div>
+</section></div><div class="ps-acts"><button id="savePng" class="primary">PNG로 저장</button><button id="reset" class="secondary">초기화</button></div></section>
+</div></div>
 <script src="https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js"></script>
 <script src="timeline-pc.js?v=1"></script>
-<a class="tback" href="index.html" aria-label="선택 화면으로">‹</a>
 <script src="back.js?v=1"></script>
 <script src="common.js"></script>
+<script>(function(){var b=document.getElementById("pvBtn");b.onclick=function(){var on=document.body.classList.toggle("pvmode");this.textContent=on?"편집 모드":"미리보기 모드"}})();</script>
 </body>
 </html>

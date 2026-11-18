@@ -7,21 +7,29 @@
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.css">
 <link rel="stylesheet" href="back.css?v=1">
 <link rel="stylesheet" href="home-pc.css?v=1">
-<style id="ed-font">html,body,body *{font-family:Pretendard,-apple-system,"Apple SD Gothic Neo","Noto Sans KR",sans-serif!important;letter-spacing:-.02em!important}</style></head>
-<body>
+<style id="ed-font">html,body,body *{font-family:Pretendard,-apple-system,"Apple SD Gothic Neo","Noto Sans KR",sans-serif!important;letter-spacing:-.02em!important}</style><link rel="stylesheet" href="studio.css?v=1">
+</head>
+<body class="studio"><div class="ps-wrap">
+<header class="ps-top"><a class="ps-back" href="index.html">‹ 뒤로</a><button class="ps-pvbtn" id="pvBtn" type="button">미리보기 모드</button></header>
+<div class="ps-grid">
+<section class="ps-card ps-main"><div class="ps-lbl">Live Preview</div><h2>YouTube PC 홈</h2><p class="ps-sub">실제 앱 화면 비율로 확인하고, 오른쪽에서 바로 수정해요</p>
+<div class="ps-stage"><div class="ps-frame">
 <div class="pw" id="pw"><div id="pf"></div></div>
-<section class="ed">
+
+
+</div></div></section>
+<section class="ps-card ps-side"><div class="ps-lbl">Edit Panel</div><h2>YouTube PC 홈 내용 수정</h2><div class="ps-edwrap"><section class="ed">
   <h2>상단</h2>
   <div class="row"><label>검색창 안내 문구<input id="iSr"></label><label>프로필 사진 주소(선택)<input id="iAv"></label></div>
   
   <h2>카테고리</h2><div id="chipList"></div><button class="ghost" id="addChip" type="button">+ 카테고리 추가</button>
   <h2>영상</h2><div id="xlist"></div>
   <button class="ghost" id="addV" type="button">+ 영상 추가</button>
-</section>
-<div class="bar"><button id="savePng" class="primary">PNG로 저장</button><button id="reset" class="secondary">초기화</button></div>
-<a class="tback" href="index.html" aria-label="선택 화면으로">‹</a>
+</section></div><div class="ps-acts"><button id="savePng" class="primary">PNG로 저장</button><button id="reset" class="secondary">초기화</button></div></section>
+</div></div>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
 <script src="home-pc.js?v=1"></script>
 <script src="back.js?v=1"></script>
+<script>(function(){var b=document.getElementById("pvBtn");b.onclick=function(){var on=document.body.classList.toggle("pvmode");this.textContent=on?"편집 모드":"미리보기 모드"}})();</script>
 </body>
 </html>

@@ -60,3 +60,5 @@ body.pvmode .ps-main .ps-lbl,body.pvmode .ps-main h2,body.pvmode .ps-main .ps-su
 body.pvmode .ps-stage{padding-top:0}
 body.pvmode{background:#fff}
 .ps-frame .divd{display:none!important}
+.ps-edwrap .ed{max-width:none;margin:0;padding:0;font-size:14px;background:none;border:0}
+.ps-edwrap .ed h2{font-size:17px;margin:18px 0 10px}
