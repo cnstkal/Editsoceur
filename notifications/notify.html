@@ -11,6 +11,11 @@
   <section class="preview"><div class="stage" id="stage"></div></section>
   <nav class="picker" id="picker"></nav>
   <section class="editor">
+    <h2>아이콘</h2>
+    <label>아이콘 종류<select id="iconStyle"><option value="normal">기본 (앱 아이콘만)</option><option value="small">작은 아이콘 (프사 + 앱 아이콘)</option></select></label>
+    <label>앱 아이콘 직접 넣기<input id="appImgFile" type="file" accept="image/*"></label>
+    <button id="appImgClear" type="button" class="sub">기본 앱 아이콘으로 되돌리기</button>
+    <label id="avatarRow" style="display:none">프사 넣기<input id="avatarFile" type="file" accept="image/*"></label>
     <h2>알림 편집</h2>
     <label>앱 이름<input id="appName"></label>
     <label>보낸 사람 / 제목<input id="title"></label>
