@@ -23,3 +23,9 @@
 .xc{background:#fff;border:1px solid #dbdbdb;border-radius:12px;padding:12px 12px 0;margin-bottom:12px}
 .xc .row{margin-bottom:0}.xk{display:flex!important;align-items:center;gap:8px;white-space:nowrap}.xk input{width:20px;height:20px}
 .xb{flex:1;height:38px;border:1px solid #dbdbdb;border-radius:8px;background:#f6f6f6;font-weight:700;margin-bottom:12px}
+
+/* 트윗 사진 (여러 장) */
+.xpg{display:grid;grid-template-columns:1fr 1fr;gap:2px;margin-top:10px;border-radius:16px;overflow:hidden;border:1px solid #cfd9de}
+.xpg.n1{grid-template-columns:1fr}
+.xpg img{width:100%;display:block;object-fit:cover;aspect-ratio:1/1}
+.xpg.n1 img{aspect-ratio:16/9}

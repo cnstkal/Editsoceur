@@ -11,15 +11,16 @@
   var S, STORE='editsoceur-twitter-timeline-v2';
   function persist(){try{localStorage.setItem(STORE,JSON.stringify(S))}catch(e){console.warn('트위터 데이터 저장 실패',e)}}
   function esc(t){return String(t==null?'':t).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;')}
+  function photoGrid(x){var ph=x.photos||[];if(!ph.length)return '';return '<div class="xpg n'+Math.min(ph.length,4)+'">'+ph.map(function(p){return '<img src="'+p+'" alt="">'}).join('')+'</div>'}
   function bgi(u){return u?"background-image:url('"+u+"')":''}
   function render(){
     for(var i=0;i<2;i++){var e=$('xT'+i);e.innerHTML=esc(S.tabs[i])+(i===0&&S.act==='0'?'<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#536471" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>':'');e.className='xtab'+(String(i)===S.act?' on':'')}
-    var h='';S.t.forEach(function(x){h+='<div class="xw"><i class="xa" style="'+bgi(x.av)+'"></i><div class="xc2"><div class="xn"><b>'+esc(x.n)+'</b>'+(x.lock?LK:'')+'<span>'+esc(x.h)+' · '+esc(x.time)+'</span>'+XL+'</div><div class="xtx">'+esc(x.x)+'</div>'+ac(x)+'</div></div>'});
+    var h='';S.t.forEach(function(x){h+='<div class="xw"><i class="xa" style="'+bgi(x.av)+'"></i><div class="xc2"><div class="xn"><b>'+esc(x.n)+'</b>'+(x.lock?LK:'')+'<span>'+esc(x.h)+' · '+esc(x.time)+'</span>'+XL+'</div><div class="xtx">'+esc(x.x)+'</div>'+photoGrid(x)+ac(x)+'</div></div>'});
     $('xL').innerHTML=h}
   function list(){var h='';S.t.forEach(function(x,i){
     h+='<div class="xc" data-i="'+i+'"><div class="row"><label>이름<input data-f="n" value="'+esc(x.n)+'"></label><label>아이디<input data-f="h" value="'+esc(x.h)+'"></label><label>시간<input data-f="time" value="'+esc(x.time)+'"></label></div>'+
     '<label>내용<input data-f="x" value="'+esc(x.x)+'"></label><div class="row"><label>멘션<input data-f="r" value="'+esc(x.r)+'"></label><label>리트윗<input data-f="rt" value="'+esc(x.rt)+'"></label><label>마음<input data-f="lk" value="'+esc(x.lk)+'"></label><label>조회수<input data-f="vw" value="'+esc(x.vw)+'"></label></div>'+'<div class="row" style="align-items:center"><label class="file">프로필 사진<input type="file" accept="image/*" data-f="av"></label><label class="xk"><input type="checkbox" data-f="lock"'+(x.lock?' checked':'')+'> 자물쇠</label></div>'+
-    '<div class="row"><button type="button" class="xb" data-a="u">↑</button><button type="button" class="xb" data-a="d">↓</button><button type="button" class="xb" data-a="x">✕ 삭제</button></div></div>'});
+    '<div class="xph-list">'+(x.photos||[]).map(function(p,k){return '<div class="xph"><img src="'+p+'" alt=""><button type="button" class="xph-x" data-a="rp" data-k="'+k+'">✕</button></div>'}).join('')+'</div><label class="xadd">+ 사진 추가 (여러 장 가능)<input type="file" accept="image/*" multiple data-f="photos"></label>'+'<div class="row"><button type="button" class="xb" data-a="u">↑</button><button type="button" class="xb" data-a="d">↓</button><button type="button" class="xb" data-a="x">✕ 삭제</button></div></div>'});
     $('xlist').innerHTML=h}
   function set(){for(var i=0;i<2;i++)$('iT'+i).value=S.tabs[i];$('iAct').value=S.act;$('iCompose').checked=localStorage.getItem('editsoceur-twitter-compose-enabled')!=='false'}
   function load(reset){if(reset){try{localStorage.removeItem(STORE)}catch(e){} S=JSON.parse(JSON.stringify(DEF))}else{try{var saved=localStorage.getItem(STORE);S=saved?JSON.parse(saved):JSON.parse(JSON.stringify(DEF));if(!S||!Array.isArray(S.t)||!Array.isArray(S.tabs))throw new Error('invalid saved data')}catch(e){S=JSON.parse(JSON.stringify(DEF))}}set();list();render()}
@@ -29,8 +30,10 @@
   var L=$('xlist'),ix=function(e){return +e.target.closest('.xc').dataset.i};
   L.addEventListener('input',function(e){var f=e.target.dataset.f;if(!f||e.target.type==='file'||e.target.type==='checkbox')return;S.t[ix(e)][f]=e.target.value;persist();render()});
   L.addEventListener('change',function(e){var t=e.target,f=t.dataset.f;if(!f)return;var o=S.t[ix(e)];
+    if(f==='photos'){var fs=[].slice.call(t.files||[]);if(!fs.length)return;o.photos=o.photos||[];Promise.all(fs.map(function(fl){return new Promise(function(res){rd(fl,res)})})).then(function(ds){o.photos=o.photos.concat(ds);t.value='';persist();list();render()});return}
     if(t.type==='checkbox'){o.lock=t.checked;persist();render()}else if(t.type==='file'&&t.files[0])rd(t.files[0],function(d){o.av=d;persist();render()})});
   L.addEventListener('click',function(e){var a=e.target.dataset.a;if(!a)return;var i=ix(e),m=S.t;
+    if(a==='rp'){S.t[i].photos.splice(+e.target.dataset.k,1);persist();list();render();return}
     if(a==='x')m.splice(i,1);else if(a==='u'&&i>0){var t=m[i];m[i]=m[i-1];m[i-1]=t}else if(a==='d'&&i<m.length-1){var t2=m[i];m[i]=m[i+1];m[i+1]=t2}
     persist();list();render()});
   $('addT').onclick=function(){var l=S.t[S.t.length-1]||{n:'사용자',h:'@username',lock:true};S.t.push({n:l.n,h:l.h,lock:l.lock,av:l.av,time:'1분',x:'',r:'',rt:'',lk:'',vw:''});persist();list();render()};
