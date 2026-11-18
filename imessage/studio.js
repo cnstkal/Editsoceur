@@ -29,7 +29,7 @@
       ed.appendChild(g);groups.push(g);
     });
   }
-  if(groups.length<2) return;
+  if(groups.length<1) return;
   [].forEach.call(side.querySelectorAll(':scope > .ps-seg'),function(o){o.remove()});
   var bar=document.createElement('div');bar.className='ps-seg';
   groups.forEach(function(g,i){
