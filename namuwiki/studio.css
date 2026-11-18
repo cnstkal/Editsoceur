@@ -101,7 +101,7 @@ body.pvmode{background:#fff}
 .ps-edwrap .editor label>input:not([type=checkbox]):not([type=file]):not([type=range]),.ps-edwrap .editor label>textarea,.ps-edwrap .editor label>input[type=file],.ps-edwrap .editor label>input[type=range]{flex-basis:56%;width:56%}
 .ps-edwrap .editor label>textarea{min-height:84px}
 
-@media(max-width:1099px){.ps-acts{position:static!important;margin:16px 0 8px!important;padding:0!important;background:none!important;border:0!important}}
+@media(max-width:1099px){.ps-acts{position:sticky!important;bottom:0;margin:16px 0 0!important;padding:10px 0 calc(10px + env(safe-area-inset-bottom))!important;background:#fff!important;border:0!important;z-index:5}}
 
 .ps-edwrap .editor label.sw:has(.knob){display:flex;align-items:center;justify-content:space-between;width:100%;height:auto;min-height:44px;margin:0 0 6px;font-size:14px;font-weight:500;color:#222}
 .ps-edwrap .editor label.sw:has(.knob) input{position:absolute;opacity:0;pointer-events:none}
