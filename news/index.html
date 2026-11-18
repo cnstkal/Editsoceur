@@ -68,5 +68,6 @@
 <script src="news.js?v=2"></script>
 <script>(function(){var b=document.getElementById("pvBtn");b.onclick=function(){var on=document.body.classList.toggle("pvmode");this.textContent=on?"편집 모드":"미리보기 모드"}})();</script>
 <script src="studio.js?v=1"></script>
+<script>(function(){function fit(){var f=document.querySelector('.ps-frame'),p=document.querySelector('.phone');if(!f||!p)return;if(innerWidth>=1100){p.style.transform='';p.style.width='';p.style.height='';f.style.height='';return}var k=f.clientWidth/430;p.style.width='430px';p.style.transformOrigin='top left';p.style.transform='scale('+k+')';p.style.height='auto';f.style.height=(p.offsetHeight*k)+'px';f.style.overflow='hidden'}addEventListener('resize',fit);addEventListener('load',fit);setTimeout(fit,300)})();</script>
 </body>
 </html>
