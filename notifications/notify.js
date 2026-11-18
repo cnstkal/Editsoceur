@@ -1,7 +1,7 @@
 (function(){
 var $=function(id){return document.getElementById(id)};
 var icons={
- kakao:'<svg viewBox="0 0 40 40"><rect width="40" height="40" rx="20" fill="#fee500"/><path d="M20 8C11 8 5 13 5 19c0 4 3 8 8 10l-1 5 7-4c9 0 16-5 16-11S28 8 20 8z" fill="#3a1d1d"/></svg>',
+ kakao:'<svg viewBox="0 0 40 40"><rect width="40" height="40" rx="9" fill="#fee500"/><path d="M20 8C11 8 5 13 5 19c0 4 3 8 8 10l-1 5 7-4c9 0 16-5 16-11S28 8 20 8z" fill="#3a1d1d"/></svg>',
  message:'<svg viewBox="0 0 40 40"><rect width="40" height="40" rx="9" fill="#19c45a"/><path d="M20 7C11 7 5 12 5 19c0 4 3 8 8 10l-1 5 8-5c9 0 15-4 15-10S29 7 20 7z" fill="#fff"/></svg>',
  discord:'<svg viewBox="0 0 40 40"><rect width="40" height="40" rx="9" fill="#5865f2"/><path d="M10 13c7-4 13-4 20 0l3 15c-5 4-8 4-11 2l-2-3-2 3c-4 2-7 1-11-2z" fill="#fff"/><circle cx="16" cy="21" r="2" fill="#5865f2"/><circle cx="25" cy="21" r="2" fill="#5865f2"/></svg>'
 };
