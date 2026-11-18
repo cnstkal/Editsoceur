@@ -3,14 +3,14 @@ function cat(bg,fg){return 'data:image/svg+xml;utf8,'+encodeURIComponent('<svg x
 function fish(){return 'data:image/svg+xml;utf8,'+encodeURIComponent('<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><rect width="100" height="100" fill="#8cc4e8"/><ellipse cx="50" cy="58" rx="36" ry="34" fill="#7fd6d0"/><circle cx="38" cy="50" r="6" fill="#222"/><circle cx="62" cy="50" r="6" fill="#222"/><ellipse cx="50" cy="68" rx="14" ry="7" fill="#e88aa0"/></svg>')}
 var A1=cat('#3a3128','#d9b48a'),A2=fish();
 function defaults(){return{
- title:'게시',name:'성체인 고양이',handle:'nangmanmeowmeow',text:'발목까지요!',
+ title:'게시',name:'예시 사용자',handle:'example_user',text:'예시 게시글입니다!',
  time:'오전 10:52',date:'2026. 11. 12.',views:'1085',reply:'1',rt:'10',like:'11',
  avatar:A1,btn:'쪽지',showBtn:true,lockT:false,
- showQuote:true,qname:'지몬냥이',qhandle:'NippleMon',qtime:'3일',qtext:'엉.주사맞을때어디까지내려야해요?',qavatar:A2,
+ showQuote:true,qname:'예시 친구',qhandle:'example_friend',qtime:'3일',qtext:'인용한 게시글 예시입니다.',qavatar:A2,
  showNotice:false,notice:'',
  replies:[
-  {name:'지몬냥이',handle:'NippleMon',time:'3일',text:'감사합니다 덕분에 구속됐습니다',reply:'1',rt:'',like:'5',view:'90',avatar:A2,icon:'x',lock:false,chain:false},
-  {name:'성체인 고양이',handle:'nangmanmeowmeow',time:'3일',text:'간호사님이 화끈하다고 좋아하시죠?',reply:'',rt:'',like:'2',view:'73',avatar:'',icon:'hidden',lock:false,chain:true}
+  {name:'예시 친구',handle:'example_friend',time:'3일',text:'답글 예시입니다',reply:'1',rt:'',like:'5',view:'90',avatar:A2,icon:'x',lock:false,chain:false},
+  {name:'예시 사용자',handle:'example_user',time:'3일',text:'두 번째 답글 예시입니다',reply:'',rt:'',like:'2',view:'73',avatar:'',icon:'hidden',lock:false,chain:true}
  ]};}
 var S=defaults();
 var I={

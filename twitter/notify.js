@@ -9,12 +9,12 @@ function Mn(n,h,time,to,text,r,rt,l,v,lock,av){return{t:'mention',name:n,handle:
 function defaults(){return{
  avatar:ME,title:'알림',tab1:'모두',tab2:'멘션',sel:'1',fab:true,
  items:[
-  R('like','하루',1,'재게시물','48분','이 장면 보니까 갑자기 생각나서 웃김..',true,thumb('#3a5a8a','#1f2f4d')),
-  R('rt','몽실',1,'재게시물','1시',"",true,thumb('#8a9a6a','#4d5a3a')),
-  R('like','몽실',3,'재게시물','1시','',true,thumb('#8a9a6a','#4d5a3a')),
-  R('like','별이',6,'게시물','2시','오늘도 출근 완료',true,thumb('#5a4a3a','#2a2018')),
-  R('like','별이',5,'게시물','2시','점심 뭐 먹을지 추천받음',true,thumb('#444','#111')),
-  Mn('하루','haru_22','18분','minji_0','내일 비 온대 우산 챙겨','1','','','10',true,P1)
+  R('like','예시 친구1',1,'재게시물','48분','예시 알림 텍스트입니다',true,thumb('#3a5a8a','#1f2f4d')),
+  R('rt','예시 친구2',1,'재게시물','1시',"",true,thumb('#8a9a6a','#4d5a3a')),
+  R('like','예시 친구2',3,'재게시물','1시','',true,thumb('#8a9a6a','#4d5a3a')),
+  R('like','예시 친구3',6,'게시물','2시','예시 알림 텍스트입니다',true,thumb('#5a4a3a','#2a2018')),
+  R('like','예시 친구3',5,'게시물','2시','예시 알림 텍스트입니다',true,thumb('#444','#111')),
+  Mn('예시 친구1','example_2','18분','example_1','예시 알림 텍스트입니다','1','','','10',true,P1)
  ]};}
 var S=defaults();
 var I={

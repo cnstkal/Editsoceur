@@ -7,10 +7,14 @@
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.css">
 <link rel="stylesheet" href="../instagram/story.css?v=3">
 <link rel="stylesheet" href="detail.css?v=1">
-<style data-hide-status>:is(span,b)[id$="Time"],#eTm,.isl,.ys,.ysig,.ywf,.ybt,.dsg,.dwf,#df .dbt,.msg,.mwf,.mbt,.ewf,.ebt,.nwf,.nbt,.sb:has([id$="Time"])>svg:not(.lc),.sb:has([id$="Time"])+.bt,.sb:has([id$="Time"]) .bt{display:none!important}</style><style id="ed-font">html,body,body *{font-family:Pretendard,-apple-system,"Apple SD Gothic Neo","Noto Sans KR",sans-serif!important;letter-spacing:-.02em!important}</style></head>
-<body>
+<style data-hide-status>:is(span,b)[id$="Time"],#eTm,.isl,.ys,.ysig,.ywf,.ybt,.dsg,.dwf,#df .dbt,.msg,.mwf,.mbt,.ewf,.ebt,.nwf,.nbt,.sb:has([id$="Time"])>svg:not(.lc),.sb:has([id$="Time"])+.bt,.sb:has([id$="Time"]) .bt{display:none!important}</style><style id="ed-font">html,body,body *{font-family:Pretendard,-apple-system,"Apple SD Gothic Neo","Noto Sans KR",sans-serif!important;letter-spacing:-.02em!important}</style><link rel="stylesheet" href="studio.css?v=1">
+</head>
+<body class="studio"><div class="ps-wrap">
+<header class="ps-top"><a class="ps-back" href="index.html">‹ 뒤로</a><button class="ps-pvbtn" id="pvBtn" type="button">미리보기 모드</button></header>
+<div class="ps-grid">
+<section class="ps-card ps-main"><div class="ps-lbl">Live Preview</div><h2>영상 세부</h2><p class="ps-sub">실제 앱 화면 비율로 확인하고, 오른쪽에서 바로 수정해요</p>
+<div class="ps-stage"><div class="ps-frame">
 <div class="phone">
-<div class="navbar" data-html2canvas-ignore><a href="index.html">‹ 선택화면</a></div>
 <div id="df">
 <div class="dtop"></div>
 <svg class="dsg" width="19" height="12" viewBox="0 0 19 12"><rect x="0" y="8" width="3.600" height="4" rx="1"/><rect x="5" y="5.500" width="3.600" height="6.500" rx="1"/><rect x="10" y="2.500" width="3.600" height="9.500" rx="1"/><rect x="15" y="0" width="3.600" height="12" rx="1"/></svg>
@@ -35,7 +39,11 @@
 </div>
 <div class="dl" id="dL"></div>
 </div>
-<section class="editor">
+
+</div>
+
+</div></div></section>
+<section class="ps-card ps-side"><div class="ps-lbl">Edit Panel</div><h2>영상 세부 내용 수정</h2><div class="ps-edwrap"><section class="editor">
 <h2>영상 세부 편집</h2>
 <h2 style="margin-top:14px">재생 중인 영상</h2>
 <div class="ec">
@@ -58,10 +66,10 @@
 <div class="row"><label>길이<input data-k="u.dur"></label><label>시청 진행률 %<input data-k="u.pg"></label></div>
 <div class="row"><label class="file">썸네일<input type="file" accept="image/*" data-k="u.th"></label><label class="file">채널 사진<input type="file" accept="image/*" data-k="u.av"></label></div>
 </div>
-</section>
-</div>
-<div class="bar"><button id="savePng" class="primary">PNG로 저장</button><button id="reset" class="secondary">초기화</button></div>
+</section></div><div class="ps-acts"><button id="savePng" class="primary">PNG로 저장</button><button id="reset" class="secondary">초기화</button></div></section>
+</div></div>
 <script src="https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js"></script>
 <script src="detail.js?v=1"></script>
+<script>(function(){var b=document.getElementById("pvBtn");b.onclick=function(){var on=document.body.classList.toggle("pvmode");this.textContent=on?"편집 모드":"미리보기 모드"}})();</script>
 </body>
 </html>

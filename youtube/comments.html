@@ -7,10 +7,14 @@
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.css">
 <link rel="stylesheet" href="../instagram/story.css?v=3">
 <link rel="stylesheet" href="comments.css?v=1">
-<style data-hide-status>:is(span,b)[id$="Time"],#eTm,.isl,.ys,.ysig,.ywf,.ybt,.dsg,.dwf,#df .dbt,.msg,.mwf,.mbt,.ewf,.ebt,.nwf,.nbt,.sb:has([id$="Time"])>svg:not(.lc),.sb:has([id$="Time"])+.bt,.sb:has([id$="Time"]) .bt{display:none!important}</style><style id="ed-font">html,body,body *{font-family:Pretendard,-apple-system,"Apple SD Gothic Neo","Noto Sans KR",sans-serif!important;letter-spacing:-.02em!important}</style></head>
-<body>
+<style data-hide-status>:is(span,b)[id$="Time"],#eTm,.isl,.ys,.ysig,.ywf,.ybt,.dsg,.dwf,#df .dbt,.msg,.mwf,.mbt,.ewf,.ebt,.nwf,.nbt,.sb:has([id$="Time"])>svg:not(.lc),.sb:has([id$="Time"])+.bt,.sb:has([id$="Time"]) .bt{display:none!important}</style><style id="ed-font">html,body,body *{font-family:Pretendard,-apple-system,"Apple SD Gothic Neo","Noto Sans KR",sans-serif!important;letter-spacing:-.02em!important}</style><link rel="stylesheet" href="studio.css?v=1">
+</head>
+<body class="studio"><div class="ps-wrap">
+<header class="ps-top"><a class="ps-back" href="index.html">‹ 뒤로</a><button class="ps-pvbtn" id="pvBtn" type="button">미리보기 모드</button></header>
+<div class="ps-grid">
+<section class="ps-card ps-main"><div class="ps-lbl">Live Preview</div><h2>유튜브 댓글</h2><p class="ps-sub">실제 앱 화면 비율로 확인하고, 오른쪽에서 바로 수정해요</p>
+<div class="ps-stage"><div class="ps-frame">
 <div class="phone">
-<div class="navbar" data-html2canvas-ignore><a href="index.html">‹ 선택화면</a></div>
 <div id="mf">
 <div class="mtop"></div>
 <span class="mtm" id="mTime"></span>
@@ -32,7 +36,11 @@
 <div class="mhb"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#0f0f0f" stroke-width="1.900" stroke-linejoin="round"><path d="M12 21.500C5 16.500 2.500 13 2.500 9.200A5 5 0 0 1 12 6.800a5 5 0 0 1 9.500 2.400c0 3.800-2.500 7.300-9.500 12.300z"/><circle cx="12" cy="11.500" r="4.600"/><text x="12" y="14" text-anchor="middle" font-family="Pretendard,sans-serif" font-weight="800" font-size="7" fill="#0f0f0f" stroke="none">$</text></svg></div>
 </div>
 </div>
-<section class="editor">
+
+</div>
+
+</div></div></section>
+<section class="ps-card ps-side"><div class="ps-lbl">Edit Panel</div><h2>유튜브 댓글 내용 수정</h2><div class="ps-edwrap"><section class="editor">
 <h2>댓글 편집</h2>
 <div class="row"><label>시간<input data-k="time"></label><label>배터리 %<input data-k="bat"></label></div>
 <div class="row" style="align-items:center"><label class="ek"><input type="checkbox" data-k="chg"> 충전 중</label><label class="file">영상 화면<input type="file" accept="image/*" data-k="th"></label></div>
@@ -42,10 +50,10 @@
 <h2 style="margin-top:14px">댓글</h2>
 <div id="mlist"></div>
 <button class="ghost" id="addC" type="button">+ 댓글 추가</button>
-</section>
-</div>
-<div class="bar"><button id="savePng" class="primary">PNG로 저장</button><button id="reset" class="secondary">초기화</button></div>
+</section></div><div class="ps-acts"><button id="savePng" class="primary">PNG로 저장</button><button id="reset" class="secondary">초기화</button></div></section>
+</div></div>
 <script src="https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js"></script>
 <script src="comments.js?v=1"></script>
+<script>(function(){var b=document.getElementById("pvBtn");b.onclick=function(){var on=document.body.classList.toggle("pvmode");this.textContent=on?"편집 모드":"미리보기 모드"}})();</script>
 </body>
 </html>

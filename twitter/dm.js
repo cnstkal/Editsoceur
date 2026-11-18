@@ -2,19 +2,19 @@
 var FACE='data:image/svg+xml;utf8,'+encodeURIComponent('<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><rect width="100" height="100" fill="#6b7a99"/><circle cx="50" cy="44" r="20" fill="#e8c3a0"/><path d="M28 42Q30 18 52 20Q74 20 72 44Q64 30 50 32Q36 30 28 42Z" fill="#2a2420"/><path d="M14 100Q18 70 50 68Q82 70 86 100Z" fill="#c9a98c"/></svg>');
 function M(t,x,u){return{t:t,x:x,u:!!u}}
 function defaults(){return{
- name:'렙',avatar:FACE,showCall:true,showRead:true,readText:'읽음',placeholder:'쪽지',showInput:true,
+ name:'예시 상대',avatar:FACE,showCall:true,showRead:true,readText:'읽음',placeholder:'쪽지',showInput:true,
  msgs:[
-  M('them','아까 말한 거 생각해봤는데 그냥 내일 가는 게 나을 듯'),
-  M('me','오 나도 그게 편해ㅋㅋ'),
-  M('them','근데 비 온다는데 우산 챙겨야 하나 좀 귀찮다 그냥 안 챙길까 고민중'),
-  M('me','챙겨.'),
-  M('them','헉...'),
+  M('them','예시 메시지입니다'),
+  M('me','예시 답장입니다'),
+  M('them','예시 메시지를 길게 적으면 말풍선이 이렇게 늘어나요'),
+  M('me','네, 예시 답장'),
+  M('them','예시'),
   M('time','10월 26일 (월) 오후 10:19'),
-  M('them','오늘 저녁 뭐 먹었어'),
-  M('them','나는 라면 먹었는데 또 배고픔'),
-  M('them','@someone',true),
-  M('me','당연히 먹어야지ㅋㅋㅋ'),
-  M('me','냉장고 뒤져봐')
+  M('them','오늘 뭐 했어요?'),
+  M('them','저는 산책 다녀왔어요'),
+  M('them','@example',true),
+  M('me','좋아요!'),
+  M('me','좋은 하루 보내세요')
  ]};}
 var S=defaults();
 var I={
