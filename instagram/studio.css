@@ -197,3 +197,27 @@ body.studio{background:#fff}
  .ps-acts{position:sticky!important;bottom:0!important;display:flex!important;gap:10px!important;padding:12px 0 calc(12px + env(safe-area-inset-bottom))!important;margin:12px 0 0!important;background:#fff!important;border-top:1px solid #e8e9ec!important;}
  .ps-acts button{height:54px!important;font-size:16px!important;}
 }
+
+
+/* Profile editor spacing, subsection hierarchy, and unclipped fields */
+.ps-edwrap .editor .pf-card h3{margin:24px 0 16px!important;padding-top:4px!important;}
+.ps-edwrap .editor .pf-card h3:first-child{margin-top:0!important;}
+.ps-edwrap .editor .pf-card+.pf-card{margin-top:18px!important;}
+.ps-edwrap .editor .pf-card{padding-top:18px!important;padding-bottom:18px!important;}
+.ps-edwrap .editor .pf-card .row{align-items:stretch!important;}
+.ps-edwrap .editor .pf-card .row label{overflow:visible!important;}
+.ps-edwrap .editor .pf-card input:not([type=checkbox]):not([type=file]),.ps-edwrap .editor .pf-card textarea{max-width:100%!important;overflow:visible!important;text-overflow:clip!important;}
+.ps-edwrap .editor .pf-card input[type=file]{max-width:100%;box-sizing:border-box;}
+@media(max-width:1099px){
+ .ps-edwrap .editor .pf-card h3{font-size:17px!important;margin:26px 0 18px!important;padding-top:8px!important;}
+ .ps-edwrap .editor .pf-card h3:first-child{margin-top:0!important;}
+ .ps-edwrap .editor .pf-card+.pf-card{margin-top:22px!important;}
+ .ps-edwrap .editor .pf-card .row{display:grid!important;grid-template-columns:repeat(2,minmax(0,1fr))!important;gap:14px 10px!important;margin-bottom:16px!important;}
+ .ps-edwrap .editor .pf-card .row label{min-width:0!important;width:100%!important;}
+ .ps-edwrap .editor .pf-card .row label input{width:100%!important;min-width:0!important;max-width:100%!important;box-sizing:border-box!important;font-size:16px!important;padding:0 10px!important;}
+ .ps-edwrap .editor .pf-card .row label:last-child:nth-child(odd){grid-column:1/-1;}
+ .ps-edwrap .editor .pf-card .row label:nth-child(3){grid-column:1/-1;}
+ .ps-edwrap .editor .pf-card textarea{width:100%!important;box-sizing:border-box!important;}
+ .ps-edwrap .editor .pf-card .trow{margin:16px 0 12px!important;padding:14px 0!important;}
+ .ps-edwrap .editor .pf-friends label{padding:12px!important;}
+}
