@@ -6,10 +6,14 @@
 <title>Instagram 댓글</title>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.css">
 <link rel="stylesheet" href="comments.css?v=3">
-<style data-hide-status>:is(span,b)[id$="Time"],#eTm,.isl,.ys,.ysig,.ywf,.ybt,.dsg,.dwf,#df .dbt,.msg,.mwf,.mbt,.ewf,.ebt,.nwf,.nbt,.sb:has([id$="Time"])>svg:not(.lc),.sb:has([id$="Time"])+.bt,.sb:has([id$="Time"]) .bt{display:none!important}</style><style id="ed-font">html,body,body *{font-family:Pretendard,-apple-system,"Apple SD Gothic Neo","Noto Sans KR",sans-serif!important;letter-spacing:-.02em!important}</style></head>
-<body>
+<style data-hide-status>:is(span,b)[id$="Time"],#eTm,.isl,.ys,.ysig,.ywf,.ybt,.dsg,.dwf,#df .dbt,.msg,.mwf,.mbt,.ewf,.ebt,.nwf,.nbt,.sb:has([id$="Time"])>svg:not(.lc),.sb:has([id$="Time"])+.bt,.sb:has([id$="Time"]) .bt{display:none!important}</style><style id="ed-font">html,body,body *{font-family:Pretendard,-apple-system,"Apple SD Gothic Neo","Noto Sans KR",sans-serif!important;letter-spacing:-.02em!important}</style><link rel="stylesheet" href="studio.css?v=1">
+</head>
+<body class="studio"><div class="wrap">
+<header class="top"><div class="brand"><a class="back2" href="../index.html">‹ 선택화면</a><h1>EDITSOCEUR</h1><p>Social Post Studio / Instagram</p></div></header>
+<div class="grid">
+<section class="card main"><div class="lbl">Live Preview</div><h2>인스타그램 댓글</h2><p class="sub">실제 앱 화면 비율로 확인하고, 오른쪽에서 바로 수정해요</p>
+<div class="stage"><div class="frame">
 <div class="wrap">
-<div class="navbar" data-html2canvas-ignore><a href="index.html">‹ 선택화면</a></div>
 <div id="cap" class="dim"><div class="sheet">
   <div class="top"><i class="grab"></i><strong>댓글</strong>
     <span class="send"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#000" stroke-width="1.9" stroke-linejoin="round"><path d="M22 3 2.500 10.300l7.300 3 3 7.200z"/><path d="m9.800 13.300 12.200-10.300"/></svg></span></div>
@@ -21,15 +25,18 @@
       <svg width="30" height="30" viewBox="0 0 24 24" fill="none"><rect x="2.500" y="4.500" width="19" height="15" rx="3.500" stroke="#000" stroke-width="1.8"/><text x="12" y="15.500" font-size="8.500" font-weight="800" text-anchor="middle" fill="#000" font-family="Arial">GIF</text></svg>
     </div></div>
 </div></div>
-<section class="editor">
+
+</div>
+
+</div></div></section>
+<section class="card side"><div class="lbl">Edit Panel</div><h2>댓글 내용 수정</h2><div class="editor-wrap"><section class="editor">
   <h2>댓글 편집</h2>
   <label>입력창 대상 아이디<input id="iTarget"></label>
   <label class="file">내 프로필 사진<input id="iMe" type="file" accept="image/*"></label>
   <div id="eList"></div>
   <button class="ghost" id="add" type="button">+ 댓글 추가</button>
-</section>
-</div>
-<div class="bar"><button id="savePng" class="primary">PNG로 저장</button><button id="reset" class="secondary">초기화</button></div>
+</section></div><div class="acts2"><button id="savePng" class="primary">PNG로 저장</button><button id="reset" class="secondary">초기화</button></div></section>
+</div></div>
 <script src="https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js"></script>
 <script src="comments.js?v=3"></script>
 </body>

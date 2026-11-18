@@ -60,3 +60,5 @@ body.pvmode .grid{grid-template-columns:1fr}
 .tip{font-size:13px;padding:12px 14px}
 .acts2{position:sticky;bottom:0;background:#fff;padding:12px 0;margin-top:16px}
 }
+body.studio .top{margin-bottom:36px!important;display:flex!important}
+body.studio .wrap{box-sizing:border-box}

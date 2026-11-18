@@ -6,10 +6,14 @@
 <title>Instagram 스토리</title>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.css">
 <link rel="stylesheet" href="story.css?v=3">
-<style data-hide-status>:is(span,b)[id$="Time"],#eTm,.isl,.ys,.ysig,.ywf,.ybt,.dsg,.dwf,#df .dbt,.msg,.mwf,.mbt,.ewf,.ebt,.nwf,.nbt,.sb:has([id$="Time"])>svg:not(.lc),.sb:has([id$="Time"])+.bt,.sb:has([id$="Time"]) .bt{display:none!important}</style><style id="ed-font">html,body,body *{font-family:Pretendard,-apple-system,"Apple SD Gothic Neo","Noto Sans KR",sans-serif!important;letter-spacing:-.02em!important}</style></head>
-<body>
+<style data-hide-status>:is(span,b)[id$="Time"],#eTm,.isl,.ys,.ysig,.ywf,.ybt,.dsg,.dwf,#df .dbt,.msg,.mwf,.mbt,.ewf,.ebt,.nwf,.nbt,.sb:has([id$="Time"])>svg:not(.lc),.sb:has([id$="Time"])+.bt,.sb:has([id$="Time"]) .bt{display:none!important}</style><style id="ed-font">html,body,body *{font-family:Pretendard,-apple-system,"Apple SD Gothic Neo","Noto Sans KR",sans-serif!important;letter-spacing:-.02em!important}</style><link rel="stylesheet" href="studio.css?v=1">
+</head>
+<body class="studio"><div class="wrap">
+<header class="top"><div class="brand"><a class="back2" href="../index.html">‹ 선택화면</a><h1>EDITSOCEUR</h1><p>Social Post Studio / Instagram</p></div></header>
+<div class="grid">
+<section class="card main"><div class="lbl">Live Preview</div><h2>인스타그램 스토리</h2><p class="sub">실제 앱 화면 비율로 확인하고, 오른쪽에서 바로 수정해요</p>
+<div class="stage"><div class="frame">
 <div class="phone">
-<div class="navbar" data-html2canvas-ignore><a href="index.html">‹ 선택화면</a></div>
 <div id="story">
   <div class="frame" id="frame">
     <div class="empty" id="empty"></div><img class="photo" id="photo" alt="" style="display:none">
@@ -29,7 +33,11 @@
     <svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.900" stroke-linejoin="round"><path d="M22 3 2.500 10.300l7.300 3 3 7.200z"/><path d="m9.800 13.300 12.200-10.300"/></svg>
   </div>
 </div>
-<section class="editor">
+
+</div>
+
+</div></div></section>
+<section class="card side"><div class="lbl">Edit Panel</div><h2>스토리 내용 수정</h2><div class="editor-wrap"><section class="editor">
   <h2>스토리 편집</h2>
   <label>사용자 아이디<input id="iUser"></label>
   <label>업로드 시간<input id="iTime"></label>
@@ -41,9 +49,8 @@
   <button class="ghost" id="posReset" type="button">사진 위치·크기 초기화</button>
   <p class="hint">사진 위에서 두 손가락을 벌리거나 모으고 비틀어 확대·축소 및 자유 회전할 수 있어요</p>
   <div class="row" style="margin-top:12px"><label class="file">프로필 사진<input id="iAv" type="file" accept="image/*"></label><label class="file">스토리 사진<input id="iPhoto" type="file" accept="image/*"></label></div>
-</section>
-</div>
-<div class="bar"><button id="savePng" class="primary">PNG로 저장</button><button id="reset" class="secondary">초기화</button></div>
+</section></div><div class="acts2"><button id="savePng" class="primary">PNG로 저장</button><button id="reset" class="secondary">초기화</button></div></section>
+</div></div>
 <script src="https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js"></script>
 <script src="story.js?v=4"></script>
 </body>
