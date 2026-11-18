@@ -59,3 +59,4 @@ body.pvmode .ps-main{padding:0;border-radius:0;box-shadow:none}
 body.pvmode .ps-main .ps-lbl,body.pvmode .ps-main h2,body.pvmode .ps-main .ps-sub{display:none}
 body.pvmode .ps-stage{padding-top:0}
 body.pvmode{background:#fff}
+.ps-frame .divd{display:none!important}
