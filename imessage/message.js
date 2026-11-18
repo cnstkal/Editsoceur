@@ -20,12 +20,12 @@ $('mPh').textContent=S.mode==='ios'?'iMessage':'문자 메시지 · RCS';
 var h='',n=S.m.length;
 S.m.forEach(function(x,i){var nx=S.m[i+1],t=!nx||+nx.s!==+x.s||nx.l;
 if(x.l){var mm=String(x.l).match(/^(.+\))\s+(.+)$/);h+='<div class="tm">'+(mm?'<b>'+esc(mm[1])+'</b> '+esc(mm[2]):esc(x.l))+'</div>'}
-h+='<div class="b '+(+x.s?'r':'l')+(t?' t':'')+'">'+lk(x.x)+'</div>'});
+h+='<div class="b '+(+x.s?'r':'l')+(t?' t':'')+'">'+(x.im?'<img class="ci" src="'+x.im+'" alt="">':'')+(x.x?lk(x.x):'')+'</div>'});
 var last=S.m[n-1];if(last&&+last.s&&S.read)h+='<div class="rd">'+esc(S.read)+'</div>';
 $('mL').innerHTML=h}
 function list(){var h='';S.m.forEach(function(x,i){
 h+='<div class="mc" data-i="'+i+'"><div class="row"><label>보낸 사람<select data-f="s"><option value="0"'+(+x.s?'':' selected')+'>상대 (받음)</option><option value="1"'+(+x.s?' selected':'')+'>나 (보냄)</option></select></label><label>시간 라벨(위에 표시)<input data-f="l" value="'+esc(x.l)+'"></label></div>'+
-'<label>내용<textarea data-f="x" rows="3">'+esc(x.x)+'</textarea></label>'+
+'<label>내용<textarea data-f="x" rows="3">'+esc(x.x)+'</textarea></label>'+'<label>사진 첨부<input type="file" accept="image/*" data-f="im"></label>'+(x.im?'<img class="ci" src="'+x.im+'" alt="" style="max-width:120px;border-radius:10px">':'')+
 '<div class="row"><button type="button" class="mb" data-a="u">↑</button><button type="button" class="mb" data-a="d">↓</button><button type="button" class="mb" data-a="x">✕ 삭제</button></div></div>'});
 $('mlist').innerHTML=h}
 function set(){$('iRatio').value=S.ratio||'phone';$('iNm').value=S.nm;$('iCnt').value=S.cnt;$('iMode').value=S.mode;$('iRead').value=S.read}
@@ -52,3 +52,5 @@ document.addEventListener('gesturestart',function(e){e.preventDefault()},{passiv
 document.addEventListener('dblclick',function(e){e.preventDefault()},{passive:false});
 load(false);
 })();
+
+document.getElementById('mlist').addEventListener('change',function(e){var t=e.target;if(t.dataset.f!=='im'||!t.files[0])return;var i=+t.closest('.mc').dataset.i;var r=new FileReader();r.onload=function(){S.m[i].im=r.result;persist();list();render()};r.readAsDataURL(t.files[0])});
