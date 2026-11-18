@@ -167,3 +167,21 @@ body.pvmode{background:#fff}
   .ps-frame>*{margin-left:auto!important;margin-right:auto!important;max-width:100%;min-width:0;}
   .ps-frame .phone{width:min(100%,430px)!important;margin-inline:auto!important;}
 }
+
+
+/* Selected editor readability refresh: section separation, responsive fields, clipping prevention */
+.ps-edwrap .editor h2,.ps-edwrap .editor h3,.ps-edwrap .editor .ps-pn>h2,.ps-edwrap .editor .ps-pn>h3{margin:24px 0 16px!important;padding-top:6px!important;line-height:1.35!important;}
+.ps-edwrap .editor h2:first-child,.ps-edwrap .editor h3:first-child,.ps-edwrap .editor .ps-pn>h2:first-child,.ps-edwrap .editor .ps-pn>h3:first-child{margin-top:0!important;}
+.ps-edwrap .editor .row,.ps-edwrap .editor .grid,.ps-edwrap .editor .fields{gap:12px!important;margin:0 0 16px!important;}
+.ps-edwrap .editor .row label,.ps-edwrap .editor .grid label,.ps-edwrap .editor .fields label{min-width:0!important;overflow:visible!important;}
+.ps-edwrap .editor label>input:not([type=checkbox]):not([type=file]):not([type=range]),.ps-edwrap .editor label>textarea,.ps-edwrap .editor select{min-width:0!important;max-width:100%!important;box-sizing:border-box!important;overflow:visible!important;text-overflow:clip!important;}
+.ps-edwrap .editor input[type=file]{min-width:0!important;max-width:100%!important;box-sizing:border-box!important;}
+.ps-edwrap .editor .card,.ps-edwrap .editor .box,.ps-edwrap .editor .group,.ps-edwrap .editor .section{padding:14px!important;margin:14px 0 18px!important;border:1px solid #e6e8ed!important;border-radius:16px!important;box-sizing:border-box!important;}
+@media(max-width:1099px){
+ .ps-edwrap .editor h2,.ps-edwrap .editor h3,.ps-edwrap .editor .ps-pn>h2,.ps-edwrap .editor .ps-pn>h3{font-size:17px!important;margin:26px 0 18px!important;padding-top:8px!important;}
+ .ps-edwrap .editor .row{display:grid!important;grid-template-columns:repeat(2,minmax(0,1fr))!important;gap:14px 10px!important;margin-bottom:16px!important;}
+ .ps-edwrap .editor .row>*{min-width:0!important;max-width:100%!important;}
+ .ps-edwrap .editor .row>*:nth-child(3){grid-column:1/-1;}
+ .ps-edwrap .editor .row label{display:flex!important;flex-direction:column!important;align-items:stretch!important;gap:7px!important;}
+ .ps-edwrap .editor .row input:not([type=checkbox]),.ps-edwrap .editor .row textarea,.ps-edwrap .editor .row select{width:100%!important;min-width:0!important;max-width:100%!important;box-sizing:border-box!important;}
+}
