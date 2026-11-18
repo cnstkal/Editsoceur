@@ -221,3 +221,43 @@ body.studio{background:#fff}
  .ps-edwrap .editor .pf-card .trow{margin:16px 0 12px!important;padding:14px 0!important;}
  .ps-edwrap .editor .pf-friends label{padding:12px!important;}
 }
+
+
+/* Audit-wide polish for every Instagram editor panel: hierarchy, spacing, readable inputs */
+.ps-edwrap .editor .ps-pn>h3,
+.ps-edwrap .editor .ps-pn>h2,
+.ps-edwrap .editor .ps-pn>.section-title,
+.ps-edwrap .editor .ecard h3{margin:22px 0 14px!important;padding-top:6px!important;}
+.ps-edwrap .editor .ps-pn>h3:first-child,
+.ps-edwrap .editor .ps-pn>h2:first-child,
+.ps-edwrap .editor .ps-pn>.section-title:first-child{margin-top:0!important;}
+.ps-edwrap .editor .ps-pn>label{margin:0 0 16px!important;gap:12px!important;}
+.ps-edwrap .editor .ps-pn>.row{margin:0 0 16px!important;gap:12px!important;}
+.ps-edwrap .editor .ps-pn .musicbox,.ps-edwrap .editor .ps-pn .ps-tg{margin:16px 0!important;padding:12px 0!important;}
+.ps-edwrap .editor .ps-pn label>input:not([type=checkbox]):not([type=file]):not([type=range]),
+.ps-edwrap .editor .ps-pn label>textarea{min-width:0!important;max-width:100%!important;box-sizing:border-box!important;overflow:visible!important;text-overflow:clip!important;}
+.ps-edwrap .editor .ps-pn label>input[type=file]{flex:1 1 60%!important;width:60%!important;min-width:0!important;max-width:100%!important;box-sizing:border-box!important;}
+.ps-edwrap .editor .ps-pn .row label{min-width:0!important;overflow:visible!important;}
+.ps-edwrap .editor #eList .ecard{padding:14px!important;margin:16px 0!important;border:1px solid #e6e8ed!important;border-radius:16px!important;background:#fff!important;}
+.ps-edwrap .editor #eList .ecard h3{margin:0 0 16px!important;padding:0!important;display:flex;align-items:center;justify-content:space-between;font-size:16px!important;}
+.ps-edwrap .editor #eList .ecard h3 button{padding:7px 12px;border-radius:10px;background:#fff1f3;}
+.ps-edwrap .editor #eList .ecard .row{display:grid!important;grid-template-columns:repeat(2,minmax(0,1fr))!important;gap:14px 10px!important;margin-bottom:14px!important;}
+.ps-edwrap .editor #eList .ecard .row label{display:flex!important;flex-direction:column!important;align-items:stretch!important;justify-content:flex-start!important;gap:6px!important;min-width:0!important;margin:0!important;}
+.ps-edwrap .editor #eList .ecard .row input{width:100%!important;min-width:0!important;flex:none!important;box-sizing:border-box!important;}
+.ps-edwrap .editor #eList .ecard>label{display:flex!important;flex-direction:column!important;align-items:stretch!important;gap:7px!important;margin:0 0 14px!important;}
+.ps-edwrap .editor #eList .ecard textarea{width:100%!important;box-sizing:border-box!important;}
+.ps-edwrap .editor #eList .ecard .chk{gap:18px!important;margin:12px 0!important;flex-wrap:wrap;}
+.ps-edwrap .editor #mlist .mi{padding:14px!important;margin:12px 0!important;border:1px solid #e6e8ed!important;border-radius:16px!important;background:#fff!important;display:flex!important;align-items:center!important;flex-wrap:wrap!important;gap:8px!important;}
+.ps-edwrap .editor #mlist .mi select,.ps-edwrap .editor #mlist .mi input.mt{min-width:0!important;max-width:100%!important;box-sizing:border-box!important;}
+.ps-edwrap .editor #mlist .mi input.mt{flex:1 1 100%!important;width:100%!important;}
+.ps-edwrap .editor #mlist .mi label.fl{display:flex!important;flex-direction:column!important;align-items:stretch!important;gap:5px!important;flex:1 1 100%!important;min-width:0!important;margin:0!important;}
+.ps-edwrap .editor #mlist .mi label.fl input[type=file]{width:100%!important;min-width:0!important;box-sizing:border-box!important;}
+@media(max-width:1099px){
+ .ps-edwrap .editor .ps-pn>h3,.ps-edwrap .editor .ps-pn>h2,.ps-edwrap .editor .ps-pn>.section-title,.ps-edwrap .editor #eList .ecard h3{font-size:17px!important;margin:26px 0 18px!important;padding-top:8px!important;}
+ .ps-edwrap .editor .ps-pn>label{margin-bottom:18px!important;gap:10px!important;}
+ .ps-edwrap .editor .ps-pn>.row{display:grid!important;grid-template-columns:repeat(2,minmax(0,1fr))!important;gap:16px 10px!important;margin-bottom:18px!important;}
+ .ps-edwrap .editor .ps-pn>.row label{min-width:0!important;width:100%!important;}
+ .ps-edwrap .editor .ps-pn>.row label input:not([type=file]){width:100%!important;min-width:0!important;box-sizing:border-box!important;}
+ .ps-edwrap .editor #eList .ecard .row{grid-template-columns:repeat(2,minmax(0,1fr))!important;}
+ .ps-edwrap .editor #mlist .mi{gap:8px!important;}
+}
