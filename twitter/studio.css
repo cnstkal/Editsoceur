@@ -160,3 +160,24 @@ body.studio{background:#fff}
   .ps-frame>*{margin-left:auto!important;margin-right:auto!important;max-width:100%;min-width:0;}
   .ps-frame .phone{width:min(100%,430px)!important;margin-inline:auto!important;}
 }
+
+
+/* Twitter/X editor readability pass: spacing, section hierarchy and unclipped fields */
+.ps-edwrap .editor .ps-pn>h2,.ps-edwrap .editor h2{margin:24px 0 16px!important;padding-top:6px!important;line-height:1.35!important;}
+.ps-edwrap .editor .ps-pn>h2:first-child{margin-top:0!important;}
+.ps-edwrap .editor .card,.ps-edwrap .editor .xc{padding:16px!important;margin:14px 0 18px!important;border:1px solid #e6e8ed!important;border-radius:16px!important;background:#fff!important;}
+.ps-edwrap .editor .card>label,.ps-edwrap .editor .xc>label{display:flex!important;flex-direction:column!important;align-items:stretch!important;gap:7px!important;margin:0 0 14px!important;min-width:0!important;}
+.ps-edwrap .editor .grid2,.ps-edwrap .editor .grid3,.ps-edwrap .editor .row{gap:12px!important;margin:0 0 16px!important;}
+.ps-edwrap .editor .grid2 label,.ps-edwrap .editor .grid3 label,.ps-edwrap .editor .row label{display:flex!important;flex-direction:column!important;align-items:stretch!important;gap:7px!important;min-width:0!important;margin:0!important;}
+.ps-edwrap .editor .grid2 input,.ps-edwrap .editor .grid3 input,.ps-edwrap .editor .row input,.ps-edwrap .editor .card input,.ps-edwrap .editor .xc input,.ps-edwrap .editor textarea,.ps-edwrap .editor select{width:100%!important;max-width:100%!important;min-width:0!important;flex:none!important;box-sizing:border-box!important;overflow:visible!important;text-overflow:clip!important;}
+.ps-edwrap .editor .switches{display:flex!important;flex-wrap:wrap!important;gap:12px!important;margin:16px 0!important;}
+.ps-edwrap .editor .switches label{margin:0!important;min-width:0!important;}
+.ps-edwrap .editor .xc h3{margin:0 0 16px!important;}
+.ps-edwrap .editor .xph-list{margin:12px 0!important;}
+@media(max-width:1099px){
+ .ps-edwrap .editor .ps-pn>h2,.ps-edwrap .editor h2{font-size:17px!important;margin:26px 0 18px!important;padding-top:8px!important;}
+ .ps-edwrap .editor .grid2,.ps-edwrap .editor .grid3,.ps-edwrap .editor .row{display:grid!important;grid-template-columns:repeat(2,minmax(0,1fr))!important;gap:14px 10px!important;margin-bottom:16px!important;}
+ .ps-edwrap .editor .grid3>*:nth-child(3){grid-column:1/-1;}
+ .ps-edwrap .editor .switches{gap:14px!important;}
+ .ps-edwrap .editor input[type=file]{max-width:100%!important;}
+}
