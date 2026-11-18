@@ -46,4 +46,17 @@ body.studio .editor label.sw{display:inline-block;margin:0}
 #reset{flex:1;background:#eef0f3;color:#111}
 body.pvmode .side{display:none}
 body.pvmode .grid{grid-template-columns:1fr}
-@media(max-width:1100px){.grid{grid-template-columns:1fr}.wrap{padding:24px 16px}}
+
+@media(max-width:1099px){
+.wrap{padding:16px 14px 40px}
+.grid{grid-template-columns:1fr;gap:16px}
+.card{padding:22px 18px;border-radius:20px}
+.card h2{font-size:22px}
+.brand h1{font-size:30px}
+.pvbtn{display:none}
+.stage{min-height:0;padding-top:16px}
+.frame{width:100%;height:auto;border:0;border-radius:0;overflow:visible}
+.float{display:none}
+.tip{font-size:13px;padding:12px 14px}
+.acts2{position:sticky;bottom:0;background:#fff;padding:12px 0;margin-top:16px}
+}
