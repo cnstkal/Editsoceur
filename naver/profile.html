@@ -7,7 +7,7 @@
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.css">
 <link rel="stylesheet" href="../instagram/story.css?v=3">
 <link rel="stylesheet" href="naver.css?v=2">
-<style data-hide-status>:is(span,b)[id$="Time"],#eTm,.isl,.ys,.ysig,.ywf,.ybt,.dsg,.dwf,#df .dbt,.msg,.mwf,.mbt,.ewf,.ebt,.nwf,.nbt,.sb:has([id$="Time"])>svg:not(.lc),.sb:has([id$="Time"])+.bt,.sb:has([id$="Time"]) .bt{display:none!important}</style><style id="ed-font">html,body,body *{font-family:Pretendard,-apple-system,"Apple SD Gothic Neo","Noto Sans KR",sans-serif!important;letter-spacing:-.02em!important}</style><link rel="stylesheet" href="studio.css?v=2">
+<style data-hide-status>:is(span,b)[id$="Time"],#eTm,.isl,.ys,.ysig,.ywf,.ybt,.dsg,.dwf,#df .dbt,.msg,.mwf,.mbt,.ewf,.ebt,.nwf,.nbt,.sb:has([id$="Time"])>svg:not(.lc),.sb:has([id$="Time"])+.bt,.sb:has([id$="Time"]) .bt{display:none!important}</style><style id="ed-font">html,body,body *{font-family:Pretendard,-apple-system,"Apple SD Gothic Neo","Noto Sans KR",sans-serif!important;letter-spacing:-.02em!important}</style><link rel="stylesheet" href="studio.css?v=3">
 </head>
 <body class="studio"><div class="ps-wrap">
 <header class="ps-top"><a class="ps-back" href="index.html">‹ 뒤로</a><button class="ps-pvbtn" id="pvBtn" type="button">미리보기 모드</button></header>
@@ -34,15 +34,19 @@
 
 </div></div></section>
 <section class="ps-card ps-side"><div class="ps-lbl">Edit Panel</div><h2>네이버 인물 프로필 내용 수정</h2><div class="ps-edwrap"><section class="editor">
-  <h2>인물 프로필 편집</h2>
-  <label>검색어 / 이름<input id="iQ"></label>
-  <div class="row"><label>직업 (배우, 아이돌, 가수…)<input id="iCat"></label><label>테마색<input id="iTc" type="color" style="padding:2px;height:44px"></label></div>
-  <label>탭 (쉼표로 구분)<input id="iTabs"></label>
-  <label>선택된 탭 번호(1부터)<input id="iAct" type="number" min="1"></label>
-  <label class="file">인물 사진<input id="iPh" type="file" accept="image/*"></label>
-  <label>하단 안내문구 (줄바꿈 가능)<textarea id="iFt" rows="3"></textarea></label>
-  <h2 style="margin-top:14px">정보 항목</h2><div id="el"></div>
-  <button class="ghost" id="addR" type="button">+ 항목 추가</button>
+<div class="ps-pn" data-t="기본">
+<label>검색어 / 이름<input id="iQ"></label>
+<label>탭 (쉼표로 구분)<input id="iTabs"></label>
+<label>선택된 탭 번호(1부터)<input id="iAct" type="number" min="1"></label>
+<label>하단 안내문구 (줄바꿈 가능)<textarea id="iFt" rows="3"></textarea></label>
+<div class="musicbox"><div class="trow"><span>하단바 표시</span><label class="sw"><input id="iNav" type="checkbox"><i></i></label></div></div>
+</div>
+<div class="ps-pn" data-t="프로필" hidden>
+<div class="row"><label>직업 (배우, 아이돌, 가수…)<input id="iCat"></label><label>테마색<input id="iTc" type="color" style="padding:2px;height:44px"></label></div>
+<label class="file">인물 사진<input id="iPh" type="file" accept="image/*"></label>
+<h2 style="margin-top:14px">정보 항목</h2><div id="el"></div>
+<button class="ghost" id="addR" type="button">+ 항목 추가</button>
+</div>
 </section></div><div class="ps-acts"><button id="savePng" class="primary">PNG 저장</button><button id="reset" class="secondary">초기화</button></div></section>
 </div></div>
 <script src="https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js"></script>

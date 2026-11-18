@@ -8,7 +8,7 @@
 <link rel="stylesheet" href="../instagram/story.css?v=3">
 <link rel="stylesheet" href="../webtoon/webtoon.css?v=1">
 <link rel="stylesheet" href="daangn.css?v=1">
-<style data-hide-status>:is(span,b)[id$="Time"],#eTm,.isl,.ys,.ysig,.ywf,.ybt,.dsg,.dwf,#df .dbt,.msg,.mwf,.mbt,.ewf,.ebt,.nwf,.nbt,.sb:has([id$="Time"])>svg:not(.lc),.sb:has([id$="Time"])+.bt,.sb:has([id$="Time"]) .bt{display:none!important}</style><style id="ed-font">html,body,body *{font-family:Pretendard,-apple-system,"Apple SD Gothic Neo","Noto Sans KR",sans-serif!important;letter-spacing:-.02em!important}</style><link rel="stylesheet" href="studio.css?v=2">
+<style data-hide-status>:is(span,b)[id$="Time"],#eTm,.isl,.ys,.ysig,.ywf,.ybt,.dsg,.dwf,#df .dbt,.msg,.mwf,.mbt,.ewf,.ebt,.nwf,.nbt,.sb:has([id$="Time"])>svg:not(.lc),.sb:has([id$="Time"])+.bt,.sb:has([id$="Time"]) .bt{display:none!important}</style><style id="ed-font">html,body,body *{font-family:Pretendard,-apple-system,"Apple SD Gothic Neo","Noto Sans KR",sans-serif!important;letter-spacing:-.02em!important}</style><link rel="stylesheet" href="studio.css?v=3">
 </head>
 <body class="studio"><div class="ps-wrap">
 <header class="ps-top"><a class="ps-back" href="index.html">‹ 뒤로</a><button class="ps-pvbtn" id="pvBtn" type="button">미리보기 모드</button></header>
@@ -34,13 +34,17 @@
 
 </div></div></section>
 <section class="ps-card ps-side"><div class="ps-lbl">Edit Panel</div><h2>당근 내용 수정</h2><div class="ps-edwrap"><section class="editor">
-  <h2>당근 메인 편집</h2>
-  <div class="row"><label>시간<input id="iTime"></label><label>글쓰기 버튼<input id="iWr"></label></div>
+<div class="ps-pn" data-t="기본">
+  <div class="musicbox"><div class="trow"><span>글쓰기 버튼 표시</span><label class="sw"><input id="iWrOn" type="checkbox" checked><i></i></label></div></div>
+  <input type="hidden" id="iWr"><input type="hidden" id="iTime"><input type="hidden" id="iChips"><input type="hidden" id="iAct">
+</div>
+<div class="ps-pn" data-t="상품" hidden>
   <div class="row"><label>동네<input id="iDong"></label><label>옆 동네<input id="iSub"></label></div>
-  <label>카테고리 칩 (쉼표 구분)<input id="iChips"></label>
-  <div class="row"><label>선택된 칩 번호(1부터)<input id="iAct" type="number" min="1"></label><label>채팅 알림 숫자<input id="iCh"></label></div>
+  <label>채팅 알림 숫자<input id="iCh"></label>
   <h2 style="margin-top:14px">게시글</h2><div id="el"></div>
   <button class="ghost" id="addE" type="button">+ 게시글 추가</button>
+</div>
+<script>(function(){var c=document.getElementById('iWrOn'),h=document.getElementById('iWr');function sync(){c.checked=!!h.value}setTimeout(sync,80);c.onchange=function(){h.value=c.checked?'+ 글쓰기':'';h.dispatchEvent(new Event('input',{bubbles:true}))}})();</script>
 </section></div><div class="ps-acts"><button id="savePng" class="primary">PNG 저장</button><button id="reset" class="secondary">초기화</button></div></section>
 </div></div>
 <script src="https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js"></script>
