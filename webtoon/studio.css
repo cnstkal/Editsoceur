@@ -125,3 +125,22 @@ body.pvmode{background:#fff}
   .ps-frame>*{margin-left:auto!important;margin-right:auto!important;max-width:100%;min-width:0;}
   .ps-frame .phone{width:min(100%,430px)!important;margin-inline:auto!important;}
 }
+
+
+/* Editor layout clarity refresh (selected apps): improved section rhythm and input sizing */
+.ps-edwrap .editor .ps-pn h3,.ps-edwrap .editor .ps-pn h2,.ps-edwrap .editor .section-title{margin:24px 0 16px!important;padding-top:6px!important;line-height:1.35!important;}
+.ps-edwrap .editor .ps-pn h3:first-child,.ps-edwrap .editor .ps-pn h2:first-child{margin-top:0!important;}
+.ps-edwrap .editor .ps-pn>label{margin:0 0 16px!important;gap:8px!important;min-width:0!important;}
+.ps-edwrap .editor .ps-pn .row{gap:12px!important;margin:0 0 16px!important;align-items:stretch!important;}
+.ps-edwrap .editor .ps-pn .row label{min-width:0!important;overflow:visible!important;}
+.ps-edwrap .editor .ps-pn input:not([type=checkbox]):not([type=file]):not([type=range]),.ps-edwrap .editor .ps-pn textarea,.ps-edwrap .editor .ps-pn select{min-width:0!important;max-width:100%!important;box-sizing:border-box!important;overflow:visible!important;text-overflow:clip!important;}
+.ps-edwrap .editor .ps-pn input[type=file]{min-width:0!important;max-width:100%!important;box-sizing:border-box!important;}
+.ps-edwrap .editor .ps-pn .trow,.ps-edwrap .editor .ps-pn .ps-tg{margin:14px 0!important;padding:12px 0!important;}
+@media(max-width:1099px){
+ .ps-edwrap .editor .ps-pn h3,.ps-edwrap .editor .ps-pn h2,.ps-edwrap .editor .section-title{font-size:17px!important;margin:26px 0 18px!important;padding-top:8px!important;}
+ .ps-edwrap .editor .ps-pn .row{display:grid!important;grid-template-columns:repeat(2,minmax(0,1fr))!important;gap:14px 10px!important;margin-bottom:16px!important;}
+ .ps-edwrap .editor .ps-pn .row>*{min-width:0!important;max-width:100%!important;}
+ .ps-edwrap .editor .ps-pn .row>*:nth-child(3){grid-column:1/-1;}
+ .ps-edwrap .editor .ps-pn .row label{display:flex!important;flex-direction:column!important;align-items:stretch!important;gap:7px!important;}
+ .ps-edwrap .editor .ps-pn .row input:not([type=checkbox]),.ps-edwrap .editor .ps-pn .row textarea,.ps-edwrap .editor .ps-pn .row select{width:100%!important;min-width:0!important;max-width:100%!important;box-sizing:border-box!important;}
+}
