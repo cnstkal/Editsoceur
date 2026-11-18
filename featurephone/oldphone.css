@@ -24,7 +24,7 @@ button{font:inherit;cursor:pointer}
 .frame-choice img{display:block;width:100%;aspect-ratio:2176/1700;object-fit:contain;background:#f2f3f5;border-radius:8px}
 .frame-choice span{display:block;font-size:12px;margin-top:4px;text-align:center}
 .scr{z-index:1}
-.scr{position:absolute;left:818px;top:498px;width:548px;height:692px;transform-origin:0 0;overflow:hidden;color:#111;background:linear-gradient(135deg,#efd3d6,#e2dcae 55%,#cfe0c4)}
+.scr{position:absolute;left:818px;top:498px;width:548px;height:692px;transform-origin:50% 50%;overflow:hidden;color:#111;background:linear-gradient(135deg,#efd3d6,#e2dcae 55%,#cfe0c4)}
 .scr *{position:absolute}
 .lcd{inset:0;background:repeating-linear-gradient(90deg,rgba(255,110,200,.10) 0 2px,rgba(110,255,160,.08) 2px 4px,rgba(110,150,255,.10) 4px 6px)}
 .sb{left:14px;top:14px;height:54px;width:520px}
