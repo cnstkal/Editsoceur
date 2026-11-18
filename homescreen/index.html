@@ -4,7 +4,7 @@
 <title>홈 화면</title>
 <style>
 *{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent}
-html,body{background:#000;font-family:-apple-system,"SF Pro Text","Apple SD Gothic Neo","Noto Sans KR",sans-serif;touch-action:manipulation;-webkit-user-select:none;user-select:none}
+html,body{width:100%;max-width:100%;overflow-x:hidden;margin:0;background:#000;font-family:-apple-system,"SF Pro Text","Apple SD Gothic Neo","Noto Sans KR",sans-serif;touch-action:manipulation;-webkit-user-select:none;user-select:none}
 input,select{font-size:16px!important;-webkit-user-select:auto;user-select:auto}
 .phone{position:relative;width:100%;margin:0;min-height:calc(100dvh - 72px - env(safe-area-inset-bottom,0px));overflow:hidden;color:#fff;
  background:radial-gradient(120% 60% at 15% 12%,#3f86d6 0,transparent 60%),radial-gradient(90% 50% at 90% 40%,#1d5fc4 0,transparent 65%),radial-gradient(110% 60% at 20% 62%,#5fb5a8 0,transparent 60%),radial-gradient(100% 55% at 85% 88%,#f0a35a 0,transparent 62%),radial-gradient(90% 50% at 25% 95%,#e8d36a 0,transparent 60%),linear-gradient(180deg,#2f78c8,#4aa0a6 55%,#c9b46a);background-size:cover;background-position:center}
@@ -67,7 +67,7 @@ input,select{font-size:16px!important;-webkit-user-select:auto;user-select:auto}
 .it .f input{position:absolute;inset:0;opacity:0;width:100%;height:100%;margin:0;padding:0}
 .gbox{padding:14px;background:#fff;border:1px solid #dbdbdb;border-radius:12px;margin-top:14px}.gbox label{margin-bottom:10px}
 .add:disabled{background:#b2dffc}
-.bar{position:fixed;left:50%;transform:translateX(-50%);bottom:0;width:100%;max-width:430px;display:flex;gap:10px;padding:12px 16px calc(12px + env(safe-area-inset-bottom));background:rgba(255,255,255,.96);border-top:1px solid #dbdbdb;z-index:10}
+.bar{position:fixed;left:0;right:0;margin:0 auto;bottom:0;width:100%;max-width:430px;display:flex;gap:10px;padding:12px 16px calc(12px + env(safe-area-inset-bottom));background:rgba(255,255,255,.96);border-top:1px solid #dbdbdb;z-index:10}
 .bar button{flex:1;height:48px;border:0;border-radius:12px;font:inherit;font-weight:700;font-size:16px}
 .bar .primary{background:#0095f6;color:#fff;flex:2}.bar .secondary{background:#efefef;color:#262626}
 .dock.glass{background:linear-gradient(135deg,rgba(255,255,255,.12),rgba(255,255,255,.03));-webkit-backdrop-filter:blur(6px) saturate(160%);backdrop-filter:blur(6px) saturate(160%)}
