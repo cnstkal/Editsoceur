@@ -79,3 +79,5 @@ body.pvmode .ps-grid{grid-template-columns:1fr}
 .editor input[type=range]{flex:0 0 56%;width:56%;height:24px;padding:0;border:0;accent-color:#e8457a}
 .ps-main{background:#eceef2}
 @media(max-width:1099px){.ps-main{background:#fff}}
+
+.live-adjust{padding:12px 14px;background:#fff;display:grid;grid-template-columns:1fr;gap:8px;border-top:1px solid #eee}.live-adjust label{display:flex;align-items:center;gap:10px;font-size:13px}.live-adjust input{flex:1;accent-color:#e8457a}@media(max-width:1099px){.live-adjust{padding:10px 16px}}
