@@ -44,17 +44,23 @@
 </div></div></section>
 <section class="ps-card ps-side"><div class="ps-lbl">Edit Panel</div><h2>프로필 내용 수정</h2><div class="ps-edwrap"><section class="editor">
   <div class="ps-pn" data-t="기본">
-    <label>사용자 아이디<input id="iUn"></label>
-    <label>이름<input id="iNm"></label>
-    <div class="row"><label>게시물<input id="iPo"></label><label>팔로워<input id="iFr"></label><label>팔로잉<input id="iFg"></label></div>
-    <label>소개<textarea id="iBio" rows="2"></textarea></label>
-    <div class="musicbox"><div class="trow"><span>님 외 몇명이 팔로우합니다 표시</span><label class="sw"><input id="iMutOn" type="checkbox"><i></i></label></div></div>
-    <div class="row"><label>아이디1<input id="iM1"></label><label>아이디2<input id="iM2"></label><label>외 명수<input id="iMn" type="number" min="0"></label></div>
-    <div class="row"><label>버튼1<input id="iF1"></label><label>버튼2<input id="iF2"></label></div>
-    <div class="musicbox"><div class="trow"><span>파란딱지(인증 배지)</span><label class="sw"><input id="iBadge" type="checkbox"><i></i></label></div></div>
-    <label class="file">프로필 사진<input id="iAv" type="file" accept="image/*"></label>
-    <div class="row" style="margin-top:12px"><label class="file">친구 1 사진<input data-m="0" type="file" accept="image/*"></label><label class="file">친구 2 사진<input data-m="1" type="file" accept="image/*"></label><label class="file">친구 3 사진<input data-m="2" type="file" accept="image/*"></label></div>
-    <label>게시물 칸 수<input id="iCnt" type="number" min="3" max="30"></label>
+    <div class="pf-card"><h3>계정 정보</h3>
+      <label>사용자 아이디<input id="iUn"></label><label>이름<input id="iNm"></label>
+    </div>
+    <div class="pf-card"><h3>프로필 통계</h3>
+      <div class="row"><label>게시물<input id="iPo"></label><label>팔로워<input id="iFr"></label><label>팔로잉<input id="iFg"></label></div>
+    </div>
+    <div class="pf-card"><h3>소개</h3><label class="pf-full">소개<textarea id="iBio" rows="3"></textarea></label>
+      <div class="trow"><span>팔로우 문구 표시</span><label class="sw"><input id="iMutOn" type="checkbox"><i></i></label></div>
+      <div class="row"><label>아이디 1<input id="iM1"></label><label>아이디 2<input id="iM2"></label><label>추가 인원<input id="iMn" type="number" min="0"></label></div>
+    </div>
+    <div class="pf-card"><h3>프로필 버튼</h3><div class="row"><label>버튼 1<input id="iF1"></label><label>버튼 2<input id="iF2"></label></div></div>
+    <div class="pf-card"><h3>프로필 꾸미기</h3>
+      <div class="trow"><span>인증 배지</span><label class="sw"><input id="iBadge" type="checkbox"><i></i></label></div>
+      <label class="file pf-full">프로필 사진<input id="iAv" type="file" accept="image/*"></label>
+      <div class="pf-friends"><label class="file">친구 1 사진<input data-m="0" type="file" accept="image/*"></label><label class="file">친구 2 사진<input data-m="1" type="file" accept="image/*"></label><label class="file">친구 3 사진<input data-m="2" type="file" accept="image/*"></label></div>
+    </div>
+    <div class="pf-card"><h3>게시물 그리드</h3><label>게시물 칸 수<input id="iCnt" type="number" min="3" max="30"></label></div>
   </div>
   <div class="ps-pn" data-t="이미지" hidden>
     <div id="pInputs"></div>
