@@ -120,3 +120,21 @@ body.pvmode{background:#fff}
   .ps-frame>*{margin-left:auto!important;margin-right:auto!important;max-width:100%;min-width:0;}
   .ps-frame .phone{width:min(100%,430px)!important;margin-inline:auto!important;}
 }
+
+
+/* YouTube editor readability pass: clearer sections/cards, spacing and unclipped fields */
+.ps-edwrap .editor h2,.ps-edwrap .editor .ps-pn>h2{margin:24px 0 16px!important;padding-top:6px!important;line-height:1.35!important;}
+.ps-edwrap .editor h2:first-child,.ps-edwrap .editor .ps-pn>h2:first-child{margin-top:0!important;}
+.ps-edwrap .editor .ec,.ps-edwrap .editor .card,.ps-edwrap .editor #mlist>div,.ps-edwrap .editor #clist>div{border:1px solid #e6e8ed!important;border-radius:16px!important;padding:16px!important;margin:14px 0 18px!important;background:#fff!important;box-sizing:border-box!important;}
+.ps-edwrap .editor .ec>label,.ps-edwrap .editor .card>label{display:flex!important;flex-direction:column!important;align-items:stretch!important;gap:7px!important;margin:0 0 14px!important;min-width:0!important;}
+.ps-edwrap .editor .row,.ps-edwrap .editor .ec .row{gap:12px!important;margin:0 0 16px!important;}
+.ps-edwrap .editor .row label,.ps-edwrap .editor .ec .row label{display:flex!important;flex-direction:column!important;align-items:stretch!important;gap:7px!important;min-width:0!important;margin:0!important;}
+.ps-edwrap .editor input:not([type=checkbox]):not([type=file]):not([type=range]),.ps-edwrap .editor textarea,.ps-edwrap .editor select{width:100%!important;max-width:100%!important;min-width:0!important;flex:none!important;box-sizing:border-box!important;overflow:visible!important;text-overflow:clip!important;}
+.ps-edwrap .editor input[type=file]{width:100%!important;max-width:100%!important;min-width:0!important;box-sizing:border-box!important;}
+.ps-edwrap .editor .ek{display:flex!important;align-items:center!important;gap:10px!important;min-width:0!important;}
+@media(max-width:1099px){
+ .ps-edwrap .editor h2,.ps-edwrap .editor .ps-pn>h2{font-size:17px!important;margin:26px 0 18px!important;padding-top:8px!important;}
+ .ps-edwrap .editor .row,.ps-edwrap .editor .ec .row{display:grid!important;grid-template-columns:repeat(2,minmax(0,1fr))!important;gap:14px 10px!important;margin-bottom:16px!important;}
+ .ps-edwrap .editor .row>*:nth-child(3){grid-column:1/-1;}
+ .ps-edwrap .editor .ec,.ps-edwrap .editor .card{padding:14px!important;}
+}
