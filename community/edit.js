@@ -1,25 +1,25 @@
-// 수정 / 저장 버튼 (인스티즈·더쿠 공통). 제목과 본문을 직접 고친 뒤 PNG로 저장합니다.
+// 인스티즈·더쿠 공통 편집 패널: 입력창을 고치면 화면에 바로 반영되고 자동 저장됩니다.
 (function(){
   var KEY='community-edit-'+location.pathname;
-  var SEL=['#title','#body'];
+  var t=document.getElementById('title'), b=document.getElementById('body');
+  var usesP=!!b.querySelector('p');
   var saved={};try{saved=JSON.parse(localStorage.getItem(KEY)||'{}')}catch(e){}
-  SEL.forEach(function(s){var el=document.querySelector(s);if(el&&saved[s]!=null)el.innerHTML=saved[s]});
-  var bar=document.createElement('div');
-  bar.style.cssText='position:fixed;left:50%;bottom:16px;transform:translateX(-50%);display:flex;gap:8px;z-index:99';
-  bar.innerHTML='<button id="ebtn" style="padding:10px 18px;border:0;border-radius:20px;background:#333;color:#fff;font-size:15px">수정</button><button id="sbtn" style="padding:10px 18px;border:0;border-radius:20px;background:#56bb6f;color:#fff;font-size:15px">저장</button>';
-  document.body.appendChild(bar);
-  var editing=false;
-  document.getElementById('ebtn').onclick=function(){
-    editing=!editing;
-    SEL.forEach(function(s){var el=document.querySelector(s);if(el){el.contentEditable=editing;el.style.outline=editing?'1px dashed #56bb6f':''}});
-    this.textContent=editing?'완료':'수정';
-    if(!editing){var o={};SEL.forEach(function(s){var el=document.querySelector(s);if(el)o[s]=el.innerHTML});try{localStorage.setItem(KEY,JSON.stringify(o))}catch(e){}}
-  };
-  document.getElementById('sbtn').onclick=function(){
-    var b=this,t=b.textContent;b.disabled=true;b.textContent='저장 중...';
-    if(editing)document.getElementById('ebtn').click();
-    (document.fonts&&document.fonts.ready||Promise.resolve()).then(function(){return html2canvas(document.querySelector('.wrap'),{scale:2,useCORS:true,backgroundColor:null,logging:false})}).then(function(c){
-      c.toBlob(function(bl){var a=document.createElement('a');a.href=URL.createObjectURL(bl);a.download='community-post.png';document.body.appendChild(a);a.click();a.remove();b.disabled=false;b.textContent=t},'image/png');
-    }).catch(function(){b.disabled=false;b.textContent=t;alert('PNG 저장에 실패했습니다.')});
-  };
+  var titleText=saved.title!=null?saved.title:t.textContent.replace(/\d+$/,'').trim();
+  var bodyText=saved.body!=null?saved.body:Array.prototype.map.call(usesP?b.querySelectorAll('p'):[b],function(e){return e.textContent}).join('\n');
+  var panel=document.createElement('div');
+  panel.style.cssText='margin:24px 16px 40px;font-size:14px';
+  panel.innerHTML='<div style="font-weight:700;margin-bottom:6px">제목</div><input id="ed-title" style="width:100%;box-sizing:border-box;padding:10px;border:1px solid #ddd;border-radius:8px;font-size:15px"><div style="font-weight:700;margin:14px 0 6px">본문 (줄바꿈 가능)</div><textarea id="ed-body" rows="6" style="width:100%;box-sizing:border-box;padding:10px;border:1px solid #ddd;border-radius:8px;font-size:15px"></textarea>';
+  document.querySelector('.wrap').after(panel);
+  var it=document.getElementById('ed-title'), ib=document.getElementById('ed-body');
+  it.value=titleText; ib.value=bodyText;
+  function esc(s){return s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;')}
+  function apply(){
+    var em=t.querySelector('em');
+    t.textContent=it.value; if(em)t.append(em);
+    var lines=ib.value.split('\n');
+    b.innerHTML=usesP?lines.map(function(l){return '<p>'+esc(l)+'</p>'}).join(''):lines.map(esc).join('<br>');
+    try{localStorage.setItem(KEY,JSON.stringify({title:it.value,body:ib.value}))}catch(e){}
+  }
+  it.addEventListener('input',apply); ib.addEventListener('input',apply);
+  apply();
 })();
