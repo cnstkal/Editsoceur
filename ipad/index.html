@@ -26,9 +26,9 @@ input,select{font-size:16px!important;-webkit-user-select:auto;user-select:auto}
 .grid{padding:44px 0 150px 90px;display:grid;grid-template-columns:repeat(6,92px);justify-content:start;gap:20px 40px}
 .cell{display:flex;flex-direction:column;align-items:center;min-width:0}
 .ico{position:relative;width:76px;height:76px;flex:none}
-.ic{width:100%;height:100%;border-radius:22.5%;overflow:hidden;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:26px;position:relative;box-shadow:0 4px 10px rgba(0,30,60,.25),inset 0 0 0 .5px rgba(255,255,255,.45)}
+.ic{width:100%;height:100%;border-radius:22.5%;overflow:hidden;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:26px;position:relative;box-shadow:0 4px 10px rgba(0,30,60,.25),inset 0 0 0 1px rgba(255,255,255,.55),inset 0 -8px 14px rgba(255,255,255,.12)}
 .ic img{width:100%;height:100%;object-fit:cover;display:block;pointer-events:none}
-.ic::after{content:"";position:absolute;inset:0;background:linear-gradient(160deg,rgba(255,255,255,.28),rgba(255,255,255,0) 42%);pointer-events:none}
+.ic::after{content:"";position:absolute;inset:0;border-radius:inherit;background:linear-gradient(160deg,rgba(255,255,255,.5),rgba(255,255,255,.08) 40%,rgba(255,255,255,.04) 62%,rgba(255,255,255,.2));backdrop-filter:blur(1.5px) saturate(140%);-webkit-backdrop-filter:blur(1.5px) saturate(140%);pointer-events:none}
 .fd{width:100%;height:100%;border-radius:22.5%;padding:12%;display:grid;grid-template-columns:repeat(3,1fr);gap:6%;align-content:start}
 .fd .ic{border-radius:23%;font-size:0;box-shadow:none}
 .bd{position:absolute;top:-8px;right:-8px;min-width:26px;height:26px;padding:0 7px;border-radius:13px;background:#ff3b30;color:#fff;font-size:16px;font-weight:500;line-height:26px;text-align:center;z-index:4;box-shadow:0 1px 3px rgba(0,0,0,.25)}
@@ -66,7 +66,7 @@ input,select{font-size:16px!important;-webkit-user-select:auto;user-select:auto}
 .edf{margin:-4px 0 10px;padding:14px;background:#fff;border:1px solid #dbdbdb;border-radius:12px}
 .edf .row{display:flex;gap:10px;align-items:flex-end}.edf .row>*{flex:1;min-width:0}
 .edf .mini{height:42px}.edf .add{height:42px}
-</style></head><body>
+</style><link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.css"><style id="ed-font">html,body,body *{font-family:Pretendard,-apple-system,"Apple SD Gothic Neo","Noto Sans KR",sans-serif!important;letter-spacing:-.02em!important}</style><style id="ed-back">.ed-back{position:fixed;top:10px;left:10px;z-index:99999;display:flex;align-items:center;gap:2px;height:34px;padding:0 13px 0 9px;border-radius:17px;background:rgba(20,20,24,.55);color:#fff;font-weight:600;font-size:14px;text-decoration:none;backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);box-shadow:0 2px 8px rgba(0,0,0,.25)}</style></head><body>
 <div class="wrap" id="wrap"><div class="stage" id="stage"><div class="phone" id="phone">
  <div class="grid" id="grid"></div>
  <div class="bottom"><div class="dock glass" id="dock"></div></div>
@@ -189,4 +189,4 @@ function fit(){var s=Math.min(1,window.innerWidth/1280);$('#stage').style.transf
 window.addEventListener('resize',fit);
 render();fit();
 })();
-</script></body></html>
+</script><a class="ed-back" href="../index.html" onclick="if(history.length>1){history.back();return false}">&#8249; 뒤로</a></body></html>
