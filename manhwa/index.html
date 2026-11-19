@@ -11,23 +11,20 @@ body{margin:0;background:#f2f3f5;color:#111;font-family:Pretendard,-apple-system
 .wrap{max-width:1100px;margin:0 auto;padding:20px 16px 40px}
 .back{color:#00b050;font-weight:600;text-decoration:none}
 h1{font-size:28px;margin:8px 0 16px}
-.grid{display:grid;grid-template-columns:minmax(0,1.3fr) minmax(280px,1fr);gap:16px;align-items:start}
+.grid{display:grid;grid-template-columns:minmax(0,1.4fr) minmax(280px,1fr);gap:16px;align-items:start}
 @media(max-width:760px){.grid{grid-template-columns:1fr}}
 .card{background:#fff;border-radius:20px;padding:18px}
-.page{background:#fff;border:2px solid #111;padding:8px;display:flex;flex-direction:column;gap:8px;width:100%;max-width:520px;margin:0 auto}
-.row{display:flex;gap:8px}
-.pn{position:relative;border:3px solid #111;background:#eee center/cover no-repeat;cursor:pointer;min-width:0;overflow:hidden}
-.pn.sel{outline:3px solid #00b050;outline-offset:2px}
-.pn.gs{background-color:#00b140}
-.pn .no{position:absolute;left:6px;top:4px;font-size:12px;font-weight:700;color:#0006}
-.pn.gs .no{color:#fff9}
-.lbl{font-size:12px;color:#8a8f98;margin:14px 0 6px;letter-spacing:.08em}
-.seg{display:flex;gap:6px;flex-wrap:wrap}
+.stage{display:flex;justify-content:center;background:#e9eaed;border-radius:12px;padding:12px}
+#svg{background:#fff;display:block;box-shadow:0 1px 6px #0002;cursor:pointer}
+.lbl{font-size:12px;color:#8a8f98;margin:16px 0 6px;letter-spacing:.08em}
+.lbl:first-child{margin-top:0}
+.seg{display:flex;gap:6px;flex-wrap:wrap;align-items:center}
 button,.fileb{height:40px;padding:0 14px;border:1px solid #ddd;border-radius:12px;background:#fff;font:inherit;font-size:14px;cursor:pointer;display:inline-flex;align-items:center}
 button.on{background:#e6f8ee;border-color:#00b050;color:#008a3e;font-weight:700}
 .cnt{display:flex;align-items:center;gap:12px;font-size:20px;font-weight:700}
 .cnt button{width:40px;padding:0;justify-content:center;font-size:20px}
-.hint{font-size:13px;color:#8a8f98;margin:0}
+input[type=range]{flex:1;accent-color:#00b050}
+.hint{font-size:13px;color:#8a8f98;margin:14px 0 0}
 </style>
 </head>
 <body>
@@ -35,68 +32,115 @@ button.on{background:#e6f8ee;border-color:#00b050;color:#008a3e;font-weight:700}
   <a class="back" href="../index.html">‹ 메인</a>
   <h1>만화칸</h1>
   <div class="grid">
-    <div class="card"><div class="page" id="page"></div></div>
+    <div class="card"><div class="stage"><svg id="svg" xmlns="http://www.w3.org/2000/svg"></svg></div></div>
     <div class="card">
-      <div class="lbl">만화칸 개수</div>
-      <div class="cnt"><button id="mn">−</button><span id="n">5</span><button id="pl">+</button><button id="sh" style="margin-left:auto;font-size:14px;width:auto;padding:0 14px">랜덤</button></div>
-      <div class="lbl">선택한 칸 비율</div>
+      <div class="lbl">전체 비율 (고정)</div>
       <div class="seg" id="rs"><button data-r="9/16">9:16</button><button data-r="16/9">16:9</button><button data-r="4/3">4:3</button></div>
-      <div class="lbl">칸 내용</div>
+      <div class="lbl">만화칸 개수</div>
+      <div class="cnt"><button id="mn">−</button><span id="n">5</span><button id="pl">+</button></div>
+      <div class="lbl">칸 모양</div>
+      <div class="seg"><button id="sh">🎲 랜덤</button></div>
+      <div class="lbl">선 두께 <span id="lwv"></span></div>
+      <div class="seg"><input type="range" id="lw" min="0" max="10" step="0.5" value="1.5"></div>
+      <div class="lbl">선택한 칸 내용</div>
       <div class="seg">
         <label class="fileb">이미지 추가<input type="file" id="f" accept="image/*" hidden></label>
         <button id="gs">그린스크린</button>
         <button id="cl">비우기</button>
       </div>
-      <p class="hint" style="margin-top:14px">왼쪽에서 칸을 눌러 선택하세요. 칸마다 비율이 달라 크기·모양이 자동으로 다양해져요.</p>
+      <p class="hint">칸을 눌러 선택하세요. 랜덤은 칸 모양·배치만 바꾸고 전체 비율은 그대로예요.</p>
     </div>
   </div>
 </div>
 <script>
-var RS=['9/16','16/9','4/3'],P=[],sel=0,seed=0;
-function num(r){var a=r.split('/');return a[0]/a[1]}
-function rnd(){seed=(seed*9301+49297)%233280;return seed/233280}
-function split(n){ // 행별 칸 수 분배 (1~3칸/행)
-  var rows=[],left=n;
-  while(left>0){var k=Math.min(left,1+Math.floor(rnd()*3));
-    if(left-k===1&&left>2)k=left-2; rows.push(k);left-=k}
-  return rows}
-var layout=[];
-function resize(n){
-  while(P.length<n)P.push({r:RS[Math.floor(Math.random()*3)],img:'',gs:false});
-  P.length=n; if(sel>=n)sel=n-1;
-  layout=split(n);render()}
+var W=1000,RATIO='16/9',H=562,N=5,sel=0,LW=1.5,GAP=14,MARGIN=14;
+var content=[]; // 칸별 {img,gs}
+var panels=[];  // 칸 다각형 목록
+var NS='http://www.w3.org/2000/svg';
+
+function area(p){var s=0;for(var i=0;i<p.length;i++){var a=p[i],b=p[(i+1)%p.length];s+=a[0]*b[1]-b[0]*a[1]}return Math.abs(s)/2}
+function bbox(p){var x0=1e9,y0=1e9,x1=-1e9,y1=-1e9;p.forEach(function(q){x0=Math.min(x0,q[0]);y0=Math.min(y0,q[1]);x1=Math.max(x1,q[0]);y1=Math.max(y1,q[1])});return [x0,y0,x1,y1]}
+// 볼록 다각형을 반평면 nx*x+ny*y<=c 로 자름
+function clip(poly,nx,ny,c){
+  var out=[];
+  for(var i=0;i<poly.length;i++){
+    var a=poly[i],b=poly[(i+1)%poly.length];
+    var da=nx*a[0]+ny*a[1]-c,db=nx*b[0]+ny*b[1]-c;
+    if(da<=0)out.push(a);
+    if((da<0&&db>0)||(da>0&&db<0)){var t=da/(da-db);out.push([a[0]+(b[0]-a[0])*t,a[1]+(b[1]-a[1])*t])}
+  }
+  return out;
+}
+function split(poly){
+  var b=bbox(poly),w=b[2]-b[0],h=b[3]-b[1];
+  var vertical=Math.random()<(w/(w+h))*1.3+(w>h?0.1:-0.1); // 세로선(좌우 분할)
+  var t=0.35+Math.random()*0.3;
+  var th=Math.random()<0.6?(Math.random()<0.5?-1:1)*(0.05+Math.random()*0.17):0; // 사선
+  var px=b[0]+w*t,py=b[1]+h*t,nx,ny;
+  if(vertical){nx=Math.cos(th);ny=-Math.sin(th)}else{nx=-Math.sin(th);ny=Math.cos(th)}
+  var d=nx*px+ny*py;
+  var A=clip(poly,nx,ny,d-GAP/2),B=clip(poly,-nx,-ny,-d-GAP/2);
+  if(A.length<3||B.length<3||area(A)<4000||area(B)<4000)return null;
+  return [A,B];
+}
+function generate(){
+  var rr=RATIO.split('/');H=Math.round(W*rr[1]/rr[0]);
+  var m=MARGIN;
+  var list=[[[m,m],[W-m,m],[W-m,H-m],[m,H-m]]],guard=0;
+  while(list.length<N&&guard++<400){
+    list.sort(function(a,b){return area(b)-area(a)});
+    var cand=Math.random()<0.7?0:Math.floor(Math.random()*Math.min(2,list.length)); // 큰 칸 위주로 분할
+    var r=split(list[cand]);
+    if(r){list.splice(cand,1);list.push(r[0],r[1])}
+  }
+  // 읽는 순서: 위→아래, 왼→오
+  list.sort(function(a,b){var A=bbox(a),B=bbox(b);return Math.abs(A[1]-B[1])>H*0.12?A[1]-B[1]:A[0]-B[0]});
+  panels=list;
+  while(content.length<N)content.push({img:'',gs:false});
+  content.length=N;
+  if(sel>=N)sel=N-1;
+  render();
+}
 function render(){
-  var pg=document.getElementById('page');pg.innerHTML='';var i=0;
-  layout.forEach(function(k){
-    var row=document.createElement('div');row.className='row';
-    var items=P.slice(i,i+k);
-    items.forEach(function(p,j){
-      var d=document.createElement('div');d.className='pn'+(i+j===sel?' sel':'')+(p.gs?' gs':'');
-      d.style.flex=num(p.r)+' 1 0';d.style.aspectRatio='auto';
-      d.style.height='auto';
-      var q=document.createElement('div');q.style.paddingTop=(100/num(p.r))+'%'; /* 비율 유지 */
-      d.appendChild(q);
-      if(p.img&&!p.gs)d.style.backgroundImage='url('+p.img+')';
-      var no=document.createElement('span');no.className='no';no.textContent=i+j+1;d.appendChild(no);
-      d.onclick=(function(x){return function(){sel=x;render()}})(i+j);
-      row.appendChild(d)});
-    i+=k;pg.appendChild(row)});
-  document.getElementById('n').textContent=P.length;
-  [].forEach.call(document.querySelectorAll('#rs button'),function(b){b.classList.toggle('on',P[sel]&&b.dataset.r===P[sel].r)});
-  document.getElementById('gs').classList.toggle('on',!!(P[sel]&&P[sel].gs))}
-document.getElementById('mn').onclick=function(){if(P.length>1)resize(P.length-1)};
-document.getElementById('pl').onclick=function(){if(P.length<12)resize(P.length+1)};
-document.getElementById('sh').onclick=function(){
-  layout=split(P.length);
-  P.forEach(function(p){p.r=RS[Math.floor(Math.random()*3)]});
-  render()};
-[].forEach.call(document.querySelectorAll('#rs button'),function(b){b.onclick=function(){P[sel].r=b.dataset.r;render()}});
-document.getElementById('gs').onclick=function(){P[sel].gs=!P[sel].gs;render()};
-document.getElementById('cl').onclick=function(){P[sel].img='';P[sel].gs=false;render()};
+  var svg=document.getElementById('svg');
+  svg.setAttribute('viewBox','0 0 '+W+' '+H);
+  var ar=W/H,maxH=Math.max(320,window.innerHeight*0.78);
+  svg.style.aspectRatio=W+'/'+H;
+  svg.style.width='min(100%,'+Math.round(maxH*ar)+'px)';
+  var s='<defs>';
+  panels.forEach(function(p,i){s+='<clipPath id="c'+i+'"><polygon points="'+p.map(function(q){return q[0].toFixed(1)+','+q[1].toFixed(1)}).join(' ')+'"/></clipPath>'});
+  s+='</defs><rect width="'+W+'" height="'+H+'" fill="#fff"/>';
+  panels.forEach(function(p,i){
+    var pts=p.map(function(q){return q[0].toFixed(1)+','+q[1].toFixed(1)}).join(' ');
+    var b=bbox(p),c=content[i],fill=c.gs?'#00b140':'#f4f4f5';
+    s+='<g data-i="'+i+'"><polygon points="'+pts+'" fill="'+fill+'"/>';
+    if(c.img&&!c.gs)s+='<image href="'+c.img+'" x="'+b[0]+'" y="'+b[1]+'" width="'+(b[2]-b[0])+'" height="'+(b[3]-b[1])+'" preserveAspectRatio="xMidYMid slice" clip-path="url(#c'+i+')"/>';
+    s+='<text x="'+(b[0]+14)+'" y="'+(b[1]+34)+'" font-size="26" font-weight="700" fill="'+(c.gs?'#fff':'#0004')+'" style="pointer-events:none">'+(i+1)+'</text>';
+    if(LW>0)s+='<polygon points="'+pts+'" fill="none" stroke="#111" stroke-width="'+LW+'" stroke-linejoin="miter" style="pointer-events:none"/>';
+    s+='</g>';
+  });
+  var sp=panels[sel];
+  if(sp)s+='<polygon points="'+sp.map(function(q){return q[0]+','+q[1]}).join(' ')+'" fill="none" stroke="#00b050" stroke-width="5" stroke-dasharray="14 8" style="pointer-events:none"/>';
+  svg.innerHTML=s;
+  document.getElementById('n').textContent=N;
+  document.getElementById('lwv').textContent=LW;
+  [].forEach.call(document.querySelectorAll('#rs button'),function(b){b.classList.toggle('on',b.dataset.r===RATIO)});
+  document.getElementById('gs').classList.toggle('on',!!(content[sel]&&content[sel].gs));
+}
+document.getElementById('svg').addEventListener('click',function(e){
+  var g=e.target.closest('g[data-i]');if(g){sel=+g.dataset.i;render()}});
+document.getElementById('mn').onclick=function(){if(N>1){N--;generate()}};
+document.getElementById('pl').onclick=function(){if(N<12){N++;generate()}};
+document.getElementById('sh').onclick=generate;
+[].forEach.call(document.querySelectorAll('#rs button'),function(b){b.onclick=function(){RATIO=b.dataset.r;generate()}});
+document.getElementById('lw').oninput=function(){LW=+this.value;render()};
+document.getElementById('gs').onclick=function(){content[sel].gs=!content[sel].gs;render()};
+document.getElementById('cl').onclick=function(){content[sel]={img:'',gs:false};render()};
 document.getElementById('f').onchange=function(e){
   var f=e.target.files[0];if(!f)return;var r=new FileReader();
-  r.onload=function(){P[sel].img=r.result;P[sel].gs=false;render()};r.readAsDataURL(f);e.target.value=''};
-seed=7;resize(5);
+  r.onload=function(){content[sel].img=r.result;content[sel].gs=false;render()};r.readAsDataURL(f);e.target.value=''};
+window.addEventListener('resize',render);
+generate();
 </script>
 </body>
 </html>
