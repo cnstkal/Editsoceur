@@ -12,6 +12,7 @@ function persist(){try{localStorage.setItem(STORE,JSON.stringify(S))}catch(e){co
 function esc(t){return String(t==null?'':t).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;')}
 function body(x,r){return '<div class="cr"><i class="av s"></i><b'+(x.w?' class="w"':'')+'>'+esc(x.n)+'</b><div class="pl">'+(r?'':BU)+TH+'</div></div><div class="cb">'+esc(x.x)+'</div><div class="ct">'+esc(x.tm)+'</div>'}
 function render(){
+$('pAv').style.background=S.av?'url('+S.av+') center/cover':'';
 $('eTm').textContent=S.tm;$('eBn').textContent=S.bt;$('eBu').style.width=(+S.bt||0)+'%';$('eBd').textContent=S.bd;$('eSc').textContent=S.sc;
 $('pNm').textContent=S.nm;$('pTm').textContent=S.pt;$('pCn').textContent=S.cn;$('pTi').textContent=S.ti;$('pBd').textContent=S.by;
 var h='',o=0;S.c.forEach(function(x){
@@ -41,5 +42,6 @@ c.toBlob(function(bl){var a=document.createElement('a');a.href=URL.createObjectU
 document.body.appendChild(a);a.click();a.remove();b.disabled=false;b.textContent=t},'image/png')
 }).catch(function(){b.disabled=false;b.textContent=t;alert('PNG 저장에 실패했습니다.')})};
 document.addEventListener('gesturestart',function(e){e.preventDefault()},{passive:false});
+$('iAv').addEventListener('change',function(){var f=this.files[0];if(!f)return;var r=new FileReader();r.onload=function(){S.av=r.result;persist();render()};r.readAsDataURL(f)});
 load(false);
 })();

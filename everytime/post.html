@@ -8,7 +8,7 @@
 <link rel="stylesheet" href="../instagram/story.css?v=3">
 <link rel="stylesheet" href="post.css?v=1">
 <style data-hide-status>:is(span,b)[id$="Time"],#eTm,.isl,.ys,.ysig,.ywf,.ybt,.dsg,.dwf,#df .dbt,.msg,.mwf,.mbt,.ewf,.ebt,.nwf,.nbt,.sb:has([id$="Time"])>svg:not(.lc),.sb:has([id$="Time"])+.bt,.sb:has([id$="Time"]) .bt{display:none!important}</style><style id="ed-font">html,body,body *{font-family:Pretendard,-apple-system,"Apple SD Gothic Neo","Noto Sans KR",sans-serif!important;letter-spacing:-.02em!important}</style><link rel="stylesheet" href="studio.css?v=2">
-<link rel="stylesheet" href="../ps-editor.css?v=9"></head>
+<link rel="stylesheet" href="../ps-editor.css?v=10"></head>
 <body class="studio"><div class="ps-wrap">
 <header class="ps-top"><a class="ps-back" href="index.html">‹ 뒤로</a><button class="ps-pvbtn" id="pvBtn" type="button">미리보기 모드</button></header>
 <div class="ps-grid">
@@ -38,13 +38,17 @@
 <section class="ps-card ps-side"><div class="ps-lbl">Edit Panel</div><h2>에브리타임 게시물 내용 수정</h2><div class="ps-edwrap"><section class="editor">
 <input type="hidden" id="iTm"><input type="hidden" id="iBt">
 <div class="ps-pn" data-t="기본">
-<h2>게시물 편집</h2>
+<h2>게시판</h2>
 <div class="row"><label>게시판 이름<input id="iBd"></label><label>학교<input id="iSc"></label></div>
-<label>제목<input id="iTi"></label>
-<label>내용<textarea id="iBy" rows="3"></textarea></label>
 </div>
 <div class="ps-pn" data-t="게시글" hidden>
-<div class="row"><label>작성자<input id="iNm"></label><label>작성 시간<input id="iPt"></label><label>댓글 수<input id="iCn"></label></div>
+<h2>작성자</h2>
+<label>작성자 프로필 사진<input id="iAv" type="file" accept="image/*"></label>
+<div class="row"><label>작성자<input id="iNm"></label><label>작성 시간<input id="iPt"></label></div>
+<label>댓글 수<input id="iCn"></label>
+<h2>글</h2>
+<label>제목<input id="iTi"></label>
+<label>내용<textarea id="iBy" rows="3"></textarea></label>
 <h2>댓글</h2>
 <div id="clist"></div>
 <button class="ghost" id="addC" type="button">+ 댓글 추가</button>

@@ -8,7 +8,7 @@
 <link rel="stylesheet" href="../instagram/story.css?v=3">
 <link rel="stylesheet" href="dm.css?v=1">
 <style data-hide-status>:is(span,b)[id$="Time"],#eTm,.isl,.ys,.ysig,.ywf,.ybt,.dsg,.dwf,#df .dbt,.msg,.mwf,.mbt,.ewf,.ebt,.nwf,.nbt,.sb:has([id$="Time"])>svg:not(.lc),.sb:has([id$="Time"])+.bt,.sb:has([id$="Time"]) .bt{display:none!important}</style><style id="ed-font">html,body,body *{font-family:Pretendard,-apple-system,"Apple SD Gothic Neo","Noto Sans KR",sans-serif!important;letter-spacing:-.02em!important}</style><link rel="stylesheet" href="studio.css?v=2">
-<link rel="stylesheet" href="../ps-editor.css?v=9"></head>
+<link rel="stylesheet" href="../ps-editor.css?v=10"></head>
 <body class="studio"><div class="ps-wrap">
 <header class="ps-top"><a class="ps-back" href="index.html">‹ 뒤로</a><button class="ps-pvbtn" id="pvBtn" type="button">미리보기 모드</button></header>
 <div class="ps-grid">
@@ -35,12 +35,17 @@
 
 </div></div></section>
 <section class="ps-card ps-side"><div class="ps-lbl">Edit Panel</div><h2>에브리타임 쪽지 내용 수정</h2><div class="ps-edwrap"><section class="editor">
-<h2>쪽지 편집</h2>
-<input type="hidden" id="iTm"><input type="hidden" id="iBt">
-<div class="row"><label>상대 이름<input id="iNm"></label><label>날짜<input id="iDt"></label></div>
-<h2 style="margin-top:14px">메시지</h2>
+<input type="hidden" id="iTm"><input type="hidden" id="iBt"><input type="hidden" id="iDt">
+<div class="ps-pn" data-t="기본">
+<h2>상대</h2>
+<label>상대 이름<input id="iNm"></label>
+<label>상대 프로필 사진<input id="iAv" type="file" accept="image/*"></label>
+</div>
+<div class="ps-pn" data-t="채팅" hidden>
+<h2>대화</h2>
 <div id="mlist"></div>
-<button class="ghost" id="addM" type="button">+ 메시지 추가</button>
+<div class="row"><button class="ghost" id="addM" type="button">+ 메시지 추가</button><button class="ghost" id="addD" type="button">+ 날짜선</button></div>
+</div>
 </section></div><div class="ps-acts"><button id="savePng" class="primary">PNG 저장</button><button id="reset" class="secondary">초기화</button></div></section>
 </div></div>
 <script src="https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js"></script>

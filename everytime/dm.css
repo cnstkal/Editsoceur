@@ -40,3 +40,5 @@ body,body *{font-family:Pretendard,-apple-system,sans-serif!important;letter-spa
 .xc{background:#fff;border:1px solid #dbdbdb;border-radius:12px;padding:12px 12px 0;margin-bottom:12px}
 .xc .row{margin-bottom:0}.xk{display:flex!important;align-items:center;gap:8px;white-space:nowrap}.xk input{width:20px;height:20px}
 .xb{flex:1;height:38px;border:1px solid #dbdbdb;border-radius:8px;background:#f6f6f6;font-weight:700;margin-bottom:12px}
+
+.dv{width:105px;height:29px;margin:14px auto;border-radius:15px;background:#262626;color:#fff;font-size:15px;font-weight:500;line-height:29px;text-align:center}
