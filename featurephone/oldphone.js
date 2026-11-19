@@ -5,6 +5,8 @@ var ICON={iSig:'sSig',iMail:'sMail',iVib:'sVib',iBat:null};
 var files=["1E7DB810-32DC-4DB3-8322-FD4BD0A647BA.png", "41E19F89-5516-4045-ABA1-DA8802EAF773.png", "5A1E9D06-731A-4B35-81ED-7BE87A4CAA8B.png", "BAA32941-7946-4EE5-9992-8CB9766D1C4F.png", "33691128-E1B3-4EEA-B919-9D8F61095F27.png", "lg_cyon_pink_phone_background_removed.png", "nokia7600_clean_transparent.png", "xelibri_background_removed.png"];
 var HOLE={"1E7DB810-32DC-4DB3-8322-FD4BD0A647BA.png":{"w":887,"h":1774,"x0":255,"y0":210,"x1":618,"y1":710},"33691128-E1B3-4EEA-B919-9D8F61095F27.png":{"w":1024,"h":1536,"x0":369,"y0":241,"x1":653,"y1":604},"41E19F89-5516-4045-ABA1-DA8802EAF773.png":{"w":1024,"h":1536,"x0":301,"y0":191,"x1":723,"y1":742},"5A1E9D06-731A-4B35-81ED-7BE87A4CAA8B.png":{"w":887,"h":1774,"x0":285,"y0":258,"x1":607,"y1":652},"BAA32941-7946-4EE5-9992-8CB9766D1C4F.png":{"w":887,"h":1774,"x0":257,"y0":227,"x1":622,"y1":697},"lg_cyon_pink_phone_background_removed.png":{"w":887,"h":1774,"x0":253,"y0":213,"x1":629,"y1":720},"nokia7600_clean_transparent.png":{"w":1448,"h":1086,"x0":500,"y0":280,"x1":889,"y1":736},"xelibri_background_removed.png":{"w":1024,"h":1536,"x0":288,"y0":288,"x1":721,"y1":668}};
 var curFile=null;
+var FONTS=[["pre","기본 고딕 (Pretendard)","Pretendard"],["notosans","Noto Sans KR 고딕","Noto Sans KR"],["nanumgothic","나눔고딕","Nanum Gothic"],["myeongjo","나눔명조 (고전 명조)","Nanum Myeongjo"],["gowun","고운바탕 (고전 바탕)","Gowun Batang"],["dot","도트 픽셀 (레트로)","DotGothic16"]];
+var sel=$('iFont');if(sel){FONTS.forEach(function(f){var o=document.createElement('option');o.value=f[2];o.textContent=f[1];sel.appendChild(o)});sel.value='Pretendard';sel.addEventListener('change',render)}
 /* 폰 틀 이미지의 투명한 액정 영역을 미리 측정해 둔 값. 화면을 이 영역에 딱 맞춰 넣는다 */
 function holeBox(){var d=HOLE[curFile];if(!d)return{x:818,y:498,w:548,h:692};var k=Math.min(W/d.w,H/d.h),ox=(W-d.w*k)/2,oy=(H-d.h*k)/2,m=3;return{x:ox+d.x0*k-m,y:oy+d.y0*k-m,w:(d.x1-d.x0)*k+m*2,h:(d.y1-d.y0)*k+m*2}}
 function fit(){var w=fr.clientWidth;if(!w)return;var s=w/W;zs.style.transform='scale('+s+')';zw.style.height=(H*s)+'px';}
@@ -20,13 +22,13 @@ function detectScreen(src,cb){
 function chooseFrame(index){var btn=picker.children[index];if(!btn)return;var url='frames/'+files[index];frm=url;curFile=files[index];$('vFrm').src=url;$('vFrm').style.display='block';[].forEach.call(picker.children,function(x){x.classList.remove('active')});btn.classList.add('active');render()}
 files.forEach(function(name,i){var url='frames/'+name;var btn=document.createElement('button');btn.type='button';btn.className='frame-choice';btn.innerHTML='<img src="'+url+'" alt="폰 틀 '+(i+1)+'"><span>폰 틀 '+(i+1)+'</span>';btn.onclick=function(){chooseFrame(i)};picker.appendChild(btn)});
 function render(){
-$('vT').textContent=$('iT').value;$('vM').textContent=$('iM').value;$('vL').textContent=$('iL').value;$('vR').textContent=$('iR').value;
+$('vT').textContent=$('iT').value;$('vM').textContent=$('iM').value;$('vL').textContent='메뉴';$('vR').textContent='확인';if(sel)$('scr').style.setProperty('--sf',"'"+sel.value+"'");
 Object.keys(ICON).forEach(function(k){var e=ICON[k]?$(ICON[k]):document.querySelector('#scr .bat');e.style.display=$(k).checked?'':'none'});
 var sc=$('scr'),bb=holeBox(),s0=bb.w/548,hh=bb.h/s0,S=s0;sc.style.height=hh+'px';sc.style.transform='translate('+(bb.x+bb.w/2-548*S/2+0)+'px,'+(bb.y+bb.h/2-hh*S/2+0)+'px) scale('+S+')';
 $('vFrm').style.display=frm?'block':'none';if(frm)$('vFrm').src=frm;fit();
 }
-function reset(){ $('iT').value='메시지';$('iM').value='너무 보고싶다';$('iL').value='메뉴';$('iR').value='확인';Object.keys(ICON).forEach(function(k){$(k).checked=true});frm=null;curFile=null;$('vFrm').src='';$('vFrm').style.display='none';[].forEach.call(picker.children,function(x){x.classList.remove('active')});render()}
-['iT','iM','iL','iR','iSig','iMail','iVib','iBat'].forEach(function(id){var el=$(id);if(el)el.addEventListener('input',render)});
+function reset(){ $('iT').value='메시지';$('iM').value='너무 보고싶다';Object.keys(ICON).forEach(function(k){$(k).checked=true});frm=null;curFile=null;$('vFrm').src='';$('vFrm').style.display='none';[].forEach.call(picker.children,function(x){x.classList.remove('active')});render()}
+['iT','iM','iSig','iMail','iVib','iBat'].forEach(function(id){var el=$(id);if(el)el.addEventListener('input',render)});
 
 
 $('reset').onclick=reset;

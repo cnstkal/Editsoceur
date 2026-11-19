@@ -33,7 +33,7 @@ button{font:inherit;cursor:pointer}
 .ttl{left:0;top:90px;width:548px;height:122px;background:#1c1620;color:#e8e2b0;display:flex;align-items:center;justify-content:center;font-size:42px;font-weight:500}
 .ttl i{top:41px;width:0;height:0;border-top:20px solid transparent;border-bottom:20px solid transparent}
 .ttl i.l{left:30px;border-right:22px solid #d9d49a}.ttl i.r{right:30px;border-left:22px solid #d9d49a}
-.msg{left:20px;right:20px;top:212px;bottom:96px;display:flex;align-items:center;justify-content:center;text-align:center;font-size:68px;font-weight:600;line-height:1.2;white-space:pre-wrap;word-break:keep-all}
+.msg{left:20px;right:20px;top:212px;bottom:96px;display:flex;align-items:center;justify-content:center;text-align:center;font-size:68px;font-weight:600;line-height:1.2;white-space:pre-wrap;word-break:break-all;overflow-wrap:anywhere;overflow:hidden}
 .sk{bottom:24px;font-size:46px;font-weight:600}
 .sk.l{left:26px}.sk.r{right:26px}
 /* 편집 패널 */
@@ -84,3 +84,8 @@ body.pvmode .ps-grid{grid-template-columns:1fr}
 
 .ps-back{display:inline-block;color:#0095f6;font-weight:600;font-size:15px;text-decoration:none}
 .ps-top .ps-back{margin:0}
+
+.scr,.scr *{font-family:var(--sf,Pretendard),sans-serif!important}
+
+.scr .ttl span{overflow:hidden;white-space:nowrap;text-overflow:ellipsis;max-width:440px}
+.scr .sk{max-width:200px;overflow:hidden;white-space:nowrap}
