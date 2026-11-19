@@ -26,6 +26,7 @@ function appIcon(n){var u=n.appImg||n.img;return u?'<img src="'+u+'" alt="" styl
 function icoHtml(n){
  if(n.style==='small')return '<div class="ico big"><div class="av">'+(n.avatar?'<img src="'+n.avatar+'" alt="">':'')+'</div><div class="badge">'+appIcon(n)+'</div></div>';
  return '<div class="ico">'+appIcon(n)+'</div>'}
+function fit(){var st=$('stage');if(st)st.style.setProperty('--u',st.clientWidth/1412)}
 function render(){
  var n=data[selected],stage=$('stage');
  stage.innerHTML='<div class="banner" id="banner">'+icoHtml(n)+'<div class="txt"><b></b><p></p></div><span class="time"></span></div>';
@@ -34,7 +35,9 @@ function render(){
  $('iconStyle').value=n.style;$('iconStyle').parentNode.style.display=n.noSmall?'none':'block';$('avatarRow').style.display=n.style==='small'?'block':'none';$('appName').value=n.app;$('title').value=n.title;$('bodyText').value=n.body;$('timeText').value=n.time;
  $('bgColor').value=color;$('opacity').value=opacity;$('opacityValue').textContent=opacity+'%';
  Array.prototype.forEach.call($('picker').children,function(b,i){b.classList.toggle('on',i===selected)});
+ fit();
 }
+if(window.ResizeObserver)new ResizeObserver(fit).observe($('stage'));window.addEventListener('resize',fit);
 data.forEach(function(n,i){var b=document.createElement('button');b.textContent=n.label;b.onclick=function(){selected=i;render()};$('picker').appendChild(b)});
 [['appName','app'],['title','title'],['bodyText','body'],['timeText','time']].forEach(function(p){$(p[0]).addEventListener('input',function(){data[selected][p[1]]=this.value;renderKeepFocus(p[0])})});
 function renderKeepFocus(id){var n=data[selected];var b=$('banner');if(!b)return;b.style.background=rgba(color,opacity);b.querySelector('b').textContent=n.title;b.querySelector('p').textContent=n.body;b.querySelector('.time').textContent=n.time}
@@ -45,6 +48,6 @@ $('appImgClear').onclick=function(){data[selected].appImg='';render()};
 $('bgColor').oninput=function(){color=this.value;renderKeepFocus()};
 $('opacity').oninput=function(){opacity=+this.value;$('opacityValue').textContent=opacity+'%';renderKeepFocus()};
 $('reset').onclick=function(){data[selected].app=data[selected].label;data[selected].title='알림 제목';data[selected].body='알림 내용을 입력하세요';data[selected].time='지금';data[selected].style='normal';data[selected].appImg='';data[selected].avatar='';color='#efefef';opacity=96;render()};
-$('savePng').onclick=function(){var b=this,t=b.textContent;b.disabled=true;b.textContent='저장 중...';(document.fonts&&document.fonts.ready?document.fonts.ready:Promise.resolve()).then(function(){return html2canvas($('banner'),{scale:5,useCORS:true,backgroundColor:null,logging:false})}).then(function(c){c.toBlob(function(blob){var a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download='notification.png';document.body.appendChild(a);a.click();a.remove();b.disabled=false;b.textContent=t},'image/png')}).catch(function(){b.disabled=false;b.textContent=t;alert('PNG 저장에 실패했습니다.')})};
+$('savePng').onclick=function(){var b=this,t=b.textContent;b.disabled=true;b.textContent='저장 중...';(document.fonts&&document.fonts.ready?document.fonts.ready:Promise.resolve()).then(function(){return html2canvas($('banner'),{scale:1412/$('banner').offsetWidth,useCORS:true,backgroundColor:null,logging:false})}).then(function(c){c.toBlob(function(blob){var a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download='notification.png';document.body.appendChild(a);a.click();a.remove();b.disabled=false;b.textContent=t},'image/png')}).catch(function(){b.disabled=false;b.textContent=t;alert('PNG 저장에 실패했습니다.')})};
 render();
 })();

@@ -40,3 +40,14 @@ body{max-width:520px;margin:0 auto}
 .editor button.sub{height:36px;margin:-4px 0 12px;padding:0 12px;border:0;border-radius:9px;background:#e4e4e7;font:inherit;font-size:13px}
 
 .picker{flex-wrap:wrap}.picker button{flex:1 1 calc(25% - 8px);min-width:72px}
+
+/* 기준 이미지(1412x248) 비율 그대로: 모든 치수를 --u(=가로폭/1412)에 비례 */
+.stage{--u:.26}
+.banner{width:calc(1412px*var(--u));max-width:none;margin:0;height:calc(248px*var(--u));min-height:0;padding:0 calc(60px*var(--u)) 0 calc(48px*var(--u));gap:calc(48px*var(--u));border-radius:calc(56px*var(--u))}
+.ico,.ico.big{width:calc(140px*var(--u));height:calc(140px*var(--u));margin-right:0}
+.ico.big .badge{width:calc(68px*var(--u));height:calc(68px*var(--u));right:calc(-20px*var(--u));bottom:calc(-14px*var(--u))}
+.txt b,.txt p{font-size:calc(46px*var(--u));line-height:calc(64px*var(--u))}
+.time{margin-top:calc(66px*var(--u));font-size:calc(34px*var(--u));line-height:calc(42px*var(--u))}
+/* 모바일: 겹친 여백을 줄여 알림 가로폭 확보 */
+@media(max-width:1099px){body.studio .ps-wrap{padding-left:0;padding-right:0}body.studio .ps-main{padding-left:12px;padding-right:12px}body.studio .wrap{padding-left:0;padding-right:0}}
+.txt b{font-weight:800}
