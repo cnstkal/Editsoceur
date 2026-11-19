@@ -193,7 +193,7 @@ $('#savePng').onclick=function(){var b=this,t=b.textContent,k=2;b.disabled=true;
  }).catch(function(){done();alert('PNG 저장에 실패했습니다.')})};
 function glow(e){var g=e.target.closest&&e.target.closest('.glass');if(!g)return;var r=g.getBoundingClientRect();g.style.setProperty('--mx',((e.clientX-r.left)/r.width*100)+'%');g.style.setProperty('--my',((e.clientY-r.top)/r.height*100)+'%')}
 
-function fit(){var s=Math.min(1,window.innerWidth/1280);$('#stage').style.transform='scale('+s+')';$('#wrap').style.height=(720*s)+'px'}
+function fit(){var s=Math.min(1,$('#wrap').clientWidth/1280);$('#stage').style.transform='scale('+s+')';$('#wrap').style.height=(720*s)+'px'}
 window.addEventListener('resize',fit);
 render();fit();
 })();
