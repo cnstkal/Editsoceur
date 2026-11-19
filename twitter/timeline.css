@@ -29,3 +29,7 @@
 .xpg.n1{grid-template-columns:1fr}
 .xpg img{width:100%;display:block;object-fit:cover;aspect-ratio:1/1}
 .xpg.n1 img{aspect-ratio:16/9}
+
+.ps-edwrap .editor .xc .row:has(>label:nth-child(4)){display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.ps-edwrap .editor .xc .row label{min-width:0;white-space:nowrap}
+.ps-edwrap .editor .xc .row label>input{min-width:0;width:100%}
