@@ -11,7 +11,7 @@ var FONTS=[["pre","기본 고딕 (Pretendard)","Pretendard"],["notosans","Noto S
 var sel=$('iFont');if(sel){FONTS.forEach(function(f){var o=document.createElement('option');o.value=f[2];o.textContent=f[1];sel.appendChild(o)});sel.value='Pretendard';sel.addEventListener('change',render)}
 /* 폰 틀 이미지의 투명한 액정 영역을 미리 측정해 둔 값. 화면을 이 영역에 딱 맞춰 넣는다 */
 function holeBox(){var d=HOLE[curFile];if(!d)return{x:818,y:498,w:548,h:692};var k=Math.min(W/d.w,H/d.h),ox=(W-d.w*k)/2,oy=(H-d.h*k)/2,m=3;return{x:ox+d.x0*k-m,y:oy+d.y0*k-m,w:(d.x1-d.x0)*k+m*2,h:(d.y1-d.y0)*k+m*2}}
-function fit(){var w=fr.clientWidth;if(!w)return;var s=w/W;zs.style.transform='scale('+s+')';zw.style.height=(H*s)+'px';}
+function fit(){var w=fr.clientWidth;if(!w){setTimeout(fit,120);return}var s=w/W;zs.style.transform='scale('+s+')';zw.style.height=(H*s)+'px';}
 function detectScreen(src,cb){
  var im=new Image();im.crossOrigin='anonymous';im.onload=function(){
   var cw=272,ch=213,cv=document.createElement('canvas');cv.width=cw;cv.height=ch;var cx=cv.getContext('2d',{willReadFrequently:true});cx.drawImage(im,0,0,cw,ch);
@@ -24,10 +24,15 @@ function detectScreen(src,cb){
 function chooseFrame(index){var btn=picker.children[index];if(!btn)return;var url='frames/'+files[index];frm=url;curFile=files[index];$('vFrm').src=url;$('vFrm').style.display='block';[].forEach.call(picker.children,function(x){x.classList.remove('active')});btn.classList.add('active');render()}
 files.forEach(function(name,i){var url='frames/'+name;var btn=document.createElement('button');btn.type='button';btn.className='frame-choice';btn.innerHTML='<img src="'+url+'" alt="폰 틀 '+(i+1)+'"><span>폰 틀 '+(i+1)+'</span>';btn.onclick=function(){chooseFrame(i)};picker.appendChild(btn)});
 function render(){
-$('vT').textContent=$('iT').value;$('vM').textContent=$('iM').value;autoSize();$('vL').textContent='메뉴';$('vR').textContent='확인';if(sel)$('scr').style.setProperty('--sf',"'"+sel.value+"'");
-Object.keys(ICON).forEach(function(k){var e=ICON[k]?$(ICON[k]):document.querySelector('#scr .bat');e.style.display=$(k).checked?'':'none'});
-var sc=$('scr'),bb=holeBox(),s0=bb.w/548,hh=bb.h/s0,S=s0;sc.style.height=hh+'px';sc.style.transform='translate('+(bb.x+bb.w/2-548*S/2+0)+'px,'+(bb.y+bb.h/2-hh*S/2+0)+'px) scale('+S+')';
-$('vFrm').style.display=frm?'block':'none';if(frm)$('vFrm').src=frm;fit();
+ function safe(f){try{f()}catch(e){if(window.console)console.warn(e)}}
+ safe(function(){var sc=$('scr'),bb=holeBox(),s0=bb.w/548,hh=bb.h/s0;sc.style.height=hh+'px';sc.style.transform='translate('+(bb.x+bb.w/2-548*s0/2)+'px,'+(bb.y+bb.h/2-hh*s0/2)+'px) scale('+s0+')'});
+ safe(function(){$('vFrm').style.display=frm?'block':'none';if(frm)$('vFrm').src=frm});
+ safe(function(){$('vT').textContent=$('iT').value});
+ safe(function(){$('vM').textContent=$('iM').value;autoSize()});
+ safe(function(){$('vL').textContent='메뉴';$('vR').textContent='확인'});
+ safe(function(){if(sel)$('scr').style.setProperty('--sf',"'"+sel.value+"'")});
+ safe(function(){Object.keys(ICON).forEach(function(k){var e=ICON[k]?$(ICON[k]):document.querySelector('#scr .bat');if(e&&$(k))e.style.display=$(k).checked?'':'none'})});
+ safe(fit);
 }
 function reset(){ $('iT').value='메시지';$('iM').value='너무 보고싶다';Object.keys(ICON).forEach(function(k){$(k).checked=true});frm=null;curFile=null;$('vFrm').src='';$('vFrm').style.display='none';[].forEach.call(picker.children,function(x){x.classList.remove('active')});render()}
 ['iT','iM','iSig','iMail','iVib','iBat'].forEach(function(id){var el=$(id);if(el)el.addEventListener('input',render)});
