@@ -25,7 +25,7 @@ L.addEventListener('click',function(e){var a=e.target.dataset.a;if(!a)return;var
 if(a==='x')m.splice(i,1);else if(a==='u'&&i>0){var t=m[i];m[i]=m[i-1];m[i-1]=t}else if(a==='d'&&i<m.length-1){var t2=m[i];m[i]=m[i+1];m[i+1]=t2}
 persist();list();render()});
 $('addP').onclick=function(){S.p.push({t:'',x:'',c:'',tm:'방금',a:'익명'});persist();list();render()};
-$('addB').onclick=function(){S.p.push({b:1});persist();list();render()};
+
 $('reset').onclick=function(){load(true)};
 $('savePng').onclick=function(){var b=this,t=b.textContent;b.disabled=true;b.textContent='저장 중...';
 (document.fonts&&document.fonts.ready?document.fonts.ready:Promise.resolve()).then(function(){

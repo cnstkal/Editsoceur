@@ -1,6 +1,6 @@
 (function(){
   var W=window.W,$=W.$,esc=W.esc;
-  var DEF={time:'10:57',wr:'+ 글쓰기',dong:'동네이름',sub:'옆동네',chips:'전체,중고차 ↗,가까운 동네,수집품,알바',act:1,ch:'5',
+  var DEF={time:'10:57',wr:'+ 글쓰기',dong:'동네이름',sub:'옆동네',chips:'전체,중고차 ↗,가까운 동네,수집품,알바',act:1,ch:'',nv:'1',
     it:[{t:'무선 이어폰 새상품 (미개봉)',loc:'옆동네',dist:'5km',d:'16시간 전',p:'200,000원',buy:1,k:'h',n:'5',img:''},
       {t:'투명 보관 케이스 새상품',loc:'동네이름',dist:'600m',d:'1일 전',p:'1,500원',buy:1,k:'h',n:'8',img:''},
       {t:'포토카드 판매합니다',loc:'옆동네',dist:'4km',d:'3일 전',p:'100원',buy:0,k:'c',n:'1',img:''},
@@ -23,9 +23,9 @@
       '<div class="mt">'+esc(x.loc)+' · '+esc(x.dist)+' · '+esc(x.d)+'</div><div class="pr">'+esc(x.p)+'</div>'+(+x.buy?'<div class="by">'+BUY+'바로구매</div>':'')+'</div>'+
       '<svg class="kb" viewBox="0 0 4 16" fill="#8d9096"><circle cx="2" cy="2" r="1.700"/><circle cx="2" cy="8" r="1.700"/><circle cx="2" cy="14" r="1.700"/></svg>'+
       (x.k?'<div class="cn">'+(x.k==='c'?CHAT:HEART)+esc(x.n)+'</div>':'')+'</div>'}).join('');
-    $('gNav').innerHTML=nav(S.ch)}
+    $('gNav').innerHTML=nav('');$('gNav').style.display=S.nv==='0'?'none':''}
   W.start({key:'daangn_main_v1',def:DEF,frame:'gf',name:'daangn-main',render:render,
-    fields:[['iTime','time'],['iWr','wr'],['iDong','dong'],['iSub','sub'],['iChips','chips'],['iAct','act'],['iCh','ch']],
+    fields:[['iTime','time'],['iWr','wr'],['iDong','dong'],['iSub','sub'],['iChips','chips'],['iAct','act'],['iCh','ch'],['iNv','nv']],
     lists:[{p:'it',el:'el',add:'addE',blank:{t:'새 게시글',loc:'동네이름',dist:'1km',d:'1시간 전',p:'10,000원',buy:0,k:'h',n:'0',img:''},
       f:[['t','제목'],['loc','동네'],['dist','거리'],['d','시간'],['p','가격'],['buy','바로구매 표시','c'],['k','반응 아이콘','s',[['','없음'],['h','관심(하트)'],['c','채팅']]],['n','반응 숫자'],['img','사진','f']]}]})
 })();

@@ -36,15 +36,19 @@
 
 </div></div></section>
 <section class="ps-card ps-side"><div class="ps-lbl">Edit Panel</div><h2>에브리타임 게시물 내용 수정</h2><div class="ps-edwrap"><section class="editor">
+<input type="hidden" id="iTm"><input type="hidden" id="iBt">
+<div class="ps-pn" data-t="기본">
 <h2>게시물 편집</h2>
-<div class="row"><label>시간<input id="iTm"></label><label>배터리<input id="iBt"></label></div>
 <div class="row"><label>게시판 이름<input id="iBd"></label><label>학교<input id="iSc"></label></div>
-<div class="row"><label>작성자<input id="iNm"></label><label>작성 시간<input id="iPt"></label><label>댓글 수<input id="iCn"></label></div>
 <label>제목<input id="iTi"></label>
 <label>내용<textarea id="iBy" rows="3"></textarea></label>
-<h2 style="margin-top:14px">댓글</h2>
+</div>
+<div class="ps-pn" data-t="게시글" hidden>
+<div class="row"><label>작성자<input id="iNm"></label><label>작성 시간<input id="iPt"></label><label>댓글 수<input id="iCn"></label></div>
+<h2>댓글</h2>
 <div id="clist"></div>
 <button class="ghost" id="addC" type="button">+ 댓글 추가</button>
+</div>
 </section></div><div class="ps-acts"><button id="savePng" class="primary">PNG 저장</button><button id="reset" class="secondary">초기화</button></div></section>
 </div></div>
 <script src="https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js"></script>
