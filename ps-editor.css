@@ -88,3 +88,25 @@ body.studio .ps-side .ps-acts #savePng{order:2!important;flex:1.6 1 0!important;
 body.studio .ps-side .ps-acts #reset{order:1!important;flex:1 1 0!important;width:auto!important;min-width:0!important;background:#f2f3f5!important;color:#222!important}
 body.studio .ps-side .ps-acts #save{order:2!important;flex:1.6 1 0!important;width:auto!important;min-width:0!important;background:var(--pk)!important;color:#fff!important}
 body.studio .ps-side .ps-acts button{height:52px!important;padding:0 12px!important;border:0!important;border-radius:14px!important;font-size:15px!important;font-weight:700!important;white-space:nowrap}
+
+/* ===== 홈 화면/아이패드: 앱 목록 줄, 폴더 묶기, 수정 폼 ===== */
+body.studio .ps-side .ps-edwrap .editor .it{display:flex;flex-wrap:wrap;align-items:center;gap:10px;margin:0 0 10px;padding:12px;border:1px solid var(--ln);border-radius:16px;background:#fff}
+body.studio .ps-side .ps-edwrap .editor .it.k{margin-left:24px;background:#fafafb}
+body.studio .ps-side .ps-edwrap .editor .it input[type=checkbox]{width:22px;height:22px;margin:0;flex:none}
+body.studio .ps-side .ps-edwrap .editor .it .th{width:44px;height:44px;flex:none}
+body.studio .ps-side .ps-edwrap .editor .it b{flex:1 1 0;min-width:0;font-size:15px;font-weight:600;color:#111;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+body.studio .ps-side .ps-edwrap .editor .it .f,body.studio .ps-side .ps-edwrap .editor .it .mini{flex:1 1 0;min-width:0;width:auto;height:40px;margin:0;padding:0 8px;display:flex;align-items:center;justify-content:center;border:1px solid var(--ln);border-radius:10px;background:#f5f5f7;color:#333;font-size:14px;font-weight:600;position:relative;overflow:hidden;cursor:pointer}
+body.studio .ps-side .ps-edwrap .editor .it .f input{position:absolute;inset:0;width:100%;height:100%;min-width:0;margin:0;padding:0;opacity:0;border:0;cursor:pointer}
+body.studio .ps-side .ps-edwrap .editor .it .mini:last-child{color:#e0245e}
+body.studio .ps-side .ps-edwrap .editor .gbox>label{flex-direction:column;align-items:stretch;justify-content:flex-start;gap:7px;margin:0;color:#6b717b;font-size:13px}
+body.studio .ps-side .ps-edwrap .editor .gbox .add{margin:0}
+body.studio .ps-side .ps-edwrap .editor .edf{margin:-2px 0 12px;padding:16px;border:1px solid var(--pk);border-radius:16px;background:#fff}
+body.studio .ps-side .ps-edwrap .editor .edf>label{flex-direction:column;align-items:stretch;gap:7px;margin:0 0 14px;color:#6b717b;font-size:13px}
+body.studio .ps-side .ps-edwrap .editor .edf :is(input:not([type=checkbox]):not([type=file]),select){width:100%;flex:none}
+body.studio .ps-side .ps-edwrap .editor .edf .row{display:flex;gap:10px;align-items:flex-end}
+body.studio .ps-side .ps-edwrap .editor .edf .row>*{flex:1 1 0;min-width:0}
+body.studio .ps-side .ps-edwrap .editor .edf .row>label{margin:0}
+body.studio .ps-side .ps-edwrap .editor .edf .mini,body.studio .ps-side .ps-edwrap .editor .edf .add{height:44px;margin:0;width:auto}
+body.studio .ps-side .ps-edwrap .editor .it b{flex:1 1 calc(100% - 110px)}
+body.studio .ps-side .ps-edwrap .editor .edf input[type=file]{width:100%;flex:none;font-size:12px}
+body.studio .ps-side .ps-edwrap .editor .edf input[type=file]::file-selector-button{height:36px;padding:0 10px;margin-right:6px}
