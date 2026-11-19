@@ -17,16 +17,16 @@ function detectScreen(src,cb){
   if(best)cb({x:best.x/cw*W,y:best.y/ch*H,w:best.w/cw*W,h:best.h/ch*H});else cb(null);
  };im.onerror=function(){cb(null)};im.src=src;
 }
-function chooseFrame(index){var btn=picker.children[index];if(!btn)return;var url='frames/'+files[index];frm=url;curFile=files[index];$('iX').value=0;$('iY').value=0;$('iS').value=100;$('vFrm').src=url;$('vFrm').style.display='block';[].forEach.call(picker.children,function(x){x.classList.remove('active')});btn.classList.add('active');render()}
+function chooseFrame(index){var btn=picker.children[index];if(!btn)return;var url='frames/'+files[index];frm=url;curFile=files[index];$('vFrm').src=url;$('vFrm').style.display='block';[].forEach.call(picker.children,function(x){x.classList.remove('active')});btn.classList.add('active');render()}
 files.forEach(function(name,i){var url='frames/'+name;var btn=document.createElement('button');btn.type='button';btn.className='frame-choice';btn.innerHTML='<img src="'+url+'" alt="폰 틀 '+(i+1)+'"><span>폰 틀 '+(i+1)+'</span>';btn.onclick=function(){chooseFrame(i)};picker.appendChild(btn)});
 function render(){
 $('vT').textContent=$('iT').value;$('vM').textContent=$('iM').value;$('vL').textContent=$('iL').value;$('vR').textContent=$('iR').value;
 Object.keys(ICON).forEach(function(k){var e=ICON[k]?$(ICON[k]):document.querySelector('#scr .bat');e.style.display=$(k).checked?'':'none'});
-var sc=$('scr'),bb=holeBox(),s0=bb.w/548,hh=bb.h/s0,S=s0*$('iS').value/100;sc.style.height=hh+'px';sc.style.transform='translate('+(bb.x+bb.w/2-548*S/2+Number($('iX').value))+'px,'+(bb.y+bb.h/2-hh*S/2+Number($('iY').value))+'px) scale('+S+')';$('xVal').textContent=$('iX').value;$('yVal').textContent=$('iY').value;$('sVal').textContent=$('iS').value+'%';
+var sc=$('scr'),bb=holeBox(),s0=bb.w/548,hh=bb.h/s0,S=s0;sc.style.height=hh+'px';sc.style.transform='translate('+(bb.x+bb.w/2-548*S/2+0)+'px,'+(bb.y+bb.h/2-hh*S/2+0)+'px) scale('+S+')';
 $('vFrm').style.display=frm?'block':'none';if(frm)$('vFrm').src=frm;fit();
 }
-function reset(){ $('iT').value='메시지';$('iM').value='너무 보고싶다';$('iL').value='메뉴';$('iR').value='확인';Object.keys(ICON).forEach(function(k){$(k).checked=true});$('iX').value=0;$('iY').value=0;$('iS').value=100;frm=null;curFile=null;$('vFrm').src='';$('vFrm').style.display='none';[].forEach.call(picker.children,function(x){x.classList.remove('active')});render()}
-['iT','iM','iL','iR','iX','iY','iS','iSig','iMail','iVib','iBat'].forEach(function(id){var el=$(id);if(el)el.addEventListener('input',render)});
+function reset(){ $('iT').value='메시지';$('iM').value='너무 보고싶다';$('iL').value='메뉴';$('iR').value='확인';Object.keys(ICON).forEach(function(k){$(k).checked=true});frm=null;curFile=null;$('vFrm').src='';$('vFrm').style.display='none';[].forEach.call(picker.children,function(x){x.classList.remove('active')});render()}
+['iT','iM','iL','iR','iSig','iMail','iVib','iBat'].forEach(function(id){var el=$(id);if(el)el.addEventListener('input',render)});
 
 
 $('reset').onclick=reset;
