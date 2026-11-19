@@ -5,24 +5,24 @@ body.studio .ps-side .ps-seg::-webkit-scrollbar{display:none}
 body.studio .ps-side .ps-seg button{flex:1 0 auto;height:40px;padding:0 14px;border:0;border-radius:12px;background:transparent;color:#333;font-size:14px;font-weight:500;box-shadow:none;white-space:nowrap;cursor:pointer}
 body.studio .ps-side .ps-seg button.on{background:var(--pk-bg);color:var(--pk);font-weight:700;border:0}
 body.studio .ps-side .ps-pn[hidden]{display:none!important}
-body.studio .ps-side .editor{flex:1;background:none;border:0;padding:0;font-size:14px}
-body.studio .ps-side .editor h2,body.studio .ps-side .editor h3{font-size:16px!important;font-weight:700;color:#111;margin:22px 0 14px!important;padding:0!important;line-height:1.4}
-body.studio .ps-side .editor .ps-pn>h2:first-child,body.studio .ps-side .editor .ps-pn>h3:first-child{margin-top:0!important}
-body.studio .ps-side .editor label{display:flex;align-items:center;justify-content:space-between;gap:14px;margin:0 0 16px;font-size:14px;font-weight:500;color:var(--tx)}
-body.studio .ps-side .editor label:has(textarea){flex-direction:column;align-items:stretch;gap:8px}
-body.studio .ps-side .editor .row{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px 12px;margin:0 0 16px}
-body.studio .ps-side .editor .row>label{flex-direction:column;align-items:stretch;justify-content:flex-start;gap:7px;margin:0;min-width:0;color:#6b717b;font-size:13px}
-body.studio .ps-side .editor input:not([type=checkbox]):not([type=file]):not([type=color]):not([type=range]),body.studio .ps-side .editor select,body.studio .ps-side .editor textarea{width:56%;flex:0 0 56%;min-width:0;max-width:100%;height:44px;margin:0;padding:0 14px;font:inherit;font-size:16px;color:#111;border:1px solid var(--ln);border-radius:12px;background:#fff;box-sizing:border-box;outline:0;transition:border-color .15s,box-shadow .15s}
-body.studio .ps-side .editor textarea{width:100%;flex:none;height:auto;padding:12px 14px;line-height:1.5;resize:vertical}
-body.studio .ps-side .editor .row>label>input:not([type=checkbox]):not([type=file]):not([type=color]),body.studio .ps-side .editor .row>label>select{width:100%;flex:none}
-body.studio .ps-side .editor select{appearance:none;-webkit-appearance:none;padding-right:34px;background:#fff url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' fill='none' stroke='%238a8f98' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m1 1.500 5 5 5-5'/%3E%3C/svg%3E") no-repeat right 14px center}
-body.studio .ps-side .editor input:focus,body.studio .ps-side .editor select:focus,body.studio .ps-side .editor textarea:focus{border-color:var(--pk);box-shadow:0 0 0 3px var(--pk-bg)}
-body.studio .ps-side .editor input[type=file]{flex:0 0 56%;width:56%;min-width:0;padding:0;font-size:13px;color:var(--mu);border:0;height:auto}
-body.studio .ps-side .editor input[type=file]::file-selector-button{height:36px;padding:0 14px;margin-right:10px;border:1px solid #e3e5e8;border-radius:10px;background:#fff;color:#222;font:inherit;font-size:13px;font-weight:600;cursor:pointer}
-body.studio .ps-side .editor input[type=color]{width:56px;height:40px;padding:2px;border:1px solid var(--ln);border-radius:10px;background:#fff;cursor:pointer}
-body.studio .ps-side .editor .row>label>input[type=color]{width:100%}
-body.studio .ps-side .editor input[type=range]{flex:0 0 56%;width:56%;accent-color:var(--pk)}
-body.studio .ps-side .editor input[type=checkbox]:not(.sw input){accent-color:var(--pk);width:20px;height:20px}
+body.studio .ps-side :is(.editor,.ed){flex:1;background:none;border:0;padding:0;font-size:14px}
+body.studio .ps-side :is(.editor,.ed) h2,body.studio .ps-side :is(.editor,.ed) h3{font-size:16px!important;font-weight:700;color:#111;margin:22px 0 14px!important;padding:0!important;line-height:1.4}
+body.studio .ps-side :is(.editor,.ed) .ps-pn>h2:first-child,body.studio .ps-side :is(.editor,.ed) .ps-pn>h3:first-child{margin-top:0!important}
+body.studio .ps-side :is(.editor,.ed) label{display:flex;align-items:center;justify-content:space-between;gap:14px;margin:0 0 16px;font-size:14px;font-weight:500;color:var(--tx)}
+body.studio .ps-side :is(.editor,.ed) label:has(textarea){flex-direction:column;align-items:stretch;gap:8px}
+body.studio .ps-side :is(.editor,.ed) .row{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px 12px;margin:0 0 16px}
+body.studio .ps-side :is(.editor,.ed) .row>label{flex-direction:column;align-items:stretch;justify-content:flex-start;gap:7px;margin:0;min-width:0;color:#6b717b;font-size:13px}
+body.studio .ps-side :is(.editor,.ed) input:not([type=checkbox]):not([type=file]):not([type=color]):not([type=range]),body.studio .ps-side :is(.editor,.ed) select,body.studio .ps-side :is(.editor,.ed) textarea{width:56%;flex:0 0 56%;min-width:0;max-width:100%;height:44px;margin:0;padding:0 14px;font:inherit;font-size:16px;color:#111;border:1px solid var(--ln);border-radius:12px;background:#fff;box-sizing:border-box;outline:0;transition:border-color .15s,box-shadow .15s}
+body.studio .ps-side :is(.editor,.ed) textarea{width:100%;flex:none;height:auto;padding:12px 14px;line-height:1.5;resize:vertical}
+body.studio .ps-side :is(.editor,.ed) .row>label>input:not([type=checkbox]):not([type=file]):not([type=color]),body.studio .ps-side :is(.editor,.ed) .row>label>select{width:100%;flex:none}
+body.studio .ps-side :is(.editor,.ed) select{appearance:none;-webkit-appearance:none;padding-right:34px;background:#fff url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' fill='none' stroke='%238a8f98' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m1 1.500 5 5 5-5'/%3E%3C/svg%3E") no-repeat right 14px center}
+body.studio .ps-side :is(.editor,.ed) input:focus,body.studio .ps-side :is(.editor,.ed) select:focus,body.studio .ps-side :is(.editor,.ed) textarea:focus{border-color:var(--pk);box-shadow:0 0 0 3px var(--pk-bg)}
+body.studio .ps-side :is(.editor,.ed) input[type=file]{flex:0 0 56%;width:56%;min-width:0;padding:0;font-size:13px;color:var(--mu);border:0;height:auto}
+body.studio .ps-side :is(.editor,.ed) input[type=file]::file-selector-button{height:36px;padding:0 14px;margin-right:10px;border:1px solid #e3e5e8;border-radius:10px;background:#fff;color:#222;font:inherit;font-size:13px;font-weight:600;cursor:pointer}
+body.studio .ps-side :is(.editor,.ed) input[type=color]{width:56px;height:40px;padding:2px;border:1px solid var(--ln);border-radius:10px;background:#fff;cursor:pointer}
+body.studio .ps-side :is(.editor,.ed) .row>label>input[type=color]{width:100%}
+body.studio .ps-side :is(.editor,.ed) input[type=range]{flex:0 0 56%;width:56%;accent-color:var(--pk)}
+body.studio .ps-side :is(.editor,.ed) input[type=checkbox]:not(.sw input){accent-color:var(--pk);width:20px;height:20px}
 body.studio .ps-side .ps-tg{display:flex;align-items:center;justify-content:space-between;min-height:44px;margin:0 0 8px;font-size:14px;font-weight:500;color:var(--tx)}
 body.studio .ps-side .ps-tg>label{margin:0}
 body.studio .ps-side .ps-pic{display:flex;gap:16px;align-items:center;padding:14px;border:1px solid var(--ln);border-radius:16px;margin-bottom:14px;background:#fff}
@@ -44,45 +44,45 @@ body.studio .ps-side .ps-acts{position:sticky;bottom:0;background:#fff;padding:1
 }
 
 /* ===== 화면별 템플릿 컴포넌트 보정 ===== */
-body.studio .ps-side .ps-edwrap .editor label:has(>input[type=checkbox]):not(.sw),
-body.studio .ps-side .ps-edwrap .editor label.xk,body.studio .ps-side .ps-edwrap .editor label.ek{justify-content:flex-start;gap:10px;white-space:normal}
-body.studio .ps-side .ps-edwrap .editor label>input[type=checkbox]:not(:only-child){accent-color:var(--pk);width:20px;height:20px;flex:none}
+body.studio .ps-side .ps-edwrap :is(.editor,.ed) label:has(>input[type=checkbox]):not(.sw),
+body.studio .ps-side .ps-edwrap :is(.editor,.ed) label.xk,body.studio .ps-side .ps-edwrap :is(.editor,.ed) label.ek{justify-content:flex-start;gap:10px;white-space:normal}
+body.studio .ps-side .ps-edwrap :is(.editor,.ed) label>input[type=checkbox]:not(:only-child){accent-color:var(--pk);width:20px;height:20px;flex:none}
 /* 라벨+토글 한 줄 */
-body.studio .ps-side .ps-edwrap .editor .trow{display:flex;align-items:center;justify-content:space-between;gap:14px;min-height:44px;margin:0 0 8px;padding:0;border:0;font-size:14px;font-weight:500;color:var(--tx)}
-body.studio .ps-side .ps-edwrap .editor .musicbox,body.studio .ps-side .ps-edwrap .editor .switches{display:flex;flex-direction:column;gap:2px;margin:0 0 8px;padding:0;border:0;background:none;box-shadow:none}
-body.studio .ps-side .ps-edwrap .editor .musicbox>label{margin-bottom:8px}
+body.studio .ps-side .ps-edwrap :is(.editor,.ed) .trow{display:flex;align-items:center;justify-content:space-between;gap:14px;min-height:44px;margin:0 0 8px;padding:0;border:0;font-size:14px;font-weight:500;color:var(--tx)}
+body.studio .ps-side .ps-edwrap :is(.editor,.ed) .musicbox,body.studio .ps-side .ps-edwrap :is(.editor,.ed) .switches{display:flex;flex-direction:column;gap:2px;margin:0 0 8px;padding:0;border:0;background:none;box-shadow:none}
+body.studio .ps-side .ps-edwrap :is(.editor,.ed) .musicbox>label{margin-bottom:8px}
 body.studio .ps-side .sw:has(.knob){position:relative;display:flex!important;align-items:center;justify-content:space-between;gap:14px;width:100%;height:auto;min-height:44px;font-size:14px;font-weight:500;color:var(--tx)}
 body.studio .ps-side .sw:has(.knob) .knob{position:relative;inset:auto;order:2;flex:none;width:50px;height:30px}
 /* 카드형 묶음 */
-body.studio .ps-side .ps-edwrap .editor :is(.card,.ec,.xc,.pf-card){margin:0 0 14px!important;padding:16px!important;border:1px solid var(--ln)!important;border-radius:16px!important;background:#fff!important;box-shadow:none!important;position:static!important;width:auto!important;height:auto!important}
-body.studio .ps-side .ps-edwrap .editor .gbox{display:flex;flex-direction:column;gap:10px;margin:0 0 14px;padding:14px;border:0;border-radius:16px;background:#f5f5f7}
-body.studio .ps-side .ps-edwrap .editor :is(.card,.ec,.xc,.pf-card)>label{flex-direction:column;align-items:stretch;justify-content:flex-start;gap:7px;margin:0 0 14px;color:#6b717b;font-size:13px}
-body.studio .ps-side .ps-edwrap .editor :is(.card,.ec,.xc,.pf-card,.gbox) :is(input:not([type=checkbox]):not([type=file]):not([type=color]):not([type=range]),select,textarea){width:100%!important;flex:none!important;height:44px;padding:0 14px!important;border:1px solid var(--ln)!important;border-radius:12px!important;background:#fff!important;font-size:16px!important;color:#111}
-body.studio .ps-side .ps-edwrap .editor :is(.card,.ec,.xc,.pf-card,.gbox) textarea{height:auto;padding:12px 14px!important}
-body.studio .ps-side .ps-edwrap .editor :is(.card,.ec,.xc,.pf-card) .row{margin-bottom:14px}
-body.studio .ps-side .ps-edwrap .editor :is(.card,.ec,.xc,.pf-card)>:last-child{margin-bottom:0}
-body.studio .ps-side .ps-edwrap .editor :is(.pf-card,.card) h3{font-size:15px!important;margin:0 0 14px!important}
-body.studio .ps-side .ps-edwrap .editor :is(.grid2,.grid3){display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px 12px;margin:0 0 16px}
-body.studio .ps-side .ps-edwrap .editor :is(.grid2,.grid3)>label{flex-direction:column;align-items:stretch;gap:7px;margin:0;color:#6b717b;font-size:13px}
-body.studio .ps-side .ps-edwrap .editor :is(.grid2,.grid3) :is(input:not([type=checkbox]):not([type=color]),select){width:100%;flex:none}
+body.studio .ps-side .ps-edwrap :is(.editor,.ed) :is(.card,.ec,.xc,.pf-card){margin:0 0 14px!important;padding:16px!important;border:1px solid var(--ln)!important;border-radius:16px!important;background:#fff!important;box-shadow:none!important;position:static!important;width:auto!important;height:auto!important}
+body.studio .ps-side .ps-edwrap :is(.editor,.ed) .gbox{display:flex;flex-direction:column;gap:10px;margin:0 0 14px;padding:14px;border:0;border-radius:16px;background:#f5f5f7}
+body.studio .ps-side .ps-edwrap :is(.editor,.ed) :is(.card,.ec,.xc,.pf-card)>label{flex-direction:column;align-items:stretch;justify-content:flex-start;gap:7px;margin:0 0 14px;color:#6b717b;font-size:13px}
+body.studio .ps-side .ps-edwrap :is(.editor,.ed) :is(.card,.ec,.xc,.pf-card,.gbox) :is(input:not([type=checkbox]):not([type=file]):not([type=color]):not([type=range]),select,textarea){width:100%!important;flex:none!important;height:44px;padding:0 14px!important;border:1px solid var(--ln)!important;border-radius:12px!important;background:#fff!important;font-size:16px!important;color:#111}
+body.studio .ps-side .ps-edwrap :is(.editor,.ed) :is(.card,.ec,.xc,.pf-card,.gbox) textarea{height:auto;padding:12px 14px!important}
+body.studio .ps-side .ps-edwrap :is(.editor,.ed) :is(.card,.ec,.xc,.pf-card) .row{margin-bottom:14px}
+body.studio .ps-side .ps-edwrap :is(.editor,.ed) :is(.card,.ec,.xc,.pf-card)>:last-child{margin-bottom:0}
+body.studio .ps-side .ps-edwrap :is(.editor,.ed) :is(.pf-card,.card) h3{font-size:15px!important;margin:0 0 14px!important}
+body.studio .ps-side .ps-edwrap :is(.editor,.ed) :is(.grid2,.grid3){display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px 12px;margin:0 0 16px}
+body.studio .ps-side .ps-edwrap :is(.editor,.ed) :is(.grid2,.grid3)>label{flex-direction:column;align-items:stretch;gap:7px;margin:0;color:#6b717b;font-size:13px}
+body.studio .ps-side .ps-edwrap :is(.editor,.ed) :is(.grid2,.grid3) :is(input:not([type=checkbox]):not([type=color]),select){width:100%;flex:none}
 /* 버튼류 */
-body.studio .ps-side .ps-edwrap .editor :is(button.ghost,button.add,button.mini,.adds>button){display:flex;align-items:center;justify-content:center;gap:6px;width:100%;height:44px;min-width:0;margin:0 0 12px;padding:0 14px;border:1px solid var(--ln);border-radius:12px;background:#f5f5f7;color:#333;font:inherit;font-size:14px;font-weight:600;cursor:pointer;box-shadow:none}
-body.studio .ps-side .ps-edwrap .editor button.addc{display:flex;align-items:center;justify-content:center;width:100%;height:44px;margin:0 0 12px;border:0;border-radius:12px;background:var(--pk-bg);color:var(--pk);font:inherit;font-size:14px;font-weight:700;cursor:pointer}
-body.studio .ps-side .ps-edwrap .editor .adds{display:flex;flex-wrap:wrap;gap:8px;margin:0 0 12px}
-body.studio .ps-side .ps-edwrap .editor .adds>button{flex:1 1 110px;width:auto;margin:0}
-body.studio .ps-side .ps-edwrap .editor .row :is(.ghost,.add,.mini){margin-bottom:0}
-body.studio .ps-side .ps-edwrap .editor .row :is(.xb,.eb){flex:1 1 0;height:40px;margin:0;border:1px solid var(--ln);border-radius:10px;background:#fff;color:#333;font:inherit;font-size:14px;font-weight:600;cursor:pointer}
-body.studio .ps-side .ps-edwrap .editor .row :is(.xb,.eb):last-child{color:#e0245e}
-body.studio .ps-side .ps-edwrap .editor .row:has(>button){display:flex;gap:8px}
-body.studio .ps-side .ps-edwrap .editor .hint{margin:6px 2px 14px;font-size:12px;color:var(--mu);line-height:1.5}
+body.studio .ps-side .ps-edwrap :is(.editor,.ed) :is(button.ghost,button.add,button.mini,.adds>button){display:flex;align-items:center;justify-content:center;gap:6px;width:100%;height:44px;min-width:0;margin:0 0 12px;padding:0 14px;border:1px solid var(--ln);border-radius:12px;background:#f5f5f7;color:#333;font:inherit;font-size:14px;font-weight:600;cursor:pointer;box-shadow:none}
+body.studio .ps-side .ps-edwrap :is(.editor,.ed) button.addc{display:flex;align-items:center;justify-content:center;width:100%;height:44px;margin:0 0 12px;border:0;border-radius:12px;background:var(--pk-bg);color:var(--pk);font:inherit;font-size:14px;font-weight:700;cursor:pointer}
+body.studio .ps-side .ps-edwrap :is(.editor,.ed) .adds{display:flex;flex-wrap:wrap;gap:8px;margin:0 0 12px}
+body.studio .ps-side .ps-edwrap :is(.editor,.ed) .adds>button{flex:1 1 110px;width:auto;margin:0}
+body.studio .ps-side .ps-edwrap :is(.editor,.ed) .row :is(.ghost,.add,.mini){margin-bottom:0}
+body.studio .ps-side .ps-edwrap :is(.editor,.ed) .row :is(.xb,.eb){flex:1 1 0;height:40px;margin:0;border:1px solid var(--ln);border-radius:10px;background:#fff;color:#333;font:inherit;font-size:14px;font-weight:600;cursor:pointer}
+body.studio .ps-side .ps-edwrap :is(.editor,.ed) .row :is(.xb,.eb):last-child{color:#e0245e}
+body.studio .ps-side .ps-edwrap :is(.editor,.ed) .row:has(>button){display:flex;gap:8px}
+body.studio .ps-side .ps-edwrap :is(.editor,.ed) .hint{margin:6px 2px 14px;font-size:12px;color:var(--mu);line-height:1.5}
 
 /* 페이지별 .sw / 버튼 스타일 충돌 정리 */
 body.studio .ps-side .sw:has(.knob){flex-direction:row!important;background:none!important;border:0!important;border-radius:0!important;padding:0!important}
-body.studio .ps-side .ps-edwrap .editor :is(.xb,.eb){flex:1 1 0;height:40px!important;margin:0;padding:0 10px;border:1px solid var(--ln)!important;border-radius:10px!important;background:#fff!important;color:#333!important;font:inherit!important;font-size:14px!important;font-weight:600!important;cursor:pointer}
-body.studio .ps-side .ps-edwrap .editor :is(.xb,.eb):last-child{color:#e0245e!important}
-body.studio .ps-side .ps-edwrap .editor :is(.xb,.eb){width:auto!important}
-body.studio .ps-side .ps-edwrap .editor .xc .row button,body.studio .ps-side .ps-edwrap .editor .card .row button{flex:1 1 0;width:auto!important;height:40px!important;margin:0;padding:0 10px;border:1px solid var(--ln)!important;border-radius:10px!important;background:#fff!important;color:#333!important;font:inherit!important;font-size:14px!important;font-weight:600!important;cursor:pointer}
-body.studio .ps-side .ps-edwrap .editor .xc .row button:last-child,body.studio .ps-side .ps-edwrap .editor .card .row button:last-child{color:#e0245e!important}
+body.studio .ps-side .ps-edwrap :is(.editor,.ed) :is(.xb,.eb){flex:1 1 0;height:40px!important;margin:0;padding:0 10px;border:1px solid var(--ln)!important;border-radius:10px!important;background:#fff!important;color:#333!important;font:inherit!important;font-size:14px!important;font-weight:600!important;cursor:pointer}
+body.studio .ps-side .ps-edwrap :is(.editor,.ed) :is(.xb,.eb):last-child{color:#e0245e!important}
+body.studio .ps-side .ps-edwrap :is(.editor,.ed) :is(.xb,.eb){width:auto!important}
+body.studio .ps-side .ps-edwrap :is(.editor,.ed) .xc .row button,body.studio .ps-side .ps-edwrap :is(.editor,.ed) .card .row button{flex:1 1 0;width:auto!important;height:40px!important;margin:0;padding:0 10px;border:1px solid var(--ln)!important;border-radius:10px!important;background:#fff!important;color:#333!important;font:inherit!important;font-size:14px!important;font-weight:600!important;cursor:pointer}
+body.studio .ps-side .ps-edwrap :is(.editor,.ed) .xc .row button:last-child,body.studio .ps-side .ps-edwrap :is(.editor,.ed) .card .row button:last-child{color:#e0245e!important}
 body.studio .ps-side .ps-acts{display:flex!important;gap:10px}
 body.studio .ps-side .ps-acts #savePng{order:2!important;flex:1.6 1 0!important;width:auto!important;min-width:0!important;background:var(--pk)!important;color:#fff!important}
 body.studio .ps-side .ps-acts #reset{order:1!important;flex:1 1 0!important;width:auto!important;min-width:0!important;background:#f2f3f5!important;color:#222!important}
@@ -90,23 +90,23 @@ body.studio .ps-side .ps-acts #save{order:2!important;flex:1.6 1 0!important;wid
 body.studio .ps-side .ps-acts button{height:52px!important;padding:0 12px!important;border:0!important;border-radius:14px!important;font-size:15px!important;font-weight:700!important;white-space:nowrap}
 
 /* ===== 홈 화면/아이패드: 앱 목록 줄, 폴더 묶기, 수정 폼 ===== */
-body.studio .ps-side .ps-edwrap .editor .it{display:flex;flex-wrap:wrap;align-items:center;gap:10px;margin:0 0 10px;padding:12px;border:1px solid var(--ln);border-radius:16px;background:#fff}
-body.studio .ps-side .ps-edwrap .editor .it.k{margin-left:24px;background:#fafafb}
-body.studio .ps-side .ps-edwrap .editor .it input[type=checkbox]{width:22px;height:22px;margin:0;flex:none}
-body.studio .ps-side .ps-edwrap .editor .it .th{width:44px;height:44px;flex:none}
-body.studio .ps-side .ps-edwrap .editor .it b{flex:1 1 0;min-width:0;font-size:15px;font-weight:600;color:#111;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-body.studio .ps-side .ps-edwrap .editor .it .f,body.studio .ps-side .ps-edwrap .editor .it .mini{flex:1 1 0;min-width:0;width:auto;height:40px;margin:0;padding:0 8px;display:flex;align-items:center;justify-content:center;border:1px solid var(--ln);border-radius:10px;background:#f5f5f7;color:#333;font-size:14px;font-weight:600;position:relative;overflow:hidden;cursor:pointer}
-body.studio .ps-side .ps-edwrap .editor .it .f input{position:absolute;inset:0;width:100%;height:100%;min-width:0;margin:0;padding:0;opacity:0;border:0;cursor:pointer}
-body.studio .ps-side .ps-edwrap .editor .it .mini:last-child{color:#e0245e}
-body.studio .ps-side .ps-edwrap .editor .gbox>label{flex-direction:column;align-items:stretch;justify-content:flex-start;gap:7px;margin:0;color:#6b717b;font-size:13px}
-body.studio .ps-side .ps-edwrap .editor .gbox .add{margin:0}
-body.studio .ps-side .ps-edwrap .editor .edf{margin:-2px 0 12px;padding:16px;border:1px solid var(--pk);border-radius:16px;background:#fff}
-body.studio .ps-side .ps-edwrap .editor .edf>label{flex-direction:column;align-items:stretch;gap:7px;margin:0 0 14px;color:#6b717b;font-size:13px}
-body.studio .ps-side .ps-edwrap .editor .edf :is(input:not([type=checkbox]):not([type=file]),select){width:100%;flex:none}
-body.studio .ps-side .ps-edwrap .editor .edf .row{display:flex;gap:10px;align-items:flex-end}
-body.studio .ps-side .ps-edwrap .editor .edf .row>*{flex:1 1 0;min-width:0}
-body.studio .ps-side .ps-edwrap .editor .edf .row>label{margin:0}
-body.studio .ps-side .ps-edwrap .editor .edf .mini,body.studio .ps-side .ps-edwrap .editor .edf .add{height:44px;margin:0;width:auto}
-body.studio .ps-side .ps-edwrap .editor .it b{flex:1 1 calc(100% - 110px)}
-body.studio .ps-side .ps-edwrap .editor .edf input[type=file]{width:100%;flex:none;font-size:12px}
-body.studio .ps-side .ps-edwrap .editor .edf input[type=file]::file-selector-button{height:36px;padding:0 10px;margin-right:6px}
+body.studio .ps-side .ps-edwrap :is(.editor,.ed) .it{display:flex;flex-wrap:wrap;align-items:center;gap:10px;margin:0 0 10px;padding:12px;border:1px solid var(--ln);border-radius:16px;background:#fff}
+body.studio .ps-side .ps-edwrap :is(.editor,.ed) .it.k{margin-left:24px;background:#fafafb}
+body.studio .ps-side .ps-edwrap :is(.editor,.ed) .it input[type=checkbox]{width:22px;height:22px;margin:0;flex:none}
+body.studio .ps-side .ps-edwrap :is(.editor,.ed) .it .th{width:44px;height:44px;flex:none}
+body.studio .ps-side .ps-edwrap :is(.editor,.ed) .it b{flex:1 1 0;min-width:0;font-size:15px;font-weight:600;color:#111;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+body.studio .ps-side .ps-edwrap :is(.editor,.ed) .it .f,body.studio .ps-side .ps-edwrap :is(.editor,.ed) .it .mini{flex:1 1 0;min-width:0;width:auto;height:40px;margin:0;padding:0 8px;display:flex;align-items:center;justify-content:center;border:1px solid var(--ln);border-radius:10px;background:#f5f5f7;color:#333;font-size:14px;font-weight:600;position:relative;overflow:hidden;cursor:pointer}
+body.studio .ps-side .ps-edwrap :is(.editor,.ed) .it .f input{position:absolute;inset:0;width:100%;height:100%;min-width:0;margin:0;padding:0;opacity:0;border:0;cursor:pointer}
+body.studio .ps-side .ps-edwrap :is(.editor,.ed) .it .mini:last-child{color:#e0245e}
+body.studio .ps-side .ps-edwrap :is(.editor,.ed) .gbox>label{flex-direction:column;align-items:stretch;justify-content:flex-start;gap:7px;margin:0;color:#6b717b;font-size:13px}
+body.studio .ps-side .ps-edwrap :is(.editor,.ed) .gbox .add{margin:0}
+body.studio .ps-side .ps-edwrap :is(.editor,.ed) .edf{margin:-2px 0 12px;padding:16px;border:1px solid var(--pk);border-radius:16px;background:#fff}
+body.studio .ps-side .ps-edwrap :is(.editor,.ed) .edf>label{flex-direction:column;align-items:stretch;gap:7px;margin:0 0 14px;color:#6b717b;font-size:13px}
+body.studio .ps-side .ps-edwrap :is(.editor,.ed) .edf :is(input:not([type=checkbox]):not([type=file]),select){width:100%;flex:none}
+body.studio .ps-side .ps-edwrap :is(.editor,.ed) .edf .row{display:flex;gap:10px;align-items:flex-end}
+body.studio .ps-side .ps-edwrap :is(.editor,.ed) .edf .row>*{flex:1 1 0;min-width:0}
+body.studio .ps-side .ps-edwrap :is(.editor,.ed) .edf .row>label{margin:0}
+body.studio .ps-side .ps-edwrap :is(.editor,.ed) .edf .mini,body.studio .ps-side .ps-edwrap :is(.editor,.ed) .edf .add{height:44px;margin:0;width:auto}
+body.studio .ps-side .ps-edwrap :is(.editor,.ed) .it b{flex:1 1 calc(100% - 110px)}
+body.studio .ps-side .ps-edwrap :is(.editor,.ed) .edf input[type=file]{width:100%;flex:none;font-size:12px}
+body.studio .ps-side .ps-edwrap :is(.editor,.ed) .edf input[type=file]::file-selector-button{height:36px;padding:0 10px;margin-right:6px}

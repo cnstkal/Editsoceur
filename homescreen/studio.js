@@ -1,7 +1,7 @@
 /* 편집 패널 탭 자동 분류: 기본 / 이미지 / 상호작용 / 기타 (data-t가 있는 .ps-pn이 있으면 그대로 사용) */
 (function(){
   var ed=document.querySelector('.ps-edwrap .editor')||document.querySelector('.editor');
-  if(!ed) return;
+  if(!ed||document.body.hasAttribute("data-notabs")) return;
   var side=ed.closest('.ps-side')||ed.parentNode;
   var ORDER=['기본','이미지','상호작용','기타'];
   var pre=[].slice.call(ed.querySelectorAll(':scope > .ps-pn'));
