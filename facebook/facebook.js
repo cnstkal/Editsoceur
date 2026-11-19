@@ -6,8 +6,8 @@ var imgs={iAv:'vAv',iPhoto:'vPhoto',iC1av:'vC1av',iC2av:'vC2av'};
 function fill(){for(var k in map){$('i'+k).value=D[k];$(map[k]).textContent=D[k]}}
 Object.keys(map).forEach(function(k){$('i'+k).oninput=function(){$(map[k]).textContent=this.value}});
 fill();
-function clr(){for(var k in imgs){$(imgs[k]).style.backgroundImage='';$(k).value=''}}
-Object.keys(imgs).forEach(function(k){$(k).onchange=function(){var f=this.files[0];if(!f)return;var r=new FileReader();r.onload=function(){$(imgs[k]).style.backgroundImage='url('+r.result+')'};r.readAsDataURL(f)}});
+function clr(){for(var k in imgs){$(imgs[k]).style.backgroundImage='';$(k).value=''}$('vPhoto').hidden=true}
+Object.keys(imgs).forEach(function(k){$(k).onchange=function(){var f=this.files[0];if(!f)return;var r=new FileReader();r.onload=function(){$(imgs[k]).style.backgroundImage='url('+r.result+')';if(k==='iPhoto')$('vPhoto').hidden=false};r.readAsDataURL(f)}});
 $('clearImg').onclick=clr;
 var pns=[].slice.call(document.querySelectorAll('.ps-pn')),bar=$('seg');
 pns.forEach(function(g,i){var b=document.createElement('button');b.type='button';b.textContent=g.getAttribute('data-t');if(!i)b.className='on';

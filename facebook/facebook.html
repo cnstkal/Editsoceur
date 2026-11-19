@@ -19,7 +19,7 @@
 <div class="phone" id="shot">
   <div class="hd"><div class="pav" id="vAv"></div><div><div class="nm" id="vName"></div><div class="tm" id="vTime"></div></div></div>
   <p class="tx" id="vText"></p>
-  <div class="ph" id="vPhoto"></div>
+  <div class="ph" id="vPhoto" hidden></div>
   <div class="rx"><div><span class="ic">
     <i style="background:#2d6bdc"><svg viewBox="0 0 24 24" fill="#fff"><path d="M2 10h4v11H2zM8 10l4-8c2 0 3 1 3 3l-1 4h6c1.500 0 2.500 1.300 2 2.700l-2 7c-.3 1-1.200 1.800-2.300 1.800H8z"/></svg></i>
     <i style="background:#fbc535"><svg viewBox="0 0 24 24"><path d="M3 8l6 2-6 2M21 8l-6 2 6 2" stroke="#333" stroke-width="2" fill="none"/><path d="M5 14h14c0 4-3 7-7 7s-7-3-7-7z" fill="#7a2a1a"/></svg></i>
@@ -41,15 +41,13 @@
 <h2>게시물 내용 수정</h2>
 <div class="ps-seg" id="seg"></div>
 <div class="ps-edwrap"><div class="editor">
-<div class="ps-pn" data-t="기본">
+<div class="ps-pn" data-t="게시글">
 <label>작성자 이름<input id="iName"></label>
 <label>작성 시간<input id="iTime"></label>
 <label>게시물 본문<textarea id="iText" rows="4"></textarea></label>
-</div>
-<div class="ps-pn" data-t="이미지" hidden>
 <label class="ps-addp">+ 프로필 사진<input class="ps-sr" id="iAv" type="file" accept="image/*"></label>
-<label class="ps-addp">+ 게시물 사진<input class="ps-sr" id="iPhoto" type="file" accept="image/*"></label>
-<button class="ps-ghost" id="clearImg" type="button">사진 모두 비우기</button>
+<label class="ps-addp">+ 게시물 사진 (선택)<input class="ps-sr" id="iPhoto" type="file" accept="image/*"></label>
+<button class="ps-ghost" id="clearImg" type="button">게시글 사진 비우기</button>
 </div>
 <div class="ps-pn" data-t="반응" hidden>
 <label>좋아요 문구<input id="iLike"></label>
@@ -57,10 +55,10 @@
 </div>
 <div class="ps-pn" data-t="댓글" hidden>
 <div class="row"><label>댓글1 이름<input id="iC1n"></label><label>댓글1 시간 문구<input id="iC1s"></label></div>
-<label>댓글1 내용<input id="iC1t"></label>
+<div class="row"><label>댓글1 내용<input id="iC1t"></label></div>
 <label class="ps-addp">+ 댓글1 프로필<input class="ps-sr" id="iC1av" type="file" accept="image/*"></label>
 <div class="row"><label>댓글2 이름<input id="iC2n"></label><label>댓글2 시간 문구<input id="iC2s"></label></div>
-<label>댓글2 내용<input id="iC2t"></label>
+<div class="row"><label>댓글2 내용<input id="iC2t"></label></div>
 <label class="ps-addp">+ 댓글2 프로필<input class="ps-sr" id="iC2av" type="file" accept="image/*"></label>
 </div>
 </div></div>
