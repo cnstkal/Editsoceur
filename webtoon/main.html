@@ -29,15 +29,17 @@
 
 </div></div></section>
 <section class="ps-card ps-side"><div class="ps-lbl">Edit Panel</div><h2>웹툰 메인 내용 수정</h2><div class="ps-edwrap"><section class="editor">
+  <div class="ps-pn" data-t="기본">
   <h2>웹툰 메인 편집</h2>
   <div class="row"><label>시간<input id="iTime"></label></div>
   <div class="row"><label>섹션 제목(굵게)<input id="iSb"></label><label>섹션 제목(보통)<input id="iSn"></label></div>
-  <label>요일 탭 (쉼표 구분, 뱃지는 이름|뱃지)<input id="iTabs"></label>
-  <label>선택된 탭 번호(1부터)<input id="iAct" type="number" min="1"></label>
   <h2 style="margin-top:14px">인기 급상승 카드</h2><div id="el1"></div>
   <button class="ghost" id="add1" type="button">+ 카드 추가</button>
-  <h2 style="margin-top:14px">작품 목록</h2><div id="el2"></div>
+  </div>
+  <div class="ps-pn" data-t="작품" hidden>
+  <h2>작품 목록</h2><div id="el2"></div>
   <button class="ghost" id="add2" type="button">+ 작품 추가</button>
+  </div>
 </section></div><div class="ps-acts"><button id="savePng" class="primary">PNG 저장</button><button id="reset" class="secondary">초기화</button></div></section>
 </div></div>
 <script src="https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js"></script>
