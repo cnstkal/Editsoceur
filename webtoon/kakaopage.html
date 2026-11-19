@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="ko"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no,viewport-fit=cover"><script src="../nozoom.js?v=1"></script><title>카카오페이지</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.css"><link rel="stylesheet" href="kakaopage.css"></head>
+<body class="studio"><div class="ps-wrap">
+<header class="ps-top"><a class="ps-back" href="index.html">‹ 뒤로</a><button class="ps-pvbtn" id="pvBtn" type="button">미리보기 모드</button></header>
+<div class="ps-grid">
+<section class="ps-card ps-main"><div class="ps-lbl">Live Preview</div><h2>카카오페이지 웹툰</h2><p class="ps-sub">실제 앱 화면 비율로 확인하고, 오른쪽에서 바로 수정해요</p>
+<div class="ps-stage"><div class="ps-frame" id="frame"><div class="kw" id="kw"><div class="ks" id="ks"></div></div></div></div></section>
+<section class="ps-card ps-side"><div class="ps-lbl">Edit Panel</div><h2>카카오페이지 내용 수정</h2>
+<div class="ps-edwrap"><div class="editor">
+<div class="ps-pn" data-t="기본">
+<label>섹션 제목<input id="iSec"></label>
+<label>상단 탭 (쉼표 구분)<input id="iTabs"></label>
+<label>활성 탭 번호<input id="iTabOn" type="number" min="1"></label>
+<label>칩 (쉼표 구분)<input id="iChips"></label>
+</div>
+<div class="ps-pn" data-t="작품" hidden><div id="cards"></div></div>
+<div class="ps-pn" data-t="기타" hidden>
+<div class="ps-tg"><span>하단 바 표시</span><label class="sw"><input id="iNav" type="checkbox"><i></i></label></div>
+<div class="ps-tg"><span>알림 점 표시</span><label class="sw"><input id="iDot" type="checkbox"><i></i></label></div>
+<div class="ps-tg"><span>UP 뱃지 표시</span><label class="sw"><input id="iUp" type="checkbox"><i></i></label></div>
+<button class="ps-ghost" id="clearPics" type="button">표지 이미지 모두 지우기</button>
+</div></div></div>
+<div class="ps-acts"><button id="reset" type="button">초기화</button><button id="savePng" type="button">PNG 저장</button></div>
+</section></div></div>
+<script src="https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js"></script>
+<script src="kakaopage.js"></script>
+</body></html>
