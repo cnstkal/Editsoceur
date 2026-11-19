@@ -2,6 +2,7 @@
 var $=function(i){return document.getElementById(i)};
 var DEF={tm:'12:47',bt:'72',nm:'김민지',dt:'2026. 03. 04',m:[{me:1,s:1},{me:1,t:'김민지님을 콕 찔렀어요!'},{me:1,t:'똥먹어'},{me:1,t:'똥머거',tm:'13:07'},{t:'좆까'},{t:'어머',tm:'13:08'},{me:1,t:'ㅋ',tm:'13:08'}]};
 var G=[['iTm','tm'],['iBt','bt'],['iNm','nm'],['iDt','dt']];
+function pick(a){return a[Math.floor(Math.random()*a.length)]}
 var S,STORE='editsoceur-everytime-dm-v1';
 var AV='<svg class="av" viewBox="0 0 32 32"><circle cx="16" cy="16" r="16" fill="#f08a8a"/><ellipse cx="16" cy="30" rx="10" ry="8" fill="#fff"/><circle cx="16" cy="14" r="8" fill="#fdecec"/><circle cx="13" cy="13" r="1" fill="#f08a8a"/><circle cx="19" cy="13" r="1" fill="#f08a8a"/><path d="M13 16.500q3 2.500 6 0" stroke="#f08a8a" stroke-width="1.200" fill="none" stroke-linecap="round"/></svg>',
 SK='<svg class="stk" width="49" height="55" viewBox="0 0 50 56"><g transform="rotate(40 28 22)"><rect x="21" y="-4" width="14" height="30" rx="7" fill="#f7d754" stroke="#f0c437" stroke-width="2.200"/></g><path d="M4 36Q4 25 16 22L33 28Q46 34 40 48L24 54Q8 52 4 36z" fill="#f7d754" stroke="#f0c437" stroke-width="2.400" stroke-linejoin="round"/></svg>';
@@ -32,7 +33,8 @@ L.addEventListener('change',function(e){var t=e.target,f=t.dataset.f;if(t.type==
 L.addEventListener('click',function(e){var a=e.target.dataset.a;if(!a)return;var i=ix(e),m=S.m;
 if(a==='x')m.splice(i,1);else if(a==='u'&&i>0){var t=m[i];m[i]=m[i-1];m[i-1]=t}else if(a==='d'&&i<m.length-1){var t2=m[i];m[i]=m[i+1];m[i+1]=t2}
 persist();list();render()});
-$('addM').onclick=function(){S.m.push({me:1,t:'',tm:'13:10'});persist();list();render()};
+var _MS=['오늘 뭐해?', 'ㅋㅋㅋ 그래', '내일 봐요!', '진짜?? 대박', '응 알겠어', '식사 하셨어요?'];
+$('addM').onclick=function(){S.m.push({me:Math.random()<.5?1:0,t:pick(_MS),tm:'13:10'});persist();list();render()};
 $('reset').onclick=function(){load(true)};
 $('savePng').onclick=function(){var b=this,t=b.textContent;b.disabled=true;b.textContent='저장 중...';
 (document.fonts&&document.fonts.ready?document.fonts.ready:Promise.resolve()).then(function(){
