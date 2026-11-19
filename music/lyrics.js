@@ -1,10 +1,18 @@
 (function(){
   var $=function(i){return document.getElementById(i)},STORE='music_lyrics_v2';
   var L=[['여기에 가사를 입력하세요','Type your lyrics here',0],['두 번째 줄은 이렇게 보여요','The second line looks like this',0],['세 번째 줄부터는 점점 흐려져요','From the third line it fades out',0],['멀어질수록 더 번져 보이고','The farther it is, the blurrier',0],['오른쪽 정렬도 쓸 수 있어요','Right-aligned lines work too',1],['마지막 줄까지 이어져요','It goes on to the last line',1]];
-  var DEF={title:'곡 제목',artist:'아티스트',c1:'#5b4034',c2:'#252c45',c3:'#6e3b39',art:'',act:1,fd:true,l:L.map(function(a){return{t:a[0],tr:a[1],r:a[2]}})};
+  var DEF={title:'곡 제목',artist:'아티스트',c1:'#5b4034',c2:'#252c45',c3:'#6e3b39',art:'',auto:true,act:1,fd:true,l:L.map(function(a){return{t:a[0],tr:a[1],r:a[2]}})};
   var S;
   function persist(){try{localStorage.setItem(STORE,JSON.stringify(S))}catch(e){}}
   function esc(t){return String(t).replace(/[&<>"]/g,function(c){return{'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]})}
+  function hsl(r,g,b){r/=255;g/=255;b/=255;var M=Math.max(r,g,b),m=Math.min(r,g,b),l=(M+m)/2,h=0,s=0,d=M-m;if(d){s=l>.5?d/(2-M-m):d/(M+m);h=M===r?(g-b)/d+(g<b?6:0):M===g?(b-r)/d+2:(r-g)/d+4;h*=60}return[h,s,l]}
+  function hex(h,s,l){var a=s*Math.min(l,1-l);function f(n){var k=(n+h/30)%12;return Math.round(255*(l-a*Math.max(-1,Math.min(k-3,9-k,1))))}return'#'+[f(0),f(8),f(4)].map(function(v){return('0'+v.toString(16)).slice(-2)}).join('')}
+  function pal(url,cb){var im=new Image();im.onload=function(){var c=document.createElement('canvas');c.width=c.height=32;var x=c.getContext('2d');x.drawImage(im,0,0,32,32);var d=x.getImageData(0,0,32,32).data,T=[0,0,0,0],B=[0,0,0,0],A=[0,0,0,0];
+    for(var i=0;i<1024;i++){var r=d[i*4],g=d[i*4+1],b=d[i*4+2],t=i<512?T:B;t[0]+=r;t[1]+=g;t[2]+=b;t[3]++;var q=hsl(r,g,b),w=q[1]*q[1]*(1-Math.abs(q[2]-.5));A[0]+=r*w;A[1]+=g*w;A[2]+=b*w;A[3]+=w}
+    function av(a){return a[3]?[a[0]/a[3],a[1]/a[3],a[2]/a[3]]:[90,90,90]}
+    var t=hsl.apply(0,av(T)),b=hsl.apply(0,av(B)),a=hsl.apply(0,av(A));
+    cb([hex(t[0],Math.min(.55,Math.max(.15,t[1])),Math.min(.36,Math.max(.18,t[2]*.7))),hex(b[0],Math.min(.5,Math.max(.12,b[1])),Math.min(.22,Math.max(.1,b[2]*.5))),hex(a[0],Math.min(.6,Math.max(.25,a[1])),Math.min(.42,Math.max(.25,a[2]*.8)))])};im.src=url}
+  function auto(){if(!S.auto||!S.art)return;pal(S.art,function(p){S.c1=p[0];S.c2=p[1];S.c3=p[2];$('iC1').value=p[0];$('iC2').value=p[1];$('iC3').value=p[2];persist();render()})}
   function render(){
     $('mf').style.background='radial-gradient(90% 55% at 100% 62%,'+S.c3+' 0%,transparent 70%),linear-gradient(180deg,'+S.c1+' 0%,'+S.c2+' 100%)';
     $('mT').textContent=S.title;$('mA').textContent=S.artist;
@@ -23,10 +31,12 @@
   function load(reset){
     if(reset){try{localStorage.removeItem(STORE)}catch(e){}S=JSON.parse(JSON.stringify(DEF))}
     else{try{var v=localStorage.getItem(STORE);S=v?JSON.parse(v):JSON.parse(JSON.stringify(DEF));if(!S||!Array.isArray(S.l))throw 0}catch(e){S=JSON.parse(JSON.stringify(DEF))}}
-    F.forEach(function(a){$(a[0]).value=S[a[1]]});$('iFd').checked=!!S.fd;list();render()}
+    F.forEach(function(a){$(a[0]).value=S[a[1]]});$('iFd').checked=!!S.fd;$('iAuto').checked=!!S.auto;list();render()}
   F.forEach(function(a){$(a[0]).addEventListener('input',function(){S[a[1]]=this.value;persist();render()})});
+  $('iAuto').addEventListener('change',function(){S.auto=this.checked;persist();auto()});
+  ['iC1','iC2','iC3'].forEach(function(id){$(id).addEventListener('input',function(){S.auto=false;$('iAuto').checked=false;persist()})});
   $('iFd').addEventListener('change',function(){S.fd=this.checked;persist();render()});
-  $('iArt').addEventListener('change',function(){var f=this.files[0];if(!f)return;var r=new FileReader();r.onload=function(){S.art=r.result;persist();render()};r.readAsDataURL(f)});
+  $('iArt').addEventListener('change',function(){var f=this.files[0];if(!f)return;var r=new FileReader();r.onload=function(){S.art=r.result;persist();render();auto()};r.readAsDataURL(f)});
   var E=$('el'),ix=function(e){return +e.target.closest('.pe').dataset.i};
   E.addEventListener('input',function(e){var f=e.target.dataset.f;if(!f||f==='r')return;S.l[ix(e)][f]=e.target.value;persist();render()});
   E.addEventListener('change',function(e){if(e.target.dataset.f!=='r')return;S.l[ix(e)].r=e.target.checked?1:0;persist();render()});

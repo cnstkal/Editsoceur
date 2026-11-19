@@ -40,3 +40,7 @@
 .ib sup{color:#1a5fb4;font-size:12px}
 .pe{background:#fff;border:1px solid #dbdbdb;border-radius:12px;padding:12px;margin-bottom:12px}
 .pe .xb{flex:1;height:38px;border:1px solid #dbdbdb;border-radius:10px;background:#fff;font-weight:600}
+
+body.studio .ps-edwrap .editor .cr{display:flex;gap:10px;margin:0 0 10px}
+body.studio .ps-edwrap .editor .cr input{flex:1 1 auto;min-width:0;height:46px;padding:0 14px;border:1px solid #e3e5e8;border-radius:12px;background:#fff;font-size:16px;color:#111;box-sizing:border-box}
+body.studio .ps-edwrap .editor .cr button{flex:none;width:46px;height:46px;border:1px solid #e3e5e8;border-radius:12px;background:#fff;color:#e0245e;font-size:16px;font-weight:700}
