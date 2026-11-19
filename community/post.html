@@ -17,12 +17,16 @@
 <div class="ps-stage"><div class="cm-frame"><div id="cap" class="phone"></div></div></div></section>
 <section class="ps-card ps-side"><div class="ps-lbl">Editor</div><h2>내용 수정</h2>
 <div class="ps-edwrap"><div class="ed">
+<div class="ps-pn" data-t="기본">
+    <h2>기본</h2>
+    <label>갤러리 이름<input id="gal"></label>
+</div>
+<div class="ps-pn" data-t="게시글" hidden>
     <h2>상단 탭</h2>
     <div class="row"><label>탭1<input id="t0"></label><label>탭2(선택)<input id="t1"></label></div>
     <div class="row"><label>탭3<input id="t2"></label><label>탭4<input id="t3"></label></div>
-    <h2>게시판</h2>
-    <div class="row"><label>게시판 이름<input id="gal"></label><label>닉네임<input id="nick"></label></div>
     <h2>게시글</h2>
+    <label>닉네임<input id="nick"></label>
     <label>제목<input id="title"></label>
     <label>작성일시<input id="date"></label>
     <div class="row"><label>조회수<input id="view"></label><label>추천<input id="rec"></label><label>댓글<input id="cmt"></label></div>
@@ -30,7 +34,12 @@
     <label>강조 문구(비우면 숨김)<input id="note"></label>
     <label>사진<input id="img" type="file" accept="image/*"></label>
     <div class="ps-tg"><span>사진 영역 표시</span><label class="sw"><input id="showImg" type="checkbox"><i></i></label></div>
-  </div></div>
+</div>
+</div></div>
+<script>(function(){var ed=document.querySelector('.ed'),g=[].slice.call(ed.querySelectorAll('.ps-pn')),bar=document.createElement('div');bar.className='ps-seg';
+g.forEach(function(p,i){var b=document.createElement('button');b.type='button';b.textContent=p.getAttribute('data-t');if(!i)b.className='on';
+b.onclick=function(){g.forEach(function(x,j){x.hidden=j!==i});[].forEach.call(bar.children,function(c,j){c.classList.toggle('on',j===i)})};bar.appendChild(b)});
+ed.parentNode.insertBefore(bar,ed)})();</script>
 <div class="ps-acts"><button id="reset" type="button">초기화</button><button id="savePng" type="button">PNG 저장</button></div></section>
 </div></div>
 <a class="tback" href="index.html" aria-label="선택 화면으로">‹</a>
