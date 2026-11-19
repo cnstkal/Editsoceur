@@ -52,7 +52,7 @@
       var ops = '<div class="ops"><button type="button" class="xb" data-a="u">↑</button><button type="button" class="xb" data-a="d">↓</button><button type="button" class="xb" data-a="x">✕ 삭제</button></div>';
       if (m.k === "d") return '<div class="pe" data-i="' + i + '"><label>날짜 구분선<input data-f="t" value="' + esc(m.t) + '"></label>' + ops + "</div>";
       return '<div class="pe" data-i="' + i + '"><div class="r2"><label>보낸 사람<select data-f="me"><option value="0"' + (m.me ? "" : " selected") + '>상대</option><option value="1"' + (m.me ? " selected" : "") + '>나</option></select></label>' +
-        '<label>시간(비우면 숨김)<input data-f="tm" value="' + esc(m.tm) + '"></label><label class="chk"><input type="checkbox" data-f="rd"' + (m.rd ? " checked" : "") + '>안읽음 1</label></div>' +
+        '<label>시간<input data-f="tm" value="' + esc(m.tm) + '"></label></div><label class="chk"><input type="checkbox" data-f="rd"' + (m.rd ? " checked" : "") + '>안읽음 1</label>' +
         '<label>내용<textarea rows="2" data-f="t">' + esc(m.t) + "</textarea></label>" +
         '<label class="file">사진 보내기(올리면 말풍선 대신 사진)<input type="file" accept="image/*" data-f="img"></label>' +
         (m.img ? '<button type="button" class="xb sm" data-a="ri">사진 빼기</button>' : "") + ops + "</div>";
@@ -96,7 +96,7 @@
   document.querySelectorAll("[data-add]").forEach(function (b) {
     b.onclick = function () {
       var k = b.dataset.add;
-      S.items.push(k === "d" ? { k: "d", t: "2026년 1월 1일 목요일" } : { k: "m", me: k === "m" ? 1 : 0, t: "", tm: "" });
+      S.items.push(k === "d" ? { k: "d", t: "2026년 1월 1일 목요일" } : { k: "m", me: 0, t: "", tm: "" });
       persist(); list(); render(); window.scrollTo(0, document.body.scrollHeight);
     };
   });

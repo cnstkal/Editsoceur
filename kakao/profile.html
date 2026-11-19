@@ -17,6 +17,7 @@
 <div class="ps-stage"><div class="ps-frame">
 <div class="phone">
 <div id="kp">
+  <div class="kov" id="kOv"></div>
   <div class="kpt">
     <span class="kx"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#111" stroke-width="2" stroke-linecap="round"><path d="M5 5l14 14M19 5 5 19"/></svg></span>
     <span class="kpill">
@@ -25,7 +26,6 @@
       <svg width="28" height="28" viewBox="0 0 24 24" fill="#111"><circle cx="5" cy="12" r="2"/><circle cx="12" cy="12" r="2"/><circle cx="19" cy="12" r="2"/></svg>
     </span>
   </div>
-  <div class="kdd" id="kDd"></div>
   <div class="kmid"></div>
   <i class="av c3 kpa" id="kPa"></i>
   <div class="kpn" id="kPn"></div>
@@ -38,18 +38,13 @@
 </div></div></section>
 <section class="ps-card ps-side"><div class="ps-lbl">Edit Panel</div><h2>카카오톡 프로필 내용 수정</h2><div class="ps-edwrap"><section class="editor">
 <div class="ps-pn" data-t="기본">
-<label>배경색<input id="iBg" type="color" style="padding:2px;height:44px"></label>
-
   <h2>프로필 편집</h2>
   <label>이름<input id="iName"></label>
-      <h2 style="margin-top:14px">디데이 (오른쪽 위)</h2>
-  <div class="musicbox"><div class="trow"><span>디데이 표시</span><label class="sw"><input id="iDOn" type="checkbox"><i></i></label></div></div>
-  <div class="row"><label>날짜<input id="iDDate" type="date"></label><label>이름<input id="iDName" placeholder="예: 이창호"></label></div>
-  <p style="font-size:13px;color:#666;margin:8px 0 14px">미리보기의 디데이를 손가락으로 끌어 위치를 옮기고 두 손가락으로 크기를 조절할 수 있어요</p><label>디데이 크기<input id="iDScale" type="range" min="50" max="200" value="100"></label><h2 style="margin-top:14px">게시물 사진 (3열)</h2><div id="elG"></div>
+<h2 style="margin-top:14px">게시물 사진 (3열)</h2><div id="elG"></div>
   
 </div>
 <div class="ps-pn" data-t="이미지" hidden>
-<label class="file">배경 사진<input id="iBgImg" type="file" accept="image/*"></label>
+<label class="file">배경 사진 (회색 덧씌움)<input id="iBgImg" type="file" accept="image/*"></label>
 <label class="file">프로필 사진<input id="iPa" type="file" accept="image/*"></label>
 <label class="file">사진 여러 장 추가<input id="iG" type="file" accept="image/*" multiple></label>
 </div>
