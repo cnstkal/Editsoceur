@@ -1,6 +1,6 @@
 (function(){
 var $=function(i){return document.getElementById(i)};
-var DEF={ti:"시즌 2: 1화 '1화'",tm:'7:27',pg:'7.7',br:'58',sb:'감사합니다!',pl:true};
+var DEF={ti:"시즌 2: 1화 '1화'",tm:'7:27',pg:'7.7',br:'58',sb:'감사합니다!',pl:true,brOn:true,plOn:true};
 var T=[['iTi','ti'],['iTm','tm'],['iPg','pg'],['iBr','br'],['iSb','sb']];
 var S,STORE='editsoceur-netflix-player-v1',pf=$('pf');
 function persist(){try{localStorage.setItem(STORE,JSON.stringify(S))}catch(e){console.warn('저장 실패',e)}}
@@ -21,8 +21,8 @@ A(105,32,250,20,tx('',13,600,'pTi'))+
 A(648,31,22,22,sv(CA,22))+
 A(704,31,22,22,sv('<rect x="2" y="4" width="20" height="16" rx="2"/><rect x="11.500" y="12" width="8" height="5" rx="1"/>',22))+
 A(760,29,24,24,sv('<rect x="4" y="10.500" width="16" height="11" rx="2"/><path d="M8 10.500V7a4 4 0 0 1 8-1M10.500 16h3"/>',24))+
-A(70,109,22,22,sv('<circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.900 4.900l1.400 1.400M17.700 17.700l1.400 1.400M2 12h2M20 12h2M4.900 19.100l1.400-1.400M17.700 6.300l1.400-1.400"/>',22))+
-A(78,140,6,125,'<u id="pBr" style="position:absolute;left:0;right:0;bottom:0;background:#fff;border-radius:3em"></u>',0,'background:#5a5a5a;border-radius:3em;overflow:hidden')+
+A(70,109,22,22,sv('<circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.900 4.900l1.400 1.400M17.700 17.700l1.400 1.400M2 12h2M20 12h2M4.900 19.100l1.400-1.400M17.700 6.300l1.400-1.400"/>',22),'pBrI')+
+A(78,140,6,125,'<u id="pBr" style="position:absolute;left:0;right:0;bottom:0;background:#fff;border-radius:3em"></u>','pBrB','background:#5a5a5a;border-radius:3em;overflow:hidden')+
 A(192,167,40,40,RP.replace('%s',''))+A(192,167,40,40,tx('10',14.500,700),0,'justify-content:center')+
 A(619,167,40,40,RP.replace('%s',';transform:scaleX(-1)'))+A(619,167,40,40,tx('10',14.500,700),0,'justify-content:center')+
 A(413,169,30,36,'',0)+'<div id="pPl" class="a" style="left:413em;top:169em;width:30em;height:36em;justify-content:center"></div>'+
@@ -40,12 +40,12 @@ pf.style.backgroundImage=S.bg?"url('"+S.bg+"')":'';
 $('pTi').textContent=S.ti;$('pTm').textContent=S.tm;$('pSb').textContent=S.sb;
 var p=Math.max(0,Math.min(100,+S.pg||0));
 $('pRd').style.width=p+'%';$('pKb').style.left='calc('+p+'% - 9em)';
-$('pBr').style.height=(+S.br||0)+'%';
+$('pBr').style.height=(+S.br||0)+'%';$('pBrI').style.display=S.brOn===false?'none':'';$('pBrB').style.display=S.brOn===false?'none':'';$('pPl').style.display=S.plOn===false?'none':'';
 $('pPl').innerHTML=S.pl?'<svg viewBox="0 0 30 36" style="width:30em;height:36em;fill:#fff;stroke:none"><rect x="0" y="0" width="8" height="36"/><rect x="21.500" y="0" width="8" height="36"/></svg>':'<svg viewBox="0 0 30 36" style="width:30em;height:36em;fill:#fff;stroke:#fff;stroke-width:3"><path d="M2 2v32l27-16z"/></svg>'}
-function set(){T.forEach(function(p){$(p[0]).value=S[p[1]]});$('iPl').checked=S.pl}
+function set(){T.forEach(function(p){$(p[0]).value=S[p[1]]});$('iPl').checked=S.pl;$('iBrOn').checked=S.brOn!==false;$('iPlOn').checked=S.plOn!==false}
 function load(reset){if(reset){try{localStorage.removeItem(STORE)}catch(e){}S=JSON.parse(JSON.stringify(DEF))}else{try{var s=localStorage.getItem(STORE);S=s?JSON.parse(s):JSON.parse(JSON.stringify(DEF));if(!S||typeof S!=='object')throw 0}catch(e){S=JSON.parse(JSON.stringify(DEF))}}set();render()}
-function glob(){T.forEach(function(p){S[p[1]]=$(p[0]).value});S.pl=$('iPl').checked;persist();render()}
-T.map(function(p){return p[0]}).concat(['iPl']).forEach(function(id){$(id).addEventListener('input',glob);$(id).addEventListener('change',glob)});
+function glob(){T.forEach(function(p){S[p[1]]=$(p[0]).value});S.pl=$('iPl').checked;S.brOn=$('iBrOn').checked;S.plOn=$('iPlOn').checked;persist();render()}
+T.map(function(p){return p[0]}).concat(['iPl','iBrOn','iPlOn']).forEach(function(id){$(id).addEventListener('input',glob);$(id).addEventListener('change',glob)});
 $('iBg').addEventListener('change',function(){var f=this.files[0];if(!f)return;var r=new FileReader();r.onload=function(){S.bg=r.result;persist();render()};r.readAsDataURL(f)});
 $('iClr').addEventListener('change',function(){S.bg='';this.checked=false;persist();render()});
 $('reset').onclick=function(){load(true)};
