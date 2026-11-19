@@ -23,7 +23,7 @@
   <svg class="ic" style="left:calc(820*var(--u))" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.800" stroke-linecap="round" stroke-linejoin="round"><path d="M18 9a6 6 0 0 0-12 0c0 6-2.500 7.500-2.500 7.500h17S18 15 18 9zM10 20a2 2 0 0 0 4 0M3 3l18 18"/></svg>
   <svg class="ic" style="left:calc(950*var(--u))" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.800" stroke-linecap="round" stroke-linejoin="round"><path d="M12 15V3M8 7l4-4 4 4M5 11v9h14v-9"/></svg>
   <svg class="ic" style="left:calc(1082*var(--u))" viewBox="0 0 24 24" fill="#fff"><circle cx="12" cy="5" r="1.800"/><circle cx="12" cy="12" r="1.800"/><circle cx="12" cy="19" r="1.800"/></svg>
-  <div class="hero"><i class="cv" id="dHero"></i><div class="fan"><small id="dFl"></small><b id="dFan"></b></div><div class="int" id="dInt"></div></div>
+  <div class="hero"><i class="cv" id="dHero"></i><div class="int" id="dInt"></div></div>
   <div class="tt" id="dT"></div>
   <div class="au"><u id="dAu"></u><svg viewBox="0 0 24 24"><rect width="24" height="24" rx="5" fill="#34c759"/><path d="m6 12.500 4 4 8-9" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg><span id="dDay"></span></div>
   <div class="ds"><span id="dDs"></span></div>
@@ -39,16 +39,20 @@
 
 </div></div></section>
 <section class="ps-card ps-side"><div class="ps-lbl">Edit Panel</div><h2>작품 상세 내용 수정</h2><div class="ps-edwrap"><section class="editor">
+  <div class="ps-pn" data-t="기본">
   <h2>작품 상세 편집</h2>
-  <div class="row"><label>시간<input id="iTime"></label><label>상단 색<input id="iAc" type="color" style="padding:2px;height:44px"></label></div>
-  <label>대표 이미지<input id="iHero" type="file" accept="image/*"></label>
+  <div class="row"><label>상단 색<input id="iAc" type="color" style="padding:2px;height:44px"></label><label>대표 이미지<input id="iHero" type="file" accept="image/*"></label></div>
   <div class="row"><label>제목<input id="iT"></label><label>작가<input id="iAu"></label></div>
   <div class="row"><label>연재 요일<input id="iDay"></label><label>관심 수<input id="iInt"></label></div>
+  <div class="musicbox"><label class="sw"><input id="iIntOn" type="checkbox"><span class="knob"></span>관심중 표시 (끄면 관심 전)</label></div>
   <label>작품 소개<input id="iDs"></label>
-  <div class="row"><label>팬스코어 라벨<input id="iFl"></label><label>팬스코어<input id="iFan"></label></div>
   <div class="row"><label>미리보기 개수<input id="iPv"></label></div>
-  <div class="musicbox"><label class="sw"><input id="iNav" type="checkbox"><span class="knob"></span>하단 바 표시</label></div><h2 style="margin-top:14px">회차</h2><div id="el"></div>
+  <div class="musicbox"><label class="sw"><input id="iPvOn" type="checkbox"><span class="knob"></span>미리보기 표시</label></div>
+  </div>
+  <div class="ps-pn" data-t="회차" hidden>
+  <h2>회차</h2><div id="el"></div>
   <button class="ghost" id="addE" type="button">+ 회차 추가</button>
+  </div>
 </section></div><div class="ps-acts"><button id="savePng" class="primary">PNG 저장</button><button id="reset" class="secondary">초기화</button></div></section>
 </div></div>
 <script src="https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js"></script>

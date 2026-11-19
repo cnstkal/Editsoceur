@@ -22,7 +22,7 @@ window.W=(function(){
       return '<label>'+f[1]+'<input data-f="'+f[0]+'" value="'+esc(v)+'"></label>'}
     function lists(){(o.lists||[]).forEach(function(L){$(L.el).innerHTML=S[L.p].map(function(x,i){
       return '<div class="pe" data-i="'+i+'"><b>'+(i+1)+'번</b>'+L.f.map(function(f){return lab(f,x)}).join('')+'<div class="row"><button type="button" class="xb" data-a="u">↑</button><button type="button" class="xb" data-a="d">↓</button><button type="button" class="xb" data-a="x">✕ 삭제</button></div></div>'}).join('')})}
-    function fill(){(o.fields||[]).forEach(function(a){var e=$(a[0]);if(e.type!=='file')e.value=S[a[1]]})}
+    function fill(){(o.fields||[]).forEach(function(a){var e=$(a[0]);if(e.type==='checkbox')e.checked=!!S[a[1]];else if(e.type!=='file')e.value=S[a[1]]})}
     function load(reset){
       if(reset){try{localStorage.removeItem(o.key)}catch(e){}S=clone(o.def)}
       else{try{var v=localStorage.getItem(o.key);S=v?JSON.parse(v):clone(o.def);if(!S||typeof S!=='object')throw 0}catch(e){S=clone(o.def)}}
