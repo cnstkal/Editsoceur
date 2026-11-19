@@ -20,18 +20,22 @@
 
 </div></div></section>
 <section class="ps-card ps-side"><div class="ps-lbl">Edit Panel</div><h2>알림 내용 수정</h2><div class="ps-edwrap"><section class="editor">
-    <h2>아이콘</h2>
-    <label>아이콘 종류<select id="iconStyle"><option value="normal">기본 (앱 아이콘만)</option><option value="small">작은 아이콘 (프사 + 앱 아이콘)</option></select></label>
-    <label>앱 아이콘 직접 넣기<input id="appImgFile" type="file" accept="image/*"></label>
-    <button id="appImgClear" type="button" class="sub">기본 앱 아이콘으로 되돌리기</button>
-    <label id="avatarRow" style="display:none">프사 넣기<input id="avatarFile" type="file" accept="image/*"></label>
-    <h2>알림 편집</h2>
+    <div class="ps-pn" data-t="기본">
+    <h2>알림 내용</h2>
     <label>앱 이름<input id="appName"></label>
     <label>보낸 사람 / 제목<input id="title"></label>
     <label>알림 내용<input id="bodyText"></label>
     <label>시간<input id="timeText"></label>
     <h2>알림 카드 배경</h2>
     <div class="row"><label>배경 색상<input id="bgColor" type="color" value="#efefef"></label><label>투명도 <output id="opacityValue">96%</output><input id="opacity" type="range" min="0" max="100" value="96"></label></div>
+    </div>
+    <div class="ps-pn" data-t="아이콘" hidden>
+    <h2>아이콘</h2>
+    <label>아이콘 종류<select id="iconStyle"><option value="normal">기본 (앱 아이콘만)</option><option value="small">작은 아이콘 (프사 + 앱 아이콘)</option></select></label>
+    <label>앱 아이콘 직접 넣기<input id="appImgFile" type="file" accept="image/*"></label>
+    <button id="appImgClear" type="button" class="sub">기본 앱 아이콘으로 되돌리기</button>
+    <label id="avatarRow" style="display:none">프사 넣기<input id="avatarFile" type="file" accept="image/*"></label>
+    </div>
     <div class="actions"><button id="savePng" type="button">PNG 저장</button><button id="reset" type="button">초기화</button></div>
   </section></div><div class="ps-acts"></div></section>
 </div></div>

@@ -1,6 +1,6 @@
 (function(){
 var $=function(id){return document.getElementById(id)};
-var W=2176,H=1700,zs=$('zoom'),zw=$('zw'),fr=$('frame'),frm=null;
+var picker=$('framePicker');var W=2176,H=1700,zs=$('zoom'),zw=$('zw'),fr=$('frame'),frm=null;
 var ICON={iSig:'sSig',iMail:'sMail',iVib:'sVib',iBat:null};
 var files=["1E7DB810-32DC-4DB3-8322-FD4BD0A647BA.png","41E19F89-5516-4045-ABA1-DA8802EAF773.png","5A1E9D06-731A-4B35-81ED-7BE87A4CAA8B.png","B2517DB5-A38B-48BE-BFE5-2F9366727072.png","BAA32941-7946-4EE5-9992-8CB9766D1C4F.png","DD8F6F1F-FB46-48E0-9471-45BD59D3BD01.png","33691128-E1B3-4EEA-B919-9D8F61095F27.png","lg_cyon_pink_phone_background_removed.png","nokia7600_clean_transparent.png","xelibri_background_removed.png"],picker=$('framePicker');
 function fit(){var w=fr.clientWidth;if(!w)return;var s=w/W;zs.style.transform='scale('+s+')';zw.style.height=(H*s)+'px';}
@@ -9,7 +9,7 @@ function detectScreen(src,cb){
   var cw=272,ch=213,cv=document.createElement('canvas');cv.width=cw;cv.height=ch;var cx=cv.getContext('2d',{willReadFrequently:true});cx.drawImage(im,0,0,cw,ch);
   var d;try{d=cx.getImageData(0,0,cw,ch).data}catch(e){cb(null);return}
   var x0=Math.floor(cw*.28),x1=Math.floor(cw*.72),y0=Math.floor(ch*.12),y1=Math.floor(ch*.84),seen=new Uint8Array(cw*ch),best=null;
-  for(var y=y0;y<y1;y++)for(var x=x0;x<x1;x++){var p=y*cw+x;if(seen[p]||d[p*4+3]>12)continue;var q=[p],seen[p]=1,minx=x,maxx=x,miny=y,maxy=y,count=0;while(q.length){var v=q.pop(),vx=v%cw,vy=Math.floor(v/cw);count++;minx=Math.min(minx,vx);maxx=Math.max(maxx,vx);miny=Math.min(miny,vy);maxy=Math.max(maxy,vy);var ns=[v-1,v+1,v-cw,v+cw];for(var k=0;k<4;k++){var n=ns[k],nx=n%cw,ny=Math.floor(n/cw);if(n<0||n>=cw*ch||nx<x0||nx>=x1||ny<y0||ny>=y1||seen[n]||d[n*4+3]>12)continue;seen[n]=1;q.push(n)}}var ww=maxx-minx+1,hh=maxy-miny+1,ratio=ww/hh;if(count>90&&ww>15&&hh>18&&ratio>.38&&ratio<1.35&&(!best||count>best.count))best={count:count,x:minx,y:miny,w:ww,h:hh};}
+  for(var y=y0;y<y1;y++)for(var x=x0;x<x1;x++){var p=y*cw+x;if(seen[p]||d[p*4+3]>12)continue;var q=[p];seen[p]=1;var minx=x,maxx=x,miny=y,maxy=y,count=0;while(q.length){var v=q.pop(),vx=v%cw,vy=Math.floor(v/cw);count++;minx=Math.min(minx,vx);maxx=Math.max(maxx,vx);miny=Math.min(miny,vy);maxy=Math.max(maxy,vy);var ns=[v-1,v+1,v-cw,v+cw];for(var k=0;k<4;k++){var n=ns[k],nx=n%cw,ny=Math.floor(n/cw);if(n<0||n>=cw*ch||nx<x0||nx>=x1||ny<y0||ny>=y1||seen[n]||d[n*4+3]>12)continue;seen[n]=1;q.push(n)}}var ww=maxx-minx+1,hh=maxy-miny+1,ratio=ww/hh;if(count>90&&ww>15&&hh>18&&ratio>.38&&ratio<1.35&&(!best||count>best.count))best={count:count,x:minx,y:miny,w:ww,h:hh};}
   if(best)cb({x:best.x/cw*W,y:best.y/ch*H,w:best.w/cw*W,h:best.h/ch*H});else cb(null);
  };im.onerror=function(){cb(null)};im.src=src;
 }
