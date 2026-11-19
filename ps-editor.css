@@ -42,3 +42,49 @@ body.studio .ps-side .ps-acts #savePng{flex:1.6;background:var(--pk);color:#fff}
 body.studio .ps-side{padding:16px!important;border-top:8px solid #f2f3f5}
 body.studio .ps-side .ps-acts{position:sticky;bottom:0;background:#fff;padding:12px 0 calc(12px + env(safe-area-inset-bottom))!important;margin-top:16px}
 }
+
+/* ===== 화면별 템플릿 컴포넌트 보정 ===== */
+body.studio .ps-side .ps-edwrap .editor label:has(>input[type=checkbox]):not(.sw),
+body.studio .ps-side .ps-edwrap .editor label.xk,body.studio .ps-side .ps-edwrap .editor label.ek{justify-content:flex-start;gap:10px;white-space:normal}
+body.studio .ps-side .ps-edwrap .editor label>input[type=checkbox]:not(:only-child){accent-color:var(--pk);width:20px;height:20px;flex:none}
+/* 라벨+토글 한 줄 */
+body.studio .ps-side .ps-edwrap .editor .trow{display:flex;align-items:center;justify-content:space-between;gap:14px;min-height:44px;margin:0 0 8px;padding:0;border:0;font-size:14px;font-weight:500;color:var(--tx)}
+body.studio .ps-side .ps-edwrap .editor .musicbox,body.studio .ps-side .ps-edwrap .editor .switches{display:flex;flex-direction:column;gap:2px;margin:0 0 8px;padding:0;border:0;background:none;box-shadow:none}
+body.studio .ps-side .ps-edwrap .editor .musicbox>label{margin-bottom:8px}
+body.studio .ps-side .sw:has(.knob){position:relative;display:flex!important;align-items:center;justify-content:space-between;gap:14px;width:100%;height:auto;min-height:44px;font-size:14px;font-weight:500;color:var(--tx)}
+body.studio .ps-side .sw:has(.knob) .knob{position:relative;inset:auto;order:2;flex:none;width:50px;height:30px}
+/* 카드형 묶음 */
+body.studio .ps-side .ps-edwrap .editor :is(.card,.ec,.xc,.pf-card){margin:0 0 14px!important;padding:16px!important;border:1px solid var(--ln)!important;border-radius:16px!important;background:#fff!important;box-shadow:none!important;position:static!important;width:auto!important;height:auto!important}
+body.studio .ps-side .ps-edwrap .editor .gbox{display:flex;flex-direction:column;gap:10px;margin:0 0 14px;padding:14px;border:0;border-radius:16px;background:#f5f5f7}
+body.studio .ps-side .ps-edwrap .editor :is(.card,.ec,.xc,.pf-card)>label{flex-direction:column;align-items:stretch;justify-content:flex-start;gap:7px;margin:0 0 14px;color:#6b717b;font-size:13px}
+body.studio .ps-side .ps-edwrap .editor :is(.card,.ec,.xc,.pf-card,.gbox) :is(input:not([type=checkbox]):not([type=file]):not([type=color]):not([type=range]),select,textarea){width:100%!important;flex:none!important;height:44px;padding:0 14px!important;border:1px solid var(--ln)!important;border-radius:12px!important;background:#fff!important;font-size:16px!important;color:#111}
+body.studio .ps-side .ps-edwrap .editor :is(.card,.ec,.xc,.pf-card,.gbox) textarea{height:auto;padding:12px 14px!important}
+body.studio .ps-side .ps-edwrap .editor :is(.card,.ec,.xc,.pf-card) .row{margin-bottom:14px}
+body.studio .ps-side .ps-edwrap .editor :is(.card,.ec,.xc,.pf-card)>:last-child{margin-bottom:0}
+body.studio .ps-side .ps-edwrap .editor :is(.pf-card,.card) h3{font-size:15px!important;margin:0 0 14px!important}
+body.studio .ps-side .ps-edwrap .editor :is(.grid2,.grid3){display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px 12px;margin:0 0 16px}
+body.studio .ps-side .ps-edwrap .editor :is(.grid2,.grid3)>label{flex-direction:column;align-items:stretch;gap:7px;margin:0;color:#6b717b;font-size:13px}
+body.studio .ps-side .ps-edwrap .editor :is(.grid2,.grid3) :is(input:not([type=checkbox]):not([type=color]),select){width:100%;flex:none}
+/* 버튼류 */
+body.studio .ps-side .ps-edwrap .editor :is(button.ghost,button.add,button.mini,.adds>button){display:flex;align-items:center;justify-content:center;gap:6px;width:100%;height:44px;min-width:0;margin:0 0 12px;padding:0 14px;border:1px solid var(--ln);border-radius:12px;background:#f5f5f7;color:#333;font:inherit;font-size:14px;font-weight:600;cursor:pointer;box-shadow:none}
+body.studio .ps-side .ps-edwrap .editor button.addc{display:flex;align-items:center;justify-content:center;width:100%;height:44px;margin:0 0 12px;border:0;border-radius:12px;background:var(--pk-bg);color:var(--pk);font:inherit;font-size:14px;font-weight:700;cursor:pointer}
+body.studio .ps-side .ps-edwrap .editor .adds{display:flex;flex-wrap:wrap;gap:8px;margin:0 0 12px}
+body.studio .ps-side .ps-edwrap .editor .adds>button{flex:1 1 110px;width:auto;margin:0}
+body.studio .ps-side .ps-edwrap .editor .row :is(.ghost,.add,.mini){margin-bottom:0}
+body.studio .ps-side .ps-edwrap .editor .row :is(.xb,.eb){flex:1 1 0;height:40px;margin:0;border:1px solid var(--ln);border-radius:10px;background:#fff;color:#333;font:inherit;font-size:14px;font-weight:600;cursor:pointer}
+body.studio .ps-side .ps-edwrap .editor .row :is(.xb,.eb):last-child{color:#e0245e}
+body.studio .ps-side .ps-edwrap .editor .row:has(>button){display:flex;gap:8px}
+body.studio .ps-side .ps-edwrap .editor .hint{margin:6px 2px 14px;font-size:12px;color:var(--mu);line-height:1.5}
+
+/* 페이지별 .sw / 버튼 스타일 충돌 정리 */
+body.studio .ps-side .sw:has(.knob){flex-direction:row!important;background:none!important;border:0!important;border-radius:0!important;padding:0!important}
+body.studio .ps-side .ps-edwrap .editor :is(.xb,.eb){flex:1 1 0;height:40px!important;margin:0;padding:0 10px;border:1px solid var(--ln)!important;border-radius:10px!important;background:#fff!important;color:#333!important;font:inherit!important;font-size:14px!important;font-weight:600!important;cursor:pointer}
+body.studio .ps-side .ps-edwrap .editor :is(.xb,.eb):last-child{color:#e0245e!important}
+body.studio .ps-side .ps-edwrap .editor :is(.xb,.eb){width:auto!important}
+body.studio .ps-side .ps-edwrap .editor .xc .row button,body.studio .ps-side .ps-edwrap .editor .card .row button{flex:1 1 0;width:auto!important;height:40px!important;margin:0;padding:0 10px;border:1px solid var(--ln)!important;border-radius:10px!important;background:#fff!important;color:#333!important;font:inherit!important;font-size:14px!important;font-weight:600!important;cursor:pointer}
+body.studio .ps-side .ps-edwrap .editor .xc .row button:last-child,body.studio .ps-side .ps-edwrap .editor .card .row button:last-child{color:#e0245e!important}
+body.studio .ps-side .ps-acts{display:flex!important;gap:10px}
+body.studio .ps-side .ps-acts #savePng{order:2!important;flex:1.6 1 0!important;width:auto!important;min-width:0!important;background:var(--pk)!important;color:#fff!important}
+body.studio .ps-side .ps-acts #reset{order:1!important;flex:1 1 0!important;width:auto!important;min-width:0!important;background:#f2f3f5!important;color:#222!important}
+body.studio .ps-side .ps-acts #save{order:2!important;flex:1.6 1 0!important;width:auto!important;min-width:0!important;background:var(--pk)!important;color:#fff!important}
+body.studio .ps-side .ps-acts button{height:52px!important;padding:0 12px!important;border:0!important;border-radius:14px!important;font-size:15px!important;font-weight:700!important;white-space:nowrap}
