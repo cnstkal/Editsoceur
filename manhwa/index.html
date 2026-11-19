@@ -38,7 +38,7 @@ button.on{background:#e6f8ee;border-color:#00b050;color:#008a3e;font-weight:700}
     <div class="card"><div class="page" id="page"></div></div>
     <div class="card">
       <div class="lbl">만화칸 개수</div>
-      <div class="cnt"><button id="mn">−</button><span id="n">5</span><button id="pl">+</button><button id="sh" style="margin-left:auto;font-size:14px;width:auto;padding:0 14px">배치 섞기</button></div>
+      <div class="cnt"><button id="mn">−</button><span id="n">5</span><button id="pl">+</button><button id="sh" style="margin-left:auto;font-size:14px;width:auto;padding:0 14px">랜덤</button></div>
       <div class="lbl">선택한 칸 비율</div>
       <div class="seg" id="rs"><button data-r="9/16">9:16</button><button data-r="16/9">16:9</button><button data-r="4/3">4:3</button></div>
       <div class="lbl">칸 내용</div>
@@ -86,7 +86,10 @@ function render(){
   document.getElementById('gs').classList.toggle('on',!!(P[sel]&&P[sel].gs))}
 document.getElementById('mn').onclick=function(){if(P.length>1)resize(P.length-1)};
 document.getElementById('pl').onclick=function(){if(P.length<12)resize(P.length+1)};
-document.getElementById('sh').onclick=function(){seed=Date.now()%233280;layout=split(P.length);render()};
+document.getElementById('sh').onclick=function(){
+  layout=split(P.length);
+  P.forEach(function(p){p.r=RS[Math.floor(Math.random()*3)]});
+  render()};
 [].forEach.call(document.querySelectorAll('#rs button'),function(b){b.onclick=function(){P[sel].r=b.dataset.r;render()}});
 document.getElementById('gs').onclick=function(){P[sel].gs=!P[sel].gs;render()};
 document.getElementById('cl').onclick=function(){P[sel].img='';P[sel].gs=false;render()};
