@@ -1,0 +1,18 @@
+.ks.d{width:1449px;height:2576px;background:#000}
+.cover{left:0;top:0;width:1449px;height:1040px;background:#fff center/cover no-repeat}
+.cover::after{position:absolute;content:'';left:0;top:0;right:0;bottom:0;background:linear-gradient(rgba(0,0,0,0) 0%,rgba(0,0,0,0) 35%,rgba(0,0,0,.55) 70%,#000 100%)}
+.cover.n::after{background:linear-gradient(#fff 0%,#fff 0%,#000 100%)}
+.dt{left:0;right:0;top:930px;text-align:center;font-size:84px;font-weight:700;line-height:100px;color:#fff;letter-spacing:-.04em}
+.da{left:0;right:0;top:1040px;text-align:center;font-size:36px;color:#bdbdbd}
+.dm{left:0;right:0;top:1098px;display:flex;justify-content:center;align-items:center;gap:20px;font-size:36px;color:#bdbdbd;white-space:nowrap}
+.dm *{position:static}
+.dm svg{width:34px;height:34px}
+.dtb{left:0;right:0;top:1215px;display:flex;justify-content:center;gap:74px;font-size:38px;font-weight:600;color:#777}
+.dtb span{position:relative;padding-bottom:12px}
+.dtb span.on{color:#fff;font-weight:700;border-bottom:5px solid #fff}
+.dall{left:76px;top:1352px;font-size:36px;font-weight:700;line-height:50px;color:#fff}
+.er{left:75px;width:1300px;height:250px}
+.et{left:0;top:0;width:192px;height:250px;border-radius:16px;background:#00ff2f center/cover}
+.en{left:231px;top:36px;font-size:54px;font-weight:500;line-height:66px;color:#fff;letter-spacing:-.03em}
+.em{left:237px;top:108px;font-size:25px;color:#888;white-space:nowrap}
+.eb{left:238px;top:162px;height:40px;padding:0 13px;border:1.5px solid #444;border-radius:10px;font-size:22px;font-weight:500;line-height:37px;color:#fff;white-space:nowrap}
