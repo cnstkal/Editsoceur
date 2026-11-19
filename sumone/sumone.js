@@ -14,9 +14,10 @@ if(window.ResizeObserver)new ResizeObserver(fit).observe(fr);addEventListener('r
 function ans(){$('ans').innerHTML=S.a.map(function(a,i){return'<div class="ans"><h3>답변 '+(i+1)+'</h3><label>이름<input data-i="'+i+'" data-k="n" value="'+esc(a.n)+'"></label><label>내용<input data-i="'+i+'" data-k="t" value="'+esc(a.t)+'"></label><button class="ps-ghost" data-del="'+i+'" type="button">삭제</button></div>'}).join('')}
 $('ans').addEventListener('input',function(e){var el=e.target,i=el.dataset.i;if(i==null)return;S.a[i][el.dataset.k]=el.value;render()});
 $('ans').addEventListener('click',function(e){var d=e.target.dataset.del;if(d==null)return;S.a.splice(d,1);ans();render()});
-$('add').onclick=function(){S.a.push({n:'이름',t:'내용'});ans();render()};
+function cap(){$('add').disabled=S.a.length>=2;$('add').textContent=S.a.length>=2?'답변은 최대 2개':'+ 답변 추가'}
+$('add').onclick=function(){if(S.a.length>=2)return;S.a.push({n:'이름',t:'내용'});ans();render();cap()};
 var F=[['iLg','lg'],['iSb','sb'],['iQ','q'],['iD','d']];
-function sync(){F.forEach(function(f){$(f[0]).value=S[f[1]]});$('iIll').checked=S.ill;$('iImg').value='';ans();render()}
+function sync(){F.forEach(function(f){$(f[0]).value=S[f[1]]});$('iIll').checked=S.ill;$('iImg').value='';ans();render();cap()}
 F.forEach(function(f){$(f[0]).addEventListener('input',function(){S[f[1]]=this.value;render()})});
 $('iIll').addEventListener('input',function(){S.ill=this.checked;render()});
 $('iImg').addEventListener('change',function(){var f=this.files[0];if(!f)return;var r=new FileReader();r.onload=function(e){S.img=e.target.result;render()};r.readAsDataURL(f)});
