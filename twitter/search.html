@@ -21,22 +21,14 @@
 </div></div></section>
 <section class="ps-card ps-side"><div class="ps-lbl">Edit Panel</div><h2>검색 내용 수정</h2><div class="ps-edwrap"><section class="editor">
 <div class="ps-pn" data-t="기본">
-    <h2>검색창</h2>
-    <div class="card">
-      <label>검색어 (본문에서 굵게 표시돼요)<input id="query" type="text"></label>
-      <label>탭 이름 (쉼표로 구분)<input id="tabs" type="text"></label>
-      <label>선택된 탭 번호 (1부터)<input id="sel" type="text"></label>
-    </div>
-    <h2>트윗</h2>
+    <label>예시 검색어<input id="query" type="text"></label>
+    <label>선택된 탭 (추천 탭 순서 1~5)<select id="sel"><option value="1">인기</option><option value="2">최근</option><option value="3">사용자</option><option value="4">동영상</option><option value="5">사진</option></select></label>
+</div>
+<div class="ps-pn" data-t="트윗" hidden>
     <div id="list"></div>
     <button id="add" class="ghost" type="button">+ 트윗 추가</button>
-    <h2>화면 옵션</h2>
-    <div class="card"><div class="switches">
-      
-      
-    </div></div>
-  
-</div></section></div><div class="ps-acts">
+</div>
+</section></div><div class="ps-acts">
   <button id="save" class="primary" type="button">PNG 저장</button>
   <button id="reset" class="ghost" type="button">초기화</button>
 </div></section>

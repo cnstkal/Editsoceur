@@ -24,20 +24,23 @@
 </div></div></section>
 <section class="ps-card ps-side"><div class="ps-lbl">Edit Panel</div><h2>쪽지 내용 수정</h2><div class="ps-edwrap"><section class="editor">
 <div class="ps-pn" data-t="기본">
-    <h2>상단</h2>
-    <div class="card">
-      <div class="grid2">
-        <label>상대 이름<input id="name" type="text"></label>
-        <label>프로필 사진<input id="avatarFile" type="file" accept="image/*"></label>
-      </div>
-      <div class="switches">
-        <label class="sw"><input id="showCall" type="checkbox"><span class="knob"></span>전화·영상통화 아이콘</label>
-      </div>
+    <div class="grid2">
+      <label>상대 이름<input id="name" type="text"></label>
+      <label>프로필 사진<input id="avatarFile" type="file" accept="image/*"></label>
     </div>
-
+</div>
+<div class="ps-pn" data-t="채팅" hidden>
+    <h2>대화</h2>
+    <div id="msgList"></div>
+    <button id="addMe" class="ghost" type="button">+ 내 말풍선 (파랑)</button>
+    <button id="addThem" class="ghost" type="button" style="margin-top:10px">+ 상대 말풍선 (회색)</button>
+    <button id="addTime" class="ghost" type="button" style="margin-top:10px">+ 날짜·시간 줄</button>
+    <button id="addImgMe" class="ghost" type="button" style="margin-top:10px">+ 내 사진 보내기</button>
+    <button id="addImgThem" class="ghost" type="button" style="margin-top:10px">+ 상대 사진 보내기</button>
     <h2>화면 옵션</h2>
     <div class="card">
       <div class="switches">
+        <label class="sw"><input id="showCall" type="checkbox"><span class="knob"></span>전화·영상통화 아이콘</label>
         <label class="sw"><input id="showRead" type="checkbox"><span class="knob"></span>읽음 표시</label>
       </div>
       <div class="grid2" style="margin-top:12px">
@@ -46,17 +49,9 @@
       </div>
       <div class="switches">
         <label class="sw"><input id="showInput" type="checkbox"><span class="knob"></span>입력창</label>
-        
       </div>
     </div>
-  </div>
-<div class="ps-pn" data-t="채팅" hidden><h2>대화</h2>
-    <div id="msgList"></div>
-    <button id="addMe" class="ghost" type="button">+ 내 말풍선 (파랑)</button>
-    <button id="addThem" class="ghost" type="button" style="margin-top:10px">+ 상대 말풍선 (회색)</button>
-    <button id="addTime" class="ghost" type="button" style="margin-top:10px">+ 날짜·시간 줄</button>
-
-    </div>
+</div>
 </section></div><div class="ps-acts">
   <button id="save" class="primary" type="button">PNG 저장</button>
   <button id="reset" class="ghost" type="button">초기화</button>

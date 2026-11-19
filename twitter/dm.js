@@ -36,6 +36,7 @@ function render(){
  S.msgs.forEach(function(m,i){
   if(m.t==='time'){h+='<div class="tm">'+esc(m.x)+'</div>';prev='time';return}
   var gap=(prev&&prev!==m.t&&prev!=='time')?' gap':'';
+  if(m.img){h+='<div class="b '+m.t+gap+' img"><img src="'+esc(m.img)+'"></div>';prev=m.t;return}
   h+='<div class="b '+m.t+gap+'">'+(m.u?'<u>'+esc(m.x)+'</u>':esc(m.x))+'</div>';
   prev=m.t;
  });
@@ -58,7 +59,7 @@ function renderList(){
  var box=document.getElementById('msgList');box.innerHTML='';
  S.msgs.forEach(function(m,i){
   var c=document.createElement('div');c.className='card';
-  c.innerHTML='<span class="tag '+m.t+'">'+LBL[m.t]+'</span>'+
+  c.innerHTML='<span class="tag '+m.t+'">'+(m.img?'사진 · ':'')+LBL[m.t]+'</span>'+(m.img?'<img class="thumb" src="'+esc(m.img)+'" style="width:90px;border-radius:10px;display:block;margin:6px 0">':'')+
   '<label>내용<input type="text" data-k="x"></label>'+
   '<div class="grid2"><label>종류<select data-k="t"><option value="me">내 말풍선 (파랑)</option><option value="them">상대 말풍선 (회색)</option><option value="time">날짜·시간 줄</option></select></label>'+
   '<label class="sw" style="align-self:end"><input type="checkbox" data-k="u"><span class="knob"></span>밑줄(멘션)</label></div>'+
@@ -79,6 +80,7 @@ function renderList(){
   box.appendChild(c);
  });
 }
+function addImg(t){var fi=document.createElement('input');fi.type='file';fi.accept='image/*';fi.onchange=function(){var f=fi.files[0];if(!f)return;readFile(f,function(u){S.msgs.push({t:t,x:'',u:false,img:u});renderList();render()})};fi.click()}
 function add(t){S.msgs.push(M(t,t==='time'?'11월 15일 (일) 오후 11:22':''));renderList();render();
  var inp=document.querySelectorAll('#msgList input[data-k="x"]');if(inp.length)inp[inp.length-1].focus()}
 function bind(){
@@ -88,6 +90,8 @@ function bind(){
  document.getElementById('addMe').onclick=function(){add('me')};
  document.getElementById('addThem').onclick=function(){add('them')};
  document.getElementById('addTime').onclick=function(){add('time')};
+ document.getElementById('addImgMe').onclick=function(){addImg('me')};
+ document.getElementById('addImgThem').onclick=function(){addImg('them')};
  document.getElementById('reset').onclick=function(){S=defaults();sync();renderList();render()};
  document.getElementById('save').onclick=function(){
   var b=this;b.textContent='저장 중...';

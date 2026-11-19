@@ -38,7 +38,7 @@ function bold(text){
 function render(){
  var h='<div class="top"><div class="back">'+I.back+'</div><div class="sb">'+I.sr+'<span>'+esc(S.query)+'</span></div>'+I.flt+'</div><div class="tabs">';
  var n=parseInt(S.sel,10)||1;
- S.tabs.split(',').forEach(function(t,i){t=t.trim();if(t)h+='<span'+(i+1===n?' class="on"':'')+'>'+esc(t)+'</span>'});
+ '인기,최근,사용자,동영상,사진'.split(',').forEach(function(t,i){t=t.trim();if(t)h+='<span'+(i+1===n?' class="on"':'')+'>'+esc(t)+'</span>'});
  h+='</div><div class="items">';
  S.items.forEach(function(t){
   var body=bold(t.text)+(t.more?'… <span class="more">더 보기</span>':'');
@@ -51,7 +51,7 @@ function render(){
  document.getElementById('capture').innerHTML=h;
 }
 function readFile(f,cb){if(!f)return;var r=new FileReader();r.onload=function(){cb(r.result)};r.readAsDataURL(f)}
-var ids=['query','tabs','sel'],sw=[];
+var ids=['query','sel'],sw=[];
 function sync(){ids.forEach(function(k){document.getElementById(k).value=S[k]});sw.forEach(function(k){document.getElementById(k).checked=S[k]})}
 function renderList(){
  var box=document.getElementById('list');box.innerHTML='';
