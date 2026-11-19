@@ -7,7 +7,7 @@
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.css">
 <link rel="stylesheet" href="timeline-pc.css?v=1">
 <link rel="stylesheet" href="back.css?v=1">
-<style id="ed-font">html,body,body *{font-family:Pretendard,-apple-system,"Apple SD Gothic Neo","Noto Sans KR",sans-serif!important;letter-spacing:-.02em!important}</style><link rel="stylesheet" href="studio.css?v=2">
+<style id="ed-font">html,body,body *{font-family:Pretendard,-apple-system,"Apple SD Gothic Neo","Noto Sans KR",sans-serif!important;letter-spacing:-.02em!important}</style><link rel="stylesheet" href="studio.css?v=3">
 <style id="pc-mobile-lock">html,body{overflow-x:hidden;max-width:100vw}</style>
 <link rel="stylesheet" href="../ps-editor.css?v=10"></head>
 <body class="studio"><div class="ps-wrap">
@@ -32,12 +32,16 @@
 
 
 </div></div></section>
-<section class="ps-card ps-side"><div class="ps-lbl">Edit Panel</div><h2>X 타임라인 PC 내용 수정</h2><div class="ps-edwrap"><section class="ed">
-  <h2>타임라인 편집</h2>
-  <div class="row"><label>왼쪽 탭<input id="iT0"></label><label>오른쪽 탭<input id="iT1"></label></div>
-  <div class="row"><label>내 이름<input id="iMn"></label><label>내 아이디<input id="iMh"></label></div><div class="switches"><label class="sw"><input id="iCompose" type="checkbox"><span class="knob"></span>트윗 쓰기 버튼 표시 (모든 X 화면 공통)</label></div>
-  <h2>트윗</h2><div id="xlist"></div>
-  <button class="ghost" id="addT" type="button">+ 트윗 추가</button>
+<section class="ps-card ps-side"><div class="ps-lbl">Edit Panel</div><h2>X 타임라인 PC 내용 수정</h2><div class="ps-edwrap"><section class="editor">
+  <div class="ps-pn" data-t="기본">
+    <div class="row"><label>왼쪽 탭 이름<input id="iT0"></label><label>오른쪽 탭 이름<input id="iT1"></label></div>
+    <div class="row"><label>내 이름<input id="iMn"></label><label>내 아이디<input id="iMh"></label></div>
+    <div class="musicbox"><div class="trow"><span>트윗 쓰기 버튼 표시 (모든 X 화면 공통)</span><label class="sw"><input id="iCompose" type="checkbox"><i></i></label></div></div>
+  </div>
+  <div class="ps-pn" data-t="트윗" hidden>
+    <button class="addc" id="addT" type="button">+ 트윗 추가</button>
+    <div id="xlist"></div>
+  </div>
 </section></div><div class="ps-acts"><button id="savePng" class="primary">PNG 저장</button><button id="reset" class="secondary">초기화</button></div></section>
 </div></div>
 <script src="https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js"></script>
