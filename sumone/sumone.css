@@ -1,13 +1,12 @@
-.ks.s{width:1449px;height:2576px;background:#f5f5f5;background-image:radial-gradient(rgba(0,0,0,.025) 1px,transparent 1px);background-size:6px 6px}
-.lg{left:0;right:0;top:60px;text-align:center;font-family:Pretendard!important;font-weight:700;font-size:190px;line-height:200px;color:#2b2b2b;letter-spacing:-.02em!important}
-.sb2{left:0;right:0;top:270px;text-align:center;font-family:Pretendard!important;font-weight:600;font-size:66px;line-height:80px;color:#333;letter-spacing:-.02em!important}
-.ill{left:500px;top:365px;width:440px;height:380px;background:center/contain no-repeat}
-.ill svg{left:0;top:0;width:100%;height:100%}
-.qt{left:98px;top:820px;font-size:84px;font-weight:700;line-height:110px;color:#000;white-space:nowrap}
-.qd{left:98px;top:940px;font-family:Pretendard!important;font-size:50px;line-height:70px;color:#a8a8a8;white-space:nowrap;letter-spacing:-.02em!important}
-.an{left:98px;right:98px;top:1170px}
+.ks.s{width:1449px;height:2576px;background:#f5f5f5 url(paper.jpg) center top/1449px 2576px no-repeat}
+.lg{left:0;right:0;top:73px;text-align:center;font-family:'Marck Script','Sacramento',cursive!important;font-weight:400;font-size:126px;line-height:160px;color:#3a3a3a;letter-spacing:0!important}
+.sb2{left:0;right:0;top:274px;text-align:center;font-family:'Hi Melody','Gaegu',cursive!important;font-weight:400;font-size:58px;line-height:80px;color:#2b2b2b;letter-spacing:-.05em!important;-webkit-text-stroke:.8px #2b2b2b}
+.ill{left:500px;top:414px;width:436px;height:245px;opacity:.9;background:center/100% 100% no-repeat}
+.qt{left:99px;top:819px;font-family:'Noto Serif KR',serif!important;font-size:65.4px;font-weight:700;line-height:110px;color:#000;white-space:nowrap;letter-spacing:0!important}
+.qd{left:99px;top:942px;font-family:'Noto Serif KR',serif!important;font-size:45.5px;font-weight:400;line-height:70px;color:#a8a8a8;white-space:nowrap;letter-spacing:0!important}
+.an{left:99px;right:98px;top:1203px}
 .an *{position:static;display:block}
-.an b{font-size:62px;line-height:80px;font-weight:800;color:#000;text-decoration:underline;text-decoration-thickness:4px;text-underline-offset:-26px}
-.an p{margin:18px 0 90px;font-family:Pretendard!important;font-size:62px;line-height:84px;color:#333;font-weight:400;letter-spacing:-.02em!important;word-break:keep-all}
+.an b{font-family:'Noto Serif KR',serif!important;font-size:57px;line-height:80px;font-weight:700;color:#000;letter-spacing:0!important;text-decoration:line-through;text-decoration-thickness:4px}
+.an p{margin:16px 0 90px;font-family:'Noto Serif KR',serif!important;font-size:51.7px;line-height:84px;color:#3a3a3a;font-weight:400;letter-spacing:0!important;word-break:keep-all}
 .ans{border-top:1px solid var(--ln);padding-top:6px}
 .ans .ps-ghost{margin:0 0 10px;height:38px}
