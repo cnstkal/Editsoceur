@@ -7,11 +7,16 @@
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.css">
 <link rel="stylesheet" href="post.css?v=1">
 <link rel="stylesheet" href="back.css?v=1">
+<link rel="stylesheet" href="studio.css?v=1">
+<link rel="stylesheet" href="../ps-editor.css?v=10">
 <style id="ed-font">html,body,body *{font-family:Pretendard,-apple-system,"Apple SD Gothic Neo","Noto Sans KR",sans-serif!important;letter-spacing:-.02em!important}</style></head>
-<body>
-<main class="wrap">
-  <div id="cap" class="phone"></div>
-  <section class="ed">
+<body class="studio">
+<div class="ps-wrap"><header class="ps-top"><span></span></header>
+<div class="ps-grid">
+<section class="ps-card ps-main"><div class="ps-lbl">Live Preview</div><h2>커뮤니티 게시글</h2><p class="ps-sub">화면을 확인하고, 오른쪽에서 바로 수정해요</p>
+<div class="ps-stage"><div class="cm-frame"><div id="cap" class="phone"></div></div></div></section>
+<section class="ps-card ps-side"><div class="ps-lbl">Editor</div><h2>내용 수정</h2>
+<div class="ps-edwrap"><div class="ed">
     <h2>상단 탭</h2>
     <div class="row"><label>탭1<input id="t0"></label><label>탭2(선택)<input id="t1"></label></div>
     <div class="row"><label>탭3<input id="t2"></label><label>탭4<input id="t3"></label></div>
@@ -24,10 +29,10 @@
     <label>본문 (줄바꿈 가능)<textarea id="body" rows="5"></textarea></label>
     <label>강조 문구(비우면 숨김)<input id="note"></label>
     <label>사진<input id="img" type="file" accept="image/*"></label>
-    <label class="xk"><input id="showImg" type="checkbox"> 사진 영역 표시</label>
-  </section>
-</main>
-<div class="bar"><button id="save" class="primary">PNG 저장</button><button id="reset" class="secondary">초기화</button></div>
+    <div class="ps-tg"><span>사진 영역 표시</span><label class="sw"><input id="showImg" type="checkbox"><i></i></label></div>
+  </div></div>
+<div class="ps-acts"><button id="reset" type="button">초기화</button><button id="savePng" type="button">PNG 저장</button></div></section>
+</div></div>
 <a class="tback" href="index.html" aria-label="선택 화면으로">‹</a>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
 <script src="post.js?v=1"></script>

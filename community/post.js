@@ -21,7 +21,7 @@
   $('showImg').addEventListener('change',function(){S.showImg=this.checked;persist();render()});
   $('img').addEventListener('change',function(){var f=this.files[0];if(!f)return;var r=new FileReader();r.onload=function(){S.img=r.result;persist();render()};r.readAsDataURL(f)});
   $('reset').onclick=function(){load(true)};
-  $('save').onclick=function(){var b=this,t=b.textContent;b.disabled=true;b.textContent='저장 중...';
+  $('savePng').onclick=function(){var b=this,t=b.textContent;b.disabled=true;b.textContent='저장 중...';
     (document.fonts&&document.fonts.ready||Promise.resolve()).then(function(){return html2canvas($('cap'),{scale:4,useCORS:true,backgroundColor:'#fff',logging:false})}).then(function(c){
       c.toBlob(function(bl){var a=document.createElement('a');a.href=URL.createObjectURL(bl);a.download='community-post.png';document.body.appendChild(a);a.click();a.remove();b.disabled=false;b.textContent=t})
     }).catch(function(){b.disabled=false;b.textContent=t;alert('PNG 저장에 실패했습니다.')})};
