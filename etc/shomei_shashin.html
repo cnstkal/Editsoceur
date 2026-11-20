@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>ID Photo News</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.css">
+<link rel="stylesheet" href="shomei_shashin.css">
+</head>
+<body>
+<div class="app">
+  <section class="pv"><div class="vp" id="vp">
+    <div id="cv">
+      <div class="top"><span class="ch"><i></i><b id="vCh"></b></span><span class="tm" id="vTime"></span></div>
+      <div class="sheet" id="sheet">
+        <div class="photos" id="photos"></div>
+        <div class="side">
+          <div class="txt">
+            <div class="t" id="vTitle"></div>
+            <div class="s" id="vSub"></div>
+            <div class="n" id="vNote"></div>
+          </div>
+          <div class="rc"><u>領収書</u><span>年　　月　　日</span></div>
+        </div>
+      </div>
+      <div class="nb">
+        <div class="hd"><b id="vLabel"></b><p id="vHead"></p></div>
+        <div class="tk" id="vTick"></div>
+      </div>
+    </div>
+  </div></section>
+
+  <section class="ed">
+    <h2>수정 패널</h2>
+    <label>채널명<input id="iCh" value="NEWS 24"></label>
+    <label>시각<input id="iTime" value="LIVE 21:00"></label>
+    <label>속보 라벨<input id="iLabel" value="속보"></label>
+    <label>헤드라인<textarea id="iHead" rows="2">증명사진 6장, 1분 만에 완성</textarea></label>
+    <label>하단 자막<input id="iTick" value="이력서 · 각종 증명용 / 사이즈에 맞춰 잘라 사용하세요"></label>
+    <hr>
+    <label>시트 제목<input id="iTitle" value="証明写真"></label>
+    <label>부제<input id="iSub" value="履歴書・その他証明用"></label>
+    <label>빨간 안내문<input id="iNote" value="ご利用のサイズに合わせてカットしてご利用ください。"></label>
+    <hr>
+    <label>사진 모드
+      <select id="iMode"><option value="blue">기본 (파랑 그라데이션)</option><option value="green">그린스크린</option><option value="photo">사진</option></select>
+    </label>
+    <label>사진 전체 적용<input id="iAll" type="file" accept="image/*"></label>
+    <div id="slots"></div>
+    <div class="btns"><button id="save">PNG 저장 (1080×1920)</button><button id="reset">초기화</button></div>
+  </section>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js"></script>
+<script src="shomei_shashin.js"></script>
+</body>
+</html>
