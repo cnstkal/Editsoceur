@@ -1,7 +1,7 @@
 (function(){
 var $=function(i){return document.getElementById(i)};
 var N=6,imgs=[],cv=$('cv'),vp=$('vp');
-var F=[['iCh','vCh'],['iTime','vTime'],['iLabel','vLabel'],['iHead','vHead'],['iTick','vTick'],['iTitle','vTitle'],['iSub','vSub'],['iNote','vNote']];
+var F=[['iCh','vCh'],['iTime','vTime'],['iTitle','vTitle'],['iSub','vSub'],['iNote','vNote']];
 var defs={};
 
 /* text binding */
