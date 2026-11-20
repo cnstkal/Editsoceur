@@ -45,7 +45,7 @@ input[type=range]{flex:1;accent-color:#00b050}
       <div class="lbl">선택한 칸 내용</div>
       <div class="seg">
         <button id="fb">이미지 추가</button><input type="file" id="f" accept="image/*" style="display:none">
-        <button id="gs">그린스크린</button>
+        <button id="gs">그린스크린 (전체)</button><button id="gso">선택 칸 풀기</button>
         <button id="cl">비우기</button>
       </div>
       <p class="hint" id="hint">칸을 여러 개 눌러 선택할 수 있어요 (다시 누르면 해제). 랜덤은 칸 모양·배치만 바꾸고 전체 비율은 그대로예요.</p>
@@ -127,7 +127,7 @@ function render(){
   document.getElementById('lwv').textContent=LW;
   [].forEach.call(document.querySelectorAll('#rs button'),function(b){b.classList.toggle('on',b.dataset.r===RATIO)});
   [].forEach.call(document.querySelectorAll('#md button[data-m]'),function(b){b.classList.toggle('on',b.dataset.m===MODE)});
-  document.getElementById('gs').classList.toggle('on',!!(content[sels[0]]&&content[sels[0]].gs));
+  document.getElementById('gs').classList.toggle('on',content.every(function(c){return c.gs}));
 }
 document.getElementById('svg').addEventListener('click',function(e){
   var g=e.target.closest('g[data-i]');if(g){var gi=+g.dataset.i,k=sels.indexOf(gi);if(k>=0)sels.splice(k,1);else sels.push(gi);render()}});
@@ -138,7 +138,8 @@ document.getElementById('sh').onclick=generate;
 document.getElementById('lw').oninput=function(){LW=+this.value;render()};
 function need(){if(sels.length)return 1;var h=document.getElementById('hint');h.style.color='#e11';h.textContent='먼저 칸을 눌러 선택하세요!';setTimeout(function(){h.style.color='';h.textContent='칸을 여러 개 눌러 선택할 수 있어요 (다시 누르면 해제).'},2000)}
 document.getElementById('fb').onclick=function(){if(need())document.getElementById('f').click()};
-document.getElementById('gs').onclick=function(){if(!need())return;var v=!((content[sels[0]]||{}).gs);sels.forEach(function(i){content[i].gs=v});render()};
+document.getElementById('gs').onclick=function(){content.forEach(function(c){c.gs=true;c.img=''});render()};
+document.getElementById('gso').onclick=function(){if(!need())return;sels.forEach(function(i){content[i].gs=false});render()};
 document.getElementById('cl').onclick=function(){if(!need())return;sels.forEach(function(i){content[i]={img:'',gs:false}});render()};
 document.getElementById('f').onchange=function(e){
   var f=e.target.files[0];if(!f||!sels.length)return;var r=new FileReader();var tg=sels.slice();
