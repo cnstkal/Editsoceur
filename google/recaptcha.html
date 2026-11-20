@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="ko"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>recaptcha</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700&family=Roboto:wght@400;500;700&display=swap">
+<link rel="stylesheet" href="recaptcha.css">
+</head><body>
+<main class="wrap">
+<section class="card"><div class="lbl">Live Preview · 사진을 클릭하면 선택/해제</div>
+<div class="view"><div class="chk"><div id="cap">
+<div class="hd"><h1 id="vKey"></h1><p id="vTxt"></p></div>
+<div class="grid" id="grid"></div>
+<div class="ft"><div class="ic">
+<svg viewBox="0 0 24 24"><path d="M17.65 6.35A8 8 0 1 0 19.73 14h-2.08A6 6 0 1 1 12 6c1.66 0 3.14.69 4.22 1.78L13 11h7V4z"/></svg>
+<svg viewBox="0 0 24 24"><path d="M12 1a9 9 0 0 0-9 9v7a3 3 0 0 0 3 3h3v-8H5v-2a7 7 0 0 1 14 0v2h-4v8h3a3 3 0 0 0 3-3v-7a9 9 0 0 0-9-9z"/></svg>
+<svg viewBox="0 0 24 24"><path d="M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20zm1 15h-2v-6h2zm0-8h-2V7h2z"/></svg></div>
+<div class="ok" id="vOk"></div></div>
+</div></div></div></section>
+<section class="card"><div class="lbl">Edit Panel</div><h2>로봇이 아닙니다 수정</h2>
+<label>키워드<input id="iKey"></label>
+<label>안내 문구 (줄바꿈 반영)<textarea id="iTxt" rows="4"></textarea></label>
+<label>버튼 문구<input id="iOk"></label>
+<label>칸 수 (1~9)<input id="iN" type="number" min="1" max="9"></label>
+<label>사진 (칸별 선택)</label>
+<div class="ph" id="ph"></div>
+<div class="acts"><button id="clr" class="g">사진 비우기</button><button id="unsel" class="g">선택 해제</button></div>
+<div class="acts"><button id="save">PNG 저장</button><button id="reset" class="g">초기화</button></div>
+</section></main>
+<script src="https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js"></script>
+<script src="recaptcha.js"></script>
+</body></html>
