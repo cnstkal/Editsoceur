@@ -1,0 +1,424 @@
+const $=s=>document.querySelector(s),cv=$('#cv'),ctx=cv.getContext('2d');
+let canvasZoom=1,canvasPanX=0,canvasPanY=0,canvasTouchStart=null,canvasPinchStart=null;
+function updateZoom(){canvasZoom=Math.max(.25,Math.min(4,canvasZoom));cv.style.maxWidth=canvasZoom<=1?"100%":"none";cv.style.maxHeight=canvasZoom<=1?"100%":"none";cv.style.transformOrigin="center center";cv.style.transform=`scale(${canvasZoom})`;$("#zoomReset").textContent=Math.round(canvasZoom*100)+"%"}
+$("#zoomIn").addEventListener("click",()=>{canvasZoom+=.25;updateZoom()});$("#zoomOut").addEventListener("click",()=>{canvasZoom-=.25;updateZoom()});$("#zoomReset").addEventListener("click",()=>{canvasZoom=1;canvasPanX=0;canvasPanY=0;updateZoom()});
+function applyCanvasZoom(){
+  const max=Math.max(1,Math.min(4,canvasZoom));
+  canvasZoom=max;
+  cv.style.transformOrigin="center center";
+  cv.style.transform=`scale(${canvasZoom})`;
+}
+function canvasTouchDistance(a,b){return Math.hypot(a.clientX-b.clientX,a.clientY-b.clientY)}
+cv.addEventListener('touchstart',e=>{
+  if(e.touches.length===2){
+    e.preventDefault();
+    const [a,b]=e.touches;
+    canvasPinchStart={distance:canvasTouchDistance(a,b),zoom:canvasZoom};
+    canvasTouchStart=null;
+  }
+},{passive:false});
+cv.addEventListener('touchmove',e=>{
+  if(e.touches.length===2 && canvasPinchStart){
+    e.preventDefault();
+    const d=canvasTouchDistance(e.touches[0],e.touches[1]);
+    canvasZoom=canvasPinchStart.zoom*(d/canvasPinchStart.distance);
+    updateZoom();
+  }
+},{passive:false});
+cv.addEventListener('touchend',e=>{
+  if(e.touches.length<2)canvasPinchStart=null;
+},{passive:false});
+let base=null,       // 작업용 원본 캔버스 (W x H, 절대 직접 수정하지 않음)
+    sourceBlob=null, // 새로고침 복원용 원본 파일
+    W=0,H=0,punches=[];
+let selfMode=false; // 셀프 모드: 켜면 자동 배치 대신 터치한 위치에만 펀칭
+
+function clamp(v,a,b){return Math.max(a,Math.min(b,v))}
+function sideMode(){return $('#side').value}
+
+/* ---------- 도형 경로 ---------- */
+// 주의: translate/rotate가 걸리므로 반드시 ctx.save()/restore()로 감싸서 호출
+function shapePath(c,s,x,y,r,a=0){
+  c.translate(x,y);c.rotate(a);c.beginPath();
+  if(s==='circle') c.arc(0,0,r,0,Math.PI*2);
+  else if(s==='star'){
+    for(let i=0;i<10;i++){const A=-Math.PI/2+i*Math.PI/5,R=i%2===0?r:r*.43,X=Math.cos(A)*R,Y=Math.sin(A)*R;i?c.lineTo(X,Y):c.moveTo(X,Y)}c.closePath();
+  }else if(s==='heart'){
+    c.moveTo(0,r*.92);c.bezierCurveTo(-r*.12,r*.72,-r*.92,r*.12,-r*.92,-r*.35);c.bezierCurveTo(-r*.92,-r*.86,-r*.28,-r*1.02,0,-r*.52);c.bezierCurveTo(r*.28,-r*1.02,r*.92,-r*.86,r*.92,-r*.35);c.bezierCurveTo(r*.92,r*.12,r*.12,r*.72,0,r*.92);c.closePath();
+  }else if(s==='diamond'){
+    c.moveTo(0,-r);c.lineTo(r,0);c.lineTo(0,r);c.lineTo(-r,0);c.closePath();
+  }else if(s==='triangle'){
+    c.moveTo(0,-r);c.lineTo(r*.92,r*.75);c.lineTo(-r*.92,r*.75);c.closePath();
+  }else if(s==='square') c.rect(-r,-r,r*2,r*2);
+  else if(s==='oval') c.ellipse(0,0,r*.72,r,0,0,Math.PI*2);
+  else if(s==='flower'){
+    for(let i=0;i<8;i++){const A=i*Math.PI/4;c.moveTo(Math.cos(A)*r*.43+r*.36,Math.sin(A)*r*.43);c.arc(Math.cos(A)*r*.43,Math.sin(A)*r*.43,r*.36,0,Math.PI*2)}
+    c.moveTo(r*.43,0);c.arc(0,0,r*.43,0,Math.PI*2);
+  }else if(s==='crescent'){
+    c.arc(0,0,r,Math.PI*.3,Math.PI*1.7);
+    c.arc(r*.38,0,r*.78,Math.PI*1.7,Math.PI*.3,true);c.closePath();
+  }else if(s==='pentagon'){
+    for(let i=0;i<5;i++){const A=-Math.PI/2+i*Math.PI*2/5,X=Math.cos(A)*r,Y=Math.sin(A)*r;i?c.lineTo(X,Y):c.moveTo(X,Y)}c.closePath();
+  }else if(s==='hexagon'){
+    for(let i=0;i<6;i++){const A=-Math.PI/6+i*Math.PI/3,X=Math.cos(A)*r,Y=Math.sin(A)*r;i?c.lineTo(X,Y):c.moveTo(X,Y)}c.closePath();
+  }else if(s==='ring'){
+    c.arc(0,0,r,0,Math.PI*2);c.arc(0,0,r*.52,0,Math.PI*2,true);
+  }else if(s==='cross'){
+    const q=r*.34;c.moveTo(-q,-r);c.lineTo(q,-r);c.lineTo(q,-q);c.lineTo(r,-q);c.lineTo(r,q);c.lineTo(q,q);c.lineTo(q,r);c.lineTo(-q,r);c.lineTo(-q,q);c.lineTo(-r,q);c.lineTo(-r,-q);c.lineTo(-q,-q);c.closePath();
+  }else if(s==='plus'){
+    const q=r*.28;c.moveTo(-q,-r);c.lineTo(q,-r);c.lineTo(q,-q);c.lineTo(r,-q);c.lineTo(r,q);c.lineTo(q,q);c.lineTo(q,r);c.lineTo(-q,r);c.lineTo(-q,q);c.lineTo(-r,q);c.lineTo(-r,-q);c.lineTo(-q,-q);c.closePath();
+  }else if(s==='semicircle'){
+    c.arc(0,0,r,Math.PI,0);c.lineTo(r,0);c.closePath();
+  }else if(s==='clover'){
+    for(let i=0;i<4;i++){const A=i*Math.PI/2-Math.PI/4,px=Math.cos(A)*r*.42,py=Math.sin(A)*r*.42;c.moveTo(px+r*.32*Math.cos(A),py+r*.32*Math.sin(A));c.arc(px,py,r*.45,0,Math.PI*2)}
+  }else if(s==='sparkle'){
+    const q=r*.28;c.moveTo(0,-r);c.lineTo(q,-q);c.lineTo(r,0);c.lineTo(q,q);c.lineTo(0,r);c.lineTo(-q,q);c.lineTo(-r,0);c.lineTo(-q,-q);c.closePath();
+  }else if(s==='drop'){
+    c.moveTo(0,-r);c.bezierCurveTo(r*.78,-r*.08,r*.72,r*.62,0,r);c.bezierCurveTo(-r*.72,r*.62,-r*.78,-r*.08,0,-r);c.closePath();
+  }else if(s==='petal'){
+    for(let i=0;i<6;i++){const A=i*Math.PI/3-Math.PI/2;c.save();c.rotate(A);c.ellipse(0,-r*.48,r*.32,r*.58,0,0,Math.PI*2);c.restore()}
+    c.arc(0,0,r*.28,0,Math.PI*2);
+  }else if(s==='bow'){
+    c.moveTo(-r*.08,0);c.bezierCurveTo(-r*.45,-r*.8,-r,-r*.72,-r,-r*.12);c.bezierCurveTo(-r,.38*r,-r*.42,r*.65,-r*.08,r*.08);c.closePath();c.moveTo(r*.08,0);c.bezierCurveTo(r*.45,-r*.8,r,-r*.72,r,-r*.12);c.bezierCurveTo(r,.38*r,r*.42,r*.65,r*.08,r*.08);c.closePath();c.arc(0,0,r*.16,0,Math.PI*2);
+  }else{ // cloud
+    const bump=(x,y,rr)=>{c.moveTo(x+rr,y);c.arc(x,y,rr,0,Math.PI*2)};
+    bump(-r*.5,0,r*.42);bump(0,-r*.2,r*.52);bump(r*.5,0,r*.42);bump(-r*.25,r*.28,r*.42);bump(r*.25,r*.28,r*.42);
+  }
+}
+
+// 글자 1개만 허용 (이모지 등 서로게이트 쌍도 1글자로 처리)
+function getChar(){return Array.from($('#char').value.trim())[0]||''}
+// 직접 입력한 글자가 있으면 글자 도형, 없으면 선택한 도형
+function currentShape(){return getChar()?'text':$('#shape').value}
+const FONT="'Pretendard','Apple SD Gothic Neo','Malgun Gothic','Noto Sans KR',sans-serif";
+// 캔버스는 폰트가 로드되기 전에 그리면 대체 폰트로 나오므로, 로드 완료 후 다시 그린다
+function ensureFont(){
+  if(!document.fonts||!document.fonts.load)return;
+  document.fonts.load('900 100px Pretendard',getChar()||'가').then(()=>{if(base)render()}).catch(()=>{});
+}
+
+// 도형(또는 글자)을 현재 fillStyle/합성모드로 채운다. 경로 도형과 글자를 한 곳에서 처리
+function fillShape(c,p,x,y){
+  c.save();
+  if(p.shape==='text'){
+    c.translate(x,y);c.rotate(p.rotation);
+    c.font='900 100px '+FONT;c.textAlign='left';c.textBaseline='alphabetic';
+    const m=c.measureText(p.char);
+    const w=m.actualBoundingBoxLeft+m.actualBoundingBoxRight,h=m.actualBoundingBoxAscent+m.actualBoundingBoxDescent;
+    const k=p.size/Math.max(w,h,1); // 글자 크기를 size에 맞춰 보정
+    c.font='900 '+(100*k)+'px '+FONT;
+    const cx=(m.actualBoundingBoxRight-m.actualBoundingBoxLeft)/2*k;
+    const by=(m.actualBoundingBoxAscent-m.actualBoundingBoxDescent)/2*k;
+    c.fillText(p.char,-cx,by);
+  }else{
+    shapePath(c,p.shape,x,y,p.size/2,p.rotation);
+    c.fill();
+  }
+  c.restore();
+}
+
+/* ---------- 펀치 데이터 ---------- */
+// srcX/srcY: 사진(W x H) 안에서 뚫은 위치 / dstX/dstY: 조각 칸 안에서 놓이는 위치
+function pickSize(){
+  const max=+$('#size').value;
+  if($('#sizeMode').value!=='random')return max;
+  const min=Math.min(+$('#minsize').value,max);
+  return Math.round(min+Math.random()*(max-min));
+}
+function addPunch(x,y,size){
+  const angle=+$('#angle').value*Math.PI/180;
+  const rotation=$('#rot').value==='random'?Math.random()*Math.PI*2:angle;
+  return {shape:currentShape(),char:getChar(),srcX:x,srcY:y,size,rotation,dstX:x,dstY:y};
+}
+function farEnough(x,y,arr,size){
+  const gap=+$('#spacing').value;
+  return !arr.some(p=>Math.hypot(p.srcX-x,p.srcY-y)<(p.size+size)/2+gap);
+}
+function fitSize(size){return Math.min(size,W,H)} // 사진보다 큰 도형 방지
+function generatePunches(){
+  if(!base)return;
+  const count=Math.max(1,parseInt($('#count').value||1,10));
+  // 크기를 먼저 정하고 큰 것부터 배치해야 빈 공간에 잘 들어간다
+  const sizes=Array.from({length:count},()=>fitSize(pickSize())).sort((a,b)=>b-a);
+  const created=[],maxAttempts=Math.max(1000,count*250);
+  for(const size of sizes){
+    const radius=size/2;
+    let placed=false;
+    for(let t=0;t<maxAttempts;t++){
+      const x=clamp(radius+Math.random()*(W-radius*2),radius,W-radius);
+      const y=clamp(radius+Math.random()*(H-radius*2),radius,H-radius);
+      if(farEnough(x,y,created,size)){created.push(addPunch(x,y,size));placed=true;break}
+    }
+    if(!placed)continue; // 못 놓으면 그 도형만 건너뛰고 나머지는 계속
+  }
+  punches=created;
+  render();
+}
+function updatePunchSettings(){
+  if(!base)return;
+  if(selfMode){scheduleSaveState();return} // 셀프 모드: 이미 찍은 도형은 유지, 다음 터치부터 새 설정 적용
+  generatePunches();scheduleSaveState();
+}
+
+/* ---------- 렌더링 ---------- */
+function layoutSize(){
+  const side=sideMode();
+  return {width:(side==='left'||side==='right')?W*2:W,height:(side==='top'||side==='bottom')?H*2:H};
+}
+
+// 사진 안 펀칭 부분에 해당하는 "조각"을 만들어 그린다 (뚫린 바로 그 부분의 원본 픽셀)
+function drawPieceOn(target,p,px,py){
+  const n=Math.ceil(p.size*1.4)+18,q=document.createElement('canvas');q.width=q.height=n;
+  const c=q.getContext('2d');
+  // 1) 도형(글자) 모양 마스크를 채우고
+  c.fillStyle='#000';
+  fillShape(c,p,n/2,n/2);
+  // 2) 마스크와 겹치는 부분에만 원본 사진(뚫린 바로 그 좌표)을 채운다
+  c.globalCompositeOperation='source-in';
+  c.drawImage(base,p.srcX-n/2,p.srcY-n/2,n,n,0,0,n,n);
+  const x=px+p.dstX-n/2,y=py+p.dstY-n/2;
+  target.save();
+  if($('#shadow').value==='on'){target.shadowColor='rgba(0,0,0,.25)';target.shadowBlur=8;target.shadowOffsetY=3}
+  target.drawImage(q,x,y);
+  target.restore();
+}
+
+// 화면 렌더와 저장이 같은 함수를 쓴다
+function paint(c,transparent){
+  const L=layoutSize(),side=sideMode(),bg=$('#bg').value;
+  const photoX=side==='left'?W:0,photoY=side==='top'?H:0;
+  const pieceX=side==='right'?W:0,pieceY=side==='bottom'?H:0;
+
+  c.clearRect(0,0,L.width,L.height);
+  if(!transparent){c.fillStyle=bg;c.fillRect(0,0,L.width,L.height)}
+
+  // 1) 사진 + 펀칭 구멍
+  c.drawImage(base,photoX,photoY,W,H);
+  // 구멍 색 = 배경색. 배경색 버전은 배경색으로 채우고, 투명 버전은 진짜로 뚫는다
+  for(const p of punches){
+    c.save();
+    if(transparent){c.globalCompositeOperation='destination-out';c.fillStyle='#000'}
+    else c.fillStyle=bg;
+    fillShape(c,p,photoX+p.srcX,photoY+p.srcY);
+    c.restore();
+  }
+  // 2) 조각 칸: 배경색 위에 뚫린 부분의 원본 사진이 같은 모양으로 놓임
+  for(const p of punches)drawPieceOn(c,p,pieceX,pieceY);
+}
+function render(){
+  if(!base)return;
+  const L=layoutSize();cv.width=L.width;cv.height=L.height;
+  const stage=$('.stage');if(stage)stage.style.aspectRatio='1 / 1';
+  cv.style.display='block';$('#empty').style.display='none';
+  paint(ctx,false);
+}
+
+/* ---------- 상태 저장/복원 (IndexedDB, 실패해도 앱은 정상 동작) ---------- */
+const DB_NAME='punching-state-v1',DB_STORE='state';
+let saveTimer=null;
+function scheduleSaveState(){clearTimeout(saveTimer);saveTimer=setTimeout(()=>saveState(),150);}
+function openStateDB(){
+  return new Promise((resolve,reject)=>{
+    const req=indexedDB.open(DB_NAME,1);
+    req.onupgradeneeded=()=>req.result.createObjectStore(DB_STORE);
+    req.onsuccess=()=>resolve(req.result);
+    req.onerror=()=>reject(req.error);
+  });
+}
+async function saveState(){
+  if(!base||!sourceBlob)return;
+  try{
+    const db=await openStateDB();
+    const tx=db.transaction(DB_STORE,'readwrite');
+    tx.objectStore(DB_STORE).put({
+      blob:sourceBlob,W,H,punches,
+      settings:{selfMode,char:$('#char').value,sizeMode:$('#sizeMode').value,minsize:$('#minsize').value,shape:$('#shape').value,axis:$('#axis').value,side:$('#side').value,
+        size:$('#size').value,angle:$('#angle').value,count:$('#count').value,
+        spacing:$('#spacing').value,rot:$('#rot').value,bg:$('#bg').value,
+        shadow:$('#shadow').value}
+    },'current');
+    tx.oncomplete=()=>db.close();
+  }catch(e){console.warn('상태 저장 실패',e)}
+}
+window.addEventListener('beforeunload',()=>{try{if(base&&sourceBlob)saveState()}catch(e){}});
+async function loadState(){
+  try{
+    const db=await openStateDB();
+    const req=db.transaction(DB_STORE,'readonly').objectStore(DB_STORE).get('current');
+    const state=await new Promise((res,rej)=>{req.onsuccess=()=>res(req.result);req.onerror=()=>rej(req.error)});
+    db.close();
+    if(!state?.blob)return;
+    const bmp=await loadImage(state.blob);
+    setBase(bmp,state.W,state.H);
+    sourceBlob=state.blob;
+    punches=state.punches||[];
+    const s=state.settings;
+    $('#shape').value=s.shape;if(!$('#shape').value)$('#shape').value='circle';$('#axis').value=s.axis;$('#size').value=s.size;$('#angle').value=s.angle;
+    $('#count').value=s.count;$('#spacing').value=s.spacing;$('#rot').value=s.rot;$('#bg').value=s.bg;
+    $('#shadow').value=s.shadow;
+    selfMode=!!s.selfMode;applySelfUI();
+    $('#char').value=s.char||'';$('#sizeMode').value=s.sizeMode||'fixed';$('#minsize').value=s.minsize||24;
+    syncLabels();syncSideOptions();$('#side').value=s.side;
+    render();ensureFont();
+  }catch(e){console.warn('상태 복원 실패',e)}
+}
+async function clearState(){
+  try{
+    const db=await openStateDB();
+    const tx=db.transaction(DB_STORE,'readwrite');
+    tx.objectStore(DB_STORE).clear();
+    tx.oncomplete=()=>db.close();
+  }catch(e){console.warn('초기화 실패',e)}
+}
+
+/* ---------- 이미지 로드 ---------- */
+function loadImage(file){
+  return new Promise((resolve,reject)=>{
+    const url=URL.createObjectURL(file),im=new Image();
+    im.onload=()=>{URL.revokeObjectURL(url);resolve(im)};
+    im.onerror=()=>{URL.revokeObjectURL(url);reject(new Error('decode'))};
+    im.src=url;
+  });
+}
+// 원본을 최대 1400~1800px로 줄여 base 캔버스에 한 번만 그려 둔다 (이후 모든 좌표는 W x H 기준)
+function setBase(im,w,h){
+  const MAX=matchMedia('(max-width:720px)').matches?1400:1800; // 모바일은 메모리·속도 때문에 조금 작게
+  const sc=Math.min(1,MAX/im.naturalWidth,MAX/im.naturalHeight);
+  W=w||Math.max(1,Math.round(im.naturalWidth*sc));
+  H=h||Math.max(1,Math.round(im.naturalHeight*sc));
+  base=document.createElement('canvas');base.width=W;base.height=H;
+  base.getContext('2d').drawImage(im,0,0,W,H);
+}
+
+$('#file').addEventListener('change',async e=>{
+  const f=e.target.files&&e.target.files[0];
+  if(!f)return;
+  try{
+    const im=await loadImage(f);
+    setBase(im);
+    sourceBlob=f;
+    // 새 사진을 넣으면 항상 가로 방향으로 시작하고, 이후 사용자가 직접 변경할 수 있음
+    $('#axis').value='horizontal';
+    syncSideOptions();
+    punches=[];
+    if(selfMode)render();else generatePunches();
+    scheduleSaveState();
+  }catch(err){
+    alert('이 이미지는 브라우저에서 읽을 수 없어요. JPG/PNG/WebP 이미지로 다시 올려주세요.\n(아이폰 HEIC 사진은 JPG로 변환이 필요할 수 있어요)');
+  }
+  e.target.value=''; // 같은 파일을 다시 선택해도 change가 뜨도록
+});
+
+/* ---------- 컨트롤 ---------- */
+function syncLabels(){
+  const rnd=$('#sizeMode').value==='random';
+  $('#minWrap').style.display=rnd?'grid':'none';
+  $('#sizeLabel').textContent=rnd?'최대 크기':'크기';
+  $('#shape').style.opacity=getChar()?.45:1; // 글자 입력 중이면 도형 선택은 흐리게
+  $('#mv').textContent=$('#minsize').value;
+  $('#sv').textContent=$('#size').value;
+  $('#rv').textContent=$('#angle').value+'°';
+  $('#cvv').textContent=$('#count').value;
+  $('#spv').textContent=$('#spacing').value;
+}
+$('#size').oninput=()=>{syncLabels();updatePunchSettings()};
+$('#angle').oninput=()=>{syncLabels();updatePunchSettings()};
+$('#count').oninput=()=>{syncLabels();updatePunchSettings()};
+$('#spacing').oninput=()=>{syncLabels();updatePunchSettings()};
+$('#minsize').oninput=()=>{syncLabels();updatePunchSettings()};
+$('#sizeMode').onchange=()=>{syncLabels();updatePunchSettings()};
+$('#shape').onchange=()=>{$('#char').value='';syncLabels();updatePunchSettings()}; // 도형을 고르면 글자 입력은 비움
+$('#char').oninput=e=>{
+  const ch=Array.from(e.target.value.trim())[0]||''; // 1글자만 유지
+  e.target.value=ch;
+  syncLabels();
+  ensureFont();
+  updatePunchSettings();
+};
+$('#rot').onchange=updatePunchSettings;
+
+function syncSideOptions(){
+  const side=$('#side'),axis=$('#axis').value,current=side.value;
+  side.innerHTML=axis==='horizontal'
+    ?'<option value="right">오른쪽</option><option value="left">왼쪽</option>'
+    :'<option value="bottom">아래</option><option value="top">위</option>';
+  const ok=(axis==='horizontal'&&(current==='left'||current==='right'))||(axis==='vertical'&&(current==='top'||current==='bottom'));
+  side.value=ok?current:(axis==='horizontal'?'right':'bottom');
+  render();
+}
+$('#axis').onchange=()=>{syncSideOptions();saveState()};
+$('#side').onchange=()=>{render();saveState()};
+$('#bg').oninput=()=>{render();saveState()};
+$('#shadow').onchange=()=>{render();saveState()};
+
+$('#reset').onclick=async()=>{
+  if(!confirm('사진과 설정, 펀칭 결과를 모두 초기화할까요?'))return;
+  await clearState();
+  base=null;sourceBlob=null;W=0;H=0;punches=[];
+  selfMode=false;applySelfUI();
+  $('#file').value='';
+  $('#shape').value='star';$('#axis').value='horizontal';
+  $('#size').value='54';$('#angle').value='0';$('#count').value='1';$('#spacing').value='8';
+  $('#char').value='';$('#sizeMode').value='fixed';$('#minsize').value='24';
+  $('#rot').value='fixed';$('#bg').value='#9edcff';$('#shadow').value='off';
+  syncLabels();syncSideOptions();
+  cv.style.display='none';$('#empty').style.display='block';
+};
+
+$('#save').onclick=()=>{
+  if(!base)return;
+  const L=layoutSize(),o=document.createElement('canvas');
+  o.width=L.width;o.height=L.height;
+  paint(o.getContext('2d'),false);
+  const finish=async(blob)=>{
+    if(!blob){alert('PNG 저장에 실패했어요. 다시 시도해주세요.');return;}
+    const file=new File([blob],'punching-piece.png',{type:'image/png'});
+    // 모바일: 공유 시트를 열어 "이미지 저장"으로 갤러리에 바로 저장할 수 있게 한다
+    if(matchMedia('(pointer:coarse)').matches&&navigator.canShare&&navigator.canShare({files:[file]})){
+      try{await navigator.share({files:[file]});return}
+      catch(err){if(err&&err.name==='AbortError')return} // 사용자가 취소한 경우는 그대로 종료
+    }
+    const u=URL.createObjectURL(blob),a=document.createElement('a');
+    a.href=u;a.download='punching-piece.png';a.click();
+    setTimeout(()=>URL.revokeObjectURL(u),1000);
+  };
+  if(o.toBlob)o.toBlob(finish,'image/png');
+  else { try { finish(dataURLToBlob(o.toDataURL('image/png'))); } catch(err){ alert('PNG 저장에 실패했어요.'); } }
+};
+function dataURLToBlob(data){const a=data.split(','),m=a[0].match(/:(.*?);/)[1],b=atob(a[1]),u=new Uint8Array(b.length);for(let i=0;i<b.length;i++)u[i]=b.charCodeAt(i);return new Blob([u],{type:m})}
+
+/* ---------- 셀프 모드 ---------- */
+function applySelfUI(){
+  $('#selfBtn').textContent=selfMode?'셀프 ON':'셀프 모드';
+  $('#selfBtn').classList.toggle('primary',selfMode);
+  $('#selfTools').classList.toggle('hidden',!selfMode);
+  $('#selfHint').classList.toggle('hidden',!selfMode);
+  for(const id of ['count','spacing']){ // 자동 배치용 옵션은 셀프 모드에서 비활성
+    $('#'+id).disabled=selfMode;$('#'+id).parentElement.style.opacity=selfMode?.4:1;
+  }
+  cv.style.cursor=selfMode?'crosshair':'default';
+}
+$('#selfBtn').onclick=()=>{
+  selfMode=!selfMode;applySelfUI();
+  if(selfMode){punches=[];render()}      // 켜면 빈 상태에서 직접 찍기 시작
+  else if(base)generatePunches();        // 끄면 다시 자동 배치
+  scheduleSaveState();
+};
+$('#undo').onclick=()=>{punches.pop();render();saveState()};
+$('#clearAll').onclick=()=>{punches=[];render();saveState()};
+
+// 터치/클릭한 위치 → 사진 좌표. 두 칸(사진/조각)이 같은 크기라서 W,H로 나눈 나머지가 곧 칸 안 좌표
+cv.addEventListener('pointerdown',e=>{
+  if(!selfMode||!base)return;
+  e.preventDefault();
+  const r=cv.getBoundingClientRect();
+  const x=(e.clientX-r.left)*cv.width/r.width,y=(e.clientY-r.top)*cv.height/r.height;
+  const size=fitSize(pickSize()),rad=size/2;
+  const rx=clamp(((x%W)+W)%W,rad,W-rad),ry=clamp(((y%H)+H)%H,rad,H-rad);
+  punches.push(addPunch(rx,ry,size)); // 사진엔 구멍, 반대편엔 같은 좌표의 조각이 자동 생성됨
+  render();scheduleSaveState();
+});
+
+syncSideOptions();
+ensureFont();
+loadState();
