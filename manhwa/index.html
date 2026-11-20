@@ -76,7 +76,7 @@ function split(poly){
   var b=bbox(poly),w=b[2]-b[0],h=b[3]-b[1];
   var vertical=Math.random()<(w/(w+h))*1.3+(w>h?0.1:-0.1); // 세로선(좌우 분할)
   var t=0.35+Math.random()*0.3;
-  var th=(MODE==='trap'||(MODE==='any'&&Math.random()<0.6))?(Math.random()<0.5?-1:1)*(0.05+Math.random()*0.17):0; // 사선
+  var th=(MODE==='trap'||(MODE==='any'&&Math.random()<0.4))?(Math.random()<0.5?-1:1)*(0.05+Math.random()*0.17):0; // 사선
   var px=b[0]+w*t,py=b[1]+h*t,nx,ny;
   if(vertical){nx=Math.cos(th);ny=-Math.sin(th)}else{nx=-Math.sin(th);ny=Math.cos(th)}
   var d=nx*px+ny*py;
@@ -84,15 +84,30 @@ function split(poly){
   if(A.length<3||B.length<3||area(A)<4000||area(B)<4000)return null;
   return [A,B];
 }
-function generate(){
-  var rr=RATIO.split('/');H=Math.round(W*rr[1]/rr[0]);
+function isRect(p){var b=bbox(p);return p.every(function(q){return (Math.abs(q[0]-b[0])<1||Math.abs(q[0]-b[2])<1)&&(Math.abs(q[1]-b[1])<1||Math.abs(q[1]-b[3])<1)})}
+function build(){
   var m=MARGIN;
   var list=[[[m,m],[W-m,m],[W-m,H-m],[m,H-m]]],guard=0;
   while(list.length<N&&guard++<400){
     list.sort(function(a,b){return area(b)-area(a)});
-    var cand=Math.random()<0.7?0:Math.floor(Math.random()*Math.min(2,list.length)); // 큰 칸 위주로 분할
+    var cand=Math.random()<0.7?0:Math.floor(Math.random()*Math.min(2,list.length));
     var r=split(list[cand]);
     if(r){list.splice(cand,1);list.push(r[0],r[1])}
+  }
+  return list;
+}
+function generate(){
+  var rr=RATIO.split('/');H=Math.round(W*rr[1]/rr[0]);
+  var list=build(),tries=0;
+  // 혼합: 사각형과 사다리꼴이 둘 다 최소 1개씩 나오도록 재시도
+  if(MODE==='any'&&N>1){
+    var ok=function(l){var rc=l.filter(isRect).length;return rc>0&&rc<l.length};
+    while(!ok(list)&&tries++<50)list=build();
+  }
+  if(MODE==='rect'||MODE==='trap'){
+    // 직사각형만/사다리꼴만은 분할 시 모드에 맞는 칸만 남도록 재시도
+    var good=function(l){return MODE==='rect'?l.every(isRect):l.every(function(p){return !isRect(p)})};
+    while(!good(list)&&tries++<200)list=build();
   }
   // 읽는 순서: 위→아래, 왼→오
   list.sort(function(a,b){var A=bbox(a),B=bbox(b);return Math.abs(A[1]-B[1])>H*0.12?A[1]-B[1]:A[0]-B[0]});
