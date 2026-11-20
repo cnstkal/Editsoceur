@@ -17,11 +17,8 @@ $('ans').addEventListener('click',function(e){var d=e.target.dataset.del;if(d==n
 function cap(){$('add').disabled=S.a.length>=2;$('add').textContent=S.a.length>=2?'답변은 최대 2개':'+ 답변 추가'}
 $('add').onclick=function(){if(S.a.length>=2)return;S.a.push({n:'이름',t:'내용'});ans();render();cap()};
 var F=[['iLg','lg'],['iSb','sb'],['iQ','q'],['iD','d']];
-function sync(){F.forEach(function(f){$(f[0]).value=S[f[1]]});$('iIll').checked=S.ill;$('iImg').value='';ans();render();cap()}
+function sync(){F.forEach(function(f){$(f[0]).value=S[f[1]]});ans();render();cap()}
 F.forEach(function(f){$(f[0]).addEventListener('input',function(){S[f[1]]=this.value;render()})});
-$('iIll').addEventListener('input',function(){S.ill=this.checked;render()});
-$('iImg').addEventListener('change',function(){var f=this.files[0];if(!f)return;var r=new FileReader();r.onload=function(e){S.img=e.target.result;render()};r.readAsDataURL(f)});
-$('clearImg').onclick=function(){S.img='heart.png';$('iImg').value='';render()};
 $('reset').onclick=function(){S=defs();sync()};
 (function(){var ed=document.querySelector('.editor'),g=[].slice.call(ed.querySelectorAll('.ps-pn')),bar=document.createElement('div');bar.className='ps-seg';
  g.forEach(function(p,i){var b=document.createElement('button');b.type='button';b.textContent=p.getAttribute('data-t');if(!i)b.className='on';
