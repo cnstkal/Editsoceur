@@ -27,3 +27,25 @@ input,textarea{display:block;width:100%;margin-top:4px;padding:8px 10px;border:1
 .acts{display:flex;gap:8px;margin-bottom:8px}
 button{flex:1;padding:11px;border:0;border-radius:10px;background:#4d8ddf;color:#fff;font:inherit;font-weight:700;cursor:pointer}
 button.g{background:#eee;color:#333}
+
+
+/* Keep the CAPTCHA editor within the viewport on narrow screens */
+html,body{width:100%;max-width:100%;overflow-x:hidden}
+body{min-width:0}
+.wrap{width:100%;max-width:900px;min-width:0;overflow-x:hidden}
+.card{width:100%;min-width:0}
+.view{width:100%;max-width:100%;min-width:0;overflow:hidden}
+.chk{width:100%;max-width:100%;min-width:0;padding:clamp(6px,2vw,16px);overflow:hidden}
+#cap{width:min(400px,100%);max-width:100%;min-width:0}
+.grid{width:100%;min-width:0}
+.c{min-width:0}
+@media(max-width:480px){
+  .wrap{padding:10px;gap:12px}
+  .card{padding:12px;border-radius:13px}
+  .hd{padding:20px 18px 12px;min-height:0}
+  .hd h1{font-size:clamp(24px,7vw,34px)}
+  .hd p{font-size:14px}
+  .ft{padding-left:12px}
+  .ic{gap:clamp(12px,5vw,28px)}
+  .ok{width:42%;height:48px;line-height:48px;font-size:14px}
+}
