@@ -1,0 +1,26 @@
+.sl-fit{position:relative;width:min(100%,420px);aspect-ratio:393/852;overflow:hidden;border-radius:28px;background:#fff;box-shadow:0 0 0 1px #e9eaee}
+.sl{position:absolute;left:0;top:0;width:393px;height:852px;background:#fff;transform-origin:0 0;overflow:hidden;color:#111}
+.sl *{position:absolute;box-sizing:border-box;margin:0;padding:0}
+.sl .sl-t{left:0;top:19px;width:108px;text-align:center;font-size:17px;font-weight:600;line-height:22px;color:#000;letter-spacing:0!important}
+.sl .sl-isl{left:133px;top:11px;width:126px;height:37px;border-radius:19px;background:#000}
+.sl .sl-wf{left:302px;top:22px;width:19px;height:14px}
+.sl .sl-bt{left:328px;top:21px;width:27px;height:13px;border-radius:4.5px;background:rgba(0,0,0,.28);overflow:hidden}
+.sl .sl-bt i{left:0;top:0;bottom:0;background:#000}
+.sl .sl-bt b{left:0;right:0;top:0;bottom:0;text-align:center;color:#fff;font-size:10.5px;font-weight:700;line-height:13px;letter-spacing:0!important}
+.sl .sl-bn{left:355px;top:25px;width:1.6px;height:5px;border-radius:0 2px 2px 0;background:rgba(0,0,0,.35)}
+.sl .sl-c{top:56px;width:40px;height:40px;border-radius:50%;background:#fff;box-shadow:0 4px 14px rgba(0,0,0,.12)}
+.sl .sl-c svg{left:10px;top:10px;width:20px;height:20px}
+.sl .sl-pill{left:156px;top:56px;width:80px;height:40px;border-radius:20px;background:#fff;box-shadow:0 4px 14px rgba(0,0,0,.12);display:flex;align-items:center;justify-content:center;gap:2px;font-size:17px}
+.sl .sl-pill *{position:static}
+.sl .sl-sm{left:186px;top:104px;width:21px;height:21px}
+.sl .sl-card{left:10px;width:373px;height:240px;border-radius:22px;overflow:hidden;background:linear-gradient(135deg,#b8bcc6,#7d8290) center/cover no-repeat}
+.sl .sl-sh{inset:0;background:rgba(0,0,0,.1)}
+.sl .sl-av{left:15px;top:15px;width:29px;height:29px;border-radius:50%;background:#d9d9de center/cover no-repeat;border:1px solid rgba(255,255,255,.7)}
+.sl .sl-nm{left:52px;top:15px;height:29px;line-height:29px;font-size:15px;font-weight:500;color:rgba(255,255,255,.62);white-space:nowrap}
+.sl .sl-tm{left:0;right:0;top:80px;text-align:center;font-size:35px;font-weight:800;line-height:44px;color:#fff;letter-spacing:-.04em!important;text-shadow:0 1px 8px rgba(0,0,0,.15)}
+.sl .sl-tx{left:12px;right:12px;top:126px;text-align:center;font-size:17px;font-weight:500;line-height:22px;color:rgba(255,255,255,.9)}
+.sl .sl-dt{right:21px;bottom:20px;width:28px;height:5px}
+.sl .sl-dt i{top:0;width:5px;height:5px;border-radius:50%;background:#fff}
+.sl .sl-dt i:nth-child(1){left:0}.sl .sl-dt i:nth-child(2){left:11.5px}.sl .sl-dt i:nth-child(3){left:23px}
+.ans h3{margin-top:10px}
+.ans .av{margin-top:4px}
