@@ -5,63 +5,67 @@
 <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no,viewport-fit=cover"><script src="../nozoom.js?v=1"></script>
 <title>만화칸</title>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.css">
+<link rel="stylesheet" href="../zoom/zoom.css">
+<style id="ed-font">html,body,body *{font-family:Pretendard,-apple-system,"Apple SD Gothic Neo","Noto Sans KR",sans-serif!important;letter-spacing:-.02em!important}</style>
+<link rel="stylesheet" href="../ps-editor.css?v=10">
 <style>
-*{box-sizing:border-box}
-body{margin:0;background:#f2f3f5;color:#111;font-family:Pretendard,-apple-system,sans-serif;min-height:100vh}
-.wrap{max-width:1100px;margin:0 auto;padding:20px 16px 40px}
-.back{color:#00b050;font-weight:600;text-decoration:none}
-h1{font-size:28px;margin:8px 0 16px}
-.grid{display:grid;grid-template-columns:minmax(0,1.4fr) minmax(280px,1fr);gap:16px;align-items:start}
-@media(max-width:760px){.grid{grid-template-columns:1fr}}
-.card{background:#fff;border-radius:20px;padding:18px}
-.stage{display:flex;justify-content:center;background:#e9eaed;border-radius:12px;padding:12px}
-#svg{background:#fff;display:block;box-shadow:0 1px 6px #0002;cursor:pointer}
-.lbl{font-size:12px;color:#8a8f98;margin:16px 0 6px;letter-spacing:.08em}
-.lbl:first-child{margin-top:0}
-.seg{display:flex;gap:6px;flex-wrap:wrap;align-items:center}
-button,.fileb{height:40px;padding:0 14px;border:1px solid #ddd;border-radius:12px;background:#fff;font:inherit;font-size:14px;cursor:pointer;display:inline-flex;align-items:center}
-button.on{background:#e6f8ee;border-color:#00b050;color:#008a3e;font-weight:700}
-.cnt{display:flex;align-items:center;gap:12px;font-size:20px;font-weight:700}
-.cnt button{width:40px;padding:0;justify-content:center;font-size:20px}
-input[type=range]{flex:1;accent-color:#00b050}
-.hint{font-size:13px;color:#8a8f98;margin:14px 0 0}
+.ps-top a{color:#e8457a;font-weight:700;text-decoration:none}
+#svg{background:#fff;display:block;margin:0 auto;box-shadow:0 1px 6px #0002}
+.ps-stage{position:relative}
+#numPv{position:absolute;top:10px;right:10px;z-index:2;height:36px;padding:0 14px;border:0;border-radius:10px;background:#000a;color:#fff;font:inherit;font-size:13px;font-weight:600;cursor:pointer}
+body.studio .ps-side .chips{display:flex;flex-wrap:wrap;gap:6px;margin:0 0 16px}
+body.studio .ps-side .chips button{height:38px;padding:0 14px;border:1px solid var(--ln);border-radius:12px;background:#fff;color:#333;font:inherit;font-size:14px;cursor:pointer}
+body.studio .ps-side .chips button.on{background:var(--pk-bg);border-color:var(--pk);color:var(--pk);font-weight:700}
+body.studio .ps-side .cnt{display:flex;align-items:center;gap:14px;font-size:20px;font-weight:700;margin:0 0 16px}
+body.studio .ps-side .cnt button{width:44px;height:44px;border:1px solid var(--ln);border-radius:12px;background:#fff;font-size:20px;cursor:pointer}
+body.studio .ps-side .sub{font-size:13px;color:#8a8f98;margin:0 0 8px}
+body.studio .ps-side .pcard{padding:12px 14px 4px;border:1px solid var(--ln);border-radius:16px;margin:0 0 12px;background:#fff}
+body.studio .ps-side .pcard b{display:block;margin:0 0 10px;font-size:14px}
 </style>
 </head>
-<body>
-<div class="wrap">
-  <a class="back" href="../index.html">‹ 메인</a>
-  <h1>만화칸</h1>
-  <div class="grid">
-    <div class="card"><div class="stage"><svg id="svg" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"></svg></div></div>
-    <div class="card">
-      <div class="lbl">전체 비율 (고정)</div>
-      <div class="seg" id="rs"><button data-r="9/16">9:16</button><button data-r="16/9">16:9</button><button data-r="4/3">4:3</button><button data-r="3/4">3:4</button><button data-r="1/1">1:1</button><button data-r="2/3">2:3</button><button data-r="3/2">3:2</button><button data-r="4/5">4:5</button><button data-r="5/4">5:4</button><button data-r="21/9">21:9</button><button data-r="1/2">1:2</button><button data-r="1/3">1:3</button></div>
-      <div class="lbl">만화칸 개수</div>
-      <div class="cnt"><button id="mn">−</button><span id="n">5</span><button id="pl">+</button></div>
-      <div class="lbl">칸 모양</div>
-      <div class="seg" id="md"><button data-m="rect">직사각형만</button><button data-m="trap">사다리꼴만</button><button data-m="any">혼합</button><button id="sh">🎲 랜덤</button></div>
-      <div class="lbl">선 두께 <span id="lwv"></span></div>
-      <div class="seg"><input type="range" id="lw" min="0" max="10" step="0.5" value="1.5"></div>
-      <div class="lbl">선택한 칸 내용</div>
-      <div class="seg">
-        <button id="fb">이미지 추가</button><input type="file" id="f" accept="image/*" style="display:none">
-        <button id="gs">그린스크린 (전체)</button><button id="gso">선택 칸 풀기</button>
-        <button id="cl">비우기</button>
-      </div>
-      <p class="hint" id="hint">칸을 여러 개 눌러 선택할 수 있어요 (다시 누르면 해제). 랜덤은 칸 모양·배치만 바꾸고 전체 비율은 그대로예요.</p>
-    </div>
-  </div>
+<body class="studio">
+<div class="ps-wrap">
+<header class="ps-top"><a href="../index.html">‹ 메인</a><button class="ps-pvbtn" id="pvBtn" type="button">미리보기 모드</button></header>
+<div class="ps-grid">
+<section class="ps-card ps-main">
+<div class="ps-lbl">Live Preview</div>
+<h2>만화칸</h2>
+<p class="ps-sub">칸 배치를 확인하고, 오른쪽에서 바로 수정해요</p>
+<div class="ps-stage"><button id="numPv" type="button">숫자 끄기</button><svg id="svg" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"></svg></div>
+</section>
+<section class="ps-card ps-side">
+<div class="ps-lbl">Edit Panel</div>
+<h2>만화칸 수정</h2>
+<div class="ps-edwrap"><div class="editor">
+<div class="ps-pn" data-t="기본">
+<div class="sub">전체 비율 (고정)</div>
+<div class="chips" id="rs"></div>
+<div class="sub">만화칸 개수</div>
+<div class="cnt"><button id="mn" type="button">−</button><span id="n">5</span><button id="pl" type="button">+</button></div>
+<div class="sub">칸 모양</div>
+<div class="chips" id="md"><button data-m="rect" type="button">직사각형만</button><button data-m="trap" type="button">사다리꼴만</button><button data-m="any" type="button">혼합</button></div>
+<button class="ps-ghost" id="sh" type="button">🎲 랜덤 배치</button>
+<label>선 두께 <span id="lwv"></span><input type="range" id="lw" min="0" max="10" step="0.5" value="1.5"></label>
+<div class="ps-tg"><span>칸 숫자 표시 (PNG엔 안 나와요)</span><label class="sw"><input id="iNum" type="checkbox" checked><i></i></label></div>
+</div>
+<div class="ps-pn" data-t="이미지" hidden>
+<button class="ps-ghost" id="gsAll" type="button">전체 그린스크린</button>
+<button class="ps-ghost" id="clAll" type="button">전체 비우기</button>
+<div id="plist"></div>
+</div>
+</div></div>
+<div class="ps-acts"><button id="reset" type="button">초기화</button><button id="savePng" type="button">PNG 저장</button></div>
+</section>
+</div>
 </div>
 <script>
-var W=1000,RATIO='16/9',H=562,N=5,LW=1.5,GAP=14,MARGIN=14;
-var MODE='any',sels=[];
-var content=[]; // 칸별 {img,gs}
-var panels=[];  // 칸 다각형 목록
-var NS='http://www.w3.org/2000/svg';
+var W=1000,RATIO='16/9',H=562,N=5,LW=1.5,GAP=14,MARGIN=14,MODE='any',SHOWNUM=true;
+var content=[],panels=[],NS='http://www.w3.org/2000/svg';
+var $=function(i){return document.getElementById(i)};
+var RATIOS=['9/16','16/9','4/3','3/4','1/1','2/3','3/2','4/5','5/4','21/9','1/2','1/3'];
 
 function area(p){var s=0;for(var i=0;i<p.length;i++){var a=p[i],b=p[(i+1)%p.length];s+=a[0]*b[1]-b[0]*a[1]}return Math.abs(s)/2}
 function bbox(p){var x0=1e9,y0=1e9,x1=-1e9,y1=-1e9;p.forEach(function(q){x0=Math.min(x0,q[0]);y0=Math.min(y0,q[1]);x1=Math.max(x1,q[0]);y1=Math.max(y1,q[1])});return [x0,y0,x1,y1]}
-// 볼록 다각형을 반평면 nx*x+ny*y<=c 로 자름
 function clip(poly,nx,ny,c){
   var out=[];
   for(var i=0;i<poly.length;i++){
@@ -74,9 +78,9 @@ function clip(poly,nx,ny,c){
 }
 function split(poly){
   var b=bbox(poly),w=b[2]-b[0],h=b[3]-b[1];
-  var vertical=Math.random()<(w/(w+h))*1.3+(w>h?0.1:-0.1); // 세로선(좌우 분할)
+  var vertical=Math.random()<(w/(w+h))*1.3+(w>h?0.1:-0.1);
   var t=0.35+Math.random()*0.3;
-  var th=(MODE==='trap'||(MODE==='any'&&Math.random()<0.4))?(Math.random()<0.5?-1:1)*(0.05+Math.random()*0.17):0; // 사선
+  var th=(MODE==='trap'||(MODE==='any'&&Math.random()<0.4))?(Math.random()<0.5?-1:1)*(0.05+Math.random()*0.17):0;
   var px=b[0]+w*t,py=b[1]+h*t,nx,ny;
   if(vertical){nx=Math.cos(th);ny=-Math.sin(th)}else{nx=-Math.sin(th);ny=Math.cos(th)}
   var d=nx*px+ny*py;
@@ -99,67 +103,104 @@ function build(){
 function generate(){
   var rr=RATIO.split('/');H=Math.round(W*rr[1]/rr[0]);
   var list=build(),tries=0;
-  // 혼합: 사각형과 사다리꼴이 둘 다 최소 1개씩 나오도록 재시도
   if(MODE==='any'&&N>1){
     var ok=function(l){var rc=l.filter(isRect).length;return rc>0&&rc<l.length};
     while(!ok(list)&&tries++<50)list=build();
   }
-  if(MODE==='rect'||MODE==='trap'){
-    // 직사각형만/사다리꼴만은 분할 시 모드에 맞는 칸만 남도록 재시도
+  if((MODE==='rect'||MODE==='trap')&&N>1){
     var good=function(l){return MODE==='rect'?l.every(isRect):l.every(function(p){return !isRect(p)})};
     while(!good(list)&&tries++<200)list=build();
   }
-  // 읽는 순서: 위→아래, 왼→오
   list.sort(function(a,b){var A=bbox(a),B=bbox(b);return Math.abs(A[1]-B[1])>H*0.12?A[1]-B[1]:A[0]-B[0]});
   panels=list;
   while(content.length<N)content.push({img:'',gs:false});
   content.length=N;
-  sels=sels.filter(function(i){return i<N});
-  render();
+  buildList();render();
+}
+function pts(p){return p.map(function(q){return q[0].toFixed(1)+','+q[1].toFixed(1)}).join(' ')}
+function svgMarkup(nums){
+  var s='<defs>';
+  panels.forEach(function(p,i){s+='<clipPath id="c'+i+'"><polygon points="'+pts(p)+'"/></clipPath>'});
+  s+='</defs><rect width="'+W+'" height="'+H+'" fill="#fff"/>';
+  panels.forEach(function(p,i){
+    var b=bbox(p),c=content[i],fill=c.gs?'#00b140':'#f4f4f5';
+    s+='<g><polygon points="'+pts(p)+'" fill="'+fill+'"/>';
+    if(c.img&&!c.gs)s+='<image href="'+c.img+'" xlink:href="'+c.img+'" x="'+b[0]+'" y="'+b[1]+'" width="'+(b[2]-b[0])+'" height="'+(b[3]-b[1])+'" preserveAspectRatio="xMidYMid slice" clip-path="url(#c'+i+')"/>';
+    if(nums)s+='<text x="'+(b[0]+14)+'" y="'+(b[1]+34)+'" font-size="26" font-weight="700" fill="'+(c.gs?'#fff':'#0004')+'">'+(i+1)+'</text>';
+    if(LW>0)s+='<polygon points="'+pts(p)+'" fill="none" stroke="#111" stroke-width="'+LW+'" stroke-linejoin="miter"/>';
+    s+='</g>';
+  });
+  return s;
 }
 function render(){
-  var svg=document.getElementById('svg');
+  var svg=$('svg');
   svg.setAttribute('viewBox','0 0 '+W+' '+H);
   var ar=W/H,maxH=Math.max(320,window.innerHeight*0.78);
   svg.style.aspectRatio=W+'/'+H;
   svg.style.width='min(100%,'+Math.round(maxH*ar)+'px)';
-  var s='<defs>';
-  panels.forEach(function(p,i){s+='<clipPath id="c'+i+'"><polygon points="'+p.map(function(q){return q[0].toFixed(1)+','+q[1].toFixed(1)}).join(' ')+'"/></clipPath>'});
-  s+='</defs><rect width="'+W+'" height="'+H+'" fill="#fff"/>';
-  panels.forEach(function(p,i){
-    var pts=p.map(function(q){return q[0].toFixed(1)+','+q[1].toFixed(1)}).join(' ');
-    var b=bbox(p),c=content[i],fill=c.gs?'#00b140':'#f4f4f5';
-    s+='<g data-i="'+i+'"><polygon points="'+pts+'" fill="'+fill+'"/>';
-    if(c.img&&!c.gs)s+='<image href="'+c.img+'" xlink:href="'+c.img+'" x="'+b[0]+'" y="'+b[1]+'" width="'+(b[2]-b[0])+'" height="'+(b[3]-b[1])+'" preserveAspectRatio="xMidYMid slice" clip-path="url(#c'+i+')"/>';
-    s+='<text x="'+(b[0]+14)+'" y="'+(b[1]+34)+'" font-size="26" font-weight="700" fill="'+(c.gs?'#fff':'#0004')+'" style="pointer-events:none">'+(i+1)+'</text>';
-    if(LW>0)s+='<polygon points="'+pts+'" fill="none" stroke="#111" stroke-width="'+LW+'" stroke-linejoin="miter" style="pointer-events:none"/>';
-    s+='</g>';
-  });
-  sels.forEach(function(si){var sp=panels[si];
-  if(sp)s+='<polygon points="'+sp.map(function(q){return q[0]+','+q[1]}).join(' ')+'" fill="none" stroke="#00b050" stroke-width="5" stroke-dasharray="14 8" style="pointer-events:none"/>';});
-  svg.innerHTML=s;
-  document.getElementById('n').textContent=N;
-  document.getElementById('lwv').textContent=LW;
+  svg.innerHTML=svgMarkup(SHOWNUM);
+  $('n').textContent=N;$('lwv').textContent=LW;
+  $('numPv').textContent=SHOWNUM?'숫자 끄기':'숫자 켜기';$('iNum').checked=SHOWNUM;
   [].forEach.call(document.querySelectorAll('#rs button'),function(b){b.classList.toggle('on',b.dataset.r===RATIO)});
-  [].forEach.call(document.querySelectorAll('#md button[data-m]'),function(b){b.classList.toggle('on',b.dataset.m===MODE)});
-  document.getElementById('gs').classList.toggle('on',content.every(function(c){return c.gs}));
+  [].forEach.call(document.querySelectorAll('#md button'),function(b){b.classList.toggle('on',b.dataset.m===MODE)});
 }
-document.getElementById('svg').addEventListener('click',function(e){
-  var g=e.target.closest('g[data-i]');if(g){var gi=+g.dataset.i,k=sels.indexOf(gi);if(k>=0)sels.splice(k,1);else sels.push(gi);render()}});
-document.getElementById('mn').onclick=function(){if(N>1){N--;generate()}};
-document.getElementById('pl').onclick=function(){if(N<12){N++;generate()}};
-document.getElementById('sh').onclick=generate;
+/* 이미지 탭: 칸마다 하나씩 */
+function buildList(){
+  var h='';
+  for(var i=0;i<N;i++){var c=content[i];
+    h+='<div class="pcard"><b>칸 '+(i+1)+(c.img?' ✓':'')+'</b>'+
+    '<label>이미지<input type="file" accept="image/*" data-i="'+i+'"></label>'+
+    '<div class="ps-tg"><span>그린스크린</span><label class="sw"><input type="checkbox" data-g="'+i+'"'+(c.gs?' checked':'')+'><i></i></label></div>'+
+    '<button class="ps-ghost" type="button" data-c="'+i+'">이 칸 비우기</button></div>';
+  }
+  $('plist').innerHTML=h;
+}
+$('plist').addEventListener('change',function(e){
+  var t=e.target;
+  if(t.dataset.g!==undefined){content[+t.dataset.g].gs=t.checked;render();return}
+  if(t.dataset.i!==undefined){var f=t.files[0],i=+t.dataset.i;if(!f)return;
+    var r=new FileReader();r.onload=function(){content[i].img=r.result;content[i].gs=false;buildList();render()};r.readAsDataURL(f)}
+});
+$('plist').addEventListener('click',function(e){var c=e.target.dataset.c;
+  if(c!==undefined){content[+c]={img:'',gs:false};buildList();render()}});
+$('gsAll').onclick=function(){content.forEach(function(c){c.gs=true});buildList();render()};
+$('clAll').onclick=function(){content=content.map(function(){return {img:'',gs:false}});buildList();render()};
+
+/* 기본 탭 */
+$('rs').innerHTML=RATIOS.map(function(r){return '<button type="button" data-r="'+r+'">'+r.replace('/',':')+'</button>'}).join('');
 [].forEach.call(document.querySelectorAll('#rs button'),function(b){b.onclick=function(){RATIO=b.dataset.r;generate()}});
-document.getElementById('lw').oninput=function(){LW=+this.value;render()};
-function need(){if(sels.length)return 1;var h=document.getElementById('hint');h.style.color='#e11';h.textContent='먼저 칸을 눌러 선택하세요!';setTimeout(function(){h.style.color='';h.textContent='칸을 여러 개 눌러 선택할 수 있어요 (다시 누르면 해제).'},2000)}
-document.getElementById('fb').onclick=function(){if(need())document.getElementById('f').click()};
-document.getElementById('gs').onclick=function(){content.forEach(function(c){c.gs=true;c.img=''});render()};
-document.getElementById('gso').onclick=function(){if(!need())return;sels.forEach(function(i){content[i].gs=false});render()};
-document.getElementById('cl').onclick=function(){if(!need())return;sels.forEach(function(i){content[i]={img:'',gs:false}});render()};
-document.getElementById('f').onchange=function(e){
-  var f=e.target.files[0];if(!f||!sels.length)return;var r=new FileReader();var tg=sels.slice();
-  r.onload=function(){tg.forEach(function(i){content[i].img=r.result;content[i].gs=false});render()};r.readAsDataURL(f);e.target.value=''};
-[].forEach.call(document.querySelectorAll('#md button[data-m]'),function(b){b.onclick=function(){MODE=b.dataset.m;generate()}});
+[].forEach.call(document.querySelectorAll('#md button'),function(b){b.onclick=function(){MODE=b.dataset.m;generate()}});
+$('mn').onclick=function(){if(N>1){N--;generate()}};
+$('pl').onclick=function(){if(N<12){N++;generate()}};
+$('sh').onclick=generate;
+$('lw').oninput=function(){LW=+this.value;render()};
+$('iNum').onchange=function(){SHOWNUM=this.checked;render()};
+$('numPv').onclick=function(){SHOWNUM=!SHOWNUM;render()};
+$('reset').onclick=function(){RATIO='16/9';N=5;LW=1.5;MODE='any';SHOWNUM=true;content=[];$('lw').value=1.5;generate()};
+
+/* 탭 */
+(function(){
+ var ed=document.querySelector('.editor'),g=[].slice.call(ed.querySelectorAll('.ps-pn'));
+ var bar=document.createElement('div');bar.className='ps-seg';
+ g.forEach(function(p,i){var b=document.createElement('button');b.type='button';b.textContent=p.getAttribute('data-t');
+  if(!i)b.className='on';
+  b.onclick=function(){g.forEach(function(x,j){x.hidden=j!==i});[].forEach.call(bar.children,function(c,j){c.classList.toggle('on',j===i)})};
+  bar.appendChild(b)});
+ ed.parentNode.insertBefore(bar,ed);
+})();
+
+/* 미리보기 모드 */
+$('pvBtn').onclick=function(){var on=document.body.classList.toggle('pvmode');this.textContent=on?'편집 모드':'미리보기 모드'};
+
+/* PNG 저장 (숫자 없이, 2배 해상도) */
+$('savePng').onclick=function(){
+  var xml='<svg xmlns="'+NS+'" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 '+W+' '+H+'" width="'+W*2+'" height="'+H*2+'">'+svgMarkup(false)+'</svg>';
+  var img=new Image();
+  img.onload=function(){var c=document.createElement('canvas');c.width=W*2;c.height=H*2;
+    c.getContext('2d').drawImage(img,0,0,c.width,c.height);
+    var a=document.createElement('a');a.download='manhwa.png';a.href=c.toDataURL('image/png');a.click()};
+  img.src='data:image/svg+xml;charset=utf-8,'+encodeURIComponent(xml);
+};
 window.addEventListener('resize',render);
 generate();
 </script>
