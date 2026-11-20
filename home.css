@@ -1,8 +1,8 @@
 *{box-sizing:border-box;margin:0;padding:0}
-body{font-family:'Pretendard',-apple-system,sans-serif;letter-spacing:-0.02em;background:#16161a;color:#fff;min-height:100vh;display:flex;justify-content:center}
+body{font-family:'Pretendard',-apple-system,sans-serif;letter-spacing:-0.02em;background:#f4f1e9;color:#34343a;min-height:100vh;display:flex;justify-content:center}
 main{width:100%;max-width:430px;padding:72px 20px;text-align:center}
 h1{font-size:30px;font-weight:800;letter-spacing:-.04em}
-p{color:#9a9aa3;margin:8px 0 32px}
+p{color:#77746e;margin:8px 0 32px}
 nav{display:grid;grid-template-columns:1fr 1fr;gap:14px}
 .btn{box-shadow:0 8px 20px rgba(0,0,0,.35),inset 0 1px 0 rgba(255,255,255,.25);transition:transform .12s;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;height:92px;border-radius:22px;color:#fff;font-weight:700;font-size:17px;text-decoration:none}
 .btn small{font-size:12px;font-weight:400}
@@ -27,7 +27,7 @@ input,textarea,select{font-size:16px!important}
 
 /* Refined tile buttons */
 main{padding-top:88px}
-h1{background:linear-gradient(180deg,#fff,#a8a8b3);-webkit-background-clip:text;background-clip:text;color:transparent}
+h1{background:linear-gradient(180deg,#56534d,#969087);-webkit-background-clip:text;background-clip:text;color:transparent}
 p{font-size:14px;letter-spacing:.02em}
 nav{gap:16px}
 .btn{position:relative;overflow:hidden;height:104px;border-radius:26px;font-size:17px;font-weight:700;letter-spacing:-.01em;text-shadow:0 1px 2px rgba(0,0,0,.25);box-shadow:0 10px 24px rgba(0,0,0,.4),inset 0 1px 0 rgba(255,255,255,.3),inset 0 -2px 0 rgba(0,0,0,.12);transition:transform .15s,box-shadow .15s}
@@ -41,3 +41,10 @@ nav{gap:16px}
 
 .btn.hs{background:linear-gradient(135deg,#5ac8fa,#2b6fd6)}
 .btn.apple{background:linear-gradient(135deg,#8e8e93,#2c2c2e)}
+
+
+/* Soft warm neutral page background */
+body{background:#f4f1e9!important;color:#34343a!important}
+p{color:#77746e}
+.btn{box-shadow:0 8px 20px rgba(78,66,48,.13),inset 0 1px 0 rgba(255,255,255,.58),inset 0 -2px 0 rgba(70,60,45,.08)}
+.btn:hover{box-shadow:0 12px 26px rgba(78,66,48,.17),inset 0 1px 0 rgba(255,255,255,.65)}
