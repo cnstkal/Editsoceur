@@ -6,7 +6,7 @@ return 'data:image/svg+xml;utf8,'+encodeURIComponent(s);
 }
 var P=ph(),S;
 function init(){
-S={cnt:3,np:5,loc:'Locations Are Included',bd:false,th:P,ph:[P,P,P],pp:[0,1,2,3,4].map(function(){return{n:'name',img:P}})};
+S={cnt:3,np:5,loc:'위치 정보 포함',bd:false,th:P,ph:[P,P,P],pp:[0,1,2,3,4].map(function(i){return{n:'사용자 '+(i+1),img:P}})};
 $('iCnt').value=3;$('iNp').value=5;$('iLoc').value=S.loc;$('iBd').checked=false;
 document.querySelectorAll('input[type=file]').forEach(function(f){f.value=''});
 editor();render();
@@ -14,7 +14,7 @@ editor();render();
 var BADGE='<svg width="14" height="14" viewBox="0 0 14 14"><rect width="14" height="14" rx="4" fill="#34c759" stroke="#161e19" stroke-width="1.500"/><ellipse cx="7" cy="6.500" rx="3.800" ry="3" fill="#fff"/></svg>';
 var CHK='<svg width="16" height="16" viewBox="0 0 16 16"><circle cx="8" cy="8" r="7.500" fill="#0a84ff" stroke="#fff" stroke-width="1.500"/><path d="m4.800 8.200 2.200 2.200 4.200-4.600" fill="none" stroke="#fff" stroke-width="1.700" stroke-linecap="round" stroke-linejoin="round"/></svg>';
 function render(){
-$('vCnt').textContent=S.cnt+' Photo'+(S.cnt>1?'s':'')+' Selected';
+$('vCnt').textContent='사진 '+S.cnt+'장 선택됨';
 $('vLoc').textContent=S.loc;
 $('vTh').src=S.th;
 var L=[-116,55,227],h='';
@@ -25,10 +25,7 @@ for(i=0;i<S.np;i++)h+='<div class="p"><div class="a"><img src="'+S.pp[i].img+'">
 $('ppl').innerHTML=h;
 }
 function esc(t){return t.replace(/[&<>]/g,function(c){return{'&':'&amp;','<':'&lt;','>':'&gt;'}[c]})}
-function setupTabs(){
-var bar=document.querySelector('.ps-seg'),buttons=bar.querySelectorAll('button'),panels=document.querySelectorAll('[data-panel]');
-buttons.forEach(function(b){b.onclick=function(){var key=b.dataset.tab;buttons.forEach(function(x){x.classList.toggle('on',x===b)});panels.forEach(function(p){p.hidden=p.dataset.panel!==key})}});
-}
+
 function editor(){
 var h='';
 for(var i=0;i<S.np;i++)h+='<div class="pe"><b>인원 '+(i+1)+'</b><input data-n="'+i+'" value="'+esc(S.pp[i].n)+'"><input type="file" accept="image/*" data-a="'+i+'"></div>';
@@ -49,5 +46,9 @@ html2canvas($('snap'),{backgroundColor:null,scale:4,useCORS:true}).then(function
 var a=document.createElement('a');a.download='gallery.png';a.href=c.toDataURL('image/png');a.click();
 });
 };
-setupTabs();init();
+/* Zoom과 동일한 탭 생성 및 전환 */
+(function(){var ed=document.querySelector('.editor'),g=[].slice.call(ed.querySelectorAll('.ps-pn')),bar=document.createElement('div');bar.className='ps-seg';
+g.forEach(function(p,i){var b=document.createElement('button');b.type='button';b.textContent=p.getAttribute('data-t');if(!i)b.className='on';b.onclick=function(){g.forEach(function(x,j){x.hidden=j!==i});[].forEach.call(bar.children,function(c,j){c.classList.toggle('on',j===i)})};bar.appendChild(b)});ed.parentNode.insertBefore(bar,ed)})();
+$('pvBtn').onclick=function(){var on=document.body.classList.toggle('pvmode');this.textContent=on?'편집 모드':'미리보기 모드'};
+init();
 })();
