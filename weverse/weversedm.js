@@ -6,7 +6,7 @@ var av='',hidden=false;
 function esc(s){return s.replace(/[&<>]/g,function(c){return{'&':'&amp;','<':'&lt;','>':'&gt;'}[c]})}
 function dark(h){var n=parseInt(h.slice(1),16),r=n>>16,g=n>>8&255,b=n&255;return'rgb('+Math.round(r*.94)+','+Math.round(g*.92)+','+Math.round(b*.92)+')'}
 function render(){
- $('vClock').textContent=$('iClock').value;$('vBat').textContent=$('iBat').value;
+ if($('vClock'))$('vClock').textContent=$('iClock').value;if($('vBat'))$('vBat').textContent=$('iBat').value;
  var groups=[],cur=null,tr=$('iTr').checked;
  $('iMsgs').value.split('\n').forEach(function(l){
   if(!l.trim()){cur=null;return}
