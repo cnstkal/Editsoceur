@@ -1,0 +1,51 @@
+*{box-sizing:border-box}
+body{margin:0;background:#f2f3f5;color:#111;font-family:Pretendard,-apple-system,"Apple SD Gothic Neo","Noto Sans KR",sans-serif;letter-spacing:-.02em}
+.wrap{max-width:1100px;margin:0 auto;padding:40px 24px;display:grid;grid-template-columns:1.2fr 1fr;gap:24px}
+.card{background:#fff;border-radius:26px;padding:32px;min-width:0}
+.lbl{font-size:12px;letter-spacing:.14em;color:#8a8f98;text-transform:uppercase}
+h2{font-size:24px;font-weight:700;margin:8px 0 20px}
+.stage{display:flex;justify-content:center}
+#snap{position:relative;width:270px;height:480px;background:#000;overflow:hidden;color:#fff;letter-spacing:-.02em;box-shadow:0 2px 12px rgba(0,0,0,.25)}
+#snap *{letter-spacing:-.02em}
+.bg{position:absolute;left:0;top:0;width:270px;height:480px;object-fit:cover}
+.live{position:absolute;left:12px;top:10px}
+.tabs span{position:absolute;top:13px;transform:translateX(-50%);font-size:9.500px;line-height:14px;color:#eee;white-space:nowrap}
+.tabs .fy{font-weight:700;color:#fff}
+.srch{position:absolute;left:241px;top:12px}
+.sheet{position:absolute;left:0;top:158px;width:270px;height:322px;background:#202020;border-radius:16px 16px 0 0;overflow:hidden}
+.sh{position:absolute;left:0;right:0;top:7px;display:flex;justify-content:center;align-items:center;gap:3px;font-size:8.500px;line-height:12px}
+.cl{position:absolute;left:246px;top:9px}
+.list{position:absolute;left:8px;right:8px;top:25px;height:263px;overflow:hidden}
+.cm{display:flex;gap:5px;margin-bottom:8px}
+.cm>img{flex:none;width:24px;height:24px;border-radius:50%;object-fit:cover;margin-top:2px}
+.bd{flex:1;min-width:0;font-size:8.500px}
+.bd b{display:block;color:#a0a0a0;font-weight:700;line-height:11px}
+.bd p{margin:1px 0 0;line-height:12.500px;color:#f0f0f0;word-break:break-word}
+.bd .im{display:block;width:84px;height:74px;object-fit:cover;margin:3px 0 4px}
+.mt{display:flex;align-items:center;margin-top:3px;font-size:7.500px;color:#8e8e8e;height:12px}
+.mt b{display:inline;color:#a0a0a0;margin-left:8px;line-height:12px}
+.mt .r{margin-left:auto;display:flex;align-items:center;gap:4px;padding-right:2px}
+.mt .r span{margin-right:7px}
+.rpl{display:flex;align-items:center;gap:6px;font-size:7.500px;color:#8e8e8e;margin-top:3px;line-height:9px}
+.rpl i{width:29px;border-top:1px solid #666}
+.bar{position:absolute;left:0;right:0;top:288px;height:34px;border-top:1px solid #2e2e2e}
+.bar>img{position:absolute;left:8px;top:6px;width:24px;height:24px;border-radius:50%;object-fit:cover}
+.pill{position:absolute;left:42px;top:5px;width:220px;height:22px;border-radius:11px;background:#3a3a3a;display:flex;align-items:center;gap:9px;padding:0 9px 0 11px;font-size:8px;color:#9a9a9a}
+.pill>span:first-child{flex:1}
+.at{font-size:10px;font-weight:700;color:#eee;line-height:10px}
+label{display:block;font-size:14px;font-weight:600;color:#444;margin-bottom:14px}
+input:not([type=file]):not([type=checkbox]){display:block;width:100%;height:44px;margin-top:8px;padding:0 12px;border:1px solid #e3e5e8;border-radius:12px;font:inherit;font-size:15px}
+.row{display:flex;gap:12px}.row label{flex:1;min-width:0}
+label.f{display:flex;align-items:center;justify-content:space-between;gap:12px}
+label.f input{width:55%;font-size:12px}
+.it{border:1px solid #e9eaee;border-radius:14px;padding:10px;margin-bottom:8px;display:flex;flex-wrap:wrap;gap:6px}
+.it input:not([type=file]){margin:0;height:36px;font-size:13px;min-width:0}
+.it .a{width:90px}.it .b{flex:1;min-width:120px}.it .c{width:60px}.it .d{flex:1;min-width:90px}
+.it .fl{display:flex;gap:6px;width:100%;align-items:center;font-size:11px;color:#888;font-weight:500;margin:0}
+.it input[type=file]{font-size:11px;flex:1;min-width:0}
+.it button{border:0;background:#fff1f3;color:#e0245e;border-radius:8px;padding:0 10px;font-weight:700;cursor:pointer;height:36px}
+.add{width:100%;height:44px;border:0;border-radius:12px;background:#f2f3f5;font:inherit;font-weight:700;cursor:pointer;margin:2px 0 6px}
+.acts{display:flex;gap:10px;margin-top:8px}
+.acts button{height:52px;border:0;border-radius:14px;font:inherit;font-size:15px;font-weight:700;cursor:pointer}
+#reset{flex:1;background:#f2f3f5}#save{flex:1.6;background:#e8457a;color:#fff}
+@media(max-width:860px){.wrap{grid-template-columns:1fr;padding:12px}.card{padding:20px}}

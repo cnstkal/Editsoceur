@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>틱톡 댓글</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.css">
+<link rel="stylesheet" href="tiktok-comments.css">
+</head>
+<body>
+<div class="wrap">
+<section class="card main">
+<div class="lbl">Live Preview</div>
+<h2>틱톡 댓글</h2>
+<div class="stage"><div id="snap">
+<img class="bg" id="vBg">
+<svg class="live" width="17" height="17" viewBox="0 0 17 17" fill="none" stroke="#fff" stroke-width="1.300" stroke-linecap="round" stroke-linejoin="round"><rect x="1.500" y="4" width="14" height="11" rx="2"/><path d="m5 1.500 3.500 2.500 3.500-2.500"/><text x="3.500" y="11.500" font-size="5.200" font-weight="700" fill="#fff" stroke="none">LIVE</text></svg>
+<div class="tabs"><span style="left:78px">Friends</span><span style="left:131px">Following</span><span style="left:186px" class="fy">For You</span></div>
+<svg class="srch" width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="#fff" stroke-width="1.500" stroke-linecap="round"><circle cx="7" cy="7" r="5.300"/><path d="m11 11 3.500 3.500"/></svg>
+<div class="sheet">
+<div class="sh"><span id="vCnt"></span><svg width="8" height="7" viewBox="0 0 8 7" stroke="#fff" stroke-width="1" stroke-linecap="round"><path d="M0 1h8M1.500 3.500h5M3 6h2"/></svg></div>
+<svg class="cl" width="9" height="9" viewBox="0 0 9 9" stroke="#fff" stroke-width="1.100" stroke-linecap="round"><path d="m1 1 7 7M8 1 1 8"/></svg>
+<div class="list" id="list"></div>
+<div class="bar"><img id="vMe"><div class="pill"><span id="vPh"></span>
+<svg width="11" height="11" viewBox="0 0 11 11" fill="none" stroke="#eee" stroke-width="1" stroke-linejoin="round"><rect x=".8" y=".8" width="9.400" height="9.400" rx="2"/><path d="m1 8 3-3 2.500 2.500L8 6l2.200 2.500"/><circle cx="7.500" cy="3.300" r=".7"/></svg>
+<svg width="11" height="11" viewBox="0 0 11 11" fill="none" stroke="#eee" stroke-width="1"><circle cx="5.500" cy="5.500" r="4.700"/><circle cx="3.800" cy="4" r=".6" fill="#eee"/><circle cx="7.200" cy="4" r=".6" fill="#eee"/><path d="M3 6.500q2.500 2.200 5 0"/></svg>
+<span class="at">@</span></div></div>
+</div>
+</div></div>
+</section>
+<section class="card side">
+<div class="lbl">Edit Panel</div>
+<h2>댓글 수정</h2>
+<div class="row"><label>댓글 수 문구<input id="iCnt"></label><label>입력창 문구<input id="iPh"></label></div>
+<label class="f">배경(영상) 사진<input id="fBg" type="file" accept="image/*"></label>
+<label class="f">내 프로필<input id="fMe" type="file" accept="image/*"></label>
+<div id="ed"></div>
+<button class="add" id="add" type="button">+ 댓글 추가</button>
+<div class="acts"><button id="reset" type="button">초기화</button><button id="save" type="button">PNG 저장</button></div>
+</section>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js"></script>
+<script src="tiktok-comments.js"></script>
+</body>
+</html>
