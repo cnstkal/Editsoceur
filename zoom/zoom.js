@@ -9,12 +9,17 @@ if(window.ResizeObserver)new ResizeObserver(fit).observe(fr);window.addEventList
 
 /* 렌더 */
 function render(){
- $('vN0').textContent=$('iN0').value;$('vN1').textContent=$('iN1').value;
- $('vCnt').textContent=$('iCnt').value;$('vLogin').textContent=$('iLogin').value;
- [0,1].forEach(function(i){var v=$('v'+i);
-  v.style.backgroundColor=$('iGs').value;
-  v.style.backgroundImage=pics[i]?'url('+pics[i]+')':'none';
-  v.classList.toggle('unm',!$('iM'+i).checked)});
+ var count=Math.max(1,Math.min(40,parseInt($('iCnt').value)||1));
+ $('vCnt').textContent=count;$('vLogin').textContent=$('iLogin').value;
+ var cols=Math.ceil(Math.sqrt(count*1.78)),rows=Math.ceil(count/cols),gap=20,left=82,top=130,areaW=2412,areaH=1120;
+ var tileW=(areaW-gap*(cols-1))/cols,tileH=(areaH-gap*(rows-1))/rows,markup='';
+ for(var i=0;i<count;i++){
+  var x=i%cols,y=Math.floor(i/cols),name=i===0?$('iN0').value:i===1?$('iN1').value:'참가자 '+(i+1);
+  var muted=i===0?$('iM0').checked:i===1?$('iM1').checked:true;
+  var bg=i<2&&pics[i]?'background-image:url('+pics[i]+');':'background-color:'+$('iGs').value+';';
+  markup+='<div class="vid dynamic'+(muted?' unm':'')+'" style="left:'+(left+x*(tileW+gap))+'px;top:'+(top+y*(tileH+gap))+'px;width:'+tileW+'px;height:'+tileH+'px;'+bg+'"><div class="tag"><svg viewBox="0 0 24 24" class="mi"><use href="#mic"/></svg><span>'+name.replace(/[&<>"]/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]})+'</span></div></div>';
+ }
+ $('vids').innerHTML=markup;
  zs.classList.toggle('cpon',$('iCp').checked);var s=$('iCs').value;$('vCpA').textContent=s.charAt(0);$('vCpT').textContent=s+'님이 '+$('iCt').value;$('vCpS').textContent=$('iCm').value;
  zs.classList.toggle('aoff',$('iA').checked);zs.classList.toggle('voff',$('iV').checked);
 }
