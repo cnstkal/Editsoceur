@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>위버스 스토리</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.css">
+<link rel="stylesheet" href="weversestory.css?v=1">
+</head>
+<body class="studio">
+<div class="ps-wrap">
+<header class="ps-top"><a class="ps-back" href="index.html">‹ 뒤로</a><button class="ps-pvbtn" id="pvBtn" type="button">미리보기 모드</button></header>
+<div class="ps-grid">
+<section class="ps-card ps-main">
+<div class="ps-lbl">Live Preview</div>
+<h2>위버스 스토리</h2>
+<p class="ps-sub">실제 앱 화면 비율로 확인하고, 오른쪽에서 바로 수정해요</p>
+<div class="ps-stage"><div class="ps-frame">
+<div class="ws" id="ws">
+ <div class="sb"><b id="vClock">12:09</b>
+  <div class="st"><svg width="20" height="14" viewBox="0 0 20 14" fill="#fff"><rect x="0" y="9" width="3.500" height="5" rx="1"/><rect x="5.500" y="6" width="3.500" height="8" rx="1"/><rect x="11" y="3" width="3.500" height="11" rx="1"/><rect x="16.500" y="0" width="3.500" height="14" rx="1"/></svg><svg width="20" height="15" viewBox="0 0 20 15"><path d="M10 14 7 11a4.300 4.300 0 0 1 6 0zM3.500 7.500a9.500 9.500 0 0 1 13 0l-1.700 1.700a7 7 0 0 0-9.600 0zM.5 4.500a13.700 13.700 0 0 1 19 0l-1.800 1.800a11.200 11.200 0 0 0-15.400 0z" fill="#fff"/></svg><em class="bt"><span id="vBat">35</span></em></div>
+ </div>
+ <div class="cd" id="cd">
+  <div class="im" id="im"></div>
+  <div class="hd">
+   <div class="av" id="vAv"></div>
+   <div class="w"><b id="vName"></b><span id="vDate"></span></div>
+   <svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.700" stroke-linecap="round" stroke-linejoin="round"><path d="M14 4.500l7 6-7 6v-3.500c-5 0-8.500 1.500-11 5.500 .8-6.500 4.500-9.500 11-9.500z"/></svg>
+   <svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.900" stroke-linecap="round"><path d="M4.500 4.500l15 15M19.500 4.500l-15 15"/></svg>
+  </div>
+  <div class="tx" id="vText"></div>
+  <div class="rc">
+   <div class="dm" id="vDia"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#222" stroke-width="2" stroke-linejoin="round"><path d="M7 4h10l5 6-10 11L2 10z"/><path d="M2 10h20M9 4l3 6 3-6M12 21 9 10M12 21l3-11"/></svg></div>
+   <svg width="30" height="30" viewBox="0 0 30 30" fill="none" stroke="#fff" stroke-width="1.800"><rect x="2" y="3" width="26" height="24" rx="5"/><text x="15" y="20" text-anchor="middle" fill="#fff" stroke="none" font-size="12" font-weight="800">文A</text></svg>
+   <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.800" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3.500v11M7.500 10.500l4.500 4.500 4.500-4.500M3.500 14.500v5h17v-5"/></svg>
+   <div class="ic"><svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.900" stroke-linejoin="round"><path d="M3.500 20.500v-8.500a8.500 8.500 0 1 1 8.500 8.500z"/></svg><span id="vCmt"></span></div>
+   <div class="ic m"><svg width="32" height="30" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,.55)" stroke-width="1.900" stroke-linejoin="round"><path d="M12 20.500S3 14.500 3 8.500A4.700 4.700 0 0 1 12 6.200 4.700 4.700 0 0 1 21 8.500c0 6-9 12-9 12z"/></svg><span id="vLike"></span></div>
+  </div>
+ </div>
+ <div class="pg">
+  <svg width="16" height="22" viewBox="0 0 16 22" fill="#fff"><rect x="0" y="0" width="5" height="22" rx="1"/><rect x="11" y="0" width="5" height="22" rx="1"/></svg>
+  <div class="tk"><i id="vFill"></i><b id="vKnob"></b></div>
+ </div>
+</div>
+</div></div>
+</section>
+<section class="ps-card ps-side">
+<div class="ps-lbl">Edit Panel</div>
+<h2>위버스 스토리 내용 수정</h2>
+<div class="ps-edwrap"><div class="editor">
+<div class="ps-pn" data-t="기본">
+<label>상태바 시간<input id="iClock"></label>
+<label>배터리 %<input id="iBat" type="number" min="1" max="100"></label>
+<label>작성자 이름<input id="iName"></label>
+<label>작성 날짜<input id="iDate"></label>
+<label class="col">스토리 문구<textarea id="iText" rows="6"></textarea></label>
+</div>
+<div class="ps-pn" data-t="수치" hidden>
+<div class="row"><label>댓글 수<input id="iCmt"></label><label>좋아요 수<input id="iLike"></label></div>
+<label>재생 진행 %<input id="iPg" type="number" min="0" max="100"></label>
+</div>
+<div class="ps-pn" data-t="이미지" hidden>
+<label class="ps-addp">+ 프로필 사진<input class="ps-sr" id="iAvatar" type="file" accept="image/*"></label>
+<label class="ps-addp">+ 배경 이미지<input class="ps-sr" id="iBg" type="file" accept="image/*"></label>
+<button class="ps-ghost" id="clearImg" type="button">기본 이미지로</button>
+</div>
+<div class="ps-pn" data-t="꾸미기" hidden>
+<label>배경색<input id="iColor" type="color" value="#96332f"></label>
+<div class="ps-tg"><span>다이아 아이콘</span><label class="sw"><input id="iDia" type="checkbox" checked><i></i></label></div>
+</div>
+</div></div>
+<div class="ps-acts"><button id="savePng" type="button">PNG 저장</button><button id="reset" type="button">초기화</button></div>
+</section>
+</div>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js"></script>
+<script src="weversestory.js?v=1"></script>
+</body>
+</html>
