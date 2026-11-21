@@ -12,7 +12,7 @@
 .ps-top a{color:#e8457a;font-weight:700;text-decoration:none}
 #svg{background:#fff;display:block;margin:0 auto;box-shadow:0 1px 6px #0002}
 .ps-stage{position:relative}
-#numPv{position:absolute;top:10px;right:10px;z-index:2;height:36px;padding:0 14px;border:0;border-radius:10px;background:#000a;color:#fff;font:inherit;font-size:13px;font-weight:600;cursor:pointer}
+body.studio .ps-side #numPv{display:block;width:100%;height:44px;margin:0 0 16px;padding:0 14px;border:1px solid var(--ln);border-radius:12px;background:#f5f5f7;color:#333;font:inherit;font-size:14px;font-weight:600;cursor:pointer}
 body.studio .ps-side .chips{display:flex;flex-wrap:wrap;gap:6px;margin:0 0 16px}
 body.studio .ps-side .chips button{height:38px;padding:0 14px;border:1px solid var(--ln);border-radius:12px;background:#fff;color:#333;font:inherit;font-size:14px;cursor:pointer}
 body.studio .ps-side .chips button.on{background:var(--pk-bg);border-color:var(--pk);color:var(--pk);font-weight:700}
@@ -31,7 +31,7 @@ body.studio .ps-side .pcard b{display:block;margin:0 0 10px;font-size:14px}
 <div class="ps-lbl">Live Preview</div>
 <h2>만화칸</h2>
 <p class="ps-sub">칸 배치를 확인하고, 오른쪽에서 바로 수정해요</p>
-<div class="ps-stage"><button id="numPv" type="button">숫자 끄기</button><svg id="svg" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"></svg></div>
+<div class="ps-stage"><svg id="svg" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"></svg></div>
 </section>
 <section class="ps-card ps-side">
 <div class="ps-lbl">Edit Panel</div>
@@ -46,7 +46,7 @@ body.studio .ps-side .pcard b{display:block;margin:0 0 10px;font-size:14px}
 <div class="chips" id="md"><button data-m="rect" type="button">직사각형만</button><button data-m="trap" type="button">사다리꼴만</button><button data-m="any" type="button">혼합</button></div>
 <button class="ps-ghost" id="sh" type="button">🎲 랜덤 배치</button>
 <label>선 두께 <span id="lwv"></span><input type="range" id="lw" min="0" max="10" step="0.5" value="1.5"></label>
-<div class="ps-tg"><span>칸 숫자 표시 (PNG엔 안 나와요)</span><label class="sw"><input id="iNum" type="checkbox" checked><i></i></label></div>
+<button class="ps-ghost" id="numPv" type="button">숫자 끄기</button><input id="iNum" type="checkbox" checked hidden>
 </div>
 <div class="ps-pn" data-t="이미지" hidden>
 <button class="ps-ghost" id="gsAll" type="button">전체 그린스크린</button>
