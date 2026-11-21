@@ -1,6 +1,6 @@
 (function(){
 var $=function(i){return document.getElementById(i)};
-var D={Key:'소화전',Txt:'이 있는 이미지를 모두 선택하세요\n위의 조건과 일치하는 새 이미지를 모두 선택했으면 확인을 클릭하세요.',Ok:'확인',N:9};
+var D={Key:'소화전',Txt:'가 있는 타일을 모두 선택하세요.\n아무것도 없으면 건너뛰기를 클릭하세요.',Ok:'건너뛰기',N:9};
 var img=[],sel=[];
 function load(){$('iKey').value=D.Key;$('iTxt').value=D.Txt;$('iOk').value=D.Ok;$('iN').value=D.N;img=[];sel=[];r()}
 function r(){
