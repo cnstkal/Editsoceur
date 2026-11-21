@@ -1,22 +1,30 @@
 /* 참고 이미지(1200x1723) 좌표 그대로 */
 html,body,body *{font-family:Pretendard,-apple-system,"Apple SD Gothic Neo","Noto Sans KR",sans-serif!important;letter-spacing:-.02em!important}
-.vp{position:relative;overflow:hidden;background:#88d8ff}
-#cv{position:absolute;left:0;top:0;width:1200px;height:1723px;transform-origin:0 0;background:#88d8ff;color:#000}
+.vp{position:relative;overflow:hidden;background:#dcf4f9}
+#cv{position:absolute;left:0;top:0;width:1200px;height:1723px;transform-origin:0 0;background-color:#dcf4f9;background-image:linear-gradient(rgba(120,180,225,.45) 2px,transparent 2px),linear-gradient(90deg,rgba(120,180,225,.45) 2px,transparent 2px);background-size:55px 55px;background-position:0 -17px,0 0;color:#000}
 #cv *{margin:0;box-sizing:border-box}
 #cv>*{position:absolute}
-.tb{left:38px;top:99px;width:547px;height:266px;border:7px solid #000;display:flex;align-items:center;justify-content:center;text-align:center;font-size:74px;font-weight:900;line-height:1.3;white-space:pre-line}
-#cv h3{left:62px;top:412px;font-size:40px;font-weight:800;line-height:1.2}
-#cv>p{left:62px;top:476px;width:420px;font-size:26px;font-weight:500;line-height:1.7;white-space:pre-line}
-.circ{left:455px;top:407px;width:130px;height:130px;border:14px solid #e02020;border-radius:50%}
-.ph{background:linear-gradient(#2f7bff,#d8e8ff) center/cover no-repeat}
+.tb{left:55px;top:103px;width:530px;height:262px;border:7px solid #000;display:flex;align-items:center;justify-content:center;text-align:center;font-size:66px;font-weight:900;line-height:1.35;white-space:pre-line;font-synthesis:none}
+.tb,.tb *{font-family:"Dela Gothic One",Pretendard,sans-serif!important}
+#cv h3{left:55px;top:405px;font-size:46px;font-weight:400;line-height:1.2;white-space:nowrap}
+#cv>p{left:55px;top:487px;width:520px;font-size:34px;font-weight:400;line-height:50px;white-space:pre-line}
+.circ{left:462px;top:403px;width:123px;height:123px;border:11px solid #f23b3b;border-radius:50%}
+.ph{background:linear-gradient(#2882ff,#cfe0ff) center/cover no-repeat}
 .ph.g{background:#00b140}
-#main{left:654px;top:80px;width:431px;height:575px}
-.dvl{left:1110px;top:98px;width:0;height:542px;border-left:2px solid #000}
-.dvt{left:1132px;top:98px;height:542px;display:flex;align-items:center;writing-mode:vertical-rl;font-size:28px;font-weight:500}
-.dhl{left:668px;top:672px;width:410px;height:0;border-top:2px solid #000}
-.dht{left:668px;top:680px;width:410px;text-align:center;font-size:28px;font-weight:500}
-.ng>div{position:absolute;width:287px}
-.ng .ph{width:287px;height:380px}
-.ng span{display:block;margin-top:14px;text-align:center;font-size:34px;font-weight:900;white-space:nowrap;line-height:1.3}
-.ng>div:nth-child(1){left:143px;top:760px}.ng>div:nth-child(2){left:460px;top:760px}.ng>div:nth-child(3){left:777px;top:760px}
-.ng>div:nth-child(4){left:143px;top:1214px}.ng>div:nth-child(5){left:460px;top:1214px}.ng>div:nth-child(6){left:777px;top:1214px}
+#main{left:655px;top:103px;width:411px;height:527px}
+.dvl{left:1089px;top:103px;width:0;height:527px;border-left:2px dotted #000}
+.dhl{left:655px;top:655px;width:411px;height:0;border-top:2px dotted #000}
+.dvl:before,.dvl:after,.dhl:before,.dhl:after{content:"";position:absolute;width:0;height:0;border:5px solid transparent}
+.dvl:before{left:-6px;top:-3px;border-bottom:9px solid #000;border-top:0}
+.dvl:after{left:-6px;bottom:-3px;border-top:9px solid #000;border-bottom:0}
+.dhl:before{top:-6px;left:-3px;border-right:9px solid #000;border-left:0}
+.dhl:after{top:-6px;right:-3px;border-left:9px solid #000;border-right:0}
+.dvt{left:1114px;top:103px;height:527px;display:flex;justify-content:center;writing-mode:vertical-rl;font-size:30px;font-weight:400}
+.dht{left:655px;top:664px;width:411px;text-align:center;font-size:30px;font-weight:400}
+.ng>div{position:absolute;width:239px}
+.ng .ph{width:239px;height:336px}
+#cv .ng span{display:block;margin-top:37px;text-align:center;font-size:36px;font-weight:500;white-space:nowrap;line-height:44px}
+#cv .ng span:before{content:"";display:inline-block;width:22px;height:22px;margin-right:6px;vertical-align:-1px;background:linear-gradient(45deg,transparent 41%,#000 41%,#000 59%,transparent 59%),linear-gradient(-45deg,transparent 41%,#000 41%,#000 59%,transparent 59%)}
+#cv .ng>div:nth-child(n+4) span{margin-top:20px}
+.ng>div:nth-child(1){left:167px;top:750px}.ng>div:nth-child(2){left:481px;top:750px}.ng>div:nth-child(3){left:794px;top:750px}
+.ng>div:nth-child(4){left:167px;top:1201px}.ng>div:nth-child(5){left:481px;top:1201px}.ng>div:nth-child(6){left:794px;top:1201px}
