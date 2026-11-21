@@ -18,9 +18,6 @@ body.studio{margin:0;background:#f2f3f5;color:#111;min-height:100vh}
 #cap{width:360px;height:640px;background:transparent;display:flex;align-items:center;justify-content:center}
 .card{--bg:#f3f4f9;--cd:#fff;--tx:#1f1f1f;--sb:#6b6e76;--pl:#8b92b0;--chip:#dde3f6;--chipt:#2a4bb0;width:328px;background:var(--bg);color:var(--tx);border-radius:16px;overflow:hidden;box-shadow:0 6px 22px rgba(0,0,0,.28)}
 .card.dark{--bg:#2b2b2f;--cd:#131315;--tx:#e8e8ea;--sb:#8d8f96;--chip:#1e3a6e;--chipt:#a9c3ff}
-.nb{display:flex;justify-content:space-between;align-items:center;height:28px;padding:0 12px;background:#d7263d;color:#fff}
-.tag{font-size:12px;font-weight:800;letter-spacing:.06em}
-.lv{display:flex;align-items:center;gap:5px;font-size:10px;font-weight:800;letter-spacing:.08em}
 .lv i{width:6px;height:6px;border-radius:50%;background:#fff}
 .gm{padding:0 8px 0}
 .tl{display:flex;justify-content:space-between;align-items:center;height:34px;padding:0 8px}
@@ -42,9 +39,6 @@ body.studio{margin:0;background:#f2f3f5;color:#111;min-height:100vh}
 .pill{flex:1;height:30px;border-radius:15px;background:var(--pl);color:#fff;font-size:10.500px;font-weight:500;display:flex;align-items:center;justify-content:center;gap:6px}
 .em{width:30px;height:30px;border-radius:50%;background:#cfd0d4;color:#555;display:flex;align-items:center;justify-content:center;flex:none}
 .card.dark .em{background:#4a4b50;color:#bbb}
-.tk{display:flex;align-items:center;gap:10px;height:34px;padding:0 12px 0 0;background:#14213d;color:#fff}
-.key{align-self:stretch;display:flex;align-items:center;padding:0 12px;background:#ffd23f;color:#14213d;font-size:12px;font-weight:800}
-.tk p{margin:0;font-size:12px;font-weight:500;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 
 /* 편집 패널 */
 .ps-side{display:flex;flex-direction:column;--pk:#e8457a;--pk-bg:#fde8ef;--ln:#e9eaee}
