@@ -12,7 +12,7 @@ function render(){
   $("card").classList.toggle("dark",D.theme==="dark");
   var a=$("vAv");a.style.backgroundImage=D.av?"url("+D.av+")":"";a.classList.toggle("ph",!D.av);
 }
-[["iSub","sub"],["iFrom","from"],["iTo","to"],["iTime","time"],["iBody","body"],["iTag","tag"],["iKey","key"],["iTick","tick"]].forEach(function(a){
+[["iSub","sub"],["iFrom","from"],["iTo","to"],["iTime","time"],["iBody","body"]].forEach(function(a){
   $(a[0]).oninput=function(){D[a[1]]=this.value;render()}});
 $("iTheme").onchange=function(){D.theme=this.value;render()};
 $("iAv").onchange=function(){rd(this.files[0],function(d){D.av=d;render()})};
