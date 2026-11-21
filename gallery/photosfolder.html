@@ -17,21 +17,26 @@
 <div class="st"><svg width="11" height="8" viewBox="0 0 22 15"><path d="M5 15a5 5 0 0 1-.6-10A7 7 0 0 1 18 6a4.500 4.500 0 0 1-.5 9z" fill="#fff"/></svg><span id="vS"></span></div>
 <div class="fb"><svg width="13" height="11" viewBox="0 0 13 11" stroke="#fff" stroke-width="1.800" stroke-linecap="round"><path d="M1 1.500h11M2.500 5.500h8M4.500 9.500h4"/></svg></div>
 <img class="av" id="vA">
-<div class="sec" style="top:71px">Memories<svg viewBox="0 0 7 11"><path d="m1.500 1.500 4 4-4 4"/></svg></div>
+<div class="sec" style="top:71px">추억<svg viewBox="0 0 7 11"><path d="m1.500 1.500 4 4-4 4"/></svg></div>
 <div class="row mem" id="rM"></div>
-<div class="sec" style="top:261px">Pinned<svg viewBox="0 0 7 11"><path d="m1.500 1.500 4 4-4 4"/></svg></div>
+<div class="sec" style="top:261px">고정<svg viewBox="0 0 7 11"><path d="m1.500 1.500 4 4-4 4"/></svg></div>
 <div class="row til" id="rP" style="top:284px"></div>
-<div class="sec" style="top:373px">Albums<svg viewBox="0 0 7 11"><path d="m1.500 1.500 4 4-4 4"/></svg></div>
+<div class="sec" style="top:373px">앨범<svg viewBox="0 0 7 11"><path d="m1.500 1.500 4 4-4 4"/></svg></div>
 <div class="row til" id="rA" style="top:396px"></div>
 </div></div>
 </section>
 <section class="card side">
 <div class="lbl">Edit Panel</div>
 <h2>폴더 화면 수정</h2>
+<div class="tabs"><button type="button" class="on" data-tab="basic">기본</button><button type="button" data-tab="image">이미지</button></div>
+<div class="panel" data-panel="basic">
 <label>제목<input id="iT"></label>
-<label>스토리지 문구<input id="iS"></label>
+<label>저장 공간 문구<input id="iS"></label>
+</div>
+<div class="panel" data-panel="image" hidden>
 <label class="f">프로필 사진<input id="iA" type="file" accept="image/*"></label>
 <div id="ed"></div>
+</div>
 <div class="acts"><button id="reset" type="button">초기화</button><button id="save" type="button">PNG 저장</button></div>
 </section>
 </div>
