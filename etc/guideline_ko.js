@@ -17,8 +17,7 @@ $('iMain').onchange=function(){rd(this.files[0],function(u){imgs[0]=u;$('iMode')
 $('iMode').onchange=draw;
 function draw(){var m=$('iMode').value;phs.forEach(function(e,k){e.className='ph'+(m==='green'?' g':'');e.style.backgroundImage=(m==='photo'&&imgs[k])?'url('+imgs[k]+')':''})}
 draw();
-function fit(){var w=vp.parentNode.clientWidth||405;var s=Math.min(Math.min(w,405)/1080,innerHeight*0.5/1920);
- vp.style.width=1080*s+'px';vp.style.height=1920*s+'px';cv.style.transform='scale('+s+')'}
+function fit(){var w=vp.parentNode.clientWidth||390,s=w/1080;vp.style.width=w+'px';vp.style.height=Math.min(1920*s,innerHeight*0.55)+'px';cv.style.transform='scale('+s+')'}
 addEventListener('resize',fit);fit();
 $('savePng').onclick=function(){var t=cv.style.transform;cv.style.transform='none';
  html2canvas(cv,{backgroundColor:null,scale:1,useCORS:true,width:1080,height:1920}).then(function(c){cv.style.transform=t;

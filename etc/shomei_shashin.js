@@ -29,8 +29,8 @@ render();
 
 /* fit preview to 9:16 */
 function fit(){
- var s=Math.min(Math.min(vp.parentNode.clientWidth||540,540)/1080,innerHeight*0.5/1000);
- vp.style.width=1080*s+'px';vp.style.height=1000*s+'px';
+ var w=vp.parentNode.clientWidth||390,s=w/1080;
+ vp.style.width=w+'px';vp.style.height=Math.min(1000*s,innerHeight*0.55)+'px';
  cv.style.transform='scale('+s+') translateY(-500px)';
 }
 window.addEventListener('resize',fit);fit();
