@@ -14,3 +14,8 @@
 .tick{position:absolute;left:20px;right:20px;bottom:120px;background:#2b2b2bd9;padding:26px 36px;overflow:hidden;white-space:nowrap}
 .tick div{color:#fff;font-size:40px;font-weight:600}
 #stage p{margin:0}
+
+/* 한 화면에 들어오도록 프리뷰/뉴스바 축소 (모바일) */
+.view{max-width:min(100%,300px)!important}
+.tick{bottom:40px!important;left:10px!important;right:10px!important;padding:12px 18px!important}
+.tick div{font-size:24px!important}
