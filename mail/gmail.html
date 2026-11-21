@@ -14,12 +14,11 @@
 
 <section class="ps-card ps-main">
 <div class="ps-lbl">Live Preview</div>
-<h2>지메일 뉴스바</h2>
+<h2>지메일</h2>
 <p class="ps-sub">9:16 투명 PNG · 오른쪽에서 바로 수정해요</p>
 <div class="ps-stage" id="stage"><div class="fit" id="fit"><div class="fr">
 
 <div id="cap"><div class="card" id="card">
-  <div class="nb"><span class="tag" id="vTag"></span><span class="lv" id="vLive"><i></i>LIVE</span></div>
   <div class="gm">
     <div class="tl">
       <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.200" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
@@ -38,7 +37,6 @@
     </div>
     <div class="ft"><div class="pill"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.400" stroke-linecap="round" stroke-linejoin="round"><path d="M9 14 4 9l5-5"/><path d="M4 9h10a6 6 0 0 1 6 6v3"/></svg>Reply</div><div class="pill"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.400" stroke-linecap="round" stroke-linejoin="round"><path d="m15 14 5-5-5-5"/><path d="M20 9H10a6 6 0 0 0-6 6v3"/></svg>Forward</div><div class="em"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M8 14s1.500 2 4 2 4-2 4-2"/></svg></div></div>
   </div>
-  <div class="tk"><span class="key" id="vKey"></span><p id="vTick"></p></div>
 </div></div>
 
 </div></div></div>
@@ -47,7 +45,7 @@
 <section class="ps-card ps-side">
 <div class="ps-lbl">Edit Panel</div>
 <h2>지메일 수정</h2>
-<div class="ps-seg" id="seg"><button class="on" type="button">기본</button><button type="button">본문</button><button type="button">뉴스바</button></div>
+<div class="ps-seg" id="seg"><button class="on" type="button">기본</button><button type="button">본문</button></div>
 <div class="editor">
   <div class="pn">
     <label>테마<select id="iTheme"><option value="light">라이트</option><option value="dark">다크</option></select></label>
@@ -59,12 +57,6 @@
   </div>
   <div class="pn" hidden>
     <label class="tx">본문<textarea id="iBody" rows="12"></textarea></label>
-  </div>
-  <div class="pn" hidden>
-    <label>상단 태그<input id="iTag"></label>
-    <label>하단 라벨<input id="iKey"></label>
-    <label>하단 자막<input id="iTick"></label>
-    <div class="tg"><span>LIVE 표시</span><label class="sw"><input id="iLive" type="checkbox"><i></i></label></div>
   </div>
 </div>
 <div class="ps-acts"><button id="reset" type="button">초기화</button><button id="savePng" type="button">PNG 저장</button></div>
