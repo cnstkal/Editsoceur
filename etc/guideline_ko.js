@@ -17,7 +17,7 @@ $('iMain').onchange=function(){rd(this.files[0],function(u){imgs[0]=u;$('iMode')
 $('iMode').onchange=draw;
 function draw(){var m=$('iMode').value;phs.forEach(function(e,k){e.className='ph'+(m==='green'?' g':'');e.style.backgroundImage=(m==='photo'&&imgs[k])?'url('+imgs[k]+')':''})}
 draw();
-function fit(){var s=Math.max(.1,Math.min(vp.parentNode.clientWidth||405,405)/1080);
+function fit(){var w=vp.parentNode.clientWidth||405;var s=Math.min(w,405,innerHeight*0.42*1080/1920)/1080;
  vp.style.width=1080*s+'px';vp.style.height=1920*s+'px';cv.style.transform='scale('+s+')'}
 addEventListener('resize',fit);fit();
 $('savePng').onclick=function(){var t=cv.style.transform;cv.style.transform='none';
