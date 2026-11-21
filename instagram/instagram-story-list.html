@@ -2,29 +2,29 @@
 <html lang="ko">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no,viewport-fit=cover"><script src="../nozoom.js?v=1"></script>
 <title>인스타 스토리 목록</title>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.css">
 <link rel="stylesheet" href="instagram-story-list.css">
-</head>
-<body>
-<div class="wrap">
-<section class="card main">
-<div class="lbl">Live Preview</div>
+<link rel="stylesheet" href="../ps-base.css?v=4"><link rel="stylesheet" href="../ps-editor.css?v=10"><link rel="stylesheet" href="../ps-shell.css?v=2"></head>
+<body class="studio">
+<div class="ps-wrap"><header class="ps-top"><a href="index.html">‹ 뒤로</a><button class="ps-pvbtn" id="pvBtn" type="button">미리보기 모드</button></header><div class="ps-grid">
+<section class="card main ps-card ps-main">
+<div class="lbl ps-lbl">Live Preview</div>
 <h2>인스타 스토리 목록</h2>
-<div class="stage"><div id="snap">
+<div class="stage ps-stage"><div id="snap">
 <div class="top"><span>Cancel</span><b>Stories</b><em>Next</em></div>
 <div class="grid" id="grid"></div>
 </div></div>
 </section>
-<section class="card side">
-<div class="lbl">Edit Panel</div>
-<h2>스토리 목록 수정</h2>
+<section class="card side ps-card ps-side">
+<div class="lbl ps-lbl">Edit Panel</div>
+<h2>스토리 목록 수정</h2><div class="ps-edwrap"><div class="editor"><div class="ps-pn" data-t="기본">
 <div id="ed"></div>
-<div class="acts"><button id="reset" type="button">초기화</button><button id="save" type="button">PNG 저장</button></div>
+</div></div></div><div class="acts ps-acts"><button id="reset" type="button">초기화</button><button id="save" type="button">PNG 저장</button></div>
 </section>
-</div>
+</div></div>
 <script src="https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js"></script>
 <script src="instagram-story-list.js"></script>
-</body>
+<script src="../ps-tabs.js?v=2"></script></body>
 </html>

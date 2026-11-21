@@ -2,17 +2,17 @@
 <html lang="ko">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no,viewport-fit=cover"><script src="../nozoom.js?v=1"></script>
 <title>틱톡</title>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.css">
 <link rel="stylesheet" href="tiktok.css">
-</head>
-<body>
-<div class="wrap">
-<section class="card main">
-<div class="lbl">Live Preview</div>
+<link rel="stylesheet" href="../ps-base.css?v=4"><link rel="stylesheet" href="../ps-editor.css?v=10"><link rel="stylesheet" href="../ps-shell.css?v=2"></head>
+<body class="studio">
+<div class="ps-wrap"><header class="ps-top"><a href="index.html">‹ 뒤로</a><button class="ps-pvbtn" id="pvBtn" type="button">미리보기 모드</button></header><div class="ps-grid">
+<section class="card main ps-card ps-main">
+<div class="lbl ps-lbl">Live Preview</div>
 <h2>틱톡 피드</h2>
-<div class="stage"><div id="snap">
+<div class="stage ps-stage"><div id="snap">
 <svg class="live" width="17" height="17" viewBox="0 0 17 17" fill="none" stroke="#fff" stroke-width="1.300" stroke-linecap="round" stroke-linejoin="round"><rect x="1.500" y="4" width="14" height="11" rx="2"/><path d="m5 1.500 3.500 2.500 3.500-2.500"/><text x="3.500" y="11.500" font-size="5.200" font-weight="700" fill="#fff" stroke="none">LIVE</text></svg>
 <div class="tabs"><span style="left:78px">Friends</span><span style="left:131px">Following</span><span style="left:186px" class="fy" id="vFy">For You</span></div>
 <svg class="srch" width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="#fff" stroke-width="1.500" stroke-linecap="round"><circle cx="7" cy="7" r="5.300"/><path d="m11 11 3.500 3.500"/></svg>
@@ -41,9 +41,9 @@
 </div>
 </div></div>
 </section>
-<section class="card side">
-<div class="lbl">Edit Panel</div>
-<h2>틱톡 수정</h2>
+<section class="card side ps-card ps-side">
+<div class="lbl ps-lbl">Edit Panel</div>
+<h2>틱톡 수정</h2><div class="ps-edwrap"><div class="editor"><div class="ps-pn" data-t="기본">
 <div class="edit-tabs" role="tablist">
 <button type="button" class="edit-tab active" data-panel="basic">기본</button>
 <button type="button" class="edit-tab" data-panel="images">이미지</button>
@@ -65,9 +65,9 @@
 <label class="f">프로필 사진 · 하단 작은 사진<input id="fSa" type="file" accept="image/*"></label>
 <label class="f">음악 원판 사진<input id="fD" type="file" accept="image/*"></label>
 </div>
-<div class="acts"><button id="reset" type="button">초기화</button><button id="save" type="button">PNG 저장</button></div></section>
-</div>
+</div></div></div><div class="acts ps-acts"><button id="reset" type="button">초기화</button><button id="save" type="button">PNG 저장</button></div></section>
+</div></div>
 <script src="https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js"></script>
 <script src="tiktok.js"></script>
-</body>
+<script src="../ps-tabs.js?v=2"></script></body>
 </html>

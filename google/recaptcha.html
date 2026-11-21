@@ -1,12 +1,12 @@
 <!DOCTYPE html>
-<html lang="ko"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<html lang="ko"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no,viewport-fit=cover"><script src="../nozoom.js?v=1"></script>
 <title>recaptcha</title>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700&family=Roboto:wght@400;500;700&display=swap">
 <link rel="stylesheet" href="recaptcha.css">
-</head><body>
-<main class="wrap">
-<section class="card"><div class="lbl">Live Preview · 사진을 클릭하면 선택/해제</div>
-<div class="view"><div class="chk"><div id="cap">
+<link rel="stylesheet" href="../ps-base.css?v=4"><link rel="stylesheet" href="../ps-editor.css?v=10"><link rel="stylesheet" href="../ps-shell.css?v=2"></head><body class="studio">
+<div class="ps-wrap"><header class="ps-top"><a href="index.html">‹ 뒤로</a><button class="ps-pvbtn" id="pvBtn" type="button">미리보기 모드</button></header><div class="ps-grid">
+<section class="card ps-card ps-main"><div class="lbl ps-lbl">Live Preview · 사진을 클릭하면 선택/해제</div>
+<div class="view ps-stage"><div class="chk"><div id="cap">
 <div class="hd"><h1 id="vKey"></h1><p id="vTxt"></p></div>
 <div class="grid" id="grid"></div>
 <div class="ft"><div class="ic">
@@ -15,16 +15,16 @@
 <svg viewBox="0 0 24 24"><path d="M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20zm1 15h-2v-6h2zm0-8h-2V7h2z"/></svg></div>
 <div class="ok" id="vOk"></div></div>
 </div></div></div></section>
-<section class="card"><div class="lbl">Edit Panel</div><h2>로봇이 아닙니다 수정</h2>
+<section class="card ps-card ps-side"><div class="lbl ps-lbl">Edit Panel</div><h2>로봇이 아닙니다 수정</h2><div class="ps-edwrap"><div class="editor"><div class="ps-pn" data-t="기본">
 <label>키워드<input id="iKey"></label>
 <label>안내 문구 (줄바꿈 반영)<textarea id="iTxt" rows="4"></textarea></label>
 <label>버튼 문구<input id="iOk"></label>
 <label>칸 수 (1~9)<input id="iN" type="number" min="1" max="9"></label>
 <label>사진 (칸별 선택)</label>
 <div class="ph" id="ph"></div>
-<div class="acts"><button id="clr" class="g">사진 비우기</button><button id="unsel" class="g">선택 해제</button></div>
-<div class="acts"><button id="save">PNG 저장</button><button id="reset" class="g">초기화</button></div>
-</section></main>
+</div></div></div><div class="acts ps-acts"><button id="clr" class="g">사진 비우기</button><button id="unsel" class="g">선택 해제</button></div>
+<div class="acts ps-acts"><button id="save">PNG 저장</button><button id="reset" class="g">초기화</button></div>
+</section></div></div>
 <script src="https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js"></script>
 <script src="recaptcha.js"></script>
-</body></html>
+<script src="../ps-tabs.js?v=2"></script></body></html>

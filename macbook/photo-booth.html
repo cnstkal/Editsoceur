@@ -1,11 +1,11 @@
 <!DOCTYPE html>
-<html lang="ko"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<html lang="ko"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no,viewport-fit=cover"><script src="../nozoom.js?v=1"></script>
 <title>photo-booth</title>
 <link rel="stylesheet" href="photo-booth.css">
-</head><body>
-<main class="wrap">
-<section class="card"><div class="lbl">Live Preview · 투명 PNG</div>
-<div class="view"><div class="chk"><div id="pad"><div id="win">
+<link rel="stylesheet" href="../ps-base.css?v=4"><link rel="stylesheet" href="../ps-editor.css?v=10"><link rel="stylesheet" href="../ps-shell.css?v=2"></head><body class="studio">
+<div class="ps-wrap"><header class="ps-top"><a href="../apple/index.html">‹ 뒤로</a><button class="ps-pvbtn" id="pvBtn" type="button">미리보기 모드</button></header><div class="ps-grid">
+<section class="card ps-card ps-main"><div class="lbl ps-lbl">Live Preview · 투명 PNG</div>
+<div class="view ps-stage"><div class="chk"><div id="pad"><div id="win">
 <div class="tb"><span class="d r"></span><span class="d y"></span><span class="d g"></span><b id="vTitle"></b></div>
 <div class="vp" id="vp"><img id="vImg" alt=""></div>
 <div class="bt">
@@ -16,16 +16,16 @@
 <div class="cam"><svg viewBox="0 0 24 24"><path fill="#fff" d="M9 4 7.6 6H5a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V8a2 2 0 0 0-2-2h-2.600L15 4zm3 4a4.500 4.500 0 1 1 0 9 4.500 4.500 0 0 1 0-9zm0 1.800a2.700 2.700 0 1 0 0 5.400 2.700 2.700 0 0 0 0-5.400z"/></svg></div>
 <div class="fx" id="vFx"></div></div>
 </div></div></div></div></section>
-<section class="card"><div class="lbl">Edit Panel</div><h2>맥북 카메라 수정</h2>
+<section class="card ps-card ps-side"><div class="lbl ps-lbl">Edit Panel</div><h2>맥북 카메라 수정</h2><div class="ps-edwrap"><div class="editor"><div class="ps-pn" data-t="기본">
 <label>창 제목<input id="iTitle"></label>
 <label>카메라 화면 사진<input id="iPhoto" type="file" accept="image/*"></label>
 <label>버튼 문구<input id="iFx"></label>
 <label>보기 모드 (1~3)<input id="iView" type="number" min="1" max="3"></label>
 <label class="tg"><input id="iMir" type="checkbox"> 좌우 반전</label>
 <label class="tg"><input id="iSh" type="checkbox"> 창 그림자</label>
-<div class="acts"><button id="clr" class="g">사진 비우기</button></div>
-<div class="acts"><button id="save">PNG 저장</button><button id="reset" class="g">초기화</button></div>
-</section></main>
+</div></div></div><div class="acts ps-acts"><button id="clr" class="g">사진 비우기</button></div>
+<div class="acts ps-acts"><button id="save">PNG 저장</button><button id="reset" class="g">초기화</button></div>
+</section></div></div>
 <script src="https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js"></script>
 <script src="photo-booth.js"></script>
-</body></html>
+<script src="../ps-tabs.js?v=2"></script></body></html>
