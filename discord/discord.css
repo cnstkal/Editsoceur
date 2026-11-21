@@ -50,3 +50,5 @@ button{border:0;background:none;font:inherit;cursor:pointer}
 #reset{flex:1;background:#f2f3f5}#savePng{flex:1.6;background:#e8457a;color:#fff}
 body.pvmode .ps-side{display:none}body.pvmode .ps-grid{grid-template-columns:1fr}
 @media(max-width:1099px){.ps-wrap{padding:14px}.ps-grid{grid-template-columns:1fr}.ps-card{padding:18px;border-radius:18px}.ps-pvbtn{display:none}.ps-acts{position:sticky;bottom:0;background:#fff;padding:10px 0}}
+
+.av.pic:before,.av.pic:after{display:none}

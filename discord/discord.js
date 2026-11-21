@@ -7,14 +7,14 @@ var S=JSON.parse(JSON.stringify(DEF));
 function esc(s){return String(s).replace(/[&<>"]/g,function(c){return{'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]})}
 function render(){
 $('vSrv').textContent=S.srv;$('vTxt').textContent=S.txt;$('vHead').textContent=S.head;$('vVc').textContent=S.vc;
-$('vMsgs').innerHTML=S.m.map(function(m){return '<div class="m"><div class="av" style="background:'+m.c+';--c:'+m.c+'"></div><div class="t"><div class="n">'+esc(m.n)+'<small>'+esc(m.t)+'</small></div><div class="x">'+esc(m.x)+'</div></div></div>'}).join('');
+$('vMsgs').innerHTML=S.m.map(function(m){return '<div class="m"><div class="av'+(m.p?' pic':'')+'" style="background:'+(m.p?'url('+m.p+') center/cover':m.c)+';--c:'+m.c+'"></div><div class="t"><div class="n">'+esc(m.n)+'<small>'+esc(m.t)+'</small></div><div class="x">'+esc(m.x)+'</div></div></div>'}).join('');
 }
-function list(){$('mList').innerHTML=S.m.map(function(m,i){return '<div class="ecard"><h3>메시지 '+(i+1)+'<button data-d="'+i+'" type="button">삭제</button></h3><div class="row"><label>이름<input data-k="n" data-i="'+i+'" value="'+esc(m.n)+'"></label><label>시간<input data-k="t" data-i="'+i+'" value="'+esc(m.t)+'"></label></div><label>프로필 색<select data-k="c" data-i="'+i+'">'+Object.keys(C).map(function(k){return '<option value="'+k+'"'+(k==m.c?' selected':'')+'>'+C[k]+'</option>'}).join('')+'</select></label><label>내용<textarea rows="2" data-k="x" data-i="'+i+'">'+esc(m.x)+'</textarea></label></div>'}).join('')}
+function list(){$('mList').innerHTML=S.m.map(function(m,i){return '<div class="ecard"><h3>메시지 '+(i+1)+'<button data-d="'+i+'" type="button">삭제</button></h3><div class="row"><label>이름<input data-k="n" data-i="'+i+'" value="'+esc(m.n)+'"></label><label>시간<input data-k="t" data-i="'+i+'" value="'+esc(m.t)+'"></label></div><label>프로필 색<select data-k="c" data-i="'+i+'">'+Object.keys(C).map(function(k){return '<option value="'+k+'"'+(k==m.c?' selected':'')+'>'+C[k]+'</option>'}).join('')+'</select></label><label>프로필 사진<input type="file" accept="image/*" data-f="p" data-i="'+i+'"></label>'+(m.p?'<img src="'+m.p+'" alt="" style="width:48px;height:48px;border-radius:50%;object-fit:cover">':'')+'<label>내용<textarea rows="2" data-k="x" data-i="'+i+'">'+esc(m.x)+'</textarea></label></div>'}).join('')}
 var F=[['iSrv','srv'],['iTxt','txt'],['iHead','head'],['iVc','vc']];
 function fill(){F.forEach(function(p){$(p[0]).value=S[p[1]]});list();render()}
 F.forEach(function(p){$(p[0]).addEventListener('input',function(){S[p[1]]=this.value;render()})});
 var ed=document.querySelector('.editor');
-function ch(e){var t=e.target;if(t.dataset.k){S.m[t.dataset.i][t.dataset.k]=t.value;render()}}
+function ch(e){var t=e.target;if(t.dataset.f==='p'){var f=t.files[0];if(f){var r=new FileReader();r.onload=function(ev){S.m[t.dataset.i].p=ev.target.result;list();render()};r.readAsDataURL(f)}return}if(t.dataset.k){S.m[t.dataset.i][t.dataset.k]=t.value;render()}}
 ed.addEventListener('input',ch);ed.addEventListener('change',ch);
 ed.addEventListener('click',function(e){var d=e.target.dataset.d;if(d!=null){S.m.splice(d,1);list();render()}});
 $('addM').onclick=function(){S.m.push({n:'유저',t:'오늘 오후 3:00',x:'',c:'#7289da'});list();render()};
