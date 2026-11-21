@@ -1,27 +1,25 @@
 (function(){
 var $=function(i){return document.getElementById(i)};
 var DEF={theme:"light",sub:"Subject subject subject subject subject",from:"sender's name",to:"to me",time:"now",av:"",
-body:"add text here",tag:"NEWS",key:"속보",tick:"도착한 메일 한 통이 화제가 되고 있습니다",live:true};
+body:"add text here"};
 var D=JSON.parse(JSON.stringify(DEF));
 
 function rd(f,cb){if(!f)return;var r=new FileReader();r.onload=function(){cb(r.result)};r.readAsDataURL(f)}
 function render(){
-  var m={vSub:"sub",vFrom:"from",vTime:"time",vBody:"body",vTag:"tag",vKey:"key",vTick:"tick"};
+  var m={vSub:"sub",vFrom:"from",vTime:"time",vBody:"body"};
   for(var k in m)$(k).textContent=D[m[k]];
   $("vTo").textContent=D.to+" ⌄";
-  $("vLive").style.display=D.live?"":"none";
   $("card").classList.toggle("dark",D.theme==="dark");
   var a=$("vAv");a.style.backgroundImage=D.av?"url("+D.av+")":"";a.classList.toggle("ph",!D.av);
 }
 [["iSub","sub"],["iFrom","from"],["iTo","to"],["iTime","time"],["iBody","body"],["iTag","tag"],["iKey","key"],["iTick","tick"]].forEach(function(a){
   $(a[0]).oninput=function(){D[a[1]]=this.value;render()}});
 $("iTheme").onchange=function(){D.theme=this.value;render()};
-$("iLive").onchange=function(){D.live=this.checked;render()};
 $("iAv").onchange=function(){rd(this.files[0],function(d){D.av=d;render()})};
 
 function fill(){
   $("iTheme").value=D.theme;$("iSub").value=D.sub;$("iFrom").value=D.from;$("iTo").value=D.to;$("iTime").value=D.time;$("iBody").value=D.body;
-  $("iTag").value=D.tag;$("iKey").value=D.key;$("iTick").value=D.tick;$("iLive").checked=D.live;$("iAv").value="";
+  $("iAv").value="";
   render();
 }
 $("reset").onclick=function(){D=JSON.parse(JSON.stringify(DEF));fill()};
