@@ -36,3 +36,8 @@ label.f input{width:60%;font-size:13px}
 .acts button{height:52px;border:0;border-radius:14px;font:inherit;font-size:15px;font-weight:700;cursor:pointer}
 #reset{flex:1;background:#f2f3f5}#save{flex:1.6;background:#e8457a;color:#fff}
 @media(max-width:860px){.wrap{grid-template-columns:1fr;padding:12px}.card{padding:20px}}
+
+.tabs{display:flex;gap:5px;padding:5px;border:1px solid #e6e7eb;border-radius:16px;margin-bottom:18px;background:#fff}
+.tabs button{flex:1;height:42px;border:0;border-radius:12px;background:transparent;font:inherit;font-size:14px;font-weight:600;color:#333}
+.tabs button.on{background:#fbe8ef;color:#e8457a}
+.panel[hidden]{display:none!important}
