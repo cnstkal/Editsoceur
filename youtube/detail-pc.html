@@ -6,7 +6,7 @@
 <title>YouTube PC 영상 상세</title>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.css">
 <link rel="stylesheet" href="back.css?v=1">
-<link rel="stylesheet" href="detail-pc.css?v=1">
+<link rel="stylesheet" href="detail-pc.css?v=2">
 <style id="ed-font">html,body,body *{font-family:Pretendard,-apple-system,"Apple SD Gothic Neo","Noto Sans KR",sans-serif!important;letter-spacing:-.02em!important}</style><link rel="stylesheet" href="studio.css?v=3">
 <style id="pc-mobile-lock">html,body{overflow-x:hidden;max-width:100vw}</style>
 <link rel="stylesheet" href="../ps-editor.css?v=10"></head>
@@ -23,6 +23,8 @@
 <div class="ps-pn" data-t="기본">
   <label>썸네일 사진<input id="iTh" type="file" accept="image/*"></label>
   <label>제목<input id="iTi"></label>
+  <label>채널 프로필 사진<input id="iPf" type="file" accept="image/*"></label>
+  <label>칩 (쉼표로 구분, 선택은 앞에 *)<input id="iCh"></label>
   <div class="row"><label>채널 이름<input id="iCn"></label><label>구독자<input id="iSb"></label></div>
   <div class="row"><label>좋아요<input id="iLk"></label><label>조회수<input id="iVw"></label><label>올린 시기<input id="iAg"></label></div>
   <label>설명 (줄바꿈 가능)<textarea id="iDs" rows="4"></textarea></label>
@@ -37,7 +39,7 @@
 </section></div><div class="ps-acts"><button id="savePng" class="primary">PNG 저장</button><button id="reset" class="secondary">초기화</button></div></section>
 </div></div>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
-<script src="detail-pc.js?v=1"></script>
+<script src="detail-pc.js?v=2"></script>
 <script src="back.js?v=1"></script>
 <script>(function(){var b=document.getElementById("pvBtn");b.onclick=function(){var on=document.body.classList.toggle("pvmode");this.textContent=on?"편집 모드":"미리보기 모드"}})();</script>
 <script src="studio.js?v=1"></script>
