@@ -4,10 +4,10 @@ var s='<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 160 200" preserveAsp
 var P='data:image/svg+xml;utf8,'+encodeURIComponent(s),S;
 function it(t,u){return{t:t,u:u||'',i:P}}
 function init(){
-S={t:'Photos',s:'Storage Full · Get More',a:P,
-M:[it('12 Dec','2026'),it('hello!','8 DEC 2026')],
-P:[it('Favorites'),it('Recently Saved'),it('Favorites 2'),it('')],
-A:[it('Add text'),it('Add text'),it('Add text'),it('Add text')]};
+S={t:'사진',s:'저장 공간이 부족해요 · 더 알아보기',a:P,
+M:[it('12월 12일','2026년'),it('일상 기록','2026년 12월 8일')],
+P:[it('즐겨찾기'),it('최근 저장 항목'),it('즐겨찾기 2'),it('새 폴더')],
+A:[it('새 앨범'),it('여행'),it('일상'),it('추억')]};
 $('iT').value=S.t;$('iS').value=S.s;$('iA').value='';
 ed();draw();
 }
@@ -17,7 +17,7 @@ function draw(){
 $('vT').textContent=S.t;$('vS').textContent=S.s;$('vA').src=S.a;
 $('rM').innerHTML=tiles(S.M,1);$('rP').innerHTML=tiles(S.P);$('rA').innerHTML=tiles(S.A);
 }
-var N={M:'Memories',P:'Pinned',A:'Albums'};
+var N={M:'추억',P:'고정',A:'앨범'};
 function ed(){
 var h='';
 ['M','P','A'].forEach(function(g){
@@ -41,5 +41,6 @@ html2canvas($('snap'),{backgroundColor:null,scale:4,useCORS:true}).then(function
 var a=document.createElement('a');a.download='photos.png';a.href=c.toDataURL('image/png');a.click();
 });
 };
+document.querySelectorAll('.tabs button').forEach(function(b){b.onclick=function(){document.querySelectorAll('.tabs button').forEach(function(x){x.classList.toggle('on',x===b)});document.querySelectorAll('[data-panel]').forEach(function(p){p.hidden=p.dataset.panel!==b.dataset.tab})}});
 init();
 })();
