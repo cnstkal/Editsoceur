@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>위버스 게시글</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.css">
+<link rel="stylesheet" href="weversepost.css?v=1">
+</head>
+<body class="studio">
+<div class="ps-wrap">
+<header class="ps-top"><a class="ps-back" href="index.html">‹ 뒤로</a><button class="ps-pvbtn" id="pvBtn" type="button">미리보기 모드</button></header>
+<div class="ps-grid">
+<section class="ps-card ps-main">
+<div class="ps-lbl">Live Preview</div>
+<h2>위버스 게시글</h2>
+<p class="ps-sub">실제 앱 화면 비율로 확인하고, 오른쪽에서 바로 수정해요</p>
+<div class="ps-stage"><div class="ps-frame">
+<div class="wp" id="wp">
+ <div class="sb"><b id="vClock">12:08</b>
+  <div class="di"><i class="art"></i><span class="wv"><u></u><u></u><u></u><u></u><u></u><u></u></span></div>
+  <div class="st"><svg width="20" height="15" viewBox="0 0 20 15"><path d="M10 14 7 11a4.300 4.300 0 0 1 6 0zM3.500 7.500a9.500 9.500 0 0 1 13 0l-1.700 1.700a7 7 0 0 0-9.600 0zM.5 4.500a13.700 13.700 0 0 1 19 0l-1.800 1.800a11.200 11.200 0 0 0-15.400 0z" fill="#000"/></svg><em class="bt"><span id="vBat">35</span></em></div>
+ </div>
+ <div class="hd">
+  <svg class="bk" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#111" stroke-width="1.800" stroke-linecap="round" stroke-linejoin="round"><path d="M15 4 7 12l8 8"/></svg>
+  <div class="ht"><b>포스트</b><span id="vSub"></span></div>
+  <svg class="sh" width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="#111" stroke-width="1.700" stroke-linecap="round" stroke-linejoin="round"><path d="M14 4.500l7 6-7 6v-3.500c-5 0-8.500 1.500-11 5.500 .8-6.500 4.500-9.500 11-9.500z"/></svg>
+ </div>
+ <div class="sc"><div class="in" id="in"></div></div>
+ <div class="sbar" id="sbar"></div>
+ <div class="fl" id="fl"></div>
+ <div class="ib">
+  <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="#111" stroke-width="1.900" stroke-linejoin="round"><path d="M12 20.500S3 14.500 3 8.500A4.700 4.700 0 0 1 12 6.200 4.700 4.700 0 0 1 21 8.500c0 6-9 12-9 12z"/></svg>
+  <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="#111" stroke-width="1.900" stroke-linejoin="round"><path d="M6 3.500h12v17l-6-4.500-6 4.500z"/></svg>
+  <div class="pl" id="vHint"></div>
+ </div>
+</div>
+</div></div>
+</section>
+<section class="ps-card ps-side">
+<div class="ps-lbl">Edit Panel</div>
+<h2>위버스 게시글 내용 수정</h2>
+<div class="ps-edwrap"><div class="editor">
+<div class="ps-pn" data-t="기본">
+<label>상태바 시간<input id="iClock"></label>
+<label>배터리 %<input id="iBat" type="number" min="1" max="100"></label>
+<label>상단 서브 문구<input id="iSub"></label>
+<label>입력창 문구<input id="iHint"></label>
+<label>스크롤 위치(px)<input id="iScroll" type="number" min="0" value="0"></label>
+</div>
+<div class="ps-pn" data-t="게시글" hidden>
+<label>작성자 이름<input id="iName"></label>
+<label>작성 날짜<input id="iDate"></label>
+<label class="col">본문 (#해시태그는 청록색)<textarea id="iBody" rows="5"></textarea></label>
+<div class="row"><label>좋아요 수<input id="iLike"></label><label>댓글 수<input id="iCmt"></label></div>
+<div class="ps-tg"><span>작성자 인증 배지</span><label class="sw"><input id="iVer" type="checkbox"><i></i></label></div>
+<div class="ps-tg"><span>팔로우 버튼</span><label class="sw"><input id="iFol" type="checkbox" checked><i></i></label></div>
+<div class="ps-tg"><span>번역 보기</span><label class="sw"><input id="iTrn" type="checkbox"><i></i></label></div>
+</div>
+<div class="ps-pn" data-t="댓글" hidden>
+<label class="col">댓글 목록<textarea id="iCms" rows="12"></textarea></label>
+<p class="hint">한 줄=댓글 하나 &nbsp;·&nbsp; 이름 | 날짜 | 내용 | 좋아요 | 답글 &nbsp;·&nbsp; 앞에 * 붙이면 아티스트 댓글 &nbsp;·&nbsp; 앞에 ^ 붙이면 강조 배경 &nbsp;·&nbsp; 내용 줄바꿈은 \n</p>
+</div>
+<div class="ps-pn" data-t="이미지" hidden>
+<label class="ps-addp">+ 작성자 프로필<input class="ps-sr" id="iAvatar" type="file" accept="image/*"></label>
+<label class="ps-addp">+ 아티스트 댓글 프로필<input class="ps-sr" id="iArtAv" type="file" accept="image/*"></label>
+<label class="ps-addp">+ 게시글 사진 추가<input class="ps-sr" id="iPhotos" type="file" accept="image/*" multiple></label>
+<button class="ps-ghost" id="clearImg" type="button">이미지 모두 비우기</button>
+</div>
+<div class="ps-pn" data-t="꾸미기" hidden>
+<div class="ps-tg"><span>우하단 둥근 버튼</span><label class="sw"><input id="iFab" type="checkbox" checked><i></i></label></div>
+<label>버튼 종류<select id="iFabT"><option value="up">맨 위로</option><option value="down">아래로</option></select></label>
+<div class="ps-tg"><span>최신 댓글 더 보기</span><label class="sw"><input id="iMore" type="checkbox" checked><i></i></label></div>
+<div class="ps-tg"><span>스크롤바 표시</span><label class="sw"><input id="iSbar" type="checkbox" checked><i></i></label></div>
+</div>
+</div></div>
+<div class="ps-acts"><button id="savePng" type="button">PNG 저장</button><button id="reset" type="button">초기화</button></div>
+</section>
+</div>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js"></script>
+<script src="weversepost.js?v=1"></script>
+</body>
+</html>
