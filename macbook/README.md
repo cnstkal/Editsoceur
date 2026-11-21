@@ -1,3 +1,0 @@
-# MacBook
-
-MacBook app folder.
