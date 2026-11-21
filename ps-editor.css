@@ -110,3 +110,7 @@ body.studio .ps-side .ps-edwrap :is(.editor,.ed) .edf .mini,body.studio .ps-side
 body.studio .ps-side .ps-edwrap :is(.editor,.ed) .it b{flex:1 1 calc(100% - 110px)}
 body.studio .ps-side .ps-edwrap :is(.editor,.ed) .edf input[type=file]{width:100%;flex:none;font-size:12px}
 body.studio .ps-side .ps-edwrap :is(.editor,.ed) .edf input[type=file]::file-selector-button{height:36px;padding:0 10px;margin-right:6px}
+
+/* 프리뷰 여백: 여백 최소화 + 투명(체크무늬)으로 통일 */
+.ps-stage{padding:0!important;margin:0!important;background:repeating-conic-gradient(#ddd 0 25%,#fff 0 50%) 0 0/20px 20px!important}
+.ps-stage>*{margin-top:0}

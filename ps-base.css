@@ -52,3 +52,4 @@ body.pvmode .ps-grid{grid-template-columns:1fr}
 }
 
 @media(max-width:1099px){html,body{overflow-x:clip!important;overflow-y:visible!important}.ps-main{position:relative!important;top:auto!important;z-index:auto!important}}
+.ps-stage{padding:0!important;margin:0!important}
