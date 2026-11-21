@@ -6,16 +6,35 @@ body{margin:0;background:#f2f3f5;color:#111;font-family:Pretendard,-apple-system
 h2{font-size:24px;font-weight:700;margin:8px 0 20px}
 .stage{display:flex;justify-content:center}
 #snap{position:relative;width:270px;height:480px;background:#000;overflow:hidden;color:#fff;letter-spacing:-.02em;box-shadow:0 2px 12px rgba(0,0,0,.25)}
+/* 공통 사진 영역 */
+.cd{position:absolute;left:0;overflow:hidden}
+.big{width:100%;height:100%;object-fit:cover;display:block}
+.sm{position:absolute;object-fit:cover;border:1px solid rgba(0,0,0,.75);width:82px;height:106px}
+/* 카메라 스타일 (A) */
+#snap[data-m=a] .cd{top:43px;height:362px;width:270px;border-radius:14px}
+#snap[data-m=a] .sm{left:15px;top:15px;border-radius:11px}
+/* 스토리 스타일 (B) */
+#snap[data-m=b] .cd{top:72px;height:369px;width:270px;border-radius:16px}
+#snap[data-m=b] .sm{left:16px;top:17px;border-radius:12px;border:1.500px solid #000}
+#snap[data-m=b] .big{border-radius:16px}
 .tm{position:absolute;left:0;right:0;top:9px;text-align:center;font-size:17px;font-weight:700;line-height:22px}
-.big{position:absolute;left:0;top:43px;width:270px;height:362px;border-radius:14px;object-fit:cover}
-.sm{position:absolute;left:15px;top:58px;width:82px;height:106px;border-radius:11px;object-fit:cover;border:1px solid rgba(0,0,0,.75)}
-.sh{position:absolute;left:111px;top:418px;width:48px;height:48px;border-radius:50%;border:3px solid #fff}
 .ic{position:absolute;top:432px}
-.ic[width="14"]{top:432px}
+.sh{position:absolute;left:111px;top:418px;width:48px;height:48px;border-radius:50%;border:3px solid #fff}
+.x{position:absolute;left:238px;top:12px;width:20px;height:20px;border-radius:50%;background:rgba(45,45,45,.92);display:flex;align-items:center;justify-content:center}
+.lg{position:absolute;left:0;right:0;top:271px;text-align:center;font-size:14px;font-weight:700;line-height:18px}
+#snap[data-m=a] .a-only{display:block}
+#snap[data-m=a] .b-only{display:none!important}
+#snap[data-m=b] .a-only{display:none!important}
+#snap[data-m=b] .b-only{display:block}
+#snap[data-m=a] .sh{display:block}
+#snap[data-m=a] .ic{display:block}
+#snap[data-m=a] .tm{display:block}
+.hide{display:none!important}
 label{display:block;font-size:14px;font-weight:600;color:#444;margin-bottom:16px}
-input:not([type=file]){display:block;width:100%;height:46px;margin-top:8px;padding:0 14px;border:1px solid #e3e5e8;border-radius:12px;font:inherit;font-size:16px}
-label.f{display:flex;align-items:center;justify-content:space-between;gap:12px}
-label.f input{width:60%;font-size:13px}
+input:not([type=file]):not([type=checkbox]),select{display:block;width:100%;height:46px;margin-top:8px;padding:0 14px;border:1px solid #e3e5e8;border-radius:12px;font:inherit;font-size:16px;background:#fff}
+label.f,label.tg{display:flex;align-items:center;justify-content:space-between;gap:12px}
+label.f input,label.f select{width:60%;font-size:13px}
+label.tg input{width:20px;height:20px;accent-color:#e8457a}
 .acts{display:flex;gap:10px;margin-top:8px}
 .acts button{height:52px;border:0;border-radius:14px;font:inherit;font-size:15px;font-weight:700;cursor:pointer}
 #reset{flex:1;background:#f2f3f5}#save{flex:1.6;background:#e8457a;color:#fff}
