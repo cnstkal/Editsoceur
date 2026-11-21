@@ -51,4 +51,4 @@ body.pvmode .ps-grid{grid-template-columns:1fr}
 .ps-acts{position:sticky;bottom:0;background:#fff;padding:12px 0 calc(12px + env(safe-area-inset-bottom))}
 }
 
-@media(max-width:1099px){html,body{overflow-x:clip!important;overflow-y:visible!important}.ps-main{position:sticky;top:0;z-index:5}}
+@media(max-width:1099px){html,body{overflow-x:clip!important;overflow-y:visible!important}.ps-main{position:relative!important;top:auto!important;z-index:auto!important}}
