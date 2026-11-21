@@ -8,7 +8,7 @@ function esc(s){return s.replace(/[&<>]/g,function(c){return{'&':'&amp;','<':'&l
 function render(){
  var bu=$('bu'),name=esc($('iName').value),art=$('iArt').checked,h='';
  bu.style.setProperty('--bg',$('iBg').value);bu.style.setProperty('--me',$('iMe').value);bu.style.setProperty('--ring',$('iRing').value);
- $('vTitle').textContent=$('iTitle').value;$('vBanner').textContent=$('iBanner').value;$('vDate').textContent=$('iDate').value;$('vClock').textContent=$('iClock').value;$('vBat').textContent=$('iBat').value;
+ $('vTitle').textContent=$('iTitle').value;$('vBanner').textContent=$('iBanner').value;$('vDate').textContent=$('iDate').value;if($('vClock'))$('vClock').textContent=$('iClock').value;if($('vBat'))$('vBat').textContent=$('iBat').value;
  $('bn').classList.toggle('off',!$('iBnOn').checked);bu.classList.toggle('nb',!$('iBnOn').checked);$('fab').classList.toggle('on',$('iFab').checked);bu.classList.toggle('chat-only',$('iChatOnly').checked);
  $('iMsgs').value.split('\n').forEach(function(l){
   if(!l.trim())return;var me=/^\s*>/.test(l);if(me)l=l.replace(/^\s*>\s?/,'');
