@@ -24,3 +24,8 @@ html,body,body *{font-family:Pretendard,-apple-system,"Apple SD Gothic Neo","Not
 #modes{position:absolute;left:0;top:0;height:143px;display:flex;align-items:center;white-space:nowrap}
 #modes span{height:120px;padding:0 36px;border-radius:60px;display:flex;align-items:center;justify-content:center;font-size:50px;font-weight:400;color:#ffffff8c}
 #modes span.on{min-width:215px;background:#0c0c0e;border:2px solid #4a4a4d;color:#ffd34e;font-weight:600}
+
+/* 모바일에서 미리보기가 수정 패널 위에 고정되어 겹치지 않도록 처리 */
+@media(max-width:1099px){
+  body.studio .ps-main{position:relative!important;top:auto!important;z-index:auto!important}
+}
