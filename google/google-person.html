@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>구글 인물</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.css">
+<link rel="stylesheet" href="google-person.css">
+</head>
+<body class="studio">
+<div class="ps-wrap">
+<header class="ps-top"><span class="ps-brand">Google Person Studio</span><button class="ps-pvbtn" id="pvBtn" type="button">미리보기 모드</button></header>
+<div class="ps-grid">
+
+<section class="ps-card ps-main">
+<div class="ps-lbl">Live Preview</div>
+<h2>구글 인물 뉴스바</h2>
+<p class="ps-sub">9:16 투명 PNG · 오른쪽에서 바로 수정해요</p>
+<div class="ps-stage" id="stage"><div class="fit" id="fit"><div class="fr">
+
+<div id="cap"><div class="card">
+  <div class="nb"><span class="tag" id="vTag"></span><span class="lv" id="vLive"><i></i>LIVE</span></div>
+  <div class="gh"><div class="logo"><b style="color:#4285f4">G</b><b style="color:#ea4335">o</b><b style="color:#fbbc05">o</b><b style="color:#4285f4">g</b><b style="color:#34a853">l</b><b style="color:#ea4335">e</b></div><div class="av ph" id="vAv"></div></div>
+  <div class="sb"><b class="g">G</b><span id="vQ"></span><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#ea4335" stroke-width="2.600"><circle cx="12" cy="12" r="4"/><path d="M3 8V3h5M16 3h5v5M21 16v5h-5M8 21H3v-5" stroke="#4285f4"/></svg><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#4285f4" stroke-width="2.600" stroke-linecap="round"><rect x="9" y="2" width="6" height="12" rx="3" fill="#4285f4"/><path d="M5 11a7 7 0 0 0 14 0M12 18v4"/></svg></div>
+  <div class="tb"><span>AI Mode</span><span class="on">All</span><span>Images</span><span>Video</span><span>Shopping</span></div>
+  <div class="nm"><b id="vName"></b><span id="vDesc"></span></div>
+  <div class="ph-row" id="vPh"></div>
+  <div class="two">
+    <div class="box"><small>Age</small><b id="vAge"></b><span id="vBirth"></span></div>
+    <div class="box"><small>Songs</small><div class="sg"><i class="ph"></i><i class="ph"></i><i class="ph"></i></div></div>
+  </div>
+  <div class="box ov"><b>Overview</b><p id="vOv"></p></div>
+  <div class="tk"><span class="key" id="vKey"></span><p id="vTick"></p></div>
+</div></div>
+
+</div></div></div>
+</section>
+
+<section class="ps-card ps-side">
+<div class="ps-lbl">Edit Panel</div>
+<h2>구글 인물 수정</h2>
+<div class="ps-seg" id="seg"><button class="on" type="button">기본</button><button type="button">사진</button><button type="button">정보</button><button type="button">뉴스바</button></div>
+<div class="editor">
+  <div class="pn">
+    <label>검색어<input id="iQ"></label>
+    <label>이름<input id="iName"></label>
+    <label>설명<input id="iDesc"></label>
+    <label>프로필 사진<input id="iAv" type="file" accept="image/*"></label>
+  </div>
+  <div class="pn" hidden>
+    <label>인물 사진 (여러 장)<input id="iPh" type="file" accept="image/*" multiple></label>
+    <button class="ghost" id="clrPh" type="button">인물 사진 비우기</button>
+  </div>
+  <div class="pn" hidden>
+    <label>나이<input id="iAge"></label>
+    <label>생일<input id="iBirth"></label>
+    <label>노래 커버 1<input class="sgf" type="file" accept="image/*"></label>
+    <label>노래 커버 2<input class="sgf" type="file" accept="image/*"></label>
+    <label>노래 커버 3<input class="sgf" type="file" accept="image/*"></label>
+    <label class="tx">소개글<textarea id="iOv" rows="4"></textarea></label>
+  </div>
+  <div class="pn" hidden>
+    <label>상단 태그<input id="iTag"></label>
+    <label>하단 라벨<input id="iKey"></label>
+    <label>하단 자막<input id="iTick"></label>
+    <div class="tg"><span>LIVE 표시</span><label class="sw"><input id="iLive" type="checkbox"><i></i></label></div>
+  </div>
+</div>
+<div class="ps-acts"><button id="reset" type="button">초기화</button><button id="savePng" type="button">PNG 저장</button></div>
+</section>
+
+</div>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js"></script>
+<script src="google-person.js"></script>
+</body>
+</html>
