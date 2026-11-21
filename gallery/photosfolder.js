@@ -41,6 +41,13 @@ html2canvas($('snap'),{backgroundColor:null,scale:4,useCORS:true}).then(function
 var a=document.createElement('a');a.download='photos.png';a.href=c.toDataURL('image/png');a.click();
 });
 };
-document.querySelectorAll('.tabs button').forEach(function(b){b.onclick=function(){document.querySelectorAll('.tabs button').forEach(function(x){x.classList.toggle('on',x===b)});document.querySelectorAll('[data-panel]').forEach(function(p){p.hidden=p.dataset.panel!==b.dataset.tab})}});
+(function(){
+var ed=document.querySelector('.editor'),g=[].slice.call(ed.querySelectorAll('.ps-pn'));
+var bar=document.createElement('div');bar.className='ps-seg';
+g.forEach(function(p,i){var b=document.createElement('button');b.type='button';b.textContent=p.getAttribute('data-t');if(!i)b.className='on';
+b.onclick=function(){g.forEach(function(x,j){x.hidden=j!==i});[].forEach.call(bar.children,function(c,j){c.classList.toggle('on',j===i)})};
+bar.appendChild(b)});ed.parentNode.insertBefore(bar,ed);
+})();
+$('pvBtn').onclick=function(){var on=document.body.classList.toggle('pvmode');this.textContent=on?'편집 모드':'미리보기 모드'};
 init();
 })();
