@@ -48,3 +48,17 @@ body{background:#f4f1e9!important;color:#34343a!important}
 p{color:#77746e}
 .btn{box-shadow:0 8px 20px rgba(78,66,48,.13),inset 0 1px 0 rgba(255,255,255,.58),inset 0 -2px 0 rgba(70,60,45,.08)}
 .btn:hover{box-shadow:0 12px 26px rgba(78,66,48,.17),inset 0 1px 0 rgba(255,255,255,.65)}
+
+/* Category folder navigation */
+[hidden]{display:none!important}
+#home,#appsView{width:100%;max-width:430px;margin:0 auto}
+#categoryNav{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.folder-btn{position:relative;overflow:hidden;min-height:132px;padding:17px 12px;border:0;border-radius:25px;background:linear-gradient(145deg,#fff,#e9e6df);color:#38363a;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px;font:inherit;box-shadow:0 8px 20px rgba(78,66,48,.13),inset 0 1px 0 rgba(255,255,255,.85);cursor:pointer;transition:transform .15s}
+.folder-btn:active{transform:scale(.96)}
+.folder-icon{font-size:31px;line-height:1.2}
+.folder-btn strong{font-size:16px;font-weight:800}
+.folder-btn small{font-size:10px;letter-spacing:.08em;color:#8b8790;font-weight:600}
+#appsView h1{margin-top:12px}
+#appNav{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.back-home{display:block;margin:0 0 18px;padding:0;border:0;background:none;color:#e8457a;font:inherit;font-size:16px;font-weight:800;cursor:pointer}
+@media(max-width:480px){main{padding:64px 20px 40px}#categoryNav,#appNav{gap:13px}.folder-btn{min-height:122px;border-radius:23px}}
