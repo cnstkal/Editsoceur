@@ -33,5 +33,11 @@ html2canvas($('snap'),{backgroundColor:null,scale:4,useCORS:true}).then(function
 var a=document.createElement('a');a.download='tiktok.png';a.href=c.toDataURL('image/png');a.click();
 });
 };
+document.querySelectorAll('.edit-tab').forEach(function(btn){
+btn.addEventListener('click',function(){
+document.querySelectorAll('.edit-tab').forEach(function(x){x.classList.toggle('active',x===btn)});
+document.querySelectorAll('.edit-panel').forEach(function(x){x.classList.toggle('active',x.id==='panel-'+btn.dataset.panel)});
+});
+});
 init();
 })();
