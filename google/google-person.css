@@ -87,3 +87,8 @@ body.pvmode .ps-grid{grid-template-columns:1fr}
 .ps-stage{padding-top:0}
 .ps-acts{position:sticky;bottom:0;background:#fff;padding:10px 0 calc(10px + env(safe-area-inset-bottom))}
 }
+
+/* 속보(뉴스바) 삭제 + 카드 9:16 꽉 채움, 모서리 직각 */
+.nb,.tk{display:none!important}
+label:has(#iTick),label:has(#iKey),label:has(#iTag),.tg:has(#iBar),.tg:has(#iLive){display:none!important}
+.card{width:100%!important;height:auto;aspect-ratio:9/16;border-radius:0!important;box-shadow:none!important}
