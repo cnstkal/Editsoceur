@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>bubble</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.css">
+<link rel="stylesheet" href="bubble.css?v=1">
+</head>
+<body class="studio">
+<div class="ps-wrap">
+<header class="ps-top"><a class="ps-back" href="index.html">‹ 뒤로</a><button class="ps-pvbtn" id="pvBtn" type="button">미리보기 모드</button></header>
+<div class="ps-grid">
+<section class="ps-card ps-main">
+<div class="ps-lbl">Live Preview</div>
+<h2>bubble</h2>
+<p class="ps-sub">실제 앱 화면 비율로 확인하고, 오른쪽에서 바로 수정해요</p>
+<div class="ps-stage"><div class="ps-frame">
+<div class="bu" id="bu">
+ <div class="sb"><b id="vClock">12:02</b>
+  <div class="st"><svg width="20" height="14" viewBox="0 0 20 14" fill="#fff"><rect x="0" y="9" width="3.500" height="5" rx="1"/><rect x="5.500" y="6" width="3.500" height="8" rx="1"/><rect x="11" y="3" width="3.500" height="11" rx="1"/><rect x="16.500" y="0" width="3.500" height="14" rx="1"/></svg><svg width="20" height="15" viewBox="0 0 20 15"><path d="M10 14 7 11a4.300 4.300 0 0 1 6 0zM3.500 7.500a9.500 9.500 0 0 1 13 0l-1.700 1.700a7 7 0 0 0-9.600 0zM.5 4.500a13.700 13.700 0 0 1 19 0l-1.800 1.800a11.200 11.200 0 0 0-15.400 0z" fill="#fff"/></svg><em class="bt"><span id="vBat">35</span></em></div>
+ </div>
+ <div class="top">
+  <div class="hd">
+   <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#111" stroke-width="1.500" stroke-linecap="round" stroke-linejoin="round"><path d="M15 3 6 12l9 9"/></svg>
+   <div class="ti" id="vTitle"></div>
+   <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#111" stroke-width="1.500" stroke-linecap="round"><circle cx="11" cy="11" r="7.500"/><path d="m16.500 16.500 4.500 4.500"/></svg>
+   <svg width="20" height="26" viewBox="0 0 8 24" fill="#111"><circle cx="4" cy="6" r="1.600"/><circle cx="4" cy="14" r="1.600"/></svg>
+  </div>
+  <div class="bn" id="bn"><svg width="22" height="20" viewBox="0 0 24 22"><path d="M12 21S2 14.500 2 7.500A5.300 5.300 0 0 1 12 5a5.300 5.300 0 0 1 10 2.500C22 14.500 12 21 12 21z" fill="#dcdcdf"/></svg><span id="vBanner"></span></div>
+ </div>
+ <div class="ch" id="ch">
+  <div class="fab" id="fab"><svg width="34" height="30" viewBox="0 0 34 30"><path d="M17 28S3 19 3 9.500A7.500 7.500 0 0 1 17 6a7.500 7.500 0 0 1 14 3.500C31 19 17 28 17 28z" fill="#a77ef0"/><path d="M13 5.500A7 7 0 0 0 3 10c0 6 7 12 12 15.500C8 19 8 12 13 5.500z" fill="#f77bb5"/></svg></div>
+  <div class="dt" id="vDate"></div>
+  <div id="msgs"></div>
+ </div>
+</div>
+</div></div>
+</section>
+<section class="ps-card ps-side">
+<div class="ps-lbl">Edit Panel</div>
+<h2>bubble 내용 수정</h2>
+<div class="ps-edwrap"><div class="editor">
+<div class="ps-pn" data-t="기본">
+<label>상대 이름<input id="iName"></label>
+<label>상단 제목<input id="iTitle"></label>
+<label>상단 문구<input id="iBanner"></label>
+<label>날짜<input id="iDate"></label>
+<label>상태바 시간<input id="iClock"></label>
+<label>배터리 %<input id="iBat" type="number" min="1" max="100"></label>
+</div>
+<div class="ps-pn" data-t="메시지" hidden>
+<label class="col">대화 내용 (한 줄=한 말풍선)<textarea id="iMsgs" rows="12"></textarea></label>
+<p class="hint">상대: 내용 | 시간 &nbsp;·&nbsp; 내가 보냄: 앞에 &gt; &nbsp;·&nbsp; 사진: [사진] | 시간 &nbsp;·&nbsp; 큰 이모지: [이모지]🍀 | 시간</p>
+</div>
+<div class="ps-pn" data-t="이미지" hidden>
+<label class="ps-addp">+ 프로필 사진<input class="ps-sr" id="iAvatar" type="file" accept="image/*"></label>
+<label class="ps-addp">+ 사진 메시지 이미지<input class="ps-sr" id="iPhoto" type="file" accept="image/*"></label>
+<button class="ps-ghost" id="clearImg" type="button">기본 이미지로</button>
+</div>
+<div class="ps-pn" data-t="꾸미기" hidden>
+<div class="ps-tg"><span>아티스트 배지·링</span><label class="sw"><input id="iArt" type="checkbox" checked><i></i></label></div>
+<div class="ps-tg"><span>상단 문구 줄</span><label class="sw"><input id="iBnOn" type="checkbox" checked><i></i></label></div>
+<div class="ps-tg"><span>하트 버튼</span><label class="sw"><input id="iFab" type="checkbox"><i></i></label></div>
+<label>배경색<input id="iBg" type="color" value="#ededed"></label>
+<label>내 말풍선 색<input id="iMe" type="color" value="#a186ee"></label>
+<label>링·배지 색<input id="iRing" type="color" value="#6c8cf0"></label>
+</div>
+</div></div>
+<div class="ps-acts"><button id="savePng" type="button">PNG 저장</button><button id="reset" type="button">초기화</button></div>
+</section>
+</div>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js"></script>
+<script src="bubble.js?v=1"></script>
+</body>
+</html>
