@@ -27,7 +27,7 @@ var last=S.m[n-1];if(last&&+last.s&&S.read)h+='<div class="rd">'+esc(S.read)+'</
 $('mL').innerHTML=h}
 function list(){var h='';S.m.forEach(function(x,i){
 h+='<div class="mc" data-i="'+i+'"><div class="row"><label>보낸 사람<select data-f="s"><option value="0"'+(+x.s?'':' selected')+'>상대 (받음)</option><option value="1"'+(+x.s?' selected':'')+'>나 (보냄)</option></select></label><label>시간 라벨(위에 표시)<input data-f="l" value="'+esc(x.l)+'"></label></div>'+
-'<label>내용<textarea data-f="x" rows="3">'+esc(x.x)+'</textarea></label>'+'<label>사진 첨부<input type="file" accept="image/*" data-f="im"></label>'+(x.im?'<img class="ci" src="'+x.im+'" alt="" style="max-width:120px;border-radius:10px">':'')+'<label>사진 첨부 2 (2장이면 겹쳐서 전송)<input type="file" accept="image/*" data-f="im2"></label>'+(x.im2?'<img class="ci" src="'+x.im2+'" alt="" style="max-width:120px;border-radius:10px">':'')+
+'<label>내용<textarea data-f="x" rows="3">'+esc(x.x)+'</textarea></label>'+'<label>사진 첨부<input type="file" accept="image/*" data-f="im"></label>'+(x.im?'<img class="ci" src="'+x.im+'" alt="" style="max-width:120px;border-radius:10px">':'')+
 '<div class="row"><button type="button" class="mb" data-a="u">↑</button><button type="button" class="mb" data-a="d">↓</button><button type="button" class="mb" data-a="x">✕ 삭제</button></div></div>'});
 $('mlist').innerHTML=h}
 function set(){$('iRatio').value=S.ratio||'phone';$('iNm').value=S.nm;$('iCnt').value=S.cnt;$('iMode').value=S.mode;$('iRead').value=S.read}
