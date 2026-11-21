@@ -11,3 +11,8 @@
 .v{margin-left:auto;margin-right:10px;color:#e8457a;font-weight:700}
 .ps-ghost.primary{background:#e8457a;border-color:#e8457a;color:#fff}
 #reset{background:#f2f3f5!important;color:#222!important}
+
+/* 줌 버튼·셀프 되돌리기/전체 지우기 숨김 (스크립트 참조 유지용으로 요소는 남김) */
+.zoomTools,#selfHint,#selfTools{display:none!important}
+/* 모바일: 미리보기를 화면 상단에 고정 (html overflow가 sticky를 막던 문제 해결) */
+@media(max-width:720px){html{overflow-x:clip!important}}
