@@ -1,4 +1,48 @@
 <!DOCTYPE html>
-<html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Animal Crossing</title>
-<style>body{margin:0;min-height:100vh;display:grid;place-items:center;background:#e8f3dc;color:#34533a;font-family:Arial,sans-serif}.card{text-align:center;padding:32px;border-radius:24px;background:#fff9e9;box-shadow:0 12px 35px #34532a22}h1{font-size:28px}p{color:#71836b}</style></head>
-<body><main class="card"><h1>Animal Crossing</h1><p>Animal Crossing section</p></main></body></html>
+<html lang="ko"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no,viewport-fit=cover"><script src="../nozoom.js?v=1"></script>
+<title>동물의 숲 말풍선</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Jua&display=swap">
+<link rel="stylesheet" href="../ps-base.css?v=1">
+<style id="ed-font">.ps-wrap,.ps-wrap *{font-family:Pretendard,-apple-system,"Apple SD Gothic Neo","Noto Sans KR",sans-serif;letter-spacing:-.02em}#stage,#stage *{font-family:Jua,"Apple SD Gothic Neo",sans-serif;letter-spacing:0}</style>
+<link rel="stylesheet" href="../ps-editor.css?v=10">
+<link rel="stylesheet" href="../ps-shell.css?v=1">
+<link rel="stylesheet" href="animal-crossing.css?v=2">
+</head><body class="studio">
+<div class="ps-wrap">
+<header class="ps-top"><a href="../index.html">‹ 메인</a><button class="ps-pvbtn" id="pvBtn" type="button">미리보기 모드</button></header>
+<div class="ps-grid">
+<section class="ps-card ps-main">
+<div class="ps-lbl">Live Preview</div>
+<h2>동물의 숲 말풍선</h2>
+<p class="ps-sub">9:16 투명 PNG · 오른쪽에서 바로 수정해요</p>
+<div class="ps-stage"><div class="view" id="view"><div class="chk"><div id="stage">
+<div id="grp"><div class="tag" id="vName"></div>
+<div class="bub"><p id="vTxt"></p><i class="arr" id="vArr"></i></div></div>
+</div></div></div></div>
+</section>
+<section class="ps-card ps-side">
+<div class="ps-lbl">Edit Panel</div>
+<h2>동물의 숲 말풍선 수정</h2>
+<div class="ps-edwrap"><div class="editor">
+<div class="ps-pn" data-t="기본">
+<label>이름<input id="iName"></label>
+<label>대사 (줄바꿈 반영)<textarea id="iTxt" rows="4"></textarea></label>
+<div class="ps-tg"><span>▼ 표시</span><label class="sw"><input id="iA" type="checkbox"><i></i></label></div>
+</div>
+<div class="ps-pn" data-t="스타일">
+<label>말풍선<input id="iBub" type="color"></label>
+<label>이름표<input id="iAc" type="color"></label>
+<label>글자<input id="iCol" type="color"></label>
+<label>세로 위치 <span id="pY"></span><input id="iY" type="range" min="10" max="85"></label>
+<label>글자 크기 <span id="pS"></span><input id="iS" type="range" min="40" max="90"></label>
+</div>
+</div></div>
+<div class="ps-acts"><button id="reset" type="button">초기화</button><button id="savePng" type="button">PNG 저장</button></div>
+</section>
+</div>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js"></script>
+<script src="animal-crossing.js?v=2"></script>
+<script src="../ps-tabs.js?v=1"></script>
+</body></html>

@@ -1,0 +1,10 @@
+/* 공통 편집 화면 보조 스타일 (Zoom 편집화면 기준) */
+.ps-top a{color:#e8457a;font-weight:700;text-decoration:none}
+.ps-stage{position:relative}
+body.studio .ps-side .pcard{padding:12px 14px 4px;border:1px solid var(--ln);border-radius:16px;margin:0 0 12px;background:#fff}
+body.studio .ps-side .pcard b{display:block;margin:0 0 10px;font-size:14px}
+body.studio .ps-side textarea{flex:0 0 56%;width:56%;min-width:0;padding:10px 14px;font:inherit;font-size:16px;border:1px solid var(--ln);border-radius:12px;background:#f5f5f7;resize:vertical}
+body.studio .ps-side select{flex:0 0 56%;width:56%;height:44px;padding:0 10px;font:inherit;font-size:16px;border:1px solid var(--ln);border-radius:12px;background:#f5f5f7}
+body.studio .ps-side input[type=range]{flex:0 0 56%;width:56%}
+.ps-pv9{max-width:405px;margin:0 auto}
+.vp{margin:0 auto}

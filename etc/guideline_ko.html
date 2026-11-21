@@ -1,11 +1,20 @@
 <!DOCTYPE html>
-<html lang="ko"><head><meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
+<html lang="ko"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no,viewport-fit=cover"><script src="../nozoom.js?v=1"></script>
 <title>ID Photo Guideline KO</title>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.css">
-<link rel="stylesheet" href="guideline_ko.css"></head>
-<body><div class="app">
-<section><div class="vp" id="vp"><div id="cv">
+<link rel="stylesheet" href="../ps-base.css?v=1">
+<link rel="stylesheet" href="../ps-editor.css?v=10">
+<link rel="stylesheet" href="../ps-shell.css?v=1">
+<link rel="stylesheet" href="guideline_ko.css?v=2">
+</head><body class="studio">
+<div class="ps-wrap">
+<header class="ps-top"><a href="index.html">‹ Etc</a><button class="ps-pvbtn" id="pvBtn" type="button">미리보기 모드</button></header>
+<div class="ps-grid">
+<section class="ps-card ps-main">
+<div class="ps-lbl">Live Preview</div>
+<h2>ID Photo Guideline</h2>
+<p class="ps-sub">9:16 투명 PNG · 오른쪽에서 바로 수정해요</p>
+<div class="ps-stage"><div class="vp" id="vp"><div id="cv">
  <div class="top"><span class="ch"><i></i><b id="vCh"></b></span><span class="tm" id="vTime"></span></div>
  <div class="card">
   <div class="row1">
@@ -19,26 +28,36 @@
   </div>
   <div class="ng" id="ng"></div>
  </div>
- <div class="nb"><div class="hd"><b id="vLabel"></b><p id="vHead"></p></div><div class="tk" id="vTick"></div></div>
-</div></div></section>
-<section class="ed"><h2>수정 패널</h2>
- <label>채널명<input id="iCh" value="NEWS 24"></label>
- <label>시각<input id="iTime" value="LIVE 21:00"></label>
- <label>속보 라벨<input id="iLabel" value="속보"></label>
- <label>헤드라인<textarea id="iHead" rows="2">증명사진, 이렇게 찍어 주세요</textarea></label>
- <label>하단 자막<input id="iTick" value="3개월 이내에 촬영한 사진만 사용 가능합니다"></label>
- <hr>
- <label>제목<textarea id="iTitle" rows="2">증명사진
+ <div class="nb"><div class="hd"><b id="vLabel"></b><p id="vHead"></p></div><div class="tk" id="vTick"></div></div></div>
+</section>
+<section class="ps-card ps-side">
+<div class="ps-lbl">Edit Panel</div>
+<h2>ID Photo Guideline 수정</h2>
+<div class="ps-edwrap"><div class="editor">
+<div class="ps-pn" data-t="기본">
+<label>채널명<input id="iCh" value="NEWS 24"></label>
+<label>시각<input id="iTime" value="LIVE 21:00"></label>
+<label>속보 라벨<input id="iLabel" value="속보"></label>
+<label>헤드라인<textarea id="iHead" rows="2">증명사진, 이렇게 찍어 주세요</textarea></label>
+<label>하단 자막<input id="iTick" value="3개월 이내에 촬영한 사진만 사용 가능합니다"></label>
+<label>제목<textarea id="iTitle" rows="2">증명사진
 가이드라인</textarea></label>
- <label>소제목<input id="iOk" value="적절한 사진 예시"></label>
- <label>설명<textarea id="iDesc" rows="3">오른쪽과 같은 적절한 사진을
+<label>소제목<input id="iOk" value="적절한 사진 예시"></label>
+<label>설명<textarea id="iDesc" rows="3">오른쪽과 같은 적절한 사진을
 부탁드립니다.
 (3개월 이내에 촬영 된 것)</textarea></label>
- <hr>
- <label>사진 모드<select id="iMode"><option value="blue">파랑 그라데이션</option><option value="green">그린스크린</option><option value="photo">사진</option></select></label>
- <label>적절한 사진<input id="iMain" type="file" accept="image/*"></label>
- <div id="slots"></div>
- <div class="btns"><button id="save">PNG 저장 (1080×1920)</button><button id="reset">초기화</button></div>
-</section></div>
+</div>
+<div class="ps-pn" data-t="이미지">
+<label>사진 모드<select id="iMode"><option value="blue">파랑 그라데이션</option><option value="green">그린스크린</option><option value="photo">사진</option></select></label>
+<div class="pcard"><b>적절한 사진</b><label>이미지<input id="iMain" type="file" accept="image/*"></label></div>
+<div id="slots"></div>
+</div>
+</div></div>
+<div class="ps-acts"><button id="reset" type="button">초기화</button><button id="savePng" type="button">PNG 저장</button></div>
+</section>
+</div>
+</div>
 <script src="https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js"></script>
-<script src="guideline_ko.js"></script></body></html>
+<script src="guideline_ko.js?v=2"></script>
+<script src="../ps-tabs.js?v=1"></script>
+</body></html>

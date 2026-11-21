@@ -178,7 +178,7 @@ function drawPieceOn(target,p,px,py){
   c.drawImage(base,p.srcX-n/2,p.srcY-n/2,n,n,0,0,n,n);
   const x=px+p.dstX-n/2,y=py+p.dstY-n/2;
   target.save();
-  if($('#shadow').value==='on'){target.shadowColor='rgba(0,0,0,.25)';target.shadowBlur=8;target.shadowOffsetY=3}
+  if($('#shadow').checked){target.shadowColor='rgba(0,0,0,.25)';target.shadowBlur=8;target.shadowOffsetY=3}
   target.drawImage(q,x,y);
   target.restore();
 }
@@ -235,7 +235,7 @@ async function saveState(){
       settings:{selfMode,char:$('#char').value,sizeMode:$('#sizeMode').value,minsize:$('#minsize').value,shape:$('#shape').value,axis:$('#axis').value,side:$('#side').value,
         size:$('#size').value,angle:$('#angle').value,count:$('#count').value,
         spacing:$('#spacing').value,rot:$('#rot').value,bg:$('#bg').value,
-        shadow:$('#shadow').value}
+        shadow:$('#shadow').checked?'on':'off'}
     },'current');
     tx.oncomplete=()=>db.close();
   }catch(e){console.warn('상태 저장 실패',e)}
@@ -255,7 +255,7 @@ async function loadState(){
     const s=state.settings;
     $('#shape').value=s.shape;if(!$('#shape').value)$('#shape').value='circle';$('#axis').value=s.axis;$('#size').value=s.size;$('#angle').value=s.angle;
     $('#count').value=s.count;$('#spacing').value=s.spacing;$('#rot').value=s.rot;$('#bg').value=s.bg;
-    $('#shadow').value=s.shadow;
+    $('#shadow').checked=s.shadow==='on';
     selfMode=!!s.selfMode;applySelfUI();
     $('#char').value=s.char||'';$('#sizeMode').value=s.sizeMode||'fixed';$('#minsize').value=s.minsize||24;
     syncLabels();syncSideOptions();$('#side').value=s.side;
@@ -312,7 +312,7 @@ $('#file').addEventListener('change',async e=>{
 /* ---------- 컨트롤 ---------- */
 function syncLabels(){
   const rnd=$('#sizeMode').value==='random';
-  $('#minWrap').style.display=rnd?'grid':'none';
+  $('#minWrap').style.display=rnd?'flex':'none';
   $('#sizeLabel').textContent=rnd?'최대 크기':'크기';
   $('#shape').style.opacity=getChar()?.45:1; // 글자 입력 중이면 도형 선택은 흐리게
   $('#mv').textContent=$('#minsize').value;
@@ -360,12 +360,12 @@ $('#reset').onclick=async()=>{
   $('#shape').value='star';$('#axis').value='horizontal';
   $('#size').value='54';$('#angle').value='0';$('#count').value='1';$('#spacing').value='8';
   $('#char').value='';$('#sizeMode').value='fixed';$('#minsize').value='24';
-  $('#rot').value='fixed';$('#bg').value='#9edcff';$('#shadow').value='off';
+  $('#rot').value='fixed';$('#bg').value='#9edcff';$('#shadow').checked=false;
   syncLabels();syncSideOptions();
   cv.style.display='none';$('#empty').style.display='block';
 };
 
-$('#save').onclick=()=>{
+$('#savePng').onclick=()=>{
   if(!base)return;
   const L=layoutSize(),o=document.createElement('canvas');
   o.width=L.width;o.height=L.height;

@@ -1,79 +1,13 @@
-*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
-html{-webkit-text-size-adjust:100%;overflow-x:hidden}
-body{margin:0;background:#f7f7f5;color:#111;font-family:Pretendard,system-ui,sans-serif;touch-action:manipulation}
-main{max-width:1100px;margin:auto;padding:20px 20px 110px}
-.pageTitle{display:flex;align-items:center;gap:10px}h2{margin:0 0 8px}
-.layout{display:grid;grid-template-columns:minmax(0,1fr) 280px;gap:16px;align-items:start}
-.panel{background:#fff;border:1px solid #e5e5e0;border-radius:18px;padding:16px}
-.controls{display:grid;gap:12px}
-label{font-size:12px;color:#777;display:grid;gap:6px}
-select,button,input{font:inherit;font-size:16px}
-select,button,input[type=text]{border:1px solid #ddd;border-radius:10px;background:#fff;padding:9px}
-select,input[type=text]{width:100%;min-width:0}
-button{cursor:pointer}
-.primary{background:#111;color:#fff;border-color:#111}
-input[type=range]{width:100%;accent-color:#111;margin:0}
-input[type=color]{width:100%;height:40px;padding:2px;border:1px solid #ddd;border-radius:10px;background:#fff}
-.upload{position:relative;border:1px dashed #bbb;padding:20px;text-align:center;border-radius:12px;cursor:pointer;overflow:hidden}
-.upload input{position:absolute;inset:0;width:100%;height:100%;opacity:0;cursor:pointer}
- .stage{width:100%;margin:0 auto;background-color:#f1f1ee;background-image:linear-gradient(45deg,#e7e7e3 25%,transparent 25%),linear-gradient(-45deg,#e7e7e3 25%,transparent 25%),linear-gradient(45deg,transparent 75%,#e7e7e3 75%),linear-gradient(-45deg,transparent 75%,#e7e7e3 75%);background-size:20px 20px;background-position:0 0,0 10px,10px -10px,-10px 0;border-radius:14px;padding:10px;overflow:hidden;display:flex;justify-content:center;align-items:center;aspect-ratio:1 / 1;min-height:0}
-.stage{overflow:auto}.stage canvas{max-width:100%;max-height:100%;width:auto;height:auto;touch-action:none;-webkit-touch-callout:none;user-select:none;-webkit-user-select:none}
+/* 미리보기 영역 전용 (편집 UI는 ps-base.css / ps-editor.css 공통) */
+.stage{width:100%;margin:0 auto;background-color:#f1f1ee;background-image:linear-gradient(45deg,#e7e7e3 25%,transparent 25%),linear-gradient(-45deg,#e7e7e3 25%,transparent 25%),linear-gradient(45deg,transparent 75%,#e7e7e3 75%),linear-gradient(-45deg,transparent 75%,#e7e7e3 75%);background-size:20px 20px;background-position:0 0,0 10px,10px -10px,-10px 0;border-radius:14px;padding:10px;overflow:auto;display:flex;justify-content:center;align-items:center;aspect-ratio:1/1;min-height:0}
+.stage canvas{max-width:100%;max-height:100%;width:auto;height:auto;touch-action:none;-webkit-touch-callout:none;user-select:none;-webkit-user-select:none}
 .empty{color:#999;font-size:13px}
-.zoomTools{display:flex;justify-content:center;align-items:center;gap:8px;margin-top:8px}.zoomTools button{width:42px;height:34px;padding:0}.zoomTools span{min-width:58px;text-align:center;font-size:13px;color:#555}.zoomTools #zoomReset{min-width:58px;width:auto;font-size:13px;color:#555;background:#fff}.selfTools{display:flex;gap:8px;margin-top:8px}.selfTools button{flex:1}
-.selfHint{margin:8px 2px 0}
+.zoomTools{display:flex;justify-content:center;align-items:center;gap:8px;margin-top:10px}
+.zoomTools button,.selfTools button{height:38px;border:1px solid #e3e5e8;border-radius:10px;background:#fff;color:#333;font-size:14px;font-weight:600}
+.zoomTools button{min-width:44px;padding:0 12px}
+.selfTools{display:flex;gap:8px;margin-top:8px}.selfTools button{flex:1}
+.hint{font-size:12px;color:#8a8f98;line-height:1.5;margin:8px 2px 0}
 .hidden{display:none!important}
-.row{display:flex;gap:7px}.row>*{flex:1}
-.bar{display:grid;gap:8px}
-.v{float:right;color:#111;font-weight:600}
-.hint{font-size:11px;color:#999;line-height:1.5}
-
-/* ---------- PC ---------- */
-@media(min-width:721px){
-  main{max-width:1500px;padding:14px 20px 110px}
-  .layout{grid-template-columns:minmax(0,1fr) 560px;gap:18px}
-  .ctrlPanel{padding:14px;grid-column:2;grid-row:1}
-  .stagePanel{grid-column:1;grid-row:1}
-  .controls{grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:8px 14px}
-  .controls>.full{grid-column:1/-1}
-  .controls label{gap:3px;min-width:0;align-self:start}
-  .shapeField,.charField{grid-row:span 1}
-  .shapeField select,.charField input[type=text]{height:36px;min-height:36px;line-height:1.2;margin:0}
-  .controls select,.controls input[type=text]{padding:6px 9px}
-  .controls input[type=range]{height:22px}
-  .controls input[type=color]{height:32px}
-  .controls .bar{grid-column:1/-1}
-  .stage{aspect-ratio:1 / 1;max-height:none;width:100%;margin:0 auto}
-  .stage canvas{max-width:100%;max-height:100%;width:auto;height:auto}
-}
-
-/* ---------- 모바일 ---------- */
-@media(max-width:720px){
-  main{padding:8px 10px 24px}
-  h2{font-size:17px;margin:2px 2px 6px}
-  .hint.top,#charHint,.hint.desc{display:none}
-  .layout{grid-template-columns:minmax(0,1fr);gap:10px}
-  /* 캔버스는 항상 화면 위에 고정 → 아래 옵션을 만지면서 결과를 바로 확인 */
-  .stagePanel{order:-1;position:sticky;top:0;z-index:10;padding:8px;border-radius:14px;box-shadow:0 4px 14px rgba(0,0,0,.08)}
-  .stage{aspect-ratio:auto;min-height:0;max-height:none;width:100%;margin:0 auto;padding:6px;overflow:hidden}
-  .stage canvas{max-width:100%;max-height:100%;width:auto;height:auto}
-  .panel.ctrlPanel{padding:12px}
-  /* 옵션은 2열로 촘촘하게, 슬라이더도 반반 */
-  .controls{grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:10px}
-  .controls .full{grid-column:1/-1}
-  /* iOS 입력창 자동 확대 방지(16px 미만이면 확대됨) + 터치 영역 44px */
-  select,input[type=text]{font-size:16px;min-height:44px}
-  button{min-height:44px;font-size:15px}
-  input[type=range]{height:32px}
-  .upload{padding:14px}
-  /* 엠보시드처럼 초기화/저장/셀프 모드는 설정 패널 안에서 일반 흐름으로 표시 */
-  .bar{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:12px;width:100%;background:none;border:0;padding:0}
-  .bar .row{display:contents}
-  .bar button{min-height:46px;padding:8px 10px;background:#fff;box-shadow:none}
-  .bar #selfBtn{grid-column:1/-1;grid-row:1}
-  .bar #reset{grid-column:1;grid-row:2}
-  .bar #save{grid-column:2;grid-row:2}\n  .bar #save{background:#111!important;color:#fff!important;border-color:#111!important}
-  .zoomTools{margin-top:6px}.selfTools{margin-top:6px}.selfTools button{min-height:38px;font-size:14px}
-  .selfHint{margin:6px 2px 0;font-size:11px}
-}
-
-#reset{background:#fff!important;color:#2196f3!important;border-color:#111!important}
+.v{margin-left:auto;margin-right:10px;color:#e8457a;font-weight:700}
+.ps-ghost.primary{background:#e8457a;border-color:#e8457a;color:#fff}
+#reset{background:#f2f3f5!important;color:#222!important}

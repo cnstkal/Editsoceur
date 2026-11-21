@@ -1,10 +1,4 @@
-*{box-sizing:border-box;margin:0}
-body{background:#f2f3f5;color:#111;font-family:Jua,"Apple SD Gothic Neo",sans-serif}
-.wrap{display:grid;grid-template-columns:1fr 340px;gap:20px;max-width:1000px;margin:0 auto;padding:20px}
-@media(max-width:800px){.wrap{grid-template-columns:1fr}}
-.card{background:#fff;border-radius:16px;padding:18px;box-shadow:0 1px 4px #0001}
-.lbl{font-size:12px;color:#888;margin-bottom:8px}
-h2{font-size:18px;margin-bottom:12px;font-weight:400}
+/* 미리보기 스테이지 전용 */
 .view{width:100%;max-width:405px;aspect-ratio:9/16;margin:0 auto;position:relative;overflow:hidden;border-radius:8px}
 .chk{position:absolute;left:0;top:0;transform-origin:0 0;width:1080px;height:1920px;background:repeating-conic-gradient(#ddd 0 25%,#fff 0 50%) 0 0/40px 40px}
 #stage{position:relative;width:1080px;height:1920px;overflow:hidden}
@@ -13,11 +7,4 @@ h2{font-size:18px;margin-bottom:12px;font-weight:400}
 .bub{position:relative;background:var(--bub);padding:84px 90px 96px;border-radius:120px 140px 130px 150px/110px 130px 120px 140px;box-shadow:0 10px 0 #0001}
 .bub p{color:var(--col);font-size:var(--fs);line-height:1.55;white-space:pre-wrap;word-break:keep-all}
 .arr{position:absolute;left:50%;bottom:30px;width:50px;height:36px;margin-left:-25px;background:#f5b323;clip-path:polygon(0 0,100% 0,50% 100%);border-radius:4px}
-label{display:block;font-size:12px;color:#666;margin-bottom:10px}
-input,textarea{display:block;width:100%;margin-top:4px;padding:8px 10px;border:1px solid #ddd;border-radius:8px;font:inherit;font-size:14px;color:#111}
-input[type=color]{padding:2px;height:34px}input[type=range]{padding:0}
-.row{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
-.tg{display:flex;gap:8px;align-items:center}.tg input{width:auto;margin:0}
-.acts{display:flex;gap:8px}
-button{flex:1;padding:11px;border:0;border-radius:10px;background:#f06a8d;color:#fff;font:inherit;cursor:pointer}
-button.g{background:#eee;color:#333}
+#stage p{margin:0}

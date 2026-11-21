@@ -11,9 +11,9 @@ F.forEach(function(p){var i=$(p[0]),o=$(p[1]);defs[p[0]]=i.value;
 /* photo slots */
 for(var k=0;k<N;k++){
  var d=document.createElement('div');d.className='ph';$('photos').appendChild(d);
- var l=document.createElement('input');l.type='file';l.accept='image/*';l.title='사진 '+(k+1);
- (function(k,l){l.onchange=function(){read(l.files[0],function(u){imgs[k]=u;render()})}})(k,l);
- $('slots').appendChild(l);
+ var w=document.createElement('div');w.className='pcard';w.innerHTML='<b>사진 '+(k+1)+'</b><label>이미지<input type="file" accept="image/*"></label>';
+ (function(k,l){l.onchange=function(){read(l.files[0],function(u){imgs[k]=u;$('iMode').value='photo';render()})}})(k,w.querySelector('input'));
+ $('slots').appendChild(w);
 }
 function read(f,cb){if(!f)return;var r=new FileReader();r.onload=function(){cb(r.result)};r.readAsDataURL(f)}
 $('iAll').onchange=function(){read(this.files[0],function(u){for(var k=0;k<N;k++)imgs[k]=u;$('iMode').value='photo';render()})};
@@ -29,15 +29,14 @@ render();
 
 /* fit preview to 9:16 */
 function fit(){
- var s=Math.min((window.innerWidth-40)/1080,(window.innerHeight-40)/1920,.5);
- s=Math.max(s,.15);
+ var s=Math.max(.1,Math.min(vp.parentNode.clientWidth||405,405)/1080);
  vp.style.width=1080*s+'px';vp.style.height=1920*s+'px';
  cv.style.transform='scale('+s+')';
 }
 window.addEventListener('resize',fit);fit();
 
 /* save transparent PNG */
-$('save').onclick=function(){
+$('savePng').onclick=function(){
  var t=cv.style.transform;cv.style.transform='none';
  html2canvas(cv,{backgroundColor:null,scale:1,useCORS:true,width:1080,height:1920}).then(function(c){
   cv.style.transform=t;

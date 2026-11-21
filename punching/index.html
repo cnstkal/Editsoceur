@@ -1,23 +1,57 @@
-<!doctype html><html lang="ko"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no,viewport-fit=cover"><meta name="theme-color" content="#f7f7f5"><title>PUNCHING</title><link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.css"><link rel="stylesheet" href="style.css"></head><body><main><h2 class="pageTitle"><span>PUNCHING</span></h2><div class="layout"><section class="panel ctrlPanel"><div class="controls">
-<label class="upload full">📷 사진 업로드<input id="file" type="file" accept="image/*"></label>
-<label class="shapeField">도형<select id="shape">
+<!DOCTYPE html>
+<html lang="ko"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no,viewport-fit=cover"><script src="../nozoom.js?v=1"></script><meta name="theme-color" content="#f2f3f5">
+<title>PUNCHING</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.css">
+<link rel="stylesheet" href="../ps-base.css?v=1">
+<style id="ed-font">html,body,body *{font-family:Pretendard,-apple-system,"Apple SD Gothic Neo","Noto Sans KR",sans-serif!important;letter-spacing:-.02em!important}</style>
+<link rel="stylesheet" href="../ps-editor.css?v=10">
+<link rel="stylesheet" href="../ps-shell.css?v=1">
+<link rel="stylesheet" href="style.css?v=2">
+</head><body class="studio">
+<div class="ps-wrap">
+<header class="ps-top"><a href="../index.html">‹ 메인</a><button class="ps-pvbtn" id="pvBtn" type="button">미리보기 모드</button></header>
+<div class="ps-grid">
+<section class="ps-card ps-main">
+<div class="ps-lbl">Live Preview</div>
+<h2>PUNCHING</h2>
+<p class="ps-sub">사진을 올리고 오른쪽에서 바로 수정해요</p>
+<div class="ps-stage"><div class="stage"><div class="empty" id="empty">사진을 업로드해 주세요</div><canvas id="cv" style="display:none"></canvas></div>
+<div class="zoomTools"><button id="zoomOut" type="button">−</button><button id="zoomReset" type="button">100%</button><button id="zoomIn" type="button">＋</button></div>
+<div class="hint selfHint hidden" id="selfHint">터치한 곳에 도형이 찍히고 반대편에 조각이 생겨요.</div>
+<div class="selfTools hidden" id="selfTools"><button id="undo" type="button">↩ 되돌리기</button><button id="clearAll" type="button">전체 지우기</button></div></div>
+</section>
+<section class="ps-card ps-side">
+<div class="ps-lbl">Edit Panel</div>
+<h2>PUNCHING 수정</h2>
+<div class="ps-edwrap"><div class="editor">
+<div class="ps-pn" data-t="기본">
+<label>사진 업로드<input id="file" type="file" accept="image/*"></label>
+<label>도형<select id="shape">
 <option value="star" selected>별</option><option value="circle">원</option><option value="heart">하트</option><option value="flower">꽃</option><option value="cloud">동그라미 구름</option><option value="diamond">다이아몬드</option><option value="triangle">삼각형</option><option value="square">사각형</option><option value="oval">타원</option><option value="crescent">초승달</option><option value="pentagon">오각형</option><option value="hexagon">육각형</option><option value="ring">링</option><option value="cross">십자</option><option value="plus">플러스</option><option value="semicircle">반원</option><option value="clover">네잎클로버</option><option value="sparkle">반짝이</option><option value="drop">물방울</option><option value="petal">꽃잎</option><option value="bow">리본</option>
 </select></label>
-<label id="charWrap" class="charField">직접 입력 (1글자)<input id="char" type="text" value="" placeholder="예: 하, A, ♥" autocomplete="off" style="font-size:16px;text-align:center"></label>
+<label id="charWrap">직접 입력 (1글자)<input id="char" type="text" value="" placeholder="예: 하, A, ♥" autocomplete="off"></label>
+<button class="ps-ghost" id="selfBtn" type="button">셀프 모드</button>
+</div>
+<div class="ps-pn" data-t="배치">
 <label>펀칭 방향<select id="axis"><option value="horizontal">가로</option><option value="vertical">세로</option></select></label>
 <label>펀칭 위치<select id="side"></select></label>
+<label>개수 <span class="v" id="cvv">10</span><input id="count" type="range" min="1" max="50" value="10"></label>
+<label>간격 <span class="v" id="spv">8</span><input id="spacing" type="range" min="0" max="120" value="8"></label>
+</div>
+<div class="ps-pn" data-t="스타일">
 <label>크기 방식<select id="sizeMode"><option value="fixed">고정</option><option value="random">랜덤 (섞기)</option></select></label>
 <label>회전 방식<select id="rot"><option value="fixed">고정 각도</option><option value="random">랜덤</option></select></label>
 <label><span id="sizeLabel">크기</span> <span class="v" id="sv">54</span><input id="size" type="range" min="12" max="180" value="54"></label>
 <label id="minWrap" style="display:none">최소 크기 <span class="v" id="mv">24</span><input id="minsize" type="range" min="8" max="180" value="24"></label>
 <label>각도 <span class="v" id="rv">0°</span><input id="angle" type="range" min="0" max="359" value="0"></label>
-<label>개수 <span class="v" id="cvv">10</span><input id="count" type="range" min="1" max="50" value="10"></label>
-<label>간격 <span class="v" id="spv">8</span><input id="spacing" type="range" min="0" max="120" value="8"></label>
 <label>배경색<input id="bg" type="color" value="#9edcff"></label>
-<label>그림자<select id="shadow"><option value="off" selected>끄기</option><option value="on">켜기</option></select></label>
-<div class="bar full" style="margin-top:14px"><button id="selfBtn">셀프 모드</button><div class="row"><button id="reset">초기화</button><button id="save" class="primary">PNG 저장</button></div></div>
-</div></section><section class="panel stagePanel"><div class="stage"><div class="empty" id="empty">사진을 업로드해 주세요</div><canvas id="cv" style="display:none"></canvas></div>
-<div class="zoomTools"><button id="zoomOut" type="button">−</button><button id="zoomReset" type="button">100%</button><button id="zoomIn" type="button">＋</button></div>
-<div class="hint selfHint hidden" id="selfHint">터치한 곳에 도형이 찍히고 반대편에 조각이 생겨요.</div>
-<div class="selfTools hidden" id="selfTools"><button id="undo">↩ 되돌리기</button><button id="clearAll">전체 지우기</button></div></section></div></main>
-<script src="script.js"></script></body></html>
+<div class="ps-tg"><span>그림자</span><label class="sw"><input id="shadow" type="checkbox"><i></i></label></div>
+</div>
+</div></div>
+<div class="ps-acts"><button id="reset" type="button">초기화</button><button id="savePng" type="button">PNG 저장</button></div>
+</section>
+</div>
+</div>
+<script src="script.js?v=2"></script>
+<script src="../ps-tabs.js?v=1"></script>
+</body></html>

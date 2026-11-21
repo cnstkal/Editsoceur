@@ -16,8 +16,8 @@ $('grp').style.top=v.Y+'%';$('pY').textContent=v.Y+'%';$('pS').textContent=v.S+'
 }
 function fit(){var w=$('view').clientWidth;if(w)canvas.style.transform='scale('+(w/1080)+')'}
 ids.forEach(function(k){$('i'+k).addEventListener('input',r)});
-$('reset').onclick=load;window.addEventListener('resize',fit);
-$('save').onclick=function(){
+$('reset').onclick=load;window.addEventListener('resize',fit);if(window.ResizeObserver)new ResizeObserver(fit).observe($('view'));
+$('savePng').onclick=function(){
 var old=canvas.style.transform;canvas.style.transform='none';
 (document.fonts?document.fonts.ready:Promise.resolve()).then(function(){
 return html2canvas(st,{backgroundColor:null,scale:1,width:1080,height:1920,useCORS:true})

@@ -1,8 +1,6 @@
 :root{--navy:#0b1f4d;--red:#d6201f}
-*{box-sizing:border-box;margin:0}
+#cv *{margin:0}
 html,body,body *{font-family:Pretendard,-apple-system,"Apple SD Gothic Neo","Noto Sans KR",sans-serif!important;letter-spacing:-.02em!important}
-body{background:#eef1f6}
-.app{display:flex;gap:20px;padding:16px;flex-wrap:wrap;justify-content:center;align-items:flex-start}
 .vp{position:relative;overflow:hidden;border-radius:12px;background:repeating-conic-gradient(#ddd 0 25%,#fff 0 50%) 0 0/20px 20px}
 #cv{position:absolute;left:0;top:0;width:1080px;height:1920px;transform-origin:0 0}
 .top{position:absolute;left:60px;right:60px;top:50px;display:flex;justify-content:space-between}
@@ -34,13 +32,3 @@ body{background:#eef1f6}
 .hd b{background:var(--red);color:#fff;font-size:56px;font-weight:900;padding:26px 36px;display:flex;align-items:center}
 .hd p{flex:1;background:var(--navy);color:#fff;font-size:50px;font-weight:800;padding:26px 32px;line-height:1.25;display:flex;align-items:center}
 .tk{margin:0 40px;background:#fff;color:var(--navy);font-size:30px;font-weight:700;padding:16px 32px;border-top:6px solid var(--red)}
-.ed{width:360px;max-width:100%;background:#fff;border-radius:14px;padding:18px;display:flex;flex-direction:column;gap:10px}
-.ed h2{font-size:18px}
-.ed label{display:flex;flex-direction:column;gap:4px;font-size:12px;font-weight:700;color:#556}
-.ed input,.ed textarea,.ed select{font-size:14px;padding:9px;border:1px solid #ccd;border-radius:8px;width:100%}
-.ed hr{border:0;border-top:1px solid #e3e6ee}
-#slots{display:grid;grid-template-columns:1fr 1fr;gap:8px}
-#slots label{font-size:11px}
-.btns{display:flex;gap:8px}
-.btns button{flex:1;padding:12px;border:0;border-radius:10px;font-weight:800;background:var(--navy);color:#fff;cursor:pointer}
-.btns #reset{background:#e3e6ee;color:#223;flex:.5}
