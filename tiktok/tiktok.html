@@ -44,20 +44,28 @@
 <section class="card side">
 <div class="lbl">Edit Panel</div>
 <h2>틱톡 수정</h2>
+<div class="edit-tabs" role="tablist">
+<button type="button" class="edit-tab active" data-panel="basic">기본</button>
+<button type="button" class="edit-tab" data-panel="images">이미지</button>
+</div>
+<div class="edit-panel active" id="panel-basic">
 <div class="row"><label>이름<input id="iN"></label><label>제목<input id="iT"></label></div>
 <div class="row"><label>캡션<input id="iCp"></label><label>음악<input id="iM"></label></div>
 <div class="row"><label>리포스트 문구<input id="iRp"></label><label>검색 문구<input id="iSr"></label></div>
 <div class="row"><label>좋아요<input id="iL"></label><label>댓글<input id="iC"></label></div>
 <div class="row"><label>저장<input id="iB"></label><label>공유<input id="iS"></label></div>
 <label>인박스 배지<input id="iIb"></label>
-<label class="f">영상(메인) 사진<input id="fVid" type="file" accept="image/*"></label>
-<label class="f">프로필(우측)<input id="fAv" type="file" accept="image/*"></label>
-<label class="f">프로필(하단 작은)<input id="fSa" type="file" accept="image/*"></label>
-<label class="f">음악 원판<input id="fD" type="file" accept="image/*"></label>
 <label class="tg">리포스트 표시<input id="tRp" type="checkbox"></label>
 <label class="tg">For You 밑줄<input id="tFy" type="checkbox"></label>
-<div class="acts"><button id="reset" type="button">초기화</button><button id="save" type="button">PNG 저장</button></div>
-</section>
+</div>
+<div class="edit-panel" id="panel-images">
+<p class="panel-note">사진을 바꾸면 미리보기에 바로 반영돼</p>
+<label class="f">메인 사진<input id="fVid" type="file" accept="image/*"></label>
+<label class="f">프로필 사진 · 우측<input id="fAv" type="file" accept="image/*"></label>
+<label class="f">프로필 사진 · 하단 작은 사진<input id="fSa" type="file" accept="image/*"></label>
+<label class="f">음악 원판 사진<input id="fD" type="file" accept="image/*"></label>
+</div>
+<div class="acts"><button id="reset" type="button">초기화</button><button id="save" type="button">PNG 저장</button></div></section>
 </div>
 <script src="https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js"></script>
 <script src="tiktok.js"></script>
