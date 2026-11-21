@@ -7,20 +7,20 @@ h2{font-size:24px;font-weight:700;margin:8px 0 20px}
 .stage{display:flex;justify-content:center}
 #snap{position:relative;width:270px;height:480px;background:#000;overflow:hidden;color:#fff;letter-spacing:-.02em;box-shadow:0 2px 12px rgba(0,0,0,.25)}
 #snap *{letter-spacing:-.02em}
-.live{position:absolute;left:12px;top:10px}
-.tabs span{position:absolute;top:13px;transform:translateX(-50%);font-size:9.500px;line-height:14px;color:#e8e8e8;white-space:nowrap}
+.live{position:absolute;left:12px;top:10px;z-index:2}
+.tabs{position:relative;z-index:2}.tabs span{position:absolute;top:13px;transform:translateX(-50%);font-size:9.500px;line-height:14px;color:#e8e8e8;white-space:nowrap}
 .tabs .fy{font-weight:700;color:#fff}
 .tabs .fy.ul::after{content:"";position:absolute;left:0;right:0;bottom:-3px;height:1px;background:#fff}
-.srch{position:absolute;left:241px;top:12px}
-.vid{position:absolute;left:0;top:54px;width:270px;height:303px;overflow:hidden}
+.srch{position:absolute;left:241px;top:12px;z-index:2}
+.vid{position:absolute;left:0;top:0;width:270px;height:480px;overflow:hidden;z-index:0}
 .vid img{width:100%;height:100%;object-fit:cover;display:block}
-.rail{position:absolute;left:0;top:0;width:270px}
+.rail{position:absolute;left:0;top:0;width:270px;z-index:2}
 .avw{position:absolute;left:236px;top:209px;width:26px;height:26px}
 .avw img{width:26px;height:26px;border-radius:50%;object-fit:cover;border:1px solid #fff;display:block}
 .avw i{position:absolute;left:8px;bottom:-4px;width:10px;height:10px;border-radius:50%;background:#fe2c55;display:flex;align-items:center;justify-content:center}
 .ri{position:absolute;left:230px;width:38px;display:flex;flex-direction:column;align-items:center;gap:2px}
 .ri b,.sh2 b{font-size:7px;font-weight:600;line-height:9px;text-shadow:0 0 3px rgba(0,0,0,.4)}
-.info{position:absolute;left:0;top:357px;width:270px;height:73px}
+.info{position:absolute;left:0;top:357px;width:270px;height:73px;z-index:2}
 .sa{position:absolute;left:8px;top:0;width:19px;height:19px;border-radius:50%;object-fit:cover}
 .rp{position:absolute;left:33px;top:0;height:17px;display:flex;align-items:center;font-size:8.500px;font-weight:700;color:#000}
 .rp span{background:#e6e6e6;border-radius:9px;padding:0 9px;height:17px;line-height:17px}
@@ -32,9 +32,9 @@ h2{font-size:24px;font-weight:700;margin:8px 0 20px}
 .tx span:last-child{font-size:8px;margin-top:2px}.tx em{font-style:normal}
 .sh2{position:absolute;left:230px;top:5px;width:38px;display:flex;flex-direction:column;align-items:center;gap:2px}
 .disc{position:absolute;left:236px;top:41px;width:26px;height:26px;border-radius:50%;object-fit:cover;border:1px solid #444}
-.sbar{position:absolute;left:0;top:430px;width:270px;height:20px;background:#262626;display:flex;align-items:center;padding:0 13px 0 14px;gap:7px;font-size:8px;color:#ddd}
+.sbar{position:absolute;left:0;top:430px;z-index:2;width:270px;height:20px;background:#262626;display:flex;align-items:center;padding:0 13px 0 14px;gap:7px;font-size:8px;color:#ddd}
 .sbar span{flex:1}.sbar em{font-style:normal}
-.nav{position:absolute;left:0;top:450px;width:270px;height:30px}
+.nav{position:absolute;left:0;top:450px;z-index:2;width:270px;height:30px}
 .nav>div{position:absolute;top:4px;width:36px;margin-left:-18px;display:flex;flex-direction:column;align-items:center;font-size:5.500px;color:#bbb;gap:2px;line-height:7px}
 .nav .on{color:#fff;font-weight:700}
 .nav svg{height:12px}
@@ -55,3 +55,9 @@ label.tg input{width:20px;height:20px;accent-color:#e8457a}
 .acts button{height:52px;border:0;border-radius:14px;font:inherit;font-size:15px;font-weight:700;cursor:pointer}
 #reset{flex:1;background:#f2f3f5}#save{flex:1.6;background:#e8457a;color:#fff}
 @media(max-width:860px){.wrap{grid-template-columns:1fr;padding:12px}.card{padding:20px}}
+
+.edit-tabs{display:flex;gap:8px;margin:-4px 0 18px;padding:4px;background:#f2f3f5;border-radius:13px}
+.edit-tab{flex:1;height:40px;border:0;border-radius:10px;background:transparent;color:#777;font:inherit;font-size:14px;font-weight:700;cursor:pointer}
+.edit-tab.active{background:#fff;color:#e8457a;box-shadow:0 1px 5px rgba(0,0,0,.07)}
+.edit-panel{display:none}.edit-panel.active{display:block}
+.panel-note{margin:0 0 16px;color:#858b94;font-size:13px}
