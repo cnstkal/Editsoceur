@@ -41,3 +41,11 @@ label.tg input{width:20px;height:20px;accent-color:#e8457a}
 .acts button{height:52px;border:0;border-radius:14px;font:inherit;font-size:15px;font-weight:700;cursor:pointer}
 #reset{flex:1;background:#f2f3f5}#save{flex:1.6;background:#e8457a;color:#fff}
 @media(max-width:860px){.wrap{grid-template-columns:1fr;padding:12px}.card{padding:20px}}
+
+
+/* 편집 패널 탭 */
+.ps-seg{display:flex;gap:5px;margin:0 0 18px;padding:5px;border:1px solid #e6e7eb;border-radius:16px;background:#fff}
+.ps-seg button{flex:1;height:42px;border:0;border-radius:12px;background:transparent;color:#333;font:inherit;font-size:14px;font-weight:600;cursor:pointer}
+.ps-seg button.on{background:#fbe8ef;color:#e8457a}
+.ps-pn[hidden]{display:none!important}
+.editor{min-width:0}
