@@ -1,0 +1,16 @@
+html,body,body *{font-family:Pretendard,-apple-system,sans-serif!important;letter-spacing:-.02em;touch-action:manipulation}
+#pf{position:relative;width:100%;aspect-ratio:16/9;overflow:hidden;background:#00ff00 center/cover;border-radius:14px;color:#fff}
+#pf .a{position:absolute;display:flex;align-items:center;white-space:nowrap}
+#pf s{text-decoration:none;display:block}
+#pf u{position:absolute;display:block;text-decoration:none}
+#pf svg{display:block;flex:none;overflow:visible;fill:none;stroke:#fff;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+#pf .g{position:absolute;left:0;right:0;display:none;pointer-events:none}
+#pf.has .g{display:block}
+#pf .gt{top:0;height:28%;background:linear-gradient(rgba(0,0,0,.65),transparent)}
+#pf .gb{bottom:0;height:36%;background:linear-gradient(transparent,rgba(0,0,0,.7))}
+#pTk,#pBf,#pRd{top:8em;height:4em;border-radius:2em}
+#pTk{left:0;right:0;background:rgba(255,255,255,.3)}
+#pBf{left:0;background:rgba(255,255,255,.6)}
+#pRd{left:0;background:#f00}
+#pKb{top:3em;width:14em;height:14em;border-radius:50%;background:#f00}
+.xk{display:flex!important;align-items:center;gap:8px;white-space:nowrap}.xk input{width:20px;height:20px}
