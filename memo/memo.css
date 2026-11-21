@@ -1,0 +1,9 @@
+/* 참고 이미지(2560x1440) 좌표 기준 */
+html,body,body *{font-family:Pretendard,-apple-system,"Apple SD Gothic Neo","Noto Sans KR",sans-serif!important;letter-spacing:-.02em!important}
+.vp{position:relative;overflow:hidden;background:#fff;box-shadow:0 0 0 1px #0001}
+#cv{position:absolute;left:0;top:0;width:2560px;height:1440px;transform-origin:0 0;background:#fff;color:#000;overflow:hidden}
+#cv *{margin:0;box-sizing:border-box}
+#cv>*{position:absolute}
+#vDate{left:688px;top:108px;width:1200px;text-align:center;font-size:62px;line-height:80px;font-weight:400;color:#7f7f84}
+#vBody{left:150px;top:260px;width:2260px;font-size:72px;line-height:1.45;font-weight:400;white-space:pre-wrap;word-break:break-all}
+#tb{left:0;top:1200px;width:2560px;height:200px}

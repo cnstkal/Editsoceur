@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="ko"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no,viewport-fit=cover"><script src="../nozoom.js?v=1"></script>
+<title>Memo</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.css">
+<link rel="stylesheet" href="../ps-base.css?v=4">
+<link rel="stylesheet" href="../ps-editor.css?v=10">
+<link rel="stylesheet" href="../ps-shell.css?v=2">
+<link rel="stylesheet" href="memo.css?v=1">
+</head><body class="studio">
+<div class="ps-wrap">
+<header class="ps-top"><a href="../index.html">‹ 처음으로</a><button class="ps-pvbtn" id="pvBtn" type="button">미리보기 모드</button></header>
+<div class="ps-grid">
+<section class="ps-card ps-main">
+<div class="ps-lbl">Live Preview</div>
+<h2>Memo</h2>
+<p class="ps-sub">16:9 · 오른쪽에서 바로 수정해요</p>
+<div class="ps-stage"><div class="vp" id="vp"><div id="cv">
+ <div id="vDate"></div>
+ <div id="vBody"></div>
+ <svg id="tb" viewBox="0 0 2560 200" fill="none" stroke-width="5" stroke-linecap="round" stroke-linejoin="round">
+  <g stroke="#e0a800">
+   <circle cx="183" cy="101" r="18" fill="#e0a800"/><path d="M175 101l6 6 11-12" stroke="#fff" stroke-width="4"/>
+   <path d="M212 101H258"/><circle cx="183" cy="150" r="16"/><path d="M212 150H258"/>
+   <g transform="translate(888 84) scale(3.6)"><path stroke-width="1.4" d="M21.44 11.05l-9.19 9.19a6 6 0 0 1-8.49-8.49l9.19-9.19a4 4 0 0 1 5.66 5.66l-9.2 9.19a2 2 0 0 1-2.83-2.83l8.49-8.48"/></g>
+   <circle cx="1643" cy="127" r="41"/><path d="M1643 105l-9 22h18z" fill="#e0a800"/><path d="M1634 127l-7 34M1652 127l7 34" stroke-width="4"/>
+  </g>
+  <g stroke="#d8d8dc"><path d="M2372 92H2330a12 12 0 0 0-12 12v46a12 12 0 0 0 12 12h48a12 12 0 0 0 12-12v-36"/><path d="M2345 134 2392 87"/><path d="M2345 134l-3 14 14-3"/></g>
+ </svg>
+</div></div></div>
+</section>
+<section class="ps-card ps-side">
+<div class="ps-lbl">Edit Panel</div>
+<h2>Memo 수정</h2>
+<div class="ps-edwrap"><div class="editor">
+<div class="ps-pn" data-t="기본">
+<label>날짜<input id="iDate" value="2025년 8월 27일 오후 1:38"></label>
+<label>본문<textarea id="iBody" rows="6"></textarea></label>
+<label>배경색<input id="iBg" type="color" value="#ffffff"></label>
+<label>하단 툴바<input id="iTb" type="checkbox" checked></label>
+</div>
+</div></div>
+<div class="ps-acts"><button id="reset" type="button">초기화</button><button id="savePng" type="button">PNG 저장</button></div>
+</section>
+</div>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js"></script>
+<script src="memo.js?v=1"></script>
+<script src="../ps-tabs.js?v=2"></script>
+</body></html>
