@@ -10,7 +10,7 @@ $('vArr').style.display=v.A?'':'none';
 st.style.setProperty('--bub',v.Bub);st.style.setProperty('--ac',v.Ac);st.style.setProperty('--col',v.Col);st.style.setProperty('--fs',v.S+'px');
 $('grp').style.top='0';$('stage').style.height=$('grp').offsetHeight+'px';$('chk').style.height=$('grp').offsetHeight+'px';$('pS').textContent=v.S+'px';
 }
-function fit(){var scale=$('view').clientWidth/1080, h=$('stage').offsetHeight;$('view').firstChild.style.transform='scale('+scale+')';$('view').style.height=(h*scale)+'px';$('chk').style.height=h+'px'}
+function fit(){var scale=$('view').clientWidth/1080,h=$('stage').getBoundingClientRect().height;$('chk').style.height=h+'px';$('view').firstChild.style.transform='scale('+scale+')';$('view').style.height=(h*scale)+'px'}
 ids.forEach(function(k){$('i'+k).addEventListener('input',r)});
 $('reset').onclick=load;window.addEventListener('resize',fit);if(window.ResizeObserver)new ResizeObserver(fit).observe($('view'));
 $('savePng').onclick=function(){
@@ -20,5 +20,5 @@ return html2canvas(st,{backgroundColor:null,scale:1,width:1080,height:h})}).then
 c.style.transform=t;c.style.background='';
 var a=document.createElement('a');a.download='animal-crossing.png';a.href=cv.toDataURL('image/png');a.click()
 }).catch(function(){c.style.transform=t;c.style.background=''})};
-load();fit();
+load();requestAnimationFrame(fit);if(document.fonts&&document.fonts.ready)document.fonts.ready.then(fit);
 })();
