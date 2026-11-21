@@ -1,21 +1,6 @@
-*{box-sizing:border-box}
-body{margin:0;background:#f2f3f5;color:#111;font-family:Pretendard,-apple-system,"Apple SD Gothic Neo","Noto Sans KR",sans-serif;letter-spacing:-.02em}
-.wrap{max-width:1100px;margin:0 auto;padding:40px 24px;display:grid;grid-template-columns:1.2fr 1fr;gap:24px}
-.card{background:#fff;border-radius:26px;padding:32px;min-width:0}
-.lbl{font-size:12px;letter-spacing:.14em;color:#8a8f98;text-transform:uppercase}
-h2{font-size:24px;font-weight:700;margin:8px 0 20px}
-.stage{display:flex;justify-content:center}
+/* 미리보기 전용 (편집 UI는 ps-base / ps-editor / ps-shell 공통) */
 .chk{width:270px;height:480px;border-radius:8px;overflow:hidden;box-shadow:0 2px 12px rgba(0,0,0,.15);background:conic-gradient(#e6e6e6 25%,#fff 0 50%,#e6e6e6 0 75%,#fff 0) 0 0/16px 16px}
 #snap{position:relative;width:270px;height:480px;background:transparent}
 #bar{position:absolute;left:0;right:0;display:flex;align-items:center;justify-content:center;gap:8px;padding:0 14px;color:#fff;font-weight:600;text-align:center;letter-spacing:-.02em;overflow:hidden}
 #bar i{position:absolute;left:0;top:0;bottom:0;width:4px;background:#ff2d55}
 #txt{white-space:pre-wrap;word-break:keep-all;line-height:1.2}
-label{display:block;font-size:14px;font-weight:600;color:#444;margin-bottom:18px}
-label b{float:right;color:#e8457a;font-weight:700}
-input:not([type=range]){display:block;width:100%;height:48px;margin-top:8px;padding:0 14px;border:1px solid #e3e5e8;border-radius:12px;font:inherit;font-size:16px}
-input[type=range]{display:block;width:100%;margin-top:10px;accent-color:#e8457a}
-.acts{display:flex;gap:10px;margin-top:8px}
-.acts button{height:52px;border:0;border-radius:14px;font:inherit;font-size:15px;font-weight:700;cursor:pointer}
-#reset{flex:1;background:#f2f3f5}
-#save{flex:1.6;background:#e8457a;color:#fff}
-@media(max-width:860px){.wrap{grid-template-columns:1fr;padding:12px}.card{padding:20px}}

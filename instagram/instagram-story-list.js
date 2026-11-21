@@ -12,7 +12,7 @@ function draw(){
 $('grid').innerHTML=S.map(function(c){return '<div class="c"><img src="'+c.i+'">'+(c.b?'<div class="bd"><b>'+e(c.d)+'</b><small>'+e(c.m)+'</small></div>':'')+'</div>'}).join('');
 }
 function ed(){
-$('ed').innerHTML=S.map(function(c,i){return '<div class="it"><b>'+(i+1)+'</b><input type="file" accept="image/*" data-i="'+i+'"><input type="checkbox" data-i="'+i+'" data-k="b"'+(c.b?' checked':'')+'><input class="d" data-i="'+i+'" data-k="d" value="'+e(c.d)+'"><input class="m" data-i="'+i+'" data-k="m" value="'+e(c.m)+'"></div>'}).join('');
+$('ed').innerHTML=S.map(function(c,i){return '<div class="it"><b>'+(i+1)+'</b><input type="file" accept="image/*" data-i="'+i+'"><label>배지 표시<input type="checkbox" data-i="'+i+'" data-k="b"'+(c.b?' checked':'')+'></label><input class="d" data-i="'+i+'" data-k="d" value="'+e(c.d)+'" placeholder="날짜"><input class="m" data-i="'+i+'" data-k="m" value="'+e(c.m)+'" placeholder="월"></div>'}).join('');
 }
 function rd(f,cb){if(!f)return;var r=new FileReader();r.onload=function(){cb(r.result)};r.readAsDataURL(f)}
 $('ed').addEventListener('input',function(ev){var t=ev.target;if(t.dataset.k&&t.type!=='checkbox'){S[t.dataset.i][t.dataset.k]=t.value;draw()}});

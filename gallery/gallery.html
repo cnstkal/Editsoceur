@@ -2,17 +2,22 @@
 <html lang="ko">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no,viewport-fit=cover">
+<script src="../nozoom.js?v=1"></script>
 <title>갤러리 공유</title>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.css">
-<link rel="stylesheet" href="gallery.css">
+<link rel="stylesheet" href="../ps-base.css?v=4">
+<link rel="stylesheet" href="../ps-editor.css?v=10">
+<link rel="stylesheet" href="../ps-shell.css?v=3">
+<link rel="stylesheet" href="gallery.css?v=2">
+<style id="ed-font">html,body,body *{font-family:Pretendard,-apple-system,"Apple SD Gothic Neo","Noto Sans KR",sans-serif!important;letter-spacing:-.02em!important}</style>
 </head>
-<body>
-<div class="wrap">
-<section class="card main">
-<div class="lbl">Live Preview</div>
-<h2>갤러리 공유 시트</h2>
-<div class="stage"><div id="snap">
+<body class="studio">
+<div class="ps-wrap">
+<header class="ps-top"><a class="ps-back" href="index.html">‹ 뒤로</a><button class="ps-pvbtn" id="pvBtn" type="button">미리보기 모드</button></header>
+<div class="ps-grid">
+<section class="ps-card ps-main"><div class="ps-lbl">Live Preview</div><h2>갤러리 공유 시트</h2><p class="ps-sub">실제 앱 화면 비율로 확인하고, 오른쪽에서 바로 수정해요</p>
+<div class="ps-stage"><div class="ps-fit" data-w="270" data-h="480"><div id="snap">
 <div class="hd">
 <img class="th" id="vTh">
 <div class="tt"><b id="vCnt"></b><span><i>▼</i> <em id="vLoc"></em></span><u>Options <svg width="6" height="9" viewBox="0 0 6 9" fill="none" stroke="#fff" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="m1 1 3.500 3.500L1 8"/></svg></u></div>
@@ -27,23 +32,31 @@
 <div><svg viewBox="0 0 48 48"><rect width="48" height="48" rx="11" fill="#1e7bf5"/><rect x="9" y="13" width="30" height="22" rx="3" fill="#fff"/><path d="m10 15 14 11 14-11" fill="none" stroke="#1e7bf5" stroke-width="2.500"/></svg><span>Mail</span></div>
 <div><svg viewBox="0 0 48 48"><rect width="48" height="48" rx="11" fill="#fff"/><path d="M0 11a11 11 0 0 1 11-11h26a11 11 0 0 1 11 11v5H0z" fill="#fdc830"/><g stroke="#d9d9d9" stroke-width="1"><path d="M0 24h48M0 32h48M0 40h48"/></g></svg><span>Notes</span></div>
 </div>
-</div></div>
-</section>
-<section class="card side">
-<div class="lbl">Edit Panel</div>
-<h2>공유 시트 수정</h2>
+</div></div></div></section>
+<section class="ps-card ps-side"><div class="ps-lbl">Edit Panel</div><h2>공유 시트 수정</h2>
+<div class="ps-edwrap"><div class="editor">
+<div class="ps-pn" data-t="기본">
 <div class="row"><label>선택 장수<input id="iCnt" type="number" min="1" max="99"></label><label>인원 수 (0~5)<input id="iNp" type="number" min="0" max="5"></label></div>
 <label>위치 문구<input id="iLoc"></label>
-<label class="f">썸네일<input id="iTh" type="file" accept="image/*"></label>
-<label class="f">사진 왼쪽<input data-p="0" class="iPh" type="file" accept="image/*"></label>
-<label class="f">사진 가운데<input data-p="1" class="iPh" type="file" accept="image/*"></label>
-<label class="f">사진 오른쪽<input data-p="2" class="iPh" type="file" accept="image/*"></label>
-<label class="tg">메시지 배지<input id="iBd" type="checkbox"></label>
-<div id="pEd"></div>
-<div class="acts"><button id="reset" type="button">초기화</button><button id="save" type="button">PNG 저장</button></div>
-</section>
+<div class="ps-tg"><span>메시지 배지</span><label class="sw"><input id="iBd" type="checkbox"><i></i></label></div>
+</div>
+<div class="ps-pn" data-t="이미지">
+<label>썸네일<input id="iTh" type="file" accept="image/*"></label>
+<label>사진 왼쪽<input data-p="0" class="iPh" type="file" accept="image/*"></label>
+<label>사진 가운데<input data-p="1" class="iPh" type="file" accept="image/*"></label>
+<label>사진 오른쪽<input data-p="2" class="iPh" type="file" accept="image/*"></label>
+</div>
+<div class="ps-pn" data-t="인원">
+<div class="ps-list" id="pEd"></div>
+</div>
+</div></div>
+<div class="ps-acts"><button id="reset" type="button">초기화</button><button id="save" type="button">PNG 저장</button></div></section>
+</div>
 </div>
 <script src="https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js"></script>
 <script src="gallery.js"></script>
+<script src="../ps-tabs.js?v=1"></script>
+<script src="../ps-fit.js?v=1"></script>
+<script src="../back-anim.js?v=1" defer></script>
 </body>
 </html>

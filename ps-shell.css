@@ -8,3 +8,20 @@ body.studio .ps-side select{flex:0 0 56%;width:56%;height:44px;padding:0 10px;fo
 body.studio .ps-side input[type=range]{flex:0 0 56%;width:56%}
 .ps-pv9{max-width:405px;margin:0 auto}
 .vp{margin:0 auto}
+
+/* 고정 px 프리뷰 자동 맞춤 (ps-fit.js) */
+.ps-fit{position:relative;overflow:hidden;margin:0 auto}
+.ps-fit>*{transform-origin:0 0}
+.ps-top .ps-back{color:#e8457a;font-weight:700;text-decoration:none}
+
+/* 동적 편집 목록(.ps-list): 항목마다 카드 하나, 입력칸은 세로로 */
+body.studio .ps-side .ps-edwrap :is(.editor,.ed) .ps-list{margin:0 0 12px}
+body.studio .ps-side .ps-edwrap :is(.editor,.ed) .ps-list :is(.it,.pe){display:flex;flex-direction:column;flex-wrap:nowrap;align-items:stretch;gap:8px;margin:0 0 10px;padding:12px 14px;border:1px solid var(--ln);border-radius:16px;background:#fff}
+body.studio .ps-side .ps-edwrap :is(.editor,.ed) .ps-list :is(.it,.pe)>b{flex:none;min-width:0;font-size:13px;font-weight:700;color:var(--mu);white-space:normal}
+body.studio .ps-side .ps-edwrap :is(.editor,.ed) .ps-list :is(.it,.pe) :is(input:not([type=checkbox]):not([type=file]),select){width:100%!important;flex:none!important;height:40px;padding:0 12px;font-size:15px}
+body.studio .ps-side .ps-edwrap :is(.editor,.ed) .ps-list :is(.it,.pe) input[type=file]{width:100%!important;flex:none!important;height:auto;font-size:12px}
+body.studio .ps-side .ps-edwrap :is(.editor,.ed) .ps-list :is(.it,.pe) label{margin:0;font-size:13px;color:#6b717b}
+body.studio .ps-side .ps-edwrap :is(.editor,.ed) .ps-list .it>input[type=checkbox]{align-self:flex-start}
+body.studio .ps-side .ps-edwrap :is(.editor,.ed) .ps-list :is(.it,.pe)>button{flex:none;width:100%;height:40px;margin:0;border:1px solid var(--ln);border-radius:10px;background:#fff;color:#e0245e;font:inherit;font-size:14px;font-weight:700;cursor:pointer}
+body.studio .ps-side .ps-edwrap :is(.editor,.ed) .ps-list .g{margin:0 0 16px}
+body.studio .ps-side .ps-edwrap :is(.editor,.ed) .ps-list .g>h3{margin:4px 0 10px!important}

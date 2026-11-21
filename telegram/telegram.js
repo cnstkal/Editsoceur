@@ -35,7 +35,7 @@ k.innerHTML=kh;k.dataset.b=1;
 }
 }
 function ed(){
-$('ed').innerHTML=S.M.map(function(x,i){return '<div class="it"><select data-i="'+i+'" data-k="s"><option value="i"'+(x.s==='i'?' selected':'')+'>상대</option><option value="o"'+(x.s==='o'?' selected':'')+'>나</option></select><input class="tx" data-i="'+i+'" data-k="t" value="'+e(x.t)+'"><input class="tm" data-i="'+i+'" data-k="tm" value="'+e(x.tm)+'"><input type="file" accept="image/*" data-i="'+i+'"><button data-d="'+i+'" type="button">✕</button></div>'}).join('');
+$('ed').innerHTML=S.M.map(function(x,i){return '<div class="it"><select data-i="'+i+'" data-k="s"><option value="i"'+(x.s==='i'?' selected':'')+'>상대</option><option value="o"'+(x.s==='o'?' selected':'')+'>나</option></select><input class="tx" data-i="'+i+'" data-k="t" value="'+e(x.t)+'" placeholder="메시지"><input class="tm" data-i="'+i+'" data-k="tm" value="'+e(x.tm)+'" placeholder="시간"><input type="file" accept="image/*" data-i="'+i+'"><button data-d="'+i+'" type="button">✕</button></div>'}).join('');
 }
 function rd(f,cb){if(!f)return;var r=new FileReader();r.onload=function(){cb(r.result)};r.readAsDataURL(f)}
 [['iN','n'],['iSt','st'],['iBn','bn'],['iInp','inp']].forEach(function(a){$(a[0]).oninput=function(){S[a[1]]=this.value;draw()}});

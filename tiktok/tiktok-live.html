@@ -2,17 +2,22 @@
 <html lang="ko">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no,viewport-fit=cover">
+<script src="../nozoom.js?v=1"></script>
 <title>틱톡 라이브</title>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.css">
-<link rel="stylesheet" href="tiktok-live.css">
+<link rel="stylesheet" href="../ps-base.css?v=4">
+<link rel="stylesheet" href="../ps-editor.css?v=10">
+<link rel="stylesheet" href="../ps-shell.css?v=3">
+<link rel="stylesheet" href="tiktok-live.css?v=2">
+<style id="ed-font">html,body,body *{font-family:Pretendard,-apple-system,"Apple SD Gothic Neo","Noto Sans KR",sans-serif!important;letter-spacing:-.02em!important}</style>
 </head>
-<body>
-<div class="wrap">
-<section class="card main">
-<div class="lbl">Live Preview</div>
-<h2>틱톡 라이브</h2>
-<div class="stage"><div id="snap">
+<body class="studio">
+<div class="ps-wrap">
+<header class="ps-top"><a class="ps-back" href="index.html">‹ 뒤로</a><button class="ps-pvbtn" id="pvBtn" type="button">미리보기 모드</button></header>
+<div class="ps-grid">
+<section class="ps-card ps-main"><div class="ps-lbl">Live Preview</div><h2>틱톡 라이브</h2><p class="ps-sub">실제 앱 화면 비율로 확인하고, 오른쪽에서 바로 수정해요</p>
+<div class="ps-stage"><div class="ps-fit" data-w="270" data-h="480"><div id="snap">
 <img class="bg" id="vBg">
 <svg class="live" width="17" height="17" viewBox="0 0 17 17" fill="none" stroke="#fff" stroke-width="1.300" stroke-linecap="round" stroke-linejoin="round"><rect x="1.500" y="4" width="14" height="11" rx="2"/><path d="m5 1.500 3.500 2.500 3.500-2.500"/><text x="3.500" y="11.500" font-size="5.200" font-weight="700" fill="#fff" stroke="none">LIVE</text></svg>
 <div class="tabs"><span style="left:78px">Friends</span><span style="left:131px">Following</span><span style="left:186px" class="fy" id="vFy">For You</span></div>
@@ -27,22 +32,30 @@
 <div style="left:188px"><svg width="13" height="12" viewBox="0 0 13 12" fill="none" stroke="#ccc" stroke-width="1.100" stroke-linejoin="round"><path d="M1 1h11v7.500H6.500L3.500 11V8.500H1z"/></svg><i class="bg2" id="vIb"></i><span>Inbox</span></div>
 <div style="left:242px"><svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="#ccc" stroke-width="1.100"><circle cx="6" cy="3.500" r="2.500"/><path d="M1.500 11.500c0-3 2-4.300 4.500-4.300s4.500 1.300 4.500 4.300z"/></svg><span>Profile</span></div>
 </div>
-</div></div>
-</section>
-<section class="card side">
-<div class="lbl">Edit Panel</div>
-<h2>틱톡 라이브 수정</h2>
+</div></div></div></section>
+<section class="ps-card ps-side"><div class="ps-lbl">Edit Panel</div><h2>틱톡 라이브 수정</h2>
+<div class="ps-edwrap"><div class="editor">
+<div class="ps-pn" data-t="기본">
 <div class="row"><label>이름<input id="iN"></label><label>캡션<input id="iCp"></label></div>
 <div class="row"><label>LIVE 배지 문구<input id="iNow"></label><label>안내 문구<input id="iTap"></label></div>
 <label>인박스 배지<input id="iIb"></label>
-<label class="f">배경 사진<input id="fBg" type="file" accept="image/*"></label>
-<label class="tg">LIVE now 배지 표시<input id="tNow" type="checkbox"></label>
-<label class="tg">Tap to watch 표시<input id="tTap" type="checkbox"></label>
-<label class="tg">For You 밑줄<input id="tFy" type="checkbox"></label>
-<div class="acts"><button id="reset" type="button">초기화</button><button id="save" type="button">PNG 저장</button></div>
-</section>
+</div>
+<div class="ps-pn" data-t="이미지">
+<label>배경 사진<input id="fBg" type="file" accept="image/*"></label>
+</div>
+<div class="ps-pn" data-t="표시">
+<div class="ps-tg"><span>LIVE now 배지 표시</span><label class="sw"><input id="tNow" type="checkbox"><i></i></label></div>
+<div class="ps-tg"><span>Tap to watch 표시</span><label class="sw"><input id="tTap" type="checkbox"><i></i></label></div>
+<div class="ps-tg"><span>For You 밑줄</span><label class="sw"><input id="tFy" type="checkbox"><i></i></label></div>
+</div>
+</div></div>
+<div class="ps-acts"><button id="reset" type="button">초기화</button><button id="save" type="button">PNG 저장</button></div></section>
+</div>
 </div>
 <script src="https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js"></script>
 <script src="tiktok-live.js"></script>
+<script src="../ps-tabs.js?v=1"></script>
+<script src="../ps-fit.js?v=1"></script>
+<script src="../back-anim.js?v=1" defer></script>
 </body>
 </html>

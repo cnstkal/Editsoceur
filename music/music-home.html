@@ -2,17 +2,22 @@
 <html lang="ko">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no,viewport-fit=cover">
+<script src="../nozoom.js?v=1"></script>
 <title>뮤직 홈</title>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.css">
-<link rel="stylesheet" href="music-home.css">
+<link rel="stylesheet" href="../ps-base.css?v=4">
+<link rel="stylesheet" href="../ps-editor.css?v=10">
+<link rel="stylesheet" href="../ps-shell.css?v=3">
+<link rel="stylesheet" href="music-home.css?v=2">
+<style id="ed-font">html,body,body *{font-family:Pretendard,-apple-system,"Apple SD Gothic Neo","Noto Sans KR",sans-serif!important;letter-spacing:-.02em!important}</style>
 </head>
-<body>
-<div class="wrap">
-<section class="card main">
-<div class="lbl">Live Preview</div>
-<h2>뮤직 홈</h2>
-<div class="stage"><div id="snap">
+<body class="studio">
+<div class="ps-wrap">
+<header class="ps-top"><a class="ps-back" href="index.html">‹ 뒤로</a><button class="ps-pvbtn" id="pvBtn" type="button">미리보기 모드</button></header>
+<div class="ps-grid">
+<section class="ps-card ps-main"><div class="ps-lbl">Live Preview</div><h2>뮤직 홈</h2><p class="ps-sub">실제 앱 화면 비율로 확인하고, 오른쪽에서 바로 수정해요</p>
+<div class="ps-stage"><div class="ps-fit" data-w="270" data-h="480"><div id="snap">
 <h1 id="vT"></h1>
 <img class="av" id="vAv">
 <div class="pl" id="pl"></div>
@@ -26,19 +31,25 @@
 </div>
 <h3 id="vH"></h3>
 <div class="ra" id="ra"></div>
-</div></div>
-</section>
-<section class="card side">
-<div class="lbl">Edit Panel</div>
-<h2>뮤직 홈 수정</h2>
+</div></div></div></section>
+<section class="ps-card ps-side"><div class="ps-lbl">Edit Panel</div><h2>뮤직 홈 수정</h2>
+<div class="ps-edwrap"><div class="editor">
+<div class="ps-pn" data-t="기본">
 <div class="row"><label>제목<input id="iT"></label><label>섹션 제목<input id="iH"></label></div>
-<label class="f">프로필 사진<input id="fAv" type="file" accept="image/*"></label>
-<div class="g"><h3>플레이리스트</h3><div id="edP"></div></div>
-<div class="g"><h3>Recently Added</h3><div id="edR"></div></div>
-<div class="acts"><button id="reset" type="button">초기화</button><button id="save" type="button">PNG 저장</button></div>
-</section>
+<label>프로필 사진<input id="fAv" type="file" accept="image/*"></label>
+</div>
+<div class="ps-pn" data-t="목록">
+<div class="g ps-list"><h3>플레이리스트</h3><div id="edP"></div></div>
+<div class="g ps-list"><h3>Recently Added</h3><div id="edR"></div></div>
+</div>
+</div></div>
+<div class="ps-acts"><button id="reset" type="button">초기화</button><button id="save" type="button">PNG 저장</button></div></section>
+</div>
 </div>
 <script src="https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js"></script>
 <script src="music-home.js"></script>
+<script src="../ps-tabs.js?v=1"></script>
+<script src="../ps-fit.js?v=1"></script>
+<script src="../back-anim.js?v=1" defer></script>
 </body>
 </html>

@@ -2,17 +2,22 @@
 <html lang="ko">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no,viewport-fit=cover">
+<script src="../nozoom.js?v=1"></script>
 <title>BeReal</title>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.css">
-<link rel="stylesheet" href="bereal.css">
+<link rel="stylesheet" href="../ps-base.css?v=4">
+<link rel="stylesheet" href="../ps-editor.css?v=10">
+<link rel="stylesheet" href="../ps-shell.css?v=3">
+<link rel="stylesheet" href="bereal.css?v=2">
+<style id="ed-font">html,body,body *{font-family:Pretendard,-apple-system,"Apple SD Gothic Neo","Noto Sans KR",sans-serif!important;letter-spacing:-.02em!important}</style>
 </head>
-<body>
-<div class="wrap">
-<section class="card main">
-<div class="lbl">Live Preview</div>
-<h2>BeReal</h2>
-<div class="stage"><div id="snap" data-m="a">
+<body class="studio">
+<div class="ps-wrap">
+<header class="ps-top"><a class="ps-back" href="index.html">‹ 뒤로</a><button class="ps-pvbtn" id="pvBtn" type="button">미리보기 모드</button></header>
+<div class="ps-grid">
+<section class="ps-card ps-main"><div class="ps-lbl">Live Preview</div><h2>BeReal</h2><p class="ps-sub">실제 앱 화면 비율로 확인하고, 오른쪽에서 바로 수정해요</p>
+<div class="ps-stage"><div class="ps-fit" data-w="270" data-h="480"><div id="snap" data-m="a">
 <div class="tm a-only" id="vT"></div>
 <div class="cd">
 <img class="big" id="vB">
@@ -23,23 +28,31 @@
 <svg class="ic a-only" style="left:76px" width="14" height="18" viewBox="0 0 14 18" fill="none" stroke="#fff" stroke-width="1.400" stroke-linejoin="round"><path d="M8.500 1 2 10h4.500L5.500 17 12 8H7.500z"/></svg>
 <div class="sh a-only"></div>
 <svg class="ic a-only" style="left:181px" width="19" height="19" viewBox="0 0 19 19" fill="none" stroke="#fff" stroke-width="1.400" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8.500A6.800 6.800 0 0 0 3.500 6M3 2.500V6h3.500M3 10.500A6.800 6.800 0 0 0 15.500 13M16 16.500V13h-3.500"/></svg>
-</div></div>
-</section>
-<section class="card side">
-<div class="lbl">Edit Panel</div>
-<h2>BeReal 수정</h2>
+</div></div></div></section>
+<section class="ps-card ps-side"><div class="ps-lbl">Edit Panel</div><h2>BeReal 수정</h2>
+<div class="ps-edwrap"><div class="editor">
+<div class="ps-pn" data-t="기본">
 <label>스타일<select id="iM"><option value="a">카메라 (기존)</option><option value="b">스토리 (카드)</option></select></label>
-<label class="f">메인 사진<input id="iB" type="file" accept="image/*"></label>
-<label class="f">작은 사진<input id="iS" type="file" accept="image/*"></label>
 <label class="a-f">시간<input id="iT"></label>
 <label class="b-f">하단 문구<input id="iL"></label>
-<label class="tg">작은 사진 표시<input id="tS" type="checkbox"></label>
-<label class="tg b-f">닫기 버튼 표시<input id="tX" type="checkbox"></label>
-<label class="tg b-f">하단 문구 표시<input id="tL" type="checkbox"></label>
-<div class="acts"><button id="reset" type="button">초기화</button><button id="save" type="button">PNG 저장</button></div>
-</section>
+</div>
+<div class="ps-pn" data-t="이미지">
+<label>메인 사진<input id="iB" type="file" accept="image/*"></label>
+<label>작은 사진<input id="iS" type="file" accept="image/*"></label>
+</div>
+<div class="ps-pn" data-t="표시">
+<div class="ps-tg"><span>작은 사진 표시</span><label class="sw"><input id="tS" type="checkbox"><i></i></label></div>
+<div class="ps-tg b-f"><span>닫기 버튼 표시</span><label class="sw"><input id="tX" type="checkbox"><i></i></label></div>
+<div class="ps-tg b-f"><span>하단 문구 표시</span><label class="sw"><input id="tL" type="checkbox"><i></i></label></div>
+</div>
+</div></div>
+<div class="ps-acts"><button id="reset" type="button">초기화</button><button id="save" type="button">PNG 저장</button></div></section>
+</div>
 </div>
 <script src="https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js"></script>
 <script src="bereal.js"></script>
+<script src="../ps-tabs.js?v=1"></script>
+<script src="../ps-fit.js?v=1"></script>
+<script src="../back-anim.js?v=1" defer></script>
 </body>
 </html>

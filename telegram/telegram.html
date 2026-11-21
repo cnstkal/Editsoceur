@@ -2,38 +2,49 @@
 <html lang="ko">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no,viewport-fit=cover">
+<script src="../nozoom.js?v=1"></script>
 <title>텔레그램 채팅</title>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.css">
-<link rel="stylesheet" href="telegram.css">
+<link rel="stylesheet" href="../ps-base.css?v=4">
+<link rel="stylesheet" href="../ps-editor.css?v=10">
+<link rel="stylesheet" href="../ps-shell.css?v=3">
+<link rel="stylesheet" href="telegram.css?v=2">
+<style id="ed-font">html,body,body *{font-family:Pretendard,-apple-system,"Apple SD Gothic Neo","Noto Sans KR",sans-serif!important;letter-spacing:-.02em!important}</style>
 </head>
-<body>
-<div class="wrap">
-<section class="card main">
-<div class="lbl">Live Preview</div>
-<h2>텔레그램 (라이트)</h2>
-<div class="stage"><div id="snap">
+<body class="studio">
+<div class="ps-wrap">
+<header class="ps-top"><a class="ps-back" href="index.html">‹ 뒤로</a><button class="ps-pvbtn" id="pvBtn" type="button">미리보기 모드</button></header>
+<div class="ps-grid">
+<section class="ps-card ps-main"><div class="ps-lbl">Live Preview</div><h2>텔레그램 (라이트)</h2><p class="ps-sub">실제 앱 화면 비율로 확인하고, 오른쪽에서 바로 수정해요</p>
+<div class="ps-stage"><div class="ps-fit" data-w="270" data-h="480"><div id="snap">
 <div class="bk"><svg width="9" height="13" viewBox="0 0 9 13" fill="none" stroke="#000" stroke-width="1.800" stroke-linecap="round" stroke-linejoin="round"><path d="M7.500 1 2 6.500 7.500 12"/></svg><i id="vBn"></i></div>
 <div class="ct"><b id="vN"></b><span id="vSt"></span></div>
 <img class="av" id="vAv">
 <div class="chat" id="chat"></div>
 <div class="inp" id="inp"></div>
 <div class="kbd" id="kbd"></div>
-</div></div>
-</section>
-<section class="card side">
-<div class="lbl">Edit Panel</div>
-<h2>채팅 수정</h2>
+</div></div></div></section>
+<section class="ps-card ps-side"><div class="ps-lbl">Edit Panel</div><h2>채팅 수정</h2>
+<div class="ps-edwrap"><div class="editor">
+<div class="ps-pn" data-t="기본">
 <div class="row"><label>이름<input id="iN"></label><label>상태 문구<input id="iSt"></label></div>
-<div class="row"><label>뒤로 배지<input id="iBn"></label><label class="f">프로필<input id="iAv" type="file" accept="image/*"></label></div>
+<div class="row"><label>뒤로 배지<input id="iBn"></label><label>프로필<input id="iAv" type="file" accept="image/*"></label></div>
 <label>입력창 문구 (비우면 Message)<input id="iInp"></label>
-<label class="tg">키보드 표시<input id="iKb" type="checkbox"></label>
-<div id="ed"></div>
+<div class="ps-tg"><span>키보드 표시</span><label class="sw"><input id="iKb" type="checkbox"><i></i></label></div>
+</div>
+<div class="ps-pn" data-t="메시지">
+<div class="ps-list" id="ed"></div>
 <button class="add" id="add" type="button">+ 메시지 추가</button>
-<div class="acts"><button id="reset" type="button">초기화</button><button id="save" type="button">PNG 저장</button></div>
-</section>
+</div>
+</div></div>
+<div class="ps-acts"><button id="reset" type="button">초기화</button><button id="save" type="button">PNG 저장</button></div></section>
+</div>
 </div>
 <script src="https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js"></script>
 <script src="telegram.js"></script>
+<script src="../ps-tabs.js?v=1"></script>
+<script src="../ps-fit.js?v=1"></script>
+<script src="../back-anim.js?v=1" defer></script>
 </body>
 </html>

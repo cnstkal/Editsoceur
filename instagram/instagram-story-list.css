@@ -1,10 +1,4 @@
-*{box-sizing:border-box}
-body{margin:0;background:#f2f3f5;color:#111;font-family:Pretendard,-apple-system,"Apple SD Gothic Neo","Noto Sans KR",sans-serif;letter-spacing:-.02em}
-.wrap{max-width:1100px;margin:0 auto;padding:40px 24px;display:grid;grid-template-columns:1.2fr 1fr;gap:24px}
-.card{background:#fff;border-radius:26px;padding:32px;min-width:0}
-.lbl{font-size:12px;letter-spacing:.14em;color:#8a8f98;text-transform:uppercase}
-h2{font-size:24px;font-weight:700;margin:8px 0 20px}
-.stage{display:flex;justify-content:center}
+/* 미리보기 전용 (편집 UI는 ps-base / ps-editor / ps-shell 공통) */
 #snap{position:relative;width:270px;height:480px;background:#000;overflow:hidden;color:#fff;letter-spacing:-.02em;box-shadow:0 2px 12px rgba(0,0,0,.25)}
 .top{position:absolute;left:0;right:0;top:0;height:32px;display:flex;align-items:center;justify-content:space-between;padding:0 9px;font-size:9.500px}
 .top b{position:absolute;left:0;right:0;text-align:center;font-size:11px;font-weight:600}
@@ -15,13 +9,3 @@ h2{font-size:24px;font-weight:700;margin:8px 0 20px}
 .bd{position:absolute;left:5px;top:5px;width:27px;height:30px;border-radius:6px;background:#10142a;display:flex;flex-direction:column;align-items:center;justify-content:center;line-height:1}
 .bd b{font-size:13px;font-weight:700}
 .bd small{font-size:5.500px;margin-top:2px}
-.it{display:flex;gap:8px;align-items:center;margin-bottom:8px}
-.it b{font-size:12px;color:#888;width:14px}
-.it input:not([type=file]):not([type=checkbox]){height:38px;min-width:0;padding:0 10px;border:1px solid #e3e5e8;border-radius:10px;font:inherit;font-size:14px}
-.it .d{width:50px}.it .m{width:60px}
-.it input[type=file]{flex:1;min-width:0;font-size:11px}
-.it input[type=checkbox]{width:18px;height:18px;accent-color:#e8457a}
-.acts{display:flex;gap:10px;margin-top:12px}
-.acts button{height:52px;border:0;border-radius:14px;font:inherit;font-size:15px;font-weight:700;cursor:pointer}
-#reset{flex:1;background:#f2f3f5}#save{flex:1.6;background:#e8457a;color:#fff}
-@media(max-width:860px){.wrap{grid-template-columns:1fr;padding:12px}.card{padding:20px}}

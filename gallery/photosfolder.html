@@ -2,17 +2,22 @@
 <html lang="ko">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no,viewport-fit=cover">
+<script src="../nozoom.js?v=1"></script>
 <title>갤러리 폴더</title>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.css">
-<link rel="stylesheet" href="photos.css">
+<link rel="stylesheet" href="../ps-base.css?v=4">
+<link rel="stylesheet" href="../ps-editor.css?v=10">
+<link rel="stylesheet" href="../ps-shell.css?v=3">
+<link rel="stylesheet" href="photosfolder.css?v=2">
+<style id="ed-font">html,body,body *{font-family:Pretendard,-apple-system,"Apple SD Gothic Neo","Noto Sans KR",sans-serif!important;letter-spacing:-.02em!important}</style>
 </head>
-<body>
-<div class="wrap">
-<section class="card main">
-<div class="lbl">Live Preview</div>
-<h2>갤러리 폴더</h2>
-<div class="stage"><div id="snap">
+<body class="studio">
+<div class="ps-wrap">
+<header class="ps-top"><a class="ps-back" href="index.html">‹ 뒤로</a><button class="ps-pvbtn" id="pvBtn" type="button">미리보기 모드</button></header>
+<div class="ps-grid">
+<section class="ps-card ps-main"><div class="ps-lbl">Live Preview</div><h2>갤러리 폴더</h2><p class="ps-sub">실제 앱 화면 비율로 확인하고, 오른쪽에서 바로 수정해요</p>
+<div class="ps-stage"><div class="ps-fit" data-w="270" data-h="480"><div id="snap">
 <h1 id="vT"></h1>
 <div class="st"><svg width="11" height="8" viewBox="0 0 22 15"><path d="M5 15a5 5 0 0 1-.6-10A7 7 0 0 1 18 6a4.500 4.500 0 0 1-.5 9z" fill="#fff"/></svg><span id="vS"></span></div>
 <div class="fb"><svg width="13" height="11" viewBox="0 0 13 11" stroke="#fff" stroke-width="1.800" stroke-linecap="round"><path d="M1 1.500h11M2.500 5.500h8M4.500 9.500h4"/></svg></div>
@@ -23,19 +28,25 @@
 <div class="row til" id="rP" style="top:284px"></div>
 <div class="sec" style="top:373px">Albums<svg viewBox="0 0 7 11"><path d="m1.500 1.500 4 4-4 4"/></svg></div>
 <div class="row til" id="rA" style="top:396px"></div>
-</div></div>
-</section>
-<section class="card side">
-<div class="lbl">Edit Panel</div>
-<h2>폴더 화면 수정</h2>
+</div></div></div></section>
+<section class="ps-card ps-side"><div class="ps-lbl">Edit Panel</div><h2>폴더 화면 수정</h2>
+<div class="ps-edwrap"><div class="editor">
+<div class="ps-pn" data-t="기본">
 <label>제목<input id="iT"></label>
 <label>스토리지 문구<input id="iS"></label>
-<label class="f">프로필 사진<input id="iA" type="file" accept="image/*"></label>
-<div id="ed"></div>
-<div class="acts"><button id="reset" type="button">초기화</button><button id="save" type="button">PNG 저장</button></div>
-</section>
+<label>프로필 사진<input id="iA" type="file" accept="image/*"></label>
+</div>
+<div class="ps-pn" data-t="항목">
+<div class="ps-list" id="ed"></div>
+</div>
+</div></div>
+<div class="ps-acts"><button id="reset" type="button">초기화</button><button id="save" type="button">PNG 저장</button></div></section>
+</div>
 </div>
 <script src="https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js"></script>
-<script src="photos.js"></script>
+<script src="photosfolder.js"></script>
+<script src="../ps-tabs.js?v=1"></script>
+<script src="../ps-fit.js?v=1"></script>
+<script src="../back-anim.js?v=1" defer></script>
 </body>
 </html>
