@@ -29,7 +29,7 @@ render();
 
 /* fit preview to 9:16 */
 function fit(){
- var s=Math.min(vp.parentNode.clientWidth||540,540,innerHeight*0.42*1080/1000)/1080;
+ var s=Math.min(Math.min(vp.parentNode.clientWidth||540,540)/1080,innerHeight*0.5/1000);
  vp.style.width=1080*s+'px';vp.style.height=1000*s+'px';
  cv.style.transform='scale('+s+') translateY(-500px)';
 }
