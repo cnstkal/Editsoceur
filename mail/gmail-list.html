@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>지메일 목록</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.css">
+<link rel="stylesheet" href="gmail-list.css">
+</head>
+<body class="studio">
+<div class="ps-wrap">
+<header class="ps-top"><span class="ps-brand">Gmail List Studio</span><button class="ps-pvbtn" id="pvBtn" type="button">미리보기 모드</button></header>
+<div class="ps-grid">
+
+<section class="ps-card ps-main">
+<div class="ps-lbl">Live Preview</div>
+<h2>지메일 목록</h2>
+<p class="ps-sub">9:16 투명 PNG · 오른쪽에서 바로 수정해요</p>
+<div class="ps-stage" id="stage"><div class="fit" id="fit"><div class="fr">
+
+<div id="cap"><div class="card" id="card">
+  <div class="tp">
+    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.400" stroke-linecap="round"><path d="M3 6h18M3 12h18M3 18h18"/></svg>
+    <div class="sr" id="vSr"></div>
+    <i class="me ph" id="vMe"></i>
+  </div>
+  <div class="cat" id="vCat"></div>
+  <div class="ls" id="vList"></div>
+  <div class="fab"><svg width="11" height="11" viewBox="0 0 24 24" fill="currentColor"><path d="M3 17.250V21h3.750L17.810 9.940l-3.750-3.750zM20.710 7.040a1 1 0 0 0 0-1.410l-2.340-2.340a1 1 0 0 0-1.410 0l-1.830 1.830 3.750 3.750z"/></svg><span id="vFab"></span></div>
+  <div class="nv">
+    <span class="mi"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M20 4H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2zm0 4-8 5-8-5V6l8 5 8-5z"/></svg><b id="vBadge"></b></span>
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="6" width="13" height="12" rx="2"/><path d="m16 10 5-3v10l-5-3"/></svg>
+  </div>
+</div></div>
+
+</div></div></div>
+</section>
+
+<section class="ps-card ps-side">
+<div class="ps-lbl">Edit Panel</div>
+<h2>지메일 목록 수정</h2>
+<div class="ps-seg" id="seg"><button class="on" type="button">기본</button><button type="button">메일</button></div>
+<div class="editor">
+  <div class="pn">
+    <label>테마<select id="iTheme"><option value="light">라이트</option><option value="dark">다크</option></select></label>
+    <label>검색창 문구<input id="iSr"></label>
+    <label>카테고리 문구<input id="iCat"></label>
+    <label>작성 버튼 문구<input id="iFab"></label>
+    <label>안 읽은 수 (비우면 숨김)<input id="iBadge"></label>
+    <label>내 프로필 사진<input id="iMe" type="file" accept="image/*"></label>
+  </div>
+  <div class="pn" hidden>
+    <div id="mList"></div>
+    <button class="addc" id="addM" type="button">+ 메일 추가 (최대 9개)</button>
+  </div>
+</div>
+<div class="ps-acts"><button id="reset" type="button">초기화</button><button id="savePng" type="button">PNG 저장</button></div>
+</section>
+
+</div>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js"></script>
+<script src="gmail-list.js"></script>
+</body>
+</html>
