@@ -81,3 +81,11 @@ body.pvmode .ps-grid{grid-template-columns:1fr}
 .ps-side>.ps-lbl,.ps-side>h2{display:none}
 .ps-acts{position:sticky;bottom:0;background:#fff;padding:12px 0 calc(12px + env(safe-area-inset-bottom))}
 }
+
+/* 채팅 알림 팝업 (기본 꺼짐) */
+.cp{display:none;left:896px;top:1181px;width:526px;height:149px;background:#282828;color:#fff}
+.zs.cpon .cp{display:block}
+.cp .cpa{left:36px;top:41px;width:67px;height:67px;border-radius:18px;background:#000;font-size:28px;font-weight:700;display:flex;align-items:center;justify-content:center}
+.cp .cpt{left:135px;top:36px;font-size:28px;font-weight:700;line-height:36px;white-space:nowrap}
+.cp .cps{left:135px;top:84px;font-size:28px;font-weight:400;line-height:36px;white-space:nowrap}
+.cp .cpp{left:247px;top:149px;width:0;height:0;border-left:16px solid transparent;border-right:16px solid transparent;border-top:22px solid #282828}

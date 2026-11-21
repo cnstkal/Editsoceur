@@ -1,6 +1,6 @@
 (function(){
 var $=function(i){return document.getElementById(i)};
-var DEF={n0:'최산',n1:'윤호',cnt:'2',login:'로그인',gs:'#00ff00',m0:true,m1:true,a:true,v:true};
+var DEF={n0:'최산',n1:'윤호',cnt:'2',login:'로그인',gs:'#00ff00',m0:true,m1:true,a:true,v:true,cp:false,cs:'윤호',ct:'모두에게',cm:'산아'};
 var zs=$('zoom'),zw=$('zw'),fr=$('frame'),W=2576,H=1449,pics=[null,null];
 
 /* 반응형 스케일 */
@@ -15,14 +15,15 @@ function render(){
   v.style.backgroundColor=$('iGs').value;
   v.style.backgroundImage=pics[i]?'url('+pics[i]+')':'none';
   v.classList.toggle('unm',!$('iM'+i).checked)});
+ zs.classList.toggle('cpon',$('iCp').checked);var s=$('iCs').value;$('vCpA').textContent=s.charAt(0);$('vCpT').textContent=s+'님이 '+$('iCt').value;$('vCpS').textContent=$('iCm').value;
  zs.classList.toggle('aoff',$('iA').checked);zs.classList.toggle('voff',$('iV').checked);
 }
 function setDefaults(){
  $('iN0').value=DEF.n0;$('iN1').value=DEF.n1;$('iCnt').value=DEF.cnt;$('iLogin').value=DEF.login;$('iGs').value=DEF.gs;
- $('iM0').checked=DEF.m0;$('iM1').checked=DEF.m1;$('iA').checked=DEF.a;$('iV').checked=DEF.v;
+ $('iM0').checked=DEF.m0;$('iM1').checked=DEF.m1;$('iA').checked=DEF.a;$('iV').checked=DEF.v;$('iCp').checked=DEF.cp;$('iCs').value=DEF.cs;$('iCt').value=DEF.ct;$('iCm').value=DEF.cm;
  pics=[null,null];$('iP0').value='';$('iP1').value='';render();
 }
-['iN0','iN1','iCnt','iLogin','iGs','iM0','iM1','iA','iV'].forEach(function(id){
+['iN0','iN1','iCnt','iLogin','iGs','iM0','iM1','iA','iV','iCp','iCs','iCt','iCm'].forEach(function(id){
  $(id).addEventListener('input',render);$(id).addEventListener('change',render)});
 [0,1].forEach(function(i){$('iP'+i).addEventListener('change',function(){
  var f=this.files[0];if(!f)return;var r=new FileReader();
