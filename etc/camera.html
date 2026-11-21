@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="ko"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no,viewport-fit=cover"><script src="../nozoom.js?v=1"></script>
+<title>Camera</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.css">
+<link rel="stylesheet" href="../ps-base.css?v=4">
+<link rel="stylesheet" href="../ps-editor.css?v=10">
+<link rel="stylesheet" href="../ps-shell.css?v=2">
+<link rel="stylesheet" href="camera.css?v=1">
+</head><body class="studio">
+<div class="ps-wrap">
+<header class="ps-top"><a href="index.html">‹ Etc</a><button class="ps-pvbtn" id="pvBtn" type="button">미리보기 모드</button></header>
+<div class="ps-grid">
+<section class="ps-card ps-main">
+<div class="ps-lbl">Live Preview</div>
+<h2>Camera</h2>
+<p class="ps-sub">오른쪽에서 바로 수정해요</p>
+<div class="ps-stage"><div class="vp" id="vp"><div id="cv">
+ <div id="vf"></div><div id="grid"></div><i id="face"></i><i id="dot"></i>
+ <svg id="fl" viewBox="0 0 84 84"><path d="M36 4 10 46h18l-6 34 28-44H32z" fill="#fff"/><circle cx="62" cy="62" r="17" fill="#fff"/><text x="62" y="70" font-size="24" font-weight="800" text-anchor="middle" fill="#000">A</text></svg>
+ <svg id="tm" viewBox="0 0 70 70"><circle cx="35" cy="35" r="31" fill="none" stroke="#fff" stroke-width="4" stroke-dasharray="2 7" stroke-linecap="round"/><circle cx="35" cy="35" r="17" fill="none" stroke="#fff" stroke-width="5"/><path d="M12 12 58 58" stroke="#000" stroke-width="12"/><path d="M12 12 58 58" stroke="#fff" stroke-width="5" stroke-linecap="round"/></svg>
+ <div id="zm"></div>
+ <div id="sh"><b></b></div>
+ <div class="btn" id="more"><u></u><u></u><u></u><u></u><u></u><u></u><u></u><u></u><u></u></div>
+ <div class="btn" id="thumb"></div>
+ <div class="btn" id="flip"><svg viewBox="0 0 100 100" fill="none" stroke="#fff" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"><path d="M20 50a30 30 0 0 1 54-18"/><path d="M76 16v18H58"/><path d="M80 50a30 30 0 0 1-54 18"/><path d="M24 84V66h18"/></svg></div>
+ <div id="cap"><div id="modes"></div></div>
+</div></div></div>
+</section>
+<section class="ps-card ps-side">
+<div class="ps-lbl">Edit Panel</div>
+<h2>Camera 수정</h2>
+<div class="ps-edwrap"><div class="editor">
+<div class="ps-pn" data-t="기본">
+<label>줌<select id="iZoom"><option value="0">.5</option><option value="1" selected>1×</option><option value="2">2</option><option value="3">3</option></select></label>
+<label>모드<select id="iMode"><option value="0">비디오</option><option value="1" selected>사진</option><option value="2">인물 사진</option></select></label>
+<label>그리드<input id="iGrid" type="checkbox" checked></label>
+<label>얼굴 인식 박스<input id="iFace" type="checkbox" checked></label>
+</div>
+<div class="ps-pn" data-t="이미지">
+<label>카메라 화면<input id="iVf" type="file" accept="image/*"></label>
+<label>갤러리 썸네일<input id="iTh" type="file" accept="image/*"></label>
+</div>
+</div></div>
+<div class="ps-acts"><button id="reset" type="button">초기화</button><button id="savePng" type="button">PNG 저장</button></div>
+</section>
+</div>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js"></script>
+<script src="camera.js?v=1"></script>
+<script src="../ps-tabs.js?v=2"></script>
+</body></html>

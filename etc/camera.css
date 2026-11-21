@@ -1,0 +1,26 @@
+/* 참고 사진(1179x2556) 좌표 기준 */
+html,body,body *{font-family:Pretendard,-apple-system,"Apple SD Gothic Neo","Noto Sans KR",sans-serif!important;letter-spacing:-.02em!important}
+.vp{position:relative;overflow:hidden;background:#000}
+#cv{position:absolute;left:0;top:0;width:1179px;height:2556px;transform-origin:0 0;background:#000;color:#fff;overflow:hidden}
+#cv *{margin:0;box-sizing:border-box}
+#cv>*{position:absolute}
+#vf{left:0;top:354px;width:1179px;height:1572px;background:linear-gradient(#59595d,#26262a) center/cover no-repeat}
+#grid{left:0;top:354px;width:1179px;height:1572px;background:linear-gradient(#fff8,#fff8) 392px 0/2px 100% no-repeat,linear-gradient(#fff8,#fff8) 786px 0/2px 100% no-repeat,linear-gradient(#fff8,#fff8) 0 523px/100% 2px no-repeat,linear-gradient(#fff8,#fff8) 0 1048px/100% 2px no-repeat}
+#face{left:1060px;top:1150px;width:110px;height:170px;border:4px solid #f5c84a;border-radius:18px}
+#dot{left:646px;top:81px;width:16px;height:16px;border-radius:50%;background:#2fd158}
+#fl{left:484px;top:206px;width:84px;height:84px}
+#tm{left:626px;top:213px;width:70px;height:70px}
+#zm>div{position:absolute;top:1757px;width:120px;height:120px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:52px;font-weight:400;color:#fff}
+#zm>div.on{background:#2e2e30cc;color:#ffd34e;font-size:50px;font-weight:600}
+#sh{left:472px;top:1975px;width:236px;height:236px;border:5px solid #e6e6e6;border-radius:50%}
+#sh b{position:absolute;left:11px;top:11px;width:204px;height:204px;border-radius:50%;background:#fff}
+.btn{width:144px;height:144px;border-radius:50%;background:#2b2b2d;display:flex;align-items:center;justify-content:center}
+#more{left:933px;top:2021px;display:grid;grid-template-columns:repeat(3,15px);gap:7px;align-content:center;justify-content:center}
+#more u{width:15px;height:15px;border-radius:50%;background:#fff}
+#thumb{left:102px;top:2308px;background:#e4defc center/cover no-repeat}
+#flip{left:933px;top:2308px}
+#flip svg{width:84px;height:84px}
+#cap{left:272px;top:2310px;width:635px;height:143px;border-radius:72px;background:#2b2b2d;overflow:hidden}
+#modes{position:absolute;left:0;top:0;height:143px;display:flex;align-items:center;white-space:nowrap}
+#modes span{height:120px;padding:0 36px;border-radius:60px;display:flex;align-items:center;justify-content:center;font-size:50px;font-weight:400;color:#ffffff8c}
+#modes span.on{min-width:215px;background:#0c0c0e;border:2px solid #4a4a4d;color:#ffd34e;font-weight:600}
