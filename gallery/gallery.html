@@ -32,14 +32,21 @@
 <section class="card side">
 <div class="lbl">Edit Panel</div>
 <h2>공유 시트 수정</h2>
+<div class="ps-seg" role="tablist" aria-label="편집 항목"><button type="button" class="on" data-tab="basic">기본</button><button type="button" data-tab="image">이미지</button></div>
+<div class="editor">
+<div class="ps-pn" data-panel="basic">
 <div class="row"><label>선택 장수<input id="iCnt" type="number" min="1" max="99"></label><label>인원 수 (0~5)<input id="iNp" type="number" min="0" max="5"></label></div>
 <label>위치 문구<input id="iLoc"></label>
+<label class="tg">메시지 배지<input id="iBd" type="checkbox"></label>
+</div>
+<div class="ps-pn" data-panel="image" hidden>
 <label class="f">썸네일<input id="iTh" type="file" accept="image/*"></label>
 <label class="f">사진 왼쪽<input data-p="0" class="iPh" type="file" accept="image/*"></label>
 <label class="f">사진 가운데<input data-p="1" class="iPh" type="file" accept="image/*"></label>
 <label class="f">사진 오른쪽<input data-p="2" class="iPh" type="file" accept="image/*"></label>
-<label class="tg">메시지 배지<input id="iBd" type="checkbox"></label>
 <div id="pEd"></div>
+</div>
+</div>
 <div class="acts"><button id="reset" type="button">초기화</button><button id="save" type="button">PNG 저장</button></div>
 </section>
 </div>
