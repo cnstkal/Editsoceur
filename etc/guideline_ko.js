@@ -1,7 +1,7 @@
 (function(){
 var $=function(i){return document.getElementById(i)},cv=$('cv'),vp=$('vp');
 var L=['너무 가깝다','너무 멀다','자고 있다','너무 귀엽다','식사중','강아지 됐어'];
-var F=[['iCh','vCh'],['iTime','vTime'],['iLabel','vLabel'],['iHead','vHead'],['iTick','vTick'],['iTitle','vTitle'],['iOk','vOk'],['iDesc','vDesc']],defs={};
+var F=[['iCh','vCh'],['iTime','vTime'],['iTitle','vTitle'],['iOk','vOk'],['iDesc','vDesc']],defs={};
 F.forEach(function(p){var i=$(p[0]),o=$(p[1]);defs[p[0]]=i.value;function u(){o.textContent=i.value}i.oninput=u;u()});
 var imgs={},phs=[$('main')],lbs=[];
 function rd(f,cb){if(!f)return;var r=new FileReader();r.onload=function(){cb(r.result)};r.readAsDataURL(f)}
