@@ -4,11 +4,6 @@ html,body,body *{font-family:Pretendard,-apple-system,"Apple SD Gothic Neo","Not
 .vp{position:relative;overflow:hidden;border-radius:12px;background:repeating-conic-gradient(#ddd 0 25%,#fff 0 50%) 0 0/20px 20px}
 #cv{position:absolute;left:0;top:0;width:1080px;height:1920px;transform-origin:0 0}
 
-/* top chip */
-.top{position:absolute;left:60px;right:60px;top:90px;display:flex;justify-content:space-between;align-items:center}
-.ch{display:flex;align-items:center;gap:14px;background:var(--navy);color:#fff;padding:16px 28px;border-radius:10px;font-size:34px;font-weight:800}
-.ch i{width:16px;height:16px;border-radius:50%;background:var(--red)}
-.tm{background:#fff;color:var(--navy);padding:16px 28px;border-radius:10px;font-size:34px;font-weight:800}
 
 /* sheet */
 .sheet{position:absolute;left:40px;width:1000px;top:560px;padding:36px;display:flex;gap:32px;border-radius:6px;
@@ -31,3 +26,6 @@ html,body,body *{font-family:Pretendard,-apple-system,"Apple SD Gothic Neo","Not
 
 /* news bar */
 
+
+#cv{background:#fff}
+.vp{max-width:100%}

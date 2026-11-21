@@ -1,7 +1,7 @@
 (function(){
 var $=function(i){return document.getElementById(i)};
 var N=6,imgs=[],cv=$('cv'),vp=$('vp');
-var F=[['iCh','vCh'],['iTime','vTime'],['iTitle','vTitle'],['iSub','vSub'],['iNote','vNote']];
+var F=[['iTitle','vTitle'],['iSub','vSub'],['iNote','vNote']];
 var defs={};
 
 /* text binding */
@@ -29,13 +29,14 @@ render();
 
 /* fit preview to 9:16 */
 function fit(){
- var s=Math.max(.1,Math.min(vp.parentNode.clientWidth||405,405)/1080);
- vp.style.width=1080*s+'px';vp.style.height=1920*s+'px';
- cv.style.transform='scale('+s+')';
+ var s=Math.min(vp.parentNode.clientWidth||540,540)/1080;
+ vp.style.width=1080*s+'px';vp.style.height=1000*s+'px';
+ cv.style.transform='scale('+s+') translateY(-500px)';
 }
 window.addEventListener('resize',fit);fit();
 
-/* save transparent PNG */
+$('iBg').oninput=function(){cv.style.background=this.value};cv.style.background='#ffffff';
+/* save PNG */
 $('savePng').onclick=function(){
  var t=cv.style.transform;cv.style.transform='none';
  html2canvas(cv,{backgroundColor:null,scale:1,useCORS:true,width:1080,height:1920}).then(function(c){
