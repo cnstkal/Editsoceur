@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>틱톡</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.css">
+<link rel="stylesheet" href="tiktok.css">
+</head>
+<body>
+<div class="wrap">
+<section class="card main">
+<div class="lbl">Live Preview</div>
+<h2>틱톡 피드</h2>
+<div class="stage"><div id="snap">
+<svg class="live" width="17" height="17" viewBox="0 0 17 17" fill="none" stroke="#fff" stroke-width="1.300" stroke-linecap="round" stroke-linejoin="round"><rect x="1.500" y="4" width="14" height="11" rx="2"/><path d="m5 1.500 3.500 2.500 3.500-2.500"/><text x="3.500" y="11.500" font-size="5.200" font-weight="700" fill="#fff" stroke="none">LIVE</text></svg>
+<div class="tabs"><span style="left:78px">Friends</span><span style="left:131px">Following</span><span style="left:186px" class="fy" id="vFy">For You</span></div>
+<svg class="srch" width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="#fff" stroke-width="1.500" stroke-linecap="round"><circle cx="7" cy="7" r="5.300"/><path d="m11 11 3.500 3.500"/></svg>
+<div class="vid"><img id="vVid"></div>
+<div class="rail">
+<div class="avw"><img id="vAv"><i><svg width="6" height="6" viewBox="0 0 6 6" stroke="#fff" stroke-width="1.200"><path d="M3 .5v5M.5 3h5"/></svg></i></div>
+<div class="ri" style="top:238px"><svg width="20" height="18" viewBox="0 0 20 18"><path d="M10 17S1 11.500 1 5.800A4.600 4.600 0 0 1 10 4a4.600 4.600 0 0 1 9 1.800C19 11.500 10 17 10 17z" fill="#fff"/></svg><b id="vL"></b></div>
+<div class="ri" style="top:278px"><svg width="20" height="18" viewBox="0 0 20 18"><path d="M10 1C5 1 1 4.300 1 8.500c0 2.300 1.200 4.300 3 5.600L3.500 17.500l4-2.300c.8.200 1.600.3 2.500.3 5 0 9-3.300 9-7.500S15 1 10 1z" fill="#fff"/><g fill="#000"><circle cx="6.500" cy="8.500" r="1.100"/><circle cx="10" cy="8.500" r="1.100"/><circle cx="13.500" cy="8.500" r="1.100"/></g></svg><b id="vC"></b></div>
+<div class="ri" style="top:318px"><svg width="16" height="19" viewBox="0 0 16 19"><path d="M1.500 1h13v17L8 13.500 1.500 18z" fill="#fff"/></svg><b id="vB"></b></div>
+</div>
+<div class="info">
+<img class="sa" id="vSa">
+<div class="rp" id="vRpW"><span id="vRp"></span><u><svg width="12" height="10" viewBox="0 0 12 10" fill="none" stroke="#fff" stroke-width="1.200" stroke-linecap="round" stroke-linejoin="round"><path d="M2 5V4a1.500 1.500 0 0 1 1.500-1.500H10M8 .5l2 2-2 2M10 5v1a1.500 1.500 0 0 1-1.500 1.500H2M4 9.500l-2-2 2-2"/></svg></u></div>
+<div class="dots"><i></i><i></i><i></i></div>
+<div class="tx"><b id="vN"></b><b id="vT"></b><span id="vCp"></span><span>♫ <em id="vM"></em></span></div>
+<div class="sh2"><svg width="19" height="17" viewBox="0 0 19 17"><path d="M11 1v4C5 5.500 2 9 1 16c3-3.500 6-5 10-5v4l7.500-7z" fill="#fff"/></svg><b id="vS"></b></div>
+<img class="disc" id="vD">
+</div>
+<div class="sbar"><svg width="11" height="11" viewBox="0 0 11 11" fill="none" stroke="#ddd" stroke-width="1.100" stroke-linecap="round"><circle cx="4.800" cy="4.800" r="3.600"/><path d="m7.600 7.600 2.500 2.500"/></svg><span>Search &nbsp;·&nbsp; <em id="vSr"></em></span><svg width="5" height="8" viewBox="0 0 5 8" fill="none" stroke="#ddd" stroke-width="1.200" stroke-linecap="round" stroke-linejoin="round"><path d="m.8.8 3 3.200-3 3.200"/></svg></div>
+<div class="nav">
+<div style="left:26px" class="on"><svg width="13" height="12" viewBox="0 0 13 12"><path d="M6.500.5 0 6h1.800v5.500h3.400V8h2.600v3.500h3.400V6H13z" fill="#fff"/></svg><span>Home</span></div>
+<div style="left:81px"><svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="#ccc" stroke-width="1.100"><path d="M1.500 3.500h9l.8 7.500H.7z"/><path d="M4 5V3a2 2 0 0 1 4 0v2"/></svg><i class="rd"></i><span>Shop</span></div>
+<div style="left:135px" class="pl"><b></b><s></s><em>+</em></div>
+<div style="left:189px"><svg width="13" height="12" viewBox="0 0 13 12" fill="none" stroke="#ccc" stroke-width="1.100" stroke-linejoin="round"><path d="M1 1h11v7.500H6.500L3.500 11V8.500H1z"/></svg><i class="bg" id="vIb"></i><span>Inbox</span></div>
+<div style="left:243px"><svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="#ccc" stroke-width="1.100"><circle cx="6" cy="3.500" r="2.500"/><path d="M1.500 11.500c0-3 2-4.300 4.500-4.300s4.500 1.300 4.500 4.300z"/></svg><span>Profile</span></div>
+</div>
+</div></div>
+</section>
+<section class="card side">
+<div class="lbl">Edit Panel</div>
+<h2>틱톡 수정</h2>
+<div class="row"><label>이름<input id="iN"></label><label>제목<input id="iT"></label></div>
+<div class="row"><label>캡션<input id="iCp"></label><label>음악<input id="iM"></label></div>
+<div class="row"><label>리포스트 문구<input id="iRp"></label><label>검색 문구<input id="iSr"></label></div>
+<div class="row"><label>좋아요<input id="iL"></label><label>댓글<input id="iC"></label></div>
+<div class="row"><label>저장<input id="iB"></label><label>공유<input id="iS"></label></div>
+<label>인박스 배지<input id="iIb"></label>
+<label class="f">영상(메인) 사진<input id="fVid" type="file" accept="image/*"></label>
+<label class="f">프로필(우측)<input id="fAv" type="file" accept="image/*"></label>
+<label class="f">프로필(하단 작은)<input id="fSa" type="file" accept="image/*"></label>
+<label class="f">음악 원판<input id="fD" type="file" accept="image/*"></label>
+<label class="tg">리포스트 표시<input id="tRp" type="checkbox"></label>
+<label class="tg">For You 밑줄<input id="tFy" type="checkbox"></label>
+<div class="acts"><button id="reset" type="button">초기화</button><button id="save" type="button">PNG 저장</button></div>
+</section>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js"></script>
+<script src="tiktok.js"></script>
+</body>
+</html>
