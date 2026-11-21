@@ -49,7 +49,7 @@ else if(t.type==='file')rd(t.files[0],function(d){S.M[t.dataset.i].i=d;draw()})}
 $('ed').addEventListener('click',function(ev){var d=ev.target.dataset.d;if(d!=null){S.M.splice(d,1);ed();draw()}});
 $('reset').onclick=function(){$('kbd').dataset.b='';init()};
 $('save').onclick=function(){
-html2canvas($('snap'),{backgroundColor:null,scale:4,useCORS:true}).then(function(c){
+capChat($('snap'),{backgroundColor:null,scale:4,useCORS:true}).then(function(c){
 var a=document.createElement('a');a.download='telegram.png';a.href=c.toDataURL('image/png');a.click();
 });
 };

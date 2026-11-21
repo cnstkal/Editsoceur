@@ -35,7 +35,7 @@ $('iTr').addEventListener('change',render);
 $('iAvatar').addEventListener('change',function(){var f=this.files[0];if(!f)return;var r=new FileReader();r.onload=function(e){av=e.target.result;render()};r.readAsDataURL(f)});
 $('clearImg').onclick=function(){av='';$('iAvatar').value='';render()};
 $('reset').onclick=function(){av='';fill()};
-$('savePng').onclick=function(){if(!window.html2canvas)return;html2canvas($('wd'),{scale:3,useCORS:true,backgroundColor:'#000'}).then(function(c){var a=document.createElement('a');a.download='weversedm.png';a.href=c.toDataURL('image/png');a.click()})};
+$('savePng').onclick=function(){if(!window.html2canvas)return;capChat($('wd'),{scale:3,useCORS:true,backgroundColor:'#000'}).then(function(c){var a=document.createElement('a');a.download='weversedm.png';a.href=c.toDataURL('image/png');a.click()})};
 $('pvBtn').onclick=function(){var on=document.body.classList.toggle('pvmode');this.textContent=on?'편집 모드':'미리보기 모드'};
 var ed=document.querySelector('.editor'),groups=[].slice.call(ed.querySelectorAll(':scope > .ps-pn')),bar=document.createElement('div');bar.className='ps-seg';
 groups.forEach(function(g,i){var b=document.createElement('button');b.type='button';b.textContent=g.getAttribute('data-t');if(!i)b.className='on';b.onclick=function(){groups.forEach(function(x,j){x.hidden=j!==i});[].forEach.call(bar.children,function(c,j){c.classList.toggle('on',j===i)})};bar.appendChild(b)});
