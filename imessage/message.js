@@ -20,12 +20,14 @@ $('mPh').textContent=S.mode==='ios'?'iMessage':'문자 메시지 · RCS';
 var h='',n=S.m.length;
 S.m.forEach(function(x,i){var nx=S.m[i+1],t=!nx||+nx.s!==+x.s||nx.l;
 if(x.l){var mm=String(x.l).match(/^(.+\))\s+(.+)$/);h+='<div class="tm">'+(mm?'<b>'+esc(mm[1])+'</b> '+esc(mm[2]):esc(x.l))+'</div>'}
-h+='<div class="b '+(+x.s?'r':'l')+(t?' t':'')+'">'+(x.im?'<img class="ci" src="'+x.im+'" alt="">':'')+(x.x?lk(x.x):'')+'</div>'});
+var pair=x.im&&x.im2,one=pair?'':(x.im||x.im2);
+if(pair)h+='<div class="pp '+(+x.s?'r':'l')+'"><img class="p1" src="'+x.im+'" alt=""><img class="p2" src="'+x.im2+'" alt=""></div>';
+if(!pair||x.x)h+='<div class="b '+(+x.s?'r':'l')+(t?' t':'')+'">'+(one?'<img class="ci" src="'+one+'" alt="">':'')+(x.x?lk(x.x):'')+'</div>'});
 var last=S.m[n-1];if(last&&+last.s&&S.read)h+='<div class="rd">'+esc(S.read)+'</div>';
 $('mL').innerHTML=h}
 function list(){var h='';S.m.forEach(function(x,i){
 h+='<div class="mc" data-i="'+i+'"><div class="row"><label>보낸 사람<select data-f="s"><option value="0"'+(+x.s?'':' selected')+'>상대 (받음)</option><option value="1"'+(+x.s?' selected':'')+'>나 (보냄)</option></select></label><label>시간 라벨(위에 표시)<input data-f="l" value="'+esc(x.l)+'"></label></div>'+
-'<label>내용<textarea data-f="x" rows="3">'+esc(x.x)+'</textarea></label>'+'<label>사진 첨부<input type="file" accept="image/*" data-f="im"></label>'+(x.im?'<img class="ci" src="'+x.im+'" alt="" style="max-width:120px;border-radius:10px">':'')+
+'<label>내용<textarea data-f="x" rows="3">'+esc(x.x)+'</textarea></label>'+'<label>사진 첨부<input type="file" accept="image/*" data-f="im"></label>'+(x.im?'<img class="ci" src="'+x.im+'" alt="" style="max-width:120px;border-radius:10px">':'')+'<label>사진 첨부 2 (2장이면 겹쳐서 전송)<input type="file" accept="image/*" data-f="im2"></label>'+(x.im2?'<img class="ci" src="'+x.im2+'" alt="" style="max-width:120px;border-radius:10px">':'')+
 '<div class="row"><button type="button" class="mb" data-a="u">↑</button><button type="button" class="mb" data-a="d">↓</button><button type="button" class="mb" data-a="x">✕ 삭제</button></div></div>'});
 $('mlist').innerHTML=h}
 function set(){$('iRatio').value=S.ratio||'phone';$('iNm').value=S.nm;$('iCnt').value=S.cnt;$('iMode').value=S.mode;$('iRead').value=S.read}
@@ -35,9 +37,9 @@ function glob(){S.ratio=$('iRatio').value;S.nm=$('iNm').value;S.cnt=$('iCnt').va
 ['iRatio','iNm','iCnt','iMode','iRead'].forEach(function(id){$(id).addEventListener('input',glob);$(id).addEventListener('change',glob)});
 $('iAv').addEventListener('change',function(e){var f=e.target.files[0];if(f)rd(f,function(d){S.av=d;persist();render()})});
 var L=$('mlist'),ix=function(e){return +e.target.closest('.mc').dataset.i};
-function ed(e){var f=e.target.dataset.f;if(!f||f==='im')return;S.m[ix(e)][f]=f==='s'?+e.target.value:e.target.value;persist();render()}
+function ed(e){var f=e.target.dataset.f;if(!f||f==='im'||f==='im2')return;S.m[ix(e)][f]=f==='s'?+e.target.value:e.target.value;persist();render()}
 L.addEventListener('input',ed);L.addEventListener('change',ed);
-L.addEventListener('change',function(e){var t=e.target;if(t.dataset.f!=='im'||!t.files[0])return;var i=ix(e);rd(t.files[0],function(d){S.m[i].im=d;persist();list();render()})});
+L.addEventListener('change',function(e){var t=e.target,k=t.dataset.f;if((k!=='im'&&k!=='im2')||!t.files[0])return;var i=ix(e);rd(t.files[0],function(d){S.m[i][k]=d;persist();list();render()})});
 L.addEventListener('click',function(e){var a=e.target.dataset.a;if(!a)return;var i=ix(e),m=S.m;
 if(a==='x')m.splice(i,1);else if(a==='u'&&i>0){var t=m[i];m[i]=m[i-1];m[i-1]=t}else if(a==='d'&&i<m.length-1){var t2=m[i];m[i]=m[i+1];m[i+1]=t2}
 persist();list();render()});
@@ -53,4 +55,3 @@ document.addEventListener('gesturestart',function(e){e.preventDefault()},{passiv
 document.addEventListener('dblclick',function(e){e.preventDefault()},{passive:false});
 load(false);
 })();
-

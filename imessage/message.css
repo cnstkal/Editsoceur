@@ -32,5 +32,11 @@ html,body{touch-action:manipulation;-webkit-text-size-adjust:100%}
 .mc .row{margin-bottom:0}
 .mc textarea{width:100%;box-sizing:border-box;border:1px solid #dbdbdb;border-radius:8px;padding:8px;font-size:15px;resize:vertical;margin:4px 0 8px}
 .mb{flex:1;height:38px;border:1px solid #dbdbdb;border-radius:8px;background:#f6f6f6;font-weight:700;margin-bottom:12px}
-
 .ci{display:block;max-width:100%;border-radius:14px;margin:2px 0}
+/* 사진 2장 겹쳐 보내기 */
+.pp{position:relative;flex:none;width:62cqw;height:80cqw;margin:0 4.1cqw 3.6cqw}
+.pp.l{align-self:flex-start}
+.pp.r{align-self:flex-end}
+.pp img{position:absolute;display:block;width:40cqw;height:54cqw;max-width:none;margin:0;object-fit:cover;border-radius:6cqw}
+.pp .p1{top:0;right:0}
+.pp .p2{bottom:0;left:0;box-shadow:0 0 3cqw rgba(0,0,0,.25)}
