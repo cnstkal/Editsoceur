@@ -17,12 +17,14 @@ $('iMain').onchange=function(){rd(this.files[0],function(u){imgs[0]=u;$('iMode')
 $('iMode').onchange=draw;
 function draw(){var m=$('iMode').value;phs.forEach(function(e,k){e.className='ph'+(m==='green'?' g':'');e.style.backgroundImage=(m==='photo'&&imgs[k])?'url('+imgs[k]+')':''})}
 draw();
-function fit(){var w=vp.parentNode.clientWidth||390,s=w/1080;vp.style.width=w+'px';vp.style.height=Math.min(1920*s,innerHeight*0.55)+'px';cv.style.transform='scale('+s+')'}
+function fit(){var w=vp.parentNode.clientWidth||390,s=Math.min(w/1200,innerHeight*(innerWidth<1100?0.55:0.8)/1723);
+ vp.style.setProperty('width',1200*s+'px','important');vp.style.height=1723*s+'px';vp.style.margin='0 auto';cv.style.transform='scale('+s+')'}
+$('iBg').oninput=function(){cv.style.background=this.value};
 addEventListener('resize',fit);fit();
 $('savePng').onclick=function(){var t=cv.style.transform;cv.style.transform='none';
- html2canvas(cv,{backgroundColor:null,scale:1,useCORS:true,width:1080,height:1920}).then(function(c){cv.style.transform=t;
+ html2canvas(cv,{backgroundColor:null,scale:1,useCORS:true,width:1200,height:1723}).then(function(c){cv.style.transform=t;
  var a=document.createElement('a');a.download='guideline_ko.png';a.href=c.toDataURL('image/png');a.click()}).catch(function(){cv.style.transform=t})};
-$('reset').onclick=function(){F.forEach(function(p){$(p[0]).value=defs[p[0]];$(p[1]).textContent=defs[p[0]]});imgs={};$('iMode').value='blue';draw();
+$('reset').onclick=function(){F.forEach(function(p){$(p[0]).value=defs[p[0]];$(p[1]).textContent=defs[p[0]]});imgs={};$('iMode').value='blue';$('iBg').value='#88d8ff';cv.style.background='#88d8ff';draw();
  L.forEach(function(t,k){lbs[k].textContent='✕ '+t});
  [].forEach.call(document.querySelectorAll('#slots input,#iMain'),function(i){i.type==='file'?i.value='':0})};
 })();
