@@ -8,7 +8,6 @@ h2{font-size:24px;font-weight:700;margin:8px 0 20px}
 .chk{width:270px;height:480px;border-radius:8px;overflow:hidden;box-shadow:0 2px 12px rgba(0,0,0,.15);background:conic-gradient(#e6e6e6 25%,#fff 0 50%,#e6e6e6 0 75%,#fff 0) 0 0/16px 16px}
 #snap{position:relative;width:270px;height:480px;background:transparent}
 #bar{position:absolute;left:0;right:0;display:flex;align-items:center;justify-content:center;gap:8px;padding:0 14px;color:#fff;font-weight:600;text-align:center;letter-spacing:-.02em;overflow:hidden}
-#bar i{position:absolute;left:0;top:0;bottom:0;width:4px;background:#ff2d55}
 #txt{white-space:pre-wrap;word-break:keep-all;line-height:1.2}
 label{display:block;font-size:14px;font-weight:600;color:#444;margin-bottom:18px}
 label b{float:right;color:#e8457a;font-weight:700}
