@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>틱톡 라이브</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.css">
+<link rel="stylesheet" href="tiktok-live.css">
+</head>
+<body>
+<div class="wrap">
+<section class="card main">
+<div class="lbl">Live Preview</div>
+<h2>틱톡 라이브</h2>
+<div class="stage"><div id="snap">
+<img class="bg" id="vBg">
+<svg class="live" width="17" height="17" viewBox="0 0 17 17" fill="none" stroke="#fff" stroke-width="1.300" stroke-linecap="round" stroke-linejoin="round"><rect x="1.500" y="4" width="14" height="11" rx="2"/><path d="m5 1.500 3.500 2.500 3.500-2.500"/><text x="3.500" y="11.500" font-size="5.200" font-weight="700" fill="#fff" stroke="none">LIVE</text></svg>
+<div class="tabs"><span style="left:78px">Friends</span><span style="left:131px">Following</span><span style="left:186px" class="fy" id="vFy">For You</span></div>
+<svg class="srch" width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="#fff" stroke-width="1.500" stroke-linecap="round"><circle cx="7" cy="7" r="5.300"/><path d="m11 11 3.500 3.500"/></svg>
+<div class="ln" id="vLn"></div>
+<div class="tap" id="vTapW"><svg width="9" height="9" viewBox="0 0 9 9" fill="#fff"><rect x="0" y="3" width="1.700" height="6" rx=".8"/><rect x="3.600" y="0" width="1.700" height="9" rx=".8"/><rect x="7.200" y="4.500" width="1.700" height="4.500" rx=".8"/></svg><b id="vTap"></b></div>
+<div class="inf"><i id="vNow"></i><b id="vN"></b><span id="vCp"></span></div>
+<div class="nav">
+<div style="left:27px" class="on"><svg width="13" height="12" viewBox="0 0 13 12"><path d="M6.500.5 0 6h1.800v5.500h3.400V8h2.600v3.500h3.400V6H13z" fill="#fff"/></svg><span>Home</span></div>
+<div style="left:81px"><svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="#ccc" stroke-width="1.100"><path d="M1.500 3.500h9l.8 7.500H.7z"/><path d="M4 5V3a2 2 0 0 1 4 0v2"/></svg><i class="rd"></i><span>Shop</span></div>
+<div style="left:134px" class="pl"><b></b><s></s><em>+</em></div>
+<div style="left:188px"><svg width="13" height="12" viewBox="0 0 13 12" fill="none" stroke="#ccc" stroke-width="1.100" stroke-linejoin="round"><path d="M1 1h11v7.500H6.500L3.500 11V8.500H1z"/></svg><i class="bg2" id="vIb"></i><span>Inbox</span></div>
+<div style="left:242px"><svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="#ccc" stroke-width="1.100"><circle cx="6" cy="3.500" r="2.500"/><path d="M1.500 11.500c0-3 2-4.300 4.500-4.300s4.500 1.300 4.500 4.300z"/></svg><span>Profile</span></div>
+</div>
+</div></div>
+</section>
+<section class="card side">
+<div class="lbl">Edit Panel</div>
+<h2>틱톡 라이브 수정</h2>
+<div class="row"><label>이름<input id="iN"></label><label>캡션<input id="iCp"></label></div>
+<div class="row"><label>LIVE 배지 문구<input id="iNow"></label><label>안내 문구<input id="iTap"></label></div>
+<label>인박스 배지<input id="iIb"></label>
+<label class="f">배경 사진<input id="fBg" type="file" accept="image/*"></label>
+<label class="tg">LIVE now 배지 표시<input id="tNow" type="checkbox"></label>
+<label class="tg">Tap to watch 표시<input id="tTap" type="checkbox"></label>
+<label class="tg">For You 밑줄<input id="tFy" type="checkbox"></label>
+<div class="acts"><button id="reset" type="button">초기화</button><button id="save" type="button">PNG 저장</button></div>
+</section>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js"></script>
+<script src="tiktok-live.js"></script>
+</body>
+</html>
