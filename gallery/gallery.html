@@ -5,52 +5,53 @@
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>갤러리 공유</title>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.css">
-<link rel="stylesheet" href="gallery.css">
+<link rel="stylesheet" href="gallery.css?v=2">
+<link rel="stylesheet" href="../ps-editor.css?v=10">
 </head>
 <body>
-<div class="wrap">
-<section class="card main">
-<div class="lbl">Live Preview</div>
-<h2>갤러리 공유 시트</h2>
+<div class="ps-wrap">
+<header class="ps-top"><span></span><button class="ps-pvbtn" id="pvBtn" type="button">미리보기 모드</button></header>
+<div class="ps-grid">
+<section class="ps-card ps-main">
+<div class="ps-lbl">미리보기</div>
+<h2>갤러리 공유 시트</h2><p class="ps-sub">실제 화면을 확인하고 오른쪽에서 수정해요</p>
 <div class="stage"><div id="snap">
 <div class="hd">
 <img class="th" id="vTh">
-<div class="tt"><b id="vCnt"></b><span><i>▼</i> <em id="vLoc"></em></span><u>Options <svg width="6" height="9" viewBox="0 0 6 9" fill="none" stroke="#fff" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="m1 1 3.500 3.500L1 8"/></svg></u></div>
+<div class="tt"><b id="vCnt"></b><span><i>▼</i> <em id="vLoc"></em></span><u>옵션 <svg width="6" height="9" viewBox="0 0 6 9" fill="none" stroke="#fff" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="m1 1 3.500 3.500L1 8"/></svg></u></div>
 <div class="x"><svg width="12" height="12" viewBox="0 0 12 12" stroke="#ddd" stroke-width="1.8" stroke-linecap="round"><path d="m1 1 10 10M11 1 1 11"/></svg></div>
 </div>
 <div class="car" id="car"></div>
 <div class="ppl" id="ppl"></div>
 <hr>
 <div class="apps">
-<div><svg viewBox="0 0 48 48"><rect width="48" height="48" rx="11" fill="#1e7bf5"/><g fill="none" stroke="#fff" stroke-linecap="round" stroke-width="3"><path d="M13 34a15 15 0 0 1 22 0" transform="translate(0 -2)"/><path d="M17 30a9 9 0 0 1 14 0" transform="translate(0 -2)"/></g><circle cx="24" cy="25" r="3.500" fill="#fff"/><path d="M24 28v8" stroke="#fff" stroke-width="3" stroke-linecap="round"/></svg><span>AirDrop</span></div>
-<div><svg viewBox="0 0 48 48"><rect width="48" height="48" rx="11" fill="#34c759"/><ellipse cx="24" cy="23" rx="14" ry="11" fill="#fff"/><path d="M13 36c3-1 5-3 5-5l4 1z" fill="#fff"/></svg><span>Messages</span></div>
-<div><svg viewBox="0 0 48 48"><rect width="48" height="48" rx="11" fill="#1e7bf5"/><rect x="9" y="13" width="30" height="22" rx="3" fill="#fff"/><path d="m10 15 14 11 14-11" fill="none" stroke="#1e7bf5" stroke-width="2.500"/></svg><span>Mail</span></div>
-<div><svg viewBox="0 0 48 48"><rect width="48" height="48" rx="11" fill="#fff"/><path d="M0 11a11 11 0 0 1 11-11h26a11 11 0 0 1 11 11v5H0z" fill="#fdc830"/><g stroke="#d9d9d9" stroke-width="1"><path d="M0 24h48M0 32h48M0 40h48"/></g></svg><span>Notes</span></div>
+<div><svg viewBox="0 0 48 48"><rect width="48" height="48" rx="11" fill="#1e7bf5"/><g fill="none" stroke="#fff" stroke-linecap="round" stroke-width="3"><path d="M13 34a15 15 0 0 1 22 0" transform="translate(0 -2)"/><path d="M17 30a9 9 0 0 1 14 0" transform="translate(0 -2)"/></g><circle cx="24" cy="25" r="3.500" fill="#fff"/><path d="M24 28v8" stroke="#fff" stroke-width="3" stroke-linecap="round"/></svg><span>에어드롭</span></div>
+<div><svg viewBox="0 0 48 48"><rect width="48" height="48" rx="11" fill="#34c759"/><ellipse cx="24" cy="23" rx="14" ry="11" fill="#fff"/><path d="M13 36c3-1 5-3 5-5l4 1z" fill="#fff"/></svg><span>메시지</span></div>
+<div><svg viewBox="0 0 48 48"><rect width="48" height="48" rx="11" fill="#1e7bf5"/><rect x="9" y="13" width="30" height="22" rx="3" fill="#fff"/><path d="m10 15 14 11 14-11" fill="none" stroke="#1e7bf5" stroke-width="2.500"/></svg><span>메일</span></div>
+<div><svg viewBox="0 0 48 48"><rect width="48" height="48" rx="11" fill="#fff"/><path d="M0 11a11 11 0 0 1 11-11h26a11 11 0 0 1 11 11v5H0z" fill="#fdc830"/><g stroke="#d9d9d9" stroke-width="1"><path d="M0 24h48M0 32h48M0 40h48"/></g></svg><span>메모</span></div>
 </div>
 </div></div>
 </section>
-<section class="card side">
-<div class="lbl">Edit Panel</div>
-<h2>공유 시트 수정</h2>
-<div class="ps-seg" role="tablist" aria-label="편집 항목"><button type="button" class="on" data-tab="basic">기본</button><button type="button" data-tab="image">이미지</button></div>
-<div class="editor">
-<div class="ps-pn" data-panel="basic">
+<section class="ps-card ps-side">
+<div class="ps-lbl">편집 패널</div><h2>공유 시트 수정</h2>
+<div class="ps-edwrap"><div class="editor">
+<div class="ps-pn" data-t="기본">
 <div class="row"><label>선택 장수<input id="iCnt" type="number" min="1" max="99"></label><label>인원 수 (0~5)<input id="iNp" type="number" min="0" max="5"></label></div>
 <label>위치 문구<input id="iLoc"></label>
 <label class="tg">메시지 배지<input id="iBd" type="checkbox"></label>
 </div>
-<div class="ps-pn" data-panel="image" hidden>
+<div class="ps-pn" data-t="이미지" hidden>
 <label class="f">썸네일<input id="iTh" type="file" accept="image/*"></label>
 <label class="f">사진 왼쪽<input data-p="0" class="iPh" type="file" accept="image/*"></label>
 <label class="f">사진 가운데<input data-p="1" class="iPh" type="file" accept="image/*"></label>
 <label class="f">사진 오른쪽<input data-p="2" class="iPh" type="file" accept="image/*"></label>
 <div id="pEd"></div>
 </div>
-</div>
-<div class="acts"><button id="reset" type="button">초기화</button><button id="save" type="button">PNG 저장</button></div>
+</div></div>
+<div class="ps-acts"><button id="reset" type="button">초기화</button><button id="save" type="button">PNG 저장</button></div>
 </section>
-</div>
+</div></div>
 <script src="https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js"></script>
-<script src="gallery.js"></script>
+<script src="gallery.js?v=2"></script>
 </body>
 </html>
