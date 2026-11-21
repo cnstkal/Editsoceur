@@ -4,7 +4,7 @@ var D={clock:'12:09',bat:35,name:'GEE',date:'11. 15. 12:58',text:'오늘 SHOCK �
 var av='',bg='';
 function hx(h,k){var n=parseInt(h.slice(1),16);return'rgb('+Math.round((n>>16)*k)+','+Math.round((n>>8&255)*k)+','+Math.round((n&255)*k)+')'}
 function render(){
- $('vClock').textContent=$('iClock').value;$('vBat').textContent=$('iBat').value;$('vName').textContent=$('iName').value;$('vDate').textContent=$('iDate').value;$('vText').textContent=$('iText').value;$('vCmt').textContent=$('iCmt').value;$('vLike').textContent=$('iLike').value;
+ if($('vClock'))$('vClock').textContent=$('iClock').value;if($('vBat'))$('vBat').textContent=$('iBat').value;$('vName').textContent=$('iName').value;$('vDate').textContent=$('iDate').value;$('vText').textContent=$('iText').value;$('vCmt').textContent=$('iCmt').value;$('vLike').textContent=$('iLike').value;
  var c=$('iColor').value,cd=$('cd');cd.style.setProperty('--b',c);cd.style.setProperty('--a',hx(c,.72));cd.style.setProperty('--c',hx(c,.42));
  var p=Math.max(0,Math.min(100,parseFloat($('iPg').value)||0))+'%';$('vFill').style.width=p;$('vKnob').style.left=p;
  $('vDia').classList.toggle('off',!$('iDia').checked);

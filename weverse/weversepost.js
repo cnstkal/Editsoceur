@@ -11,7 +11,7 @@ var av='',aav='',ph=[];
 function esc(s){return s.replace(/[&<>]/g,function(c){return{'&':'&amp;','<':'&lt;','>':'&gt;'}[c]})}
 function bg(u){return u?' style="background-image:url('+u+')"':''}
 function render(){
- $('vClock').textContent=$('iClock').value;$('vBat').textContent=$('iBat').value;$('vSub').textContent=$('iSub').value;$('vHint').textContent=$('iHint').value;
+ if($('vClock'))$('vClock').textContent=$('iClock').value;if($('vBat'))$('vBat').textContent=$('iBat').value;$('vSub').textContent=$('iSub').value;$('vHint').textContent=$('iHint').value;
  var ver=$('iVer').checked,h='';
  h+='<div class="au"><div class="av"'+bg(av)+'></div><div class="w"><div class="nm">'+esc($('iName').value)+(ver?VF:'')+'</div><div class="dtt">'+esc($('iDate').value)+'</div></div>'+($('iFol').checked?'<div class="fo">＋ 팔로우</div>':'')+KB+'</div>';
  if($('iTrn').checked)h+='<div class="tr"><span>번역 보기</span></div>';
