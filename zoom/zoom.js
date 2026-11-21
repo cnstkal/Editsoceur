@@ -1,7 +1,7 @@
 (function(){
 var $=function(i){return document.getElementById(i)};
 var DEF={n0:'최산',n1:'윤호',cnt:'2',login:'로그인',gs:'#00ff00',m0:true,m1:true,a:true,v:true,cp:false,cs:'윤호',ct:'모두에게',cm:'산아'};
-var zs=$('zoom'),zw=$('zw'),fr=$('frame'),W=2576,H=1449,pics=[null,null];
+var zs=$('zoom'),zw=$('zw'),fr=$('frame'),W=2576,H=1449,pics=newPics();
 
 /* 반응형 스케일 */
 function fit(){var s=fr.clientWidth/W;zs.style.transform='scale('+s+')';zw.style.height=(H*s)+'px'}
@@ -10,6 +10,7 @@ if(window.ResizeObserver)new ResizeObserver(fit).observe(fr);window.addEventList
 /* 렌더 */
 function render(){
  var count=Math.max(1,Math.min(40,parseInt($('iCnt').value)||1));
+ [].forEach.call(PB.children,function(l,i){l.hidden=i>=count});
  $('vCnt').textContent=count;$('vLogin').textContent=$('iLogin').value;
  /* 줌 갤러리뷰: 타일 16:9, 전체 중앙정렬, 마지막 줄도 중앙정렬. 타일이 가장 커지는 줄 수 선택 */
  var gap=20,left=82,top=130,areaW=2412,areaH=1120,best=null,markup='';
@@ -21,7 +22,7 @@ function render(){
  for(var i=0;i<count;i++){
   var name=i===0?$('iN0').value:i===1?$('iN1').value:'참가자 '+(i+1);
   var muted=i===0?$('iM0').checked:i===1?$('iM1').checked:true;
-  var bg=i<2&&pics[i]?'background-image:url('+pics[i]+');':'background-color:'+$('iGs').value+';';
+  var bg=pics[i]?'background-image:url('+pics[i]+');':'background-color:'+$('iGs').value+';';
   markup+='<div class="vid dynamic'+(muted?' unm':'')+'" style="left:'+pos[i][0]+'px;top:'+pos[i][1]+'px;width:'+tileW+'px;height:'+tileH+'px;'+bg+'"><div class="tag"><svg viewBox="0 0 24 24" class="mi"><use href="#mic"/></svg><span>'+name.replace(/[&<>"]/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]})+'</span></div></div>';
  }
  $('vids').innerHTML=markup;
@@ -31,14 +32,16 @@ function render(){
 function setDefaults(){
  $('iN0').value=DEF.n0;$('iN1').value=DEF.n1;$('iCnt').value=DEF.cnt;$('iLogin').value=DEF.login;$('iGs').value=DEF.gs;
  $('iM0').checked=DEF.m0;$('iM1').checked=DEF.m1;$('iA').checked=DEF.a;$('iV').checked=DEF.v;$('iCp').checked=DEF.cp;$('iCs').value=DEF.cs;$('iCt').value=DEF.ct;$('iCm').value=DEF.cm;
- pics=[null,null];$('iP0').value='';$('iP1').value='';render();
+ pics=newPics();clearInputs();render();
 }
 ['iN0','iN1','iCnt','iLogin','iGs','iM0','iM1','iA','iV','iCp','iCs','iCt','iCm'].forEach(function(id){
  $(id).addEventListener('input',render);$(id).addEventListener('change',render)});
-[0,1].forEach(function(i){$('iP'+i).addEventListener('change',function(){
- var f=this.files[0];if(!f)return;var r=new FileReader();
- r.onload=function(e){pics[i]=e.target.result;render()};r.readAsDataURL(f)})});
-$('clearPics').onclick=function(){pics=[null,null];$('iP0').value='';$('iP1').value='';render()};
+function newPics(){return new Array(40).fill(null)}
+var PB=$('pics');
+for(var k=0;k<40;k++){(function(i){var l=document.createElement('label');l.innerHTML='참가자 '+(i+1)+' 영상<input id="iP'+i+'" type="file" accept="image/*">';l.hidden=true;PB.appendChild(l);
+ $('iP'+i).addEventListener('change',function(){var f=this.files[0];if(!f)return;var r=new FileReader();r.onload=function(e){pics[i]=e.target.result;render()};r.readAsDataURL(f)})})(k)}
+function clearInputs(){for(var k=0;k<40;k++)$('iP'+k).value=''}
+$('clearPics').onclick=function(){pics=newPics();clearInputs();render()};
 $('reset').onclick=setDefaults;
 
 /* 탭 */
