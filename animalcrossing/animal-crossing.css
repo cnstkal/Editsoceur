@@ -1,6 +1,6 @@
 /* 미리보기 스테이지 전용 */
 .view{width:100%;max-width:405px;height:auto;margin:0 auto;position:relative;overflow:hidden;border-radius:8px}
-.chk{position:absolute;left:0;top:0;transform-origin:0 0;width:1080px;height:auto;background:repeating-conic-gradient(#ddd 0 25%,#fff 0 50%) 0 0/40px 40px}
+.chk{position:relative;left:0;top:0;transform-origin:0 0;width:1080px;height:auto;background:repeating-conic-gradient(#ddd 0 25%,#fff 0 50%) 0 0/40px 40px}
 #stage{position:relative;width:1080px;height:auto;min-height:0;overflow:hidden}
 #grp{position:relative;left:40px;top:0!important;width:1000px;padding-top:0}
 .tag{position:relative;z-index:2;width:max-content;min-width:170px;text-align:center;background:var(--ac);color:#fff;font-size:44px;padding:12px 44px 14px;border-radius:60px;margin:0 0 -26px 50px;transform:rotate(-2deg);box-shadow:0 4px 0 #0002}
