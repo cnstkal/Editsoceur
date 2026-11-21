@@ -25,6 +25,10 @@ for(i=0;i<S.np;i++)h+='<div class="p"><div class="a"><img src="'+S.pp[i].img+'">
 $('ppl').innerHTML=h;
 }
 function esc(t){return t.replace(/[&<>]/g,function(c){return{'&':'&amp;','<':'&lt;','>':'&gt;'}[c]})}
+function setupTabs(){
+var bar=document.querySelector('.ps-seg'),buttons=bar.querySelectorAll('button'),panels=document.querySelectorAll('[data-panel]');
+buttons.forEach(function(b){b.onclick=function(){var key=b.dataset.tab;buttons.forEach(function(x){x.classList.toggle('on',x===b)});panels.forEach(function(p){p.hidden=p.dataset.panel!==key})}});
+}
 function editor(){
 var h='';
 for(var i=0;i<S.np;i++)h+='<div class="pe"><b>인원 '+(i+1)+'</b><input data-n="'+i+'" value="'+esc(S.pp[i].n)+'"><input type="file" accept="image/*" data-a="'+i+'"></div>';
@@ -45,5 +49,5 @@ html2canvas($('snap'),{backgroundColor:null,scale:4,useCORS:true}).then(function
 var a=document.createElement('a');a.download='gallery.png';a.href=c.toDataURL('image/png');a.click();
 });
 };
-init();
+setupTabs();init();
 })();
