@@ -8,7 +8,7 @@ var v={};ids.forEach(function(k){var e=$('i'+k);v[k]=e.type=='checkbox'?e.checke
 $('vName').textContent=v.Name;$('vName').style.display=v.Name?'':'none';$('vTxt').textContent=v.Txt;
 $('vArr').style.display=v.A?'':'none';
 st.style.setProperty('--bub',v.Bub);st.style.setProperty('--ac',v.Ac);st.style.setProperty('--col',v.Col);st.style.setProperty('--fs',v.S+'px');
-$('grp').style.top='0';$('stage').style.height=$('grp').offsetHeight+'px';$('chk').style.height=$('grp').offsetHeight+'px';$('pS').textContent=v.S+'px';
+$('grp').style.top='0';$('stage').style.height=($('grp').offsetHeight*.72)+'px';$('chk').style.height=($('grp').offsetHeight*.72)+'px';$('pS').textContent=v.S+'px';
 }
 function fit(){var scale=$('view').clientWidth/1080,h=$('stage').getBoundingClientRect().height;$('chk').style.height=h+'px';$('view').firstChild.style.transform='scale('+scale+')';$('view').style.height=(h*scale)+'px'}
 ids.forEach(function(k){$('i'+k).addEventListener('input',r)});
