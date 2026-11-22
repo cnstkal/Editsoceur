@@ -195,7 +195,7 @@ function paint(c,transparent){
   const pieceX=side==='right'?W:0,pieceY=side==='bottom'?H:0;
 
   c.clearRect(0,0,L.width,L.height);
-  if(!transparent){c.fillStyle=bg;c.fillRect(0,0,L.width,L.height)}
+  if(!transparent){c.fillStyle=bg;if(blank)c.fillRect(pieceX,pieceY,W,H);else c.fillRect(0,0,L.width,L.height)} // 사진 없을 땐 사진 칸은 투명, 조각 칸만 배경색
 
   // 1) 사진 + 펀칭 구멍
   if(!blank)c.drawImage(base,photoX,photoY,W,H);
@@ -209,6 +209,10 @@ function paint(c,transparent){
   }
   // 2) 조각 칸: 배경색 위에 뚫린 부분의 원본 사진이 같은 모양으로 놓임
   if(!blank)for(const p of punches)drawPieceOn(c,p,pieceX,pieceY);
+  else if(!transparent)for(const p of punches){ // 사진 없을 땐 조각 칸에 같은 모양을 뚫어서 보여줌
+    c.save();c.globalCompositeOperation='destination-out';c.fillStyle='#000';
+    fillShape(c,p,pieceX+p.srcX,pieceY+p.srcY);c.restore();
+  }
 }
 function render(){
   if(!base)return;
