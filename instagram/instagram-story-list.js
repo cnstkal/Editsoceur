@@ -4,7 +4,7 @@ var s='<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 89 155" preserveAspe
 var P='data:image/svg+xml;utf8,'+encodeURIComponent(s),S;
 var ON=[0,1,4,5,7];
 function init(){
-S=[];for(var i=0;i<9;i++)S.push({i:P,b:ON.indexOf(i)>-1,d:'10',m:'Sep'});
+S=[];for(var i=0;i<9;i++)S.push({i:P,b:ON.indexOf(i)>-1,d:'10',m:'9월'});
 ed();draw();
 }
 function e(t){return t.replace(/[&<>"]/g,function(c){return{'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]})}
