@@ -102,3 +102,11 @@ body.pvmode .ps-grid{grid-template-columns:1fr}
 label:has(#iTick),label:has(#iKey),label:has(#iTag),label:has(#iLive),label:has(#iBar){display:none!important}
 .fr{background:#fff!important;box-shadow:none!important}
 .card{width:100%!important;height:auto;aspect-ratio:9/16;border-radius:0!important;box-shadow:none!important}
+
+/* 하단 탭바를 카드 맨 아래로, 사진 가운데 정렬, 여백 없이 확대 */
+#stage,.ps-stage{padding:0!important;margin:0!important;background:transparent!important}
+#cap{width:100%!important;height:auto!important}
+.fr{width:100%!important;height:auto!important;aspect-ratio:9/16}
+.card{display:flex;flex-direction:column}
+.gd{height:auto;flex:1;justify-content:center;align-content:center;padding:10px 0 0}
+.nv{margin-top:auto}
