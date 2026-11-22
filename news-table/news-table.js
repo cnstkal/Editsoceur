@@ -2,7 +2,7 @@
 var $=function(i){return document.getElementById(i)};
 var D={Name:'박성화',Sub:'정모씨를 구한 시민영웅',Chip:'',Txt:'처음에는 몸이 안움직일 정도로 무서웠는데 이겨냈죠. [[어떻게요?]]\n사랑의 힘으로…',
 Tick:'야구선수 정윤호, 열애 의혹 불거져 ※ 아부라소바, 하루 권장 섭취량 \'사실상 1그릇 이하\' ※ OTC 기석,',
-Bar:'#0b1f6b',Hi:'#ffc61a',Ac:'#e5243b',Y:8,S:56,T:true,AcOn:true,TS:30};
+Bar:'#0b1f6b',Hi:'#ffc61a',Ac:'#e5243b',Y:26,S:56,T:true,AcOn:true,TS:30};
 var ids=['Name','Sub','Chip','Txt','Tick','Bar','Hi','Ac','Y','S','T','AcOn','TS'],st=$('stage'),canvas=$('view').firstElementChild;
 function esc(s){return s.replace(/[&<>]/g,function(c){return{'&':'&amp;','<':'&lt;','>':'&gt;'}[c]})}
 function load(){ids.forEach(function(k){var e=$('i'+k);if(e.type==='checkbox')e.checked=D[k];else e.value=D[k]});r()}
