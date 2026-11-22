@@ -7,7 +7,7 @@
   function esc(t){return String(t).replace(/[&<>"]/g,function(c){return{'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]})}
   function md(t){return esc(t).replace(/\[\[(.+?)\]\]/g,'<a>$1</a>').replace(/\*\*(.+?)\*\*/g,'<b>$1</b>').replace(/\^\[(\d+)\]/g,'<sup>[$1]</sup>').replace(/\n/g,'<br>')}
   function render(){
-    var f=$('wf');f.style.setProperty('--t',S.th);document.querySelector('.wh').style.background=S.top;document.querySelector('.wtop').style.background=S.top;
+    var f=$('wf');f.style.setProperty('--t',S.th);document.querySelector('.wh').style.background=S.top;
     $('wT').textContent=S.t;$('wM').textContent=S.m;
     $('wCat').innerHTML='분류: '+S.cats.map(function(c){return '<a>'+esc(c)+'</a>'}).join('<s>|</s>');
     var mem=S.mems;

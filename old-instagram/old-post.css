@@ -63,7 +63,7 @@ body.studio{background:#fff;overflow-x:hidden}
 .ps-acts{position:sticky;bottom:0;margin:16px 0 0;padding:10px 0 calc(10px + env(safe-area-inset-bottom));background:#fff;z-index:5}
 }
 .ps-back{color:#0095f6;font-weight:600;font-size:15px;text-decoration:none}
-.oi{width:360px;height:640px;background:#fff;position:relative;overflow:hidden;display:flex;flex-direction:column;font-family:Helvetica,Arial,Pretendard,sans-serif;letter-spacing:0}
+.oi{width:360px;height:auto;min-height:640px;background:#fff;position:relative;overflow:hidden;display:flex;flex-direction:column;font-family:Helvetica,Arial,Pretendard,sans-serif;letter-spacing:0}
 .oi svg{display:block;flex:none}
 .oi .hd{height:47px;flex:none;display:flex;background:linear-gradient(#5b8cba,#3a6c9b 50%,#2f5f8a);border-bottom:1px solid #244a6c;color:#fff}
 .oi .bk{margin:3px 0 0 18px;height:41px;position:relative;display:flex;align-items:center;padding:0 12px 0 16px;font-weight:700;font-size:16px;text-shadow:0 -1px 0 rgba(0,0,0,.35);background:linear-gradient(#4a7eac,#31618f);border:1px solid #234b70;border-left:0;border-radius:0 6px 6px 0;margin-left:20px}

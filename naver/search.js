@@ -12,7 +12,8 @@
     else{try{var v=localStorage.getItem(STORE);S=v?JSON.parse(v):JSON.parse(JSON.stringify(DEF));if(!S||!Array.isArray(S.r))throw 0}catch(e){S=JSON.parse(JSON.stringify(DEF))}}
     $('iPh').value=S.ph;list();render()}
   $('iPh').addEventListener('input',function(){S.ph=this.value;persist();render()});
-  $('iIc').addEventListener('change',function(){$('sbt').classList.toggle('noicons',!this.checked)});
+  function syncBar(){$('sbt').style.display=$('iIc').checked?'':'none'}
+  $('iIc').addEventListener('change',syncBar);syncBar();
   var L=$('el'),ix=function(e){return +e.target.closest('.pe').dataset.i};
   L.addEventListener('input',function(e){var f=e.target.dataset.f;if(!f)return;S.r[ix(e)][f]=e.target.value;persist();render()});
   L.addEventListener('click',function(e){var a=e.target.dataset.a;if(!a)return;var i=ix(e),m=S.r;

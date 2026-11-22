@@ -62,13 +62,13 @@ body.studio{background:#fff;overflow-x:hidden}
 .ps-side{border-top:8px solid #f2f3f5;padding:14px 20px 0}
 .ps-acts{position:sticky;bottom:0;margin:16px 0 0;padding:10px 0 calc(10px + env(safe-area-inset-bottom));background:#fff;z-index:5}
 }
-.fb{--bl:#2d6bdc;width:393px;height:699px;background:#fff;color:#050505;position:relative;overflow:hidden;display:flex;flex-direction:column;font-family:Pretendard,-apple-system,"Apple SD Gothic Neo",sans-serif;font-size:17px}
+.fb{--bl:#2d6bdc;width:393px;height:auto;min-height:699px;background:#fff;color:#050505;position:relative;overflow:hidden;display:flex;flex-direction:column;font-family:Pretendard,-apple-system,"Apple SD Gothic Neo",sans-serif;font-size:17px}
 .fb svg{display:block;flex:none}
 .fb .hd{height:50px;flex:none;display:flex;align-items:center;justify-content:space-between;padding:0 14px}
 .fb .hd b{font-size:17px;font-weight:700}
 .fb .hd svg{width:30px;height:30px;stroke:#050505;fill:none;stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round}
 .fb .rule{height:3px;background:#ced0d4;flex:none}
-.fb .sc{flex:1;min-height:0;overflow:hidden;position:relative}
+.fb .sc{flex:1 0 auto;overflow:visible;position:relative}
 .fb .in{will-change:transform}
 .fb .au{display:flex;align-items:center;gap:9px;padding:10px 8px 6px}
 .fb .av{width:47px;height:47px;border-radius:50%;background:#c9ccd1 center/cover;flex:none;border:1px solid rgba(0,0,0,.1)}
