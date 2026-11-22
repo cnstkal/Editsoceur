@@ -8,7 +8,7 @@ var IM=u('<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 84 74" preserveAs
 var T1='add text here add text here add text here add text here add text here add .....',S;
 function cm(t,r,img){return{n:'name',t:t,d:'09-00',l:'000',r:r,a:C,i:img||''}}
 function init(){
-S={cnt:'000 comments',ph:'Add comment...',bg:BG,me:C,M:[cm(T1,'View 000 replies'),cm(T1,'View 000 replies'),cm('add text here add text here add text here','',IM)]};
+S={cnt:'000개 댓글',ph:'댓글 추가...',bg:BG,me:C,M:[cm(T1,'View 000 replies'),cm(T1,'View 000 replies'),cm('add text here add text here add text here','',IM)]};
 $('iCnt').value=S.cnt;$('iPh').value=S.ph;$('fBg').value='';$('fMe').value='';
 ed();draw();
 }
@@ -33,9 +33,11 @@ $('ed').addEventListener('change',function(ev){var t=ev.target;if(t.dataset.f)rd
 $('ed').addEventListener('click',function(ev){var d=ev.target.dataset.d;if(d!=null){S.M.splice(d,1);ed();draw()}});
 $('reset').onclick=init;
 $('save').onclick=function(){
-html2canvas($('snap'),{backgroundColor:null,scale:4,useCORS:true}).then(function(c){
+var snap=$('snap');snap.style.transform='none';
+html2canvas(snap,{backgroundColor:null,scale:4,useCORS:true}).then(function(c){
+snap.style.transform='';
 var a=document.createElement('a');a.download='tiktok-comments.png';a.href=c.toDataURL('image/png');a.click();
-});
+},function(){snap.style.transform=''});
 };
 init();
 })();

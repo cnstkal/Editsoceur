@@ -16,7 +16,7 @@ $('vRpW').style.display=S.trp?'flex':'none';
 $('vFy').classList.toggle('ul',S.tfy);
 }
 function init(){
-S={n:'Name',t:'Title...',cp:'Caption...',m:'Singer · Song Title',rp:'k reposted',sr:'text here',l:'000',c:'000',b:'000',s:'000',ib:'00+',vid:V,av:C,sa:C,d:C,trp:true,tfy:false};
+S={n:'이름',t:'제목...',cp:'캡션...',m:'가수 · 곡 제목',rp:'리포스트함',sr:'검색어',l:'000',c:'000',b:'000',s:'000',ib:'00+',vid:V,av:C,sa:C,d:C,trp:true,tfy:false};
 for(var k in F)$(k).value=S[F[k]];
 for(k in G)$(k).value='';
 $('tRp').checked=true;$('tFy').checked=false;
@@ -29,9 +29,11 @@ $('tRp').onchange=function(){S.trp=this.checked;draw()};
 $('tFy').onchange=function(){S.tfy=this.checked;draw()};
 $('reset').onclick=init;
 $('save').onclick=function(){
-html2canvas($('snap'),{backgroundColor:null,scale:4,useCORS:true}).then(function(c){
+var snap=$('snap');snap.style.transform='none';
+html2canvas(snap,{backgroundColor:null,scale:4,useCORS:true}).then(function(c){
+snap.style.transform='';
 var a=document.createElement('a');a.download='tiktok.png';a.href=c.toDataURL('image/png');a.click();
-});
+},function(){snap.style.transform=''});
 };
 document.querySelectorAll('.edit-tab').forEach(function(btn){
 btn.addEventListener('click',function(){

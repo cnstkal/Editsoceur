@@ -4,8 +4,9 @@ body{margin:0;background:#f2f3f5;color:#111;font-family:Pretendard,-apple-system
 .card{background:#fff;border-radius:26px;padding:32px;min-width:0}
 .lbl{font-size:12px;letter-spacing:.14em;color:#8a8f98;text-transform:uppercase}
 h2{font-size:24px;font-weight:700;margin:8px 0 20px}
-.stage{display:flex;justify-content:center}
-#snap{position:relative;width:270px;height:480px;background:#000;overflow:hidden;color:#fff;letter-spacing:-.02em;box-shadow:0 2px 12px rgba(0,0,0,.25)}
+:root{--pv:1.45}
+.stage{display:flex;justify-content:center;align-items:flex-start;height:calc(480px * var(--pv) + 24px);padding-top:12px}
+#snap{position:relative;flex:none;transform:scale(var(--pv));transform-origin:top center;width:270px;height:480px;background:#000;overflow:hidden;color:#fff;letter-spacing:-.02em;box-shadow:0 2px 12px rgba(0,0,0,.25)}
 #snap *{letter-spacing:-.02em}
 .bg{position:absolute;left:0;top:0;width:270px;height:480px;object-fit:cover}
 .live{position:absolute;left:12px;top:10px}
@@ -49,3 +50,9 @@ label.f input{width:55%;font-size:12px}
 .acts button{height:52px;border:0;border-radius:14px;font:inherit;font-size:15px;font-weight:700;cursor:pointer}
 #reset{flex:1;background:#f2f3f5}#save{flex:1.6;background:#e8457a;color:#fff}
 @media(max-width:860px){.wrap{grid-template-columns:1fr;padding:12px}.card{padding:20px}}
+
+/* 좌우 여백 축소 + 미리보기 확대 */
+body.studio .ps-wrap{padding:32px 16px 40px}
+body.studio .ps-grid{gap:16px}
+body.studio .ps-card{padding:24px 20px}
+@media(max-width:1099px){body.studio .ps-wrap{padding:0}body.studio .ps-card{padding:0}body.studio .stage{height:auto;padding-top:0}body.studio #snap{transform:none}}

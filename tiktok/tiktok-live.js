@@ -13,7 +13,7 @@ $('vLn').style.display=S.ttap?'block':'none';
 $('vFy').classList.toggle('ul',S.tfy);
 }
 function init(){
-S={n:'Name',cp:'add captions',now:'LIVE now',tap:'Tap to watch LIVE',ib:'00+',bg:BG,tnow:true,ttap:true,tfy:true};
+S={n:'이름',cp:'캡션 입력',now:'라이브 중',tap:'탭해서 라이브 보기',ib:'00+',bg:BG,tnow:true,ttap:true,tfy:true};
 for(var k in F)$(k).value=S[F[k]];
 $('fBg').value='';$('tNow').checked=true;$('tTap').checked=true;$('tFy').checked=true;
 draw();
@@ -26,9 +26,11 @@ $('tTap').onchange=function(){S.ttap=this.checked;draw()};
 $('tFy').onchange=function(){S.tfy=this.checked;draw()};
 $('reset').onclick=init;
 $('save').onclick=function(){
-html2canvas($('snap'),{backgroundColor:null,scale:4,useCORS:true}).then(function(c){
+var snap=$('snap');snap.style.transform='none';
+html2canvas(snap,{backgroundColor:null,scale:4,useCORS:true}).then(function(c){
+snap.style.transform='';
 var a=document.createElement('a');a.download='tiktok-live.png';a.href=c.toDataURL('image/png');a.click();
-});
+},function(){snap.style.transform=''});
 };
 init();
 })();

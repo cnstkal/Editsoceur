@@ -4,8 +4,9 @@ body{margin:0;background:#f2f3f5;color:#111;font-family:Pretendard,-apple-system
 .card{background:#fff;border-radius:26px;padding:32px;min-width:0}
 .lbl{font-size:12px;letter-spacing:.14em;color:#8a8f98;text-transform:uppercase}
 h2{font-size:24px;font-weight:700;margin:8px 0 20px}
-.stage{display:flex;justify-content:center}
-#snap{position:relative;width:270px;height:480px;background:#000;overflow:hidden;color:#fff;letter-spacing:-.02em;box-shadow:0 2px 12px rgba(0,0,0,.25)}
+:root{--pv:1.45}
+.stage{display:flex;justify-content:center;align-items:flex-start;height:calc(480px * var(--pv) + 24px);padding-top:12px}
+#snap{position:relative;flex:none;transform:scale(var(--pv));transform-origin:top center;width:270px;height:480px;background:#000;overflow:hidden;color:#fff;letter-spacing:-.02em;box-shadow:0 2px 12px rgba(0,0,0,.25)}
 #snap *{letter-spacing:-.02em}
 .live{position:absolute;left:12px;top:10px;z-index:2}
 .tabs{position:relative;z-index:2}.tabs span{position:absolute;top:13px;transform:translateX(-50%);font-size:9.500px;line-height:14px;color:#e8e8e8;white-space:nowrap}
@@ -61,3 +62,9 @@ label.tg input{width:20px;height:20px;accent-color:#e8457a}
 .edit-tab.active{background:#fff;color:#e8457a;box-shadow:0 1px 5px rgba(0,0,0,.07)}
 .edit-panel{display:none}.edit-panel.active{display:block}
 .panel-note{margin:0 0 16px;color:#858b94;font-size:13px}
+
+/* 좌우 여백 축소 + 미리보기 확대 */
+body.studio .ps-wrap{padding:32px 16px 40px}
+body.studio .ps-grid{gap:16px}
+body.studio .ps-card{padding:24px 20px}
+@media(max-width:1099px){body.studio .ps-wrap{padding:0}body.studio .ps-card{padding:0}body.studio .stage{height:auto;padding-top:0}body.studio #snap{transform:none}}
