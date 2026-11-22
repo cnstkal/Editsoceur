@@ -14,3 +14,9 @@ html,body,body *{font-family:Pretendard,-apple-system,sans-serif!important;lette
 #pRd{left:0;background:#f00}
 #pKb{top:3em;width:14em;height:14em;border-radius:50%;background:#f00}
 .xk{display:flex!important;align-items:center;gap:8px;white-space:nowrap}.xk input{width:20px;height:20px}
+
+/* 캔버스 16:9 고정 + 프리뷰 하단 여백 제거 */
+body.studio .ps-main{align-self:start!important;height:auto!important;min-height:0!important;padding-bottom:0!important}
+body.studio .ps-stage{height:auto!important;min-height:0!important;padding:0!important;margin:0!important;display:block!important}
+body.studio .ps-stage .ps-frame{display:block!important;width:100%!important;max-width:100%!important;height:auto!important;min-height:0!important;padding:0!important;margin:0!important;background:none!important}
+body.studio .ps-stage #pf{display:block!important;width:100%!important;max-width:100%!important;height:auto!important;aspect-ratio:16/9!important;margin:0!important}
