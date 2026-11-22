@@ -16,14 +16,14 @@ body.studio{margin:0;background:#f2f3f5;color:#111;min-height:100vh}
 
 /* 캡처 영역: 360x640 (9:16), 배경 투명 */
 #cap{width:360px;height:640px;background:transparent;display:flex;align-items:center;justify-content:center}
-.card{--bg:#f1f0f6;--cd:#fff;--tx:#1f1f1f;--rd:#7c7f87;--sb:#6b6e76;--ln:#ececf0;--fb:#dbe3fb;--fbt:#1b2b5b;--pill:#dfe3f7;--sr:#fff;--bar:#f1f0f6;position:relative;width:336px;height:597px;background:var(--bg);color:var(--tx);border-radius:16px;overflow:hidden;box-shadow:0 6px 22px rgba(0,0,0,.28)}
+.card{--bg:#f1f0f6;--cd:#fff;--tx:#1f1f1f;--rd:#7c7f87;--sb:#6b6e76;--ln:#ececf0;--fb:#dbe3fb;--fbt:#1b2b5b;--pill:#dfe3f7;--sr:#fff;--bar:#f1f0f6;position:relative;width:360px;height:640px;background:var(--bg);color:var(--tx);border-radius:0;overflow:hidden;box-shadow:0 6px 22px rgba(0,0,0,.28)}
 .card.dark{--bg:#2b2b2f;--cd:#121214;--tx:#e8e8ea;--rd:#c4c5ca;--sb:#8d8f96;--ln:#2a2a2e;--fb:#2d4a86;--fbt:#fff;--pill:#3a4560;--sr:#3a3a3f}
 .tp{display:flex;align-items:center;gap:12px;height:50px;padding:6px 14px 0}
 .sr{flex:1;height:26px;border-radius:13px;background:var(--sr);font-size:10px;text-align:center;line-height:26px;color:var(--tx);white-space:nowrap;overflow:hidden}
 .me{width:22px;height:22px;border-radius:50%;background-size:cover;background-position:center;flex:none}
 .ph{background:radial-gradient(ellipse 130% 38% at 25% 100%,#8aa300 62%,transparent 63%),radial-gradient(ellipse 130% 38% at 85% 100%,#b9d44c 62%,transparent 63%),linear-gradient(#bfe3ff,#f0f9ff)}
 .cat{height:30px;padding:10px 16px 0;font-size:9.500px}
-.ls{margin:0 6px;height:454px;background:var(--cd);border-radius:12px;overflow:hidden}
+.ls{margin:0;height:520px;background:var(--cd);border-radius:0;overflow:hidden}
 .rw{display:flex;gap:9px;height:63px;padding:9px 10px 0 8px;border-bottom:1px solid var(--ln);overflow:hidden}
 .rw .av{width:24px;height:24px;border-radius:50%;flex:none;margin-top:3px;background-size:cover;background-position:center}
 .rw .tx{flex:1;min-width:0}
@@ -74,3 +74,7 @@ body.pvmode .ps-grid{grid-template-columns:1fr}
 .ps-stage{padding-top:0}
 .ps-acts{position:sticky;bottom:0;background:#fff;padding:10px 0 calc(10px + env(safe-area-inset-bottom))}
 }
+
+/* 4:3 프리뷰 프레임 */
+#stage{aspect-ratio:4/3;width:100%;display:flex;align-items:center;justify-content:center;background:#e4e6ea;border-radius:18px;overflow:hidden;margin-top:22px}
+.fit{flex:none}
