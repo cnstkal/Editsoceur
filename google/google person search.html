@@ -27,28 +27,12 @@
 </div>
 <svg class="sh" width="24" height="24" viewBox="0 0 24 24" fill="#3c4043"><path d="M18 16.100c-.8 0-1.500.3-2 .8l-7.100-4.200c.1-.2.1-.5.1-.7s0-.5-.1-.7L16 7.200c.5.5 1.200.8 2 .8a3 3 0 1 0-3-3c0 .2 0 .5.1.7L8 9.800A3 3 0 1 0 6 15c.8 0 1.500-.3 2-.8l7.100 4.200c-.1.200-.1.400-.1.600a2.900 2.900 0 1 0 3-2.900z"/></svg>
 
-<nav class="tabs"><span>AI 모드</span><span class="on">전체</span><span>이미지</span><span>동영상</span><span>뉴스</span><span>짧은 동영상</span><span>쇼핑</span><span>더보기 ▾</span><span>도구 ▾</span></nav>
+<nav class="tabs"><span id="tAi">AI 모드</span><span class="on">전체</span><span>이미지</span><span>동영상</span><span>뉴스</span><span>짧은 동영상</span><span>쇼핑</span><span>더보기 ▾</span><span>도구 ▾</span></nav>
 
-<main class="res">
-<div class="it it0"><i class="th ph" data-i="t0"></i>
-<div class="hd"><span class="fv nm"></span><div><div class="sn" data-b="nsite"></div><div class="ur" data-b="nurl"></div></div><em>⋮</em></div>
-<a class="tt big" data-b="ntitle"></a><p class="sp" data-b="nsnip"></p></div>
+<main class="res" id="res"></main>
 
-<div class="it it1"><i class="th ph" data-i="t1"></i>
-<div class="hd s"><span class="fv lm">L</span><span class="sn" data-b="m1s"></span></div>
-<a class="tt u" data-b="m1t"></a><p class="sp" data-b="m1b"></p><div class="dt" data-b="m1d"></div></div>
-
-<div class="it it2"><i class="th ph" data-i="t2"></i>
-<div class="hd s"><span class="fv om"></span><span class="sn" data-b="m2s"></span></div>
-<a class="tt" data-b="m2t"></a><p class="sp" data-b="m2b"></p><div class="dt" data-b="m2d"></div></div>
-
-<div class="it it3"><i class="th ph" data-i="t3"></i>
-<div class="hd s"><span class="fv kb">KBS</span><span class="sn" data-b="m3s"></span></div>
-<a class="tt" data-b="m3t"></a><p class="sp" data-b="m3b"></p><div class="dt" data-b="m3d"></div></div>
-</main>
-
-<i class="vline"></i>
-<aside class="kp">
+<i class="vline" id="vl"></i>
+<aside class="kp" id="kp">
 <div class="kn" data-b="name"></div>
 <div class="kj" data-b="job"></div>
 <div class="ph3"><i class="ph" data-i="p0"></i><i class="ph" data-i="p1"></i><i class="ph" data-i="p2"></i></div>
@@ -56,7 +40,7 @@
 <div class="ks">출처: <a data-b="src"></a></div>
 <div class="kt"><div><span data-b="k1"></span><span data-b="v1"></span></div><div><span data-b="k2"></span><span data-b="v2"></span></div></div>
 </aside>
-<span class="chev"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#202124" stroke-width="2.600" stroke-linecap="round" stroke-linejoin="round"><path d="m9 5 7 7-7 7"/></svg></span>
+<span class="chev" id="chev"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#202124" stroke-width="2.600" stroke-linecap="round" stroke-linejoin="round"><path d="m9 5 7 7-7 7"/></svg></span>
 
 </div></div></div>
 </section>
@@ -70,6 +54,6 @@
 </div>
 </div>
 <script src="https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js"></script>
-<script src="google%20person%20search.js"></script>
+<script src="google%20person%20search.js?v=2"></script>
 </body>
 </html>
