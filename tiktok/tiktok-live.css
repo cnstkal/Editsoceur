@@ -14,10 +14,10 @@ h2{font-size:24px;font-weight:700;margin:8px 0 20px}
 .tabs .fy{font-weight:700;color:#fff}
 .tabs .fy.ul::after{content:"";position:absolute;left:0;right:0;bottom:-3px;height:1px;background:#fff}
 .srch{position:absolute;left:241px;top:12px}
-.ln{position:absolute;left:0;right:0;top:336px;border-top:1px solid rgba(255,255,255,.22)}
-.tap{position:absolute;left:0;right:0;top:331px;display:flex;justify-content:center;align-items:center;gap:4px;font-size:9px;line-height:14px}
+.ln{position:absolute;left:0;right:0;top:356px;border-top:1px solid rgba(255,255,255,.22)}
+.tap{position:absolute;left:0;right:0;top:351px;display:flex;justify-content:center;align-items:center;gap:4px;font-size:9px;line-height:14px}
 .tap b{font-weight:700;text-shadow:0 0 4px rgba(0,0,0,.25)}
-.inf{position:absolute;left:8.500px;top:352px}
+.inf{position:absolute;left:8.500px;top:372px}
 .inf i{display:inline-block;background:#fe2c55;color:#fff;font-style:normal;font-size:6px;font-weight:600;line-height:8.500px;padding:0 3px;border-radius:1.500px;margin-bottom:5px;white-space:nowrap}
 .inf b{display:block;font-size:9.500px;line-height:13px}
 .inf span{display:block;font-size:9px;line-height:13px}
@@ -48,3 +48,6 @@ body.studio .ps-wrap{padding:32px 16px 40px}
 body.studio .ps-grid{gap:16px}
 body.studio .ps-card{padding:24px 20px}
 @media(max-width:1099px){body.studio .ps-wrap{padding:0}body.studio .ps-card{padding:0}body.studio .stage{height:auto;padding-top:0}body.studio #snap{transform:none}}
+
+/* 프리텐다드 자간 -20 (-0.02em) */
+html,body,body *{font-family:Pretendard,-apple-system,"Apple SD Gothic Neo","Noto Sans KR",sans-serif!important;letter-spacing:-.02em!important}

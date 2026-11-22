@@ -16,7 +16,7 @@ rd('iAv',function(v){av=v});rd('iPic',function(v){pic=v});
 $('clr').onclick=function(){av=pic=null;$('iAv').value=$('iPic').value='';draw()};
 $('reset').onclick=load;
 var fitEl=$('fit'),stage=$('stage');
-function fit(){var w=stage.clientWidth;fitEl.style.zoom=w?Math.min(w/360,2):1}
+function fit(){var w=stage.clientWidth,h=stage.clientHeight;if(!w||!h){fitEl.style.zoom=1;return}var z=Math.min((h-48)/640,(w-48)/360,1);fitEl.style.zoom=Math.max(z,.2)}
 if(window.ResizeObserver)new ResizeObserver(fit).observe(stage);addEventListener('resize',fit);
 $('pvBtn').onclick=function(){var on=document.body.classList.toggle('pvmode');this.textContent=on?'편집 모드':'미리보기 모드';fit()};
 $('savePng').onclick=function(){var z=fitEl.style.zoom;fitEl.style.zoom=1;html2canvas($('shot'),{scale:3,useCORS:true,backgroundColor:'#fff'}).then(function(c){fitEl.style.zoom=z;var a=document.createElement('a');a.download='old-instagram-post.png';a.href=c.toDataURL('image/png');a.click()}).catch(function(){fitEl.style.zoom=z})};

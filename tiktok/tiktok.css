@@ -68,3 +68,6 @@ body.studio .ps-wrap{padding:32px 16px 40px}
 body.studio .ps-grid{gap:16px}
 body.studio .ps-card{padding:24px 20px}
 @media(max-width:1099px){body.studio .ps-wrap{padding:0}body.studio .ps-card{padding:0}body.studio .stage{height:auto;padding-top:0}body.studio #snap{transform:none}}
+
+/* 프리텐다드 자간 -20 (-0.02em) */
+html,body,body *{font-family:Pretendard,-apple-system,"Apple SD Gothic Neo","Noto Sans KR",sans-serif!important;letter-spacing:-.02em!important}

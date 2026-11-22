@@ -12,7 +12,7 @@ body.studio{display:block;background:#f2f3f5;color:#111;min-height:100vh}
 .ps-lbl{font-size:12px;letter-spacing:.14em;color:#8a8f98;text-transform:uppercase}
 .ps-main h2,.ps-side>h2{font-size:26px;font-weight:700;margin:8px 0 6px}
 .ps-sub{font-size:15px;color:#8a8f98}
-.ps-stage{padding-top:28px}
+.ps-stage{padding-top:0}
 .ps-frame{display:flex;justify-content:center}
 .ps-side{--pk:#e8457a;--pk-bg:#fde8ef;--ln:#e9eaee;display:flex;flex-direction:column}
 .ps-seg{display:flex;gap:4px;margin:14px 0;padding:5px;background:#fff;border:1px solid var(--ln);border-radius:16px;box-shadow:0 1px 3px rgba(0,0,0,.04)}
@@ -95,3 +95,6 @@ body.studio{background:#fff;overflow-x:hidden}
 .oi .nv>div:nth-child(3) i{width:76px;height:48px;border-radius:7px;background:linear-gradient(#4a82b8,#2f6399);border:2px solid #14161a;box-shadow:0 0 0 2px #3a3d42;display:block}
 .fit{width:360px}
 .ps-stage .fit{margin:0 auto}
+/* 세로 게시물: 4:3 전체 프리뷰 프레임 + 여백 */
+#stage{aspect-ratio:4/3;width:100%;display:flex;align-items:center;justify-content:center;background:#e4e6ea;border-radius:18px;overflow:hidden;margin-top:22px}
+#fit{flex:none}

@@ -68,3 +68,6 @@ label.tg input{width:20px;height:20px;accent-color:#e8457a}
 .nobg{background:transparent!important;box-shadow:none!important}.nobg .bg{display:none}
 .notop .live,.notop .tabs,.notop .srch{display:none}
 label.f,label.tg{display:flex;align-items:center;justify-content:space-between;gap:12px}
+
+/* 프리텐다드 자간 -20 (-0.02em) */
+html,body,body *{font-family:Pretendard,-apple-system,"Apple SD Gothic Neo","Noto Sans KR",sans-serif!important;letter-spacing:-.02em!important}
