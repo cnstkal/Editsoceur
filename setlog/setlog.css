@@ -1,4 +1,4 @@
-.sl-fit{position:relative;width:min(100%,420px);aspect-ratio:393/852;overflow:hidden;border-radius:28px;background:#fff;box-shadow:0 0 0 1px #e9eaee}
+.sl-fit{position:relative;width:min(100%,420px);aspect-ratio:393/852;overflow:hidden;border-radius:0;background:#fff;box-shadow:0 0 0 1px #e9eaee}
 .sl{position:absolute;left:0;top:0;width:393px;height:852px;background:#fff;transform-origin:0 0;overflow:hidden;color:#111}
 .sl *{position:absolute;box-sizing:border-box;margin:0;padding:0}
 .sl .sl-t{left:0;top:19px;width:108px;text-align:center;font-size:17px;font-weight:600;line-height:22px;color:#000;letter-spacing:0!important}
