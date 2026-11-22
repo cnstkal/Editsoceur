@@ -202,7 +202,8 @@ function paint(c,transparent){
   // 구멍 색 = 배경색. 배경색 버전은 배경색으로 채우고, 투명 버전은 진짜로 뚫는다
   for(const p of punches){
     c.save();
-    if(transparent||blank){c.globalCompositeOperation='destination-out';c.fillStyle='#000'}
+    if(transparent){c.globalCompositeOperation='destination-out';c.fillStyle='#000'}
+    else if(blank){c.fillStyle=bg} // 사진 없을 땐 사진 칸에도 같은 도형을 배경색으로 찍음
     else c.fillStyle=bg;
     fillShape(c,p,photoX+p.srcX,photoY+p.srcY);
     c.restore();
