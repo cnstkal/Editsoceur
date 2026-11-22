@@ -1,18 +1,20 @@
 <!DOCTYPE html>
 <html lang="ko"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no"><script src="../nozoom.js?v=1"></script><title>틴더</title>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.css">
-<link rel="stylesheet" href="tinder.css"><link rel="stylesheet" href="../ps-editor.css?v=10"><style id="ed-font">html,body,body *{font-family:Pretendard,-apple-system,"Apple SD Gothic Neo","Noto Sans KR",sans-serif!important;letter-spacing:-.02em!important}</style><style id="pa">body{animation:paIn .28s ease both}body.pa-out{animation:paOut .18s ease forwards}@keyframes paIn{from{opacity:0}to{opacity:1}}@keyframes paOut{to{opacity:0}}@media (prefers-reduced-motion:reduce){body,body.pa-out{animation:none}}</style><script id="pa-js">(function(){document.addEventListener("click",function(e){var a=e.target.closest&&e.target.closest("a[href]");if(!a||e.defaultPrevented||e.button||e.metaKey||e.ctrlKey||e.shiftKey||a.target||a.hasAttribute("download"))return;var h=a.getAttribute("href");if(!h||h[0]==="#"||/^(javascript:|mailto:|tel:)/.test(h))return;var u=new URL(a.href,location.href);if(u.origin!==location.origin)return;e.preventDefault();document.body.classList.add("pa-out");setTimeout(function(){location.href=u.href},180)},true)})();</script></head>
+<link rel="stylesheet" href="tinder.css?v=2"><link rel="stylesheet" href="../ps-editor.css?v=10"><style id="ed-font">html,body,body *{font-family:Pretendard,-apple-system,"Apple SD Gothic Neo","Noto Sans KR",sans-serif!important;letter-spacing:-.02em!important}</style><style id="pa">body{animation:paIn .28s ease both}body.pa-out{animation:paOut .18s ease forwards}@keyframes paIn{from{opacity:0}to{opacity:1}}@keyframes paOut{to{opacity:0}}@media (prefers-reduced-motion:reduce){body,body.pa-out{animation:none}}</style><script id="pa-js">(function(){document.addEventListener("click",function(e){var a=e.target.closest&&e.target.closest("a[href]");if(!a||e.defaultPrevented||e.button||e.metaKey||e.ctrlKey||e.shiftKey||a.target||a.hasAttribute("download"))return;var h=a.getAttribute("href");if(!h||h[0]==="#"||/^(javascript:|mailto:|tel:)/.test(h))return;var u=new URL(a.href,location.href);if(u.origin!==location.origin)return;e.preventDefault();document.body.classList.add("pa-out");setTimeout(function(){location.href=u.href},180)},true)})();</script></head>
 <body class="studio"><div class="ps-wrap">
 <header class="ps-top"><b>틴더</b><button class="ps-pvbtn" id="pvBtn" type="button">미리보기 모드</button></header>
 <div class="ps-grid">
 <section class="ps-card ps-main"><div class="ps-lbl">Live Preview</div><h2>틴더 프로필 카드</h2><p class="ps-sub">실제 앱 비율로 확인하고, 오른쪽에서 바로 수정해요</p>
 <div class="ps-stage"><div class="ps-fit" id="fit"><div class="canvas" id="post">
 <div class="photo" id="vPhoto"></div><div class="shade"></div>
+<div class="tabs"><svg class="flt" width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.9" stroke-linecap="round"><path d="M3 7h9M18 7h3M3 17h3M12 17h9"/><circle cx="15" cy="7" r="2.800"/><circle cx="9" cy="17" r="2.800"/></svg><span class="tp" id="vT0"></span><span class="tt" id="vT1"></span><span class="tt" id="vT2"></span><span class="tt fade" id="vT3"></span><svg class="bolt" width="58" height="58" viewBox="0 0 24 24"><path d="M13.500 2 5 13.500h5.500L9.500 22 19 10h-5.800z" fill="#ff8bd8"/></svg></div>
 <div class="info">
-<div class="recent" id="vRecent"><i></i>최근 접속</div>
+<div class="recent" id="vRecent"><span id="vLike"></span><svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="#111" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="m9 5 7 7-7 7"/></svg></div>
 <div class="nm"><span id="vName"></span> <span id="vAge"></span></div>
-<div class="look"><svg width="38" height="38" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.6" stroke-linecap="round"><circle cx="10.5" cy="10.5" r="6.5"/><path d="m16 16 5 5"/></svg><span id="vLook"></span></div>
-<div class="goal"><span class="ge" id="vEmoji"></span><span id="vGoal"></span></div>
+<div class="look"><svg width="44" height="44" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.800" stroke-linecap="round"><circle cx="10.500" cy="10.500" r="6.500"/><path d="m16 16 5 5"/></svg><span id="vLook"></span></div>
+<div class="goal"><span class="ge"><svg width="64" height="64" viewBox="0 0 24 24"><path d="M12 21s-9-5.600-9-12a5 5 0 0 1 9-3 5 5 0 0 1 9 3c0 6.400-9 12-9 12z" fill="#ff3d8f"/><path d="M4 4l16 16M4 4h4M4 4v4M20 20h-4M20 20v-4" stroke="#7a49e8" stroke-width="2" stroke-linecap="round" fill="none"/></svg></span><span id="vGoal"></span></div>
+<div class="up"><svg width="46" height="46" viewBox="0 0 24 24" fill="#fff"><path d="M12 3 3.500 12H9v9h6v-9h5.500z"/></svg></div>
 </div>
 <div class="btns">
 <b class="s"><svg viewBox="0 0 24 24" width="52" height="52" fill="none" stroke="#fff" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4v6h6"/><path d="M5 14a8 8 0 1 0 2-8L4 10"/></svg></b>
@@ -25,12 +27,12 @@
 <div class="editor">
 <label>사진<input type="file" id="iPhoto" accept="image/*"></label>
 <div class="row"><label>이름<input id="iName"></label><label>나이<input id="iAge"></label></div>
-<label class="tg">최근 접속 표시<input type="checkbox" id="iRecent"></label>
+<label class="tg">LIKE 배지 표시<input type="checkbox" id="iRecent"></label><label>LIKE 배지 문구<input id="iLike"></label><label>상단 탭 (쉼표로 구분, 첫 번째가 선택됨)<input id="iTabs"></label>
 <label>찾는 관계 문구<input id="iLook"></label>
-<div class="row"><label>이모지<input id="iEmoji"></label><label>관계 목표<input id="iGoal"></label></div>
+<div class="row"><label>관계 목표<input id="iGoal"></label></div>
 <label>사진 위치 (세로 %)<input type="range" id="iPos" min="0" max="100"></label>
 </div>
 <div class="ps-acts"><button id="reset" type="button">초기화</button><button id="savePng" type="button">PNG 저장</button></div></section>
 </div></div>
 <script src="https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js"></script>
-<script src="tinder.js"></script></body></html>
+<script src="tinder.js?v=2"></script></body></html>
