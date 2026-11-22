@@ -28,5 +28,5 @@ var a=document.createElement('a');a.download='instagram-story-list.png';a.href=c
 init();
 })();
 
-function fitSnap(){var w=document.querySelector('.stage').clientWidth;document.getElementById('snap').style.zoom=w?w/360:1}
+function fitSnap(){var w=document.querySelector('.stage').clientWidth;document.getElementById('snap').style.zoom=w?w/270:1}
 addEventListener('resize',fitSnap);fitSnap();
