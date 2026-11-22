@@ -17,19 +17,12 @@
 <p class="ps-sub">실제 앱 화면 비율로 확인하고, 오른쪽에서 바로 수정해요</p>
 <div class="ps-stage"><div class="ps-frame">
 <div class="fm" id="fm">
- <div class="sb"><b id="vClock">12:00</b>
-  <div class="di"><i class="art"></i><span class="wv"><u></u><u></u><u></u><u></u><u></u><u></u></span></div>
-  <div class="st"><svg width="20" height="15" viewBox="0 0 20 15"><path d="M10 14 7 11a4.300 4.300 0 0 1 6 0zM3.500 7.500a9.500 9.500 0 0 1 13 0l-1.700 1.700a7 7 0 0 0-9.600 0zM.5 4.500a13.700 13.700 0 0 1 19 0l-1.800 1.800a11.200 11.200 0 0 0-15.400 0z" fill="#000"/></svg><em class="bt"><span id="vBat">34</span></em></div>
- </div>
  <div class="hd">
   <button class="rb" type="button"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#111" stroke-width="1.800" stroke-linecap="round" stroke-linejoin="round"><path d="M20 12H4M11 5l-7 7 7 7"/></svg></button>
   <div class="ti" id="vTitle"></div>
   <div class="rp"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#111" stroke-width="1.700" stroke-linecap="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.500-4.500" stroke-width="0"/></svg><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#111" stroke-width="1.700" stroke-linecap="round"><path d="M3 6h18M3 12h18M3 18h18"/></svg></div>
  </div>
- <div class="ch" id="ch">
-  <div class="dt"><span id="vDate"></span></div>
-  <div id="msgs"></div>
- </div>
+ <div class="ch" id="ch"><div id="msgs"></div></div>
  <div class="ib"><span id="vHint"></span><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#333" stroke-width="1.700" stroke-linecap="round"><circle cx="12" cy="12" r="10"/><path d="M8 14.500c1.200 1.800 6.800 1.800 8 0"/><circle cx="8.700" cy="9.500" r=".6" fill="#333"/><circle cx="15.300" cy="9.500" r=".6" fill="#333"/></svg></div>
 </div>
 </div></div>
@@ -40,18 +33,16 @@
 <div class="ps-edwrap"><div class="editor">
 <div class="ps-pn" data-t="기본">
 <label>상대 이름<input id="iName"></label>
-<label>날짜<input id="iDate"></label>
 <label>입력창 문구<input id="iHint"></label>
-<label>상태바 시간<input id="iClock"></label>
-<label>배터리 %<input id="iBat" type="number" min="1" max="100"></label>
-</div>
-<div class="ps-pn" data-t="메시지" hidden>
-<label class="col">대화 내용 (한 줄=한 말풍선)<textarea id="iMsgs" rows="12"></textarea></label>
-<p class="hint">상대: 내용 | 시간 &nbsp;·&nbsp; 내가 보냄: 앞에 &gt; 붙이기 (예: &gt; 윤둥이 | 오전 10:52)</p>
-</div>
-<div class="ps-pn" data-t="이미지" hidden>
-<label class="ps-addp">+ 프로필 사진 추가<input class="ps-sr" id="iAvatar" type="file" accept="image/*"></label>
+<label>상단 제목<input id="iTitle"></label>
+<label>프로필 사진<input id="iAvatar" type="file" accept="image/*"></label>
 <button class="ps-ghost" id="clearAv" type="button">기본 프로필로</button>
+<div class="ps-tg"><span>채팅만 저장 (배경 투명)</span><label class="sw"><input id="tChat" type="checkbox"><i></i></label></div>
+</div>
+<div class="ps-pn" data-t="채팅" hidden>
+<div id="ed"></div>
+<button class="addc" id="add" type="button">+ 메시지 추가</button>
+<p class="hint">종류: 텍스트 / 사진 / 날짜 (날짜는 가운데 구분선으로 표시돼요)</p>
 </div>
 </div></div>
 <div class="ps-acts"><button id="savePng" type="button">PNG 저장</button><button id="reset" type="button">초기화</button></div>
@@ -59,6 +50,6 @@
 </div>
 </div>
 <script src="https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js"></script>
-<script src="fromm.js?v=1"></script>
+<script src="fromm.js?v=2"></script>
 </body>
 </html>
