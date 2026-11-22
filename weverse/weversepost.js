@@ -11,7 +11,7 @@ var av='',aav='',ph=[];
 function esc(s){return s.replace(/[&<>]/g,function(c){return{'&':'&amp;','<':'&lt;','>':'&gt;'}[c]})}
 function bg(u){return u?' style="background-image:url('+u+')"':''}
 function render(){
- if($('vClock'))$('vClock').textContent=$('iClock').value;if($('vBat'))$('vBat').textContent=$('iBat').value;$('vSub').textContent=$('iSub').value;$('vHint').textContent=$('iHint').value;
+ if($('vClock'))$('vClock').textContent=$('iClock').value;if($('vBat'))$('vBat').textContent=$('iBat').value;$('vSub').textContent=$('iSub').value;
  var ver=$('iVer').checked,h='';
  h+='<div class="au"><div class="av"'+bg(av)+'></div><div class="w"><div class="nm">'+esc($('iName').value)+(ver?VF:'')+'</div><div class="dtt">'+esc($('iDate').value)+'</div></div>'+($('iFol').checked?'<div class="fo">＋ 팔로우</div>':'')+KB+'</div>';
  if($('iTrn').checked)h+='<div class="tr"><span>번역 보기</span></div>';
@@ -28,23 +28,29 @@ function render(){
  function card(o){return '<div class="cm'+(o.hl?' hl':'')+'"><div class="av'+(o.a?'':' g')+'"'+(o.a?bg(aav):'')+'></div><div class="cd'+(o.a?' a':'')+'"><div class="nm">'+esc(o.n)+(o.a?VF:'')+' <span class="dtt">'+esc(o.d)+'</span></div>'+KB+'<div class="tx">'+esc(o.t)+'</div><div class="mt"><span>'+HT+esc(o.l)+'</span><span>'+CM+esc(o.r)+'</span></div></div></div>'}
  if(art.length){h+='<div class="sec"><div>아티스트 댓글<s>'+art.length+'</s></div><div class="r"><div class="av"'+bg(aav)+'></div><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#111" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 15l7-7 7 7"/></svg></div></div>';art.forEach(function(o){h+=card(o)});h+='<div class="gap"></div>'}
  h+='<div class="sec"><div>전체 댓글<s>'+esc($('iCmt').value)+'</s></div></div>';
- if($('iMore').checked)h+='<div class="mr"><i>＋</i>최신 댓글 더 보기</div>';
+ h+='<div class="mr"><i>＋</i>최신 댓글 더 보기</div>';
  all.forEach(function(o){h+=card(o)});
  $('in').innerHTML=h;$('in').style.transform='translateY(-'+(parseInt($('iScroll').value)||0)+'px)';
- var f=$('fl');f.classList.toggle('on',$('iFab').checked);
- f.innerHTML=$('iFabT').value==='up'?'<svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="#111" stroke-width="1.900" stroke-linecap="round" stroke-linejoin="round"><path d="M5 4h14M12 20V8M6 13l6-6 6 6"/></svg>':'<svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="#111" stroke-width="1.900" stroke-linecap="round" stroke-linejoin="round"><path d="M6 6l6 6 6-6M6 13l6 6 6-6"/></svg>';
- $('sbar').classList.toggle('on',$('iSbar').checked);
+ $('wp').classList.toggle('chat-only',!!$('iChatOnly').checked);
 }
-function fill(){$('iClock').value=D.clock;$('iBat').value=D.bat;$('iSub').value=D.sub;$('iHint').value=D.hint;$('iScroll').value=0;$('iName').value=D.name;$('iDate').value=D.date;$('iBody').value=D.body;$('iLike').value=D.like;$('iCmt').value=D.cmt;$('iCms').value=D.cms;$('iVer').checked=false;$('iFol').checked=true;$('iTrn').checked=false;$('iFab').checked=true;$('iFabT').value='up';$('iMore').checked=true;$('iSbar').checked=true;render()}
-['iClock','iBat','iSub','iHint','iScroll','iName','iDate','iBody','iLike','iCmt','iCms'].forEach(function(i){$(i).addEventListener('input',render)});
-['iVer','iFol','iTrn','iFab','iFabT','iMore','iSbar'].forEach(function(i){$(i).addEventListener('change',render)});
+function fill(){$('iClock').value=D.clock;$('iBat').value=D.bat;$('iSub').value=D.sub;$('iScroll').value=0;$('iName').value=D.name;$('iDate').value=D.date;$('iBody').value=D.body;$('iLike').value=D.like;$('iCmt').value=D.cmt;$('iCms').value=D.cms;$('iVer').checked=false;$('iFol').checked=true;$('iTrn').checked=false;$('iChatOnly').checked=false;buildRows();render()}
+['iClock','iBat','iSub','iScroll','iName','iDate','iBody','iLike','iCmt'].forEach(function(i){$(i).addEventListener('input',render)});
+['iVer','iFol','iTrn','iChatOnly'].forEach(function(i){$(i).addEventListener('change',render)});
+var CMS=[];
+function parseCms(){CMS=$('iCms').value.split('\n').filter(function(l){return l.trim()}).map(function(l){var hl=false,a=false;if(l[0]==='^'){hl=true;l=l.slice(1)}if(l[0]==='*'){a=true;l=l.slice(1)}var p=l.split('|').map(function(s){return s.trim()});return{hl:hl,a:a,n:p[0]||'',d:p[1]||'',t:p[2]||'',l:p[3]||'',r:p[4]||''}})}
+function syncCms(){$('iCms').value=CMS.map(function(o){return (o.hl?'^':'')+(o.a?'*':'')+[o.n,o.d,o.t,o.l,o.r].join(' | ')}).join('\n')}
+function buildRows(){parseCms();$('cmList').innerHTML=CMS.map(function(o,i){return '<div class="it" data-i="'+i+'"><input class="a" data-k="n" value="'+esc(o.n)+'" placeholder="이름"><input class="b" data-k="d" value="'+esc(o.d)+'" placeholder="날짜"><input class="b" data-k="t" value="'+esc(o.t)+'" placeholder="댓글 내용"><input class="c" data-k="l" value="'+esc(o.l)+'" placeholder="좋아요"><input class="c" data-k="r" value="'+esc(o.r)+'" placeholder="답글"><label class="fl"><input type="checkbox" data-k="a"'+(o.a?' checked':'')+'>아티스트</label><label class="fl"><input type="checkbox" data-k="hl"'+(o.hl?' checked':'')+'>강조</label><button type="button" data-d="'+i+'">✕</button></div>'}).join('')}
+$('cmList').addEventListener('input',function(e){var t=e.target,r=t.closest('.it');if(!r||!t.dataset.k||t.type==='checkbox')return;CMS[r.dataset.i][t.dataset.k]=t.value;syncCms();render()});
+$('cmList').addEventListener('change',function(e){var t=e.target,r=t.closest('.it');if(!r||t.type!=='checkbox')return;CMS[r.dataset.i][t.dataset.k]=t.checked;syncCms();render()});
+$('cmList').addEventListener('click',function(e){var d=e.target.dataset.d;if(d!=null){CMS.splice(+d,1);syncCms();buildRows();render()}});
+$('addC').onclick=function(){CMS.push({hl:false,a:false,n:'새 댓글',d:'',t:'내용을 입력하세요',l:'0',r:''});syncCms();buildRows();render()};
 function rd(f,cb){var r=new FileReader();r.onload=function(e){cb(e.target.result);render()};r.readAsDataURL(f)}
 $('iAvatar').addEventListener('change',function(){if(this.files[0])rd(this.files[0],function(v){av=v})});
 $('iArtAv').addEventListener('change',function(){if(this.files[0])rd(this.files[0],function(v){aav=v})});
 $('iPhotos').addEventListener('change',function(){[].forEach.call(this.files,function(f){rd(f,function(v){ph.push(v)})})});
 $('clearImg').onclick=function(){av='';aav='';ph=[];['iAvatar','iArtAv','iPhotos'].forEach(function(i){$(i).value=''});render()};
 $('reset').onclick=function(){av='';aav='';ph=[];fill()};
-$('savePng').onclick=function(){if(!window.html2canvas)return;html2canvas($('wp'),{scale:3,useCORS:true,backgroundColor:'#fff'}).then(function(c){var a=document.createElement('a');a.download='weversepost.png';a.href=c.toDataURL('image/png');a.click()})};
+$('savePng').onclick=function(){if(!window.html2canvas)return;html2canvas($('wp'),{scale:3,useCORS:true,backgroundColor:$('iChatOnly').checked?null:'#fff'}).then(function(c){var a=document.createElement('a');a.download='weversepost.png';a.href=c.toDataURL('image/png');a.click()})};
 $('pvBtn').onclick=function(){var on=document.body.classList.toggle('pvmode');this.textContent=on?'편집 모드':'미리보기 모드'};
 var ed=document.querySelector('.editor'),groups=[].slice.call(ed.querySelectorAll(':scope > .ps-pn')),bar=document.createElement('div');bar.className='ps-seg';
 groups.forEach(function(g,i){var b=document.createElement('button');b.type='button';b.textContent=g.getAttribute('data-t');if(!i)b.className='on';b.onclick=function(){groups.forEach(function(x,j){x.hidden=j!==i});[].forEach.call(bar.children,function(c,j){c.classList.toggle('on',j===i)})};bar.appendChild(b)});

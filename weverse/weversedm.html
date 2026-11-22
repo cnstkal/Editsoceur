@@ -29,25 +29,23 @@
 <label>상태바 시간<input id="iClock"></label>
 <label>배터리 %<input id="iBat" type="number" min="1" max="100"></label>
 <label>원문 가리기 문구<input id="iHide"></label>
-</div>
-<div class="ps-pn" data-t="메시지" hidden>
-<label class="col">대화 내용<textarea id="iMsgs" rows="14"></textarea></label>
-<p class="hint">@이름 #색상코드 → 새 그룹(프로필+이름) 시작 &nbsp;·&nbsp; 한 줄=말풍선 하나 &nbsp;·&nbsp; 내용 | 시간 (그룹 마지막 말풍선 옆에 표시) &nbsp;·&nbsp; 번역은 한국어 // 번역문</p>
-</div>
-<div class="ps-pn" data-t="이미지" hidden>
-<label class="ps-addp">+ 프로필 사진<input class="ps-sr" id="iAvatar" type="file" accept="image/*"></label>
-<button class="ps-ghost" id="clearImg" type="button">기본 프로필로</button>
-</div>
-<div class="ps-pn" data-t="꾸미기" hidden>
 <label>기본 말풍선 색<input id="iColor" type="color" value="#c6eff5"></label>
-<div class="ps-tg"><span>번역 줄 표시</span><label class="sw"><input id="iTr" type="checkbox" checked><i></i></label></div>
+<label class="ps-addp">+ 프로필 사진<input class="ps-sr" id="iAvatar" type="file" accept="image/*"></label>
+<label class="ps-addp">+ 사진 메시지 이미지<input class="ps-sr" id="iPhoto" type="file" accept="image/*"></label>
+<button class="ps-ghost" id="clearImg" type="button">프로필·사진 기본으로</button>
+<div class="ps-tg"><span>번역 줄 표시</span><label class="sw"><input id="iTr" type="checkbox"><i></i></label></div>
+<div class="ps-tg"><span>채팅만 저장 (배경 투명)</span><label class="sw"><input id="iChatOnly" type="checkbox"><i></i></label></div>
 </div>
-</div></div>
+<div class="ps-pn" data-t="채팅" hidden>
+<label class="col">대화 내용<textarea id="iMsgs" rows="14"></textarea></label>
+<p class="hint">@이름 #색상코드 → 새 그룹 · 한 줄=말풍선 · 내용 | 시간 · 번역은 // 번역문 · 사진 메시지는 [사진] | 시간</p>
+</div>
+</div>
 <div class="ps-acts"><button id="savePng" type="button">PNG 저장</button><button id="reset" type="button">초기화</button></div>
 </section>
 </div>
 </div>
 <script src="https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js"></script><script src="../chat-capture.js"></script>
-<script src="weversedm.js?v=1"></script>
+<script src="weversedm.js?v=2"></script>
 </body>
 </html>
