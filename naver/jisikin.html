@@ -14,19 +14,27 @@
 <section class="ps-card ps-main">
 <div class="ps-lbl">Live Preview</div>
 <h2>지식iN 질문</h2>
-<p class="ps-sub">9:16 화면으로 확인하고, 오른쪽에서 바로 수정해요</p>
+<p class="ps-sub">오른쪽에서 바로 수정해요</p>
 <div class="ps-stage"><div class="ps-frame">
 <div class="phone" id="shot">
-  <header class="top"><div class="logo"><svg viewBox="0 0 24 24"><path fill="#fff" d="M3 3h6.5l5 8V3H21v18h-6.500L9.500 13v8H3z"/></svg></div><span>지식iN</span></header>
+  <header class="top"><div class="logo"><b>N</b></div><span class="lg">지식iN</span>
+    <svg class="ti" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.6" stroke-linecap="round"><circle cx="10.500" cy="10.500" r="6.500"/><path d="m15.500 15.500 5 5"/></svg>
+    <svg class="ti" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.6" stroke-linecap="round"><path d="M4 6h16M4 12h16M4 18h16"/></svg></header>
+  <div class="sub"><svg class="bk" viewBox="0 0 24 24" fill="none" stroke="#222" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20 12H4M10 6l-6 6 6 6"/></svg><span class="st">지식 Q&amp;A</span><span class="qb"><em>Q</em> 질문하기</span></div>
+  <div class="cat"><span class="c1" id="vCat1"></span><svg class="ch" viewBox="0 0 10 41" preserveAspectRatio="none" fill="none" stroke="#ddd" stroke-width="1"><path d="M0 0 9 20.500 0 41"/></svg><b class="c2" id="vCat2"></b><span class="pl">+</span></div>
   <div class="q"><b>Q</b><h1 id="vTitle"></h1></div>
-  <div class="meta"><span id="vUser"></span> · 마감률 <em id="vClose"></em> · 채택률 <em id="vPick"></em> · <span id="vDate"></span></div>
+  <div class="meta"><span id="vUser"></span> · 질문수 <em id="vQn"></em> · 마감률 <em id="vClose"></em> · 채택률 <em id="vPick"></em></div>
+  <div class="m2"><span class="ac">답변 <em id="vCnt"></em></span><svg class="th" viewBox="0 0 24 24" fill="none" stroke="#999" stroke-width="1.700" stroke-linejoin="round"><path d="M7 11v9H3v-9zM7 11l4-8c1.700 0 2.500 1.300 2 3l-.6 3H19a2 2 0 0 1 2 2.300l-1 6A2 2 0 0 1 18 20H7"/></svg><span class="n0">0</span><span class="fs"><i class="on">가</i><i>가</i></span></div>
   <p class="body" id="vBody"></p>
-  <div class="btns"><span>의견</span><span>나도 궁금해요 <span id="vWant"></span></span></div>
-  <div class="cnt">답변 <em id="vCnt"></em>개</div>
-  <div class="ans"><div class="av" id="vAv"></div>
-    <div><div class="an" id="vName"></div><div class="as"><em id="vGrade"></em> · 채택답변수 <em id="vAdopt"></em></div></div></div>
+  <div class="dt" id="vDate"></div>
+  <div class="btns"><span class="b1">의견<span id="vOp"></span></span><span class="b2">나도궁금해요 <span id="vWant"></span></span><span class="rp">신고</span></div>
+  <div class="cb"><span>답변 <em id="vCnt2"></em>개</span><span class="r">· 공개답변 &nbsp; · 비즈니스 답변</span></div>
+  <div class="ans"><div class="av" id="vAv"><i>A</i></div>
+    <div><div class="an" id="vName"></div><div class="as">채택답변수 <em id="vAdopt"></em></div></div></div>
   <hr>
   <p class="atx" id="vAns"></p>
+  <div class="dt" id="vADate"></div>
+  <div class="btns"><span class="b1">의견<span id="vAOp"></span></span><span class="b2 lk"><svg viewBox="0 0 24 24" fill="none" stroke="#555" stroke-width="1.700" stroke-linejoin="round"><path d="M7 11v9H3v-9zM7 11l4-8c1.700 0 2.500 1.300 2 3l-.6 3H19a2 2 0 0 1 2 2.300l-1 6A2 2 0 0 1 18 20H7"/></svg><span id="vALike"></span></span><span class="rp">신고</span></div>
 </div>
 </div></div>
 </section>
@@ -38,17 +46,21 @@
 <div class="ps-pn" data-t="질문">
 <label>질문 제목<input id="iTitle"></label>
 <label>질문 내용<textarea id="iBody" rows="3"></textarea></label>
-<label>질문자 아이디<input id="iUser"></label>
+<label>질문자<input id="iUser"></label>
 <label>날짜<input id="iDate"></label>
+<div class="row"><label>카테고리 1<input id="iCat1"></label><label>카테고리 2<input id="iCat2"></label></div>
 </div>
 <div class="ps-pn" data-t="수치" hidden>
+<div class="row"><label>질문수<input id="iQn"></label><label>답변 수<input id="iCnt"></label></div>
 <div class="row"><label>마감률<input id="iClose"></label><label>채택률<input id="iPick"></label></div>
-<div class="row"><label>나도 궁금해요<input id="iWant"></label><label>답변 수<input id="iCnt"></label></div>
+<div class="row"><label>의견 수<input id="iOp"></label><label>나도궁금해요 수<input id="iWant"></label></div>
 </div>
 <div class="ps-pn" data-t="답변" hidden>
 <label>답변자 이름<input id="iName"></label>
-<div class="row"><label>등급<input id="iGrade"></label><label>채택답변수<input id="iAdopt"></label></div>
+<label>채택답변수<input id="iAdopt"></label>
 <label>답변 내용<textarea id="iAns" rows="3"></textarea></label>
+<div class="row"><label>답변 날짜<input id="iADate"></label><label>답변 의견 수<input id="iAOp"></label></div>
+<label>답변 좋아요 수<input id="iALike"></label>
 </div>
 <div class="ps-pn" data-t="이미지" hidden>
 <div class="ps-pic"><div class="th"></div><div><b id="picTxt">기본 프로필</b><span>미리보기에 반영됩니다</span></div></div>
