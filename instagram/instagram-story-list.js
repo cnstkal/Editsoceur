@@ -4,15 +4,15 @@ var s='<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 89 155" preserveAspe
 var P='data:image/svg+xml;utf8,'+encodeURIComponent(s),S;
 var ON=[0,1,4,5,7];
 function init(){
-S=[];for(var i=0;i<9;i++)S.push({i:P,b:ON.indexOf(i)>-1,d:'10',m:'9월'});
+S=[];for(var i=0;i<9;i++)S.push({i:P,b:ON.indexOf(i)>-1,m:'9',d:'10'});
 ed();draw();
 }
 function e(t){return t.replace(/[&<>"]/g,function(c){return{'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]})}
 function draw(){
-$('grid').innerHTML=S.map(function(c){return '<div class="c"><img src="'+c.i+'">'+(c.b?'<div class="bd"><b>'+e(c.d)+'</b><small>'+e(c.m)+'</small></div>':'')+'</div>'}).join('');
+$('grid').innerHTML=S.map(function(c){return '<div class="c"><img src="'+c.i+'">'+(c.b?'<div class="bd"><b>'+e(c.m)+'</b><small>'+e(c.d)+'</small></div>':'')+'</div>'}).join('');
 }
 function ed(){
-$('ed').innerHTML=S.map(function(c,i){return '<div class="it"><b>'+(i+1)+'</b><input type="file" accept="image/*" data-i="'+i+'"><input type="checkbox" data-i="'+i+'" data-k="b"'+(c.b?' checked':'')+'><input class="d" data-i="'+i+'" data-k="d" value="'+e(c.d)+'"><input class="m" data-i="'+i+'" data-k="m" value="'+e(c.m)+'"></div>'}).join('');
+$('ed').innerHTML=S.map(function(c,i){return '<div class="it"><b>'+(i+1)+'</b><input type="file" accept="image/*" data-i="'+i+'"><input type="checkbox" data-i="'+i+'" data-k="b"'+(c.b?' checked':'')+'><input class="m" data-i="'+i+'" data-k="m" value="'+e(c.m)+'"><input class="d" data-i="'+i+'" data-k="d" value="'+e(c.d)+'"></div>'}).join('');
 }
 function rd(f,cb){if(!f)return;var r=new FileReader();r.onload=function(){cb(r.result)};r.readAsDataURL(f)}
 $('ed').addEventListener('input',function(ev){var t=ev.target;if(t.dataset.k&&t.type!=='checkbox'){S[t.dataset.i][t.dataset.k]=t.value;draw()}});
@@ -28,5 +28,5 @@ var a=document.createElement('a');a.download='instagram-story-list.png';a.href=c
 init();
 })();
 
-function fitSnap(){var w=document.querySelector('.stage').clientWidth;$('snap').style.zoom=w?w/270:1}
+function fitSnap(){var w=document.querySelector('.stage').clientWidth;document.getElementById('snap').style.zoom=w?w/270:1}
 addEventListener('resize',fitSnap);fitSnap();
