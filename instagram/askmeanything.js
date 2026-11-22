@@ -1,6 +1,6 @@
 (function(){
 var $=function(i){return document.getElementById(i)};
-var DEF={name:'_starhwa_',q:'프로필 사진은 왜 바꾼 거야',btn:'답글 달기',bar:'#000000',bg:'#ffffff'};
+var DEF={name:'moonlight_day',q:'오늘 뭐 먹었어?',btn:'답글 달기',bar:'#000000',bg:'#ffffff'};
 var zs=$('zoom'),zw=$('zw'),fr=$('frame'),S=1932,av=null;
 
 function fit(){var s=fr.clientWidth/S;zs.style.transform='scale('+s+')';zw.style.height=(S*s)+'px'}
