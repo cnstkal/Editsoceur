@@ -25,9 +25,3 @@ h2{font-size:24px;font-weight:700;margin:8px 0 20px}
 .acts button{height:52px;border:0;border-radius:14px;font:inherit;font-size:15px;font-weight:700;cursor:pointer}
 #reset{flex:1;background:#f2f3f5}#save{flex:1.6;background:#e8457a;color:#fff}
 @media(max-width:860px){.wrap{grid-template-columns:1fr;padding:12px}.card{padding:20px}}
-/* 프리뷰 여백 제거: 체커보드/패딩 없이 화면 꽉 채움 */
-.stage.ps-stage,.ps-stage{padding:0!important;background:none!important;margin:0}
-#snap{box-shadow:none}
-.ps-card.main{padding:0!important;background:#fff}
-.ps-card.main>*:not(.stage){margin-left:32px;margin-right:32px}
-.ps-card.main>.lbl,.ps-card.main>h2{padding-top:24px}
