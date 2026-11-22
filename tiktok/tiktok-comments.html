@@ -31,11 +31,21 @@
 <section class="card side ps-card ps-side">
 <div class="lbl ps-lbl">편집 패널</div>
 <h2>댓글 수정</h2><div class="ps-edwrap"><div class="editor"><div class="ps-pn" data-t="기본">
+<div class="edit-tabs" role="tablist">
+<button type="button" class="edit-tab active" data-panel="basic">기본</button>
+<button type="button" class="edit-tab" data-panel="comments">댓글</button>
+</div>
+<div class="edit-panel active" id="panel-basic">
 <div class="row"><label>댓글 수 문구<input id="iCnt"></label><label>입력창 문구<input id="iPh"></label></div>
 <label class="f">배경(영상) 사진<input id="fBg" type="file" accept="image/*"></label>
 <label class="f">내 프로필<input id="fMe" type="file" accept="image/*"></label>
+<label class="tg">배경 사진 표시<input id="tBg" type="checkbox"></label>
+<label class="tg">상단 메뉴 표시<input id="tTop" type="checkbox"></label>
+</div>
+<div class="edit-panel" id="panel-comments">
 <div id="ed"></div>
 <button class="add" id="add" type="button">+ 댓글 추가</button>
+</div>
 </div></div></div><div class="acts ps-acts"><button id="reset" type="button">초기화</button><button id="save" type="button">PNG 저장</button></div>
 </section>
 </div></div>

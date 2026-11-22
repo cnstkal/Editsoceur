@@ -8,14 +8,16 @@ var IM=u('<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 84 74" preserveAs
 var T1='add text here add text here add text here add text here add text here add .....',S;
 function cm(t,r,img){return{n:'name',t:t,d:'09-00',l:'000',r:r,a:C,i:img||''}}
 function init(){
-S={cnt:'000개 댓글',ph:'댓글 추가...',bg:BG,me:C,M:[cm(T1,'View 000 replies'),cm(T1,'View 000 replies'),cm('add text here add text here add text here','',IM)]};
+S={cnt:'000개 댓글',ph:'댓글 추가...',bg:BG,me:C,tbg:true,ttop:true,M:[cm(T1,'View 000 replies'),cm(T1,'View 000 replies'),cm('add text here add text here add text here','',IM)]};
 $('iCnt').value=S.cnt;$('iPh').value=S.ph;$('fBg').value='';$('fMe').value='';
+$('tBg').checked=true;$('tTop').checked=true;
 ed();draw();
 }
 function e(t){return t.replace(/[&<>"]/g,function(c){return{'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]})}
 var HT='<svg width="9" height="8" viewBox="0 0 9 8" fill="none" stroke="#8e8e8e" stroke-width=".9"><path d="M4.500 7.300S.7 5 .7 2.600A2 2 0 0 1 4.500 1.800 2 2 0 0 1 8.300 2.600C8.300 5 4.500 7.300 4.500 7.300z"/></svg>';
 var DT='<svg width="9" height="9" viewBox="0 0 9 9" fill="none" stroke="#8e8e8e" stroke-width=".9" stroke-linejoin="round"><path d="M1 1h2v4.500H1zM3 5.500 4.500 8c1 0 1-1 .8-2h2A1 1 0 0 0 8.200 4.800L7.600 2A1.500 1.500 0 0 0 6.200 1H3"/></svg>';
 function draw(){
+$('snap').classList.toggle('nobg',!S.tbg);$('snap').classList.toggle('notop',!S.ttop);
 $('vCnt').textContent=S.cnt;$('vPh').textContent=S.ph;$('vBg').src=S.bg;$('vMe').src=S.me;
 $('list').innerHTML=S.M.map(function(x){return '<div class="cm"><img src="'+x.a+'"><div class="bd"><b>'+e(x.n)+'</b><p>'+e(x.t)+'</p>'+(x.i?'<img class="im" src="'+x.i+'">':'')+'<div class="mt">'+e(x.d)+'<b>Reply</b><div class="r">'+HT+'<span>'+e(x.l)+'</span>'+DT+'</div></div>'+(x.r?'<div class="rpl"><i></i>'+e(x.r)+'</div>':'')+'</div></div>'}).join('');
 }
@@ -31,6 +33,12 @@ $('add').onclick=function(){S.M.push(cm('add text here',''));ed();draw()};
 $('ed').addEventListener('input',function(ev){var t=ev.target;if(t.dataset.k){S.M[t.dataset.i][t.dataset.k]=t.value;draw()}});
 $('ed').addEventListener('change',function(ev){var t=ev.target;if(t.dataset.f)rd(t.files[0],function(d){S.M[t.dataset.i][t.dataset.f]=d;draw()})});
 $('ed').addEventListener('click',function(ev){var d=ev.target.dataset.d;if(d!=null){S.M.splice(d,1);ed();draw()}});
+$('tBg').onchange=function(){S.tbg=this.checked;draw()};
+$('tTop').onchange=function(){S.ttop=this.checked;draw()};
+document.querySelectorAll('.edit-tab').forEach(function(btn){btn.addEventListener('click',function(){
+document.querySelectorAll('.edit-tab').forEach(function(x){x.classList.toggle('active',x===btn)});
+document.querySelectorAll('.edit-panel').forEach(function(x){x.classList.toggle('active',x.id==='panel-'+btn.dataset.panel)});
+})});
 $('reset').onclick=init;
 $('save').onclick=function(){
 var snap=$('snap');snap.style.transform='none';

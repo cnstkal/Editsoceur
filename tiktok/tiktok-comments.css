@@ -56,3 +56,15 @@ body.studio .ps-wrap{padding:32px 16px 40px}
 body.studio .ps-grid{gap:16px}
 body.studio .ps-card{padding:24px 20px}
 @media(max-width:1099px){body.studio .ps-wrap{padding:0}body.studio .ps-card{padding:0}body.studio .stage{height:auto;padding-top:0}body.studio #snap{transform:none}}
+
+/* 편집 탭 / 표시 토글 */
+label.tg input{width:20px;height:20px;accent-color:#e8457a}
+.edit-tabs{display:flex;gap:8px;margin:-4px 0 18px;padding:4px;background:#f2f3f5;border-radius:13px}
+.edit-tab{flex:1;height:40px;border:0;border-radius:10px;background:transparent;color:#777;font:inherit;font-size:14px;font-weight:700;cursor:pointer}
+.edit-tab.active{background:#fff;color:#e8457a;box-shadow:0 1px 5px rgba(0,0,0,.07)}
+.edit-panel{display:none}.edit-panel.active{display:block}
+.panel-note{margin:0 0 16px;color:#858b94;font-size:13px}
+.edit-panel{display:none}.edit-panel.active{display:block}
+.nobg{background:transparent!important;box-shadow:none!important}.nobg .bg{display:none}
+.notop .live,.notop .tabs,.notop .srch{display:none}
+label.f,label.tg{display:flex;align-items:center;justify-content:space-between;gap:12px}
