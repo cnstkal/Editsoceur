@@ -62,3 +62,7 @@ body.pvmode .ps-grid{grid-template-columns:1fr}
 }
 .editor label>textarea{flex:0 0 56%;width:56%;min-height:84px;padding:11px 14px;font:inherit;font-size:16px;border:1px solid var(--ln);border-radius:12px;background:#fff;resize:vertical}
 .editor label:has(textarea){align-items:flex-start}
+
+/* 배경 투명 (흰색 배경 제거) */
+.zw,.zs{background:transparent!important}
+label:has(#iBg){display:none!important}

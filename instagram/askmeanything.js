@@ -8,7 +8,7 @@ if(window.ResizeObserver)new ResizeObserver(fit).observe(fr);window.addEventList
 
 function render(){
  $('vName').textContent=$('iName').value;$('vQ').textContent=$('iQ').value;$('vBtn').textContent=$('iBtn').value;
- $('vBtn').style.background=$('iBar').value;zs.style.background=zw.style.background=$('iBg').value;
+ $('vBtn').style.background=$('iBar').value;zs.style.background=zw.style.background='transparent';
  $('vAv').style.backgroundImage=av?'url('+av+')':'';
 }
 function setDefaults(){
@@ -35,7 +35,7 @@ $('pvBtn').onclick=function(){var on=document.body.classList.toggle('pvmode');th
 
 $('savePng').onclick=function(){
  var t=zs.style.transform;zs.style.transform='none';
- html2canvas(zs,{width:S,height:S,scale:1,backgroundColor:$('iBg').value,useCORS:true}).then(function(c){
+ html2canvas(zs,{width:S,height:S,scale:1,backgroundColor:null,useCORS:true}).then(function(c){
   zs.style.transform=t;var a=document.createElement('a');a.download='askmeanything.png';a.href=c.toDataURL('image/png');a.click();
  }).catch(function(){zs.style.transform=t});
 };
