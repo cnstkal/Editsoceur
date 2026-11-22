@@ -23,7 +23,7 @@ function load(){S=JSON.parse(JSON.stringify(DEF));av=ph=null;cav={};
  for(var k in map)$('i'+k).value=S[k];$('iPhOn').checked=S.phOn;$('iCmOn').checked=S.cmOn;$('iOff').value=S.off;
  ['iAv','iPhoto'].forEach(function(i){$(i).value=''});list();draw()}
 Object.keys(map).forEach(function(k){$('i'+k).addEventListener('input',function(){S[k]=this.value;draw()})});
-$('iPhOn').onchange=function(){S.phOn=this.checked;draw()};$('iCmOn').onchange=function(){S.cmOn=this.checked;draw()};
+$('iPhOn').onchange=function(){S.phOn=this.checked;draw()};$('iCmOn').onchange=function(){S.cmOn=this.checked;if(S.cmOn&&S.off<330){S.off=330;$('iOff').value=330}draw()};
 $('iOff').oninput=function(){S.off=+this.value;draw()};
 function rd(id,cb){$(id).onchange=function(){var f=this.files[0];if(!f)return;var r=new FileReader();r.onload=function(){cb(r.result);draw()};r.readAsDataURL(f)}}
 rd('iAv',function(v){av=v});rd('iPhoto',function(v){ph=v;S.phOn=true;$('iPhOn').checked=true});
