@@ -92,3 +92,7 @@ body.pvmode .ps-grid{grid-template-columns:1fr}
 .nb,.tk{display:none!important}
 label:has(#iTick),label:has(#iKey),label:has(#iTag),.tg:has(#iBar),.tg:has(#iLive){display:none!important}
 .card{width:100%!important;height:auto;aspect-ratio:9/16;border-radius:0!important;box-shadow:none!important}
+
+/* 4:3 프리뷰 프레임 */
+#stage{aspect-ratio:4/3;width:100%;display:flex;align-items:center;justify-content:center;background:#e4e6ea;border-radius:18px;overflow:hidden;margin-top:22px}
+.fit{flex:none}

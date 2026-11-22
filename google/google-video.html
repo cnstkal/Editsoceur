@@ -9,20 +9,20 @@
 <link rel="stylesheet" href="../ps-editor.css?v=10"><style id="pa">body{animation:paIn .28s ease both}body.pa-out{animation:paOut .18s ease forwards}@keyframes paIn{from{opacity:0}to{opacity:1}}@keyframes paOut{to{opacity:0}}@media (prefers-reduced-motion:reduce){body,body.pa-out{animation:none}}</style><script id="pa-js">(function(){document.addEventListener("click",function(e){var a=e.target.closest&&e.target.closest("a[href]");if(!a||e.defaultPrevented||e.button||e.metaKey||e.ctrlKey||e.shiftKey||a.target||a.hasAttribute("download"))return;var h=a.getAttribute("href");if(!h||h[0]==="#"||/^(javascript:|mailto:|tel:)/.test(h))return;var u=new URL(a.href,location.href);if(u.origin!==location.origin)return;e.preventDefault();document.body.classList.add("pa-out");setTimeout(function(){location.href=u.href},180)},true)})();</script></head>
 <body class="studio">
 <div class="ps-wrap">
-<header class="ps-top"><a class="ps-back" href="index.html" style="color:#0095f6;font-weight:600;font-size:15px;text-decoration:none">‹ 뒤로</a><span class="ps-brand">Google Video Studio</span><button class="ps-pvbtn" id="pvBtn" type="button">미리보기 모드</button></header>
+<header class="ps-top"><a class="ps-back" href="index.html" style="color:#0095f6;font-weight:600;font-size:15px;text-decoration:none">‹ 뒤로</a><span class="ps-brand">Google 동영상 스튜디오</span><button class="ps-pvbtn" id="pvBtn" type="button">미리보기 모드</button></header>
 <div class="ps-grid">
 
 <section class="ps-card ps-main">
-<div class="ps-lbl">Live Preview</div>
+<div class="ps-lbl">실시간 미리보기</div>
 <h2>구글 동영상 뉴스바</h2>
-<p class="ps-sub">9:16 투명 PNG · 오른쪽에서 바로 수정해요</p>
+<p class="ps-sub">4:3 프리뷰 · 투명 PNG 저장 · 오른쪽에서 바로 수정해요</p>
 <div class="ps-stage" id="stage"><div class="fit" id="fit"><div class="fr">
 
 <div id="cap"><div class="card" id="card">
   <div class="nb"><span class="tag" id="vTag"></span><span class="lv" id="vLive"><i></i>LIVE</span></div>
   <div class="gh"><div class="logo"><b style="color:#4285f4">G</b><b style="color:#ea4335">o</b><b style="color:#fbbc05">o</b><b style="color:#4285f4">g</b><b style="color:#34a853">l</b><b style="color:#ea4335">e</b></div><i class="av ph" id="vAv"></i></div>
   <div class="sb"><b class="g">G</b><span id="vQ"></span><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#ea4335" stroke-width="2.600"><circle cx="12" cy="12" r="4"/><path d="M3 8V3h5M16 3h5v5M21 16v5h-5M8 21H3v-5" stroke="#4285f4"/></svg><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#4285f4" stroke-width="2.600" stroke-linecap="round"><rect x="9" y="2" width="6" height="12" rx="3" fill="#4285f4"/><path d="M5 11a7 7 0 0 0 14 0M12 18v4"/></svg></div>
-  <div class="tb"><span>AI Mode</span><span>All</span><span>Images</span><span class="on">Video</span><span>Shopping</span></div>
+  <div class="tb"><span>AI 모드</span><span>전체</span><span>이미지</span><span class="on">동영상</span><span>쇼핑</span></div>
   <div class="vl" id="vList"></div>
   <div class="tk"><span class="key" id="vKey"></span><p id="vTick"></p></div>
 </div></div>
@@ -31,7 +31,7 @@
 </section>
 
 <section class="ps-card ps-side">
-<div class="ps-lbl">Edit Panel</div>
+<div class="ps-lbl">편집 패널</div>
 <h2>구글 동영상 수정</h2>
 <div class="ps-seg" id="seg"><button class="on" type="button">기본</button><button type="button">영상</button><button type="button">뉴스바</button></div>
 <div class="editor">
