@@ -25,8 +25,9 @@
 .bar,.tick{width:100%;box-sizing:border-box}
 
 /* 미리보기: 여백 최소화, 가로 꽉 채움, 배경은 흰색(투명 아님) */
-.view{width:100%!important;margin:0!important;aspect-ratio:auto!important;border-radius:0!important;background:transparent!important;height:auto}
+.view{width:100%!important;margin:0!important;aspect-ratio:16/9!important;border-radius:0!important;background:transparent!important;height:auto}
 .chk{background:transparent!important}
 #grp{width:1080px!important}
 .ps-main .view{max-width:560px!important;margin:0 auto!important}
 .ps-main .view{max-width:none!important;margin:0!important}
+.ps-main .view{aspect-ratio:16/9!important;height:auto}
