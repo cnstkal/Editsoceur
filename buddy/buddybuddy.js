@@ -1,6 +1,6 @@
 (function(){
 var $=function(i){return document.getElementById(i)};
-var D={nick:'버디바디',stat:'(접속)',note:'★ 버디버디 7.0 서비스 자',search:'친구 검색하기',top:'♡ LOVE ♡ 히히 ♡~★≋♡',bot:'바보 ♡≋★ 반짝 ♪♪♡',color:'#3fd9cf'};
+var D={nick:'버디바디',stat:'(접속)',note:'버디버디 7.0 서비스 자',search:'친구 검색하기',top:'LOVE 히히',bot:'바보 반짝',color:'#3fd9cf'};
 var map=[['iNick','vNick','nick'],['iStat','vStat','stat'],['iNote','vNote','note'],['iSearch','vSearch','search'],['iTop','vTop','top'],['iBot','vBot','bot']];
 function fill(){map.forEach(function(m){$(m[0]).value=D[m[2]];$(m[1]).textContent=D[m[2]]});$('iColor').value=D.color;$('bb').style.setProperty('--c',D.color);$('iGlit').checked=true;$('gl').classList.remove('off')}
 map.forEach(function(m){$(m[0]).addEventListener('input',function(){$(m[1]).textContent=this.value})});
