@@ -51,6 +51,7 @@
 <section class="ps-card ps-side"><div class="ps-lbl">Edit Panel</div><h2>넷플릭스 내용 수정</h2><div class="ps-edwrap"><section class="editor">
 <div class="ps-pn" data-t="기본">
 <h2>넷플릭스 홈 편집</h2>
+<div class="ps-tg"><span>하단 바 표시</span><label class="sw"><input id="iTab" type="checkbox" checked><i></i></label></div>
 <div class="row"><label class="file">히어로 이미지<input type="file" accept="image/*" data-i="hero"></label><label class="file">프로필 이미지(선택)<input type="file" accept="image/*" data-i="av"></label></div>
 <div class="row"><label>히어로 문구<input data-g="ht"></label></div>
 <div class="row"><label>재생 버튼<input data-g="b1"></label><label>찜 버튼<input data-g="b2"></label></div>
@@ -71,7 +72,8 @@
 </section></div><div class="ps-acts"><button id="savePng" class="primary">PNG 저장</button><button id="reset" class="secondary">초기화</button></div></section>
 </div></div>
 <script src="https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js"></script>
-<script src="main.js?v=1"></script>
+<script src="main.js?v=2"></script>
+<script>(function(){var c=document.getElementById("iTab"),t=document.querySelector(".ntab");function y(){if(t)t.style.display=c.checked?"":"none"}c.addEventListener("change",y);y()})();</script>
 <script>(function(){var b=document.getElementById("pvBtn");b.onclick=function(){var on=document.body.classList.toggle("pvmode");this.textContent=on?"편집 모드":"미리보기 모드"}})();</script>
 <script src="studio.js?v=1"></script>
 <script src="../back-anim.js?v=1" defer></script></body>
