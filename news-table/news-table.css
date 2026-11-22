@@ -31,3 +31,6 @@
 .ps-main .view{max-width:560px!important;margin:0 auto!important}
 .ps-main .view{max-width:none!important;margin:0!important}
 .ps-main .view{aspect-ratio:16/9!important;height:auto}
+.tag{zoom:var(--tz,1)}
+.tick{overflow:hidden!important;height:auto!important}
+.tick div{overflow:hidden;line-height:1.3}
