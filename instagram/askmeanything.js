@@ -7,18 +7,18 @@ function fit(){var s=fr.clientWidth/S;zs.style.transform='scale('+s+')';zw.style
 if(window.ResizeObserver)new ResizeObserver(fit).observe(fr);window.addEventListener('resize',fit);
 
 function render(){
- $('vName').textContent=$('iName').value;$('vQ').textContent=$('iQ').value;$('vBtn').textContent=$('iBtn').value;
+ $('vName').textContent=$('iName').value;$('vQ').textContent=$('iQ').value;
  $('vBtn').style.background=$('iBar').value;zs.style.background=zw.style.background='transparent';
  $('vAv').style.backgroundImage=av?'url('+av+')':'';
 }
 function setDefaults(){
- $('iName').value=DEF.name;$('iQ').value=DEF.q;$('iBtn').value=DEF.btn;$('iBar').value=DEF.bar;$('iBg').value=DEF.bg;
+ $('iName').value=DEF.name;$('iQ').value=DEF.q;$('iBar').value=DEF.bar;$('iBg').value=DEF.bg;
  av=null;$('iAv').value='';render();
 }
-['iName','iQ','iBtn','iBar','iBg'].forEach(function(id){$(id).addEventListener('input',render)});
+['iName','iQ','iBar','iBg'].forEach(function(id){$(id).addEventListener('input',render)});
 $('iAv').addEventListener('change',function(){var f=this.files[0];if(!f)return;var r=new FileReader();
  r.onload=function(e){av=e.target.result;render()};r.readAsDataURL(f)});
-$('clearAv').onclick=function(){av=null;$('iAv').value='';render()};
+
 $('reset').onclick=setDefaults;
 
 (function(){
