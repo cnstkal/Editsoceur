@@ -48,3 +48,12 @@ body.pvmode .ps-side{display:none}body.pvmode .ps-grid{grid-template-columns:1fr
 .up{position:absolute;right:0;top:148px;width:88px;height:88px;border-radius:50%;background:rgba(40,40,44,.85);border:2px solid rgba(255,255,255,.18);display:flex;align-items:center;justify-content:center}
 .ge{box-shadow:0 0 40px #d0399b99;background:radial-gradient(#7a2a68,transparent 70%)}
 .btns{bottom:40px}.btns b{background:rgba(18,18,20,.88);border:2px solid rgba(255,255,255,.12)}
+
+.recent{visibility:visible}
+.lk-ic{display:flex;align-items:center;justify-content:center;flex:none;width:58px;height:58px}
+.lk-em{font-size:50px;line-height:1}
+.look .lk-ic{width:58px;height:58px}
+.ps-seg{display:flex;gap:4px;margin:0 0 14px;padding:5px;background:#fff;border:1px solid #e9eaee;border-radius:16px}
+.ps-seg button{flex:1;height:40px;border-radius:12px;color:#333;font-size:14px;font-weight:500}
+.ps-seg button.on{background:#fde8ef;color:#e8457a;font-weight:700}
+.ps-pn[hidden]{display:none!important}
