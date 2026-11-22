@@ -6,7 +6,7 @@
 <title>넷플릭스</title>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.css">
 <link rel="stylesheet" href="../instagram/story.css?v=3">
-<link rel="stylesheet" href="main.css?v=1">
+<link rel="stylesheet" href="main.css?v=9">
 <style data-hide-status>:is(span,b)[id$="Time"],#eTm,.isl,.ys,.ysig,.ywf,.ybt,.dsg,.dwf,#df .dbt,.msg,.mwf,.mbt,.ewf,.ebt,.nwf,.nbt,.sb:has([id$="Time"])>svg:not(.lc),.sb:has([id$="Time"])+.bt,.sb:has([id$="Time"]) .bt{display:none!important}</style><style>#nHc{display:none!important}</style><style id="ed-font">html,body,body *{font-family:Pretendard,-apple-system,"Apple SD Gothic Neo","Noto Sans KR",sans-serif!important;letter-spacing:-.02em!important}</style><link rel="stylesheet" href="studio.css?v=3">
 <link rel="stylesheet" href="../ps-editor.css?v=10"><style id="pa">body{animation:paIn .28s ease both}body.pa-out{animation:paOut .18s ease forwards}@keyframes paIn{from{opacity:0}to{opacity:1}}@keyframes paOut{to{opacity:0}}@media (prefers-reduced-motion:reduce){body,body.pa-out{animation:none}}</style><script id="pa-js">(function(){document.addEventListener("click",function(e){var a=e.target.closest&&e.target.closest("a[href]");if(!a||e.defaultPrevented||e.button||e.metaKey||e.ctrlKey||e.shiftKey||a.target||a.hasAttribute("download"))return;var h=a.getAttribute("href");if(!h||h[0]==="#"||/^(javascript:|mailto:|tel:)/.test(h))return;var u=new URL(a.href,location.href);if(u.origin!==location.origin)return;e.preventDefault();document.body.classList.add("pa-out");setTimeout(function(){location.href=u.href},180)},true)})();</script></head>
 <body class="studio"><div class="ps-wrap">
@@ -33,7 +33,7 @@
 <div class="nbp nbq"><svg viewBox="0 0 24 24" style="width:4.6cqw"><path d="M12 2v20M2 12h20" stroke="#fff" stroke-width="2" stroke-linecap="round"/></svg><span id="nB2"></span></div>
 </div>
 <div class="nst m1" id="nT1"></div><div class="nr1" id="nR1"></div>
-<div class="nst m2" id="nT2"></div><div class="nr2" id="nR2"></div>
+<div class="nst m2" id="nT2"></div><div class="nr2" id="nR2"></div><div id="nSx"></div>
 
 
 </div></div>
@@ -55,26 +55,24 @@
 <div class="row"><label class="file">히어로 이미지<input type="file" accept="image/*" data-i="hero"></label><label class="file">프로필 이미지(선택)<input type="file" accept="image/*" data-i="av"></label></div>
 <div class="row"><label>히어로 문구<input data-g="ht"></label></div>
 <div class="row"><label>재생 버튼<input data-g="b1"></label><label>찜 버튼<input data-g="b2"></label></div>
-</div>
-<div class="ps-pn" data-t="작품" hidden><div class="row"><label>칩 1<input data-g="c0"></label><label>칩 2<input data-g="c1"></label></div>
+<div class="row"><label>칩 1<input data-g="c0"></label><label>칩 2<input data-g="c1"></label></div>
 <div class="row"><label>칩 3<input data-g="c2"></label><label>칩 4<input data-g="c3"></label></div>
-<h2 style="margin-top:14px">섹션 1 (큰 숫자 TOP 10)</h2>
+<button class="ghost" id="addSx" type="button">+ 섹션 추가</button>
+</div>
+<div class="ps-pn" data-t="탑10" hidden>
 <div class="row"><label>제목<input data-g="t1"></label></div>
 <div id="l1"></div><button class="ghost" data-add="1" type="button">+ 포스터 추가</button>
-<h2 style="margin-top:14px">섹션 2 (가로 포스터)</h2>
+</div>
+<div class="ps-pn" data-t="섹션1" hidden>
 <div class="row"><label>제목<input data-g="t2"></label></div>
 <div id="l2"></div><button class="ghost" data-add="2" type="button">+ 포스터 추가</button>
-
-
-
-
 </div>
 </section></div><div class="ps-acts"><button id="savePng" class="primary">PNG 저장</button><button id="reset" class="secondary">초기화</button></div></section>
 </div></div>
 <script src="https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js"></script>
-<script src="main.js?v=2"></script>
+<script src="main.js?v=4"></script>
 <script>(function(){var c=document.getElementById("iTab"),t=document.querySelector(".ntab");function y(){if(t)t.style.display=c.checked?"":"none"}c.addEventListener("change",y);y()})();</script>
 <script>(function(){var b=document.getElementById("pvBtn");b.onclick=function(){var on=document.body.classList.toggle("pvmode");this.textContent=on?"편집 모드":"미리보기 모드"}})();</script>
-<script src="studio.js?v=1"></script>
+
 <script src="../back-anim.js?v=1" defer></script></body>
 </html>
