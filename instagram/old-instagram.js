@@ -40,7 +40,7 @@ var tabs=document.querySelectorAll("#seg button"),pns=document.querySelectorAll(
 tabs.forEach(function(b,i){b.onclick=function(){tabs.forEach(function(x,j){x.classList.toggle("on",i===j)});pns.forEach(function(p,j){p.hidden=i!==j})}});
 
 $("pvBtn").onclick=function(){var on=document.body.classList.toggle("pvmode");this.textContent=on?"편집 모드":"미리보기 모드";fit()};
-function fit(){var w=$("stage").clientWidth;$("fit").style.zoom=w&&w<360?w/360:1}
+function fit(){var w=$("stage").clientWidth;$("fit").style.zoom=w?w/360:1}
 window.addEventListener("resize",fit);
 
 $("savePng").onclick=function(){

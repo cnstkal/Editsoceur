@@ -21,9 +21,12 @@ if(t.type==='file')rd(t.files[0],function(d){S[t.dataset.i].i=d;draw()});
 else if(t.type==='checkbox'){S[t.dataset.i].b=t.checked;draw()}});
 $('reset').onclick=init;
 $('save').onclick=function(){
-html2canvas($('snap'),{backgroundColor:null,scale:4,useCORS:true}).then(function(c){
+var __s=$('snap'),__z=__s.style.zoom;__s.style.zoom=1;html2canvas(__s,{backgroundColor:null,scale:4,useCORS:true}).finally(function(){__s.style.zoom=__z}).then(function(c){
 var a=document.createElement('a');a.download='instagram-story-list.png';a.href=c.toDataURL('image/png');a.click();
 });
 };
 init();
 })();
+
+function fitSnap(){var w=document.querySelector('.stage').clientWidth;$('snap').style.zoom=w?w/270:1}
+addEventListener('resize',fitSnap);fitSnap();

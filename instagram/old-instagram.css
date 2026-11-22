@@ -96,3 +96,9 @@ body.pvmode .ps-grid{grid-template-columns:1fr}
 .ps-acts{position:sticky;bottom:0;background:#fff;padding:10px 0 calc(10px + env(safe-area-inset-bottom))}
 }
 .ghost{width:100%;height:44px;border:1px solid var(--ln);border-radius:12px;background:#f5f5f7;color:#333;font-size:14px;font-weight:600;margin:0 0 14px;cursor:pointer}
+
+/* 뉴스바 삭제 + 빈 투명 여백 없이 9:16 꽉 채움 */
+.nb,.tk{display:none!important}
+label:has(#iTick),label:has(#iKey),label:has(#iTag),label:has(#iLive),label:has(#iBar){display:none!important}
+.fr{background:#fff!important;box-shadow:none!important}
+.card{width:100%!important;height:auto;aspect-ratio:9/16;border-radius:0!important;box-shadow:none!important}
