@@ -14,7 +14,7 @@ $('vTick').textContent=v.Tick;$('tick').style.display=v.T?'':'none';
 st.style.setProperty('--bar',v.Bar);st.style.setProperty('--hi',v.Hi);st.style.setProperty('--ac',v.AcOn?v.Ac:'transparent');st.style.setProperty('--ts',v.TS+'px');$('pTs').textContent=v.TS+'px';st.style.setProperty('--fs',v.S+'px');
 $('grp').style.top=v.Y+'%';$('pY').textContent=v.Y+'%';$('pS').textContent=v.S+'px';
 }
-function fit(){var w=$('view').clientWidth;if(!w)return;var m=24,s=(w-m*2)/1080,g=$('grp'),b=g.offsetTop+g.offsetHeight+30;canvas.style.transformOrigin='0 0';canvas.style.transform='translate('+m+'px,0) scale('+s+')';$('view').style.height=(b*s)+'px'}
+function fit(){var w=$('view').clientWidth;if(!w)return;var s=w/1080,g=$('grp'),t=g.offsetTop,b=g.offsetHeight+30;canvas.style.transformOrigin='0 0';canvas.style.transform='scale('+s+') translate(0px,'+(-t)+'px)';$('view').style.height=(b*s)+'px'}
 ids.forEach(function(k){$('i'+k).addEventListener('input',r)});
 $('reset').onclick=load;window.addEventListener('resize',fit);if(window.ResizeObserver)new ResizeObserver(fit).observe($('view'));
 $('savePng').onclick=function(){
