@@ -5,11 +5,11 @@ body{margin:0;background:#f2f3f5;color:#111;font-family:Pretendard,-apple-system
 .lbl{font-size:12px;letter-spacing:.14em;color:#8a8f98;text-transform:uppercase}
 h2{font-size:24px;font-weight:700;margin:8px 0 20px}
 .stage{display:flex;justify-content:center}
-#snap{position:relative;width:270px;height:480px;background:#000;overflow:hidden;color:#fff;letter-spacing:-.02em;box-shadow:0 2px 12px rgba(0,0,0,.25)}
+#snap{position:relative;width:360px;height:270px;background:#000;overflow:hidden;color:#fff;letter-spacing:-.02em;box-shadow:0 2px 12px rgba(0,0,0,.25)}
 .top{position:absolute;left:0;right:0;top:0;height:32px;display:flex;align-items:center;justify-content:space-between;padding:0 9px;font-size:9.500px}
 .top b{position:absolute;left:0;right:0;text-align:center;font-size:11px;font-weight:600}
 .top em{font-style:normal;color:#6f6f6f}
-.grid{position:absolute;left:0;top:32px;width:270px;display:grid;grid-template-columns:repeat(3,89px);grid-auto-rows:155px;gap:1.500px}
+.grid{position:absolute;left:0;top:32px;width:360px;display:grid;grid-template-columns:repeat(3,119px);grid-auto-rows:78px;gap:1.500px}
 .c{position:relative;overflow:hidden}
 .c img{width:100%;height:100%;object-fit:cover;display:block}
 .bd{position:absolute;left:5px;top:5px;width:27px;height:30px;border-radius:6px;background:#10142a;display:flex;flex-direction:column;align-items:center;justify-content:center;line-height:1}
