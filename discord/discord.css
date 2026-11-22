@@ -25,7 +25,7 @@ button{border:0;background:none;font:inherit;cursor:pointer}
 .mn{flex:1;position:relative;min-width:0}
 .hd{height:98px;display:flex;align-items:center;padding:0 38px;font-size:38px;font-weight:500;color:#fff;border-bottom:2px solid #38393f}
 .msgs{padding:209px 0 0 56px}
-.m{display:flex;gap:44px;height:196px}
+.m{display:flex;gap:44px;height:auto;padding-bottom:40px}
 .m .t{padding-top:2px}
 .m .n{font-size:34px;font-weight:600;color:#fff}.m .n small{font-size:26px;font-weight:400;color:#949ba4;margin-left:14px}
 .m .x{font-size:36px;line-height:1.4;margin-top:6px;white-space:pre-wrap}

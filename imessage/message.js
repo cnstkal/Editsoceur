@@ -43,7 +43,7 @@ L.addEventListener('change',function(e){var t=e.target,k=t.dataset.f;if((k!=='im
 L.addEventListener('click',function(e){var a=e.target.dataset.a;if(!a)return;var i=ix(e),m=S.m;
 if(a==='x')m.splice(i,1);else if(a==='u'&&i>0){var t=m[i];m[i]=m[i-1];m[i-1]=t}else if(a==='d'&&i<m.length-1){var t2=m[i];m[i]=m[i+1];m[i+1]=t2}
 persist();list();render()});
-$('addM').onclick=function(){var l=S.m[S.m.length-1];S.m.push({s:l?+l.s:0,x:'',l:''});persist();list();render()};
+$('addM').onclick=function(){var l=S.m[S.m.length-1];S.m.push({s:l?+l.s:0,x:'새 메시지',l:''});persist();list();render()};
 $('reset').onclick=function(){load(true)};
 $('savePng').onclick=function(){var b=this,t=b.textContent;b.disabled=true;b.textContent='저장 중...';
 (document.fonts&&document.fonts.ready?document.fonts.ready:Promise.resolve()).then(function(){

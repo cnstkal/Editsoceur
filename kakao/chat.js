@@ -1,7 +1,7 @@
 (function () {
   var $ = function (i) { return document.getElementById(i); }, STORE = "kakao_chat_v2", S;
   // ===== 기본 데이터 =====
-  var DEF = { room: "한소율", un: "327", av: "", items: [
+  var DEF = { room: "한소율", un: "327", av: "", comp: true, items: [
     { k: "d", t: "2026년 11월 16일 월요일" },
     { k: "m", me: 1, t: "야 오늘 과제 제출 언제까지임" },
     { k: "m", me: 1, t: "ㅇㅈㅇㅈ", tm: "오후 11:20" },
@@ -31,6 +31,8 @@
 
   // ===== 미리보기 렌더링 =====
   function render() {
+    if (S.comp === undefined) S.comp = true;
+    $("cap").classList.toggle("nocomp", !S.comp); if ($("iComp")) $("iComp").checked = !!S.comp;
     $("back").innerHTML = IC.back + (S.un ? esc(S.un) : ""); $("title").textContent = S.room;
     $("tools").innerHTML = IC.search + IC.call + IC.menu;
     $("plus").innerHTML = IC.plus; $("hash").innerHTML = IC.hash; $("smile").innerHTML = IC.smile;
@@ -70,6 +72,7 @@
   }
   $("iRoom").oninput = function () { S.room = this.value; persist(); render(); };
   $("iUn").oninput = function () { S.un = this.value; persist(); render(); };
+  $("iComp").onchange = function () { S.comp = this.checked; persist(); render(); };
   $("iAv").onchange = function () { var f = this.files[0]; if (!f) return; var r = new FileReader(); r.onload = function () { S.av = r.result; persist(); render(); }; r.readAsDataURL(f); };
   $("list").addEventListener("input", function (e) {
     var pe = e.target.closest(".pe"), f = e.target.dataset.f; if (!pe || !f) return;

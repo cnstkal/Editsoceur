@@ -59,3 +59,5 @@ svg{display:block}
 /* 헤더: 제목이 뒤로가기/도구 버튼과 겹치지 않도록 가운데 흐름 배치 */
 .head{gap:8px}
 .title{position:static;flex:1 1 auto;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;padding:0 4px;pointer-events:auto}
+
+.nocomp .comp{display:none}

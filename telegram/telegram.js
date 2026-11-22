@@ -49,9 +49,14 @@ else if(t.type==='file')rd(t.files[0],function(d){S.M[t.dataset.i].i=d;draw()})}
 $('ed').addEventListener('click',function(ev){var d=ev.target.dataset.d;if(d!=null){S.M.splice(d,1);ed();draw()}});
 $('reset').onclick=function(){$('kbd').dataset.b='';init()};
 $('save').onclick=function(){
-capChat($('snap'),{backgroundColor:null,scale:4,useCORS:true}).then(function(c){
-var a=document.createElement('a');a.download='telegram.png';a.href=c.toDataURL('image/png');a.click();
-});
+var sn=$('snap');sn.style.transform='none';
+capChat(sn,{backgroundColor:null,scale:4,useCORS:true}).then(function(c){
+sn.style.transform='';var a=document.createElement('a');a.download='telegram.png';a.href=c.toDataURL('image/png');a.click();
+},function(){sn.style.transform=''});
 };
+function fit(){var st=document.querySelector('.stage');if(!st)return;var w=st.clientWidth,h=st.clientHeight;if(!w||!h)return;var z=Math.min((h-48)/480,(w-48)/270,1.6);$('snap').style.setProperty('--z',Math.max(z,.2))}
+window.addEventListener('resize',fit);
+if(window.ResizeObserver)new ResizeObserver(fit).observe(document.querySelector('.stage'));
+fit();
 init();
 })();
