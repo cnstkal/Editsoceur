@@ -28,11 +28,16 @@ cv.addEventListener('touchmove',e=>{
 cv.addEventListener('touchend',e=>{
   if(e.touches.length<2)canvasPinchStart=null;
 },{passive:false});
+let blank=false;     // 사진 없이 만든 빈 판(투명 캔버스) 여부
 let base=null,       // 작업용 원본 캔버스 (W x H, 절대 직접 수정하지 않음)
     sourceBlob=null, // 새로고침 복원용 원본 파일
     W=0,H=0,punches=[];
 let selfMode=false; // 셀프 모드: 켜면 자동 배치 대신 터치한 위치에만 펀칭
 
+function ensureBlank(){
+  if(base&&blank)return;
+  W=1000;H=1000;base=document.createElement('canvas');base.width=W;base.height=H;blank=true;
+}
 function clamp(v,a,b){return Math.max(a,Math.min(b,v))}
 function sideMode(){return $('#side').value}
 
@@ -193,17 +198,17 @@ function paint(c,transparent){
   if(!transparent){c.fillStyle=bg;c.fillRect(0,0,L.width,L.height)}
 
   // 1) 사진 + 펀칭 구멍
-  c.drawImage(base,photoX,photoY,W,H);
+  if(!blank)c.drawImage(base,photoX,photoY,W,H);
   // 구멍 색 = 배경색. 배경색 버전은 배경색으로 채우고, 투명 버전은 진짜로 뚫는다
   for(const p of punches){
     c.save();
-    if(transparent){c.globalCompositeOperation='destination-out';c.fillStyle='#000'}
+    if(transparent||blank){c.globalCompositeOperation='destination-out';c.fillStyle='#000'}
     else c.fillStyle=bg;
     fillShape(c,p,photoX+p.srcX,photoY+p.srcY);
     c.restore();
   }
   // 2) 조각 칸: 배경색 위에 뚫린 부분의 원본 사진이 같은 모양으로 놓임
-  for(const p of punches)drawPieceOn(c,p,pieceX,pieceY);
+  if(!blank)for(const p of punches)drawPieceOn(c,p,pieceX,pieceY);
 }
 function render(){
   if(!base)return;
@@ -286,7 +291,7 @@ function setBase(im,w,h){
   const sc=Math.min(1,MAX/im.naturalWidth,MAX/im.naturalHeight);
   W=w||Math.max(1,Math.round(im.naturalWidth*sc));
   H=h||Math.max(1,Math.round(im.naturalHeight*sc));
-  base=document.createElement('canvas');base.width=W;base.height=H;
+  base=document.createElement('canvas');base.width=W;base.height=H;blank=false;
   base.getContext('2d').drawImage(im,0,0,W,H);
 }
 
@@ -354,7 +359,7 @@ $('#shadow').onchange=()=>{render();saveState()};
 $('#reset').onclick=async()=>{
   if(!confirm('사진과 설정, 펀칭 결과를 모두 초기화할까요?'))return;
   await clearState();
-  base=null;sourceBlob=null;W=0;H=0;punches=[];
+  base=null;blank=false;sourceBlob=null;W=0;H=0;punches=[];
   selfMode=false;applySelfUI();
   $('#file').value='';
   $('#shape').value='star';$('#axis').value='horizontal';
@@ -362,7 +367,7 @@ $('#reset').onclick=async()=>{
   $('#char').value='';$('#sizeMode').value='fixed';$('#minsize').value='24';
   $('#rot').value='fixed';$('#bg').value='#9edcff';$('#shadow').checked=false;
   syncLabels();syncSideOptions();
-  cv.style.display='none';$('#empty').style.display='block';
+  ensureBlank();generatePunches();
 };
 
 $('#savePng').onclick=()=>{
@@ -422,3 +427,5 @@ cv.addEventListener('pointerdown',e=>{
 syncSideOptions();
 ensureFont();
 loadState();
+
+ensureBlank();generatePunches();
