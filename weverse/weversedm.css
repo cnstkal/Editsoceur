@@ -17,7 +17,7 @@ button{background:none;border:0;font:inherit;color:inherit;cursor:pointer}
 .r{display:flex;align-items:flex-end;gap:8px;margin-bottom:4px}
 .b{max-width:292px;padding:11px 16px;border-radius:21px;border:1.500px solid var(--bd);background:var(--c);font-size:17px;line-height:24px;white-space:pre-wrap;word-break:break-word}
 .r:first-of-type .b{border-top-left-radius:6px}
-.b .tr{margin-top:9px;padding-top:9px;border-top:1px solid var(--bd);color:#7a7a7f}
+.b .tr{margin-top:10px;padding-top:10px;border-top:1px solid rgba(70,90,98,.22);color:#7a7a7f}
 .b.t{padding:13px 20px}
 .b .o.hid{display:none}
 .tm{font-size:14px;color:#9a9a9f;white-space:nowrap;padding-bottom:2px}
