@@ -15,7 +15,7 @@ button{background:none;border:0;font:inherit;color:inherit;cursor:pointer}
 .bt::after{content:"";position:absolute;right:-3px;top:4px;width:2px;height:6px;border-radius:0 2px 2px 0;background:#bbb}
 .hd{height:53px;position:relative;display:flex;align-items:center;justify-content:space-between;padding:0 16px 0 20px;background:#fff;z-index:3}
 .ht{position:absolute;left:0;right:0;text-align:center;top:0;pointer-events:none}.ht b{display:block;font-size:18px;font-weight:800;line-height:22px;margin-top:2px}.ht span{display:block;font-size:14px;color:#8e8e93;line-height:20px}
-.sc{position:absolute;top:107px;bottom:90px;left:0;right:0;overflow:hidden}
+.sc{position:absolute;top:76px;bottom:90px;left:0;right:0;overflow:hidden}
 .in{will-change:transform}
 .au{display:flex;align-items:center;gap:8px;padding:0 16px;height:60px;margin-top:2px}
 .av{width:32px;height:32px;flex:none;border-radius:50%;background-color:#b9b9bd;background-image:radial-gradient(circle at 50% 38%,#e9e9ec 0 24%,transparent 26%),linear-gradient(160deg,#cfcfd3,#8e8e93);background-size:cover;background-position:center}
