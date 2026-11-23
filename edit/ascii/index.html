@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="ko"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no,viewport-fit=cover"><script src="../../nozoom.js?v=1"></script>
+<title>ASCII Art</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.css">
+<link rel="stylesheet" href="../../ps-base.css?v=4">
+<link rel="stylesheet" href="../../ps-editor.css?v=10">
+<link rel="stylesheet" href="../../ps-shell.css?v=2">
+<link rel="stylesheet" href="ascii.css?v=1">
+</head><body class="studio">
+<div class="ps-wrap">
+<header class="ps-top"><a class="ps-back" href="../index.html" style="color:#0095f6;font-weight:600;font-size:15px;text-decoration:none">‹ 뒤로</a><a href="../../index.html">‹ 메인</a><button class="ps-pvbtn" id="pvBtn" type="button" hidden>미리보기 모드</button></header>
+<div class="ps-grid">
+<section class="ps-card ps-main">
+<div class="ps-lbl">Live Preview</div>
+<h2>ASCII Art</h2>
+<p class="ps-sub">사진이나 글자를 아스키아트로 바꿔요</p>
+<div class="ps-stage"><div id="cvWrap"><canvas id="out" width="800" height="400"></canvas></div></div>
+<p class="info" id="info"></p>
+</section>
+<section class="ps-card ps-side">
+<div class="ps-lbl">Edit Panel</div>
+<h2>ASCII Art 수정</h2>
+<div class="ps-edwrap"><div class="editor">
+
+<div class="ps-pn" data-t="소스">
+<label>변환할 것<select id="iMode"><option value="text">글자 → 아스키</option><option value="photo">사진 → 아스키</option></select></label>
+<label id="lImg">사진<input id="iImg" type="file" accept="image/*"></label>
+<label id="lText">글자<textarea id="iText" rows="2">EDIT</textarea></label>
+<label id="lTF">글자 글꼴<select id="iTF"><option value="sans">굵은 고딕</option><option value="serif">세리프</option><option value="mono">모노스페이스</option></select></label>
+<label>가로 글자 수<input id="iCols" type="range" min="20" max="240" value="80"></label>
+<label>글자 가로세로 비율<input id="iAsp" type="range" min="0.3" max="0.8" step="0.01" value="0.5"></label>
+</div>
+
+<div class="ps-pn" data-t="스타일">
+<label>문자 세트<select id="iSet">
+ <option value="classic">클래식 ( .:-=+*#%@)</option><option value="detail">정밀 (70단계)</option><option value="blocks">블록 (░▒▓█)</option>
+ <option value="dots">점 ( ·•●)</option><option value="binary">이진수 (01)</option><option value="braille">점자 도트 (고해상도)</option>
+ <option value="emoji">이모지 (⬜🟨🟧🟫⬛)</option><option value="custom">직접 입력</option></select></label>
+<label id="lCus">직접 입력 (연한→진한 순)<input id="iCus" value=" .oO@"></label>
+<label>밝기<input id="iBri" type="range" min="-100" max="100" value="0"></label>
+<label>대비<input id="iCon" type="range" min="-100" max="100" value="0"></label>
+<label>명암 반전<input id="iInv" type="checkbox"></label>
+<label>색상 모드<select id="iCol"><option value="mono">단색</option><option value="color">원본 색</option><option value="matrix">매트릭스 (초록)</option></select></label>
+<label id="lBg">배경색<input id="iBg" type="color" value="#ffffff"></label>
+<label id="lInk">글자색<input id="iInk" type="color" value="#000000"></label>
+</div>
+
+</div></div>
+<div class="ps-acts"><button id="reset" type="button">초기화</button><button id="copy" type="button">텍스트 복사</button><button id="savePng" type="button">PNG 저장</button></div>
+</section>
+</div>
+</div>
+<script src="ascii.js?v=1"></script>
+<script src="../../ps-tabs.js?v=2"></script>
+</body></html>
