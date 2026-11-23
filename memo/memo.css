@@ -7,3 +7,9 @@ html,body,body *{font-family:Pretendard,-apple-system,"Apple SD Gothic Neo","Not
 #vDate{left:688px;top:108px;width:1200px;text-align:center;font-size:62px;line-height:80px;font-weight:400;color:#7f7f84}
 #vBody{left:150px;top:260px;width:2260px;font-size:72px;line-height:1.45;font-weight:400;white-space:pre-wrap;word-break:break-all}
 #tb{left:0;top:1200px;width:2560px;height:200px}
+
+/* 9:16 세로 (1440x2560) */
+#cv.r916{width:1440px;height:2560px}
+#cv.r916 #vDate{left:120px;width:1200px;top:140px}
+#cv.r916 #vBody{left:100px;top:300px;width:1240px}
+#cv.r916 #tb{left:0;top:2390px;width:1440px;height:auto}
