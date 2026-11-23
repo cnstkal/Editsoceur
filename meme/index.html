@@ -6,7 +6,7 @@
 <link rel="stylesheet" href="../ps-base.css?v=4">
 <link rel="stylesheet" href="../ps-editor.css?v=10">
 <link rel="stylesheet" href="../ps-shell.css?v=2">
-<link rel="stylesheet" href="meme.css?v=2">
+<link rel="stylesheet" href="meme.css?v=3">
 </head><body class="studio">
 <div class="ps-wrap">
 <header class="ps-top"><a class="ps-back" href="../index.html" style="color:#0095f6;font-weight:600;font-size:15px;text-decoration:none">‹ 뒤로</a><a href="../index.html">‹ 처음으로</a><button class="ps-pvbtn" id="pvBtn" type="button" hidden>미리보기 모드</button></header>
@@ -27,21 +27,30 @@
  <option value="impact">클래식 Impact (위/아래 글자)</option>
  <option value="caption">캡션 바 (iFunny식)</option>
  <option value="drake">2컷 비교 (Drake식)</option>
+ <option value="side">좌우 비교 (Before / After)</option>
+ <option value="grid4">4컷 그리드</option>
+ <option value="brain">확장하는 뇌 (단계별)</option>
+ <option value="strip">세로 만화 컷</option>
+ <option value="tier">티어표 (S~D)</option>
  <option value="demo">디모티베이셔널 포스터</option>
+ <option value="error">에러 팝업 (클래식)</option>
+ <option value="cinema">영화 자막 (레터박스)</option>
  <option value="core">Corecore (VHS/자막)</option>
 </select></label>
-<label id="lRatio">비율<select id="iRatio"><option value="1:1">1:1</option><option value="4:5">4:5</option><option value="9:16">9:16</option><option value="16:9">16:9</option><option value="4:3">4:3</option></select></label>
-<label>사진<input id="iImg" type="file" accept="image/*"></label>
-<label id="lImg2">사진 2 (아래 컷)<input id="iImg2" type="file" accept="image/*"></label>
+<p class="hint" id="hint"></p>
+<label id="lRatio">비율<select id="iRatio"><option value="1:1">1:1</option><option value="4:5">4:5</option><option value="3:4">3:4</option><option value="2:3">2:3</option><option value="9:16">9:16</option><option value="16:9">16:9</option><option value="4:3">4:3</option><option value="21:9">21:9</option></select></label>
+<label>사진 (여러 장 선택 가능)<input id="iImg" type="file" accept="image/*" multiple></label>
 <label>확대<input id="iZoom" type="range" min="100" max="300" value="100"></label>
 <label>가로 위치<input id="iPx" type="range" min="-100" max="100" value="0"></label>
 <label>세로 위치<input id="iPy" type="range" min="-100" max="100" value="0"></label>
-<label id="lBar">캡션 바 색<select id="iBar"><option value="#ffffff">흰색</option><option value="#000000">검정</option></select></label>
+<label>사진 좌우반전<input id="iFlip" type="checkbox"></label>
+<label id="lBar">바 색<select id="iBar"><option value="#ffffff">흰색</option><option value="#000000">검정</option></select></label>
 </div>
 
 <div class="ps-pn" data-t="문구">
-<label>위 문구<textarea id="iTop" rows="2"></textarea></label>
+<label>위 문구<textarea id="iTop" rows="3"></textarea></label>
 <label>아래 문구<textarea id="iBot" rows="2"></textarea></label>
+<button type="button" id="rnd" class="mini">🎲 랜덤 문구</button>
 <label>글꼴<select id="iFont">
  <option value="imp">Impact</option><option value="arial">Arial Black</option><option value="helv">Helvetica Bold</option>
  <option value="comic">Comic Sans</option><option value="serif">Times 세리프</option><option value="pixel">VT323 픽셀</option>
@@ -50,6 +59,10 @@
 <label>글자색<input id="iFill" type="color" value="#ffffff"></label>
 <label>외곽선색<input id="iStroke" type="color" value="#000000"></label>
 <label>외곽선 굵기<input id="iSW" type="range" min="0" max="20" value="9"></label>
+<label>글자 배경 박스<select id="iBox"><option value="">없음</option><option value="#ffffff">흰색</option><option value="#000000">검정</option><option value="#ffe94a">노랑</option><option value="#ff3b6b">핫핑크</option></select></label>
+<label>그림자<input id="iShadow" type="checkbox"></label>
+<label>자간<input id="iTrk" type="range" min="-5" max="25" value="0"></label>
+<label>글자 기울기<input id="iRot" type="range" min="-20" max="20" value="0"></label>
 <label>대문자 변환<input id="iUp" type="checkbox" checked></label>
 <label>위 문구 위치<input id="iTy" type="range" min="-300" max="300" value="0"></label>
 <label>아래 문구 위치<input id="iBy" type="range" min="-300" max="300" value="0"></label>
@@ -58,7 +71,9 @@
 <div class="ps-pn" data-t="보정">
 <label>프리셋<select id="iPre">
  <option value="orig">원본</option><option value="insta">2010 인스타 (X-Pro)</option><option value="old">오래된 짤 (노란 JPEG)</option>
- <option value="fry">딥프라이</option><option value="core">Corecore</option><option value="bw">흑백 필름</option></select></label>
+ <option value="fry">딥프라이</option><option value="core">Corecore</option><option value="bw">흑백 필름</option>
+ <option value="glitch">글리치</option><option value="pixel">픽셀 게임</option><option value="vapor">베이퍼웨이브</option>
+ <option value="sepia">옛날 사진</option><option value="cctv">CCTV</option></select></label>
 <label>밝기<input id="iBri" type="range" min="-100" max="100" value="0"></label>
 <label>대비<input id="iCon" type="range" min="-100" max="100" value="0"></label>
 <label>채도<input id="iSat" type="range" min="0" max="300" value="100"></label>
@@ -69,24 +84,29 @@
 <label>비네팅<input id="iVig" type="range" min="0" max="100" value="0"></label>
 <label>스캔라인<input id="iScan" type="range" min="0" max="100" value="0"></label>
 <label>색수차 (VHS 번짐)<input id="iAb" type="range" min="0" max="20" value="0"></label>
+<label>글리치 줄무늬<input id="iGlitch" type="range" min="0" max="100" value="0"></label>
+<label>픽셀화<input id="iPix" type="range" min="0" max="100" value="0"></label>
+<label>포스터화 (색 단계)<input id="iPost" type="range" min="0" max="8" value="0"></label>
+<label>색 반전<input id="iInv" type="checkbox"></label>
 <label>저화질 압축<input id="iCrush" type="range" min="0" max="100" value="0"></label>
 </div>
 
-<div class="ps-pn" data-t="꾸미기">
-<label>스티커<select id="iEmo"><option value="">없음</option><option>😂</option><option>💀</option><option>🔥</option><option>😭</option><option>🤡</option><option>🗿</option><option>💯</option><option>😎</option><option>🥶</option><option>🫠</option><option>👁️👄👁️</option><option>👍</option></select></label>
-<label>스티커 크기<input id="iEs" type="range" min="60" max="500" value="220"></label>
-<label>스티커 가로<input id="iEx" type="range" min="0" max="100" value="85"></label>
-<label>스티커 세로<input id="iEy" type="range" min="0" max="100" value="18"></label>
-<label>워터마크<input id="iWm" value=""></label>
-<label id="lVhs">VHS 오버레이<input id="iVhs" type="checkbox"></label>
-<label>VHS 날짜<input id="iVhsD" value="JAN. 01 2012"></label>
+<div class="ps-pn" data-t="꾸미기"><div id="deco"></div></div>
+
+<div class="ps-pn" data-t="프레임">
+<label>프레임<select id="iFrame">
+ <option value="none">없음</option><option value="solid">색상 테두리</option><option value="double">이중선 테두리</option>
+ <option value="insta">2012 인스타 (흰 테두리)</option><option value="polaroid">폴라로이드</option><option value="film">필름 스트립</option>
+ <option value="shadow">그림자 카드</option><option value="news">신문 1면</option><option value="round">둥근 모서리</option></select></label>
+<label>프레임 색<input id="iFrC" type="color" value="#ffffff"></label>
+<label>프레임 글자<input id="iFrT" value="" placeholder="폴라로이드 캡션 / 신문 제목"></label>
 </div>
 
 </div></div>
-<div class="ps-acts"><button id="reset" type="button">초기화</button><button id="savePng" type="button">PNG 저장</button></div>
+<div class="ps-acts"><button id="reset" type="button">초기화</button><button id="share" type="button">공유</button><button id="savePng" type="button">PNG 저장</button></div>
 </section>
 </div>
 </div>
-<script src="meme.js?v=2"></script>
+<script src="meme.js?v=3"></script>
 <script src="../ps-tabs.js?v=2"></script>
 </body></html>
