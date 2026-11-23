@@ -1,48 +1,66 @@
 (function(){
-var $=function(i){return document.getElementById(i)};
-var D={clock:'12:04',bat:35,hide:'원문 가리기',color:'#c6eff5',
-msgs:['@wasianboiiiii😛😛 #f8dfdb','그게 전부예요 ㅋㅋ // それだけです笑','가끔 그림을 그리기도 하는데 // たまに絵描いたりするんだけど','보여주고 싶어서 // 見せたくて | 22:01','','@명재현 #c6eff5','나 공연 끝나자마자','허겁지겁 밥두공기에 김치찌개에 불닭하나 먹고왔어 | 16:57','','@명재현 #c6eff5','메이크업도 안지우고','왕창먹었다','배불렁 움직이지도 못하게써 | 16:58'].join('\n')};
-var av='',pic='',hidden=false;
-function esc(s){return s.replace(/[&<>]/g,function(c){return{'&':'&amp;','<':'&lt;','>':'&gt;'}[c]})}
-function dark(h){var n=parseInt(h.slice(1),16),r=n>>16,g=n>>8&255,b=n&255;return'rgb('+Math.round(r*.94)+','+Math.round(g*.92)+','+Math.round(b*.92)+')'}
-function render(){
- if($('vClock'))if($('vClock'))$('vClock').textContent=$('iClock').value;if($('vBat'))if($('vBat'))$('vBat').textContent=$('iBat').value;
- var groups=[],cur=null,tr=$('iTr').checked;
- $('iMsgs').value.split('\n').forEach(function(l){
-  if(!l.trim()){cur=null;return}
-  var m=l.match(/^\s*@(.*?)(?:\s+(#[0-9a-fA-F]{6}))?\s*$/);
-  if(m){cur={name:m[1],c:m[2]||$('iColor').value,items:[]};groups.push(cur);return}
-  if(!cur){cur={name:'',c:$('iColor').value,items:[]};groups.push(cur)}
-  var p=l.split('|'),x=p[0].split('//');cur.items.push({o:x[0].trim(),t:(x[1]||'').trim(),tm:(p[1]||'').trim(),photo:/^\[사진\]$/.test(x[0].trim())});
- });
- var h='';
- groups.forEach(function(g){
-  var hasTr=false;
-  h+='<div class="g" style="--c:'+g.c+';--bd:'+dark(g.c)+'"><div class="av"'+(av?' style="background-image:url('+av+')"':'')+'></div><div class="gb">'+(g.name?'<div class="nm">'+esc(g.name)+'</div>':'');
-  g.items.forEach(function(it){
-   var t=tr&&it.t;if(t)hasTr=true;
-   if(it.photo){h+='<div class="r"><div class="b ph"'+(pic?' style="background-image:url('+pic+')"':'')+'></div>'+(it.tm?'<span class="tm">'+esc(it.tm)+'</span>':'')+'</div>';return}
-   h+='<div class="r"><div class="b'+(t?' t':'')+'"><div class="o'+(hidden&&t?' hid':'')+'">'+esc(it.o)+'</div>'+(t?'<div class="tr">'+esc(it.t)+'</div>':'')+'</div>'+(it.tm?'<span class="tm">'+esc(it.tm)+'</span>':'')+'</div>';
-  });
-  if(hasTr)h+='<button class="hd" type="button">'+esc(hidden?'원문 보기':$('iHide').value)+'</button>';
-  h+='</div></div>';
- });
- $('ch').innerHTML=h;
- $('wd').classList.toggle('chat-only',!!$('iChatOnly').checked);
+var $=function(id){return document.getElementById(id)};
+var avatar='',photo='';
+var initial=[
+{name:'wasianboiiiii😛😛',start:true,text:'그게 전부예요 ㅋㅋ',translation:'それだけです笑',time:''},
+{name:'',start:false,text:'가끔 그림을 그리기도 하는데',translation:'たまに絵描いたりするんだけど',time:''},
+{name:'',start:false,text:'보여주고 싶어서',translation:'見せたくて',time:'22:01'},
+{name:'명재현',start:true,text:'나 공연 끝나자마자',translation:'',time:''},
+{name:'',start:false,text:'허겁지겁 밥두공기에 김치찌개에 불닭하나 먹고왔어',translation:'',time:'16:57'},
+{name:'명재현',start:true,text:'메이크업도 안지우고',translation:'',time:''},
+{name:'',start:false,text:'왕창먹었다',translation:'',time:''},
+{name:'',start:false,text:'배불렁 움직이지도 못하게써',translation:'',time:'16:58'}
+];
+var messages=initial.map(function(m){return Object.assign({},m)});
+function esc(s){return String(s||'').replace(/[&<>"]/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]})}
+function renderEditor(){
+ var root=$('messageList');
+ root.innerHTML=messages.map(function(m,i){
+  return '<div class="dm-edit-item" data-index="'+i+'">'+
+   '<div class="dm-edit-head"><strong>메시지 '+(i+1)+'</strong><button type="button" class="dm-delete" data-delete="'+i+'">삭제</button></div>'+
+   '<label class="dm-sender">보낸 사람 이름'+(m.start?' (새 대화 그룹)':'')+'<input data-field="name" value="'+esc(m.name)+'" placeholder="같은 대화 이어쓰기면 비워두기"></label>'+
+   '<label>메시지 내용<textarea data-field="text" rows="2" placeholder="메시지를 입력하세요">'+esc(m.text)+'</textarea></label>'+
+   '<label>번역 (선택)<textarea data-field="translation" rows="2" placeholder="번역문을 입력하세요">'+esc(m.translation)+'</textarea></label>'+
+   '<label>시간 (선택)<input data-field="time" value="'+esc(m.time)+'" placeholder="예: 22:01"></label>'+
+   '</div>';
+ }).join('');
 }
-$('ch').addEventListener('click',function(e){if(e.target.classList.contains('hd')){hidden=!hidden;render()}});
-function fill(){$('iClock').value=D.clock;$('iBat').value=D.bat;$('iHide').value=D.hide;$('iColor').value=D.color;$('iMsgs').value=D.msgs;$('iTr').checked=false;$('iChatOnly').checked=false;hidden=false;render()}
-['iClock','iBat','iHide','iColor','iMsgs'].forEach(function(i){$(i).addEventListener('input',render)});
-$('iChatOnly').addEventListener('change',render);
-$('iPhoto').addEventListener('change',function(){var f=this.files[0];if(!f)return;var r=new FileReader();r.onload=function(e){pic=e.target.result;render()};r.readAsDataURL(f)});
-$('iTr').addEventListener('change',render);
-$('iAvatar').addEventListener('change',function(){var f=this.files[0];if(!f)return;var r=new FileReader();r.onload=function(e){av=e.target.result;render()};r.readAsDataURL(f)});
-$('clearImg').onclick=function(){av='';pic='';$('iAvatar').value='';$('iPhoto').value='';render()};
-$('reset').onclick=function(){av='';pic='';fill()};
-$('savePng').onclick=function(){if(!window.html2canvas)return;capChat($('wd'),{scale:3,useCORS:true,backgroundColor:$('iChatOnly').checked?null:'#000'}).then(function(c){var a=document.createElement('a');a.download='weversedm.png';a.href=c.toDataURL('image/png');a.click()})};
+function renderPreview(){
+ var html='',lastGroup=false,showTr=$('iTr').checked,color=$('iColor').value;
+ messages.forEach(function(m,i){
+  if(m.start||!lastGroup){
+   if(m.start||!lastGroup) html+='<div class="g"><div class="av"'+(avatar?' style="background-image:url(&quot;'+avatar+'&quot;)"':'')+'></div><div class="gb">'+(m.name?'<div class="nm">'+esc(m.name)+'</div>':'');
+   lastGroup=true;
+  }
+  var tr=showTr&&m.translation;
+  html+='<div class="r"><div class="b'+(tr?' t':'')+'" style="--c:'+color+';--bd:'+color+'">'+esc(m.text)+(tr?'<div class="tr">'+esc(m.translation)+'</div>':'')+'</div>'+(m.time?'<span class="tm">'+esc(m.time)+'</span>':'')+'</div>';
+  var next=messages[i+1];
+  if(!next||next.start) html+='</div></div>';
+ });
+ $('ch').innerHTML=html;
+ $('wd').classList.toggle('chat-only',!!$('iChatOnly').checked);
+ $('ch').classList.toggle('chat-only-inner',!!$('iChatOnly').checked);
+}
+function render(){renderEditor();renderPreview()}
+$('messageList').addEventListener('input',function(e){
+ var card=e.target.closest('.dm-edit-item');if(!card)return;
+ var m=messages[Number(card.dataset.index)];if(!m)return;
+ var field=e.target.dataset.field;if(field)m[field]=e.target.value;
+ renderPreview();
+});
+$('messageList').addEventListener('click',function(e){
+ var i=e.target.dataset.delete;if(i===undefined)return;
+ messages.splice(Number(i),1);render();
+});
+$('addMessage').onclick=function(){messages.push({name:'',start:false,text:'',translation:'',time:''});render();var items=$('messageList').querySelectorAll('.dm-edit-item');items[items.length-1].scrollIntoView({behavior:'smooth',block:'center'});items[items.length-1].querySelector('[data-field="text"]').focus()};
+$('addGroup').onclick=function(){messages.push({name:'새 이름',start:true,text:'',translation:'',time:''});render();var items=$('messageList').querySelectorAll('.dm-edit-item');items[items.length-1].scrollIntoView({behavior:'smooth',block:'center'})};
+$('iColor').addEventListener('input',renderPreview);
+$('iTr').addEventListener('change',renderPreview);
+$('iChatOnly').addEventListener('change',renderPreview);
+$('iAvatar').addEventListener('change',function(){var f=this.files[0];if(!f)return;var r=new FileReader();r.onload=function(e){avatar=e.target.result;renderPreview()};r.readAsDataURL(f)});
+$('clearImg').onclick=function(){avatar='';photo='';$('iAvatar').value='';$('iPhoto').value='';renderPreview()};
+$('reset').onclick=function(){messages=initial.map(function(m){return Object.assign({},m)});avatar='';photo='';$('iAvatar').value='';$('iPhoto').value='';$('iColor').value='#c6eff5';$('iTr').checked=false;$('iChatOnly').checked=false;render()};
+$('savePng').onclick=function(){if(!window.html2canvas)return;capChat($('wd'),{scale:3,useCORS:true,backgroundColor:null}).then(function(c){var a=document.createElement('a');a.download='weversedm.png';a.href=c.toDataURL('image/png');a.click()})};
 $('pvBtn').onclick=function(){var on=document.body.classList.toggle('pvmode');this.textContent=on?'편집 모드':'미리보기 모드'};
-var ed=document.querySelector('.editor'),groups=[].slice.call(ed.querySelectorAll(':scope > .ps-pn')),bar=document.createElement('div');bar.className='ps-seg';
-groups.forEach(function(g,i){var b=document.createElement('button');b.type='button';b.textContent=g.getAttribute('data-t');if(!i)b.className='on';b.onclick=function(){groups.forEach(function(x,j){x.hidden=j!==i});[].forEach.call(bar.children,function(c,j){c.classList.toggle('on',j===i)})};bar.appendChild(b)});
-ed.parentNode.insertBefore(bar,ed);
-fill();
+render();
 })();
