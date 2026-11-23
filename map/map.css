@@ -1,39 +1,30 @@
-:root{--y:#ffc000;--ink:#222;--g:#8b8f98}
-*{box-sizing:border-box}
-html,body,#map{height:100%;margin:0}
-body{font-family:-apple-system,"Pretendard","Noto Sans KR",sans-serif;color:var(--ink);overflow:hidden}
-.leaflet-control-zoom,.leaflet-control-attribution{display:none}
-
-.top{position:absolute;z-index:1000;top:calc(env(safe-area-inset-top) + 12px);left:12px;right:12px}
+.pw{position:relative;width:100%;overflow:hidden;border-radius:6px;background:#fff}
+.phone{position:absolute;left:0;top:0;width:390px;height:844px;transform-origin:0 0;overflow:hidden;background:#fff;color:#222;font-family:Pretendard,-apple-system,sans-serif}
+#map{position:absolute;inset:0}
+.top{position:absolute;z-index:1000;top:54px;left:12px;right:12px}
 .search{display:flex;align-items:center;gap:10px;background:#fff;border-radius:14px;padding:0 14px;height:48px;box-shadow:0 4px 16px #0002}
-.search .menu{font-size:18px;color:var(--g)}
+.search .menu{font-size:18px;color:#8a8f98}
 .search input{flex:1;border:0;outline:0;font-size:15px;background:none;min-width:0}
 .chips{display:flex;gap:8px;margin-top:10px;overflow-x:auto;scrollbar-width:none}
 .chips::-webkit-scrollbar{display:none}
-.chip{flex:none;display:flex;align-items:center;gap:6px;border:0;background:#fff;border-radius:20px;padding:8px 14px;font-size:13px;font-weight:600;box-shadow:0 2px 8px #0002;cursor:pointer;opacity:.9}
+.chip{flex:none;display:flex;align-items:center;gap:6px;border:0;background:#fff;border-radius:20px;padding:8px 14px;font-size:13px;font-weight:600;box-shadow:0 2px 8px #0002;cursor:pointer}
 .chip i{width:10px;height:10px;border-radius:50%}
 .chip.off{opacity:.45}
-
-/* 구역 */
-.zone{stroke-linejoin:round;stroke-width:3;transition:fill-opacity .2s}
-.zone:hover,.zone.sel{fill-opacity:.55}
 .zlabel{background:#fff;border:0;border-radius:8px;padding:2px 8px;font-size:11px;font-weight:700;box-shadow:0 1px 4px #0003}
 .zlabel:before{display:none}
-
-/* 핀 */
 .pin{width:34px;height:34px;border-radius:50% 50% 50% 0;transform:rotate(-45deg);display:grid;place-items:center;box-shadow:0 3px 8px #0004;border:2px solid #fff}
 .pin span{transform:rotate(45deg);font-size:15px}
-
 .fab{position:absolute;z-index:1000;right:14px;bottom:200px;width:48px;height:48px;border-radius:50%;border:0;background:#fff;font-size:24px;box-shadow:0 4px 14px #0003;cursor:pointer}
-.fab.on{background:var(--y)}
-
-.sheet{position:absolute;z-index:1000;left:0;right:0;bottom:0;background:#fff;border-radius:22px 22px 0 0;padding:8px 16px calc(env(safe-area-inset-bottom) + 16px);box-shadow:0 -6px 24px #0002}
+.fab.on{background:#ffc000}
+.sheet{position:absolute;z-index:1000;left:0;right:0;bottom:0;background:#fff;border-radius:22px 22px 0 0;padding:8px 16px 24px;box-shadow:0 -6px 24px #0002}
 .grab{width:40px;height:4px;border-radius:4px;background:#ddd;margin:0 auto 12px}
 .row{display:flex;align-items:center;gap:10px;background:#f6f6f8;border-radius:10px;padding:12px 14px;font-size:14px;font-weight:600;margin-bottom:8px}
-.row.sub{font-weight:400;color:var(--g);font-size:13px}
+.row.sub{font-weight:400;color:#8a8f98;font-size:13px}
 .dot{width:12px;height:12px;border-radius:50%;background:#ccc;flex:none}
-.bm{width:100%;height:52px;border:0;border-radius:14px;background:var(--y);font-size:17px;font-weight:800;margin-top:4px;cursor:pointer}
-.bm.done{background:#222;color:var(--y)}
-
-.toast{position:absolute;z-index:1100;left:50%;top:130px;transform:translateX(-50%);background:#222;color:#fff;padding:8px 16px;border-radius:20px;font-size:13px;opacity:0;pointer-events:none;transition:opacity .25s;white-space:nowrap}
+.bm{width:100%;height:52px;border:0;border-radius:14px;background:#ffc000;font-size:17px;font-weight:800;margin-top:4px;cursor:pointer;font-family:inherit}
+.bm.done{background:#222;color:#ffc000}
+.toast{position:absolute;z-index:1100;left:50%;top:150px;transform:translateX(-50%);background:#222;color:#fff;padding:8px 16px;border-radius:20px;font-size:13px;opacity:0;pointer-events:none;transition:opacity .25s;white-space:nowrap}
 .toast.show{opacity:1}
+.editor select,.editor input[type=color]{width:100%}
+.editor input[type=color]{height:44px;padding:4px}
+.hint{font-size:13px;color:#8a8f98;margin:4px 0 0}
