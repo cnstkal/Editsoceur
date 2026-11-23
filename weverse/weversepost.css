@@ -111,3 +111,10 @@ body.studio{background:#fff;overflow-x:hidden}.ps-wrap{padding:0}
 .it input[type=checkbox]{width:16px;height:16px;margin:0}
 .it button{height:36px;border:0;border-radius:10px;background:#fff1f3;color:#e0245e;font-weight:700;padding:0 12px}
 .addc{width:100%;height:46px;border:0;border-radius:14px;background:#e8457a;color:#fff;font-size:15px;font-weight:700;cursor:pointer;margin-bottom:10px}
+
+
+/* 게시글 미리보기: 상단 간격 소폭 추가, 세로 길이 자동 확장 */
+.wp{height:auto!important;min-height:852px;overflow:visible!important}
+.sc{position:relative!important;top:auto!important;right:auto!important;bottom:auto!important;left:auto!important;overflow:visible!important;margin-top:8px}
+.in{will-change:auto}
+.cm.hl{background:transparent!important;padding:0!important;margin-bottom:14px!important}
