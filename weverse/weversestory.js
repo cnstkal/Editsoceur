@@ -9,7 +9,7 @@ $('vName').textContent=$('iName').value;$('vDate').textContent=$('iDate').value;
  var p=Math.max(0,Math.min(100,parseFloat($('iPg').value)||0))+'%';$('vFill').style.width=p;$('vKnob').style.left=p;
  var a=$('vAv');a.style.backgroundImage=av?'url('+av+')':'';var im=$('im');im.style.backgroundImage=bg?'url('+bg+')':'';im.classList.toggle('has',!!bg);
 }
-function fill(){$('iName').value=D.name;$('iDate').value=D.date;$('iText').value=D.text;$('iCmt').value=D.cmt;$('iLike').value=D.like;$('iPg').value=D.pg;$('iColor').value=D.color;$('iDia').checked=true;render()}
+function fill(){$('iName').value=D.name;$('iDate').value=D.date;$('iText').value=D.text;$('iCmt').value=D.cmt;$('iLike').value=D.like;$('iPg').value=D.pg;$('iColor').value=D.color;render()}
 ['iName','iDate','iText','iCmt','iLike','iPg','iColor'].forEach(function(i){$(i).addEventListener('input',render)});
 function rd(f,cb){var r=new FileReader();r.onload=function(e){cb(e.target.result);render()};r.readAsDataURL(f)}
 $('iAvatar').addEventListener('change',function(){if(this.files[0])rd(this.files[0],function(v){av=v})});
