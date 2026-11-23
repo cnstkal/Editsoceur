@@ -7,7 +7,7 @@
    var hasBg=cs.backgroundImage!=='none'||(cs.backgroundColor!=='rgba(0, 0, 0, 0)'&&cs.backgroundColor!=='transparent');
    var big=r.width*r.height>=area*0.9,img=cs.backgroundImage!=='none';
    var txt=[].some.call(e.childNodes,function(n){return n.nodeType===3&&n.textContent.trim()});
-   if(hasBg&&(e===root||img||(big&&!txt))){
+   if(hasBg && !e.closest('.av') && !e.classList.contains('av') && !e.classList.contains('nm') && !e.classList.contains('b') && !e.classList.contains('gb') && !e.classList.contains('r') && (e===root||big&&!txt)){
     saved.push([e,e.style.background,e.style.backgroundImage,e.style.boxShadow]);
     e.style.background='transparent';e.style.backgroundImage='none';e.style.boxShadow='none';
    }
