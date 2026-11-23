@@ -2,10 +2,11 @@
 <html lang="ko"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no,viewport-fit=cover"><script src="../nozoom.js?v=1"></script>
 <title>MEME</title>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Anton&family=Archivo+Black&family=Comic+Neue:wght@700&family=Special+Elite&family=VT323&display=swap">
 <link rel="stylesheet" href="../ps-base.css?v=4">
 <link rel="stylesheet" href="../ps-editor.css?v=10">
 <link rel="stylesheet" href="../ps-shell.css?v=2">
-<link rel="stylesheet" href="meme.css?v=1">
+<link rel="stylesheet" href="meme.css?v=2">
 </head><body class="studio">
 <div class="ps-wrap">
 <header class="ps-top"><a class="ps-back" href="../index.html" style="color:#0095f6;font-weight:600;font-size:15px;text-decoration:none">‹ 뒤로</a><a href="../index.html">‹ 처음으로</a><button class="ps-pvbtn" id="pvBtn" type="button" hidden>미리보기 모드</button></header>
@@ -13,28 +14,79 @@
 <section class="ps-card ps-main">
 <div class="ps-lbl">Live Preview</div>
 <h2>MEME</h2>
-<p class="ps-sub">1:1 · 사진을 넣고 위아래 문구를 적어요</p>
-<div class="ps-stage"><div class="vp" id="vp"><div id="cv">
- <div id="mImgWrap"><img id="mImg" alt="" hidden></div>
- <div id="mTop" class="mtxt"></div>
- <div id="mBot" class="mtxt"></div>
-</div></div></div>
+<p class="ps-sub">2010년대 영미권 밈 · 오른쪽에서 바로 수정해요</p>
+<div class="ps-stage"><div id="cvWrap"><canvas id="out" width="1080" height="1080"></canvas></div></div>
 </section>
 <section class="ps-card ps-side">
 <div class="ps-lbl">Edit Panel</div>
 <h2>MEME 수정</h2>
 <div class="ps-edwrap"><div class="editor">
-<div class="ps-pn" data-t="기본">
+
+<div class="ps-pn" data-t="레이아웃">
+<label>레이아웃<select id="iLay">
+ <option value="impact">클래식 Impact (위/아래 글자)</option>
+ <option value="caption">캡션 바 (iFunny식)</option>
+ <option value="drake">2컷 비교 (Drake식)</option>
+ <option value="demo">디모티베이셔널 포스터</option>
+ <option value="core">Corecore (VHS/자막)</option>
+</select></label>
+<label id="lRatio">비율<select id="iRatio"><option value="1:1">1:1</option><option value="4:5">4:5</option><option value="9:16">9:16</option><option value="16:9">16:9</option><option value="4:3">4:3</option></select></label>
 <label>사진<input id="iImg" type="file" accept="image/*"></label>
+<label id="lImg2">사진 2 (아래 컷)<input id="iImg2" type="file" accept="image/*"></label>
+<label>확대<input id="iZoom" type="range" min="100" max="300" value="100"></label>
+<label>가로 위치<input id="iPx" type="range" min="-100" max="100" value="0"></label>
+<label>세로 위치<input id="iPy" type="range" min="-100" max="100" value="0"></label>
+<label id="lBar">캡션 바 색<select id="iBar"><option value="#ffffff">흰색</option><option value="#000000">검정</option></select></label>
+</div>
+
+<div class="ps-pn" data-t="문구">
 <label>위 문구<textarea id="iTop" rows="2"></textarea></label>
 <label>아래 문구<textarea id="iBot" rows="2"></textarea></label>
-<label>글자 크기<input id="iSize" type="range" min="40" max="200" value="110"></label>
+<label>글꼴<select id="iFont">
+ <option value="imp">Impact</option><option value="arial">Arial Black</option><option value="helv">Helvetica Bold</option>
+ <option value="comic">Comic Sans</option><option value="serif">Times 세리프</option><option value="pixel">VT323 픽셀</option>
+ <option value="type">타자기</option><option value="kr">Pretendard</option></select></label>
+<label>글자 크기<input id="iSize" type="range" min="40" max="220" value="100"></label>
+<label>글자색<input id="iFill" type="color" value="#ffffff"></label>
+<label>외곽선색<input id="iStroke" type="color" value="#000000"></label>
+<label>외곽선 굵기<input id="iSW" type="range" min="0" max="20" value="9"></label>
+<label>대문자 변환<input id="iUp" type="checkbox" checked></label>
+<label>위 문구 위치<input id="iTy" type="range" min="-300" max="300" value="0"></label>
+<label>아래 문구 위치<input id="iBy" type="range" min="-300" max="300" value="0"></label>
 </div>
+
+<div class="ps-pn" data-t="보정">
+<label>프리셋<select id="iPre">
+ <option value="orig">원본</option><option value="insta">2010 인스타 (X-Pro)</option><option value="old">오래된 짤 (노란 JPEG)</option>
+ <option value="fry">딥프라이</option><option value="core">Corecore</option><option value="bw">흑백 필름</option></select></label>
+<label>밝기<input id="iBri" type="range" min="-100" max="100" value="0"></label>
+<label>대비<input id="iCon" type="range" min="-100" max="100" value="0"></label>
+<label>채도<input id="iSat" type="range" min="0" max="300" value="100"></label>
+<label>색조<input id="iHue" type="range" min="0" max="360" value="0"></label>
+<label>따뜻함/차가움<input id="iWarm" type="range" min="-50" max="50" value="0"></label>
+<label>블러<input id="iBlur" type="range" min="0" max="8" step="0.5" value="0"></label>
+<label>노이즈<input id="iNoise" type="range" min="0" max="100" value="0"></label>
+<label>비네팅<input id="iVig" type="range" min="0" max="100" value="0"></label>
+<label>스캔라인<input id="iScan" type="range" min="0" max="100" value="0"></label>
+<label>색수차 (VHS 번짐)<input id="iAb" type="range" min="0" max="20" value="0"></label>
+<label>저화질 압축<input id="iCrush" type="range" min="0" max="100" value="0"></label>
+</div>
+
+<div class="ps-pn" data-t="꾸미기">
+<label>스티커<select id="iEmo"><option value="">없음</option><option>😂</option><option>💀</option><option>🔥</option><option>😭</option><option>🤡</option><option>🗿</option><option>💯</option><option>😎</option><option>🥶</option><option>🫠</option><option>👁️👄👁️</option><option>👍</option></select></label>
+<label>스티커 크기<input id="iEs" type="range" min="60" max="500" value="220"></label>
+<label>스티커 가로<input id="iEx" type="range" min="0" max="100" value="85"></label>
+<label>스티커 세로<input id="iEy" type="range" min="0" max="100" value="18"></label>
+<label>워터마크<input id="iWm" value=""></label>
+<label id="lVhs">VHS 오버레이<input id="iVhs" type="checkbox"></label>
+<label>VHS 날짜<input id="iVhsD" value="JAN. 01 2012"></label>
+</div>
+
 </div></div>
 <div class="ps-acts"><button id="reset" type="button">초기화</button><button id="savePng" type="button">PNG 저장</button></div>
 </section>
 </div>
 </div>
-<script src="https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js"></script>
-<script src="meme.js?v=1"></script>
+<script src="meme.js?v=2"></script>
+<script src="../ps-tabs.js?v=2"></script>
 </body></html>
