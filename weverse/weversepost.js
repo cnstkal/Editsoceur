@@ -21,7 +21,7 @@ function render(){
  var art=[],all=[];
  $('iCms').value.split('\n').forEach(function(l){
   if(!l.trim())return;var hl=false,a=false;
-  if(l[0]==='^'){hl=true;l=l.slice(1)}if(l[0]==='*'){a=true;l=l.slice(1)}
+  if(l[0]==='^')l=l.slice(1);if(l[0]==='*'){a=true;l=l.slice(1)}
   var p=l.split('|').map(function(s){return s.trim()});
   var o={n:p[0]||'',d:p[1]||'',t:(p[2]||'').replace(/\\n/g,'\n'),l:p[3]||'',r:p[4]||'',hl:hl,a:a};(a?art:all).push(o);
  });
@@ -38,12 +38,12 @@ function fill(){$('iClock').value=D.clock;$('iBat').value=D.bat;$('iSub').value=
 ['iVer','iFol','iTrn','iChatOnly'].forEach(function(i){$(i).addEventListener('change',render)});
 var CMS=[];
 function parseCms(){CMS=$('iCms').value.split('\n').filter(function(l){return l.trim()}).map(function(l){var hl=false,a=false;if(l[0]==='^'){hl=true;l=l.slice(1)}if(l[0]==='*'){a=true;l=l.slice(1)}var p=l.split('|').map(function(s){return s.trim()});return{hl:hl,a:a,n:p[0]||'',d:p[1]||'',t:p[2]||'',l:p[3]||'',r:p[4]||''}})}
-function syncCms(){$('iCms').value=CMS.map(function(o){return (o.hl?'^':'')+(o.a?'*':'')+[o.n,o.d,o.t,o.l,o.r].join(' | ')}).join('\n')}
+function syncCms(){$('iCms').value=CMS.map(function(o){return (o.a?'*':'')+[o.n,o.d,o.t,o.l,o.r].join(' | ')}).join('\n')}
 function buildRows(){parseCms();$('cmList').innerHTML=CMS.map(function(o,i){return '<div class="it" data-i="'+i+'"><input class="a" data-k="n" value="'+esc(o.n)+'" placeholder="이름"><input class="b" data-k="d" value="'+esc(o.d)+'" placeholder="날짜"><input class="b" data-k="t" value="'+esc(o.t)+'" placeholder="댓글 내용"><input class="c" data-k="l" value="'+esc(o.l)+'" placeholder="좋아요"><input class="c" data-k="r" value="'+esc(o.r)+'" placeholder="답글"><label class="fl"><input type="checkbox" data-k="a"'+(o.a?' checked':'')+'>아티스트</label><label class="fl"><input type="checkbox" data-k="hl"'+(o.hl?' checked':'')+'>강조</label><button type="button" data-d="'+i+'">✕</button></div>'}).join('')}
 $('cmList').addEventListener('input',function(e){var t=e.target,r=t.closest('.it');if(!r||!t.dataset.k||t.type==='checkbox')return;CMS[r.dataset.i][t.dataset.k]=t.value;syncCms();render()});
 $('cmList').addEventListener('change',function(e){var t=e.target,r=t.closest('.it');if(!r||t.type!=='checkbox')return;CMS[r.dataset.i][t.dataset.k]=t.checked;syncCms();render()});
 $('cmList').addEventListener('click',function(e){var d=e.target.dataset.d;if(d!=null){CMS.splice(+d,1);syncCms();buildRows();render()}});
-$('addC').onclick=function(){CMS.push({hl:false,a:false,n:'새 댓글',d:'',t:'내용을 입력하세요',l:'0',r:''});syncCms();buildRows();render()};
+$('addC').onclick=function(){CMS.push({a:false,n:'새 댓글',d:'',t:'내용을 입력하세요',l:'0',r:''});syncCms();buildRows();render()};
 function rd(f,cb){var r=new FileReader();r.onload=function(e){cb(e.target.result);render()};r.readAsDataURL(f)}
 $('iAvatar').addEventListener('change',function(){if(this.files[0])rd(this.files[0],function(v){av=v})});
 $('iArtAv').addEventListener('change',function(){if(this.files[0])rd(this.files[0],function(v){aav=v})});
