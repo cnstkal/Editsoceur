@@ -39,10 +39,11 @@
 <div class="ps-pn" data-t="이미지" hidden><div class="row"><label class="file">사진 추가(여러 장)<input type="file" accept="image/*" multiple id="iP"></label></div>
 <div id="plist"></div>
 </div>
-</section></div><div class="ps-acts"><button id="savePng" class="primary">PNG 저장</button><button id="reset" class="secondary">초기화</button></div></section>
+</section></div><div class="ps-acts"><button id="memeBtn" class="secondary" type="button">MEME</button><button id="savePng" class="primary">PNG 저장</button><button id="reset" class="secondary">초기화</button></div></section>
 </div></div>
 <script src="https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js"></script>
 <script src="photos.js?v=1"></script>
+<script>document.getElementById("memeBtn").onclick=function(){location.href="../meme/index.html"}</script>
 <script>(function(){var b=document.getElementById("pvBtn");b.onclick=function(){var on=document.body.classList.toggle("pvmode");this.textContent=on?"편집 모드":"미리보기 모드"}})();</script>
 <script src="studio.js?v=1"></script>
 <script src="../back-anim.js?v=1" defer></script></body>
