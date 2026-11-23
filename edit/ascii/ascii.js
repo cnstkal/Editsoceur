@@ -59,13 +59,13 @@ function render(){
    if(braille||set==='classic'||set==='detail'||set==='binary'||set==='dots'||set==='blocks')lines[rr].split('').forEach(function(chv,ci){if(chv!==' ')ctx.fillText(chv,ci*cw,rr*ch+ch/2)});
    else Array.from(lines[rr]).forEach(function(chv,ci){if(chv!==' ')ctx.fillText(chv,ci*cw,rr*ch+ch/2)})}
   else Array.from(lines[rr]).forEach(function(chv,ci){if(chv===' '&&!emo)return;ctx.fillStyle=mode==='color'?colors[rr][ci]:ink;ctx.fillText(chv,ci*cw,rr*ch+ch/2)})}
- $('info').textContent=cols+' × '+rows+' 글자 · '+lastText.length.toLocaleString()+'자';
+ $('info').textContent=cols+' × '+rows+' 글자 · '+lastText.length.toLocaleString()+'자'+(!isText&&!img?' · 사진을 올리면 아스키아트로 바뀌어요':'');
 }
 
 function vis(){var m=$('iMode').value==='photo';$('lImg').hidden=!m;$('lText').hidden=m;$('lTF').hidden=m;
  $('lCus').hidden=$('iSet').value!=='custom';var mat=$('iCol').value==='matrix',col=$('iCol').value==='color';$('lBg').hidden=mat||col;$('lInk').hidden=mat||col}
 document.querySelectorAll('.editor input:not([type=file]),.editor select,.editor textarea').forEach(function(e){e.addEventListener('input',function(){vis();sched()});e.addEventListener('change',function(){vis();sched()})});
-$('iImg').addEventListener('change',function(){var f=this.files&&this.files[0];if(!f){img=null;sched();return}var r=new FileReader();r.onload=function(){var im=new Image();im.onload=function(){img=im;sched()};im.src=r.result};r.readAsDataURL(f)});
+$('iImg').addEventListener('change',function(){var f=this.files&&this.files[0];if(!f){img=null;sched();return}var r=new FileReader();r.onload=function(){var im=new Image();im.onload=function(){img=im;$('iMode').value='photo';vis();sched()};im.src=r.result};r.readAsDataURL(f)});
 $('copy').onclick=function(){var b=$('copy'),done=function(){var o=b.textContent;b.textContent='복사됨!';setTimeout(function(){b.textContent=o},1200)};
  if(navigator.clipboard&&navigator.clipboard.writeText)navigator.clipboard.writeText(lastText).then(done,fallback);else fallback();
  function fallback(){var ta=document.createElement('textarea');ta.value=lastText;ta.style.cssText='position:fixed;opacity:0';document.body.appendChild(ta);ta.select();try{document.execCommand('copy');done()}catch(e){}document.body.removeChild(ta)}};
