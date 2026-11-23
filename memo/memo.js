@@ -3,7 +3,7 @@ var $=function(i){return document.getElementById(i)},cv=$('cv'),vp=$('vp'),W=256
 function layoutTb(p){var tb=$('tb');tb.setAttribute('viewBox',p?'0 0 1440 200':'0 0 2560 200');
  var xs=[180,540,900,1260];tb.querySelectorAll('.ic').forEach(function(g,i){
   if(!p){g.removeAttribute('transform');return}
-  g.setAttribute('transform','translate('+xs[i]+' 100) scale(1.3) translate('+(-g.dataset.cx)+' '+(-g.dataset.cy)+')')})}
+  g.setAttribute('transform','translate('+xs[i]+' 100) scale(1.15) translate('+(-g.dataset.cx)+' '+(-g.dataset.cy)+')')})}
 function setRatio(r){var p=r==='9:16';W=p?1440:2560;H=p?2560:1440;cv.classList.toggle('r916',p);layoutTb(p);$('subR').textContent=r+' · 오른쪽에서 바로 수정해요';fit()}
 $('iRatio').onchange=function(){setRatio(this.value)};
 [['iDate','vDate'],['iBody','vBody']].forEach(function(p){var i=$(p[0]),o=$(p[1]);D[p[0]]=i.value;function u(){o.textContent=i.value}i.oninput=u;u()});
