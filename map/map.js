@@ -13,7 +13,7 @@ const ZONES = [
 ];
 
 const map = L.map('map',{zoomControl:false}).setView([37.43,126.69],12);
-L.tileLayer('https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png',{maxZoom:19,subdomains:'abcd'}).addTo(map);
+L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png',{maxZoom:19,attribution:'© OpenStreetMap'}).addTo(map);
 
 const $ = id => document.getElementById(id);
 const layers = [];            // {zone, rect, pin}
