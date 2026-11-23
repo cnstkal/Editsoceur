@@ -38,3 +38,4 @@ body.studio .phone .search input#q{font-size:37px!important;line-height:1.2}body
 .ps-acts #reset{flex:1;background:#f2f3f5;color:#222}
 .ps-acts #savePng{flex:1.6;background:var(--pk);color:#fff}
 .ps-acts{position:sticky;bottom:0;background:#fff;padding:12px 0 calc(12px + env(safe-area-inset-bottom))}
+#pins .pin{position:relative;left:0;top:0;width:64px;height:80px}
