@@ -69,5 +69,17 @@
 </div>
 </div>
 <script src="map.js"></script>
+<script>
+/* 탭 (zoom 패널과 동일 구성) */
+(function(){
+ var ed=document.querySelector('.editor'),g=[].slice.call(ed.querySelectorAll('.ps-pn'));
+ var bar=document.createElement('div');bar.className='ps-seg';
+ g.forEach(function(p,i){var b=document.createElement('button');b.type='button';b.textContent=p.getAttribute('data-t');
+  if(!i)b.className='on';else p.hidden=true;
+  b.onclick=function(){g.forEach(function(x,j){x.hidden=j!==i});[].forEach.call(bar.children,function(c,j){c.classList.toggle('on',j===i)})};
+  bar.appendChild(b)});
+ ed.parentNode.insertBefore(bar,ed);
+})();
+</script>
 </body>
 </html>

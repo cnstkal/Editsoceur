@@ -24,3 +24,17 @@
 .editor select{width:100%}
 .hint{font-size:13px;color:#8a8f98;margin:4px 0 0}
 body.studio .phone .search input#q{font-size:37px!important;line-height:1.2}body.studio .phone .search input#q::placeholder{font-size:37px;color:#8e939b}
+.ps-side{--pk:#e8457a;--pk-bg:#fde8ef;--ln:#e9eaee}
+.ps-pn[hidden]{display:none!important}
+.editor{flex:1}
+.editor label{display:flex;align-items:center;justify-content:space-between;gap:14px;margin:0 0 16px;font-size:14px;font-weight:500;color:#222}
+.editor label>input:not([type=checkbox]):not([type=file]):not([type=color]){flex:0 0 56%;width:56%;height:44px;padding:0 14px;font-size:16px;border:1px solid var(--ln);border-radius:12px;background:#fff}
+.editor input[type=file]{flex:0 0 56%;width:56%;min-width:0;font-size:13px;color:#8a8f98}
+.editor input[type=file]::file-selector-button{height:36px;padding:0 14px;margin-right:10px;border:1px solid #e3e5e8;border-radius:10px;background:#fff;font:inherit;font-size:13px;font-weight:600}
+.editor input[type=color]{width:56px;height:40px;border:1px solid var(--ln);border-radius:10px;padding:2px;background:#fff}
+.sw input:checked+i{background:var(--pk)}.sw input:checked+i::after{left:23px}
+.ps-acts{display:flex;gap:10px;margin-top:20px}
+.ps-acts button{height:52px;border:0;border-radius:14px;font-size:15px;font-weight:700}
+.ps-acts #reset{flex:1;background:#f2f3f5;color:#222}
+.ps-acts #savePng{flex:1.6;background:var(--pk);color:#fff}
+.ps-acts{position:sticky;bottom:0;background:#fff;padding:12px 0 calc(12px + env(safe-area-inset-bottom))}
