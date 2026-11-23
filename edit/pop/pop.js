@@ -5,6 +5,7 @@ var FB=', Pretendard, "Apple SD Gothic Neo", "Noto Sans KR", sans-serif';
 function hex(h){var n=parseInt(h.slice(1),16);return[n>>16,n>>8&255,n&255]}
 var PALS=[['#1b1030','#ff2d95','#ffe600'],['#06223b','#00c2ff','#fff6c2'],['#2b0a0a','#ff3b1f','#ffd166'],['#0b2b1a','#18c48f','#f7ff7a'],['#1d0b45','#8a4dff','#ffd1f3'],['#2d1200','#ff8a00','#fff1b8'],['#0a1a5c','#2e6bff','#ffffff'],['#0b0b0b','#8a8a8a','#f4f4f4'],['#2a1a00','#d9a400','#fff3b0']].map(function(p){return p.map(hex)});
 function cvs(w,h){var c=document.createElement('canvas');c.width=w;c.height=h;return c}
+function rr(c,x,y,w,h,r){r=Math.max(0,Math.min(r,w/2,h/2));c.beginPath();c.moveTo(x+r,y);c.arcTo(x+w,y,x+w,y+h,r);c.arcTo(x+w,y+h,x,y+h,r);c.arcTo(x,y+h,x,y,r);c.arcTo(x,y,x+w,y,r);c.closePath()}
 function sched(){cancelAnimationFrame(raf);raf=requestAnimationFrame(render)}
 function rng(seed){return function(){seed|=0;seed=seed+0x6D2B79F5|0;var t=Math.imul(seed^seed>>>15,1|seed);t=t+Math.imul(t^t>>>7,61|t)^t;return((t^t>>>14)>>>0)/4294967296}}
 
@@ -68,10 +69,38 @@ function burst(cx,cy,r,rot,txt){var R=rng(11),n=16,pts=[];for(var i=0;i<n*2;i++)
  path(r*.07,r*.07);ctx.fillStyle='#111';ctx.fill();path(0,0);ctx.fillStyle='#ffe600';ctx.fill();ctx.lineWidth=r*.05;ctx.strokeStyle='#111';ctx.stroke();
  var fz=r*.62;ctx.textAlign='center';ctx.textBaseline='middle';do{ctx.font='400 '+Math.round(fz)+'px Anton,Impact,"Arial Black"'+FB;fz*=.93}while(ctx.measureText(txt).width>r*1.35&&fz>10);
  ctx.lineWidth=fz*.16;ctx.strokeStyle='#111';ctx.strokeText(txt,r*.03,r*.04);ctx.fillStyle='#e8112d';ctx.fillText(txt,0,0);ctx.restore()}
-function bubble(W,H,txt){var s=+$('iBs').value/100,cx=W*$('iBx').value/100,cy=H*$('iBy').value/100,fz=W*.045*s;ctx.font='700 '+Math.round(fz)+'px "Comic Neue","Comic Sans MS"'+FB;
- var lines=wrapText(ctx,txt,W*.36*s),tw=0;lines.forEach(function(l){tw=Math.max(tw,ctx.measureText(l).width)});var lh=fz*1.2,rx=tw/2+fz*1.1,ry=lines.length*lh/2+fz*.9,tl=$('iTail').value,dx=tl[1]==='l'?-1:1,dy=tl[0]==='t'?-1:1;
- function shape(){ctx.beginPath();ctx.ellipse(cx,cy,rx,ry,0,0,7);ctx.moveTo(cx+dx*rx*.35,cy+dy*ry*.9);ctx.lineTo(cx+dx*(rx+fz*1.4),cy+dy*(ry+fz*1.8));ctx.lineTo(cx+dx*rx*.8,cy+dy*ry*.62);ctx.closePath()}
- ctx.lineJoin='round';shape();ctx.lineWidth=W*.012;ctx.strokeStyle='#111';ctx.stroke();ctx.fillStyle='#fff';shape();ctx.fill();
+function bubble(W,H,txt){
+ var s=+$('iBs').value/100,cx=W*$('iBx').value/100,cy=H*$('iBy').value/100,fz=W*.058*s,shape=$('iBsh').value,fill=$('iBf').value,tl=$('iTail').value,dx=tl[1]==='l'?-1:1,dy=tl[0]==='t'?-1:1;
+ ctx.font='700 '+Math.round(fz)+'px "Comic Neue","Comic Sans MS"'+FB;
+ var lines=wrapText(ctx,txt,W*.42*s),tw=0;lines.forEach(function(l){tw=Math.max(tw,ctx.measureText(l).width)});
+ var lh=fz*1.15,th=lines.length*lh,rx=Math.max(fz*1.6,tw/2+fz*1.25),ry=Math.max(fz*1.15,th/2+fz*.95),lw=W*.013,off=W*.011;
+ if(shape==='shout'){rx*=1.12;ry*=1.12}
+ // 모양별 경로 목록 (각 항목은 path 함수)
+ var parts=[];
+ if(shape==='speech'||shape==='box'){
+  if(shape==='speech')parts.push(function(o){ctx.beginPath();ctx.ellipse(cx+o,cy+o,rx,ry,0,0,7)});
+  else parts.push(function(o){rr(ctx,cx-rx*.92+o,cy-ry*.9+o,rx*1.84,ry*1.8,fz*.5)});
+  var t0=Math.atan2(dy*ry,dx*rx),a1=t0-.3,a2=t0+.3,bx=shape==='box'?.92:1,by=shape==='box'?.9:1;
+  var p1=[cx+rx*bx*Math.cos(a1),cy+ry*by*Math.sin(a1)],p2=[cx+rx*bx*Math.cos(a2),cy+ry*by*Math.sin(a2)],tip=shape==='box'?[cx+dx*(rx*.7+fz*.8),cy+dy*(ry*.9+fz*1.2)]:[cx+dx*(rx*.78+fz*1.5),cy+dy*(ry*.9+fz*2.1)];
+  var kx=(p2[0]-p1[0])*.18,ky=(p2[1]-p1[1])*.18;
+  parts.push(function(o){ctx.beginPath();ctx.moveTo(p1[0]+o,p1[1]+o);ctx.quadraticCurveTo((p1[0]+tip[0])/2+kx+o,(p1[1]+tip[1])/2+ky+o,tip[0]+o,tip[1]+o);ctx.quadraticCurveTo((p2[0]+tip[0])/2-kx+o,(p2[1]+tip[1])/2-ky+o,p2[0]+o,p2[1]+o);ctx.closePath()});
+ }else if(shape==='shout'){
+  parts.push(function(o){var n=20;ctx.beginPath();for(var i=0;i<n*2;i++){var a=i*Math.PI/n,k=i%2?.76:1.08;var x=cx+o+Math.cos(a)*rx*k,y=cy+o+Math.sin(a)*ry*k;i?ctx.lineTo(x,y):ctx.moveTo(x,y)}ctx.closePath()});
+ }else{ // think
+  parts.push(function(o){ctx.beginPath();var n=11,br=Math.min(rx,ry)*.5;for(var i=0;i<n;i++){var a=i*2*Math.PI/n,x=cx+o+Math.cos(a)*(rx-br*.55),y=cy+o+Math.sin(a)*(ry-br*.55);ctx.moveTo(x+br,y);ctx.arc(x,y,br,0,7)}ctx.moveTo(cx+o+rx*.8,cy+o);ctx.ellipse(cx+o,cy+o,rx*.8,ry*.8,0,0,7)});
+  var tx=cx+dx*(rx*.9+fz*.6),ty=cy+dy*(ry*.9+fz*.9);
+  parts.push(function(o){ctx.beginPath();ctx.moveTo(tx+fz*.42+o,ty+o);ctx.arc(tx+o,ty+o,fz*.42,0,7)});
+  var tx2=cx+dx*(rx*.9+fz*1.5),ty2=cy+dy*(ry*.9+fz*2.2);
+  parts.push(function(o){ctx.beginPath();ctx.moveTo(tx2+fz*.26+o,ty2+o);ctx.arc(tx2+o,ty2+o,fz*.26,0,7)});
+ }
+ ctx.lineJoin='round';
+ // 그림자(검정, 오프셋)
+ ctx.fillStyle='#111';ctx.strokeStyle='#111';ctx.lineWidth=lw;parts.forEach(function(p){p(off);ctx.fill();ctx.stroke()});
+ // 외곽선 → 흰색 채우기 (겹친 안쪽 선 제거)
+ parts.forEach(function(p){p(0);ctx.lineWidth=lw*2;ctx.strokeStyle='#111';ctx.stroke()});
+ ctx.fillStyle=fill;parts.forEach(function(p){p(0);ctx.fill()});
+ // 만화풍 하이라이트 점
+ if(shape!=='shout'){ctx.fillStyle='rgba(255,255,255,.7)';ctx.beginPath();ctx.ellipse(cx-rx*.55,cy-ry*.52,rx*.09,ry*.07,-.5,0,7);ctx.fill()}
  ctx.fillStyle='#111';ctx.textAlign='center';ctx.textBaseline='middle';lines.forEach(function(l,i){ctx.fillText(l,cx,cy-(lines.length-1)*lh/2+i*lh)})}
 
 function render(){
