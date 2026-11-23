@@ -5,7 +5,6 @@
 <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no"><script src="../nozoom.js?v=1"></script>
 <title>지도 화면</title>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.css">
-<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
 <link rel="stylesheet" href="map.css">
 <link rel="stylesheet" href="../ps-editor.css?v=10">
 <style id="pa">body{animation:paIn .28s ease both}body.pa-out{animation:paOut .18s ease forwards}@keyframes paIn{from{opacity:0}to{opacity:1}}@keyframes paOut{to{opacity:0}}@media (prefers-reduced-motion:reduce){body,body.pa-out{animation:none}}</style><script id="pa-js">(function(){document.addEventListener("click",function(e){var a=e.target.closest&&e.target.closest("a[href]");if(!a||e.defaultPrevented||e.button||e.metaKey||e.ctrlKey||e.shiftKey||a.target||a.hasAttribute("download"))return;var h=a.getAttribute("href");if(!h||h[0]==="#"||/^(javascript:|mailto:|tel:)/.test(h))return;var u=new URL(a.href,location.href);if(u.origin!==location.origin)return;e.preventDefault();document.body.classList.add("pa-out");setTimeout(function(){location.href=u.href},180)},true)})();</script>
@@ -17,49 +16,58 @@
 <section class="ps-card ps-main">
 <div class="ps-lbl">Live Preview</div>
 <h2>지도 화면</h2>
-<p class="ps-sub">화면을 보면서 오른쪽에서 구역을 바로 수정해요</p>
+<p class="ps-sub">화면을 보면서 오른쪽에서 핀을 바로 수정해요</p>
 <div class="ps-stage"><div class="ps-frame" id="frame"><div class="pw" id="pw"><div class="phone" id="app">
-  <div id="map"></div>
-  <div class="top">
-    <div class="search"><span class="menu">☰</span><input id="q" placeholder="구역 검색" autocomplete="off"></div>
-    <div class="chips" id="chips"></div>
-  </div>
-  <button class="fab" id="add" title="구역 추가">＋</button>
+  <svg id="map" viewBox="0 0 1086 1448" xmlns="http://www.w3.org/2000/svg">
+   <rect width="1086" height="1448" fill="#f5ede6"/>
+   <g fill="#cfe5b6"><path d="M305 0h250l20 110H330z"/><path d="M805 0h281v100l-200 12-45-2z"/><path d="M0 215l245 10 30 105-8 60-70 40-45 70-40 75-112 10z"/><path d="M130 840l155-42 30 30 15 100 62 8-12 110-228-46z"/><path d="M468 612l100-15 12 43-100 32z"/><path d="M340 1255l55-85 45-40h150l20 125z"/><circle cx="1018" cy="902" r="32"/><path d="M985 620l101-120v150l-60 20z"/><path d="M360 225l165 5-20 120-115 50z"/></g>
+   <g fill="none" stroke-linecap="round"><path id="rv" d="M1130 360C960 450 905 560 885 680C865 800 935 880 975 960C1010 1035 905 1110 845 1190L805 1270" stroke="#fbf8f6" stroke-width="150"/><path d="M1130 360C960 450 905 560 885 680C865 800 935 880 975 960C1010 1035 905 1110 845 1190L805 1270" stroke="#b9d8f4" stroke-width="104"/></g>
+   <g fill="none" stroke="#fff" stroke-width="24" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M285 0l45 110 55 290 35 300-5 230-55 170-55 155" stroke-width="28"/>
+    <path d="M0 590l160-50 40-90 130-65 55-5"/>
+    <path d="M0 820l420-100 220-70 220-50 226 60" stroke-width="28"/>
+    <path d="M0 1080l150-60 250 50"/>
+    <path d="M425 550l205-30 70-100 180-40 15 90M880 230l40 240"/>
+    <path d="M430 930l180-50 260 25 70 215"/>
+    <path d="M600 680l40 190M105 810l45 195M570 900l60 355M735 905l30 180M600 1130l160-30 90 20M545 0l35 110M805 0l35 110"/>
+   </g>
+   <g fill="#e2dce4"><rect x="442" y="425" width="90" height="88" rx="6"/><rect x="550" y="382" width="55" height="70" rx="5"/><rect x="215" y="520" width="85" height="50" rx="5" transform="rotate(-8 257 545)"/><rect x="308" y="462" width="55" height="55" rx="5"/><rect x="272" y="580" width="48" height="76" rx="5"/><rect x="40" y="630" width="85" height="52" rx="5" transform="rotate(-8 82 656)"/><rect x="136" y="680" width="52" height="46" rx="5"/><rect x="782" y="400" width="65" height="45" rx="5"/><rect x="785" y="485" width="80" height="62" rx="5" transform="rotate(-12 825 516)"/><rect x="687" y="670" width="58" height="52" rx="5"/><rect x="672" y="735" width="120" height="85" rx="6" transform="rotate(-8 732 777)"/><rect x="970" y="722" width="92" height="48" rx="5"/><rect x="338" y="845" width="40" height="36" rx="4"/><rect x="18" y="878" width="64" height="85" rx="5"/><rect x="800" y="962" width="40" height="58" rx="4"/><rect x="449" y="1028" width="88" height="50" rx="5"/><rect x="628" y="1055" width="78" height="35" rx="5" transform="rotate(-6 667 1072)"/><rect x="668" y="1178" width="90" height="45" rx="5" transform="rotate(-6 713 1200)"/><rect x="165" y="1095" width="100" height="82" rx="6" transform="rotate(8 215 1136)"/><rect x="82" y="1125" width="68" height="82" rx="5" transform="rotate(-8 116 1166)"/><rect x="578" y="0" width="68" height="35" rx="5"/><rect x="620" y="48" width="58" height="48" rx="5"/><rect x="695" y="12" width="75" height="55" rx="5"/></g>
+   <g id="trees" fill="#6dbb73"><g stroke="#6a9a5a" stroke-width="7"><path d="M415 75v16M53 420v16M96 462v14M248 912v16M430 1165v16M475 1208v14"/></g><ellipse cx="415" cy="55" rx="22" ry="30"/><ellipse cx="53" cy="400" rx="20" ry="28"/><ellipse cx="96" cy="445" rx="19" ry="26"/><ellipse cx="248" cy="892" rx="21" ry="28"/><ellipse cx="430" cy="1145" rx="23" ry="30"/><ellipse cx="475" cy="1190" rx="18" ry="25"/></g>
+   <g id="pins"></g>
+   <circle cx="494" cy="816" r="68" fill="#dfe4ee" opacity=".6"/><circle cx="494" cy="816" r="23" fill="#fff"/><circle cx="494" cy="816" r="18" fill="#3b82f6"/>
+  </svg>
+  <div class="sbar"><b>9:41</b><svg width="170" height="40" viewBox="0 0 170 40"><g fill="#222"><rect x="0" y="24" width="7" height="12" rx="2"/><rect x="12" y="18" width="7" height="18" rx="2"/><rect x="24" y="11" width="7" height="25" rx="2"/><rect x="36" y="4" width="7" height="32" rx="2"/></g><path d="M52 16a22 22 0 0 1 36 0M58 23a14 14 0 0 1 24 0" stroke="#222" stroke-width="5" fill="none" stroke-linecap="round"/><circle cx="70" cy="31" r="4" fill="#222"/><rect x="104" y="6" width="58" height="29" rx="9" fill="none" stroke="#999" stroke-width="3"/><rect x="108" y="10" width="50" height="21" rx="6" fill="#222"/></svg></div>
+  <div class="search"><svg width="52" height="52" viewBox="0 0 24 24" fill="none" stroke="#6b7078" stroke-width="2" stroke-linecap="round"><circle cx="10.5" cy="10.5" r="6.5"/><path d="M15.5 15.5L21 21"/></svg><input id="q" placeholder="장소, 주소 검색" autocomplete="off"><svg width="52" height="52" viewBox="0 0 24 24" fill="none" stroke="#6b7078" stroke-width="1.8" stroke-linecap="round"><rect x="9" y="3" width="6" height="11" rx="3"/><path d="M5.5 11a6.5 6.5 0 0 0 13 0M12 17.5V21"/></svg></div>
+  <div class="chips" id="chips"></div>
+  <div class="fabs"><button class="fab" title="레이어"><svg width="54" height="54" viewBox="0 0 24 24" fill="none" stroke="#5f6670" stroke-width="1.6" stroke-linejoin="round"><path d="M12 3l9 5-9 5-9-5z"/><path d="M3 12.5l9 5 9-5M3 16.5l9 5 9-5" opacity=".9"/></svg></button><button class="fab" id="loc" title="내 위치"><svg width="54" height="54" viewBox="0 0 24 24" fill="#6b7280"><path d="M21 3L3 10.5l7.5 2.5L13 20.5z"/></svg></button></div>
   <div class="toast" id="toast"></div>
-  <div class="sheet">
-    <div class="grab"></div>
-    <div class="row"><i class="dot" id="s-dot"></i><span id="s-name"></span></div>
-    <div class="row sub"><span id="s-type"></span></div>
-    <button class="bm" id="bm"></button>
-  </div>
-</div></div></div></div>
+  <div class="tabs"><i class="grab"></i><div id="tabs"></div></div>
+</div></div></div></div></div>
 </section>
 <section class="ps-card ps-side">
 <div class="ps-lbl">Edit Panel</div>
 <h2>지도 내용 수정</h2>
 <div class="ps-edwrap"><div class="editor">
-  <div class="ps-pn" data-t="구역">
-    <label>구역 선택<select id="sel"></select></label>
-    <label>구역 이름<input id="zName"></label>
-    <label>종류<select id="zType"><option>주거</option><option>상업</option><option>공원</option><option>산업</option></select></label>
-    <label>색상<input id="zColor" type="color"></label>
-    <button class="ps-ghost" id="zDel" type="button">이 구역 삭제</button>
+  <div class="ps-pn" data-t="핀">
+    <label>핀 선택<select id="sel"></select></label>
+    <label>이름<input id="zName"></label>
+    <label>종류<select id="zType"></select></label>
+    <button class="ps-ghost" id="zDel" type="button">이 핀 삭제</button>
   </div>
-  <div class="ps-pn" data-t="새 구역">
-    <label>이름<input id="nName" placeholder="새 구역"></label>
-    <label>종류<select id="nType"><option>주거</option><option>상업</option><option>공원</option><option>산업</option></select></label>
-    <p class="hint">＋ 버튼을 누른 뒤 지도에서 두 점을 찍으면 구역이 생겨요</p>
+  <div class="ps-pn" data-t="새 핀">
+    <label>종류<select id="nType"></select></label>
+    <button class="ps-ghost" id="add" type="button">지도에서 위치 찍기</button>
+    <p class="hint">버튼을 누른 뒤 지도를 한 번 탭하면 핀이 생겨요</p>
   </div>
-  <div class="ps-pn" data-t="기타">
-    <label>북마크 버튼 문구<input id="iBm"></label>
+  <div class="ps-pn" data-t="문구">
     <label>검색창 안내 문구<input id="iPh"></label>
+    <div id="iTabs"></div>
   </div>
 </div></div>
 <div class="ps-acts"><button id="reset" type="button">초기화</button></div>
 </section>
 </div>
 </div>
-<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
 <script src="map.js"></script>
 </body>
 </html>
