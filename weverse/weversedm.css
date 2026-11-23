@@ -92,3 +92,11 @@ body.studio{background:#fff;overflow-x:hidden}.ps-wrap{padding:0}
 .wd.chat-only .av{background-size:cover!important;background-position:center!important}
 .wd.chat-only .nm{display:block!important;visibility:visible!important}
 .wd.chat-only .b{background:var(--c)!important}
+
+
+/* DM: 편집 탭과 미리보기 상단 검은 공백 제거 */
+.wd{background:#fff!important}
+.wd .ch{top:0!important;height:100%!important;bottom:auto!important;background:#fff!important}
+.dm-tabs{display:flex!important;gap:4px;margin:0 0 14px;padding:5px;background:#f5f5f7;border:1px solid #e9eaee;border-radius:16px}
+.dm-tabs button{flex:1;height:40px;border-radius:12px;color:#333;font-size:14px;font-weight:500}
+.dm-tabs button.on{background:#fde8ef;color:#e8457a;font-weight:700}
