@@ -70,3 +70,25 @@ body.studio{background:#fff;overflow-x:hidden}.ps-wrap{padding:0}
 
 .wd.chat-only{background:transparent!important}
 .b.ph{width:210px;height:210px;padding:0;border-radius:21px;background:#d6d6d6 center/cover}
+
+
+/* DM 개별 메시지 편집 */
+.dm-message-list{display:flex;flex-direction:column;gap:12px}
+.dm-edit-item{padding:14px;border:1px solid #e9eaee;border-radius:16px;background:#fff}
+.dm-edit-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:12px}
+.dm-edit-head strong{font-size:14px}
+.dm-delete{padding:7px 11px;border-radius:9px;background:#fff0f1;color:#d9344d;font-size:12px;font-weight:700}
+.dm-edit-item label{display:flex;flex-direction:column!important;align-items:stretch!important;gap:7px!important;margin:0 0 11px!important;color:#626875!important;font-size:12px!important}
+.dm-edit-item label:last-child{margin-bottom:0!important}
+.dm-edit-item input,.dm-edit-item textarea{width:100%!important;flex:none!important;height:auto!important;min-height:42px;padding:10px 12px!important;border:1px solid #e5e7eb!important;border-radius:10px!important;background:#fff!important;font-size:15px!important;color:#222!important}
+.dm-edit-item textarea{resize:vertical;line-height:1.5}
+.dm-add-actions{display:grid;grid-template-columns:1fr 1fr;gap:9px;margin:12px 0}
+.dm-add-actions button{height:46px;border-radius:12px;background:#fde8ef;color:#e8457a;font-size:13px;font-weight:700}
+.dm-add-actions button+button{background:#f1efff;color:#7460c5}
+.wd.chat-only,.wd.chat-only .ch,.wd .ch.chat-only-inner{background:transparent!important}
+.wd.chat-only .ch{overflow:visible!important}
+.wd.chat-only{height:auto!important;min-height:100px;overflow:visible!important}
+.wd.chat-only .ch{position:relative;top:0;bottom:auto;min-height:100px;padding-bottom:10px}
+.wd.chat-only .av{background-size:cover!important;background-position:center!important}
+.wd.chat-only .nm{display:block!important;visibility:visible!important}
+.wd.chat-only .b{background:var(--c)!important}
