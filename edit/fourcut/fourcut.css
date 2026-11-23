@@ -1,0 +1,9 @@
+html,body,body *{font-family:Pretendard,-apple-system,"Apple SD Gothic Neo","Noto Sans KR",sans-serif!important;letter-spacing:-.02em!important}
+#cvWrap{display:flex;justify-content:center;width:100%}
+#out{display:block;max-width:100%;max-height:78vh;width:auto;height:auto;box-shadow:0 0 0 1px #0002;background:repeating-conic-gradient(#e8e8ec 0 25%,#fff 0 50%) 0 0/20px 20px}
+label[hidden]{display:none!important}
+.info{margin:10px 0 0;text-align:center;font-size:13px;color:#8a8a93}
+.mini{height:40px;margin:2px 0 12px;padding:0 14px;border:0;border-radius:12px;background:#f2f3f5;font-size:14px;font-weight:700;cursor:pointer}
+body.studio .ps-side .ps-acts #reset{order:1!important;flex:.8 1 0!important}
+body.studio .ps-side .ps-acts #share{order:2!important;flex:1 1 0!important;background:#7c5cff!important;color:#fff!important}
+body.studio .ps-side .ps-acts #savePng{order:3!important;flex:1.2 1 0!important}

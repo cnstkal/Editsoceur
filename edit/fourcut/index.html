@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="ko"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no,viewport-fit=cover"><script src="../../nozoom.js?v=1"></script>
+<title>4Cut</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Anton&family=Comic+Neue:wght@700&family=Special+Elite&display=swap">
+<link rel="stylesheet" href="../../ps-base.css?v=4">
+<link rel="stylesheet" href="../../ps-editor.css?v=10">
+<link rel="stylesheet" href="../../ps-shell.css?v=2">
+<link rel="stylesheet" href="fourcut.css?v=1">
+</head><body class="studio">
+<div class="ps-wrap">
+<header class="ps-top"><a class="ps-back" href="../index.html" style="color:#0095f6;font-weight:600;font-size:15px;text-decoration:none">‹ 뒤로</a><a href="../../index.html">‹ 메인</a><button class="ps-pvbtn" id="pvBtn" type="button" hidden>미리보기 모드</button></header>
+<div class="ps-grid">
+<section class="ps-card ps-main">
+<div class="ps-lbl">Live Preview</div>
+<h2>4Cut</h2>
+<p class="ps-sub">사진을 올려 네컷 포토부스 프레임을 만들어요</p>
+<div class="ps-stage"><div id="cvWrap"><canvas id="out" width="720" height="2160"></canvas></div></div>
+<p class="info" id="info"></p>
+</section>
+<section class="ps-card ps-side">
+<div class="ps-lbl">Edit Panel</div>
+<h2>4Cut 수정</h2>
+<div class="ps-edwrap"><div class="editor">
+
+<div class="ps-pn" data-t="사진">
+<label>사진 올리기 (여러 장)<input id="iImg" type="file" accept="image/*" multiple></label>
+<label>프레임 구성<select id="iLay"><option value="strip">세로 4컷 스트립</option><option value="grid4">2×2 네컷</option><option value="grid6">2×3 여섯컷</option></select></label>
+<button type="button" id="shuffle" class="mini">🔀 사진 순서 섞기</button>
+<label>좌우반전 (셀카 거울)<input id="iMirror" type="checkbox"></label>
+<label>확대<input id="iZoom" type="range" min="100" max="250" value="100"></label>
+<label>가로 위치<input id="iPx" type="range" min="-100" max="100" value="0"></label>
+<label>세로 위치<input id="iPy" type="range" min="-100" max="100" value="0"></label>
+</div>
+
+<div class="ps-pn" data-t="필터">
+<label>필터<select id="iPre"><option value="orig">원본</option><option value="booth" selected>뽀샤시 (부스 느낌)</option><option value="film">필름</option><option value="bw">흑백</option><option value="vivid">비비드</option><option value="cool">쿨톤</option></select></label>
+<label>밝기<input id="iBri" type="range" min="-100" max="100" value="8"></label>
+<label>대비<input id="iCon" type="range" min="-100" max="100" value="-8"></label>
+<label>채도<input id="iSat" type="range" min="0" max="250" value="105"></label>
+<label>따뜻함/차가움<input id="iWarm" type="range" min="-50" max="50" value="6"></label>
+<label>뽀샤시 (소프트 글로우)<input id="iGlow" type="range" min="0" max="100" value="40"></label>
+<label>필름 입자<input id="iGrain" type="range" min="0" max="100" value="0"></label>
+</div>
+
+<div class="ps-pn" data-t="프레임">
+<label>배경 스타일<select id="iBgS"><option value="solid">단색</option><option value="grad">그라데이션</option><option value="dots">도트</option><option value="stripes">줄무늬</option><option value="check">체크</option><option value="stars">별</option><option value="hearts">하트</option></select></label>
+<label>배경 색 1<input id="iC1" type="color" value="#ffd9e6"></label>
+<label>배경 색 2 / 무늬색<input id="iC2" type="color" value="#ffffff"></label>
+<label>사진 테두리 색<input id="iBc" type="color" value="#ffffff"></label>
+<label>사진 테두리 두께<input id="iBw" type="range" min="0" max="24" value="0"></label>
+<label>사진 모서리 둥글기<input id="iRad" type="range" min="0" max="80" value="14"></label>
+<label>사진 그림자<input id="iSh" type="checkbox" checked></label>
+<label>사진 간격<input id="iGap" type="range" min="0" max="60" value="24"></label>
+<label>바깥 여백<input id="iMar" type="range" min="10" max="100" value="44"></label>
+<label>프레임 모서리 둥글기 (투명)<input id="iOut" type="range" min="0" max="80" value="0"></label>
+</div>
+
+<div class="ps-pn" data-t="글자·스티커">
+<label>제목<input id="iTitle" value="4 CUT"></label>
+<label>제목 글꼴<select id="iTF"><option value="pret">Pretendard 굵게</option><option value="anton">Anton (임팩트)</option><option value="comic">Comic (귀여움)</option><option value="type">타자기</option></select></label>
+<label>글자색<input id="iTc" type="color" value="#2b2b33"></label>
+<label>날짜 표시<input id="iDOn" type="checkbox" checked></label>
+<label>날짜 글자<input id="iDate" value=""></label>
+<label>한 줄 문구<input id="iCap" value=""></label>
+<label>스티커 이모지<select id="iEmo"><option value="">없음</option><option>💖</option><option>✨</option><option>🎀</option><option>⭐</option><option>🌸</option><option>🍒</option><option>🐰</option><option>🐻</option><option>🌈</option><option>🫧</option><option>🔥</option><option>😎</option></select></label>
+<label>스티커 개수<input id="iEn" type="range" min="0" max="30" value="12"></label>
+<label>스티커 크기<input id="iEs" type="range" min="30" max="160" value="70"></label>
+</div>
+
+</div></div>
+<div class="ps-acts"><button id="reset" type="button">초기화</button><button id="share" type="button">공유</button><button id="savePng" type="button">PNG 저장</button></div>
+</section>
+</div>
+</div>
+<script src="fourcut.js?v=1"></script>
+<script src="../../ps-tabs.js?v=2"></script>
+</body></html>
