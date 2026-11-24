@@ -94,3 +94,23 @@ body.studio{background:#fff;overflow-x:hidden}.ps-wrap{padding:0}
 .ed-row .fl input{max-width:190px}
 .ed-row .photo-preview{display:flex;align-items:center;gap:8px;width:100%}
 .fm .ib[hidden]{display:none!important}
+
+/* Message editor cards: compact form layout */
+.ed-row{display:block;padding:20px 22px;border:1px solid #e5e7ed;border-radius:22px;background:#fff;margin:0 0 14px}
+.ed-topline{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:14px}
+.ed-field{display:flex;flex-direction:column;align-items:stretch;gap:9px;margin:0!important;min-width:0;color:#747986!important;font-size:14px!important;font-weight:600!important}
+.ed-field input:not([type=file]),.ed-field select,.ed-field textarea{width:100%!important;min-width:0;height:60px;padding:0 16px;border:1px solid #e1e4eb;border-radius:16px;background:#fff;color:#222;font-size:17px;font-weight:400}
+.ed-field textarea{height:114px;padding:14px 16px;resize:vertical;line-height:1.5}
+.ed-unread{display:flex!important;justify-content:flex-start!important;align-items:center!important;gap:10px!important;margin:0 0 16px!important;font-size:16px!important;font-weight:500!important}
+.ed-unread input{width:25px;height:25px;accent-color:#e8457a}
+.ed-full{width:100%;margin:0 0 16px!important}
+.ed-type{margin-top:2px!important}
+.ed-type select{height:46px}
+.photo-preview{display:flex;align-items:center;gap:12px;flex-wrap:wrap}
+.file-pick{display:inline-flex!important;align-items:center;justify-content:center;height:46px;padding:0 18px;border:1px solid #e1e4eb;border-radius:14px;background:#fff;color:#222!important;font-size:15px!important;font-weight:600!important;cursor:pointer}
+.file-pick input{display:none}
+.ed-actions{display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px;margin-top:18px}
+.ed-actions button{height:50px;border:1px solid #e5e7ed;border-radius:14px;background:#fff;color:#333;font-size:17px;font-weight:600}
+.ed-actions button:disabled{opacity:.35;cursor:default}
+.ed-actions button.del{color:#ed3566}
+@media(max-width:1099px){.ed-row{padding:18px 20px;border-radius:22px}.ed-topline{gap:12px}.ed-field input:not([type=file]),.ed-field select{height:58px}}
