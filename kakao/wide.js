@@ -59,6 +59,8 @@
   }
 
   // 말풍선 줄바꿈과 폭을 렌더링 시점에 한 번 계산해 고정 (프리뷰·PNG가 같은 줄바꿈을 사용)
+  // 여유 폭: 저장 엔진 글자 폭 오차만큼(텍스트 폭에 비례, 짧은 문장은 거의 0)
+  var SLACK = function (w) { return w * 0.04; }; // 글자 폭에 비례 (짧은 문장은 여유도 작음)
   function layoutBubbles() {
     var cv = document.createElement("canvas").getContext("2d");
     Array.prototype.forEach.call($("chat").querySelectorAll(".b"), function (b) {
@@ -77,8 +79,7 @@
       var widest = 0; lines.forEach(function (l) { widest = Math.max(widest, cv.measureText(l).width); });
       tn.textContent = lines.join("\n");
       b.style.whiteSpace = "pre";
-      // 저장 엔진의 글자 폭 여유(4%)를 프리뷰에도 함께 적용해 양쪽이 같은 상자를 사용
-      b.style.width = Math.min(maxW, Math.ceil(widest * 1.04 + padL + padR)) + "px";
+      b.style.width = Math.min(maxW, Math.ceil(widest + padL + padR + SLACK(widest))) + "px";
     });
   }
 
@@ -142,7 +143,8 @@
   // 프리뷰 실제 너비 기준으로 pixelRatio만 키워서 고해상도 저장 (레이아웃은 건드리지 않음)
   var EXPORT_W = 3840;
   function capture(cap) {
-    var fontsReady = (document.fonts && document.fonts.ready) ? document.fonts.ready : Promise.resolve();
+    // 폰트가 실제로 로드된 뒤에만 캡처 (Pretendard 굵기 500/600/700)
+    var fontsReady = document.fonts ? Promise.all([document.fonts.load("500 16px Pretendard"), document.fonts.load("600 16px Pretendard"), document.fonts.load("700 16px Pretendard")]).then(function () { return document.fonts.ready; }) : Promise.resolve();
     var prev = cap.style.transform; cap.style.transform = "none"; // 배율 없는 원본 레이아웃으로 캡처
     return fontsReady.then(function () {
       return htmlToImage.toCanvas(cap, { pixelRatio: EXPORT_W / 960, cacheBust: true });
