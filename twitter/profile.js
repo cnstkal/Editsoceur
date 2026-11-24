@@ -93,7 +93,9 @@ function bind(){
  ids.forEach(function(k){var el=document.getElementById(k);el.oninput=function(){S[k]=el.value;render()}});
  sw.forEach(function(k){var el=document.getElementById(k);el.onchange=function(){S[k]=el.checked;render()}});
  document.getElementById('avatarFile').onchange=function(e){readFile(e.target.files[0],function(u){S.avatar=u;render()})};
+document.getElementById('avatarFile_del').onclick=function(){S.avatar=''; document.getElementById('avatarFile').value=''; render();};
  document.getElementById('bannerFile').onchange=function(e){readFile(e.target.files[0],function(u){S.banner=u;render()})};
+document.getElementById('bannerFile_del').onclick=function(){S.banner=''; document.getElementById('bannerFile').value=''; render();};
   document.getElementById('addTweet').onclick=function(){
   S.tweets.push({name:S.name,handle:S.handle,time:'방금',text:'',reply:'',rt:'',like:'',view:'',avatar:'',lock:S.lock});
   renderList();render();

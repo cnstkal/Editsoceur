@@ -100,6 +100,7 @@ function bind(){
  sw.forEach(function(k){var el=document.getElementById(k);el.onchange=function(){S[k]=el.checked;render()}});
  document.getElementById('avatarFile').onchange=function(e){readFile(e.target.files[0],function(u){S.avatar=u;render()})};
  document.getElementById('qavatarFile').onchange=function(e){readFile(e.target.files[0],function(u){S.qavatar=u;render()})};
+document.getElementById('qavatarFile_del').onclick=function(){S.qavatar=''; document.getElementById('qavatarFile').value=''; render();};
  document.getElementById('addReply').onclick=function(){addR(false)};
  document.getElementById('addChain').onclick=function(){addR(true)};
  document.getElementById('reset').onclick=function(){S=defaults();sync();renderList();render()};

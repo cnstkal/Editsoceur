@@ -20,6 +20,7 @@
   ['gal','nick','title','date','view','rec','cmt','body','note'].forEach(function(k){$(k).addEventListener('input',function(){S[k]=this.value;persist();render()})});
   $('showImg').addEventListener('change',function(){S.showImg=this.checked;persist();render()});
   $('img').addEventListener('change',function(){var f=this.files[0];if(!f)return;var r=new FileReader();r.onload=function(){S.img=r.result;persist();render()};r.readAsDataURL(f)});
+$('img_del').onclick=function(){S.img=''; $('img').value=''; persist(); render();};
   $('reset').onclick=function(){load(true)};
   $('savePng').onclick=function(){var b=this,t=b.textContent;b.disabled=true;b.textContent='저장 중...';
     (document.fonts&&document.fonts.ready||Promise.resolve()).then(function(){return html2canvas($('cap'),{scale:4,useCORS:true,backgroundColor:'#fff',logging:false})}).then(function(c){

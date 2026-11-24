@@ -17,6 +17,7 @@ for(var k=0;k<N;k++){
 }
 function read(f,cb){if(!f)return;var r=new FileReader();r.onload=function(){cb(r.result)};r.readAsDataURL(f)}
 $('iAll').onchange=function(){read(this.files[0],function(u){for(var k=0;k<N;k++)imgs[k]=u;$('iMode').value='photo';render()})};
+$('iAll_del').onclick=function(){for(var k=0;k<N;k++)imgs[k]=''; $('iAll').value=''; render();};
 $('iMode').onchange=render;
 function render(){
  var m=$('iMode').value;

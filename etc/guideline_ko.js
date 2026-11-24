@@ -14,6 +14,7 @@ L.forEach(function(t,k){
  $('slots').appendChild(w);
 });
 $('iMain').onchange=function(){rd(this.files[0],function(u){imgs[0]=u;$('iMode').value='photo';draw()})};
+$('iMain_del').onclick=function(){imgs[0]=''; $('iMain').value=''; draw();};
 $('iMode').onchange=draw;
 function draw(){var m=$('iMode').value;phs.forEach(function(e,k){e.className='ph'+(m==='green'?' g':'');e.style.backgroundImage=(m==='photo'&&imgs[k])?'url('+imgs[k]+')':''})}
 draw();
