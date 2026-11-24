@@ -114,3 +114,20 @@ body.studio{background:#fff;overflow-x:hidden}
 .cmi .ps-ghost{margin-top:8px}.cmi .cmt{display:flex;gap:10px;align-items:center;margin-top:6px;font-size:13px}
 .cmi .cmt button{margin-left:auto;color:#e0245e;font-size:13px}
 .ps-back{color:#0095f6;font-weight:600;font-size:15px;text-decoration:none}
+
+/* Desktop: compact 4:3 preview canvas with a centered, naturally tall post */
+@media(min-width:1100px){
+ .ps-frame{width:100%;aspect-ratio:4/3;max-height:min(72vh,760px);overflow:auto;align-items:flex-start;justify-content:center;padding:24px;background:#e6e9ef;border-radius:18px}
+ .fb-canvas{width:100%;min-height:100%;display:flex;justify-content:center;align-items:flex-start}
+ .preview-stack{width:393px;max-width:100%;flex:none;box-shadow:0 2px 12px rgba(0,0,0,.08)}
+ .fb{width:100%;height:auto;min-height:699px;overflow:visible}
+ .fb .sc{flex:0 0 auto}
+}
+.fb .ib[hidden]{display:none!important}
+@media(max-width:1099px){
+ .ps-frame{aspect-ratio:auto;max-height:none;overflow:visible;padding:0;background:transparent}
+ .fb-canvas{width:100%;display:flex;justify-content:center}
+ .preview-stack{width:min(100%,393px);flex:none}
+ .fb{width:100%;height:auto;min-height:699px}
+ .fb .sc{flex:0 0 auto}
+}
