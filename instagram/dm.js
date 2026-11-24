@@ -7,10 +7,12 @@
     VB='<svg width="18" height="18" viewBox="0 0 40 40"><path fill="#c9c9c9" d="M19.998 3.094 14.638 0l-2.972 5.150H5.432v6.354L0 14.640 3.094 20 0 25.359l5.432 3.137v5.905h5.975L14.638 40l5.360-3.094L25.359 40l3.232-5.600h6.162v-6.010L40 25.359 36.905 20 40 14.641l-5.248-3.030v-6.460h-6.419L25.359 0z"/><path d="m11.500 20.600 6 6 11-12.600" fill="none" stroke="#fff" stroke-width="3.500" stroke-linecap="round" stroke-linejoin="round"/></svg>',
     PL='<svg width="46" height="46" viewBox="0 0 24 24"><path fill="#fff" stroke="#fff" stroke-width="3" stroke-linejoin="round" d="M7 4.500v15l12.500-7.500z"/></svg>',
     PS='<svg width="18" height="18" viewBox="0 0 24 24"><path fill="#000" stroke="#000" stroke-width="2.500" stroke-linejoin="round" d="M7 4.500v15l12.500-7.500z"/></svg>';
-  var S,av,lt=0,li=-1;
+  var S,av,bgImg=null,lt=0,li=-1;
+  function paintBg(){var d=$('dm');if($('iBg').checked){d.style.background=bgImg?"url('"+bgImg+"') center/cover no-repeat":'#fff'}else d.style.background=''}
   function esc(t){return String(t==null?'':t).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;')}
   function bgi(u){return u?"background-image:url('"+u+"')":''}
   function chat(){
+    paintBg();
     $('vNick').textContent=S.nick;$('vId').textContent=S.id;$('vPh').textContent=S.ph||PH;$('vPh').classList.toggle('typed',!!S.ph);
     $('vHav').style.cssText=bgi(av);
     var h='';S.m.forEach(function(x,i){
@@ -33,10 +35,11 @@
       sel+(x.k==='t'?'<input class="mt" data-f="t" value="'+esc(x.t)+'">':x.k==='p'?f('img','사진'):f('img','릴스 화면')+'<input class="mt" data-f="rid" placeholder="릴스 아이디" value="'+esc(x.rid)+'">'+f('rav','프사')+'<label class="fl"><input type="checkbox" data-f="vb"'+(x.vb?' checked':'')+'> 파란딱지</label>'))+
       '<button type="button" class="mb" data-a="u">↑</button><button type="button" class="mb" data-a="d">↓</button><button type="button" class="mb" data-a="x">✕</button></div>'});
     $('mlist').innerHTML=h}
-  function load(){S=JSON.parse(JSON.stringify(DEF));av=null;$('iAv').value='';
+  function load(){S=JSON.parse(JSON.stringify(DEF));av=null;$('iAv').value='';bgImg=null;$('iBgImg').value='';
     $('iNick').value=S.nick;$('iId').value=S.id;$('iPh').value=S.ph;$('iBg').checked=true;list();bgApply()}
   function bgApply(){var on=$('iBg').checked;$('dm').classList.toggle('nobg',!on);document.body.classList.toggle('dm-off',!on);chat()}
   $('iBg').onchange=bgApply;
+  $('iBgImg').onchange=function(){var f=this.files[0];if(f)IGImg.read(f,function(d){bgImg=d;chat()})};
   [['iNick','nick'],['iId','id'],['iPh','ph']].forEach(function(p){$(p[0]).addEventListener('input',function(){S[p[1]]=this.value;chat()})});
   $('iAv').onchange=function(){var f=this.files[0];if(!f)return;IGImg.read(f,function(d){av=d;chat()})};
   var ml=$('mlist');
@@ -62,7 +65,7 @@
   $('reset').onclick=load;
   $('savePng').onclick=function(){var b=this,t=b.textContent;b.disabled=true;b.textContent='저장 중...';
     (document.fonts&&document.fonts.ready?document.fonts.ready:Promise.resolve()).then(function(){
-      return html2canvas($('dm'),{scale:4,useCORS:true,backgroundColor:$('iBg').checked?'#fff':null,logging:false})}).then(function(c){
+      return html2canvas($('dm'),{scale:4,useCORS:true,backgroundColor:$('iBg').checked?'#ffffff':null,logging:false})}).then(function(c){
       c.toBlob(function(bl){var a=document.createElement('a');a.href=URL.createObjectURL(bl);a.download='instagram-dm.png';
         document.body.appendChild(a);a.click();a.remove();b.disabled=false;b.textContent=t},'image/png')
     }).catch(function(){b.disabled=false;b.textContent=t;alert('PNG 저장에 실패했습니다.')})};
