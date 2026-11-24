@@ -51,3 +51,13 @@ body:not(.studio){max-width:520px;margin:0 auto}
 /* 모바일: 겹친 여백을 줄여 알림 가로폭 확보 */
 @media(max-width:1099px){body.studio .ps-wrap{padding-left:0;padding-right:0}body.studio .ps-main{padding-left:12px;padding-right:12px}body.studio .wrap{padding-left:0;padding-right:0}}
 .txt b{font-weight:800}
+
+/* Compact transparent preview; keep app selector outside the checkerboard canvas */
+body.studio .ps-stage{padding:0!important;margin:0 auto!important;display:flex;justify-content:center;align-items:flex-start}
+body.studio .ps-frame{width:100%;padding:0!important;margin:0!important;display:flex;justify-content:center}
+body.studio .wrap{width:100%;padding:0!important;margin:0!important}
+body.studio .preview{padding:0!important;margin:0!important}
+body.studio .stage{padding:0!important;margin:0!important;min-height:0!important}
+body.studio .picker{position:relative;display:flex;flex-wrap:wrap;gap:8px;padding:12px 0 0;margin:0;background:transparent}
+body.studio .picker button{flex:1 1 calc(25% - 8px);min-width:0;height:42px}
+@media(max-width:1099px){body.studio .picker{padding-top:12px}body.studio .ps-main{padding-bottom:16px}}
