@@ -19,7 +19,7 @@ function render(){
  S.items.forEach(function(it){
   if(it.type==='date'){h+='<div class="dt"><span>'+esc(it.text)+'</span></div>';return}
   var tm=it.time?'<span class="tm">'+esc(it.time)+'</span>':'';
-  var body=it.type==='photo'?(it.img?'<img class="pic" src="'+it.img+'" alt="첨부 사진">':'<div class="pic"></div>'):'<div class="bb">'+esc(it.text)+'</div>';
+  var body=it.type==='photo'?'<div class="pic"'+(it.img?' style="background-image:url('+it.img+')"':'')+'></div>':'<div class="bb">'+esc(it.text)+'</div>';
   if(it.me)h+='<div class="m me"><div class="row">'+body+tm+'</div></div>';
   else h+='<div class="m"><div class="av"'+(S.avatar?' style="background-image:url('+S.avatar+')"':'')+'></div><div class="bd"><div class="nm">'+esc(S.name)+'</div><div class="row">'+body+tm+'</div></div></div>';
  });
