@@ -37,7 +37,7 @@ function render(){
   if(m.t==='time'){h+='<div class="tm">'+esc(m.x)+'</div>';prev='time';return}
   var gap=(prev&&prev!==m.t&&prev!=='time')?' gap':'';
   if(m.img){h+='<div class="b '+m.t+gap+' img"><img src="'+esc(m.img)+'"></div>';prev=m.t;return}
-  h+='<div class="b '+m.t+gap+'">'+(m.u?'<u>'+esc(m.x)+'</u>':esc(m.x))+'</div>';
+  h+='<div class="b '+m.t+gap+'">'+esc(m.x).replace(/(@[A-Za-z0-9_.]+)/g,'<u>$1</u>')+'</div>';
   prev=m.t;
  });
  var last=S.msgs[S.msgs.length-1];
@@ -62,7 +62,7 @@ function renderList(){
   c.innerHTML='<span class="tag '+m.t+'">'+(m.img?'사진 · ':'')+LBL[m.t]+'</span>'+(m.img?'<img class="thumb" src="'+esc(m.img)+'" style="width:90px;border-radius:10px;display:block;margin:6px 0">':'')+
   '<label>내용<input type="text" data-k="x"></label>'+
   '<div class="grid2"><label>종류<select data-k="t"><option value="me">내 말풍선 (파랑)</option><option value="them">상대 말풍선 (회색)</option><option value="time">날짜·시간 줄</option></select></label>'+
-  '<label class="sw" style="align-self:end"><input type="checkbox" data-k="u"><span class="knob"></span>밑줄(멘션)</label></div>'+
+  '</div>'+
   '<div class="row3" style="margin-top:6px"><button type="button" data-a="up">↑</button><button type="button" data-a="down">↓</button><button type="button" data-a="del">× 삭제</button></div>';
   c.querySelectorAll('[data-k]').forEach(function(el){
    var k=el.dataset.k;

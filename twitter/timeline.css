@@ -25,10 +25,12 @@
 .xb{flex:1;height:38px;border:1px solid #dbdbdb;border-radius:8px;background:#f6f6f6;font-weight:700;margin-bottom:12px}
 
 /* 트윗 사진 (여러 장) */
-.xpg{display:grid;grid-template-columns:1fr 1fr;gap:2px;margin-top:10px;border-radius:16px;overflow:hidden;border:1px solid #cfd9de}
-.xpg.n1{grid-template-columns:1fr}
-.xpg img{width:100%;display:block;object-fit:cover;aspect-ratio:1/1}
-.xpg.n1 img{aspect-ratio:16/9}
+.xpg{display:grid;grid-template-columns:1fr 1fr;grid-template-rows:1fr 1fr;gap:2px;margin-top:10px;border-radius:16px;overflow:hidden;border:1px solid #cfd9de;aspect-ratio:16/10}
+.xpg img{width:100%;height:100%;min-height:0;display:block;object-fit:cover}
+.xpg.n1{grid-template-rows:auto;aspect-ratio:auto}
+.xpg.n1 img{height:auto;object-fit:contain}
+.xpg.n2{grid-template-rows:1fr}
+.xpg.n3 img:nth-child(3){grid-column:1/-1}
 
 .ps-edwrap .editor .xc .row:has(>label:nth-child(4)){display:grid;grid-template-columns:1fr 1fr;gap:10px}
 .ps-edwrap .editor .xc .row label{min-width:0;white-space:nowrap}
