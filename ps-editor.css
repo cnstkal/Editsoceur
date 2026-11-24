@@ -122,3 +122,15 @@ body.studio .ps-side :is(button,.ps-seg button,.ps-addp,.ps-ghost):focus-visible
 body.studio .ps-side :is(.editor,.ed) input[type=file]::file-selector-button:hover{border-color:var(--pk);color:var(--pk)}
 body.studio .ps-side :is(.editor,.ed) input[type=file]::file-selector-button:focus-visible{outline:2px solid var(--pk);outline-offset:2px}
 body.studio .ps-side .ps-seg button:hover:not(.on){background:var(--gray-bg)}
+
+/* ===== 공용 이미지 업로드 필드 (.upl) ===== */
+body.studio .ps-side .upl{display:flex;align-items:center;gap:12px;margin:0 0 14px;padding:10px;border:1px solid var(--ln);border-radius:14px;background:#fff}
+body.studio .ps-side .upl-th{position:relative;width:52px;height:52px;flex:none;border-radius:10px;background:var(--gray-bg);overflow:hidden;display:flex;align-items:center;justify-content:center}
+body.studio .ps-side .upl-th img{width:100%;height:100%;object-fit:cover;display:block}
+body.studio .ps-side .upl-th span{font-size:11px;color:var(--mu)}
+body.studio .ps-side .upl-body{flex:1 1 0;min-width:0;display:flex;flex-direction:column;gap:4px}
+body.studio .ps-side .upl-label{font-size:12px;color:var(--label)}
+body.studio .ps-side .upl-name{font-size:14px;font-weight:600;color:var(--ink);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+body.studio .ps-side .upl-btn{align-self:flex-start;position:relative;overflow:hidden;display:inline-flex;align-items:center;height:32px;padding:0 12px;border:1px solid var(--ln);border-radius:10px;background:#fff;color:var(--txt2);font-size:13px;font-weight:600;cursor:pointer}
+body.studio .ps-side .upl-btn:hover{border-color:var(--pk);color:var(--pk)}
+body.studio .ps-side .upl-btn input{position:absolute;inset:0;width:100%;height:100%;opacity:0;cursor:pointer;margin:0;padding:0;border:0}
