@@ -51,7 +51,8 @@ $('tInput').addEventListener('change',function(){S.inputBar=this.checked;render(
 function rd(f,cb){if(!f)return;var r=new FileReader();r.onload=function(e){cb(e.target.result)};r.readAsDataURL(f)}
 $('iAvatar').addEventListener('change',function(){rd(this.files[0],function(d){S.avatar=d;render()})});
 $('clearAv').onclick=function(){S.avatar='';$('iAvatar').value='';render()};
-$('add').onclick=function(){S.items.push({me:false,type:'text',text:'',time:''});edRows();render()};\n$('addDate').onclick=function(){S.items.push({type:'date',text:'2026년 11월 15일'});edRows();render()};
+$('add').onclick=function(){S.items.push({me:false,type:'text',text:'',time:''});edRows();render()};
+$('addDate').onclick=function(){S.items.push({type:'date',text:'2026년 11월 15일'});edRows();render()};
 $('ed').addEventListener('input',function(ev){var t=ev.target,r=t.closest('.ed-row');if(!r||!t.dataset.k)return;var it=S.items[r.dataset.i];it[t.dataset.k]=t.value;render()});
 $('ed').addEventListener('change',function(ev){var t=ev.target,r=t.closest('.ed-row');if(!r)return;var it=S.items[r.dataset.i];
  if(t.dataset.k==='me'){it.me=t.value==='1';render()}
