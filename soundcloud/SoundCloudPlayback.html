@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="ko"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>SoundCloud Playback Studio</title>
+<link rel="stylesheet" href="SoundCloudPlayback.css">
+</head><body>
+<div class="studio">
+  <div class="preview-col"><div class="device"><iframe id="preview" title="preview"></iframe></div></div>
+  <button id="editToggle" class="edit-btn">✎ Edit</button>
+  <div class="panel" id="panel">
+    <div class="tabs"><button data-t="html" class="on">HTML</button><button data-t="css">CSS</button><button data-t="js">JavaScript</button></div>
+    <textarea id="ed" spellcheck="false" wrap="off"></textarea>
+    <div class="bar"><button id="apply">Apply</button><button id="save">Save</button><button id="reset">Reset</button><button id="png">Export PNG</button></div>
+  </div>
+</div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+<script src="SoundCloudPlayback.js"></script>
+</body></html>
