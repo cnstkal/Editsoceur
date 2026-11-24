@@ -114,6 +114,13 @@
   $("reset").onclick = function () { load(true); };
   function viaH2C(cap, r) { return html2canvas(cap, { scale: r, useCORS: true, backgroundColor: null, logging: false }); }
   // 브라우저가 그리는 그대로 캡처(html-to-image) → 실패하면 html2canvas로 대체
+  // 저장 직전: 말풍선 가로 길이를 프리뷰에서 잰 값으로 고정 (저장 엔진의 글자 폭 차이로 여백이 늘어나는 것 방지)
+  function pin(cap) {
+    return Array.prototype.map.call(cap.querySelectorAll(".b"), function (e) {
+      var s = [e, e.style.width, e.style.maxWidth]; e.style.width = e.offsetWidth + "px"; e.style.maxWidth = "none"; return s;
+    });
+  }
+  function unpin(list) { list.forEach(function (s) { s[0].style.width = s[1]; s[0].style.maxWidth = s[2]; }); }
   var EXPORT_W = 3840; // 저장 가로 픽셀 (4K) — 확대해도 글자가 깨지지 않도록
   function snap(cap) {
     var r = EXPORT_W / cap.clientWidth;
@@ -129,6 +136,7 @@
     var t = btn.textContent, cap = $("cap"); btn.disabled = true; btn.textContent = "저장 중...";
     
     fit();
+    var pinned = pin(cap);
     snap(cap).then(function (c) {
       c.toBlob(function (bl) {
         var a = document.createElement("a"); a.href = URL.createObjectURL(bl);
@@ -136,7 +144,7 @@
         document.body.appendChild(a); a.click(); a.remove();
       });
     }).catch(function () { alert("PNG 저장에 실패했습니다."); })
-      .then(function () { btn.disabled = false; btn.textContent = t; });
+      .then(function () { unpin(pinned); btn.disabled = false; btn.textContent = t; });
   }
   var MODE = "full";
   function setMode(m) {
