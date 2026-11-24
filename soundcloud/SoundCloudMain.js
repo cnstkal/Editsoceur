@@ -31,8 +31,8 @@ S.js="var q=document.getElementById('q');document.getElementById('clear').onclic
 "var cats=document.querySelectorAll('.cats a');cats.forEach(function(a){a.onclick=function(){cats.forEach(function(x){x.classList.remove('on')});a.classList.add('on');"+
 "var t=a.textContent.toLowerCase(),n=0;document.querySelectorAll('section').forEach(function(s){var show=t=='all'||s.dataset.s==t;s.hidden=!show;if(show)n++;});document.getElementById('empty').hidden=n>0;};});";
 var e=S.esc;
-function bg(i){return i?' style="background-image:url(\''+i+'\')"':''}
-function row(x,c){return '<div class="row"><div class="art '+c+'"'+bg(x.img)+'></div><div class="info"><b>'+e(x.t)+'</b><span class="art-n">'+e(x.a)+'</span><span class="meta">▶ '+e(x.p)+' · '+e(x.d)+'</span></div><i class="dots">•••</i></div>'}
+function photo(i,cls,alt){return i?'<img class="'+cls+'" src="'+e(i)+'" alt="'+e(alt||'')+'">':''}
+function row(x,c){return '<div class="row"><div class="art '+c+'">'+photo(x.img,'art-img',x.t)+'</div><div class="info"><b>'+e(x.t)+'</b><span class="art-n">'+e(x.a)+'</span><span class="meta">▶ '+e(x.p)+' · '+e(x.d)+'</span></div><i class="dots">•••</i></div>'}
 S.view=function(){var D=S.D,cl=['a1','a2','a3'];
  return '<div class="screen"><div class="search"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#ddd" stroke-width="1.8"><circle cx="10.5" cy="10.5" r="7.5"/><path d="M16 16l5 5"/></svg><input id="q" value="'+e(D.q)+'" autocomplete="off"><button id="clear" class="clr">✕</button></div>'+
  '<nav class="cats"><a class="on">All</a><a>Tracks</a><a>Profiles</a><a>Playlists</a><a>Albums</a></nav><div class="scroll">'+
