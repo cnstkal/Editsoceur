@@ -44,7 +44,8 @@ function init(){
 $('iName').addEventListener('input',function(){S.name=this.value;render()});
 $('iHint').addEventListener('input',render);
 $('iTitle').addEventListener('input',render);
-$('tChat').addEventListener('change',function(){S.chat=this.checked;render()});\n$('tInput').addEventListener('change',function(){S.inputBar=this.checked;render()});
+$('tChat').addEventListener('change',function(){S.chat=this.checked;render()});
+$('tInput').addEventListener('change',function(){S.inputBar=this.checked;render()});
 function rd(f,cb){if(!f)return;var r=new FileReader();r.onload=function(e){cb(e.target.result)};r.readAsDataURL(f)}
 $('iAvatar').addEventListener('change',function(){rd(this.files[0],function(d){S.avatar=d;render()})});
 $('clearAv').onclick=function(){S.avatar='';$('iAvatar').value='';render()};
