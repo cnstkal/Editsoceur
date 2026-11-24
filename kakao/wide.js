@@ -145,14 +145,14 @@
     return saved;
   }
   // 말풍선: 프리뷰의 좌우 여백과 글자 간격을 그대로 고정 (글자는 왼쪽 정렬)
-  var EXPORT_RIGHT_FIX = 10; // CSS px, 저장 시에만 오른쪽 여백 보정
+  var EXPORT_RIGHT_FIX = -3; // CSS px, 저장 시에만 오른쪽 여백 보정
   function padBubbles(cap) {
     return Array.prototype.map.call(cap.querySelectorAll(".b"), function (b) {
       if (b.querySelector("img")) return null;
       var cs = getComputedStyle(b), st = b.style;
       var s = [b, st.paddingLeft, st.paddingRight, st.textAlign, st.letterSpacing];
       st.paddingLeft = cs.paddingLeft;
-      var fix = b.classList.contains("me") ? EXPORT_RIGHT_FIX : 0; // 내 말풍선만 저장 엔진 글자 폭 보정
+      var fix = EXPORT_RIGHT_FIX; // 저장본 오른쪽 여백 보정 (모든 말풍선, 음수면 줄어듦)
       st.paddingRight = (parseFloat(cs.paddingRight) + fix) + "px";
       st.letterSpacing = cs.letterSpacing; st.textAlign = "left";
       return s;
