@@ -24,7 +24,9 @@ draw();
 function rd(f,cb){if(!f)return;var r=new FileReader();r.onload=function(){cb(r.result)};r.readAsDataURL(f)}
 $('iM').onchange=function(){S.m=this.value;draw()};
 $('iB').onchange=function(){rd(this.files[0],function(d){S.b=d;draw()})};
+$('iB_del').onclick=function(){S.b=''; $('iB').value=''; draw();};
 $('iS').onchange=function(){rd(this.files[0],function(d){S.s=d;draw()})};
+$('iS_del').onclick=function(){S.s=''; $('iS').value=''; draw();};
 $('iT').oninput=function(){S.t=this.value;draw()};
 $('iL').oninput=function(){S.l=this.value;draw()};
 $('tS').onchange=function(){S.ts=this.checked;draw()};

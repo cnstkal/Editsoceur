@@ -34,6 +34,7 @@ $('iT').oninput=function(){S.t=this.value;draw()};
 $('iS').oninput=function(){S.s=this.value;draw()};
 $('iSOn').onchange=function(){S.sOn=this.checked;draw()};
 $('iA').onchange=function(){rd(this.files[0],function(d){S.a=d;draw()})};
+$('iA_del').onclick=function(){S.a=''; $('iA').value=''; draw();};
 $('ed').addEventListener('input',function(ev){var t=ev.target;if(t.dataset.k){S[t.dataset.g][t.dataset.i][t.dataset.k]=t.value;draw()}});
 $('ed').addEventListener('change',function(ev){var t=ev.target;if(t.type==='file')rd(t.files[0],function(d){S[t.dataset.g][t.dataset.i].i=d;draw()})});
 $('reset').onclick=init;
