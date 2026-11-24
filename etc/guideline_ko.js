@@ -22,7 +22,7 @@ function fit(){var w=vp.parentNode.clientWidth||390,s=Math.min(w/1200,innerHeigh
 $('iBg').oninput=function(){cv.style.backgroundColor=this.value;vp.style.background=this.value};
 addEventListener('resize',fit);fit();
 $('savePng').onclick=function(){var t=cv.style.transform;cv.style.transform='none';
- html2canvas(cv,{backgroundColor:null,scale:1,useCORS:true,width:1200,height:1723}).then(function(c){cv.style.transform=t;
+ html2canvas(cv,{backgroundColor:null,scale:4,useCORS:true,width:1200,height:1723}).then(function(c){cv.style.transform=t;
  var a=document.createElement('a');a.download='guideline_ko.png';a.href=c.toDataURL('image/png');a.click()}).catch(function(){cv.style.transform=t})};
 $('reset').onclick=function(){F.forEach(function(p){$(p[0]).value=defs[p[0]];$(p[1]).textContent=defs[p[0]]});imgs={};$('iMode').value='blue';$('iBg').value='#dcf4f9';cv.style.backgroundColor='#dcf4f9';vp.style.background='#dcf4f9';draw();
  L.forEach(function(t,k){lbs[k].textContent=t});

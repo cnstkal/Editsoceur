@@ -105,7 +105,7 @@ function bind(){
  document.getElementById('reset').onclick=function(){S=defaults();sync();renderList();render()};
  document.getElementById('save').onclick=function(){
   var b=this;b.textContent='저장 중...';
-  igCapture(document.getElementById('capture'),{scale:5,backgroundColor:'#ffffff',useCORS:true}).then(function(cv){
+  igCapture(document.getElementById('capture'),{scale:8,backgroundColor:'#ffffff',useCORS:true}).then(function(cv){
    var a=document.createElement('a');a.download='tweet.png';a.href=cv.toDataURL('image/png');a.click();b.textContent='PNG로 저장';
   }).catch(function(){b.textContent='PNG로 저장';alert('저장에 실패했어요')});
  };

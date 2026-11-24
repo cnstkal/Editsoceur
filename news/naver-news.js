@@ -34,6 +34,6 @@ tabs.forEach(function(b,i){b.onclick=function(){tabs.forEach(function(x,j){x.cla
 $('pvBtn').onclick=function(){var on=document.body.classList.toggle('pvmode');this.textContent=on?'편집 모드':'미리보기 모드';fit()};
 $('reset').onclick=function(){S=JSON.parse(JSON.stringify(DEF));fill()};
 $('savePng').onclick=function(){var p=$('post'),old=p.style.transform;p.style.transform='none';
-html2canvas(p,{scale:2,width:1600,height:900,backgroundColor:'#fff',useCORS:true}).then(function(c){p.style.transform=old;var a=document.createElement('a');a.download='naver-news.png';a.href=c.toDataURL('image/png');a.click()})};
+html2canvas(p,{scale:4,width:1600,height:900,backgroundColor:'#fff',useCORS:true}).then(function(c){p.style.transform=old;var a=document.createElement('a');a.download='naver-news.png';a.href=c.toDataURL('image/png');a.click()})};
 window.addEventListener('resize',fit);fill();fit();
 })();

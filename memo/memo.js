@@ -13,7 +13,7 @@ function fit(){var w=vp.parentNode.clientWidth||390,s=Math.min(w/W,innerHeight*0
  vp.style.setProperty('width',W*s+'px','important');vp.style.height=H*s+'px';vp.style.margin='0 auto';cv.style.transform='scale('+s+')'}
 addEventListener('resize',fit);fit();
 $('savePng').onclick=function(){var t=cv.style.transform;cv.style.transform='none';
- html2canvas(cv,{backgroundColor:null,scale:1,useCORS:true,width:W,height:H}).then(function(c){cv.style.transform=t;
+ html2canvas(cv,{backgroundColor:null,scale:4,useCORS:true,width:W,height:H}).then(function(c){cv.style.transform=t;
  var a=document.createElement('a');a.download='memo.png';a.href=c.toDataURL('image/png');a.click()}).catch(function(){cv.style.transform=t})};
 $('reset').onclick=function(){['iDate','iBody'].forEach(function(k){$(k).value=D[k];$(k).oninput()});
  $('iBg').value='#ffffff';cv.style.background='#fff';$('iTb').checked=true;$('tb').style.display='';$('iRatio').value='16:9';setRatio('16:9')};

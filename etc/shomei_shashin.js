@@ -39,7 +39,7 @@ $('iBg').oninput=function(){cv.style.background=this.value};cv.style.background=
 /* save PNG */
 $('savePng').onclick=function(){
  var t=cv.style.transform;cv.style.transform='none';
- html2canvas(cv,{backgroundColor:null,scale:1,useCORS:true,width:1080,height:1920}).then(function(c){
+ html2canvas(cv,{backgroundColor:null,scale:4,useCORS:true,width:1080,height:1920}).then(function(c){
   cv.style.transform=t;
   var a=document.createElement('a');a.download='shomei_shashin.png';a.href=c.toDataURL('image/png');a.click();
  }).catch(function(){cv.style.transform=t});

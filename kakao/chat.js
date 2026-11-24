@@ -93,7 +93,7 @@
     var r = new FileReader();
     r.onload = function () { var im = new Image(); im.onload = function () {
       var k = Math.min(1, 2400 / Math.max(im.width, im.height)), c = document.createElement("canvas");
-      c.width = im.width * k; c.height = im.height * k; var x=c.getContext("2d"); x.imageSmoothingEnabled=true; x.imageSmoothingQuality="high"; x.drawImage(im, 0, 0, c.width, c.height); cb(c.toDataURL("image/jpeg", 0.95));
+      c.width = im.width * k; c.height = im.height * k; var x=c.getContext("2d"); x.imageSmoothingEnabled=true; x.imageSmoothingQuality="high"; x.drawImage(im, 0, 0, c.width, c.height); cb(c.toDataURL("image/jpeg", 0.97));
     }; im.src = r.result; };
     r.readAsDataURL(file);
   }

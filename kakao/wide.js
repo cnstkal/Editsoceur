@@ -23,7 +23,7 @@
   function cropSq(src, cb) {
     var im = new Image(); im.onload = function () {
       var s = Math.min(im.width, im.height), c = document.createElement("canvas"); c.width = c.height = 256;
-      c.getContext("2d").drawImage(im, (im.width - s) / 2, (im.height - s) / 2, s, s, 0, 0, 256, 256); cb(c.toDataURL("image/jpeg", 0.92));
+      c.getContext("2d").drawImage(im, (im.width - s) / 2, (im.height - s) / 2, s, s, 0, 0, 256, 256); cb(c.toDataURL("image/jpeg", 0.97));
     }; im.onerror = function () { cb(src); }; im.src = src;
   }
   function el(tag, cls, text) { var n = document.createElement(tag); if (cls) n.className = cls; if (text != null) n.textContent = text; return n; }
@@ -107,8 +107,8 @@
   function shrink(file, cb) {
     var r = new FileReader();
     r.onload = function () { var im = new Image(); im.onload = function () {
-      var k = Math.min(1, 800 / Math.max(im.width, im.height)), c = document.createElement("canvas");
-      c.width = im.width * k; c.height = im.height * k; c.getContext("2d").drawImage(im, 0, 0, c.width, c.height); cb(c.toDataURL("image/jpeg", 0.85));
+      var k = Math.min(1, 2400 / Math.max(im.width, im.height)), c = document.createElement("canvas");
+      c.width = im.width * k; c.height = im.height * k; c.getContext("2d").drawImage(im, 0, 0, c.width, c.height); cb(c.toDataURL("image/jpeg", 0.97));
     }; im.src = r.result; };
     r.readAsDataURL(file);
   }

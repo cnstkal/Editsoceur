@@ -27,6 +27,6 @@ function endDrag(){drag=null;photo.style.cursor=S.img?'grab':'default'}photo.add
 function fit(){$('post').style.transform='scale('+($('fit').clientWidth/1118)+')'}
 $('pvBtn').onclick=function(){var on=document.body.classList.toggle('pvmode');this.textContent=on?'편집 모드':'미리보기 모드';fit()};
 $('reset').onclick=function(){S=Object.assign({},DEF);$('iPhoto').value='';fill()};
-$('savePng').onclick=function(){var p=$('post'),o=p.style.transform;p.style.transform='none';html2canvas(p,{scale:1,width:1118,height:1988,backgroundColor:null,useCORS:true}).then(function(c){p.style.transform=o;var a=document.createElement('a');a.download='tinder.png';a.href=c.toDataURL('image/png');a.click()}).catch(function(e){p.style.transform=o;console.error(e);alert('PNG 저장에 실패했습니다.')})};
+$('savePng').onclick=function(){var p=$('post'),o=p.style.transform;p.style.transform='none';html2canvas(p,{scale:4,width:1118,height:1988,backgroundColor:null,useCORS:true}).then(function(c){p.style.transform=o;var a=document.createElement('a');a.download='tinder.png';a.href=c.toDataURL('image/png');a.click()}).catch(function(e){p.style.transform=o;console.error(e);alert('PNG 저장에 실패했습니다.')})};
 window.addEventListener('resize',fit);fill();fit();
 })();

@@ -60,7 +60,7 @@ $('iChatOnly').addEventListener('change',renderPreview);
 $('iAvatar').addEventListener('change',function(){var f=this.files[0];if(!f)return;var r=new FileReader();r.onload=function(e){avatar=e.target.result;renderPreview()};r.readAsDataURL(f)});
 $('clearImg').onclick=function(){avatar='';$('iAvatar').value='';renderPreview()};
 $('reset').onclick=function(){messages=initial.map(function(m){return Object.assign({},m)});avatar='';$('iAvatar').value='';$('iColor').value='#c6eff5';$('iTr').checked=false;$('iChatOnly').checked=false;render()};
-$('savePng').onclick=function(){if(!window.html2canvas)return;capChat($('wd'),{scale:3,useCORS:true,backgroundColor:null}).then(function(c){var a=document.createElement('a');a.download='weversedm.png';a.href=c.toDataURL('image/png');a.click()})};
+$('savePng').onclick=function(){if(!window.html2canvas)return;capChat($('wd'),{scale:8,useCORS:true,backgroundColor:null}).then(function(c){var a=document.createElement('a');a.download='weversedm.png';a.href=c.toDataURL('image/png');a.click()})};
 $('pvBtn').onclick=function(){var on=document.body.classList.toggle('pvmode');this.textContent=on?'편집 모드':'미리보기 모드'};
 var ed=document.querySelector('.editor'),groups=[].slice.call(ed.querySelectorAll(':scope > .ps-pn')),bar=document.createElement('div');bar.className='ps-seg dm-tabs';
 groups.forEach(function(g,i){var b=document.createElement('button');b.type='button';b.textContent=g.getAttribute('data-t');if(!i)b.className='on';b.onclick=function(){groups.forEach(function(x,j){x.hidden=j!==i});[].forEach.call(bar.children,function(c,j){c.classList.toggle('on',j===i)})};bar.appendChild(b)});

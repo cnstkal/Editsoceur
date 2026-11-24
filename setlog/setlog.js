@@ -33,6 +33,6 @@ $('reset').onclick=function(){S=defs();sync()};
  ed.parentNode.insertBefore(bar,ed)})();
 $('pvBtn').onclick=function(){var on=document.body.classList.toggle('pvmode');this.textContent=on?'편집 모드':'미리보기 모드';setTimeout(fit,0)};
 $('savePng').onclick=function(){var t=cv.style.transform;cv.style.transform='none';
- html2canvas(cv,{width:W,height:H,scale:3,backgroundColor:'#ffffff',useCORS:true}).then(function(c){cv.style.transform=t;var a=document.createElement('a');a.download='setlog.png';a.href=c.toDataURL('image/png');a.click()}).catch(function(){cv.style.transform=t})};
+ html2canvas(cv,{width:W,height:H,scale:4,backgroundColor:'#ffffff',useCORS:true}).then(function(c){cv.style.transform=t;var a=document.createElement('a');a.download='setlog.png';a.href=c.toDataURL('image/png');a.click()}).catch(function(){cv.style.transform=t})};
 sync();fit();
 })();

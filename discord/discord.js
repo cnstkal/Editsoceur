@@ -24,6 +24,6 @@ function fit(){$('post').style.transform='scale('+$('fit').clientWidth/2576+')'}
 $('pvBtn').onclick=function(){var on=document.body.classList.toggle('pvmode');this.textContent=on?'편집 모드':'미리보기 모드';fit()};
 $('reset').onclick=function(){S=JSON.parse(JSON.stringify(DEF));fill()};
 $('savePng').onclick=function(){var p=$('post'),o=p.style.transform;p.style.transform='none';
-html2canvas(p,{scale:1,width:2576,height:1449,backgroundColor:'#313338'}).then(function(c){p.style.transform=o;var a=document.createElement('a');a.download='discord.png';a.href=c.toDataURL('image/png');a.click()})};
+html2canvas(p,{scale:4,width:2576,height:1449,backgroundColor:'#313338'}).then(function(c){p.style.transform=o;var a=document.createElement('a');a.download='discord.png';a.href=c.toDataURL('image/png');a.click()})};
 window.addEventListener('resize',fit);fill();fit();
 })();

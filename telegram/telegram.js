@@ -50,7 +50,7 @@ $('ed').addEventListener('click',function(ev){var d=ev.target.dataset.d;if(d!=nu
 $('reset').onclick=function(){$('kbd').dataset.b='';init()};
 $('save').onclick=function(){
 var sn=$('snap');sn.style.transform='none';
-capChat(sn,{backgroundColor:null,scale:4,useCORS:true}).then(function(c){
+capChat(sn,{backgroundColor:null,scale:8,useCORS:true}).then(function(c){
 sn.style.transform='';var a=document.createElement('a');a.download='telegram.png';a.href=c.toDataURL('image/png');a.click();
 },function(){sn.style.transform=''});
 };

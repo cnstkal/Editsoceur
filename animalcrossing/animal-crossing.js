@@ -16,7 +16,7 @@ $('reset').onclick=load;window.addEventListener('resize',fit);if(window.ResizeOb
 $('savePng').onclick=function(){
 var c=$('view').firstChild,t=c.style.transform,h=$('stage').offsetHeight;c.style.transform='none';c.style.background='none';
 (document.fonts?document.fonts.ready:Promise.resolve()).then(function(){
-return html2canvas(st,{backgroundColor:null,scale:1,width:1080,height:h})}).then(function(cv){
+return html2canvas(st,{backgroundColor:null,scale:4,width:1080,height:h})}).then(function(cv){
 c.style.transform=t;c.style.background='';
 var a=document.createElement('a');a.download='animal-crossing.png';a.href=cv.toDataURL('image/png');a.click()
 }).catch(function(){c.style.transform=t;c.style.background=''})};

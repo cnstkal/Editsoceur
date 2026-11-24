@@ -50,7 +50,7 @@ $('iArtAv').addEventListener('change',function(){if(this.files[0])rd(this.files[
 $('iPhotos').addEventListener('change',function(){[].forEach.call(this.files,function(f){rd(f,function(v){ph.push(v)})})});
 $('clearImg').onclick=function(){av='';aav='';ph=[];['iAvatar','iArtAv','iPhotos'].forEach(function(i){$(i).value=''});render()};
 $('reset').onclick=function(){av='';aav='';ph=[];fill()};
-$('savePng').onclick=function(){if(!window.html2canvas)return;html2canvas($('wp'),{scale:3,useCORS:true,backgroundColor:$('iChatOnly').checked?null:'#fff'}).then(function(c){var a=document.createElement('a');a.download='weversepost.png';a.href=c.toDataURL('image/png');a.click()})};
+$('savePng').onclick=function(){if(!window.html2canvas)return;html2canvas($('wp'),{scale:4,useCORS:true,backgroundColor:$('iChatOnly').checked?null:'#fff'}).then(function(c){var a=document.createElement('a');a.download='weversepost.png';a.href=c.toDataURL('image/png');a.click()})};
 $('pvBtn').onclick=function(){var on=document.body.classList.toggle('pvmode');this.textContent=on?'편집 모드':'미리보기 모드'};
 var ed=document.querySelector('.editor'),groups=[].slice.call(ed.querySelectorAll(':scope > .ps-pn')),bar=document.createElement('div');bar.className='ps-seg';
 groups.forEach(function(g,i){var b=document.createElement('button');b.type='button';b.textContent=g.getAttribute('data-t');if(!i)b.className='on';b.onclick=function(){groups.forEach(function(x,j){x.hidden=j!==i});[].forEach.call(bar.children,function(c,j){c.classList.toggle('on',j===i)})};bar.appendChild(b)});

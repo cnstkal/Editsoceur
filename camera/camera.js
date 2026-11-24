@@ -16,7 +16,7 @@ function fit(){var w=vp.parentNode.clientWidth||390,s=Math.min(w/1179,innerHeigh
 addEventListener('resize',fit);
 (document.fonts&&document.fonts.ready?document.fonts.ready:Promise.resolve()).then(draw);draw();fit();
 $('savePng').onclick=function(){var t=cv.style.transform;cv.style.transform='none';
- html2canvas(cv,{backgroundColor:'#000',scale:1,useCORS:true,width:1179,height:2556}).then(function(c){cv.style.transform=t;
+ html2canvas(cv,{backgroundColor:'#000',scale:4,useCORS:true,width:1179,height:2556}).then(function(c){cv.style.transform=t;
  var a=document.createElement('a');a.download='camera.png';a.href=c.toDataURL('image/png');a.click()}).catch(function(){cv.style.transform=t})};
 $('reset').onclick=function(){$('iZoom').value='1';$('iMode').value='1';$('iGrid').checked=true;$('iFace').checked=true;
  $('vf').style.backgroundImage='';$('thumb').style.backgroundImage='';$('iVf').value='';$('iTh').value='';draw()};

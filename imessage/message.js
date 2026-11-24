@@ -47,7 +47,7 @@ $('addM').onclick=function(){var l=S.m[S.m.length-1];S.m.push({s:l?+l.s:0,x:'새
 $('reset').onclick=function(){load(true)};
 $('savePng').onclick=function(){var b=this,t=b.textContent;b.disabled=true;b.textContent='저장 중...';
 (document.fonts&&document.fonts.ready?document.fonts.ready:Promise.resolve()).then(function(){
-return capChat($('mf'),{scale:4,useCORS:true,backgroundColor:'#fff',logging:false})}).then(function(c){
+return capChat($('mf'),{scale:8,useCORS:true,backgroundColor:'#fff',logging:false})}).then(function(c){
 c.toBlob(function(bl){var a=document.createElement('a');a.href=URL.createObjectURL(bl);a.download='imessage.png';
 document.body.appendChild(a);a.click();a.remove();b.disabled=false;b.textContent=t},'image/png')
 }).catch(function(){b.disabled=false;b.textContent=t;alert('PNG 저장에 실패했습니다.')})};

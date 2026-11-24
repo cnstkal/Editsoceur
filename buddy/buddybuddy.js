@@ -10,7 +10,7 @@ function noPhoto(){var p=$('pi');p.classList.remove('has');p.style.backgroundIma
 $('iPhoto').addEventListener('change',function(){var f=this.files[0];if(!f)return;var r=new FileReader();r.onload=function(e){var p=$('pi');p.style.backgroundImage='url('+e.target.result+')';p.classList.add('has')};r.readAsDataURL(f)});
 $('clearPhoto').onclick=noPhoto;
 $('reset').onclick=function(){noPhoto();fill()};
-$('savePng').onclick=function(){if(!window.html2canvas)return;html2canvas($('bb'),{scale:3,useCORS:true,backgroundColor:null}).then(function(c){var a=document.createElement('a');a.download='buddybuddy.png';a.href=c.toDataURL('image/png');a.click()})};
+$('savePng').onclick=function(){if(!window.html2canvas)return;html2canvas($('bb'),{scale:4,useCORS:true,backgroundColor:null}).then(function(c){var a=document.createElement('a');a.download='buddybuddy.png';a.href=c.toDataURL('image/png');a.click()})};
 $('pvBtn').onclick=function(){var on=document.body.classList.toggle('pvmode');this.textContent=on?'편집 모드':'미리보기 모드'};
 /* 탭 */
 var ed=document.querySelector('.editor'),groups=[].slice.call(ed.querySelectorAll(':scope > .ps-pn')),bar=document.createElement('div');bar.className='ps-seg';

@@ -61,7 +61,7 @@ $('pvBtn').onclick=function(){var on=document.body.classList.toggle('pvmode');th
 /* PNG 저장 (2576x1449 원본 크기) */
 $('savePng').onclick=function(){
  var t=zs.style.transform;zs.style.transform='none';
- html2canvas(zs,{width:W,height:H,scale:1,backgroundColor:'#000',useCORS:true}).then(function(c){
+ html2canvas(zs,{width:W,height:H,scale:4,backgroundColor:'#000',useCORS:true}).then(function(c){
   zs.style.transform=t;var a=document.createElement('a');a.download='zoom.png';a.href=c.toDataURL('image/png');a.click();
  }).catch(function(){zs.style.transform=t});
 };

@@ -1,6 +1,6 @@
 /* 프로필·아바타 이미지 공통 처리: 원본 화질(PNG, 무손실) 유지, 1024px 초과 이미지만 고품질 단계 축소(계단/픽셀 현상 방지) */
 (function(){
-  var MAX=3072;
+  var MAX=8192;
   function q(c){var x=c.getContext('2d');x.imageSmoothingEnabled=true;x.imageSmoothingQuality='high';return x}
   function shrink(img){
     var w=img.naturalWidth,h=img.naturalHeight,m=Math.max(w,h);

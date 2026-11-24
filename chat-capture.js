@@ -17,6 +17,7 @@
  window.capChat=function(el,opts){
   opts=opts||{};opts.backgroundColor=null;
   var restore=clearBg(el);
+  var w=el.scrollWidth||el.offsetWidth||1,h=el.scrollHeight||el.offsetHeight||1,lim=Math.sqrt(16777216/(w*h));opts.scale=Math.max(1,Math.min(opts.scale||8,lim));
   return html2canvas(el,opts).then(function(c){restore();return c},function(e){restore();throw e});
  };
 })();
@@ -24,5 +25,5 @@
 /* 공용 PNG 캡처: 브라우저 캔버스 한계(약 1,600만 px)를 넘지 않도록 배율을 자동으로 낮춤 → 긴 화면 저장 실패 방지 */
 window.igCapture=function(el,opts){
  opts=opts||{};var w=el.scrollWidth||el.offsetWidth||1,h=el.scrollHeight||el.offsetHeight||1;
- var s=opts.scale||4,lim=Math.sqrt(16000000/(w*h));if(s>lim)opts.scale=Math.max(1,Math.floor(lim*10)/10);
+ var s=opts.scale||8,lim=Math.sqrt(16777216/(w*h));if(s>lim)opts.scale=Math.max(1,Math.floor(lim*10)/10);
  return html2canvas(el,opts)};

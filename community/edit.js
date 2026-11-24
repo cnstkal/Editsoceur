@@ -74,6 +74,6 @@
     else if(x.id==='addCm'){S.comments.push({name:IZ?'익인'+(S.comments.length+1):'무명의 더쿠',time:IZ?'방금':D.comments[0]?D.comments[0].time:'',text:'내용'});build();apply()}});
   $('reset').onclick=function(){try{localStorage.removeItem(KEY)}catch(x){}S=JSON.parse(JSON.stringify(D));build();apply()};
   $('savePng').onclick=function(){var bt=this,tx=bt.textContent;bt.disabled=true;bt.textContent='저장 중...';
-    html2canvas(wrap,{scale:3,useCORS:true,backgroundColor:null,logging:false}).then(function(c){var a=document.createElement('a');a.href=c.toDataURL('image/png');a.download='community.png';a.click()}).catch(function(){alert('PNG 저장에 실패했습니다.')}).then(function(){bt.disabled=false;bt.textContent=tx})};
+    html2canvas(wrap,{scale:4,useCORS:true,backgroundColor:null,logging:false}).then(function(c){var a=document.createElement('a');a.href=c.toDataURL('image/png');a.download='community.png';a.click()}).catch(function(){alert('PNG 저장에 실패했습니다.')}).then(function(){bt.disabled=false;bt.textContent=tx})};
   build();apply();
 })();

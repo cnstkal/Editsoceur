@@ -81,7 +81,7 @@ $('reset').onclick=build;
 $('pvBtn').onclick=function(){var on=document.body.classList.toggle('pvmode');this.textContent=on?'편집 모드':'미리보기 모드';scale()};
 $('savePng').onclick=function(){
  if(!window.html2canvas){alert('html2canvas 로딩 실패 (인터넷 연결 확인)');return}
- html2canvas(gp,{scale:2,useCORS:true,backgroundColor:'#fff',width:1288,height:724.5,onclone:function(d){var g=d.getElementById('gp');g.style.transform='none';g.parentNode.style.overflow='visible'}})
+ html2canvas(gp,{scale:4,useCORS:true,backgroundColor:'#fff',width:1288,height:724.5,onclone:function(d){var g=d.getElementById('gp');g.style.transform='none';g.parentNode.style.overflow='visible'}})
  .then(function(c){var a=document.createElement('a');a.download='google_person_search.png';a.href=c.toDataURL('image/png');a.click()})};
 build();scale();
 })();

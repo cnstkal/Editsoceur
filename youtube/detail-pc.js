@@ -61,7 +61,7 @@
   $('addR').onclick=function(){S.r.push({t:'임시 추천 영상 제목입니다',c:'임시 채널',vw:'1만',ag:'1일 전',d:'',th:''});persist();list();render()};
   $('reset').onclick=function(){load(true)};
   $('savePng').onclick=function(){var b=this,t=b.textContent;b.disabled=true;b.textContent='저장 중...';
-    (document.fonts&&document.fonts.ready||Promise.resolve()).then(function(){return html2canvas($('pf'),{scale:2,width:1920,height:$('pf').offsetHeight,useCORS:true,backgroundColor:'#fff',logging:false})}).then(function(c){
+    (document.fonts&&document.fonts.ready||Promise.resolve()).then(function(){return html2canvas($('pf'),{scale:4,width:1920,height:$('pf').offsetHeight,useCORS:true,backgroundColor:'#fff',logging:false})}).then(function(c){
       c.toBlob(function(bl){var a=document.createElement('a');a.href=URL.createObjectURL(bl);a.download='youtube-detail-pc.png';document.body.appendChild(a);a.click();a.remove();b.disabled=false;b.textContent=t})
     }).catch(function(){b.disabled=false;b.textContent=t;alert('PNG 저장에 실패했습니다.')})};
   addEventListener('resize',fit);

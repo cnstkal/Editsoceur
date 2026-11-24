@@ -19,7 +19,7 @@ var fitEl=$('fit'),stage=$('stage');
 function fit(){var w=stage.clientWidth,h=stage.clientHeight;if(!w||!h){fitEl.style.zoom=1;return}var z=Math.min((h-48)/640,(w-48)/360,1);fitEl.style.zoom=Math.max(z,.2)}
 if(window.ResizeObserver)new ResizeObserver(fit).observe(stage);addEventListener('resize',fit);
 $('pvBtn').onclick=function(){var on=document.body.classList.toggle('pvmode');this.textContent=on?'편집 모드':'미리보기 모드';fit()};
-$('savePng').onclick=function(){var z=fitEl.style.zoom;fitEl.style.zoom=1;html2canvas($('shot'),{scale:3,useCORS:true,backgroundColor:'#fff'}).then(function(c){fitEl.style.zoom=z;var a=document.createElement('a');a.download='old-instagram-post.png';a.href=c.toDataURL('image/png');a.click()}).catch(function(){fitEl.style.zoom=z})};
+$('savePng').onclick=function(){var z=fitEl.style.zoom;fitEl.style.zoom=1;html2canvas($('shot'),{scale:4,useCORS:true,backgroundColor:'#fff'}).then(function(c){fitEl.style.zoom=z;var a=document.createElement('a');a.download='old-instagram-post.png';a.href=c.toDataURL('image/png');a.click()}).catch(function(){fitEl.style.zoom=z})};
 var ed=document.querySelector('.editor'),g=[].slice.call(ed.querySelectorAll(':scope > .ps-pn')),bar=document.createElement('div');bar.className='ps-seg';
 g.forEach(function(p,i){var b=document.createElement('button');b.type='button';b.textContent=p.getAttribute('data-t');if(!i)b.className='on';b.onclick=function(){g.forEach(function(x,j){x.hidden=j!==i});[].forEach.call(bar.children,function(c,j){c.classList.toggle('on',j===i)})};bar.appendChild(b)});
 ed.parentNode.insertBefore(bar,ed);

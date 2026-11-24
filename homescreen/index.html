@@ -117,7 +117,7 @@ function cell(a,dock){var c=document.createElement('div');c.className='cell';var
  if(!dock){var l=document.createElement('div');l.className='lb';l.textContent=a.name;c.appendChild(l)}return c}
 function pickImg(file,max,type,cb){var r=new FileReader();r.onload=function(){var im=new Image();im.onload=function(){var cv=document.createElement('canvas'),x=cv.getContext('2d');
  if(type==='ic'){cv.width=cv.height=max;var s=Math.min(im.width,im.height);x.drawImage(im,(im.width-s)/2,(im.height-s)/2,s,s,0,0,max,max);cb(cv.toDataURL('image/png'))}
- else{var k=Math.min(1,max/Math.max(im.width,im.height));cv.width=im.width*k;cv.height=im.height*k;x.drawImage(im,0,0,cv.width,cv.height);cb(cv.toDataURL('image/jpeg',.85))}};im.src=r.result};r.readAsDataURL(file)}
+ else{var k=Math.min(1,max/Math.max(im.width,im.height));cv.width=im.width*k;cv.height=im.height*k;x.drawImage(im,0,0,cv.width,cv.height);cb(cv.toDataURL('image/jpeg',.95))}};im.src=r.result};r.readAsDataURL(file)}
 function setWall(){var ph=$('#phone');if(ph.dataset.w===S.wall)return;ph.dataset.w=S.wall;ph.style.backgroundImage=S.wall?'url('+S.wall+')':''}
 function render(){
  var g=$('#grid'),d=$('#dock');g.innerHTML='';d.innerHTML='';
@@ -169,7 +169,7 @@ $('#group').onclick=function(){if(!sel.length)return;
  var key=inH?'home':'dock',arr=S[key];var first=Math.min.apply(null,sel.map(function(a){return arr.indexOf(a)}));
  var f={name:$('#fName').value.trim()||'폴더',badge:sel.reduce(function(n,a){return n+(a.badge||0)},0),kids:sel.slice().sort(function(a,b){return arr.indexOf(a)-arr.indexOf(b)})};
  S[key]=arr.filter(function(a){return sel.indexOf(a)<0});S[key].splice(first,0,f);sel=[];$('#fName').value='';save();render()};
-$('#wall').onchange=function(){if(this.files[0])pickImg(this.files[0],1200,'wall',function(u){S.wall=u;save();render()})};
+$('#wall').onchange=function(){if(this.files[0])pickImg(this.files[0],2400,'wall',function(u){S.wall=u;save();render()})};
 $('#wallReset').onclick=function(){S.wall='';save();render()};
 $('#addApp').onclick=function(){var n=$('#aName').value.trim();if(!n){alert('앱 이름을 입력하세요');return}
  var f=$('#aIcon').files[0],b=+$('#aBadge').value||0,w=$('#aWhere').value;

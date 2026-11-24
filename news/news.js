@@ -57,7 +57,7 @@ setTimeout(fit,0);
 $('savePng').onclick=function(){
 var art=$('art'),old=art.style.transform;
 art.style.transform='none';
-html2canvas(art,{scale:1,backgroundColor:'#fff',useCORS:true,width:1560,height:art.offsetHeight}).then(function(c){
+html2canvas(art,{scale:4,backgroundColor:'#fff',useCORS:true,width:1560,height:art.offsetHeight}).then(function(c){
 art.style.transform=old;
 var a=document.createElement('a');a.download='news.png';a.href=c.toDataURL('image/png');a.click();
 }).catch(function(){art.style.transform=old});

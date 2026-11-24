@@ -40,7 +40,7 @@ document.getElementById('reset').onclick=build;
 document.getElementById('pvBtn').onclick=function(){var on=document.body.classList.toggle('pvmode');this.textContent=on?'편집 모드':'미리보기 모드';scale()};
 document.getElementById('savePng').onclick=function(){
  if(!window.html2canvas){alert('html2canvas 로딩 실패');return}
- html2canvas(gp,{scale:2,backgroundColor:'#fff',width:1288,height:724.5,onclone:function(d){var g=d.getElementById('gp');g.style.transform='none';g.parentNode.style.overflow='visible'}})
+ html2canvas(gp,{scale:4,backgroundColor:'#fff',width:1288,height:724.5,onclone:function(d){var g=d.getElementById('gp');g.style.transform='none';g.parentNode.style.overflow='visible'}})
  .then(function(c){var a=document.createElement('a');a.download='google_search.png';a.href=c.toDataURL('image/png');a.click()})};
 build();scale();
 })();

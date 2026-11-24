@@ -20,7 +20,7 @@ $('reset').onclick=load;window.addEventListener('resize',fit);if(window.ResizeOb
 $('savePng').onclick=function(){
 var old=canvas.style.transform;canvas.style.transform='none';
 (document.fonts?document.fonts.ready:Promise.resolve()).then(function(){
-return html2canvas(st,{backgroundColor:null,scale:1,width:1080,height:1920,useCORS:true})
+return html2canvas(st,{backgroundColor:null,scale:4,width:1080,height:1920,useCORS:true})
 }).then(function(cv){canvas.style.transform=old;var a=document.createElement('a');a.download='뉴스 표.png';a.href=cv.toDataURL('image/png');a.click()
 }).catch(function(){canvas.style.transform=old});
 };

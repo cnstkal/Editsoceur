@@ -45,7 +45,7 @@ window.addEventListener("resize",fit);
 
 $("savePng").onclick=function(){
   var f=$("fit"),z=f.style.zoom;f.style.zoom=1;
-  html2canvas($("cap"),{backgroundColor:null,scale:3,useCORS:true}).then(function(c){
+  html2canvas($("cap"),{backgroundColor:null,scale:4,useCORS:true}).then(function(c){
     f.style.zoom=z;
     var a=document.createElement("a");a.download="old-instagram.png";a.href=c.toDataURL("image/png");a.click();
   }).catch(function(){f.style.zoom=z});

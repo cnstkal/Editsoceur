@@ -30,6 +30,6 @@ var pf=$('pf'),pw=$('pw');
 function fit(){var w=pw.clientWidth;if(w)pf.style.transform='scale('+(w/1920)+')'}
 if(window.ResizeObserver)new ResizeObserver(fit).observe(pw);addEventListener('resize',fit);
 $('savePng').onclick=function(){var b=this,t=b.textContent,tr=pf.style.transform;b.disabled=true;b.textContent='저장 중...';pf.style.transform='none';
- html2canvas(pf,{scale:2,useCORS:true,backgroundColor:'#fff',width:1920,height:1080,logging:false}).then(function(c){var a=document.createElement('a');a.download='pinterest-pc.png';a.href=c.toDataURL('image/png');a.click()}).finally(function(){pf.style.transform=tr;b.disabled=false;b.textContent=t})};
+ html2canvas(pf,{scale:4,useCORS:true,backgroundColor:'#fff',width:1920,height:1080,logging:false}).then(function(c){var a=document.createElement('a');a.download='pinterest-pc.png';a.href=c.toDataURL('image/png');a.click()}).finally(function(){pf.style.transform=tr;b.disabled=false;b.textContent=t})};
 load();fit();
 })();

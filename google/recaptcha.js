@@ -22,7 +22,7 @@ $('unsel').onclick=function(){sel=[];r()};
 $('save').onclick=function(){
 var cap=$('cap'),ch=cap.parentNode,bg=ch.style.background,pd=ch.style.padding;ch.style.background='none';ch.style.padding='0';
 (document.fonts?document.fonts.ready:Promise.resolve()).then(function(){
-return html2canvas(cap,{backgroundColor:null,scale:3,useCORS:true})}).then(function(cv){
+return html2canvas(cap,{backgroundColor:null,scale:4,useCORS:true})}).then(function(cv){
 ch.style.background=bg;ch.style.padding=pd;
 var a=document.createElement('a');a.download='recaptcha.png';a.href=cv.toDataURL('image/png');a.click()
 }).catch(function(){ch.style.background=bg;ch.style.padding=pd})};

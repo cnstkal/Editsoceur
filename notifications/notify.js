@@ -52,7 +52,7 @@ $('savePng').onclick=async function(){var b=this,t=b.textContent,el=$('banner');
  if(document.fonts&&document.fonts.ready)await document.fonts.ready;
  var waits=[];Array.prototype.forEach.call(el.querySelectorAll('img'),function(im){if(im.decode)waits.push(im.decode().catch(function(){}));else if(!im.complete)waits.push(new Promise(function(ok){im.onload=im.onerror=ok}))});
  await Promise.all(waits);await new Promise(function(ok){requestAnimationFrame(function(){requestAnimationFrame(ok)})});
- var c=await html2canvas(el,{scale:3*1412/el.offsetWidth,useCORS:true,allowTaint:false,backgroundColor:null,logging:false,imageTimeout:20000});
+ var c=await html2canvas(el,{scale:4*1412/el.offsetWidth,useCORS:true,allowTaint:false,backgroundColor:null,logging:false,imageTimeout:20000});
  var blob=await new Promise(function(ok){c.toBlob(ok,'image/png')});if(!blob)throw new Error('PNG encode failed');
  var a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download='notification.png';document.body.appendChild(a);a.click();a.remove();setTimeout(function(){URL.revokeObjectURL(a.href)},1000);
  }catch(err){console.error(err);alert('PNG 저장에 실패했습니다.');}finally{b.disabled=false;b.textContent=t}};

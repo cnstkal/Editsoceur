@@ -26,6 +26,6 @@ $('reset').onclick=function(){S=defs();sync()};
  ed.parentNode.insertBefore(bar,ed)})();
 $('pvBtn').onclick=function(){var on=document.body.classList.toggle('pvmode');this.textContent=on?'편집 모드':'미리보기 모드';setTimeout(fit,0)};
 $('savePng').onclick=function(){var t=ks.style.transform;ks.style.transform='none';
- html2canvas(ks,{width:W,height:H,scale:1,backgroundColor:'#f5f5f5',useCORS:true,allowTaint:false}).then(function(c){ks.style.transform=t;var a=document.createElement('a');a.download='sumone.png';a.href=c.toDataURL('image/png');a.click()}).catch(function(){ks.style.transform=t})};
+ html2canvas(ks,{width:W,height:H,scale:4,backgroundColor:'#f5f5f5',useCORS:true,allowTaint:false}).then(function(c){ks.style.transform=t;var a=document.createElement('a');a.download='sumone.png';a.href=c.toDataURL('image/png');a.click()}).catch(function(){ks.style.transform=t})};
 sync();fit();
 })();

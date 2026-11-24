@@ -16,7 +16,7 @@ $('reset').onclick=load;
 $('save').onclick=function(){
 var pad=$('pad'),ch=pad.parentNode,bg=ch.style.background;ch.style.background='none';
 (document.fonts?document.fonts.ready:Promise.resolve()).then(function(){
-return html2canvas(pad,{backgroundColor:null,scale:3,useCORS:true})}).then(function(cv){
+return html2canvas(pad,{backgroundColor:null,scale:4,useCORS:true})}).then(function(cv){
 ch.style.background=bg;
 var a=document.createElement('a');a.download='photo-booth.png';a.href=cv.toDataURL('image/png');a.click()
 }).catch(function(){ch.style.background=bg})};
