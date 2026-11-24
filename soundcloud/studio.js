@@ -32,7 +32,7 @@ $('png').onclick=async function(){
     });
     await Promise.all(waits);
     await new Promise(function(resolve){requestAnimationFrame(function(){requestAnimationFrame(resolve)})});
-    var c=await html2canvas(doc.body,{scale:4,width:w,height:h,backgroundColor:null,windowWidth:w,windowHeight:h,useCORS:true,imageTimeout:20000});
+    var c=await html2canvas(doc.body,{scale:8,width:w,height:h,backgroundColor:null,windowWidth:w,windowHeight:h,useCORS:true,imageTimeout:20000});
     var a=document.createElement('a');a.download=S.png;a.href=c.toDataURL('image/png');a.click();
   }catch(err){console.error(err);alert('PNG 저장 중 오류가 발생했어. 이미지를 다시 확인하고 시도해줘.')}
   finally{button.disabled=false;button.textContent='PNG 저장'}
