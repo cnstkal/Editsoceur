@@ -123,6 +123,27 @@
       return s;
     });
   }
+  // 프리뷰에서 실제 줄바꿈 위치를 읽어 그대로 고정 (저장 엔진의 글자 폭 차이로 줄이 달라지는 것 방지)
+  function freezeLines(cap) {
+    var saved = [];
+    Array.prototype.forEach.call(cap.querySelectorAll(".b"), function (b) {
+      var tn = b.firstChild; if (!tn || tn.nodeType !== 3 || !tn.textContent) return;
+      var text = tn.textContent, r = document.createRange(), lines = [], cur = "", lastTop = null;
+      for (var i = 0; i < text.length; i++) {
+        r.setStart(tn, i); r.setEnd(tn, i + 1);
+        var rc = r.getClientRects();
+        if (!rc.length) { cur += text[i]; continue; }
+        var top = Math.round(rc[0].top);
+        if (lastTop !== null && Math.abs(top - lastTop) > 2) { lines.push(cur); cur = ""; }
+        cur += text[i]; lastTop = top;
+      }
+      lines.push(cur);
+      saved.push([tn, text, b, b.style.whiteSpace]);
+      tn.textContent = lines.join("\n"); b.style.whiteSpace = "pre";
+    });
+    return saved;
+  }
+  function unfreezeLines(list) { list.forEach(function (s) { s[0].textContent = s[1]; s[2].style.whiteSpace = s[3]; }); }
   function unpin(list) {
     list.forEach(function (s) { var st = s[0].style; st.width = s[1]; st.height = s[2]; st.maxWidth = s[3]; st.minWidth = s[4]; st.minHeight = s[5]; });
   }
@@ -141,6 +162,7 @@
     var t = btn.textContent, cap = $("cap"); btn.disabled = true; btn.textContent = "저장 중...";
     
     fit();
+    var frozen = freezeLines(cap);
     var pinned = pin(cap);
     snap(cap).then(function (c) {
       c.toBlob(function (bl) {
@@ -149,7 +171,7 @@
         document.body.appendChild(a); a.click(); a.remove();
       });
     }).catch(function () { alert("PNG 저장에 실패했습니다."); })
-      .then(function () { unpin(pinned); btn.disabled = false; btn.textContent = t; });
+      .then(function () { unpin(pinned); unfreezeLines(frozen); btn.disabled = false; btn.textContent = t; });
   }
   var MODE = "full";
   function setMode(m) {
