@@ -114,3 +114,11 @@ body.studio .ps-side .ps-edwrap :is(.editor,.ed) .edf input[type=file]::file-sel
 /* 프리뷰 여백: 여백 최소화 + 투명(체크무늬)으로 통일 */
 .ps-stage{padding:0!important;margin:0!important;background:repeating-conic-gradient(#ddd 0 25%,#fff 0 50%) 0 0/20px 20px!important}
 .ps-stage>*{margin-top:0}
+
+/* ===== 3단계 보강: 상태(로딩·비활성·포커스)를 편집 패널 전체에 통일 ===== */
+body.studio .ps-side .ps-acts button:disabled,
+body.studio .ps-side .ps-acts button[aria-busy=true]{opacity:.55;cursor:wait;pointer-events:none}
+body.studio .ps-side :is(button,.ps-seg button,.ps-addp,.ps-ghost):focus-visible{outline:2px solid var(--pk);outline-offset:2px}
+body.studio .ps-side :is(.editor,.ed) input[type=file]::file-selector-button:hover{border-color:var(--pk);color:var(--pk)}
+body.studio .ps-side :is(.editor,.ed) input[type=file]::file-selector-button:focus-visible{outline:2px solid var(--pk);outline-offset:2px}
+body.studio .ps-side .ps-seg button:hover:not(.on){background:var(--gray-bg)}
