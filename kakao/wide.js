@@ -58,28 +58,13 @@
     layoutBubbles();
   }
 
-  // 말풍선 줄바꿈과 폭을 렌더링 시점에 한 번 계산해 고정 (프리뷰·PNG가 같은 줄바꿈을 사용)
-  // 여유 폭: 저장 엔진 글자 폭 오차만큼(텍스트 폭에 비례, 짧은 문장은 거의 0)
-  var SLACK = function (w) { return w * 0.04; }; // 글자 폭에 비례 (짧은 문장은 여유도 작음)
+  // 말풍선의 줄바꿈과 너비는 브라우저 레이아웃에 맡김.
+  // 띄어쓰기나 canvas 측정값으로 줄을 재조립하지 않고, CSS padding으로 내부 여백을 확보한다.
   function layoutBubbles() {
-    var cv = document.createElement("canvas").getContext("2d");
     Array.prototype.forEach.call($("chat").querySelectorAll(".b"), function (b) {
-      var tn = b.firstChild; if (!tn || tn.nodeType !== 3 || b.querySelector("img")) return;
-      var cs = getComputedStyle(b), maxW = parseFloat(cs.maxWidth) || 446.4;
-      var padL = parseFloat(cs.paddingLeft), padR = parseFloat(cs.paddingRight), avail = maxW - padL - padR;
-      cv.font = cs.fontStyle + " " + cs.fontWeight + " " + cs.fontSize + " " + cs.fontFamily;
-      cv.letterSpacing = cs.letterSpacing;
-      var lines = [], cur = null;
-      tn.textContent.split(" ").forEach(function (w) {
-        if (cur === null) { cur = w; return; }
-        var t = cur + " " + w;
-        if (cv.measureText(t).width > avail) { lines.push(cur); cur = w; } else cur = t;
-      });
-      lines.push(cur === null ? "" : cur);
-      var widest = 0; lines.forEach(function (l) { widest = Math.max(widest, cv.measureText(l).width); });
-      tn.textContent = lines.join("\n");
-      b.style.whiteSpace = "pre";
-      b.style.width = Math.min(maxW, Math.ceil(widest + padL + padR + SLACK(widest))) + "px";
+      if (b.querySelector("img")) return;
+      b.style.width = "fit-content";
+      b.style.whiteSpace = "pre-wrap";
     });
   }
 
