@@ -10,3 +10,9 @@
 .an p{margin:16px 0 90px;font-family:'Noto Serif KR',serif!important;font-size:51.7px;line-height:84px;color:#3a3a3a;font-weight:400;letter-spacing:0!important;word-break:keep-all}
 .ans{border-top:1px solid var(--ln);padding-top:6px}
 .ans .ps-ghost{margin:0 0 10px;height:38px}
+
+/* Keep reset/export actions anchored inside the editor card */
+body.studio .ps-side{display:flex;flex-direction:column;min-width:0}
+body.studio .ps-side .ps-edwrap{flex:1 1 auto;min-height:0}
+body.studio .ps-side>.ps-acts{position:static!important;display:flex!important;width:100%;gap:10px;margin:20px 0 0!important;padding:0!important;background:transparent}
+body.studio .ps-side>.ps-acts button{height:52px;min-width:0}
