@@ -114,8 +114,9 @@
   $("reset").onclick = function () { load(true); };
   function viaH2C(cap, r) { return html2canvas(cap, { scale: r, useCORS: true, backgroundColor: null, logging: false }); }
   // 브라우저가 그리는 그대로 캡처(html-to-image) → 실패하면 html2canvas로 대체
+  var EXPORT_W = 3840; // 저장 가로 픽셀 (4K) — 확대해도 글자가 깨지지 않도록
   function snap(cap) {
-    var r = 1920 / cap.clientWidth;
+    var r = EXPORT_W / cap.clientWidth;
     var ready = (document.fonts && document.fonts.ready) ? document.fonts.ready : Promise.resolve();
     return ready.then(function () {
       if (!window.htmlToImage) return viaH2C(cap, r);
