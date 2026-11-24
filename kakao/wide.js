@@ -51,7 +51,7 @@
       if (m.img) { var im = document.createElement("img"); im.src = m.img; bb.append(im); }
       if (first && !m.img) bb.insertAdjacentHTML("beforeend", '<i class="tl">' + (me ? TR : TL) + "</i>");
       line.append(bb);
-      if (m.tm || (me && m.rd)) { var tm = el("div", "tm"); if (me && m.rd) tm.append(el("span", "rd", "1")); tm.append(m.tm || ""); line.append(tm); }
+      if (m.tm || m.rd) { var tm = el("div", "tm"); if (m.rd) tm.append(el("span", "rd", "1")); tm.append(m.tm || ""); line.append(tm); }
       col.append(line); row.append(col); chat.append(row);
     });
   }
