@@ -8,3 +8,5 @@
 .bub p{color:var(--col);font-size:var(--fs);line-height:1.55;white-space:pre-wrap;word-break:keep-all}
 .arr{position:absolute;left:50%;bottom:30px;width:50px;height:36px;margin-left:-25px;background:#f5b323;clip-path:polygon(0 0,100% 0,50% 100%);border-radius:4px}
 #stage p{margin:0}
+
+#stage .bub p{font-family:"Gowun Dodum","Apple SD Gothic Neo",sans-serif;letter-spacing:-.01em}

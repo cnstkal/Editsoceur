@@ -1,4 +1,4 @@
-#pf{position:relative;aspect-ratio:9/19;overflow:hidden;background:#fff;border-radius:14px;margin-top:12px;color:#111}
+#pf{position:relative;aspect-ratio:9/19;overflow:hidden;background:#fff;border-radius:14px;margin-top:0;color:#111}
 .ph{display:flex;align-items:center;height:56px;margin-top:62px;padding:0 16px}
 .pl{display:flex;align-items:center;gap:2px;flex:1}
 .pl b{font-size:30px;font-weight:800;letter-spacing:-.07em}

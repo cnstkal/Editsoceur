@@ -20,13 +20,15 @@
 </div></div></div></section>
 <section class="ps-card ps-side"><div class="ps-lbl">Edit Panel</div><h2>Pinterest 홈 내용 수정</h2><div class="ps-edwrap"><section class="editor">
 <div class="ps-pn" data-t="기본">
-  <h2>홈 편집</h2>
   <label>검색창 문구<input id="iSr"></label><label class="file">프로필 사진<input id="iAv" type="file" accept="image/*"></label>
-  <h2 style="margin-top:14px">사진 일괄 추가</h2><label class="file">사진 여러 장 선택<input id="batchPins" type="file" accept="image/*" multiple></label><h2 style="margin-top:14px">핀 목록</h2>
+</div>
+<div class="ps-pn" data-t="이미지" hidden>
+  <label class="file">사진 여러 장 선택<input id="batchPins" type="file" accept="image/*" multiple></label>
+  <h2 style="margin-top:14px">핀 목록</h2>
   <div id="plist"></div>
   <button class="ghost" id="addP" type="button">+ 핀 추가</button>
-
-</div></section></div><div class="ps-acts"><button id="savePng" class="primary">PNG 저장</button><button id="reset" class="secondary">초기화</button></div></section>
+</div>
+</section></div><div class="ps-acts"><button id="savePng" class="primary">PNG 저장</button><button id="reset" class="secondary">초기화</button></div></section>
 </div></div>
 <script src="https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js"></script>
 <script src="home-pc.js?v=2"></script>

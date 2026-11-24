@@ -8,14 +8,13 @@ function render(){
  var c=['',''];
  S.p.forEach(function(p,i){c[i%2]+='<div class="pin"><div class="pi" style="aspect-ratio:1 / '+(p.ratio||1.25)+';'+(p.img?'background-image:url('+p.img+')':'')+'"></div><div class="pt"><span>'+esc(p.x)+'</span>'+DOTS+'</div></div>'});
  $('pc0').innerHTML=c[0];$('pc1').innerHTML=c[1];
- $('pDot').style.display=S.dot?'block':'none';$('pnav').classList.toggle('on',!!S.nav)
+ $('pnav').classList.toggle('on',!!S.nav)
 }
 function list(){
  $('plist').innerHTML=S.p.map(function(p,i){return '<div class="pe" data-i="'+i+'"><label>제목(비우면 숨김)<input data-f="x" value="'+esc(p.x)+'"></label><label class="file">이미지 교체<input type="file" accept="image/*" data-f="img"></label><div class="row"><button type="button" class="xb" data-a="u">↑</button><button type="button" class="xb" data-a="d">↓</button><button type="button" class="xb" data-a="x">✕ 삭제</button></div></div>'}).join('')
 }
 function readImage(file,cb){var r=new FileReader();r.onload=function(){var im=new Image();im.onload=function(){cb(r.result,im.height/im.width)};im.src=r.result};r.readAsDataURL(file)}
-function load(reset){if(reset){try{localStorage.removeItem(STORE)}catch(e){}S=JSON.parse(JSON.stringify(DEF))}else{try{var v=localStorage.getItem(STORE);S=v?JSON.parse(v):JSON.parse(JSON.stringify(DEF));if(!S||!Array.isArray(S.p))throw 0}catch(e){S=JSON.parse(JSON.stringify(DEF))}}$('iDot').checked=!!S.dot;$('iNav').checked=!!S.nav;list();render()}
-$('iDot').onchange=function(){S.dot=this.checked;persist();render()};
+function load(reset){if(reset){try{localStorage.removeItem(STORE)}catch(e){}S=JSON.parse(JSON.stringify(DEF))}else{try{var v=localStorage.getItem(STORE);S=v?JSON.parse(v):JSON.parse(JSON.stringify(DEF));if(!S||!Array.isArray(S.p))throw 0}catch(e){S=JSON.parse(JSON.stringify(DEF))}}$('iNav').checked=!!S.nav;list();render()}
 $('iNav').onchange=function(){S.nav=this.checked;persist();render()};
 var L=$('plist'),ix=function(e){return +e.target.closest('.pe').dataset.i};
 L.addEventListener('input',function(e){if(e.target.dataset.f!=='x')return;S.p[ix(e)].x=e.target.value;persist();render()});
