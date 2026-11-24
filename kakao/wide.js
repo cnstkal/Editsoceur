@@ -144,18 +144,20 @@
     return saved;
   }
   // 말풍선: 프리뷰의 좌우 여백(px)을 그대로 고정 (글자는 프리뷰처럼 왼쪽 정렬)
+  var EXTRA_RIGHT = 8; // 저장 시 말풍선 오른쪽 여백 추가량(CSS px) — 글자 위치는 그대로, 말풍선만 오른쪽으로 넓힘
   function padBubbles(cap) {
     return Array.prototype.map.call(cap.querySelectorAll(".b"), function (b) {
       if (b.querySelector("img")) return null;
       var cs = getComputedStyle(b), st = b.style;
-      var s = [b, st.paddingLeft, st.paddingRight, st.textAlign, st.letterSpacing];
+      var s = [b, st.paddingLeft, st.paddingRight, st.textAlign, st.letterSpacing, st.width];
+      st.width = (parseFloat(st.width) + EXTRA_RIGHT) + "px";
       st.letterSpacing = cs.letterSpacing; // 프리뷰의 글자 간격(px)을 명시 (저장 엔진이 누락하는 것 방지)
       var n = parseFloat(cs.paddingLeft); // 좌우 여백은 CSS상 동일
       st.paddingLeft = n + "px"; st.paddingRight = n + "px"; st.textAlign = "left";
       return s;
     }).filter(Boolean);
   }
-  function unpadBubbles(list) { list.forEach(function (s) { var st = s[0].style; st.paddingLeft = s[1]; st.paddingRight = s[2]; st.textAlign = s[3]; st.letterSpacing = s[4]; }); }
+  function unpadBubbles(list) { list.forEach(function (s) { var st = s[0].style; st.paddingLeft = s[1]; st.paddingRight = s[2]; st.textAlign = s[3]; st.letterSpacing = s[4]; st.width = s[5]; }); }
   function unfreezeLines(list) { list.forEach(function (s) { s[0].textContent = s[1]; s[2].style.whiteSpace = s[3]; }); }
   function unpin(list) {
     list.forEach(function (s) { var st = s[0].style; st.width = s[1]; st.height = s[2]; st.maxWidth = s[3]; st.minWidth = s[4]; st.minHeight = s[5]; });
