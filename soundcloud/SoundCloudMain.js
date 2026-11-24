@@ -14,7 +14,7 @@ S.css='*{box-sizing:border-box;margin:0;letter-spacing:-.02em}button,input{font-
 '.cats a{padding:8px 24px 10px;flex:none;font-weight:600;font-size:15px;color:#9a9a9a;border-bottom:2px solid transparent}.cats a.on{color:#fff;border-color:#fff}'+
 '.scroll{flex:1;overflow-y:auto;padding:0 16px;scrollbar-width:none}'+
 'h2{display:flex;justify-content:space-between;align-items:baseline;font-size:26px;margin:28px 0 18px}h2 a{font-size:15px;color:#aaa;font-weight:600}'+
-'.row{display:flex;gap:14px;align-items:flex-start;margin-bottom:14px}'+
+'.row{display:flex;gap:14px;align-items:flex-start;margin:0 -16px 14px;padding:12px 16px;border-radius:2px;transition:background-color .12s ease;-webkit-tap-highlight-color:transparent;cursor:pointer}.row:active{background:#2d2d2d}'+
 '.art{width:64px;height:64px;border-radius:7px;flex:none;border:1px solid #333;background:#000;overflow:hidden}.art-img{display:block;width:100%;height:100%;object-fit:contain;image-rendering:auto}'+
 '.gold{background:linear-gradient(135deg,#f7a1d6,#ff7fc4,#f5b6e0);border:0}.gold .art-img{object-fit:contain}'+
 '.info{flex:1;min-width:0;display:flex;flex-direction:column;gap:4px}.info b{font-size:16px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}'+
