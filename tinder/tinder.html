@@ -31,12 +31,12 @@
 <label>LIKE 배지 문구<input id="iLike"></label>
 <label>상단 탭 (쉼표로 구분, 첫 번째가 선택됨)<input id="iTabs"></label>
 <label>찾는 관계 문구<input id="iLook"></label>
-<label>찾는 관계 앞 이모지 (비우면 돋보기)<input id="iEmoji"></label>
-<label>관계 목표<input id="iGoal"></label>
+
+<label>관계 목표 앞 이모지<input id="iGoalEmoji" maxlength="8" placeholder="예: 💗"></label>\n<label>관계 목표<input id="iGoal"></label>
 </div>
 <div class="ps-pn" data-t="이미지" hidden>
 <label class="file">메인 이미지<input type="file" id="iPhoto" accept="image/*"></label>
-<label>사진 위치 (세로 %)<input type="range" id="iPos" min="0" max="100"></label>
+<label>사진 세로 위치<input type="range" id="iPos" min="0" max="100"></label>\n<label>사진 가로 위치<input type="range" id="iPosX" min="0" max="100"></label>\n<label>사진 확대/축소<input type="range" id="iZoom" min="100" max="250" value="100"></label>\n<p class="photo-help">프리뷰 사진을 직접 드래그해 위치를 조정할 수도 있어요.</p>
 </div>
 </div>
 <div class="ps-acts"><button id="reset" type="button">초기화</button><button id="savePng" type="button">PNG 저장</button></div></section>
