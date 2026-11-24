@@ -28,6 +28,7 @@ function render(){
 [["iQ","q"]].forEach(function(a){
   $(a[0]).oninput=function(){D[a[1]]=this.value;render()}});
 $("iAv").onchange=function(){rd(this.files[0],function(d){D.av=d;render()})};
+$('iAv_del').onclick=function(){D.av=''; $('iAv').value=''; render();};
 
 function items(){
   var box=$("iList");box.innerHTML="";

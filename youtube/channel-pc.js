@@ -20,6 +20,7 @@
   Object.keys(TX).forEach(function(id){$(id).addEventListener('input',function(){S[TX[id]]=this.value;persist();render()})});
   function readFile(f,cb){var r=new FileReader();r.onload=function(){cb(r.result)};r.readAsDataURL(f)}
   $('iFth').addEventListener('change',function(){if(this.files[0])readFile(this.files[0],function(d){S.fth=d;persist();render()})});
+$('iFth_del').onclick=function(){S.fth=''; $('iFth').value=''; persist(); render();};
   $('iAv').addEventListener('change',function(){if(this.files[0])readFile(this.files[0],function(d){S.av=d;persist();render()})});
 $('iAv_del').onclick=function(){S.av=''; $('iAv').value=''; persist(); render();};
   var L=$('xlist'),ix=function(e){return +e.target.closest('.xc').dataset.i};

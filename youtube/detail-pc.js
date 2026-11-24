@@ -49,7 +49,9 @@
   Object.keys(TX).forEach(function(id){$(id).addEventListener('input',function(){S[TX[id]]=this.value;persist();render()})});
   function rf(f,cb){var r=new FileReader();r.onload=function(){cb(r.result)};r.readAsDataURL(f)}
   $('iPf').addEventListener('change',function(){if(this.files[0])rf(this.files[0],function(d){S.pf=d;persist();render()})});
+$('iPf_del').onclick=function(){S.pf=''; $('iPf').value=''; persist(); render();};
   $('iTh').addEventListener('change',function(){if(this.files[0])rf(this.files[0],function(d){S.th=d;persist();render()})});
+$('iTh_del').onclick=function(){S.th=''; $('iTh').value=''; persist(); render();};
   function box(k){return function(e){var f=e.target.dataset.f,i=+e.target.closest('.xc').dataset.i,o=S[k][i];if(!f)return;if(e.target.type==='file'){if(e.target.files[0])rf(e.target.files[0],function(d){o[f]=d;persist();render()});return}o[f]=e.target.value;persist();render()}}
   $('xc').addEventListener('input',box('c'));$('xr').addEventListener('input',box('r'));
   $('xr').addEventListener('change',box('r'));

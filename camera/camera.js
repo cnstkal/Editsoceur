@@ -10,6 +10,7 @@ function draw(){
  $('grid').style.display=$('iGrid').checked?'':'none';$('face').style.display=$('iFace').checked?'':'none'}
 ['iZoom','iMode','iGrid','iFace'].forEach(function(i){$(i).onchange=draw});
 $('iVf').onchange=function(){rd(this.files[0],function(u){$('vf').style.backgroundImage='url('+u+')'})};
+$('iVf_del').onclick=function(){$('vf').style.backgroundImage=''; $('iVf').value='';};
 $('iTh').onchange=function(){rd(this.files[0],function(u){$('thumb').style.backgroundImage='url('+u+')'})};
 $('iTh_del').onclick=function(){$('iTh').value=''; $('thumb').style.backgroundImage='';};
 function fit(){var w=vp.parentNode.clientWidth||390,s=Math.min(w/1179,innerHeight*(innerWidth<1100?0.55:0.8)/2556);

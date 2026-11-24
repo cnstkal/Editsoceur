@@ -47,6 +47,7 @@ function load(reset){if(reset){try{localStorage.removeItem(STORE)}catch(e){}S=JS
 function glob(){T.forEach(function(p){S[p[1]]=$(p[0]).value});S.pl=$('iPl').checked;S.brOn=$('iBrOn').checked;S.plOn=$('iPlOn').checked;S.skOn=$('iSkOn').checked;persist();render()}
 T.map(function(p){return p[0]}).concat(['iPl','iBrOn','iPlOn','iSkOn']).forEach(function(id){$(id).addEventListener('input',glob);$(id).addEventListener('change',glob)});
 $('iBg').addEventListener('change',function(){var f=this.files[0];if(!f)return;var r=new FileReader();r.onload=function(){S.bg=r.result;persist();render()};r.readAsDataURL(f)});
+$('iBg_del').onclick=function(){S.bg=''; $('iBg').value=''; persist(); render();};
 $('iClr').addEventListener('change',function(){S.bg='';this.checked=false;persist();render()});
 $('reset').onclick=function(){load(true)};
 $('savePng').onclick=function(){var b=this,t=b.textContent;b.disabled=true;b.textContent='저장 중...';
