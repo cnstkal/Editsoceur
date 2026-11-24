@@ -117,7 +117,7 @@
   // 저장 직전: 말풍선 가로 길이를 프리뷰에서 잰 값으로 고정 (저장 엔진의 글자 폭 차이로 여백이 늘어나는 것 방지)
   function pin(cap) {
     // 말풍선(.b)은 폭을 고정하지 않고 글자 폭에 맞춰 저장 (좌우 여백이 자동으로 같아짐)
-    return [cap].concat(Array.prototype.slice.call(cap.querySelectorAll("*"))).filter(function (e) { return !e.classList.contains("b"); }).map(function (e) {
+    return [cap].concat(Array.prototype.slice.call(cap.querySelectorAll("*"))).filter(function (e) { return !e.classList.contains("b") && !e.closest(".tl"); }).map(function (e) {
       var r = e.getBoundingClientRect(), st = e.style;
       var s = [e, st.width, st.height, st.maxWidth, st.minWidth, st.minHeight];
       st.width = r.width + "px"; st.height = r.height + "px"; st.maxWidth = "none"; st.minWidth = "0"; st.minHeight = "0";
