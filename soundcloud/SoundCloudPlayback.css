@@ -2,7 +2,10 @@
 button,input{font-family:inherit}
 body{margin:0;background:#f2f3f5;color:#111;min-height:100vh;font-family:Pretendard,-apple-system,"Apple SD Gothic Neo","Noto Sans KR",sans-serif;letter-spacing:-.02em}
 button{font:inherit;cursor:pointer}
-.ps-wrap{max-width:1480px;margin:0 auto;padding:40px 48px 56px}
+.ps-wrap{max-width:1480px;margin:0 auto;padding:28px 48px 56px}
+.page-back{display:inline-block;margin:0 0 18px;color:#0095f6;text-decoration:none;font-size:15px;font-weight:700}
+.scr{background-color:#fff;background-image:linear-gradient(45deg,#ddd 25%,transparent 25%),linear-gradient(-45deg,#ddd 25%,transparent 25%),linear-gradient(45deg,transparent 75%,#ddd 75%),linear-gradient(-45deg,transparent 75%,#ddd 75%);background-size:20px 20px;background-position:0 0,0 10px,10px -10px,-10px 0}
+#preview{background:transparent}
 .ps-grid{display:grid;grid-template-columns:minmax(0,1.3fr) minmax(380px,1fr);gap:24px;align-items:stretch}
 .ps-card{background:#fff;border-radius:26px;padding:34px 36px;min-width:0}
 .ps-lbl{font-size:12px;letter-spacing:.14em;color:#8a8f98;text-transform:uppercase}
@@ -35,7 +38,7 @@ button{font:inherit;cursor:pointer}
 #png{flex:1.6;background:var(--pk);color:#fff}
 .edit-btn{display:none;position:fixed;right:16px;bottom:16px;z-index:5;height:48px;padding:0 22px;border:0;border-radius:24px;background:#e8457a;color:#fff;font-size:15px;font-weight:700;box-shadow:0 6px 18px rgba(232,69,122,.4)}
 @media(max-width:1099px){
-  .ps-wrap{padding:0}
+  .ps-wrap{padding:12px 0 0}.page-back{margin:0 16px 10px}
   .ps-grid{grid-template-columns:1fr;gap:0}
   .ps-card{border-radius:0;padding:16px}
   .ps-main>.ps-lbl,.ps-main>h2,.ps-main>.ps-sub{display:none}
