@@ -2,31 +2,26 @@
 <html lang="ko">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no,viewport-fit=cover">
+<script src="../nozoom.js?v=1"></script>
 <title>SoundCloud</title>
+<link rel="stylesheet" href="../home.css">
 <style>
-*{box-sizing:border-box}
-html,body{margin:0;min-height:100%;font-family:-apple-system,BlinkMacSystemFont,"Helvetica Neue",Arial,sans-serif;background:#101010;color:#fff}
-body{min-height:100vh;display:flex;align-items:center;justify-content:center;padding:24px}
-.wrap{width:min(100%,420px);text-align:center}
-.logo{font-size:42px;font-weight:800;letter-spacing:-2px;margin-bottom:10px}
-.sub{font-size:14px;color:#999;margin-bottom:38px}
-.choices{display:grid;gap:14px}
-a.choice{display:flex;align-items:center;justify-content:space-between;padding:20px 22px;border-radius:18px;text-decoration:none;color:#fff;background:linear-gradient(125deg,#ff9a55,#ff5a1f);font-size:17px;font-weight:700;box-shadow:0 10px 28px #ff5a1f26;transition:transform .18s,filter .18s}
-a.choice:hover{transform:translateY(-2px);filter:brightness(1.08)}
-a.choice span:last-child{font-size:22px;font-weight:400}
-.back{display:inline-block;margin-top:30px;color:#888;font-size:13px;text-decoration:none}
+.top{text-align:left;margin-bottom:8px}
+.top a{color:#0095f6;text-decoration:none;font-weight:600}
+nav .btn{background:#fff;color:#000;border:1px solid #dbdbdb}
+nav .btn.main{background:linear-gradient(45deg,#ffb347,#ff6a2a 52%,#f04b16);color:#fff;border:0}
 </style>
 </head>
 <body>
-<main class="wrap">
-  <div class="logo">SoundCloud</div>
-  <div class="sub">원하는 화면을 선택해줘</div>
-  <div class="choices">
-    <a class="choice" href="SoundCloudMain.html"><span>메인</span><span>›</span></a>
-    <a class="choice" href="SoundCloudPlayback.html"><span>플레이</span><span>›</span></a>
-  </div>
-  <a class="back" href="../index.html">← 메인으로 돌아가기</a>
+<main>
+  <div class="top"><a href="../index.html">‹ 메인</a></div>
+  <h1>SoundCloud</h1>
+  <p>화면을 선택하세요</p>
+  <nav>
+    <a class="btn main" href="SoundCloudMain.html">메인</a>
+    <a class="btn main" href="SoundCloudPlayback.html">플레이</a>
+  </nav>
 </main>
 </body>
 </html>
