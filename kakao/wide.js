@@ -121,20 +121,22 @@
     return htmlToImage.toCanvas(cap, opt).then(function () { return htmlToImage.toCanvas(cap, opt); })
       .catch(function () { return viaH2C(cap, r); });
   }
-  function savePng(btn, transparent) {
+  function savePng(btn, mode) {
+    var transparent = mode === "tp", bgOnly = mode === "bg";
     var t = btn.textContent, cap = $("cap"); btn.disabled = true; btn.textContent = "저장 중...";
-    if (transparent) cap.classList.add("tp");
+    if (transparent) cap.classList.add("tp"); if (bgOnly) cap.classList.add("bgonly");
     fit();
     snap(cap).then(function (c) {
       c.toBlob(function (bl) {
         var a = document.createElement("a"); a.href = URL.createObjectURL(bl);
-        a.download = transparent ? "kakao-chat-16x9-transparent.png" : "kakao-chat-16x9.png";
+        a.download = transparent ? "kakao-chat-16x9-transparent.png" : bgOnly ? "kakao-chat-16x9-background.png" : "kakao-chat-16x9.png";
         document.body.appendChild(a); a.click(); a.remove();
       });
     }).catch(function () { alert("PNG 저장에 실패했습니다."); })
-      .then(function () { cap.classList.remove("tp"); btn.disabled = false; btn.textContent = t; });
+      .then(function () { cap.classList.remove("tp", "bgonly"); btn.disabled = false; btn.textContent = t; });
   }
-  $("save").onclick = function () { savePng(this, false); };
-  $("saveT").onclick = function () { savePng(this, true); };
+  $("save").onclick = function () { savePng(this, "full"); };
+  $("saveT").onclick = function () { savePng(this, "tp"); };
+  $("saveBg").onclick = function () { savePng(this, "bg"); };
   load(false);
 })();

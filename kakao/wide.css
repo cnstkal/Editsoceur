@@ -37,6 +37,8 @@ svg{display:block}
 /* 투명 저장: 배경·상단바는 숨기고(자리는 유지) 채팅만 남김 */
 .stage.tp{background:transparent}
 .stage.tp .head{visibility:hidden}
+/* 바탕만 저장: 채팅 영역만 숨김 (바탕 16:9 최소 높이 유지) */
+.stage.bgonly #chat{display:none}
 
 /* ===== 페이지 레이아웃: 980px 제한 해제 + 미리보기 크게 ===== */
 body.studio{max-width:none;padding:0;margin:0}
