@@ -35,6 +35,7 @@ function rd(f,cb){var r=new FileReader();r.onload=function(){cb(r.result)};r.rea
 function glob(){T.forEach(function(p){S[p[1]]=$(p[0]).value});S.sc=$('iSc').checked;S.hd=$('iHd').checked;persist();render()}
 T.map(function(p){return p[0]}).concat(['iSc','iHd']).forEach(function(id){$(id).addEventListener('input',glob);$(id).addEventListener('change',glob)});
 $('iVi').addEventListener('change',function(){if(this.files[0])rd(this.files[0],function(d){S.vi=d;persist();render()})});
+$('iVi_del').onclick=function(){S.vi=''; $('iVi').value=''; persist(); render();};
 var L=$('nlist'),ix=function(e){return +e.target.closest('.xc').dataset.i};
 L.addEventListener('input',function(e){var f=e.target.dataset.f;if(!f||e.target.type==='file')return;S.t[ix(e)][f]=e.target.value;persist();render()});
 L.addEventListener('change',function(e){var t=e.target;if(t.type==='file'&&t.files[0]){var o=S.t[ix(e)];rd(t.files[0],function(d){o.im=d;persist();render()})}});

@@ -20,6 +20,7 @@ function render(){
 [["iQ","q"],["iName","name"],["iDesc","desc"],["iAge","age"],["iBirth","birth"],["iOv","ov"]].forEach(function(a){
   $(a[0]).oninput=function(){D[a[1]]=this.value;render()}});
 $("iAv").onchange=function(){rd(this.files[0],function(d){D.av=d;render()})};
+$('iAv_del').onclick=function(){D.av=''; $('iAv').value=''; render();};
 $("iPh").onchange=function(){
   var fs=[].slice.call(this.files),n=0;D.photos=[];
   fs.forEach(function(f,i){rd(f,function(d){D.photos[i]=d;if(++n===fs.length)render()})});

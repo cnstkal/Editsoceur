@@ -16,6 +16,7 @@ function render(){
   $(a[0]).oninput=function(){D[a[1]]=this.value;render()}});
 $("iTheme").onchange=function(){D.theme=this.value;render()};
 $("iAv").onchange=function(){rd(this.files[0],function(d){D.av=d;render()})};
+$('iAv_del').onclick=function(){D.av=''; $('iAv').value=''; render();};
 
 function fill(){
   $("iTheme").value=D.theme;$("iSub").value=D.sub;$("iFrom").value=D.from;$("iTo").value=D.to;$("iTime").value=D.time;$("iBody").value=D.body;

@@ -23,6 +23,7 @@ var F=[['iCh','ch'],['iT','t'],['iW','w'],['iV','v'],['iD','d'],['iB','b'],['iTg
 function sync(){F.forEach(function(f){var e=$(f[0]);if(f[2])e.checked=S[f[1]];else e.value=S[f[1]]});$('iAv').value='';render()}
 F.forEach(function(f){$(f[0]).addEventListener('input',function(){S[f[1]]=f[2]?this.checked:this.value;render()})});
 $('iAv').addEventListener('change',function(){var f=this.files[0];if(!f)return;var r=new FileReader();r.onload=function(e){S.av=e.target.result;render()};r.readAsDataURL(f)});
+$('iAv_del').onclick=function(){S.av=''; $('iAv').value=''; render();};
 $('reset').onclick=function(){S=defs();sync()};
 (function(){var ed=document.querySelector('.editor'),g=[].slice.call(ed.querySelectorAll('.ps-pn')),bar=document.createElement('div');bar.className='ps-seg';
  g.forEach(function(p,i){var b=document.createElement('button');b.type='button';b.textContent=p.getAttribute('data-t');if(!i)b.className='on';

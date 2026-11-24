@@ -23,6 +23,7 @@ function render(){
 $("iLive").onchange=function(){D.live=this.checked;render()};
 $("iBar").onchange=function(){D.bar=this.checked;render()};
 $("iAv").onchange=function(){rd(this.files[0],function(d){D.av=d;render()})};
+$('iAv_del').onclick=function(){D.av=''; $('iAv').value=''; render();};
 $("iPics").onchange=function(){
   var fs=[].slice.call(this.files).slice(0,9),n=0;D.pics=[];
   fs.forEach(function(f,i){rd(f,function(d){D.pics[i]=d;if(++n===fs.length)render()})});

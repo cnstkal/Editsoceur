@@ -11,6 +11,7 @@ function draw(){
 ['iZoom','iMode','iGrid','iFace'].forEach(function(i){$(i).onchange=draw});
 $('iVf').onchange=function(){rd(this.files[0],function(u){$('vf').style.backgroundImage='url('+u+')'})};
 $('iTh').onchange=function(){rd(this.files[0],function(u){$('thumb').style.backgroundImage='url('+u+')'})};
+$('iTh_del').onclick=function(){$('iTh').value=''; $('thumb').style.backgroundImage='';};
 function fit(){var w=vp.parentNode.clientWidth||390,s=Math.min(w/1179,innerHeight*(innerWidth<1100?0.55:0.8)/2556);
  vp.style.setProperty('width',1179*s+'px','important');vp.style.height=2556*s+'px';vp.style.margin='0 auto';cv.style.transform='scale('+s+')'}
 addEventListener('resize',fit);

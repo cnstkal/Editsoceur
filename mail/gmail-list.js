@@ -33,6 +33,7 @@ function render(){
   $(a[0]).oninput=function(){D[a[1]]=this.value;render()}});
 $("iTheme").onchange=function(){D.theme=this.value;render()};
 $("iMe").onchange=function(){rd(this.files[0],function(d){D.me=d;render()})};
+$('iMe_del').onclick=function(){D.me=''; $('iMe').value=''; render();};
 
 function mails(){
   var box=$("mList");box.innerHTML="";

@@ -21,6 +21,7 @@
   function readFile(f,cb){var r=new FileReader();r.onload=function(){cb(r.result)};r.readAsDataURL(f)}
   $('iFth').addEventListener('change',function(){if(this.files[0])readFile(this.files[0],function(d){S.fth=d;persist();render()})});
   $('iAv').addEventListener('change',function(){if(this.files[0])readFile(this.files[0],function(d){S.av=d;persist();render()})});
+$('iAv_del').onclick=function(){S.av=''; $('iAv').value=''; persist(); render();};
   var L=$('xlist'),ix=function(e){return +e.target.closest('.xc').dataset.i};
   L.addEventListener('input',function(e){var f=e.target.dataset.f;if(!f||e.target.type==='file')return;S.v[ix(e)][f]=e.target.value;persist();render()});
   L.addEventListener('change',function(e){var t=e.target;if(t.dataset.f!=='th'||!t.files[0])return;var o=S.v[ix(e)];readFile(t.files[0],function(d){o.th=d;persist();render()})});
