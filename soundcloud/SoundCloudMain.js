@@ -2,7 +2,7 @@
 S.png='soundcloud-search.png';
 S.init=function(){S.D={q:'ateez',
   top:{t:'Drip',a:'ATEEZ',p:'65.6K',d:'4:19',img:''},
-  pf:[{n:'ATEEZ',img:''},{n:'ATEEZ',img:''},{n:'ATEEZ (에이...',img:''}],
+  pf:[{n:'ATEEZ',img:''}],
   tr:[{t:'Golden Hour: Pt.5 Ateez - BAD,...',a:'ATEEZ',p:'262.2K',d:'14:58',img:''}]}};
 S.init();
 S.css='*{box-sizing:border-box;margin:0;letter-spacing:-.02em}button,input{font-family:inherit}html,body{height:100%;background:#121212;color:#fff;font-family:Pretendard,-apple-system,"Apple SD Gothic Neo",Arial,sans-serif;overflow:hidden}'+
@@ -37,7 +37,7 @@ S.view=function(){var D=S.D,cl=['a1','a2','a3'];
  return '<div class="screen"><div class="search"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#ddd" stroke-width="1.8"><circle cx="10.5" cy="10.5" r="7.5"/><path d="M16 16l5 5"/></svg><input id="q" value="'+e(D.q)+'" autocomplete="off"><button id="clear" class="clr">✕</button></div>'+
  '<nav class="cats"><a class="on">All</a><a>Tracks</a><a>Profiles</a><a>Playlists</a><a>Albums</a></nav><div class="scroll">'+
  '<section data-s="tracks"><h2>Top Result</h2>'+row(D.top,'')+'</section>'+
- '<section data-s="profiles"><h2>Profiles<a>See all</a></h2><div class="profiles">'+D.pf.map(function(p,i){return '<div class="p"><div class="av '+cl[i]+'"'+bg(p.img)+'></div><b>'+e(p.n)+'</b><button>Follow</button></div>'}).join('')+'</div></section>'+
+ '<section data-s="profiles"><h2>Profiles'+(D.pf.length>=3?'<a>See all</a>':'')+'</h2><div class="profiles">'+D.pf.map(function(p,i){return '<div class="p"><div class="av '+cl[i]+'"'+bg(p.img)+'></div><b>'+e(p.n)+'</b><button>Follow</button></div>'}).join('')+'</div></section>'+
  (D.tr.length?'<section data-s="tracks"><h2>Tracks<a>See all</a></h2>'+D.tr.map(function(x){return row(x,'gold')}).join('')+'</section>':'')+
  '<p id="empty" hidden>No results in this category.</p><div style="height:90px"></div></div>'+
  '<footer class="nav"><div><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M3 11l9-8 9 8v10h-6v-6H9v6H3z"/></svg>Home</div>'+
@@ -48,7 +48,19 @@ S.view=function(){var D=S.D,cl=['a1','a2','a3'];
 function song(el,o){S.text(el,'곡 제목',o,'t');S.text(el,'아티스트',o,'a');S.text(el,'재생수',o,'p');S.text(el,'시간',o,'d');S.file(el,'앨범 커버',o,'img')}
 S.panels=[
  {t:'기본',build:function(el){S.grp(el,'검색창');S.text(el,'검색창 문구',S.D,'q');S.grp(el,'Top Result');song(el,S.D.top)}},
- {t:'프로필',build:function(el){S.D.pf.forEach(function(p,i){S.grp(el,'프로필 '+(i+1));S.text(el,'이름',p,'n');S.file(el,'프로필 사진',p,'img')})}},
+ {t:'프로필',build:function(el){
+   S.D.pf.forEach(function(p,i){
+     S.grp(el,'프로필 '+(i+1));
+     S.text(el,'이름',p,'n');
+     S.file(el,'프로필 사진',p,'img');
+     if(S.D.pf.length>1) S.btn(el,'프로필 삭제',function(){
+       S.D.pf.splice(i,1);S.build();S.render();
+     });
+   });
+   if(S.D.pf.length<3) S.btn(el,'+ 프로필 추가',function(){
+     S.D.pf.push({n:'새 프로필',img:''});S.build();S.render();
+   },'add');
+ }},
  {t:'트랙',build:function(el){S.D.tr.forEach(function(x,i){S.grp(el,'트랙 '+(i+1));song(el,x);
    S.btn(el,'이 곡 삭제',function(){S.D.tr.splice(i,1);S.build();S.render()})});
    S.btn(el,'+ 곡 추가',function(){S.D.tr.push({t:'새 곡',a:'ATEEZ',p:'0',d:'3:00',img:''});S.build();S.render()},'add')}}
