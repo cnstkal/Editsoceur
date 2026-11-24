@@ -8,7 +8,7 @@
 <link rel="stylesheet" href="../instagram/story.css?v=3">
 <link rel="stylesheet" href="webtoon.css?v=1">
 <style data-hide-status>:is(span,b)[id$="Time"],#eTm,.isl,.ys,.ysig,.ywf,.ybt,.dsg,.dwf,#df .dbt,.msg,.mwf,.mbt,.ewf,.ebt,.nwf,.nbt,.sb:has([id$="Time"])>svg:not(.lc),.sb:has([id$="Time"])+.bt,.sb:has([id$="Time"]) .bt{display:none!important}</style><style id="ed-font">html,body,body *{font-family:Pretendard,-apple-system,"Apple SD Gothic Neo","Noto Sans KR",sans-serif!important;letter-spacing:-.02em!important}</style><link rel="stylesheet" href="studio.css?v=2">
-<link rel="stylesheet" href="../ps-editor.css?v=10"><style id="pa">body{animation:paIn .28s ease both}body.pa-out{animation:paOut .18s ease forwards}@keyframes paIn{from{opacity:0}to{opacity:1}}@keyframes paOut{to{opacity:0}}@media (prefers-reduced-motion:reduce){body,body.pa-out{animation:none}}</style><script id="pa-js">(function(){document.addEventListener("click",function(e){var a=e.target.closest&&e.target.closest("a[href]");if(!a||e.defaultPrevented||e.button||e.metaKey||e.ctrlKey||e.shiftKey||a.target||a.hasAttribute("download"))return;var h=a.getAttribute("href");if(!h||h[0]==="#"||/^(javascript:|mailto:|tel:)/.test(h))return;var u=new URL(a.href,location.href);if(u.origin!==location.origin)return;e.preventDefault();document.body.classList.add("pa-out");setTimeout(function(){location.href=u.href},180)},true)})();</script></head>
+<link rel="stylesheet" href="../ps-editor.css?v=10"><style id="pa">body{animation:paIn .28s ease both}body.pa-out{animation:paOut .18s ease forwards}@keyframes paIn{from{opacity:0}to{opacity:1}}@keyframes paOut{to{opacity:0}}@media (prefers-reduced-motion:reduce){body,body.pa-out{animation:none}}</style><script id="pa-js">(function(){document.addEventListener("click",function(e){var a=e.target.closest&&e.target.closest("a[href]");if(!a||e.defaultPrevented||e.button||e.metaKey||e.ctrlKey||e.shiftKey||a.target||a.hasAttribute("download"))return;var h=a.getAttribute("href");if(!h||h[0]==="#"||/^(javascript:|mailto:|tel:)/.test(h))return;var u=new URL(a.href,location.href);if(u.origin!==location.origin)return;e.preventDefault();document.body.classList.add("pa-out");setTimeout(function(){location.href=u.href},180)},true)})();</script><style>body.studio .ps-stage{padding-top:0!important}.wt{margin-top:0!important}.wt .sx{position:absolute;left:calc(38*var(--u));right:calc(38*var(--u));height:calc(36*var(--u));font-size:calc(26*var(--u));line-height:calc(36*var(--u));color:#8a8a8f;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}</style></head>
 <body class="studio"><div class="ps-wrap">
 <header class="ps-top"><a class="ps-back" href="index.html">‹ 뒤로</a><button class="ps-pvbtn" id="pvBtn" type="button" hidden>미리보기 모드</button></header>
 <div class="ps-grid">
@@ -19,6 +19,7 @@
   <div class="sb"><b id="wTime"></b></div>
   <div class="hd"><b>웹툰</b><svg viewBox="0 0 24 24" fill="none" stroke="#111" stroke-width="2" stroke-linecap="round"><circle cx="10.500" cy="10.500" r="7"/><path d="m16 16 5 5"/></svg></div>
   <div class="st"><b id="wSb"></b><span id="wSn"></span><svg viewBox="0 0 24 24" fill="none" stroke="#111" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 4 8 8-8 8"/></svg></div>
+  <div id="wSub"></div>
   <div class="rk" id="wRk"></div>
   <div class="tabs" id="wTabs"></div>
   <div class="gr" id="wGr"></div>
@@ -30,11 +31,14 @@
 </div></div></section>
 <section class="ps-card ps-side"><div class="ps-lbl">Edit Panel</div><h2>웹툰 메인 내용 수정</h2><div class="ps-edwrap"><section class="editor">
   <div class="ps-pn" data-t="기본">
-  <h2>웹툰 메인 편집</h2>
   <div class="row"><label>시간<input id="iTime"></label></div>
-  <div class="row"><label>섹션 제목(굵게)<input id="iSb"></label><label>섹션 제목(보통)<input id="iSn"></label></div>
   <div class="musicbox"><label class="sw"><input id="iNav" type="checkbox"><span class="knob"></span>하단 바 표시</label></div>
-  <h2 style="margin-top:14px">인기 급상승 카드</h2><div id="el1"></div>
+  </div>
+  <div class="ps-pn" data-t="히어로" hidden>
+  <div class="row"><label>섹션 제목(굵게)<input id="iSb"></label><label>섹션 제목(보통)<input id="iSn"></label></div>
+  <h2>추가 부제</h2><div id="elSub"></div>
+  <button class="ghost" id="addSub" type="button">+ 부제 추가</button>
+  <h2>인기 급상승 카드</h2><div id="el1"></div>
   <button class="ghost" id="add1" type="button">+ 카드 추가</button>
   </div>
   <div class="ps-pn" data-t="작품" hidden>

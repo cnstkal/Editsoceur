@@ -25,7 +25,7 @@ window.W=(function(){
     function fill(){(o.fields||[]).forEach(function(a){var e=$(a[0]);if(e.type==='checkbox')e.checked=!!S[a[1]];else if(e.type!=='file')e.value=S[a[1]]})}
     function load(reset){
       if(reset){try{localStorage.removeItem(o.key)}catch(e){}S=clone(o.def)}
-      else{try{var v=localStorage.getItem(o.key);S=v?JSON.parse(v):clone(o.def);if(!S||typeof S!=='object')throw 0}catch(e){S=clone(o.def)}}
+      else{try{var v=localStorage.getItem(o.key);S=v?Object.assign(clone(o.def),JSON.parse(v)):clone(o.def);if(!S||typeof S!=='object')throw 0}catch(e){S=clone(o.def)}}
       fill();lists();o.render(S)}
     function rd(f,cb){var r=new FileReader();r.onload=function(){cb(r.result)};r.readAsDataURL(f)}
     (o.fields||[]).forEach(function(a){var e=$(a[0]);
