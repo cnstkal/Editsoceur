@@ -48,6 +48,13 @@ $('appImgClear').onclick=function(){data[selected].appImg='';render()};
 $('bgColor').oninput=function(){color=this.value;renderKeepFocus()};
 $('opacity').oninput=function(){opacity=+this.value;$('opacityValue').textContent=opacity+'%';renderKeepFocus()};
 $('reset').onclick=function(){data[selected].app=data[selected].label;data[selected].title='알림 제목';data[selected].body='알림 내용을 입력하세요';data[selected].time='지금';data[selected].style='normal';data[selected].appImg='';data[selected].avatar='';color='#efefef';opacity=96;render()};
-$('savePng').onclick=function(){var b=this,t=b.textContent;b.disabled=true;b.textContent='저장 중...';(document.fonts&&document.fonts.ready?document.fonts.ready:Promise.resolve()).then(function(){return html2canvas($('banner'),{scale:1412/$('banner').offsetWidth,useCORS:true,backgroundColor:null,logging:false})}).then(function(c){c.toBlob(function(blob){var a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download='notification.png';document.body.appendChild(a);a.click();a.remove();b.disabled=false;b.textContent=t},'image/png')}).catch(function(){b.disabled=false;b.textContent=t;alert('PNG 저장에 실패했습니다.')})};
+$('savePng').onclick=async function(){var b=this,t=b.textContent,el=$('banner');b.disabled=true;b.textContent='고화질 저장 중...';try{
+ if(document.fonts&&document.fonts.ready)await document.fonts.ready;
+ var waits=[];Array.prototype.forEach.call(el.querySelectorAll('img'),function(im){if(im.decode)waits.push(im.decode().catch(function(){}));else if(!im.complete)waits.push(new Promise(function(ok){im.onload=im.onerror=ok}))});
+ await Promise.all(waits);await new Promise(function(ok){requestAnimationFrame(function(){requestAnimationFrame(ok)})});
+ var c=await html2canvas(el,{scale:3*1412/el.offsetWidth,useCORS:true,allowTaint:false,backgroundColor:null,logging:false,imageTimeout:20000});
+ var blob=await new Promise(function(ok){c.toBlob(ok,'image/png')});if(!blob)throw new Error('PNG encode failed');
+ var a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download='notification.png';document.body.appendChild(a);a.click();a.remove();setTimeout(function(){URL.revokeObjectURL(a.href)},1000);
+ }catch(err){console.error(err);alert('PNG 저장에 실패했습니다.');}finally{b.disabled=false;b.textContent=t}};
 render();
 })();
