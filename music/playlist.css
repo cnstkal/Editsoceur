@@ -10,21 +10,17 @@ body.studio{margin:0;background:#f2f3f5;color:#111;min-height:100vh}
 .ps-lbl{font-size:12px;letter-spacing:.14em;color:#8a8f98;text-transform:uppercase}
 .ps-card h2{font-size:24px;font-weight:700;margin:8px 0 6px}
 .ps-sub{font-size:14px;color:#8a8f98;margin:0}
-.ps-stage{padding-top:22px;display:flex;justify-content:center}
+.ps-stage{padding-top:0;display:flex;justify-content:center}
 .fit{width:360px}
-.fr{width:360px;height:640px;background:conic-gradient(#fff 25%,#e4e6ea 0 50%,#fff 0 75%,#e4e6ea 0) 0 0/16px 16px;box-shadow:0 2px 14px rgba(0,0,0,.12)}
+.fr{width:360px;height:auto;background:conic-gradient(#fff 25%,#e4e6ea 0 50%,#fff 0 75%,#e4e6ea 0) 0 0/16px 16px;box-shadow:0 2px 14px rgba(0,0,0,.12)}
 
 /* 캡처 영역: 360x640 (9:16), 배경 투명 */
-#cap{width:360px;height:640px;background:transparent;display:flex;align-items:center;justify-content:center;color:#000}
-.card{width:328px;background:#fff;border-radius:16px;overflow:hidden;box-shadow:0 6px 22px rgba(0,0,0,.28)}
-.nb{display:flex;justify-content:space-between;align-items:center;height:28px;padding:0 12px;background:#d7263d;color:#fff}
-.tag{font-size:12px;font-weight:800;letter-spacing:.06em}
-.lv{display:flex;align-items:center;gap:5px;font-size:10px;font-weight:800;letter-spacing:.08em}
-.lv i{width:6px;height:6px;border-radius:50%;background:#fff}
+#cap{width:360px;height:auto;background:transparent;display:flex;align-items:flex-start;justify-content:center;color:#000}
+.card{width:360px;background:#fff;border-radius:0;overflow:hidden;box-shadow:0 6px 22px rgba(0,0,0,.28)}
 .nav{display:flex;justify-content:space-between;align-items:center;padding:10px 14px 6px;font-size:13px;color:#e0334c}
 .bk{display:flex;align-items:center;gap:5px}
 .hd{display:flex;gap:12px;padding:6px 14px 10px}
-.cv{width:98px;height:98px;border-radius:8px;flex:none}
+.cv{width:98px;height:98px;border-radius:0;flex:none}
 .ph{background:radial-gradient(ellipse 130% 38% at 25% 100%,#8aa300 62%,transparent 63%),radial-gradient(ellipse 130% 38% at 85% 100%,#b9d44c 62%,transparent 63%),linear-gradient(#bfe3ff,#f0f9ff)}
 .inf{flex:1;min-width:0;display:flex;flex-direction:column;justify-content:space-between}
 .inf b{display:block;font-size:13px;font-weight:700;margin-top:4px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
@@ -32,19 +28,16 @@ body.studio{margin:0;background:#f2f3f5;color:#111;min-height:100vh}
 .inf span{display:block;font-size:11.500px;color:#7d7d82;margin-top:1px}
 .dl{display:flex;justify-content:flex-end;align-items:center;gap:12px}
 .dl small{font-size:8px;color:#7d7d82;letter-spacing:.04em}
-.dl u{width:22px;height:22px;border-radius:50%;background:#ff3b30;display:flex;align-items:center;justify-content:center}
+.dl u{width:22px;height:22px;border-radius:0;background:#ff3b30;display:flex;align-items:center;justify-content:center}
 .bt{display:flex;gap:8px;padding:0 14px 8px}
-.bt div{flex:1;height:30px;border-radius:8px;background:#f4f4f9;color:#e0334c;font-size:12px;font-weight:600;display:flex;align-items:center;justify-content:center;gap:6px}
+.bt div{flex:1;height:30px;border-radius:0;background:#f4f4f9;color:#e0334c;font-size:12px;font-weight:600;display:flex;align-items:center;justify-content:center;gap:6px}
 #vList{list-style:none;margin:0;padding:0 0 0 14px}
 #vList li{display:flex;align-items:center;gap:10px;height:38px;border-bottom:1px solid #ececef}
 #vList li:last-child{border-bottom:0}
-#vList .th{width:30px;height:30px;border-radius:4px;flex:none}
+#vList .th{width:30px;height:30px;border-radius:0;flex:none}
 #vList div{min-width:0;padding-right:12px}
 #vList b{display:block;font-size:11.500px;font-weight:500;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
 #vList small{display:block;font-size:10.500px;color:#9a9aa0;margin-top:1px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
-.tk{display:flex;align-items:center;gap:10px;height:34px;padding:0 12px 0 0;background:#14213d;color:#fff}
-.key{align-self:stretch;display:flex;align-items:center;padding:0 12px;background:#ffd23f;color:#14213d;font-size:12px;font-weight:800}
-.tk p{margin:0;font-size:12px;font-weight:500;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 
 /* 편집 패널 */
 .ps-side{display:flex;flex-direction:column;--pk:#e8457a;--pk-bg:#fde8ef;--ln:#e9eaee}

@@ -1,5 +1,4 @@
 *{box-sizing:border-box;margin:0;font-family:Pretendard,Netflix Sans,Helvetica,Arial,sans-serif;letter-spacing:-.02em}
-html,body{background:#000;color:#fff}
 .pw{width:100%;overflow:hidden;position:relative;background:#000}
 #pf{position:absolute;left:0;top:0;width:1920px;height:auto;min-height:1080px;background:#000;transform-origin:0 0;overflow:visible}
 .lg{position:absolute;left:60px;top:44px;color:#e50914;font-size:44px;font-weight:800;letter-spacing:-.05em}
@@ -9,16 +8,3 @@ html,body{background:#000;color:#fff}
 .pi{width:240px;text-align:center}
 .pb{width:240px;height:240px;background:#fff center/cover;border:4px solid transparent;border-radius:4px;transition:none}
 .pn{font-size:24px;color:#808080;margin-top:22px}
-.mg{display:none;position:absolute;left:0;right:0;top:820px;display:flex;justify-content:center}
-.mg span{border:2px solid #808080;color:#808080;font-size:26px;padding:12px 48px;letter-spacing:.08em}
-.ed{max-width:760px;margin:0 auto;padding:20px 16px 110px;font-size:14px;background:#f6f6f6;color:#111;letter-spacing:-.02em}
-.ed h2{font-size:17px;margin:14px 0}
-.ed label{display:block;font-weight:600;margin-bottom:12px;font-size:13px}
-.ed input:not([type=checkbox]){display:block;width:100%;margin-top:5px;padding:10px 12px;border:1px solid #dbdbdb;border-radius:10px;background:#fff;font-size:15px;font-weight:400}
-.ed .row{display:flex;gap:10px}.ed .row label{flex:1;min-width:0}
-.ed .xc{background:#fff;border:1px solid #dbdbdb;border-radius:12px;padding:12px 12px 0;margin-bottom:12px}
-.ed .xb{height:38px;border:1px solid #dbdbdb;border-radius:8px;background:#f6f6f6;font-weight:700;margin-bottom:12px;flex:1}
-.bar{position:fixed;left:0;right:0;bottom:0;display:flex;gap:10px;justify-content:center;padding:12px 16px;background:rgba(255,255,255,.96);border-top:1px solid #dbdbdb;z-index:10}
-.bar button{height:48px;border-radius:12px;font-weight:700;font-size:16px;width:200px}
-.bar .primary{background:#3d8ef0;color:#fff}.bar .secondary{background:#efefef}
-.tback{top:auto;bottom:96px;left:14px}

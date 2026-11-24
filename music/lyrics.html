@@ -30,15 +30,20 @@
 
 </div></div></section>
 <section class="ps-card ps-side"><div class="ps-lbl">Edit Panel</div><h2>음악 가사 내용 수정</h2><div class="ps-edwrap"><section class="editor">
-  <h2>가사 화면 편집</h2>
-  <div class="row"><label>곡 제목<input id="iT"></label><label>아티스트<input id="iA"></label></div>
-  <label class="file">앨범 이미지<input id="iArt" type="file" accept="image/*"></label>
-  <div class="musicbox"><div class="trow"><span>앨범 이미지에서 색 자동 추출</span><label class="sw"><input id="iAuto" type="checkbox"><i></i></label></div></div>
-  <div class="row"><label>위쪽 색<input id="iC1" type="color" style="padding:2px;height:44px"></label><label>아래쪽 색<input id="iC2" type="color" style="padding:2px;height:44px"></label><label>포인트 색<input id="iC3" type="color" style="padding:2px;height:44px"></label></div>
-  <label>현재 재생 중인 줄 번호(1부터)<input id="iAct" type="number" min="1"></label>
-  <div class="musicbox"><div class="trow"><span>점점 흐려지는 효과</span><label class="sw"><input id="iFd" type="checkbox"><i></i></label></div></div>
-  <h2 style="margin-top:14px">가사</h2><div id="el"></div>
-  <button class="ghost" id="addR" type="button">+ 줄 추가</button>
+  <div class="ps-pn" data-t="기본">
+    <div class="row"><label>곡 제목<input id="iT"></label><label>아티스트<input id="iA"></label></div>
+  </div>
+  <div class="ps-pn" data-t="배경" hidden>
+    <label class="file">앨범 이미지<input id="iArt" type="file" accept="image/*"></label>
+    <div class="musicbox"><div class="trow"><span>앨범 이미지에서 색 자동 추출</span><label class="sw"><input id="iAuto" type="checkbox"><i></i></label></div></div>
+    <div class="row"><label>위쪽 색<input id="iC1" type="color" style="padding:2px;height:44px"></label><label>아래쪽 색<input id="iC2" type="color" style="padding:2px;height:44px"></label><label>포인트 색<input id="iC3" type="color" style="padding:2px;height:44px"></label></div>
+  </div>
+  <div class="ps-pn" data-t="가사" hidden>
+    <label>현재 재생 중인 줄 번호(1부터)<input id="iAct" type="number" min="1"></label>
+    <div class="musicbox"><div class="trow"><span>점점 흐려지는 효과</span><label class="sw"><input id="iFd" type="checkbox"><i></i></label></div></div>
+    <div id="el"></div>
+    <button class="ghost" id="addR" type="button">+ 줄 추가</button>
+  </div>
 </section></div><div class="ps-acts"><button id="savePng" class="primary">PNG 저장</button><button id="reset" class="secondary">초기화</button></div></section>
 </div></div>
 <script src="https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js"></script>

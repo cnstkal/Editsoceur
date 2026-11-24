@@ -1,39 +1,27 @@
-*{box-sizing:border-box}
-body{margin:0;background:#f2f3f5;color:#111;font-family:Pretendard,-apple-system,"Apple SD Gothic Neo","Noto Sans KR",sans-serif;letter-spacing:-.02em}
-.wrap{max-width:1100px;margin:0 auto;padding:40px 24px;display:grid;grid-template-columns:1.2fr 1fr;gap:24px}
-.card{background:#fff;border-radius:26px;padding:32px;min-width:0}
-.lbl{font-size:12px;letter-spacing:.14em;color:#8a8f98;text-transform:uppercase}
-h2{font-size:24px;font-weight:700;margin:8px 0 20px}
-.stage{display:flex;justify-content:center}
-#snap{position:relative;width:270px;height:480px;background:#fff;overflow:hidden;color:#000;letter-spacing:-.02em;box-shadow:0 2px 12px rgba(0,0,0,.25)}
+#snap{position:relative;width:270px;height:auto;min-height:480px;background:#fff;overflow:hidden;color:#000;letter-spacing:-.02em;box-shadow:0 2px 12px rgba(0,0,0,.25)}
 #snap *{letter-spacing:-.02em}
+.sp{display:block;height:480px;visibility:hidden}
+.stage{display:flex;justify-content:center}
 #snap h1{position:absolute;left:12px;top:9px;margin:0;font-size:17px;font-weight:800;line-height:22px}
-.av{position:absolute;left:234px;top:8px;width:22px;height:22px;border-radius:50%;object-fit:cover}
-.pl{position:absolute;left:12.400px;top:40px;width:246px;display:grid;grid-template-columns:repeat(3,76px);gap:0 8px;grid-auto-rows:98px}
+.av{position:absolute;left:236px;top:8px;width:22px;height:22px;border-radius:50%;object-fit:cover}
+.pl{position:absolute;left:12px;top:40px;width:246px;display:grid;grid-template-columns:repeat(3,76px);gap:0 8px;grid-auto-rows:98px}
 .pl div{text-align:center;font-size:5.500px;font-weight:700;line-height:8px}
 .pl img{display:block;width:76px;height:75px;border-radius:6px;object-fit:cover;margin-bottom:3px}
 .pl span{display:block;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-.pl div:nth-child(n+4){margin-top:0}
-.ls>div{position:absolute;left:19px;height:30px;display:flex;align-items:center;width:240px;margin-top:-8px}
+.ls>div{position:absolute;left:12px;height:30px;display:flex;align-items:center;width:246px;margin-top:-8px}
 .ls>div svg{flex:none;margin-right:11px}
 .ls>div span{font-size:8px;line-height:10px}
 .ls>div::after{content:"";position:absolute;right:7px;top:11px;width:4px;height:4px;border-top:1px solid #8a8a8e;border-right:1px solid #8a8a8e;transform:rotate(45deg)}
 .ls i{position:absolute;left:36px;right:12px;border-top:1px solid #e6e6e9}
 #snap h3{position:absolute;left:12px;top:405px;margin:0;font-size:11px;font-weight:700;line-height:14px}
-.ra{position:absolute;left:12.400px;top:426px;display:flex;gap:7.600px}
+.ra{position:absolute;left:12px;top:426px;display:flex;gap:8px}
 .ra img{width:118px;height:118px;border-radius:5px;object-fit:cover;display:block}
-label{display:block;font-size:14px;font-weight:600;color:#444;margin-bottom:14px}
-input:not([type=file]){display:block;width:100%;height:44px;margin-top:8px;padding:0 12px;border:1px solid #e3e5e8;border-radius:12px;font:inherit;font-size:15px}
-.row{display:flex;gap:12px}.row label{flex:1;min-width:0}
-label.f{display:flex;align-items:center;justify-content:space-between;gap:12px}
-label.f input{width:55%;font-size:12px}
-.g{border:1px solid #e9eaee;border-radius:16px;padding:14px;margin-bottom:12px}
+.g{border:1px solid #e9eaee;border-radius:16px;padding:14px;margin:0 0 12px}
 .g h3{margin:0 0 10px;font-size:15px}
 .it{display:flex;gap:8px;align-items:center;margin-bottom:8px}
 .it b{font-size:12px;color:#888;width:14px}
-.it input:not([type=file]){margin:0;height:36px;font-size:13px;flex:1;min-width:0}
+.it input:not([type=checkbox]){margin:0;height:36px;font-size:13px;flex:1;min-width:0}
 .it input[type=file]{width:48%;font-size:11px}
-.acts{display:flex;gap:10px;margin-top:8px}
+.acts{display:flex;gap:10px;margin-top:20px}
 .acts button{height:52px;border:0;border-radius:14px;font:inherit;font-size:15px;font-weight:700;cursor:pointer}
 #reset{flex:1;background:#f2f3f5}#save{flex:1.6;background:#e8457a;color:#fff}
-@media(max-width:860px){.wrap{grid-template-columns:1fr;padding:12px}.card{padding:20px}}

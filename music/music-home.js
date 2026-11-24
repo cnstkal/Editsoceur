@@ -6,8 +6,8 @@ var P=u('<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 76 75" preserveAsp
 var R=u('<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 118 118" preserveAspectRatio="xMidYMid slice">'+H+'<rect width="118" height="118" fill="url(#g)"/><g fill="#fff"><rect x="42" y="10" width="42" height="14" rx="7"/><circle cx="56" cy="11" r="9"/></g><path d="M0 44c25-12 55-10 118 2v72H0z" fill="#c2e083"/><path d="M0 52c30-12 70-8 118 8v58H0z" fill="#87a80a"/></svg>');
 var S;
 function init(){
-var p=[];for(var i=0;i<6;i++)p.push({t:'playlist',i:P});
-S={t:'Library',h:'Recently Added',av:P,P:p,R:[{i:R},{i:R}]};
+var p=[];for(var i=0;i<6;i++)p.push({t:'플레이리스트',i:P});
+S={t:'보관함',h:'최근 추가',av:P,P:p,R:[{i:R},{i:R}]};
 $('iT').value=S.t;$('iH').value=S.h;$('fAv').value='';
 ed();draw();
 }
@@ -16,6 +16,7 @@ function draw(){
 $('vT').textContent=S.t;$('vH').textContent=S.h;$('vAv').src=S.av;
 $('pl').innerHTML=S.P.map(function(x){return '<div><img src="'+x.i+'"><span>'+e(x.t)+'</span></div>'}).join('');
 $('ra').innerHTML=S.R.map(function(x){return '<img src="'+x.i+'">'}).join('');
+$('sp').style.height=Math.max(480,$('ra').offsetTop+$('ra').offsetHeight+14)+'px';
 }
 function ed(){
 $('edP').innerHTML=S.P.map(function(x,i){return '<div class="it"><b>'+(i+1)+'</b><input data-i="'+i+'" value="'+e(x.t)+'"><input type="file" accept="image/*" data-g="P" data-i="'+i+'"></div>'}).join('');

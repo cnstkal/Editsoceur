@@ -1,7 +1,7 @@
 (function(){
 var $=function(i){return document.getElementById(i)};
-var DEF={title:"My Playlist",owner:"name",up:"Updated Today",cover:"",scov:"",tag:"PLAYLIST",key:"속보",tick:"오늘의 플레이리스트가 업데이트되었습니다 · 지금 바로 재생",live:true,
-songs:[1,2,3,4,5,6,7,8,9].map(function(){return{t:"Song name",s:"Singer",img:""}})};
+var DEF={title:"나의 플레이리스트",owner:"이름",up:"오늘 업데이트",cover:"",scov:"",
+songs:[1,2,3,4,5,6,7,8,9].map(function(){return{t:"곡 제목",s:"가수",img:""}})};
 var D=JSON.parse(JSON.stringify(DEF));
 
 function bg(el,img){el.style.background=img?"url("+img+") center/cover":""}
@@ -9,8 +9,6 @@ function rd(f,cb){if(!f)return;var r=new FileReader();r.onload=function(){cb(r.r
 
 function render(){
   $("vTitle").textContent=D.title;$("vOwner").textContent=D.owner;$("vUp").textContent=D.up;
-  $("vTag").textContent=D.tag;$("vKey").textContent=D.key;$("vTick").textContent=D.tick;
-  $("vLive").style.display=D.live?"":"none";
   bg($("vCv"),D.cover);
   var ul=$("vList");ul.innerHTML="";
   D.songs.forEach(function(s){
@@ -22,8 +20,7 @@ function render(){
 }
 
 function bind(id,k){$(id).oninput=function(){D[k]=this.value;render()}}
-[["iTitle","title"],["iOwner","owner"],["iUp","up"],["iTag","tag"],["iKey","key"],["iTick","tick"]].forEach(function(a){bind(a[0],a[1])});
-$("iLive").onchange=function(){D.live=this.checked;render()};
+[["iTitle","title"],["iOwner","owner"],["iUp","up"]].forEach(function(a){bind(a[0],a[1])});
 $("iCover").onchange=function(){rd(this.files[0],function(d){D.cover=d;render()})};
 $("iScov").onchange=function(){rd(this.files[0],function(d){D.scov=d;render()})};
 $("clrCover").onclick=function(){D.cover="";$("iCover").value="";render()};
@@ -43,11 +40,10 @@ function songs(){
     box.appendChild(c);
   });
 }
-$("addSong").onclick=function(){if(D.songs.length>=9)return;D.songs.push({t:"Song name",s:"Singer",img:""});songs();render()};
+$("addSong").onclick=function(){if(D.songs.length>=9)return;D.songs.push({t:"곡 제목",s:"가수",img:""});songs();render()};
 
 function fill(){
   $("iTitle").value=D.title;$("iOwner").value=D.owner;$("iUp").value=D.up;
-  $("iTag").value=D.tag;$("iKey").value=D.key;$("iTick").value=D.tick;$("iLive").checked=D.live;
   ["iCover","iScov"].forEach(function(i){$(i).value=""});
   songs();render();
 }
