@@ -126,7 +126,7 @@
   function savePng(btn, mode) {
     var transparent = mode === "tp", bgOnly = mode === "bg";
     var t = btn.textContent, cap = $("cap"); btn.disabled = true; btn.textContent = "저장 중...";
-    if (transparent) cap.classList.add("tp"); if (bgOnly) cap.classList.add("bgonly");
+    
     fit();
     snap(cap).then(function (c) {
       c.toBlob(function (bl) {
@@ -135,10 +135,17 @@
         document.body.appendChild(a); a.click(); a.remove();
       });
     }).catch(function () { alert("PNG 저장에 실패했습니다."); })
-      .then(function () { cap.classList.remove("tp", "bgonly"); btn.disabled = false; btn.textContent = t; });
+      .then(function () { btn.disabled = false; btn.textContent = t; });
   }
-  $("save").onclick = function () { savePng(this, "full"); };
-  $("saveT").onclick = function () { savePng(this, "tp"); };
-  $("saveBg").onclick = function () { savePng(this, "bg"); };
+  var MODE = "full";
+  function setMode(m) {
+    MODE = MODE === m ? "full" : m;
+    var cap = $("cap");
+    cap.classList.toggle("tp", MODE === "tp"); cap.classList.toggle("bgonly", MODE === "bg");
+    $("modeT").classList.toggle("on", MODE === "tp"); $("modeBg").classList.toggle("on", MODE === "bg");
+  }
+  $("modeT").onclick = function () { setMode("tp"); };
+  $("modeBg").onclick = function () { setMode("bg"); };
+  $("save").onclick = function () { savePng(this, MODE); };
   load(false);
 })();

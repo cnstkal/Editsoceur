@@ -48,6 +48,15 @@ body.studio{max-width:none;padding:0;margin:0}
   body.studio .ps-main{padding:28px 32px}
 }
 
+/* ===== 저장 버튼 영역 ===== */
+.ps-acts{display:flex;flex-direction:column;gap:14px;margin-top:22px}
+.ps-acts .ps-modes,.ps-acts .ps-savers{display:flex;gap:14px}
+.ps-acts .ps-modes button,.ps-acts .ps-savers button{flex:1;min-width:0;height:56px;padding:0 16px;border:0;border-radius:16px;font:inherit;font-size:16px;font-weight:700;white-space:nowrap;cursor:pointer}
+.ps-acts .mode{background:#f2f3f5;color:#222}
+.ps-acts .mode.on{background:#fde8ef;color:#e8457a;box-shadow:inset 0 0 0 2px #e8457a}
+.ps-acts .ps-savers #reset{background:#f2f3f5;color:#222}
+.ps-acts .ps-savers #save{background:#e8457a;color:#fff}
+
 /* ===== 편집기 ===== */
 .editor{max-width:560px;margin:0 auto;padding:20px 2px 0;font-size:14px}.editor h2{font-size:17px;margin:14px 0 10px}
 .editor label{display:block;font-weight:600;margin-bottom:10px;font-size:13px}
