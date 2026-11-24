@@ -38,7 +38,7 @@
   <h2>당근 채팅 편집</h2>
   <div class="row"><label>시간<input id="iTime"></label><label>상대 이름<input id="iNm"></label></div>
   <div class="row"><label>매너온도<input id="iTp"></label><label>부제<input id="iSub"></label></div>
-  <label>상품 사진<input id="iTh" type="file" accept="image/*"></label>
+  <div class="upl"><div class="upl-th"><img alt=""><span>없음</span></div><div class="upl-body"><span class="upl-label">상품 사진</span><b class="upl-name">선택된 파일 없음</b><label class="upl-btn">변경<input id="iTh" type="file" accept="image/*"></label></div></div>
   <div class="row"><label>거래 상태<input id="iSt"></label><label>가격<input id="iPr"></label></div>
   <label>상품 제목<input id="iPt"></label>
   <h2 style="margin-top:14px">메시지</h2><div id="el"></div>
@@ -50,5 +50,5 @@
 <script src="chat.js?v=1"></script>
 <script>(function(){var b=document.getElementById("pvBtn");b.onclick=function(){var on=document.body.classList.toggle("pvmode");this.textContent=on?"편집 모드":"미리보기 모드"}})();</script>
 <script src="studio.js?v=1"></script>
-<script src="../back-anim.js?v=1" defer></script></body>
+<script src="../back-anim.js?v=1" defer></script><script src="../upl.js?v=1" defer></script></body>
 </html>

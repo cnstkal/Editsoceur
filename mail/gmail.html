@@ -53,7 +53,7 @@
     <label>보낸 사람<input id="iFrom"></label>
     <label>받는 사람 문구<input id="iTo"></label>
     <label>시간 문구<input id="iTime"></label>
-    <label>프로필 사진<input id="iAv" type="file" accept="image/*"></label>
+    <div class="upl"><div class="upl-th"><img alt=""><span>없음</span></div><div class="upl-body"><span class="upl-label">프로필 사진</span><b class="upl-name">선택된 파일 없음</b><label class="upl-btn">변경<input id="iAv" type="file" accept="image/*"></label></div></div>
   </div>
   <div class="pn" hidden>
     <label class="tx">본문<textarea id="iBody" rows="12"></textarea></label>
@@ -66,5 +66,5 @@
 </div>
 <script src="https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js"></script>
 <script src="gmail.js"></script>
-</body>
+<script src="../upl.js?v=1" defer></script></body>
 </html>

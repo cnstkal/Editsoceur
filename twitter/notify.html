@@ -22,7 +22,7 @@
 <section class="ps-card ps-side"><div class="ps-lbl">Edit Panel</div><h2>알림 내용 수정</h2><div class="ps-edwrap"><section class="editor">
 <div class="ps-pn" data-t="기본">
     <div class="grid2">
-      <label>내 프로필 사진<input id="avatarFile" type="file" accept="image/*"></label>
+      <div class="upl"><div class="upl-th"><img alt=""><span>없음</span></div><div class="upl-body"><span class="upl-label">내 프로필 사진</span><b class="upl-name">선택된 파일 없음</b><label class="upl-btn">변경<input id="avatarFile" type="file" accept="image/*"></label></div></div>
     </div>
     <label>선택된 탭<select id="sel"><option value="1">모두</option><option value="2">멘션</option></select></label>
 </div>
@@ -42,5 +42,5 @@
 <script src="common.js"></script>
 <script>(function(){var b=document.getElementById("pvBtn");b.onclick=function(){var on=document.body.classList.toggle("pvmode");this.textContent=on?"편집 모드":"미리보기 모드"}})();</script>
 <script src="studio.js?v=1"></script>
-<script src="../back-anim.js?v=1" defer></script></body>
+<script src="../back-anim.js?v=1" defer></script><script src="../upl.js?v=1" defer></script></body>
 </html>

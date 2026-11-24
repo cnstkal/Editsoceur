@@ -27,10 +27,10 @@
   <div class="row"><label>링크 이름<input id="iLk"></label><label>링크 주소<input id="iLu" placeholder="https://"></label></div>
 </div>
 <div class="ps-pn" data-t="영상" hidden>
-  <label>프로필 사진<input id="iAv" type="file" accept="image/*"></label>
+  <div class="upl"><div class="upl-th"><img alt=""><span>없음</span></div><div class="upl-body"><span class="upl-label">프로필 사진</span><b class="upl-name">선택된 파일 없음</b><label class="upl-btn">변경<input id="iAv" type="file" accept="image/*"></label></div></div>
   <h2>대표 영상</h2>
   <div class="row"><label>제목<input id="iFt"></label><label>조회수 · 시기<input id="iFm"></label></div>
-  <label>대표 영상 썸네일<input id="iFth" type="file" accept="image/*"></label>
+  <div class="upl"><div class="upl-th"><img alt=""><span>없음</span></div><div class="upl-body"><span class="upl-label">대표 영상 썸네일</span><b class="upl-name">선택된 파일 없음</b><label class="upl-btn">변경<input id="iFth" type="file" accept="image/*"></label></div></div>
   <h2>추천 영상</h2><label>섹션 제목<input id="iSc"></label><div id="xlist"></div>
   <button class="ghost" id="addV" type="button">+ 영상 추가</button>
 </div>
@@ -41,5 +41,5 @@
 <script src="back.js?v=1"></script>
 <script>(function(){var b=document.getElementById("pvBtn");b.onclick=function(){var on=document.body.classList.toggle("pvmode");this.textContent=on?"편집 모드":"미리보기 모드"}})();</script>
 <script src="studio.js?v=1"></script>
-<script src="../back-anim.js?v=1" defer></script></body>
+<script src="../back-anim.js?v=1" defer></script><script src="../upl.js?v=1" defer></script></body>
 </html>

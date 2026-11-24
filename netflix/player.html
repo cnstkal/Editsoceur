@@ -24,7 +24,7 @@
 <section class="ps-card ps-side"><div class="ps-lbl">Edit Panel</div><h2>넷플릭스 재생 내용 수정</h2><div class="ps-edwrap"><section class="editor">
 <div class="ps-pn" data-t="기본">
 <h2>재생화면 편집</h2>
-<div class="row"><label>배경 사진(그린스크린)<input id="iBg" type="file" accept="image/*"></label><label class="xk"><input id="iClr" type="checkbox"> 초록 복원</label></div>
+<div class="row"><div class="upl"><div class="upl-th"><img alt=""><span>없음</span></div><div class="upl-body"><span class="upl-label">배경 사진(그린스크린)</span><b class="upl-name">선택된 파일 없음</b><label class="upl-btn">변경<input id="iBg" type="file" accept="image/*"></label></div></div><label class="xk"><input id="iClr" type="checkbox"> 초록 복원</label></div>
 <div class="row"><label>제목<input id="iTi"></label><label>남은 시간<input id="iTm"></label></div>
 <div class="row"><label>진행(%)<input id="iPg"></label><label>밝기(%)<input id="iBr"></label></div>
 <label>자막<input id="iSb"></label>
@@ -36,5 +36,5 @@
 <script src="player.js?v=1"></script>
 <script>(function(){var b=document.getElementById("pvBtn");b.onclick=function(){var on=document.body.classList.toggle("pvmode");this.textContent=on?"편집 모드":"미리보기 모드"}})();</script>
 <script src="studio.js?v=1"></script>
-<script src="../back-anim.js?v=1" defer></script></body>
+<script src="../back-anim.js?v=1" defer></script><script src="../upl.js?v=1" defer></script></body>
 </html>

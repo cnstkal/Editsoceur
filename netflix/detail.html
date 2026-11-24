@@ -61,7 +61,7 @@
 <label>에피소드 문구<input id="iEp"></label>
 </div>
 <div class="ps-pn" data-t="작품" hidden>
-<div class="row"><label>영상 이미지<input id="iVi" type="file" accept="image/*"></label><label>진행(%)<input id="iPg"></label></div>
+<div class="row"><div class="upl"><div class="upl-th"><img alt=""><span>없음</span></div><div class="upl-body"><span class="upl-label">영상 이미지</span><b class="upl-name">선택된 파일 없음</b><label class="upl-btn">변경<input id="iVi" type="file" accept="image/*"></label></div></div><label>진행(%)<input id="iPg"></label></div>
 <label>자막(줄바꿈 가능)<textarea id="iSb" rows="2"></textarea></label>
 <label>설명<textarea id="iDs" rows="3"></textarea></label>
 <div class="row"><label>출연<input id="iCs"></label><label>크리에이터<input id="iCr"></label></div>
@@ -75,5 +75,5 @@
 <script src="detail.js?v=1"></script>
 <script>(function(){var b=document.getElementById("pvBtn");b.onclick=function(){var on=document.body.classList.toggle("pvmode");this.textContent=on?"편집 모드":"미리보기 모드"}})();</script>
 <script src="studio.js?v=1"></script>
-<script src="../back-anim.js?v=1" defer></script></body>
+<script src="../back-anim.js?v=1" defer></script><script src="../upl.js?v=1" defer></script></body>
 </html>

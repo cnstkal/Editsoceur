@@ -63,7 +63,7 @@
     <label>이름<input id="iName"></label>
     <label>소개<input id="iBio"></label>
     <label>링크<input id="iLink"></label>
-    <label>프로필 사진<input id="iAv" type="file" accept="image/*"></label>
+    <div class="upl"><div class="upl-th"><img alt=""><span>없음</span></div><div class="upl-body"><span class="upl-label">프로필 사진</span><b class="upl-name">선택된 파일 없음</b><label class="upl-btn">변경<input id="iAv" type="file" accept="image/*"></label></div></div>
   </div>
   <div class="pn" hidden>
     <label>게시물 사진 (여러 장)<input id="iPics" type="file" accept="image/*" multiple></label>
@@ -84,5 +84,5 @@
 </div>
 <script src="https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js"></script>
 <script src="old-instagram.js"></script>
-</body>
+<script src="../upl.js?v=1" defer></script></body>
 </html>

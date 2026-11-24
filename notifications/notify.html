@@ -32,7 +32,7 @@
     <div class="ps-pn" data-t="아이콘" hidden>
     <h2>아이콘</h2>
     <label>아이콘 종류<select id="iconStyle"><option value="normal">기본 (앱 아이콘만)</option><option value="small">작은 아이콘 (프사 + 앱 아이콘)</option></select></label>
-    <label>앱 아이콘 직접 넣기<input id="appImgFile" type="file" accept="image/*"></label>
+    <div class="upl"><div class="upl-th"><img alt=""><span>없음</span></div><div class="upl-body"><span class="upl-label">앱 아이콘 직접 넣기</span><b class="upl-name">선택된 파일 없음</b><label class="upl-btn">변경<input id="appImgFile" type="file" accept="image/*"></label></div></div>
     <button id="appImgClear" type="button" class="sub">기본 앱 아이콘으로 되돌리기</button>
     <label id="avatarRow" style="display:none">프사 넣기<input id="avatarFile" type="file" accept="image/*"></label>
     </div>
@@ -43,5 +43,5 @@
 <script src="notify.js?v=2026112503"></script>
 <script>(function(){var b=document.getElementById("pvBtn");b.onclick=function(){var on=document.body.classList.toggle("pvmode");this.textContent=on?"편집 모드":"미리보기 모드"}})();</script>
 <script src="studio.js?v=1"></script>
-<script src="../back-anim.js?v=1" defer></script></body>
+<script src="../back-anim.js?v=1" defer></script><script src="../upl.js?v=1" defer></script></body>
 </html>

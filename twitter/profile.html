@@ -39,8 +39,8 @@
       <label>팔로워<input id="followers" type="text"></label>
     </div>
     <div class="grid2">
-      <label>프로필 사진<input id="avatarFile" type="file" accept="image/*"></label>
-      <label>배너 사진<input id="bannerFile" type="file" accept="image/*"></label>
+      <div class="upl"><div class="upl-th"><img alt=""><span>없음</span></div><div class="upl-body"><span class="upl-label">프로필 사진</span><b class="upl-name">선택된 파일 없음</b><label class="upl-btn">변경<input id="avatarFile" type="file" accept="image/*"></label></div></div>
+      <div class="upl"><div class="upl-th"><img alt=""><span>없음</span></div><div class="upl-body"><span class="upl-label">배너 사진</span><b class="upl-name">선택된 파일 없음</b><label class="upl-btn">변경<input id="bannerFile" type="file" accept="image/*"></label></div></div>
     </div>
     <div class="switches">
       <label class="sw"><input id="lock" type="checkbox"><span class="knob"></span>자물쇠</label>
@@ -62,5 +62,5 @@
 <script src="common.js"></script>
 <script>(function(){var b=document.getElementById("pvBtn");b.onclick=function(){var on=document.body.classList.toggle("pvmode");this.textContent=on?"편집 모드":"미리보기 모드"}})();</script>
 <script src="studio.js?v=1"></script>
-<script src="../back-anim.js?v=1" defer></script></body>
+<script src="../back-anim.js?v=1" defer></script><script src="../upl.js?v=1" defer></script></body>
 </html>

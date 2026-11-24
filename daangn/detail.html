@@ -40,8 +40,8 @@
 <section class="ps-card ps-side"><div class="ps-lbl">Edit Panel</div><h2>당근 상세 내용 수정</h2><div class="ps-edwrap"><section class="editor">
   <h2>제품 상세 편집</h2>
   <div class="row"><label>시간<input id="iTime"></label><label>스크롤(0=맨 위, 1215=아래로)<input id="iSc" type="number" min="0"></label></div>
-  <label>대표 사진<input id="iIm" type="file" accept="image/*"></label>
-  <div class="row"><label>사진 번호<input id="iPg"></label><label>프로필 사진<input id="iAv" type="file" accept="image/*"></label></div>
+  <div class="upl"><div class="upl-th"><img alt=""><span>없음</span></div><div class="upl-body"><span class="upl-label">대표 사진</span><b class="upl-name">선택된 파일 없음</b><label class="upl-btn">변경<input id="iIm" type="file" accept="image/*"></label></div></div>
+  <div class="row"><label>사진 번호<input id="iPg"></label><div class="upl"><div class="upl-th"><img alt=""><span>없음</span></div><div class="upl-body"><span class="upl-label">프로필 사진</span><b class="upl-name">선택된 파일 없음</b><label class="upl-btn">변경<input id="iAv" type="file" accept="image/*"></label></div></div></div>
   <div class="row"><label>판매자<input id="iSn"></label><label>동네<input id="iLoc"></label></div>
   <div class="row"><label>매너온도<input id="iTp"></label><label>제목<input id="iTl"></label></div>
   <div class="row"><label>가격<input id="iPc"></label><label>페이 표시<select id="iPay"><option value="1">표시</option><option value="0">숨김</option></select></label></div>
@@ -55,5 +55,5 @@
 <script src="detail.js?v=1"></script>
 <script>(function(){var b=document.getElementById("pvBtn");b.onclick=function(){var on=document.body.classList.toggle("pvmode");this.textContent=on?"편집 모드":"미리보기 모드"}})();</script>
 <script src="studio.js?v=1"></script>
-<script src="../back-anim.js?v=1" defer></script></body>
+<script src="../back-anim.js?v=1" defer></script><script src="../upl.js?v=1" defer></script></body>
 </html>
