@@ -1,17 +1,27 @@
 <!DOCTYPE html>
 <html lang="ko"><head><meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-<title>SoundCloud Playback Studio</title>
+<title>SoundCloud 재생 화면</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.css">
 <link rel="stylesheet" href="SoundCloudPlayback.css">
 </head><body>
-<div class="studio">
-  <div class="preview-col"><div class="device"><iframe id="preview" title="preview"></iframe></div></div>
-  <button id="editToggle" class="edit-btn">✎ Edit</button>
-  <div class="panel" id="panel">
-    <div class="tabs"><button data-t="html" class="on">HTML</button><button data-t="css">CSS</button><button data-t="js">JavaScript</button></div>
+<div class="ps-wrap">
+<div class="ps-grid">
+  <section class="ps-card ps-main">
+    <div class="ps-lbl">Live Preview</div>
+    <h2>SoundCloud 재생 화면</h2>
+    <p class="ps-sub">화면을 확인하고, 오른쪽에서 바로 수정해요</p>
+    <div class="ps-stage"><div class="scr"><iframe id="preview" title="preview"></iframe></div></div>
+  </section>
+  <button id="editToggle" class="edit-btn" type="button">✎ 수정</button>
+  <section class="ps-card ps-side" id="panel">
+    <div class="ps-lbl">Edit Panel</div>
+    <h2>코드 수정</h2>
+    <div class="tabs"><button data-t="html" class="on" type="button">HTML</button><button data-t="css" type="button">CSS</button><button data-t="js" type="button">JavaScript</button></div>
     <textarea id="ed" spellcheck="false" wrap="off"></textarea>
-    <div class="bar"><button id="apply">Apply</button><button id="save">Save</button><button id="reset">Reset</button><button id="png">Export PNG</button></div>
-  </div>
+    <div class="bar"><button id="apply" type="button">적용</button><button id="save" type="button">저장</button><button id="reset" type="button">초기화</button><button id="png" type="button">PNG 저장</button></div>
+  </section>
+</div>
 </div>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
 <script src="SoundCloudPlayback.js"></script>
