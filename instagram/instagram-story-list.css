@@ -26,5 +26,6 @@ h2{font-size:24px;font-weight:700;margin:8px 0 20px}
 #reset{flex:1;background:#f2f3f5}#save{flex:1.6;background:#e8457a;color:#fff}
 @media(max-width:860px){.wrap{grid-template-columns:1fr;padding:12px}.card{padding:20px}}
 /* 프리뷰 화면: 4:3 프레임 (세로 내용은 길이 제한 없이 위에서부터 보임) */
-.stage{position:relative;width:100%;aspect-ratio:4/3;overflow:hidden;display:block;justify-content:initial}
+.stage{position:relative;width:100%;aspect-ratio:9/16;overflow:hidden;display:block;justify-content:initial}
 #snap{position:absolute;left:0;top:0;transform-origin:0 0}
+body.studio .ps-main .stage.ps-stage{width:100%;max-width:360px;margin-inline:auto!important;background:none!important}

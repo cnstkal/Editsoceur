@@ -17,7 +17,7 @@
     $('rlRing').classList.toggle('off',!S.ring);$('rlTop').style.display=S.hd?'':'none';
     $('rl').style.background=G.ph?'#000':'#00b140'}
   function load(){S=JSON.parse(JSON.stringify(DEF));G={};for(var f in FI)$(f).value='';set();render()}
-  Object.keys(FI).forEach(function(f){$(f).onchange=function(){var x=this.files[0];if(!x)return;var r=new FileReader();r.onload=function(){G[FI[f]]=r.result;render()};r.readAsDataURL(x)}});
+  Object.keys(FI).forEach(function(f){$(f).onchange=function(){var x=this.files[0];if(!x)return;var fn=function(d){G[FI[f]]=d;render()};if(f==='iPhoto'){var r=new FileReader();r.onload=function(){fn(r.result)};r.readAsDataURL(x)}else IGImg.read(x,fn)}});
   document.querySelectorAll('.editor input:not([type=file])').forEach(function(e){
     e.addEventListener('input',function(){read();render()});e.addEventListener('change',function(){read();render()})});
   $('reset').onclick=load;

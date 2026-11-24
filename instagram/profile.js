@@ -28,9 +28,9 @@
     $('vMav').innerHTML=a;
     var g='';for(var j=0;j<S.cnt;j++)g+='<div class="cell"'+(ph[j]?' style="background-image:url('+ph[j]+')"':'')+'>'+(S.mi[j]&&ph[j]?ICON:'')+'</div>';
     $('grid').innerHTML=g}
-  $('iAv').onchange=function(){if(this.files[0])rd(this.files[0],function(d){av=d;render()})};
+  $('iAv').onchange=function(){if(this.files[0])IGImg.read(this.files[0],function(d){av=d;render()})};
   document.querySelectorAll('[data-m]').forEach(function(inp){
-    inp.onchange=function(){var i=+this.dataset.m;if(!this.files[0])return;rd(this.files[0],function(d){mav[i]=d;render()})}});
+    inp.onchange=function(){var i=+this.dataset.m;if(!this.files[0])return;IGImg.read(this.files[0],function(d){mav[i]=d;render()})}});
   document.querySelectorAll('.editor input:not([type=file]),.editor textarea').forEach(function(e){
     e.addEventListener('input',function(){read();render()});e.addEventListener('change',function(){read();render()})});
   $('reset').onclick=load;

@@ -33,3 +33,7 @@
 .w.s .hrt{left:auto;right:8px}.m.hh{margin-bottom:12px}
 .mi{flex-wrap:wrap}.editor .mi .fl{flex:1 1 110px;min-width:0;margin:0}.editor .mi .fl input{margin-top:0}
 .tg{font-weight:600;font-size:13px;flex:none}
+.ph.typed{color:#000}
+.w.pw{width:62%;max-width:none}.w.pw .pic{display:block;width:100%;height:auto;border-radius:22px}
+#dm.nobg{background:transparent}#dm.nobg .dh,#dm.nobg .inp{display:none}
+body.dm-off .phone{background:repeating-conic-gradient(#ddd 0 25%,#fff 0 50%) 0 0/20px 20px}

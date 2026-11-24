@@ -54,7 +54,7 @@ button{background:none;border:0;font:inherit;letter-spacing:inherit;color:inheri
 .tag{display:block;color:#3347e8;text-decoration:none}
 .ago{color:#737373;font-size:13px;margin-top:6px}
 /* 아이콘 줄: 어떤 폭에서도 절대 두 줄이 되지 않도록 고정 */
-.actions{flex-wrap:nowrap;gap:clamp(8px,3.2vw,13px);padding:4px clamp(10px,3.1vw,13px) 0}
+.actions{flex-wrap:nowrap;gap:clamp(8px,3.2vw,13px);padding:10px clamp(10px,3.1vw,13px) 0}
 .act{flex:0 0 auto;gap:clamp(3px,1.3vw,6px);font-size:clamp(13px,4vw,16px);line-height:1}
 .act b{display:inline-block;white-space:nowrap;word-break:keep-all;overflow-wrap:normal;font-weight:700}
 .act svg{width:clamp(24px,7.2vw,30px);height:auto;aspect-ratio:1}
@@ -101,3 +101,4 @@ input,textarea,select{font-size:16px!important}
 
 .navbar{height:44px;display:flex;align-items:center;padding:0 14px;background:#fff;border-bottom:1px solid #efefef}
 .navbar a{color:#0095f6;font-weight:600;font-size:16px;text-decoration:none}
+.minis .mini{position:relative}.minis .mini:nth-child(1){z-index:3}.minis .mini:nth-child(2){z-index:2}.minis .mini:nth-child(3){z-index:1}

@@ -4,8 +4,8 @@ input,textarea,select{font-size:16px!important}
 body{background:#fff;font-family:'Pretendard',-apple-system,sans-serif;letter-spacing:-0.02em;color:#000;display:flex;justify-content:center}
 button{background:none;border:0;font:inherit;letter-spacing:inherit;color:inherit;cursor:pointer}
 .phone{width:100%;max-width:430px;min-height:100vh;background:#fff}
-#story{background:transparent;padding:12px 0 0}
-.frame{position:relative;aspect-ratio:9/16;border-radius:14px;overflow:hidden;background:#000}
+#story{background:#000;padding:0}
+.frame{position:relative;aspect-ratio:9/16;border-radius:0;overflow:hidden;background:#000}
 .frame{touch-action:pan-y;user-select:none;-webkit-user-select:none;cursor:grab}
 .photo{position:absolute;left:50%;top:50%;max-width:none;pointer-events:none;transform-origin:center}
 .empty{position:absolute;inset:0;background:linear-gradient(160deg,#4cf044,#1d6b1a)}

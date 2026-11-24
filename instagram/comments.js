@@ -34,7 +34,7 @@
     var c=S.list[t.closest('.ecard').dataset.i];
     c[k]=t.type==='checkbox'?t.checked:(k==='rep'?Math.max(0,parseInt(t.value)||0):t.value);render()});
   $('eList').addEventListener('change',function(e){var t=e.target;if(t.dataset.av===undefined||!t.files[0])return;
-    rd(t.files[0],function(d){S.list[+t.dataset.av].av=d;render()})});
+    IGImg.read(t.files[0],function(d){S.list[+t.dataset.av].av=d;render()})});
   $('eList').addEventListener('click',function(e){var d=e.target.dataset.del;if(d===undefined)return;
     S.list.splice(+d,1);build();render()});
   $('add').onclick=function(){S.list.push({id:'new_user',ver:false,ring:false,time:'1일',text:'댓글 내용',likes:'0',rep:0,av:null});build();render()};

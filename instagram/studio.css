@@ -293,3 +293,9 @@ body.studio{background:#fff}
   .ps-edwrap .editor .pf-friends{grid-template-columns:repeat(2,minmax(0,1fr))!important}
   .ps-edwrap .editor .pf-friends label:nth-child(3){grid-column:1/-1!important}
 }
+
+/* === 인스타그램 공통: 체크무늬 여백 제거 + 프로필 이미지 === */
+body.studio .ps-main .ps-stage{background:none!important;width:100%;max-width:430px;margin-inline:auto!important}
+body.studio .ps-main .ps-frame{display:block;width:100%}
+body.studio .ps-main .ps-frame>.phone{width:100%!important;max-width:100%!important;margin:0!important}
+.avatar,.hav,.mav,.mav i,.mini,.av,.av i,.rlav i,.rlring i,.me,.rh i{background-size:cover;background-position:center;background-repeat:no-repeat;border-radius:50%}

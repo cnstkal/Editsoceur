@@ -5,8 +5,8 @@
 <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no,viewport-fit=cover"><script src="../nozoom.js?v=1"></script>
 <title>Instagram 스토리</title>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.css">
-<link rel="stylesheet" href="story.css?v=3">
-<style data-hide-status>:is(span,b)[id$="Time"],#eTm,.isl,.ys,.ysig,.ywf,.ybt,.dsg,.dwf,#df .dbt,.msg,.mwf,.mbt,.ewf,.ebt,.nwf,.nbt,.sb:has([id$="Time"])>svg:not(.lc),.sb:has([id$="Time"])+.bt,.sb:has([id$="Time"]) .bt{display:none!important}</style><style id="ed-font">html,body,body *{font-family:Pretendard,-apple-system,"Apple SD Gothic Neo","Noto Sans KR",sans-serif!important;letter-spacing:-.02em!important}</style><link rel="stylesheet" href="studio.css?v=3">
+<link rel="stylesheet" href="story.css?v=4">
+<style data-hide-status>:is(span,b)[id$="Time"],#eTm,.isl,.ys,.ysig,.ywf,.ybt,.dsg,.dwf,#df .dbt,.msg,.mwf,.mbt,.ewf,.ebt,.nwf,.nbt,.sb:has([id$="Time"])>svg:not(.lc),.sb:has([id$="Time"])+.bt,.sb:has([id$="Time"]) .bt{display:none!important}</style><style id="ed-font">html,body,body *{font-family:Pretendard,-apple-system,"Apple SD Gothic Neo","Noto Sans KR",sans-serif!important;letter-spacing:-.02em!important}</style><link rel="stylesheet" href="studio.css?v=9">
 <link rel="stylesheet" href="../ps-editor.css?v=10"><style id="pa">body{animation:paIn .28s ease both}body.pa-out{animation:paOut .18s ease forwards}@keyframes paIn{from{opacity:0}to{opacity:1}}@keyframes paOut{to{opacity:0}}@media (prefers-reduced-motion:reduce){body,body.pa-out{animation:none}}</style><script id="pa-js">(function(){document.addEventListener("click",function(e){var a=e.target.closest&&e.target.closest("a[href]");if(!a||e.defaultPrevented||e.button||e.metaKey||e.ctrlKey||e.shiftKey||a.target||a.hasAttribute("download"))return;var h=a.getAttribute("href");if(!h||h[0]==="#"||/^(javascript:|mailto:|tel:)/.test(h))return;var u=new URL(a.href,location.href);if(u.origin!==location.origin)return;e.preventDefault();document.body.classList.add("pa-out");setTimeout(function(){location.href=u.href},180)},true)})();</script></head>
 <body class="studio"><div class="ps-wrap">
 <header class="ps-top"><a class="ps-back" href="index.html">‹ 뒤로</a><button class="ps-pvbtn" id="pvBtn" type="button" hidden>미리보기 모드</button></header>
@@ -50,13 +50,14 @@
   <div class="ps-pn" data-t="이미지" hidden>
     <label class="file">스토리 사진<input id="iPhoto" type="file" accept="image/*"></label>
     <label>사진 확대/축소 (손가락 두 개·마우스 휠도 가능, 드래그로 이동)<input id="iZoom" type="range" min="20" max="500" value="100" style="padding:0"></label>
+    <label>사진 회전 <b id="rotVal">0°</b> (90°·180°·270°·360°에 자석처럼 붙어요)<input id="iRot" type="range" min="0" max="360" value="0" style="padding:0"></label>
     <button class="ghost" id="posReset" type="button">사진 위치·크기 초기화</button>
     <p class="hint">사진 위에서 두 손가락을 벌리거나 모으고 비틀어 확대·축소 및 자유 회전할 수 있어요</p>
   </div>
 </section></div><div class="ps-acts"><button id="savePng" class="primary">PNG 저장</button><button id="reset" class="secondary">초기화</button></div></section>
 </div></div>
 <script src="https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js"></script>
-<script src="story.js?v=4"></script>
+<script src="img.js?v=1"></script><script src="story.js?v=5"></script>
 <script>(function(){var b=document.getElementById("pvBtn");b.onclick=function(){var on=document.body.classList.toggle("pvmode");this.textContent=on?"편집 모드":"미리보기 모드"}})();</script>
 <script src="studio.js?v=1"></script>
 <script src="../back-anim.js?v=1" defer></script></body>

@@ -16,8 +16,7 @@ function setDefaults(){
  av=null;$('iAv').value='';render();
 }
 ['iName','iQ','iBar','iBg'].forEach(function(id){$(id).addEventListener('input',render)});
-$('iAv').addEventListener('change',function(){var f=this.files[0];if(!f)return;var r=new FileReader();
- r.onload=function(e){av=e.target.result;render()};r.readAsDataURL(f)});
+$('iAv').addEventListener('change',function(){var f=this.files[0];if(!f)return;IGImg.read(f,function(d){av=d;render()})});
 
 $('reset').onclick=setDefaults;
 

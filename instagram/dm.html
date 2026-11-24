@@ -5,9 +5,9 @@
 <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no,viewport-fit=cover"><script src="../nozoom.js?v=1"></script>
 <title>Instagram DM</title>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.css">
-<link rel="stylesheet" href="story.css?v=3">
-<link rel="stylesheet" href="dm.css?v=2">
-<style data-hide-status>:is(span,b)[id$="Time"],#eTm,.isl,.ys,.ysig,.ywf,.ybt,.dsg,.dwf,#df .dbt,.msg,.mwf,.mbt,.ewf,.ebt,.nwf,.nbt,.sb:has([id$="Time"])>svg:not(.lc),.sb:has([id$="Time"])+.bt,.sb:has([id$="Time"]) .bt{display:none!important}</style><style id="ed-font">html,body,body *{font-family:Pretendard,-apple-system,"Apple SD Gothic Neo","Noto Sans KR",sans-serif!important;letter-spacing:-.02em!important}</style><link rel="stylesheet" href="studio.css?v=3">
+<link rel="stylesheet" href="story.css?v=4">
+<link rel="stylesheet" href="dm.css?v=3">
+<style data-hide-status>:is(span,b)[id$="Time"],#eTm,.isl,.ys,.ysig,.ywf,.ybt,.dsg,.dwf,#df .dbt,.msg,.mwf,.mbt,.ewf,.ebt,.nwf,.nbt,.sb:has([id$="Time"])>svg:not(.lc),.sb:has([id$="Time"])+.bt,.sb:has([id$="Time"]) .bt{display:none!important}</style><style id="ed-font">html,body,body *{font-family:Pretendard,-apple-system,"Apple SD Gothic Neo","Noto Sans KR",sans-serif!important;letter-spacing:-.02em!important}</style><link rel="stylesheet" href="studio.css?v=9">
 <link rel="stylesheet" href="../ps-editor.css?v=10"><style id="pa">body{animation:paIn .28s ease both}body.pa-out{animation:paOut .18s ease forwards}@keyframes paIn{from{opacity:0}to{opacity:1}}@keyframes paOut{to{opacity:0}}@media (prefers-reduced-motion:reduce){body,body.pa-out{animation:none}}</style><script id="pa-js">(function(){document.addEventListener("click",function(e){var a=e.target.closest&&e.target.closest("a[href]");if(!a||e.defaultPrevented||e.button||e.metaKey||e.ctrlKey||e.shiftKey||a.target||a.hasAttribute("download"))return;var h=a.getAttribute("href");if(!h||h[0]==="#"||/^(javascript:|mailto:|tel:)/.test(h))return;var u=new URL(a.href,location.href);if(u.origin!==location.origin)return;e.preventDefault();document.body.classList.add("pa-out");setTimeout(function(){location.href=u.href},180)},true)})();</script></head>
 <body class="studio"><div class="ps-wrap">
 <header class="ps-top"><a class="ps-back" href="index.html">‹ 뒤로</a><button class="ps-pvbtn" id="pvBtn" type="button" hidden>미리보기 모드</button></header>
@@ -42,18 +42,19 @@
   <div class="ps-pn" data-t="기본">
     <label>상대 이름(닉네임·이모지)<input id="iNick"></label>
     <label>상대 아이디<input id="iId"></label>
-    <label>입력창 문구<input id="iPh"></label>
+    <label>입력창 문구<input id="iPh" placeholder="메시지 보내기…"></label>
     <label class="file">상대 프로필 사진<input id="iAv" type="file" accept="image/*"></label>
+    <div class="ps-tg"><span>배경 (헤더·입력창 포함)</span><label class="sw"><input id="iBg" type="checkbox" checked><i></i></label></div>
   </div>
   <div class="ps-pn" data-t="채팅" hidden>
     <div id="mlist"></div>
     <div class="row" style="margin-bottom:10px"><button class="ghost" id="addR" type="button">+ 상대 말</button><button class="ghost" id="addS" type="button">+ 나 말</button></div>
-    <div class="row"><button class="ghost" id="addP" type="button">+ 사진</button><button class="ghost" id="addV" type="button">+ 릴스</button><button class="ghost" id="addD" type="button">+ 날짜</button></div>
+    <div class="row"><button class="ghost" id="addP" type="button">+ 사진 첨부</button><button class="ghost" id="addV" type="button">+ 릴스</button><button class="ghost" id="addD" type="button">+ 날짜</button></div>
   </div>
 </section></div><div class="ps-acts"><button id="savePng" class="primary">PNG 저장</button><button id="reset" class="secondary">초기화</button></div></section>
 </div></div>
 <script src="https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js"></script><script src="../chat-capture.js"></script>
-<script src="dm.js?v=3"></script>
+<input id="addImg" type="file" accept="image/*" multiple style="display:none"><script src="img.js?v=1"></script><script src="dm.js?v=4"></script>
 <script>(function(){var b=document.getElementById("pvBtn");b.onclick=function(){var on=document.body.classList.toggle("pvmode");this.textContent=on?"편집 모드":"미리보기 모드"}})();</script>
 <script src="studio.js?v=1"></script>
 <script src="../back-anim.js?v=1" defer></script></body>
