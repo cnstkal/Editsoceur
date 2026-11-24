@@ -8,13 +8,13 @@ S={t:'사진',s:'저장 공간이 부족해요 · 더 알아보기',a:P,
 M:[it('12월 12일','2026년'),it('일상 기록','2026년 12월 8일')],
 P:[it('즐겨찾기'),it('최근 저장 항목'),it('즐겨찾기 2'),it('새 폴더')],
 A:[it('새 앨범'),it('여행'),it('일상'),it('추억')]};
-$('iT').value=S.t;$('iS').value=S.s;$('iA').value='';
+$('iT').value=S.t;$('iS').value=S.s;$('iSOn').checked=true;S.sOn=true;$('iA').value='';
 ed();draw();
 }
 function e(t){return t.replace(/[&<>]/g,function(c){return{'&':'&amp;','<':'&lt;','>':'&gt;'}[c]})}
 function tiles(a,m){return a.map(function(x){return '<div class="m"><img src="'+x.i+'"><div class="t">'+e(x.t)+(m&&x.u?'<small>'+e(x.u)+'</small>':'')+'</div></div>'}).join('')}
 function draw(){
-$('vT').textContent=S.t;$('vS').textContent=S.s;$('vA').src=S.a;
+$('vT').textContent=S.t;$('vS').textContent=S.s;$('vA').src=S.a;$('vS').parentNode.style.display=S.sOn?'':'none';$('vT').style.top=S.sOn?'11px':'26px';
 $('rM').innerHTML=tiles(S.M,1);$('rP').innerHTML=tiles(S.P);$('rA').innerHTML=tiles(S.A);
 }
 var N={M:'추억',P:'고정',A:'앨범'};
@@ -32,6 +32,7 @@ $('ed').innerHTML=h;
 function rd(f,cb){if(!f)return;var r=new FileReader();r.onload=function(){cb(r.result)};r.readAsDataURL(f)}
 $('iT').oninput=function(){S.t=this.value;draw()};
 $('iS').oninput=function(){S.s=this.value;draw()};
+$('iSOn').onchange=function(){S.sOn=this.checked;draw()};
 $('iA').onchange=function(){rd(this.files[0],function(d){S.a=d;draw()})};
 $('ed').addEventListener('input',function(ev){var t=ev.target;if(t.dataset.k){S[t.dataset.g][t.dataset.i][t.dataset.k]=t.value;draw()}});
 $('ed').addEventListener('change',function(ev){var t=ev.target;if(t.type==='file')rd(t.files[0],function(d){S[t.dataset.g][t.dataset.i].i=d;draw()})});

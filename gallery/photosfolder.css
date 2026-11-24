@@ -5,14 +5,14 @@ body{margin:0;background:#f2f3f5;color:#111;font-family:Pretendard,-apple-system
 .lbl{font-size:12px;letter-spacing:.14em;color:#8a8f98;text-transform:uppercase}
 h2{font-size:24px;font-weight:700;margin:8px 0 20px}
 .stage{display:flex;justify-content:center}
-#snap{position:relative;width:270px;height:480px;background:#000;overflow:hidden;color:#fff;letter-spacing:-.02em;box-shadow:0 2px 12px rgba(0,0,0,.25)}
+#snap{position:relative;width:270px;height:480px;background:#fff;overflow:hidden;color:#111;letter-spacing:-.02em;box-shadow:0 2px 12px rgba(0,0,0,.25)}
 #snap h1{position:absolute;left:10px;top:11px;margin:0;font-size:23px;font-weight:700;line-height:28px;letter-spacing:-.02em}
-.st{position:absolute;left:10px;top:42px;display:flex;align-items:center;gap:3px;font-size:8.500px;line-height:12px;color:#eee}
+.st{position:absolute;left:10px;top:42px;display:flex;align-items:center;gap:3px;font-size:8.500px;line-height:12px;color:#555}
 .fb,.av{position:absolute;top:10px;width:30px;height:30px;border-radius:50%}
-.fb{left:187px;background:#2a2a2c;display:flex;align-items:center;justify-content:center}
+.fb{left:187px;background:#eef0f3;display:flex;align-items:center;justify-content:center}
 .av{left:225px;object-fit:cover}
 .sec{position:absolute;left:15px;display:flex;align-items:center;gap:3px;font-size:14px;font-weight:700;line-height:16px}
-.sec svg{width:6px;height:10px;fill:none;stroke:#fff;stroke-width:1.800;stroke-linecap:round;stroke-linejoin:round;margin-top:1px}
+.sec svg{width:6px;height:10px;fill:none;stroke:#111;stroke-width:1.800;stroke-linecap:round;stroke-linejoin:round;margin-top:1px}
 .row{position:absolute;left:0;width:270px;display:flex;overflow:hidden}
 .mem{top:95px;height:146px;padding-left:14px;gap:13px}
 .mem .m{position:relative;flex:none;width:153px;height:146px;border-radius:16px;overflow:hidden}
@@ -52,3 +52,5 @@ label.f input{width:60%;font-size:13px}
 .ps-acts #reset{flex:1;background:#f2f3f5;color:#222}
 .ps-acts #save{flex:1.6;background:var(--pk);color:#fff}
 body.pvmode .ps-side{display:none}body.pvmode .ps-grid{grid-template-columns:1fr}
+
+.ps-main{background:transparent!important}

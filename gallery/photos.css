@@ -24,3 +24,6 @@ html,body{touch-action:manipulation;-webkit-text-size-adjust:100%}
 
 .pgi i{display:block;aspect-ratio:1/1;background-size:cover;background-position:center}
 .pgi i.ph{background:#d9d9de}
+
+/* 항목 수 문구·제목이 그리드 뒤에 가려지지 않도록 */
+.pt,.pn{z-index:3}

@@ -56,3 +56,15 @@ label.tg input{width:20px;height:20px;accent-color:#e8457a}
 .ps-acts{display:flex;gap:10px;margin-top:20px}.ps-acts button{height:52px;border:0;border-radius:14px;font-size:15px;font-weight:700}
 .ps-acts #reset{flex:1;background:#f2f3f5;color:#222}.ps-acts #save{flex:1.6;background:var(--pk);color:#fff}
 body.pvmode .ps-side{display:none}body.pvmode .ps-grid{grid-template-columns:1fr}
+
+/* 화이트 모드 기본 + 투명 여백 */
+.ps-main{background:transparent!important}
+#snap{background:#fff;color:#111}
+.tt span{color:#6b7280}
+.tt u{background:#eef0f3;color:#111}
+.x{background:#eef0f3}
+.x svg{stroke:#666}
+.p{color:#333}
+.apps div{color:#333}
+.apps img{width:46px;height:46px;display:block;margin-bottom:4px}
+hr{border-top-color:#e5e7eb}
