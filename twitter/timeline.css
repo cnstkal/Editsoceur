@@ -4,7 +4,7 @@
 .xs{width:12%}.xtab{position:relative;width:38%;gap:6px;height:100%;display:flex;align-items:center;justify-content:center}
 .xtab.on{color:#0f1419}.xtab.on::after{content:'';position:absolute;bottom:0;left:50%;width:77px;margin-left:-38px;height:4px;background:#0f1419;border-radius:2px}
 .xplus{width:12%;display:flex;justify-content:center;color:#0f1419}
-.xl{flex:1;overflow:hidden}
+.xl{flex:1;min-height:0;overflow-y:auto;padding-bottom:100px;scrollbar-width:none}.xl::-webkit-scrollbar{display:none}
 .xw{display:flex;gap:9px;padding:12px 14px 0 10px;border-bottom:1px solid #eff3f4}
 .xa{flex:none;width:52px;height:52px;border-radius:50%;background:#aaa center/cover}
 .xc2{flex:1;min-width:0}

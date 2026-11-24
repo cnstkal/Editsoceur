@@ -82,7 +82,7 @@ function renderList(){
   box.appendChild(c);
  });
 }
-function readFile(f,cb){if(!f)return;var r=new FileReader();r.onload=function(){cb(r.result)};r.readAsDataURL(f)}
+function readFile(f,cb){if(!f)return;if(window.IGImg)return IGImg.read(f,cb);var r=new FileReader();r.onload=function(){cb(r.result)};r.readAsDataURL(f)}
 var ids=['name','handle','bio','job','birth','joined','following','followers'];
 var sw=['lock','jobOn','birthOn'];
 function sync(){
@@ -101,7 +101,7 @@ function bind(){
  document.getElementById('reset').onclick=function(){S=defaults();sync();renderList();render()};
  document.getElementById('save').onclick=function(){
   var b=this;b.textContent='저장 중...';
-  html2canvas(document.getElementById('capture'),{scale:5,backgroundColor:'#ffffff',useCORS:true}).then(function(cv){
+  igCapture(document.getElementById('capture'),{scale:5,backgroundColor:'#ffffff',useCORS:true}).then(function(cv){
    var a=document.createElement('a');a.download='profile.png';a.href=cv.toDataURL('image/png');a.click();b.textContent='PNG로 저장';
   }).catch(function(){b.textContent='PNG로 저장';alert('저장에 실패했어요')});
  };

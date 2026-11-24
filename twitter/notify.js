@@ -58,7 +58,7 @@ function render(){
 
  document.getElementById('capture').innerHTML=h;
 }
-function readFile(f,cb){if(!f)return;var r=new FileReader();r.onload=function(){cb(r.result)};r.readAsDataURL(f)}
+function readFile(f,cb){if(!f)return;if(window.IGImg)return IGImg.read(f,cb);var r=new FileReader();r.onload=function(){cb(r.result)};r.readAsDataURL(f)}
 var ids=['sel'],sw=[];
 function sync(){ids.forEach(function(k){document.getElementById(k).value=S[k]});sw.forEach(function(k){document.getElementById(k).checked=S[k]})}
 var FL={react:[['name','이름'],['time','시간'],['pv','미리보기 글 (비우면 숨김)'],['obj','대상 (게시물/재게시물)']],
@@ -119,7 +119,7 @@ document.getElementById('addMention').onclick=function(){S.items.push(Mn('사용
 document.getElementById('reset').onclick=function(){S=defaults();sync();renderList();render()};
 document.getElementById('save').onclick=function(){
  var b=this;b.textContent='저장 중...';
- html2canvas(document.getElementById('capture'),{scale:5,backgroundColor:'#ffffff',useCORS:true}).then(function(cv){
+ igCapture(document.getElementById('capture'),{scale:5,backgroundColor:'#ffffff',useCORS:true}).then(function(cv){
   var a=document.createElement('a');a.download='notify.png';a.href=cv.toDataURL('image/png');a.click();b.textContent='PNG로 저장';
  }).catch(function(){b.textContent='PNG로 저장';alert('저장에 실패했어요')});
 };

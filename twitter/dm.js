@@ -47,7 +47,7 @@ function render(){
 
  document.getElementById('capture').innerHTML=h;
 }
-function readFile(f,cb){if(!f)return;var r=new FileReader();r.onload=function(){cb(r.result)};r.readAsDataURL(f)}
+function readFile(f,cb){if(!f)return;if(window.IGImg)return IGImg.read(f,cb);var r=new FileReader();r.onload=function(){cb(r.result)};r.readAsDataURL(f)}
 var ids=['name','readText','placeholder'];
 var sw=['showCall','showRead','showInput'];
 function sync(){
