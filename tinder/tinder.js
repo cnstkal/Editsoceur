@@ -1,6 +1,6 @@
 (function(){
 var $=function(i){return document.getElementById(i)};
-var DEF={name:'떵',age:'28',recent:true,look:'내가 찾는 관계',like:'내가 받은 LIKE',tabs:'FOR YOU,더블 데이트,별자리,두근두근',goalEmoji:'💗',goal:'진지한 연애',pos:20,posX:50,zoom:100,img:''};
+var DEF={name:'떵',age:'28',recent:true,look:'내가 찾는 관계',tabs:'FOR YOU,더블 데이트,별자리,두근두근',goalEmoji:'💗',goal:'진지한 연애',pos:20,posX:50,zoom:100,img:''};
 var S=Object.assign({},DEF),ed=document.querySelector('.editor'),g=[].slice.call(ed.querySelectorAll(':scope > .ps-pn')),bar=document.createElement('div');
 bar.className='ps-seg';g.forEach(function(p,i){var b=document.createElement('button');b.type='button';b.textContent=p.getAttribute('data-t');if(!i)b.className='on';b.onclick=function(){g.forEach(function(x,j){x.hidden=j!==i});[].forEach.call(bar.children,function(c,j){c.classList.toggle('on',j===i)})};bar.appendChild(b)});ed.parentNode.insertBefore(bar,ed);
 function emojiColor(emoji){
@@ -13,9 +13,9 @@ function photoStyle(){var p=$('vPhoto');p.style.backgroundImage=S.img?'url('+S.i
 function render(){
  $('vName').textContent=S.name;$('vAge').textContent=S.age;$('vRecent').style.visibility=S.recent?'visible':'hidden';
  $('vIc').innerHTML='<svg width="44" height="44" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.8" stroke-linecap="round"><circle cx="10.5" cy="10.5" r="6.5"/><path d="m16 16 5 5"/></svg>';
- $('vLook').textContent=S.look;$('vLike').textContent=S.like;var T=S.tabs.split(',');for(var q=0;q<4;q++)$('vT'+q).textContent=(T[q]||'').trim();$('vGoal').textContent=S.goal;setGlow();photoStyle();$('iRecent').checked=S.recent;
+ $('vLook').textContent=S.look;$('vLike').textContent='내가 받은 LIKE';var T=S.tabs.split(',');for(var q=0;q<4;q++)$('vT'+q).textContent=(T[q]||'').trim();$('vGoal').textContent=S.goal;setGlow();photoStyle();$('iRecent').checked=S.recent;
 }
-var fields=[['iName','name'],['iAge','age'],['iLook','look'],['iLike','like'],['iTabs','tabs'],['iGoalEmoji','goalEmoji'],['iGoal','goal'],['iPos','pos'],['iPosX','posX'],['iZoom','zoom']];
+var fields=[['iName','name'],['iAge','age'],['iLook','look'],['iTabs','tabs'],['iGoalEmoji','goalEmoji'],['iGoal','goal'],['iPos','pos'],['iPosX','posX'],['iZoom','zoom']];
 function fill(){fields.forEach(function(p){$(p[0]).value=S[p[1]]});render()}
 fields.forEach(function(p){$(p[0]).addEventListener('input',function(){S[p[1]]=p[1]==='pos'||p[1]==='posX'||p[1]==='zoom'?Number(this.value):this.value;render()})});
 $('iRecent').onchange=function(){S.recent=this.checked;render()};
