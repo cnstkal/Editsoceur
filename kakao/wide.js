@@ -30,7 +30,8 @@
   function esc(t) { return String(t == null ? "" : t).replace(/[&<>"]/g, function (c) { return { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]; }); }
   function persist() { try { localStorage.setItem(STORE, JSON.stringify(S)); } catch (e) {} }
 
-  function fit() { var c = $("cap"); c.style.setProperty("--u", (c.clientWidth / 100) + "px"); }
+  // 작업 영역은 항상 960px 논리 크기로 고정, 화면 크기는 transform 배율로만 조절
+  function fit() { var c = $("cap"), w = $("capWrap"), s = w.clientWidth / 960; c.style.transform = "scale(" + s + ")"; w.style.height = (c.offsetHeight * s) + "px"; }
   window.addEventListener("resize", fit);
 
   // ===== 미리보기 렌더링 =====
@@ -53,6 +54,31 @@
       line.append(bb);
       if (m.tm || m.rd) { var tm = el("div", "tm"); if (m.rd) tm.append(el("span", "rd", "1")); tm.append(m.tm || ""); line.append(tm); }
       col.append(line); row.append(col); chat.append(row);
+    });
+    layoutBubbles();
+  }
+
+  // 말풍선 줄바꿈과 폭을 렌더링 시점에 한 번 계산해 고정 (프리뷰·PNG가 같은 줄바꿈을 사용)
+  function layoutBubbles() {
+    var cv = document.createElement("canvas").getContext("2d");
+    Array.prototype.forEach.call($("chat").querySelectorAll(".b"), function (b) {
+      var tn = b.firstChild; if (!tn || tn.nodeType !== 3 || b.querySelector("img")) return;
+      var cs = getComputedStyle(b), maxW = parseFloat(cs.maxWidth) || 446.4;
+      var padL = parseFloat(cs.paddingLeft), padR = parseFloat(cs.paddingRight), avail = maxW - padL - padR;
+      cv.font = cs.fontStyle + " " + cs.fontWeight + " " + cs.fontSize + " " + cs.fontFamily;
+      cv.letterSpacing = cs.letterSpacing;
+      var lines = [], cur = null;
+      tn.textContent.split(" ").forEach(function (w) {
+        if (cur === null) { cur = w; return; }
+        var t = cur + " " + w;
+        if (cv.measureText(t).width > avail) { lines.push(cur); cur = w; } else cur = t;
+      });
+      lines.push(cur === null ? "" : cur);
+      var widest = 0; lines.forEach(function (l) { widest = Math.max(widest, cv.measureText(l).width); });
+      tn.textContent = lines.join("\n");
+      b.style.whiteSpace = "pre";
+      // 저장 엔진의 글자 폭 여유(4%)를 프리뷰에도 함께 적용해 양쪽이 같은 상자를 사용
+      b.style.width = Math.min(maxW, Math.ceil(widest * 1.04 + padL + padR)) + "px";
     });
   }
 
@@ -112,83 +138,27 @@
     };
   });
   $("reset").onclick = function () { load(true); };
-  function viaH2C(cap, r) { return html2canvas(cap, { scale: r, useCORS: true, backgroundColor: null, logging: false }); }
-  // 브라우저가 그리는 그대로 캡처(html-to-image) → 실패하면 html2canvas로 대체
-  // 저장 직전: 말풍선 가로 길이를 프리뷰에서 잰 값으로 고정 (저장 엔진의 글자 폭 차이로 여백이 늘어나는 것 방지)
-  function pin(cap) {
-    // 말풍선(.b)은 폭을 고정하지 않고 글자 폭에 맞춰 저장 (좌우 여백이 자동으로 같아짐)
-    return [cap].concat(Array.prototype.slice.call(cap.querySelectorAll("*"))).filter(function (e) { return !e.classList.contains("b") && !e.closest(".tl"); }).map(function (e) {
-      var r = e.getBoundingClientRect(), st = e.style;
-      var s = [e, st.width, st.height, st.maxWidth, st.minWidth, st.minHeight];
-      st.width = r.width + "px"; st.height = r.height + "px"; st.maxWidth = "none"; st.minWidth = "0"; st.minHeight = "0";
-      return s;
-    });
-  }
-  // 프리뷰에서 실제 줄바꿈 위치를 읽어 그대로 고정 (저장 엔진의 글자 폭 차이로 줄이 달라지는 것 방지)
-  function freezeLines(cap) {
-    var saved = [];
-    Array.prototype.forEach.call(cap.querySelectorAll(".b"), function (b) {
-      var tn = b.firstChild; if (!tn || tn.nodeType !== 3 || !tn.textContent) return;
-      var text = tn.textContent, r = document.createRange(), lines = [], cur = "", lastTop = null;
-      for (var i = 0; i < text.length; i++) {
-        r.setStart(tn, i); r.setEnd(tn, i + 1);
-        var rc = r.getClientRects();
-        if (!rc.length) { cur += text[i]; continue; }
-        var top = Math.round(rc[0].top);
-        if (lastTop !== null && Math.abs(top - lastTop) > 2) { lines.push(cur); cur = ""; }
-        cur += text[i]; lastTop = top;
-      }
-      lines.push(cur);
-      saved.push([tn, text, b, b.style.whiteSpace]);
-      tn.textContent = lines.join("\n"); b.style.whiteSpace = "pre";
-    });
-    return saved;
-  }
-  // 말풍선: 프리뷰의 좌우 여백과 글자 간격을 그대로 고정 (글자는 왼쪽 정렬)
-  var EXPORT_RIGHT_FIX = -3; // CSS px, 저장 시에만 오른쪽 여백 보정
-  function padBubbles(cap) {
-    return Array.prototype.map.call(cap.querySelectorAll(".b"), function (b) {
-      if (b.querySelector("img")) return null;
-      var cs = getComputedStyle(b), st = b.style;
-      var s = [b, st.paddingLeft, st.paddingRight, st.textAlign, st.letterSpacing];
-      st.paddingLeft = cs.paddingLeft;
-      var fix = EXPORT_RIGHT_FIX; // 저장본 오른쪽 여백 보정 (모든 말풍선, 음수면 줄어듦)
-      st.paddingRight = (parseFloat(cs.paddingRight) + fix) + "px";
-      st.letterSpacing = cs.letterSpacing; st.textAlign = "left";
-      return s;
-    }).filter(Boolean);
-  }
-  function unpadBubbles(list) { list.forEach(function (s) { var st = s[0].style; st.paddingLeft = s[1]; st.paddingRight = s[2]; st.textAlign = s[3]; st.letterSpacing = s[4]; }); }
-  function unfreezeLines(list) { list.forEach(function (s) { s[0].textContent = s[1]; s[2].style.whiteSpace = s[3]; }); }
-  function unpin(list) {
-    list.forEach(function (s) { var st = s[0].style; st.width = s[1]; st.height = s[2]; st.maxWidth = s[3]; st.minWidth = s[4]; st.minHeight = s[5]; });
-  }
-  var EXPORT_W = 3840; // 저장 가로 픽셀 (4K) — 확대해도 글자가 깨지지 않도록
-  function snap(cap) {
-    var r = EXPORT_W / cap.clientWidth;
-    var ready = (document.fonts && document.fonts.ready) ? document.fonts.ready : Promise.resolve();
-    return ready.then(function () {
-      if (!window.htmlToImage) return viaH2C(cap, r);
-      return htmlToImage.toCanvas(cap, { pixelRatio: r, cacheBust: true })
-        .catch(function () { return viaH2C(cap, r); });
-    });
+  // ===== PNG 저장: 프리뷰 DOM 하나를 단일 엔진(html-to-image)으로 캡처 =====
+  // 프리뷰 실제 너비 기준으로 pixelRatio만 키워서 고해상도 저장 (레이아웃은 건드리지 않음)
+  var EXPORT_W = 3840;
+  function capture(cap) {
+    var fontsReady = (document.fonts && document.fonts.ready) ? document.fonts.ready : Promise.resolve();
+    var prev = cap.style.transform; cap.style.transform = "none"; // 배율 없는 원본 레이아웃으로 캡처
+    return fontsReady.then(function () {
+      return htmlToImage.toCanvas(cap, { pixelRatio: EXPORT_W / 960, cacheBust: true });
+    }).finally(function () { cap.style.transform = prev; });
   }
   function savePng(btn, mode) {
-    var transparent = mode === "tp", bgOnly = mode === "bg";
     var t = btn.textContent, cap = $("cap"); btn.disabled = true; btn.textContent = "저장 중...";
-    
     fit();
-    var frozen = freezeLines(cap);
-    var pinned = pin(cap);
-    var padded = padBubbles(cap);
-    snap(cap).then(function (c) {
+    capture(cap).then(function (c) {
       c.toBlob(function (bl) {
         var a = document.createElement("a"); a.href = URL.createObjectURL(bl);
-        a.download = transparent ? "kakao-chat-16x9-transparent.png" : bgOnly ? "kakao-chat-16x9-background.png" : "kakao-chat-16x9.png";
+        a.download = mode === "tp" ? "kakao-chat-16x9-transparent.png" : mode === "bg" ? "kakao-chat-16x9-background.png" : "kakao-chat-16x9.png";
         document.body.appendChild(a); a.click(); a.remove();
       });
     }).catch(function () { alert("PNG 저장에 실패했습니다."); })
-      .then(function () { unpadBubbles(padded); unpin(pinned); unfreezeLines(frozen); btn.disabled = false; btn.textContent = t; });
+      .then(function () { btn.disabled = false; btn.textContent = t; });
   }
   var MODE = "full";
   function setMode(m) {
@@ -202,4 +172,5 @@
   $("save").onclick = function () { savePng(this, MODE); };
 
   load(false);
+  if (document.fonts) document.fonts.ready.then(function () { render(); });
 })();
