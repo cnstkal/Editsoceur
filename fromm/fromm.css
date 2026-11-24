@@ -114,3 +114,6 @@ body.studio{background:#fff;overflow-x:hidden}.ps-wrap{padding:0}
 .ed-actions button:disabled{opacity:.35;cursor:default}
 .ed-actions button.del{color:#ed3566}
 @media(max-width:1099px){.ed-row{padding:18px 20px;border-radius:22px}.ed-topline{gap:12px}.ed-field input:not([type=file]),.ed-field select{height:58px}}
+
+.read-mark{font-size:12px;color:#e8457a;white-space:nowrap;padding-bottom:3px;font-weight:600}
+.ed-unread{display:flex!important;justify-content:flex-start!important;align-items:center!important;gap:10px!important;margin:0 0 16px!important;font-size:16px!important;font-weight:500!important}
