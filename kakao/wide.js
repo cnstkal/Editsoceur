@@ -156,5 +156,37 @@
   $("modeT").onclick = function () { setMode("tp"); };
   $("modeBg").onclick = function () { setMode("bg"); };
   $("save").onclick = function () { savePng(this, MODE); };
+
+  // ===== 프리뷰 그대로 저장: 탭 화면을 캡처해서 프리뷰 영역만 잘라냄 (프리뷰와 픽셀 단위로 동일) =====
+  function download(bl, name) {
+    var a = document.createElement("a"); a.href = URL.createObjectURL(bl); a.download = name;
+    document.body.appendChild(a); a.click(); a.remove();
+  }
+  async function captureScreen(cap) {
+    cap.scrollIntoView({ block: "center" });
+    await new Promise(function (r) { requestAnimationFrame(function () { requestAnimationFrame(r); }); });
+    var rect = cap.getBoundingClientRect();
+    var stream = await navigator.mediaDevices.getDisplayMedia({ video: true, audio: false, preferCurrentTab: true });
+    try {
+      var v = document.createElement("video"); v.muted = true; v.srcObject = stream;
+      await v.play();
+      await new Promise(function (r) { setTimeout(r, 400); });
+      var sx = v.videoWidth / window.innerWidth, sy = v.videoHeight / window.innerHeight;
+      var c = document.createElement("canvas");
+      c.width = Math.round(rect.width * sx); c.height = Math.round(rect.height * sy);
+      c.getContext("2d").drawImage(v, rect.left * sx, rect.top * sy, rect.width * sx, rect.height * sy, 0, 0, c.width, c.height);
+      return c;
+    } finally { stream.getTracks().forEach(function (t) { t.stop(); }); }
+  }
+  $("saveScreen").onclick = async function () {
+    var btn = this, t = btn.textContent; btn.disabled = true; btn.textContent = "캡처 중...";
+    try {
+      fit();
+      var c = await captureScreen($("cap"));
+      c.toBlob(function (bl) { download(bl, "kakao-chat-preview.png"); });
+    } catch (e) {
+      alert("프리뷰 캡처에 실패했습니다. 화면 공유에서 현재 탭을 선택하고 허용해 주세요.");
+    } finally { btn.disabled = false; btn.textContent = t; }
+  };
   load(false);
 })();
