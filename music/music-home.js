@@ -26,6 +26,7 @@ function rd(f,cb){if(!f)return;var r=new FileReader();r.onload=function(){cb(r.r
 $('iT').oninput=function(){S.t=this.value;draw()};
 $('iH').oninput=function(){S.h=this.value;draw()};
 $('fAv').onchange=function(){rd(this.files[0],function(d){S.av=d;draw()})};
+$('fAv_del').onclick=function(){S.av=''; $('fAv').value=''; draw();};
 $('edP').addEventListener('input',function(ev){var t=ev.target;if(t.type!=='file'){S.P[t.dataset.i].t=t.value;draw()}});
 document.querySelector('.side').addEventListener('change',function(ev){var t=ev.target;if(t.dataset.g)rd(t.files[0],function(d){S[t.dataset.g][t.dataset.i].i=d;draw()})});
 $('reset').onclick=init;

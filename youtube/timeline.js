@@ -32,6 +32,7 @@ function rd(f,cb){var r=new FileReader();r.onload=function(){cb(r.result)};r.rea
 function glob(){S.act=$('iAct').value;persist();render()}
 ['iAct'].forEach(function(id){$(id).addEventListener('input',glob);$(id).addEventListener('change',glob)});
 $('iMy').addEventListener('change',function(){if(this.files[0])rd(this.files[0],function(d){S.my=d;persist();render()})});
+$('iMy_del').onclick=function(){S.my=''; $('iMy').value=''; persist(); render();};
 var L=$('ylist'),ix=function(e){return +e.target.closest('.ec').dataset.i};
 L.addEventListener('input',function(e){var f=e.target.dataset.f;if(!f||e.target.type==='file'||e.target.type==='checkbox')return;S.v[ix(e)][f]=e.target.value;persist();render()});
 L.addEventListener('change',function(e){var t=e.target,f=t.dataset.f;if(!f)return;var o=S.v[ix(e)];

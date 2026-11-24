@@ -41,6 +41,7 @@ function rd(f,cb){if(!f)return;var r=new FileReader();r.onload=function(){cb(r.r
 [['iN','n'],['iSt','st'],['iBn','bn'],['iInp','inp']].forEach(function(a){$(a[0]).oninput=function(){S[a[1]]=this.value;draw()}});
 $('iKb').onchange=function(){S.kb=this.checked;draw()};
 $('iAv').onchange=function(){rd(this.files[0],function(d){S.av=d;draw()})};
+$('iAv_del').onclick=function(){S.av=''; $('iAv').value=''; draw();};
 $('add').onclick=function(){S.M.push(m('i','add text here'));ed();draw()};
 $('ed').addEventListener('input',function(ev){var t=ev.target;if(t.dataset.k&&t.tagName!=='SELECT'){S.M[t.dataset.i][t.dataset.k]=t.value;draw()}});
 $('ed').addEventListener('change',function(ev){var t=ev.target;

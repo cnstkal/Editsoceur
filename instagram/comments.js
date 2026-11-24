@@ -30,6 +30,7 @@
   function rd(f,cb){var r=new FileReader();r.onload=function(){cb(r.result)};r.readAsDataURL(f)}
   $('iTarget').oninput=function(){S.target=this.value;render()};
   $('iMe').onchange=function(){if(this.files[0])rd(this.files[0],function(d){S.me=d;render()})};
+$('iMe_del').onclick=function(){S.me=''; $('iMe').value=''; render();};
   $('eList').addEventListener('input',function(e){var t=e.target,k=t.dataset.k;if(!k)return;
     var c=S.list[t.closest('.ecard').dataset.i];
     c[k]=t.type==='checkbox'?t.checked:(k==='rep'?Math.max(0,parseInt(t.value)||0):t.value);render()});

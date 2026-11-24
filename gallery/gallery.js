@@ -37,6 +37,7 @@ $('iNp').oninput=function(){S.np=Math.min(5,Math.max(0,parseInt(this.value)||0))
 $('iLoc').oninput=function(){S.loc=this.value;render()};
 $('iBd').onchange=function(){S.bd=this.checked;render()};
 $('iTh').onchange=function(){rd(this.files[0],function(d){S.th=d;render()})};
+$('iTh_del').onclick=function(){S.th=''; $('iTh').value=''; render();};
 document.querySelectorAll('.iPh').forEach(function(el){el.onchange=function(){var k=+el.dataset.p;rd(el.files[0],function(d){S.ph[k]=d;render()})}});
 $('pEd').addEventListener('input',function(e){var t=e.target;if(t.dataset.n!=null){S.pp[t.dataset.n].n=t.value;render()}});
 $('pEd').addEventListener('change',function(e){var t=e.target;if(t.dataset.a!=null)rd(t.files[0],function(d){S.pp[t.dataset.a].img=d;render()})});
