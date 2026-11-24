@@ -65,3 +65,16 @@ button{font:inherit;cursor:pointer}
 .zw{border-radius:0}
 .ps-side{padding:16px;border-top:8px solid #f2f3f5}
 .ps-side>.ps-lbl,.ps-side>h2{display:none}
+
+.sheet{position:absolute;left:24px;right:24px;bottom:24px;height:790px;border-radius:72px;background:linear-gradient(150deg,#fff 45%,#f4faec);box-shadow:0 -4px 44px #0002;z-index:5;overflow:hidden}
+.sheet .sh-r{position:absolute;top:44px;width:118px;height:118px;border-radius:50%;border:2px solid #e6e6ea;background:#fff;display:grid;place-items:center;padding:0;cursor:pointer}
+.sh-t{position:absolute;left:0;right:0;top:36px;text-align:center;font:700 54px/1.2 Pretendard,sans-serif;color:#111}
+.sh-s{position:absolute;left:0;right:0;top:106px;text-align:center;font:500 38px Pretendard,sans-serif;color:#8a8f98}
+.sh-a{position:absolute;left:44px;right:44px;top:200px;display:flex;gap:24px}
+.sh-a>div{flex:1;height:150px;border-radius:75px;display:flex;flex-direction:column;align-items:center;justify-content:center;font:700 40px Pretendard,sans-serif}
+.sh-a .p{flex:1.05;background:#3b82f6;color:#fff}.sh-a .g{background:#eaf3fe;color:#3b82f6}
+.sh-h{position:absolute;left:46px;font:700 58px Pretendard,sans-serif;color:#111}
+.sh-row{position:absolute;left:64px;top:470px;display:flex;align-items:center;gap:36px;font:500 48px Pretendard,sans-serif;color:#222}
+.sh-row b{width:46px;height:46px;border-radius:50%;background:#111;color:#fff;font:700 28px/46px Pretendard,sans-serif;text-align:center}
+.sh-e{position:absolute;right:50px;top:546px;font:500 42px Pretendard,sans-serif;color:#3b82f6}
+.sh-bar{position:absolute;left:50%;bottom:18px;width:490px;height:118px;margin-left:-245px;border-radius:59px;background:#fff;border:2px solid #e6e6ea;box-shadow:0 6px 24px #0001;display:flex;justify-content:space-around;align-items:center}
