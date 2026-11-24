@@ -29,11 +29,13 @@ function edRows(){
  $('ed').innerHTML=S.items.map(function(it,i){
   var opts=Object.keys(TYPES).map(function(k){return '<option value="'+k+'"'+(it.type===k?' selected':'')+'>'+TYPES[k]+'</option>'}).join('');
   return '<div class="ed-row" data-i="'+i+'">'+
-   '<select data-k="me"><option value="0"'+(!it.me?' selected':'')+'>상대</option><option value="1"'+(it.me?' selected':'')+'>나</option></select>'+
-   '<select data-k="type">'+opts+'</select>'+
-   (it.type==='date'?'<input class="t" data-k="text" value="'+esc(it.text)+'" placeholder="날짜">':it.type==='photo'?'<div class="photo-preview"><label class="fl">사진 첨부<input type="file" accept="image/*" data-f="img"></label>'+(it.img?'<img class="photo-thumb" src="'+it.img+'" alt="첨부 미리보기">':'<span class="hint">선택한 사진 없음</span>')+'</div>':'<input class="t" data-k="text" value="'+esc(it.text)+'" placeholder="메시지">')+
-   (it.type!=='date'?'<input class="tt" data-k="time" value="'+esc(it.time||'')+'" placeholder="시간">':'')+
-   '<button type="button" data-d="'+i+'">✕</button></div>';
+   '<div class="ed-topline"><label class="ed-field"><span>보낸 사람</span><select data-k="me"><option value="0"'+(!it.me?' selected':'')+'>상대</option><option value="1"'+(it.me?' selected':'')+'>나</option></select></label><label class="ed-field"><span>시간</span><input class="tt" data-k="time" value="'+esc(it.time||'')+'" placeholder="오전 10:51"></label></div>'+
+   (it.type==='date'?'<label class="ed-field ed-full"><span>날짜</span><input class="t" data-k="text" value="'+esc(it.text)+'" placeholder="날짜"></label>':
+    '<label class="ed-unread"><input type="checkbox" data-k="unread" '+(it.unread?'checked':'')+'><span>안읽음 1</span></label>'+
+    '<label class="ed-field ed-full"><span>내용</span><textarea data-k="text" rows="3" placeholder="메시지를 입력하세요">'+esc(it.text||'')+'</textarea></label>'+
+    (it.type==='photo'?'<div class="ed-field ed-full"><span>사진 보내기(올리면 말풍선 대신 사진)</span><div class="photo-preview"><label class="file-pick">파일 선택<input type="file" accept="image/*" data-f="img"></label>'+(it.img?'<img class="photo-thumb" src="'+it.img+'" alt="첨부 미리보기">':'<span class="hint">선택된 파일 없음</span>')+'</div></div>':'')+
+    '<label class="ed-field ed-full ed-type"><span>메시지 종류</span><select data-k="type">'+opts+'</select></label>')+
+   '<div class="ed-actions"><button type="button" data-move="-1" '+(i===0?'disabled':'')+'>↑</button><button type="button" data-move="1" '+(i===S.items.length-1?'disabled':'')+'>↓</button><button type="button" class="del" data-d="'+i+'">✕ 삭제</button></div></div>';
  }).join('');
 }
 function init(){
