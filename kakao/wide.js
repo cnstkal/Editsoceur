@@ -152,7 +152,8 @@
       var cs = getComputedStyle(b), st = b.style;
       var s = [b, st.paddingLeft, st.paddingRight, st.textAlign, st.letterSpacing];
       st.paddingLeft = cs.paddingLeft;
-      st.paddingRight = (parseFloat(cs.paddingRight) + EXPORT_RIGHT_FIX) + "px"; // 저장 엔진의 글자 폭 보정 (저장본에서만)
+      var fix = b.classList.contains("me") ? EXPORT_RIGHT_FIX : 0; // 내 말풍선만 저장 엔진 글자 폭 보정
+      st.paddingRight = (parseFloat(cs.paddingRight) + fix) + "px";
       st.letterSpacing = cs.letterSpacing; st.textAlign = "left";
       return s;
     }).filter(Boolean);
