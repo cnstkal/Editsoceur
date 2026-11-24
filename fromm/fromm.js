@@ -13,7 +13,7 @@ var S;
 var esc=function(s){return String(s).replace(/[&<>"]/g,function(c){return{'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]})};
 var TYPES={text:'텍스트',photo:'사진',date:'날짜'};
 function render(){
- var fm=$('fm');fm.classList.toggle('chat-only',!!S.chat);
+ var fm=$('fm');fm.classList.toggle('chat-only',!!S.chat);$('ch').style.bottom=S.inputBar?'92px':'0px';
  $('vTitle').textContent=$('iTitle').value;$('vHint').textContent=$('iHint').value;$('fm').querySelector('.ib').hidden=!S.inputBar;
  var h='';
  S.items.forEach(function(it){
@@ -51,13 +51,13 @@ $('tInput').addEventListener('change',function(){S.inputBar=this.checked;render(
 function rd(f,cb){if(!f)return;var r=new FileReader();r.onload=function(e){cb(e.target.result)};r.readAsDataURL(f)}
 $('iAvatar').addEventListener('change',function(){rd(this.files[0],function(d){S.avatar=d;render()})});
 $('clearAv').onclick=function(){S.avatar='';$('iAvatar').value='';render()};
-$('add').onclick=function(){S.items.push({me:false,type:'text',text:'',time:''});edRows();render()};
+$('add').onclick=function(){S.items.push({me:false,type:'text',text:'',time:''});edRows();render()};\n$('addDate').onclick=function(){S.items.push({type:'date',text:'2026년 11월 15일'});edRows();render()};
 $('ed').addEventListener('input',function(ev){var t=ev.target,r=t.closest('.ed-row');if(!r||!t.dataset.k)return;var it=S.items[r.dataset.i];it[t.dataset.k]=t.value;render()});
 $('ed').addEventListener('change',function(ev){var t=ev.target,r=t.closest('.ed-row');if(!r)return;var it=S.items[r.dataset.i];
  if(t.dataset.k==='me'){it.me=t.value==='1';render()}
- else if(t.dataset.k==='type'){var old=it.type;it.type=t.value;if(it.type==='date'&&old!=='date'){it.text=it.text||'2026년 11월 15일'}edRows();render()}
+ else if(t.dataset.k==='type'){var old=it.type;it.type=t.value;if(it.type==='date'&&old!=='date'){it.text=it.text||'2026년 11월 15일';delete it.me;delete it.time;delete it.read}edRows();render()}
  else if(t.dataset.f==='img'){rd(t.files[0],function(d){it.img=d;edRows();render()})}});
-$('ed').addEventListener('click',function(ev){var d=ev.target.dataset.d;if(d!=null){S.items.splice(+d,1);edRows();render()}});
+$('ed').addEventListener('click',function(ev){var d=ev.target.dataset.d,m=ev.target.dataset.move;if(d!=null){S.items.splice(+d,1);edRows();render();return}if(m!=null){var row=ev.target.closest('.ed-row'),i=+row.dataset.i,n=i+(+m);if(n>=0&&n<S.items.length){var item=S.items.splice(i,1)[0];S.items.splice(n,0,item);edRows();render()}}});
 $('reset').onclick=init;
 $('savePng').onclick=function(){if(!window.html2canvas)return;var chat=S.chat;html2canvas($('fm'),{scale:3,useCORS:true,backgroundColor:chat?null:'#fff'}).then(function(c){var a=document.createElement('a');a.download='fromm.png';a.href=c.toDataURL('image/png');a.click()})};
 $('pvBtn').onclick=function(){var on=document.body.classList.toggle('pvmode');this.textContent=on?'편집 모드':'미리보기 모드'};
