@@ -126,14 +126,15 @@
   $("reset").onclick = function () { load(true); };
   // ===== PNG 저장: 프리뷰 DOM 하나를 단일 엔진(html-to-image)으로 캡처 =====
   // 프리뷰 실제 너비 기준으로 pixelRatio만 키워서 고해상도 저장 (레이아웃은 건드리지 않음)
-  var EXPORT_W = 3840;
+  var EXPORT_W = 5120;
   function capture(cap) {
-    // 폰트가 실제로 로드된 뒤에만 캡처 (Pretendard 굵기 500/600/700)
     var fontsReady = document.fonts ? Promise.all([document.fonts.load("500 16px Pretendard"), document.fonts.load("600 16px Pretendard"), document.fonts.load("700 16px Pretendard")]).then(function () { return document.fonts.ready; }) : Promise.resolve();
-    var prev = cap.style.transform; cap.style.transform = "none"; // 배율 없는 원본 레이아웃으로 캡처
-    return fontsReady.then(function () {
-      return htmlToImage.toCanvas(cap, { pixelRatio: EXPORT_W / 960, cacheBust: true });
-    }).finally(function () { cap.style.transform = prev; });
+    var prev=cap.style.transform;cap.style.transform="none";
+    return fontsReady.then(function(){
+      var imgs=[].slice.call(cap.querySelectorAll("img"));
+      return Promise.all(imgs.map(function(im){return im.decode?im.decode().catch(function(){}):Promise.resolve()}));
+    }).then(function(){return htmlToImage.toCanvas(cap,{pixelRatio:EXPORT_W/960,cacheBust:true})})
+      .finally(function(){cap.style.transform=prev});
   }
   function savePng(btn, mode) {
     var t = btn.textContent, cap = $("cap"); btn.disabled = true; btn.textContent = "저장 중...";
