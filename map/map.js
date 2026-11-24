@@ -5,7 +5,7 @@ var C={음식점:{c:'#f28c38',i:'<path d="M23 17v9a4 4 0 0 0 4 4v15M23 17v9M31 1
  카페:{c:'#8b6b55',i:'<path d="M19 25h23v9a9 9 0 0 1-9 9h-5a9 9 0 0 1-9-9z" fill="#fff"/><path d="M42 28h3a4.5 4.5 0 0 1 0 9h-3" stroke="#fff" stroke-width="3" fill="none"/>',t:'#a8806a'},
  쇼핑:{c:'#8b6fe0',i:'<path d="M20 26h24l2 18H18z" fill="#fff"/><path d="M26 26v-3a6 6 0 0 1 12 0v3" stroke="#fff" stroke-width="3" fill="none"/>',t:'#f0586e'},
  숙소:{c:'#6b8def',i:'<path d="M17 21v24M17 37h30v8M17 37v-7h16a9 9 0 0 1 9 9" stroke="#fff" stroke-width="3.6" fill="none" stroke-linecap="round" stroke-linejoin="round"/>',t:'#8e7be8'}};
-var DEF=[{n:'맛집',t:'음식점',x:712,y:318},{n:'쇼핑몰',t:'쇼핑',x:930,y:232},{n:'카페',t:'카페',x:790,y:500}];
+var DEF=[];
 var TABS=['지도','저장','추가','알림','내 정보'];
 var TI=['<path d="M12 22s-7-6.5-7-12a7 7 0 0 1 14 0c0 5.500-7 12-7 12z" fill="currentColor" stroke="none"/><circle cx="12" cy="10" r="2.800" fill="#fff" stroke="none"/>','<path d="M6 3h12v18l-6-4.500L6 21z"/>','<circle cx="12" cy="12" r="9"/><path d="M12 7.500v9M7.500 12h9"/>','<path d="M6 17V11a6 6 0 0 1 12 0v6l2 2H4zM10 21a2 2 0 0 0 4 0"/>','<circle cx="12" cy="8" r="4"/><path d="M4 21c0-4.500 3.500-7 8-7s8 2.500 8 7z"/>'];
 var S,selId,on=new Set(Object.keys(C)),adding=false,tab=0;
