@@ -116,7 +116,8 @@
   // 브라우저가 그리는 그대로 캡처(html-to-image) → 실패하면 html2canvas로 대체
   // 저장 직전: 말풍선 가로 길이를 프리뷰에서 잰 값으로 고정 (저장 엔진의 글자 폭 차이로 여백이 늘어나는 것 방지)
   function pin(cap) {
-    return [cap].concat(Array.prototype.slice.call(cap.querySelectorAll("*"))).map(function (e) {
+    // 말풍선(.b)은 폭을 고정하지 않고 글자 폭에 맞춰 저장 (좌우 여백이 자동으로 같아짐)
+    return [cap].concat(Array.prototype.slice.call(cap.querySelectorAll("*"))).filter(function (e) { return !e.classList.contains("b"); }).map(function (e) {
       var r = e.getBoundingClientRect(), st = e.style;
       var s = [e, st.width, st.height, st.maxWidth, st.minWidth, st.minHeight];
       st.width = r.width + "px"; st.height = r.height + "px"; st.maxWidth = "none"; st.minWidth = "0"; st.minHeight = "0";
@@ -144,12 +145,14 @@
     return saved;
   }
   // 말풍선: 프리뷰의 좌우 여백과 글자 간격을 그대로 고정 (글자는 왼쪽 정렬)
+  var EXPORT_RIGHT_FIX = 10; // CSS px, 저장 시에만 오른쪽 여백 보정
   function padBubbles(cap) {
     return Array.prototype.map.call(cap.querySelectorAll(".b"), function (b) {
       if (b.querySelector("img")) return null;
       var cs = getComputedStyle(b), st = b.style;
       var s = [b, st.paddingLeft, st.paddingRight, st.textAlign, st.letterSpacing];
-      st.paddingLeft = cs.paddingLeft; st.paddingRight = cs.paddingRight;
+      st.paddingLeft = cs.paddingLeft;
+      st.paddingRight = (parseFloat(cs.paddingRight) + EXPORT_RIGHT_FIX) + "px"; // 저장 엔진의 글자 폭 보정 (저장본에서만)
       st.letterSpacing = cs.letterSpacing; st.textAlign = "left";
       return s;
     }).filter(Boolean);
