@@ -57,3 +57,9 @@ body.pvmode .ps-side{display:none}body.pvmode .ps-grid{grid-template-columns:1fr
 .ps-seg button{flex:1;height:40px;border-radius:12px;color:#333;font-size:14px;font-weight:500}
 .ps-seg button.on{background:#fde8ef;color:#e8457a;font-weight:700}
 .ps-pn[hidden]{display:none!important}
+
+/* Editable Tinder photo crop and relationship-goal emoji */
+.photo{touch-action:none;cursor:grab;user-select:none;-webkit-user-select:none;background-repeat:no-repeat}
+.ge{transition:background .18s ease,box-shadow .18s ease}
+#vGoalEmoji{display:block;font-size:58px;line-height:1;filter:drop-shadow(0 0 4px currentColor)}
+.photo-help{font-size:12px;color:#8a8f98;line-height:1.5;margin:-4px 0 14px}
