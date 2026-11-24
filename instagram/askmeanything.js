@@ -34,7 +34,7 @@ $('pvBtn').onclick=function(){var on=document.body.classList.toggle('pvmode');th
 
 $('savePng').onclick=function(){
  var t=zs.style.transform;zs.style.transform='none';
- html2canvas(zs,{width:S,height:S,scale:1,backgroundColor:null,useCORS:true}).then(function(c){
+ IGImg.capture(zs,{width:S,height:S,scale:8,backgroundColor:null}).then(function(c){
   zs.style.transform=t;var a=document.createElement('a');a.download='askmeanything.png';a.href=c.toDataURL('image/png');a.click();
  }).catch(function(){zs.style.transform=t});
 };
