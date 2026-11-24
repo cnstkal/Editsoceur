@@ -32,7 +32,24 @@ $('pvBtn').onclick=function(){var on=document.body.classList.toggle('pvmode');th
 var shot=$('shot'),fr=shot.parentNode;
 function fit(){var w=fr.clientWidth;shot.style.zoom=w?w/393:1}
 if(window.ResizeObserver)new ResizeObserver(fit).observe(fr);window.addEventListener('resize',fit);
-$('savePng').onclick=function(){var z=shot.style.zoom;shot.style.zoom=1;html2canvas(shot,{scale:3,useCORS:true,backgroundColor:'#fff'}).then(function(c){shot.style.zoom=z;var a=document.createElement('a');a.download='facebook-new.png';a.href=c.toDataURL('image/png');a.click()}).catch(function(){shot.style.zoom=z})};
+$('savePng').onclick=function(){
+ var btn=this,z=shot.style.zoom,oldText=btn.textContent;
+ btn.disabled=true;btn.textContent='저장 중...';shot.style.zoom=1;
+ var w=shot.scrollWidth,h=shot.scrollHeight;
+ var scale=Math.min(5,16000/Math.max(w,h),Math.sqrt(80000000/(w*h)));
+ scale=Math.max(1,scale);
+ html2canvas(shot,{scale:scale,useCORS:true,allowTaint:false,backgroundColor:'#fff',imageTimeout:20000,logging:false,windowWidth:Math.max(document.documentElement.clientWidth,w),windowHeight:Math.max(document.documentElement.clientHeight,h),scrollX:0,scrollY:0}).then(function(c){
+  return new Promise(function(resolve,reject){
+   if(!c.toBlob){try{resolve(c.toDataURL('image/png'))}catch(e){reject(e)}return}
+   c.toBlob(function(blob){if(blob)resolve(blob);else reject(new Error('PNG encoding failed'))},'image/png');
+  });
+ }).then(function(data){
+  var url=typeof data==='string'?data:URL.createObjectURL(data),a=document.createElement('a');
+  a.download='facebook-new.png';a.href=url;document.body.appendChild(a);a.click();a.remove();
+  if(typeof data!=='string')setTimeout(function(){URL.revokeObjectURL(url)},30000);
+ }).catch(function(err){console.error('Facebook PNG export failed:',err);alert('PNG 저장에 실패했습니다. 이미지 크기를 확인한 뒤 다시 시도해 주세요.')})
+ .finally(function(){shot.style.zoom=z;btn.disabled=false;btn.textContent=oldText});
+};
 var ed=document.querySelector('.editor'),g=[].slice.call(ed.querySelectorAll(':scope > .ps-pn')),bar=document.createElement('div');bar.className='ps-seg';
 g.forEach(function(p,i){var b=document.createElement('button');b.type='button';b.textContent=p.getAttribute('data-t');if(!i)b.className='on';b.onclick=function(){g.forEach(function(x,j){x.hidden=j!==i});[].forEach.call(bar.children,function(c,j){c.classList.toggle('on',j===i)})};bar.appendChild(b)});
 ed.parentNode.insertBefore(bar,ed);
