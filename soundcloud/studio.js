@@ -16,6 +16,6 @@ S.start=function(){S.build();S.render()};
 $('reset').onclick=function(){S.init();S.build();S.render()};
 $('editToggle').onclick=function(){$('panel').classList.toggle('open')};
 $('png').onclick=function(){var w=pv.clientWidth,h=pv.clientHeight;
-  html2canvas(pv.contentDocument.body,{scale:3,width:w,height:h,backgroundColor:'#121212',windowWidth:w,windowHeight:h,useCORS:true}).then(function(c){
+  html2canvas(pv.contentDocument.body,{scale:3,width:w,height:h,backgroundColor:null,windowWidth:w,windowHeight:h,useCORS:true}).then(function(c){
     var a=document.createElement('a');a.download=S.png;a.href=c.toDataURL('image/png');a.click()})};
 })();
