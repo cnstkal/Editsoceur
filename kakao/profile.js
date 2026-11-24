@@ -20,6 +20,7 @@
   $('iName').addEventListener('input',function(){S.name=this.value;persist();render()});
   $('iBgImg').addEventListener('change',function(){if(this.files[0])rd(this.files[0],function(d){S.bgImg=d;persist();render()})});
   $('iPa').addEventListener('change',function(){if(this.files[0])rd(this.files[0],function(d){S.pa=d;persist();render()})});
+$('iPa_del').onclick=function(){S.pa=''; $('iPa').value=''; render();};
   $('iG').addEventListener('change',function(){var fs=[].slice.call(this.files),n=0;fs.forEach(function(f){rd(f,function(d){S.g.push(d);if(++n===fs.length){persist();list();render()}})})});
   $('elG').addEventListener('click',function(e){var i=e.target.dataset.i;if(i==null)return;S.g.splice(+i,1);persist();list();render()});
   $('reset').onclick=function(){load(true)};
