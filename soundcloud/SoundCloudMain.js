@@ -1,7 +1,7 @@
 (function(){
 S.png='soundcloud-search.png';
 S.init=function(){S.D={q:'ateez',
-  top:{t:'Drip',a:'ATEEZ',p:'65.6K',d:'4:19',img:''},
+  top:{t:'Drip',a:'ATEEZ',p:'65.6K',d:'4:19',img:''},topSelected:false,
   pf:[{n:'ATEEZ',img:''}],
   tr:[{t:'Golden Hour: Pt.5 Ateez - BAD,...',a:'ATEEZ',p:'262.2K',d:'14:58',img:''}]}};
 S.init();
@@ -37,7 +37,7 @@ function row(x,c){return '<div class="row" onclick="this.classList.toggle('selec
 S.view=function(){var D=S.D,cl=['a1','a2','a3'];
  return '<div class="screen"><div class="search"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#ddd" stroke-width="1.8"><circle cx="10.5" cy="10.5" r="7.5"/><path d="M16 16l5 5"/></svg><input id="q" value="'+e(D.q)+'" autocomplete="off"><button id="clear" class="clr">✕</button></div>'+
  '<nav class="cats"><a class="on">All</a><a>Tracks</a><a>Profiles</a><a>Playlists</a><a>Albums</a></nav><div class="scroll">'+
- '<section data-s="tracks"><h2>Top Result</h2>'+row(D.top,'')+'</section>'+
+ '<section data-s="tracks"><h2>Top Result</h2>'+row(D.top,'',D.topSelected)+'</section>'+
  '<section data-s="profiles"><h2>Profiles'+(D.pf.length>=3?'<a>See all</a>':'')+'</h2><div class="profiles">'+D.pf.map(function(p,i){return '<div class="p"><div class="av '+cl[i]+'">'+photo(p.img,'av-img',p.n)+'</div><b>'+e(p.n)+'</b><button>Follow</button></div>'}).join('')+'</div></section>'+
  (D.tr.length?'<section data-s="tracks"><h2>Tracks<a>See all</a></h2>'+D.tr.map(function(x){return row(x,'gold')}).join('')+'</section>':'')+
  '<p id="empty" hidden>No results in this category.</p><div style="height:90px"></div></div>'+
@@ -48,7 +48,7 @@ S.view=function(){var D=S.D,cl=['a1','a2','a3'];
  '<div><svg viewBox="0 0 24 24" fill="currentColor"><path d="M2 12h1v4H2zM5 10h1v6H5zM8 9h1v7H8zM11 8h1v8h-1zM13 8a5 5 0 019 3 3 3 0 01-1 5h-8z"/></svg>Upgrade</div></footer></div>'};
 function song(el,o){S.text(el,'곡 제목',o,'t');S.text(el,'아티스트',o,'a');S.text(el,'재생수',o,'p');S.text(el,'시간',o,'d');S.file(el,'앨범 커버',o,'img')}
 S.panels=[
- {t:'기본',build:function(el){S.grp(el,'검색창');S.text(el,'검색창 문구',S.D,'q');S.grp(el,'Top Result');song(el,S.D.top)}},
+ {t:'기본',build:function(el){S.grp(el,'검색창');S.text(el,'검색창 문구',S.D,'q');S.grp(el,'Top Result');song(el,S.D.top);S.btn(el,S.D.topSelected?'선택 강조 해제':'선택 강조 표시',function(){S.D.topSelected=!S.D.topSelected;S.build();S.render()},'add')}},
  {t:'프로필',build:function(el){
    S.D.pf.forEach(function(p,i){
      S.grp(el,'프로필 '+(i+1));
