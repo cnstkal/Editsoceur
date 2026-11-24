@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no"><script src="../nozoom.js?v=1"></script>
 <title>신 페이스북</title>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.css">
-<link rel="stylesheet" href="fb2.css?v=4">
+<link rel="stylesheet" href="fb2.css?v=5">
 <link rel="stylesheet" href="../ps-editor.css?v=10"><style id="ed-font">html,body,body *{font-family:Pretendard,-apple-system,"Apple SD Gothic Neo","Noto Sans KR",sans-serif!important;letter-spacing:-.02em!important}</style><style id="pa">body{animation:paIn .28s ease both}body.pa-out{animation:paOut .18s ease forwards}@keyframes paIn{from{opacity:0}to{opacity:1}}@keyframes paOut{to{opacity:0}}@media (prefers-reduced-motion:reduce){body,body.pa-out{animation:none}}</style><script id="pa-js">(function(){document.addEventListener("click",function(e){var a=e.target.closest&&e.target.closest("a[href]");if(!a||e.defaultPrevented||e.button||e.metaKey||e.ctrlKey||e.shiftKey||a.target||a.hasAttribute("download"))return;var h=a.getAttribute("href");if(!h||h[0]==="#"||/^(javascript:|mailto:|tel:)/.test(h))return;var u=new URL(a.href,location.href);if(u.origin!==location.origin)return;e.preventDefault();document.body.classList.add("pa-out");setTimeout(function(){location.href=u.href},180)},true)})();</script></head>
 <body class="studio">
 <div class="ps-wrap">
@@ -15,7 +15,7 @@
 <div class="ps-lbl">Live Preview</div>
 <h2>신 페이스북</h2>
 <p class="ps-sub">9:16 화면으로 확인하고, 오른쪽에서 바로 수정해요</p>
-<div class="ps-stage"><div class="ps-frame">
+<div class="ps-stage"><div class="ps-frame"><div class="fb-canvas"><div class="preview-stack">
 <div class="fb" id="shot">
  <div class="hd"><svg viewBox="0 0 24 24"><path d="M16 3 7 12l9 9"/></svg><b id="vTitle"></b><svg viewBox="0 0 24 24"><circle cx="10.500" cy="10.500" r="7"/><path d="m16 16 6 6"/></svg></div>
  <div class="rule"></div>
@@ -27,9 +27,9 @@
   <div class="bt"><span><svg viewBox="0 0 24 24"><path d="M2 10h4v11H2zM8 10l4-8c2 0 3 1 3 3l-1 4h6c1.5 0 2.5 1.3 2 2.7l-2 7c-.3 1-1.2 1.8-2.3 1.8H8z"/></svg><i id="vL2" style="font-style:normal"></i></span><span><svg viewBox="0 0 24 24"><path d="M12 3a9 9 0 1 0 4 17l5 1-1.500-4.500A9 9 0 0 0 12 3z"/></svg><i id="vCmt" style="font-style:normal"></i></span><span><svg viewBox="0 0 24 24"><path d="M14 4l8 8-8 8v-5C7 15 4 17 2 21c1-8 5-12 12-12z"/></svg><i id="vShr" style="font-style:normal"></i></span></div>
   <div class="cms" id="cms" hidden><div class="rule2"></div><div class="so">관련성 높은 댓글<svg viewBox="0 0 24 24"><path d="m4 8 8 8 8-8"/></svg></div><div id="cmv"></div></div>
  </div></div>
- <div class="ib"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="17" height="17" rx="3" transform="rotate(-6 12 12)"/><path d="m5 17 5-5 3 3 3-3 3 4"/><circle cx="9" cy="8" r="1.500"/></svg><div class="fi"><span id="vPh"></span><svg viewBox="0 0 28 28"><rect x="2" y="5" width="24" height="18" rx="5"/><text x="14" y="18" font-size="9.500" font-weight="700" text-anchor="middle" fill="#65676b" stroke="none">GIF</text></svg><svg viewBox="0 0 28 28"><circle cx="14" cy="14" r="11"/><circle cx="14" cy="14" r="4"/><path d="M18 10v6c0 3 5 3 5-2"/></svg><svg viewBox="0 0 28 28"><circle cx="14" cy="14" r="11"/><circle cx="10.500" cy="12" r=".8" fill="#65676b"/><circle cx="17.500" cy="12" r=".8" fill="#65676b"/><path d="M9 17c3 4 7 4 10 0"/></svg></div></div>
+ <div class="ib" id="commentBar"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="17" height="17" rx="3" transform="rotate(-6 12 12)"/><path d="m5 17 5-5 3 3 3-3 3 4"/><circle cx="9" cy="8" r="1.500"/></svg><div class="fi"><span id="vPh"></span><svg viewBox="0 0 28 28"><rect x="2" y="5" width="24" height="18" rx="5"/><text x="14" y="18" font-size="9.500" font-weight="700" text-anchor="middle" fill="#65676b" stroke="none">GIF</text></svg><svg viewBox="0 0 28 28"><circle cx="14" cy="14" r="11"/><circle cx="14" cy="14" r="4"/><path d="M18 10v6c0 3 5 3 5-2"/></svg><svg viewBox="0 0 28 28"><circle cx="14" cy="14" r="11"/><circle cx="10.500" cy="12" r=".8" fill="#65676b"/><circle cx="17.500" cy="12" r=".8" fill="#65676b"/><path d="M9 17c3 4 7 4 10 0"/></svg></div></div>
 </div>
-</div></div>
+</div></div></div></div>
 </section>
 <section class="ps-card ps-side">
 <div class="ps-lbl">Edit Panel</div>
@@ -54,6 +54,7 @@
 <button class="ps-ghost" id="addCm" type="button">+ 댓글 추가</button>
 </div>
 <div class="ps-pn" data-t="기타" hidden>
+<div class="ps-tg"><span>하단 댓글 입력창 표시</span><label class="sw"><input id="iIbOn" type="checkbox" checked><i></i></label></div>
 <div class="ps-tg"><span>댓글 켜기</span><label class="sw"><input id="iCmOn" type="checkbox"><i></i></label></div>
 <label>스크롤 위치<input id="iOff" type="range" min="0" max="1200" value="0"></label>
 </div>
