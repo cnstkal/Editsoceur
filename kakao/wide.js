@@ -17,11 +17,27 @@
     smile: '<svg viewBox="0 0 24 24"><circle cx="9" cy="10" r="1.6" fill="#2b2f36"/><circle cx="15" cy="10" r="1.6" fill="#2b2f36"/><path d="M7.5 14c1.2 3 7.8 3 9 0" stroke="#2b2f36" stroke-width="2" fill="none" stroke-linecap="round"/></svg>'
   };
   var AVATAR = '<svg viewBox="0 0 100 100"><rect width="100" height="100" fill="#cfd6dc"/><circle cx="50" cy="38" r="17" fill="#fff"/><path d="M14 100c2-26 20-38 36-38s34 12 36 38z" fill="#fff"/></svg>';
+  var TL = '<svg viewBox="0 0 8 6" preserveAspectRatio="none"><path d="M8 0H0C1.2 1.6 3.4 4.4 8 5.4z" fill="#fff"/></svg>';
+  var TR = '<svg viewBox="0 0 8 6" preserveAspectRatio="none"><path d="M0 0H8C6.8 1.6 4.6 4.4 0 5.4z" fill="#fee500"/></svg>';
+  // 프로필 사진: 가운데 정사각형으로 잘라 저장(저장 PNG에서 찌그러짐/깨짐 방지)
+  function cropSq(src, cb) {
+    var im = new Image(); im.onload = function () {
+      var s = Math.min(im.width, im.height), c = document.createElement("canvas"); c.width = c.height = 256;
+      c.getContext("2d").drawImage(im, (im.width - s) / 2, (im.height - s) / 2, s, s, 0, 0, 256, 256); cb(c.toDataURL("image/jpeg", 0.92));
+    }; im.onerror = function () { cb(src); }; im.src = src;
+  }
   function el(tag, cls, text) { var n = document.createElement(tag); if (cls) n.className = cls; if (text != null) n.textContent = text; return n; }
   function esc(t) { return String(t == null ? "" : t).replace(/[&<>"]/g, function (c) { return { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]; }); }
   function persist() { try { localStorage.setItem(STORE, JSON.stringify(S)); } catch (e) {} }
 
-  function fit() { var c = $("cap"); c.style.setProperty("--u", (c.clientWidth / 100) + "px"); }
+  // 16:9 고정: 대화가 넘치면 오래된 대화부터 위로 밀어 올려 최신 대화가 보이게 함
+  function settle() {
+    var chat = $("chat"), f = chat.firstElementChild; if (!f) return;
+    f.style.marginTop = "";
+    var over = chat.scrollHeight - chat.clientHeight;
+    if (over > 0) f.style.marginTop = (parseFloat(getComputedStyle(f).marginTop) - over) + "px";
+  }
+  function fit() { var c = $("cap"); c.style.setProperty("--u", (c.clientWidth / 100) + "px"); settle(); }
   window.addEventListener("resize", fit);
 
   // ===== 미리보기 렌더링 =====
@@ -35,15 +51,17 @@
       var me = !!m.me, first = me !== prev; prev = me;
       var row = el("div", "row" + (me ? " me" : "") + (first ? " first tail" : "")), col = el("div", "col");
       if (!me) {
-        if (first) { var av = el("div", "av"); if (S.av) av.style.backgroundImage = "url(" + S.av + ")"; else av.innerHTML = AVATAR; row.append(av); col.append(el("div", "name", S.room)); }
+        if (first) { var av = el("div", "av"); if (S.av) { var ai = document.createElement("img"); ai.src = S.av; ai.alt = ""; av.append(ai); } else av.innerHTML = AVATAR; row.append(av); col.append(el("div", "name", S.room)); }
         else row.append(el("div", "sp"));
       }
       var line = el("div", "line"), bb = el("div", "b" + (m.img ? " img" : ""), m.img ? null : m.t);
       if (m.img) { var im = document.createElement("img"); im.src = m.img; bb.append(im); }
+      if (first && !m.img) bb.insertAdjacentHTML("beforeend", '<i class="tl">' + (me ? TR : TL) + "</i>");
       line.append(bb);
       if (m.tm || (me && m.rd)) { var tm = el("div", "tm"); if (me && m.rd) tm.append(el("span", "rd", "1")); tm.append(m.tm || ""); line.append(tm); }
       col.append(line); row.append(col); chat.append(row);
     });
+    settle();
   }
 
   // ===== 편집기 =====
@@ -62,10 +80,11 @@
     if (reset) { try { localStorage.removeItem(STORE); } catch (e) {} S = JSON.parse(JSON.stringify(DEF)); }
     else { try { var v = localStorage.getItem(STORE); S = v ? JSON.parse(v) : JSON.parse(JSON.stringify(DEF)); if (!S || !Array.isArray(S.items)) throw 0; } catch (e) { S = JSON.parse(JSON.stringify(DEF)); } }
     $("iRoom").value = S.room; $("iUn").value = S.un; list(); render();
+    if (S.av && !S.avSq) cropSq(S.av, function (u) { S.av = u; S.avSq = 1; persist(); render(); });
   }
   $("iRoom").oninput = function () { S.room = this.value; persist(); render(); };
   $("iUn").oninput = function () { S.un = this.value; persist(); render(); };
-  $("iAv").onchange = function () { var f = this.files[0]; if (!f) return; var r = new FileReader(); r.onload = function () { S.av = r.result; persist(); render(); }; r.readAsDataURL(f); };
+  $("iAv").onchange = function () { var f = this.files[0]; if (!f) return; var r = new FileReader(); r.onload = function () { cropSq(r.result, function (u) { S.av = u; S.avSq = 1; persist(); render(); }); }; r.readAsDataURL(f); };
   $("list").addEventListener("input", function (e) {
     var pe = e.target.closest(".pe"), f = e.target.dataset.f; if (!pe || !f) return;
     if (f === "img") return;
@@ -101,11 +120,31 @@
     };
   });
   $("reset").onclick = function () { load(true); };
-  $("save").onclick = function () {
-    var b = this, t = b.textContent; b.disabled = true; b.textContent = "저장 중...";
-    fit(); html2canvas($("cap"), { scale: 1920 / $("cap").clientWidth, useCORS: true, backgroundColor: null, logging: false }).then(function (c) {
-      c.toBlob(function (bl) { var a = document.createElement("a"); a.href = URL.createObjectURL(bl); a.download = "kakao-chat-16x9.png"; document.body.appendChild(a); a.click(); a.remove(); b.disabled = false; b.textContent = t; });
-    }).catch(function () { b.disabled = false; b.textContent = t; alert("PNG 저장에 실패했습니다."); });
-  };
+  function viaH2C(cap, r) { return html2canvas(cap, { scale: r, useCORS: true, backgroundColor: null, logging: false }); }
+  // 브라우저가 그리는 그대로 캡처(html-to-image) → 실패하면 html2canvas로 대체
+  function snap(cap) {
+    var r = 1920 / cap.clientWidth;
+    if (!window.htmlToImage) return viaH2C(cap, r);
+    var opt = { pixelRatio: r, cacheBust: true };
+    return htmlToImage.toCanvas(cap, opt).then(function () { return htmlToImage.toCanvas(cap, opt); })
+      .catch(function () { return viaH2C(cap, r); });
+  }
+  function savePng(btn, transparent) {
+    var t = btn.textContent, cap = $("cap"); btn.disabled = true; btn.textContent = "저장 중...";
+    if (transparent) cap.classList.add("tp");
+    fit();
+    snap(cap).then(function (c) {
+      var o = document.createElement("canvas"); o.width = 1920; o.height = 1080;
+      o.getContext("2d").drawImage(c, 0, 0, 1920, 1080);
+      o.toBlob(function (bl) {
+        var a = document.createElement("a"); a.href = URL.createObjectURL(bl);
+        a.download = transparent ? "kakao-chat-16x9-transparent.png" : "kakao-chat-16x9.png";
+        document.body.appendChild(a); a.click(); a.remove();
+      });
+    }).catch(function () { alert("PNG 저장에 실패했습니다."); })
+      .then(function () { cap.classList.remove("tp"); btn.disabled = false; btn.textContent = t; });
+  }
+  $("save").onclick = function () { savePng(this, false); };
+  $("saveT").onclick = function () { savePng(this, true); };
   load(false);
 })();
