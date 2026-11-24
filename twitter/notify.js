@@ -119,7 +119,7 @@ document.getElementById('addMention').onclick=function(){S.items.push(Mn('사용
 document.getElementById('reset').onclick=function(){S=defaults();sync();renderList();render()};
 document.getElementById('save').onclick=function(){
  var b=this;b.textContent='저장 중...';
- igCapture(document.getElementById('capture'),{scale:5,backgroundColor:'#ffffff',useCORS:true}).then(function(cv){
+ (document.fonts&&document.fonts.ready?document.fonts.ready:Promise.resolve()).then(function(){var root=document.getElementById('capture');var imgs=[].slice.call(root.querySelectorAll('img'));return Promise.all(imgs.map(function(im){return im.decode?im.decode().catch(function(){}):Promise.resolve()})).then(function(){return igCapture(root,{scale:8,backgroundColor:'#ffffff',useCORS:true})})}).then(function(cv){
   var a=document.createElement('a');a.download='notify.png';a.href=cv.toDataURL('image/png');a.click();b.textContent='PNG로 저장';
  }).catch(function(){b.textContent='PNG로 저장';alert('저장에 실패했어요')});
 };
