@@ -5,12 +5,12 @@ svg{display:block}
 .hint{font-size:12px;color:#777;margin:8px 2px 0}
 
 /* ===== 16:9 미리보기: 모든 크기는 가로폭(--u = 가로 1%) 기준 ===== */
-.stage{--u:9.6px;width:100%;aspect-ratio:16/9;min-height:0;display:flex;flex-direction:column;background:#9dbfd5;overflow:hidden}
+.stage{--u:9.6px;width:100%;min-height:calc(var(--u)*56.25);display:flex;flex-direction:column;background:#9dbfd5;overflow:hidden}
 .head{flex:none;position:relative;height:calc(var(--u)*10.1);display:flex;align-items:center;justify-content:space-between;padding:0 calc(var(--u)*4.3);border-bottom:calc(var(--u)*.12) solid rgba(0,0,0,.1)}
 .back{display:flex;align-items:center;gap:calc(var(--u)*.6);font-size:calc(var(--u)*3);font-weight:500}.back svg{width:calc(var(--u)*4.2);height:calc(var(--u)*4.2)}
 .tools{display:flex;align-items:center;gap:calc(var(--u)*3)}.tools svg{width:calc(var(--u)*4.2);height:calc(var(--u)*4.2)}
 .title{position:absolute;left:0;right:0;text-align:center;font-size:calc(var(--u)*3.6);font-weight:600;pointer-events:none}
-#chat{flex:1;min-height:0;overflow:hidden;padding:calc(var(--u)*2.5) calc(var(--u)*6) calc(var(--u)*6) calc(var(--u)*4.3)}
+#chat{flex:1;padding:calc(var(--u)*2.5) calc(var(--u)*6) calc(var(--u)*6) calc(var(--u)*4.3)}
 .date{margin:calc(var(--u)*2.6) auto calc(var(--u)*1.6);width:max-content;height:calc(var(--u)*5.6);padding:0 calc(var(--u)*2.2) 0 calc(var(--u)*2.6);border-radius:calc(var(--u)*2.8);background:rgba(110,130,150,.28);display:flex;align-items:center;gap:calc(var(--u)*.5);font-size:calc(var(--u)*2.1);color:#222}
 .date svg{width:calc(var(--u)*1.6);height:calc(var(--u)*1.6)}
 .row{display:flex;margin-top:calc(var(--u)*.8)}

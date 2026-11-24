@@ -30,14 +30,7 @@
   function esc(t) { return String(t == null ? "" : t).replace(/[&<>"]/g, function (c) { return { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]; }); }
   function persist() { try { localStorage.setItem(STORE, JSON.stringify(S)); } catch (e) {} }
 
-  // 16:9 고정: 대화가 넘치면 오래된 대화부터 위로 밀어 올려 최신 대화가 보이게 함
-  function settle() {
-    var chat = $("chat"), f = chat.firstElementChild; if (!f) return;
-    f.style.marginTop = "";
-    var over = chat.scrollHeight - chat.clientHeight;
-    if (over > 0) f.style.marginTop = (parseFloat(getComputedStyle(f).marginTop) - over) + "px";
-  }
-  function fit() { var c = $("cap"); c.style.setProperty("--u", (c.clientWidth / 100) + "px"); settle(); }
+  function fit() { var c = $("cap"); c.style.setProperty("--u", (c.clientWidth / 100) + "px"); }
   window.addEventListener("resize", fit);
 
   // ===== 미리보기 렌더링 =====
@@ -61,7 +54,6 @@
       if (m.tm || (me && m.rd)) { var tm = el("div", "tm"); if (me && m.rd) tm.append(el("span", "rd", "1")); tm.append(m.tm || ""); line.append(tm); }
       col.append(line); row.append(col); chat.append(row);
     });
-    settle();
   }
 
   // ===== 편집기 =====
@@ -134,9 +126,7 @@
     if (transparent) cap.classList.add("tp");
     fit();
     snap(cap).then(function (c) {
-      var o = document.createElement("canvas"); o.width = 1920; o.height = 1080;
-      o.getContext("2d").drawImage(c, 0, 0, 1920, 1080);
-      o.toBlob(function (bl) {
+      c.toBlob(function (bl) {
         var a = document.createElement("a"); a.href = URL.createObjectURL(bl);
         a.download = transparent ? "kakao-chat-16x9-transparent.png" : "kakao-chat-16x9.png";
         document.body.appendChild(a); a.click(); a.remove();
