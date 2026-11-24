@@ -116,11 +116,16 @@
   // 브라우저가 그리는 그대로 캡처(html-to-image) → 실패하면 html2canvas로 대체
   // 저장 직전: 말풍선 가로 길이를 프리뷰에서 잰 값으로 고정 (저장 엔진의 글자 폭 차이로 여백이 늘어나는 것 방지)
   function pin(cap) {
-    return Array.prototype.map.call(cap.querySelectorAll(".b"), function (e) {
-      var s = [e, e.style.width, e.style.maxWidth]; e.style.width = e.offsetWidth + "px"; e.style.maxWidth = "none"; return s;
+    return [cap].concat(Array.prototype.slice.call(cap.querySelectorAll("*"))).map(function (e) {
+      var r = e.getBoundingClientRect(), st = e.style;
+      var s = [e, st.width, st.height, st.maxWidth, st.minWidth, st.minHeight];
+      st.width = r.width + "px"; st.height = r.height + "px"; st.maxWidth = "none"; st.minWidth = "0"; st.minHeight = "0";
+      return s;
     });
   }
-  function unpin(list) { list.forEach(function (s) { s[0].style.width = s[1]; s[0].style.maxWidth = s[2]; }); }
+  function unpin(list) {
+    list.forEach(function (s) { var st = s[0].style; st.width = s[1]; st.height = s[2]; st.maxWidth = s[3]; st.minWidth = s[4]; st.minHeight = s[5]; });
+  }
   var EXPORT_W = 3840; // 저장 가로 픽셀 (4K) — 확대해도 글자가 깨지지 않도록
   function snap(cap) {
     var r = EXPORT_W / cap.clientWidth;
@@ -157,36 +162,5 @@
   $("modeBg").onclick = function () { setMode("bg"); };
   $("save").onclick = function () { savePng(this, MODE); };
 
-  // ===== 프리뷰 그대로 저장: 탭 화면을 캡처해서 프리뷰 영역만 잘라냄 (프리뷰와 픽셀 단위로 동일) =====
-  function download(bl, name) {
-    var a = document.createElement("a"); a.href = URL.createObjectURL(bl); a.download = name;
-    document.body.appendChild(a); a.click(); a.remove();
-  }
-  async function captureScreen(cap) {
-    cap.scrollIntoView({ block: "center" });
-    await new Promise(function (r) { requestAnimationFrame(function () { requestAnimationFrame(r); }); });
-    var rect = cap.getBoundingClientRect();
-    var stream = await navigator.mediaDevices.getDisplayMedia({ video: true, audio: false, preferCurrentTab: true });
-    try {
-      var v = document.createElement("video"); v.muted = true; v.srcObject = stream;
-      await v.play();
-      await new Promise(function (r) { setTimeout(r, 400); });
-      var sx = v.videoWidth / window.innerWidth, sy = v.videoHeight / window.innerHeight;
-      var c = document.createElement("canvas");
-      c.width = Math.round(rect.width * sx); c.height = Math.round(rect.height * sy);
-      c.getContext("2d").drawImage(v, rect.left * sx, rect.top * sy, rect.width * sx, rect.height * sy, 0, 0, c.width, c.height);
-      return c;
-    } finally { stream.getTracks().forEach(function (t) { t.stop(); }); }
-  }
-  $("saveScreen").onclick = async function () {
-    var btn = this, t = btn.textContent; btn.disabled = true; btn.textContent = "캡처 중...";
-    try {
-      fit();
-      var c = await captureScreen($("cap"));
-      c.toBlob(function (bl) { download(bl, "kakao-chat-preview.png"); });
-    } catch (e) {
-      alert("프리뷰 캡처에 실패했습니다. 화면 공유에서 현재 탭을 선택하고 허용해 주세요.");
-    } finally { btn.disabled = false; btn.textContent = t; }
-  };
   load(false);
 })();
