@@ -92,8 +92,8 @@
   function shrink(file, cb) {
     var r = new FileReader();
     r.onload = function () { var im = new Image(); im.onload = function () {
-      var k = Math.min(1, 800 / Math.max(im.width, im.height)), c = document.createElement("canvas");
-      c.width = im.width * k; c.height = im.height * k; c.getContext("2d").drawImage(im, 0, 0, c.width, c.height); cb(c.toDataURL("image/jpeg", 0.85));
+      var k = Math.min(1, 2400 / Math.max(im.width, im.height)), c = document.createElement("canvas");
+      c.width = im.width * k; c.height = im.height * k; var x=c.getContext("2d"); x.imageSmoothingEnabled=true; x.imageSmoothingQuality="high"; x.drawImage(im, 0, 0, c.width, c.height); cb(c.toDataURL("image/jpeg", 0.95));
     }; im.src = r.result; };
     r.readAsDataURL(file);
   }
@@ -109,11 +109,17 @@
     };
   });
   $("reset").onclick = function () { load(true); };
-  $("save").onclick = function () {
-    var b = this, t = b.textContent; b.disabled = true; b.textContent = "저장 중...";
-    capChat($("cap"), { scale: 5, useCORS: true, backgroundColor: null, logging: false }).then(function (c) {
-      c.toBlob(function (bl) { var a = document.createElement("a"); a.href = URL.createObjectURL(bl); a.download = "kakao-chat.png"; document.body.appendChild(a); a.click(); a.remove(); b.disabled = false; b.textContent = t; });
-    }).catch(function () { b.disabled = false; b.textContent = t; alert("PNG 저장에 실패했습니다."); });
+  $("save").onclick = async function () {
+    var b=this,t=b.textContent,el=$("cap");b.disabled=true;b.textContent="고화질 저장 중...";
+    try {
+      if(document.fonts&&document.fonts.ready) await document.fonts.ready;
+      var waits=[];Array.prototype.forEach.call(el.querySelectorAll("img"),function(im){if(im.decode)waits.push(im.decode().catch(function(){}));else if(!im.complete)waits.push(new Promise(function(ok){im.onload=im.onerror=ok}))});
+      await Promise.all(waits);await new Promise(function(ok){requestAnimationFrame(function(){requestAnimationFrame(ok)})});
+      var c=await capChat(el,{scale:7,useCORS:true,allowTaint:false,backgroundColor:null,logging:false,imageTimeout:20000});
+      var bl=await new Promise(function(ok){c.toBlob(ok,"image/png")});if(!bl)throw new Error("PNG encode failed");
+      var a=document.createElement("a");a.href=URL.createObjectURL(bl);a.download="kakao-chat.png";document.body.appendChild(a);a.click();a.remove();setTimeout(function(){URL.revokeObjectURL(a.href)},1000);
+    }catch(err){console.error(err);alert("PNG 저장에 실패했습니다.");}
+    finally{b.disabled=false;b.textContent=t;}
   };
   load(false);
 })();
