@@ -18,7 +18,7 @@ function render(){
  var h='';
  S.items.forEach(function(it){
   if(it.type==='date'){h+='<div class="dt"><span>'+esc(it.text)+'</span></div>';return}
-  var tm=it.time?'<span class="tm">'+esc(it.time)+'</span>':'';
+  var tm=(it.time?'<span class="tm">'+esc(it.time)+'</span>':'')+(it.me&&it.read?'<span class="read-mark">읽음</span>':'');
   var body=it.type==='photo'?'<div class="pic"'+(it.img?' style="background-image:url('+it.img+')"':'')+'></div>':'<div class="bb">'+esc(it.text)+'</div>';
   if(it.me)h+='<div class="m me"><div class="row">'+body+tm+'</div></div>';
   else h+='<div class="m"><div class="av"'+(S.avatar?' style="background-image:url('+S.avatar+')"':'')+'></div><div class="bd"><div class="nm">'+esc(S.name)+'</div><div class="row">'+body+tm+'</div></div></div>';
@@ -31,7 +31,7 @@ function edRows(){
   return '<div class="ed-row" data-i="'+i+'">'+
    '<div class="ed-topline"><label class="ed-field"><span>보낸 사람</span><select data-k="me"><option value="0"'+(!it.me?' selected':'')+'>상대</option><option value="1"'+(it.me?' selected':'')+'>나</option></select></label><label class="ed-field"><span>시간</span><input class="tt" data-k="time" value="'+esc(it.time||'')+'" placeholder="오전 10:51"></label></div>'+
    (it.type==='date'?'<label class="ed-field ed-full"><span>날짜</span><input class="t" data-k="text" value="'+esc(it.text)+'" placeholder="날짜"></label>':
-    '<label class="ed-unread"><input type="checkbox" data-k="unread" '+(it.unread?'checked':'')+'><span>안읽음 1</span></label>'+
+    (it.me?'<label class="ed-unread"><input type="checkbox" data-k="read" '+(it.read?'checked':'')+'><span>읽음 표시</span></label>':'')+
     '<label class="ed-field ed-full"><span>내용</span><textarea data-k="text" rows="3" placeholder="메시지를 입력하세요">'+esc(it.text||'')+'</textarea></label>'+
     (it.type==='photo'?'<div class="ed-field ed-full"><span>사진 보내기(올리면 말풍선 대신 사진)</span><div class="photo-preview"><label class="file-pick">파일 선택<input type="file" accept="image/*" data-f="img"></label>'+(it.img?'<img class="photo-thumb" src="'+it.img+'" alt="첨부 미리보기">':'<span class="hint">선택된 파일 없음</span>')+'</div></div>':'')+
     '<label class="ed-field ed-full ed-type"><span>메시지 종류</span><select data-k="type">'+opts+'</select></label>')+
