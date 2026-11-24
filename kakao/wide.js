@@ -143,6 +143,19 @@
     });
     return saved;
   }
+  // 말풍선: 프리뷰의 좌우 여백(px)을 그대로 고정하고 텍스트를 가운데 정렬 (좌우 여백 동일)
+  function padBubbles(cap) {
+    return Array.prototype.map.call(cap.querySelectorAll(".b"), function (b) {
+      if (b.querySelector("img")) return null;
+      var cs = getComputedStyle(b), st = b.style;
+      var s = [b, st.paddingLeft, st.paddingRight, st.textAlign, st.letterSpacing];
+      st.letterSpacing = cs.letterSpacing; // 프리뷰의 글자 간격(px)을 명시 (저장 엔진이 누락하는 것 방지)
+      var n = parseFloat(cs.paddingLeft); // 좌우 여백은 CSS상 동일
+      st.paddingLeft = n + "px"; st.paddingRight = n + "px"; st.textAlign = "center";
+      return s;
+    }).filter(Boolean);
+  }
+  function unpadBubbles(list) { list.forEach(function (s) { var st = s[0].style; st.paddingLeft = s[1]; st.paddingRight = s[2]; st.textAlign = s[3]; st.letterSpacing = s[4]; }); }
   function unfreezeLines(list) { list.forEach(function (s) { s[0].textContent = s[1]; s[2].style.whiteSpace = s[3]; }); }
   function unpin(list) {
     list.forEach(function (s) { var st = s[0].style; st.width = s[1]; st.height = s[2]; st.maxWidth = s[3]; st.minWidth = s[4]; st.minHeight = s[5]; });
@@ -164,6 +177,7 @@
     fit();
     var frozen = freezeLines(cap);
     var pinned = pin(cap);
+    var padded = padBubbles(cap);
     snap(cap).then(function (c) {
       c.toBlob(function (bl) {
         var a = document.createElement("a"); a.href = URL.createObjectURL(bl);
@@ -171,7 +185,7 @@
         document.body.appendChild(a); a.click(); a.remove();
       });
     }).catch(function () { alert("PNG 저장에 실패했습니다."); })
-      .then(function () { unpin(pinned); unfreezeLines(frozen); btn.disabled = false; btn.textContent = t; });
+      .then(function () { unpadBubbles(padded); unpin(pinned); unfreezeLines(frozen); btn.disabled = false; btn.textContent = t; });
   }
   var MODE = "full";
   function setMode(m) {
