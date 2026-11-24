@@ -143,7 +143,7 @@
     });
     return saved;
   }
-  // 말풍선: 프리뷰의 좌우 여백(px)을 그대로 고정하고 텍스트를 가운데 정렬 (좌우 여백 동일)
+  // 말풍선: 프리뷰의 좌우 여백(px)을 그대로 고정 (글자는 프리뷰처럼 왼쪽 정렬)
   function padBubbles(cap) {
     return Array.prototype.map.call(cap.querySelectorAll(".b"), function (b) {
       if (b.querySelector("img")) return null;
@@ -151,7 +151,7 @@
       var s = [b, st.paddingLeft, st.paddingRight, st.textAlign, st.letterSpacing];
       st.letterSpacing = cs.letterSpacing; // 프리뷰의 글자 간격(px)을 명시 (저장 엔진이 누락하는 것 방지)
       var n = parseFloat(cs.paddingLeft); // 좌우 여백은 CSS상 동일
-      st.paddingLeft = n + "px"; st.paddingRight = n + "px"; st.textAlign = "center";
+      st.paddingLeft = n + "px"; st.paddingRight = n + "px"; st.textAlign = "left";
       return s;
     }).filter(Boolean);
   }
