@@ -116,10 +116,12 @@
   // 브라우저가 그리는 그대로 캡처(html-to-image) → 실패하면 html2canvas로 대체
   function snap(cap) {
     var r = 1920 / cap.clientWidth;
-    if (!window.htmlToImage) return viaH2C(cap, r);
-    var opt = { pixelRatio: r, cacheBust: true };
-    return htmlToImage.toCanvas(cap, opt).then(function () { return htmlToImage.toCanvas(cap, opt); })
-      .catch(function () { return viaH2C(cap, r); });
+    var ready = (document.fonts && document.fonts.ready) ? document.fonts.ready : Promise.resolve();
+    return ready.then(function () {
+      if (!window.htmlToImage) return viaH2C(cap, r);
+      return htmlToImage.toCanvas(cap, { pixelRatio: r, cacheBust: true })
+        .catch(function () { return viaH2C(cap, r); });
+    });
   }
   function savePng(btn, mode) {
     var transparent = mode === "tp", bgOnly = mode === "bg";
