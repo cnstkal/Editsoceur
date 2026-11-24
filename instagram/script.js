@@ -53,7 +53,7 @@
   $('reset').onclick=load;
   $('savePng').onclick=function(){
     var b=this;b.disabled=true;var t=b.textContent;b.textContent='저장 중...';
-    var run=function(){html2canvas($('post'),{scale:5,useCORS:true,backgroundColor:'#ffffff',logging:false}).then(function(c){
+    var run=function(){IGImg.capture($('post'),{scale:8,backgroundColor:'#ffffff',logging:false}).then(function(c){
       c.toBlob(function(bl){var a=document.createElement('a');a.href=URL.createObjectURL(bl);
         a.download='instagram-post.png';document.body.appendChild(a);a.click();a.remove();
         setTimeout(function(){URL.revokeObjectURL(a.href)},2000);b.disabled=false;b.textContent=t},'image/png')
