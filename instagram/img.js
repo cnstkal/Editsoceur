@@ -10,7 +10,7 @@
     var o=document.createElement('canvas');o.width=tw;o.height=th;q(o).drawImage(src,0,0,tw,th);
     return o.toDataURL('image/png');
   }
-  window.IGImg={read:function(file,cb){
+  window.IGImg={capture:function(el,opts){opts=opts||{};var scale=opts.scale||8;return (document.fonts&&document.fonts.ready?document.fonts.ready:Promise.resolve()).then(function(){var imgs=[].slice.call(el.querySelectorAll('img'));return Promise.all(imgs.map(function(im){return im.decode?im.decode().catch(function(){}):im.complete?Promise.resolve():new Promise(function(ok){im.onload=im.onerror=ok})}))}).then(function(){return new Promise(function(ok){requestAnimationFrame(function(){requestAnimationFrame(ok)})})}).then(function(){var w=el.scrollWidth||el.offsetWidth||1,h=el.scrollHeight||el.offsetHeight||1;scale=Math.min(scale,Math.sqrt(32000000/(w*h)),8192/Math.max(w,h));opts.scale=Math.max(1,scale);opts.useCORS=true;opts.allowTaint=false;opts.imageTimeout=20000;return html2canvas(el,opts)})},read:function(file,cb){
     var r=new FileReader();
     r.onload=function(){var im=new Image();
       im.onload=function(){var d=null;try{d=shrink(im)}catch(e){}cb(d||r.result)};
