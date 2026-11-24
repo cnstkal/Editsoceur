@@ -41,6 +41,7 @@
     var fs=[].slice.call(el.files),out=[],n=0;if(!fs.length)return;
     fs.forEach(function(f,i){var done=function(d){out[i]=d;if(++n===fs.length)cb(out)};if(sharp)IGImg.read(f,done);else{var r=new FileReader();r.onload=function(){done(r.result)};r.readAsDataURL(f)}})})}
   file($('iAvatar'),function(o){avatar=o[0];render()},1);
+  $('iAvatarDel').onclick=function(){avatar=null;$('iAvatar').value='';$('iAvatar').dispatchEvent(new Event('change'));render()};
   file($('iPhotos'),function(o){photos=o;if(S.count<o.length){S.count=o.length;$('iCount').value=o.length}idx=0;render()});
   $('clearPhotos').onclick=function(){photos=[];$('iPhotos').value='';render()};
   document.querySelectorAll('.editor input:not([type=file]),.editor textarea').forEach(function(e){
