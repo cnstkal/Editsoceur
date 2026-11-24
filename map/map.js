@@ -5,13 +5,13 @@ var C={음식점:{c:'#f28c38',i:'<path d="M23 17v9a4 4 0 0 0 4 4v15M23 17v9M31 1
  카페:{c:'#8b6b55',i:'<path d="M19 25h23v9a9 9 0 0 1-9 9h-5a9 9 0 0 1-9-9z" fill="#fff"/><path d="M42 28h3a4.5 4.5 0 0 1 0 9h-3" stroke="#fff" stroke-width="3" fill="none"/>',t:'#a8806a'},
  쇼핑:{c:'#8b6fe0',i:'<path d="M20 26h24l2 18H18z" fill="#fff"/><path d="M26 26v-3a6 6 0 0 1 12 0v3" stroke="#fff" stroke-width="3" fill="none"/>',t:'#f0586e'},
  숙소:{c:'#6b8def',i:'<path d="M17 21v24M17 37h30v8M17 37v-7h16a9 9 0 0 1 9 9" stroke="#fff" stroke-width="3.6" fill="none" stroke-linecap="round" stroke-linejoin="round"/>',t:'#8e7be8'}};
-var DEF=[{n:'맛집',t:'음식점',x:220,y:700},{n:'쇼핑몰',t:'쇼핑',x:737,y:548},{n:'카페',t:'카페',x:672,y:1000}];
+var DEF=[{n:'맛집',t:'음식점',x:712,y:318},{n:'쇼핑몰',t:'쇼핑',x:930,y:232},{n:'카페',t:'카페',x:790,y:500}];
 var TABS=['지도','저장','추가','알림','내 정보'];
 var TI=['<path d="M12 22s-7-6.5-7-12a7 7 0 0 1 14 0c0 5.500-7 12-7 12z" fill="currentColor" stroke="none"/><circle cx="12" cy="10" r="2.800" fill="#fff" stroke="none"/>','<path d="M6 3h12v18l-6-4.500L6 21z"/>','<circle cx="12" cy="12" r="9"/><path d="M12 7.500v9M7.500 12h9"/>','<path d="M6 17V11a6 6 0 0 1 12 0v6l2 2H4zM10 21a2 2 0 0 0 4 0"/>','<circle cx="12" cy="8" r="4"/><path d="M4 21c0-4.500 3.500-7 8-7s8 2.500 8 7z"/>'];
 var S,selId,on=new Set(Object.keys(C)),adding=false,tab=0;
 function find(id){return S.pins.filter(function(p){return p.id===id})[0]}
 function toast(m){var t=$('toast');t.textContent=m;t.classList.add('show');clearTimeout(toast.t);toast.t=setTimeout(function(){t.classList.remove('show')},1400)}
-function fit(){var s=$('frame').clientWidth/1086;$('app').style.transform='scale('+s+')';$('pw').style.height=(1448*s)+'px'}
+function fit(){var s=$('frame').clientWidth/1280;$('app').style.transform='scale('+s+')';$('pw').style.height=(720*s)+'px'}
 if(window.ResizeObserver)new ResizeObserver(fit).observe($('frame'));
 window.addEventListener('resize',fit);
 function ico(k,col){return '<svg width="48" height="48" viewBox="14 14 36 36"><g style="color:'+col+'">'+C[k].i.replace(/#fff/g,col)+'</g></svg>'}
@@ -66,7 +66,7 @@ $('loc').onclick=function(){toast('현재 위치')};
 $('add').onclick=function(){adding=!adding;toast(adding?'지도를 탭해서 위치를 정하세요':'추가 모드 종료')};
 $('map').onclick=function(e){
   if(!adding)return;
-  var r=$('map').getBoundingClientRect(),k=1086/r.width;
+  var r=$('map').getBoundingClientRect(),k=1280/r.width;
   var p={id:++S.nid,n:'새 핀',t:$('nType').value,x:(e.clientX-r.left)*k,y:(e.clientY-r.top)*k};
   S.pins.push(p);adding=false;select(p.id);toast('핀을 추가했어요');
 };
