@@ -20,9 +20,10 @@ function draw(){
   var q=$('q').value.trim();
   S.pins.forEach(function(p){
     if(!on.has(p.t)||p.n.indexOf(q)<0)return;
-    var f=document.createElementNS(NS,'foreignObject');
-    f.setAttribute('x',p.x-32);f.setAttribute('y',p.y-80);f.setAttribute('width',64);f.setAttribute('height',80);f.style.overflow='visible';
-    f.innerHTML='<div xmlns="http://www.w3.org/1999/xhtml" class="pin'+(p.id===selId?' sel':'')+'"><svg width="64" height="80" viewBox="0 0 64 80"><path d="M32 79C20 66 3 52 3 32a29 29 0 0 1 58 0c0 20-17 34-29 47z" fill="'+C[p.t].c+'" stroke="#fff" stroke-width="3.500"/><circle cx="32" cy="32" r="22" fill="#fff" opacity=".18"/>'+C[p.t].i+'</svg></div>';
+    var f=document.createElementNS(NS,'g'),sel=p.id===selId;
+    f.setAttribute('transform','translate('+p.x+' '+p.y+')'+(sel?' scale(1.25)':'')+' translate(-32 -80)');
+    f.style.cursor='pointer';f.style.filter='drop-shadow(0 4px 4px rgba(0,0,0,.2))';
+    f.innerHTML='<svg width="64" height="80" viewBox="0 0 64 80"><path d="M32 79C20 66 3 52 3 32a29 29 0 0 1 58 0c0 20-17 34-29 47z" fill="'+C[p.t].c+'" stroke="#fff" stroke-width="3.500"/><circle cx="32" cy="32" r="22" fill="#fff" opacity=".18"/>'+C[p.t].i+'</svg>';
     f.onclick=function(e){e.stopPropagation();select(p.id);toast(p.n)};
     g.appendChild(f);
   });
@@ -77,4 +78,11 @@ $('zDel').onclick=function(){S.pins=S.pins.filter(function(p){return p.id!==selI
 $('iPh').oninput=function(){S.ph=this.value||'장소, 주소 검색';$('q').placeholder=S.ph};
 $('reset').onclick=function(){init();fit();toast('초기화했어요')};
 init();fit();
+
+/* 투명 배경 + PNG 저장 */
+$('tBg').onchange=function(){var t=!this.checked;$('app').classList.toggle('tr',t);$('pw').classList.toggle('tr',t)};
+function snap(el,name,opt){var a=$('app'),t=a.style.transform;a.style.transform='none';a.classList.add('snap');var qi=$('q'),sp=document.createElement('span');sp.className='qsp';sp.textContent=qi.value||qi.placeholder;sp.style.color=qi.value?'#333':'#8e939b';qi.style.display='none';qi.parentNode.insertBefore(sp,qi);function done(){sp.remove();qi.style.display='';a.classList.remove('snap')}
+ html2canvas(el,Object.assign({backgroundColor:null,useCORS:true},opt)).then(function(c){a.style.transform=t;done();var l=document.createElement('a');l.download=name;l.href=c.toDataURL('image/png');l.click();toast('저장했어요')}).catch(function(){a.style.transform=t;done();toast('저장 실패')})}
+$('savePng').onclick=function(){snap($('app'),'map.png',{width:1280,height:720,scale:1})};
+$('saveCard').onclick=function(){var s=$('sheet');if(s.style.display==='none'){toast('장소 카드를 먼저 켜주세요');return}snap(s,'place-card.png',{scale:2})};
 })();

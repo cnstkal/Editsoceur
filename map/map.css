@@ -89,3 +89,11 @@ body.studio .phone .search input#q::placeholder{font-size:28px;color:#8e939b}
 .sh-e{position:absolute;right:30px;top:342px;font:500 24px Pretendard,sans-serif;color:#3b82f6}
 .sh-bar{position:absolute;left:50%;bottom:14px;width:300px;height:72px;margin-left:-150px;border-radius:36px;background:#fff;border:1.5px solid #e6e6ea;box-shadow:0 4px 16px #0001;display:flex;justify-content:space-around;align-items:center}
 .sh-bar svg{width:38px;height:38px}
+
+.pw.tr{background:conic-gradient(#e6e7ea 25%,#fff 0 50%,#e6e7ea 0 75%,#fff 0) 0 0/24px 24px}
+.phone.tr{background:transparent}.phone.tr #map{display:none}
+.ps-pn .wide{width:100%;height:48px;border:0;border-radius:12px;background:#f2f3f5;color:#222;font-size:14px;font-weight:700;margin-top:6px}
+.snap *{box-shadow:none!important;filter:none!important}.snap .toast{display:none!important}
+body.studio .phone .search input#q{height:44px!important;line-height:44px!important}
+body.studio .phone.snap .search input#q{height:84px!important;line-height:84px!important}
+.qsp{flex:1;font:500 28px/44px Pretendard,sans-serif;white-space:nowrap;overflow:hidden}
