@@ -27,13 +27,13 @@ S.css='*{box-sizing:border-box;margin:0;letter-spacing:-.02em}button,input{font-
 '.nav{position:absolute;left:0;right:0;bottom:0;display:flex;background:#222;padding:12px 0 calc(12px + env(safe-area-inset-bottom));font-size:12px;color:#888;border-top:1px solid #1a1a1a}'+
 '.nav div{flex:1;display:flex;flex-direction:column;align-items:center;gap:4px;position:relative}.nav svg{width:26px;height:26px}.nav .sel{color:#fff}'+
 '.dot{position:absolute;top:-2px;left:55%;width:9px;height:9px;border-radius:50%;background:#ff4a00}';
-S.js="window.pickRow=function(el){var was=el.classList.contains('selected');document.querySelectorAll('.row.selected').forEach(function(x){x.classList.remove('selected')});if(!was)el.classList.add('selected')};"+
+S.js="" +
 "var q=document.getElementById('q');document.getElementById('clear').onclick=function(){q.value='';q.focus();};"+
 "var cats=document.querySelectorAll('.cats a');cats.forEach(function(a){a.onclick=function(){cats.forEach(function(x){x.classList.remove('on')});a.classList.add('on');"+
 "var t=a.textContent.toLowerCase(),n=0;document.querySelectorAll('section').forEach(function(s){var show=t=='all'||s.dataset.s==t;s.hidden=!show;if(show)n++;});document.getElementById('empty').hidden=n>0;};});";
 var e=S.esc;
 function photo(i,cls,alt){return i?'<img class="'+cls+'" src="'+e(i)+'" alt="'+e(alt||'')+'">':''}
-function row(x,c){return '<div class="row" onclick="pickRow(this)"><div class="art '+c+'">'+photo(x.img,'art-img',x.t)+'</div><div class="info"><b>'+e(x.t)+'</b><span class="art-n">'+e(x.a)+'</span><span class="meta">▶ '+e(x.p)+' · '+e(x.d)+'</span></div><i class="dots">•••</i></div>'}
+function row(x,c){return '<div class="row" onclick="this.classList.toggle('selected')"><div class="art '+c+'">'+photo(x.img,'art-img',x.t)+'</div><div class="info"><b>'+e(x.t)+'</b><span class="art-n">'+e(x.a)+'</span><span class="meta">▶ '+e(x.p)+' · '+e(x.d)+'</span></div><i class="dots">•••</i></div>'}
 S.view=function(){var D=S.D,cl=['a1','a2','a3'];
  return '<div class="screen"><div class="search"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#ddd" stroke-width="1.8"><circle cx="10.5" cy="10.5" r="7.5"/><path d="M16 16l5 5"/></svg><input id="q" value="'+e(D.q)+'" autocomplete="off"><button id="clear" class="clr">✕</button></div>'+
  '<nav class="cats"><a class="on">All</a><a>Tracks</a><a>Profiles</a><a>Playlists</a><a>Albums</a></nav><div class="scroll">'+
