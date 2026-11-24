@@ -15,7 +15,24 @@ b.onclick=function(){pns.forEach(function(x,j){x.hidden=j!==i});[].forEach.call(
 $('pvBtn').onclick=function(){var on=document.body.classList.toggle('pvmode');this.textContent=on?'편집 모드':'미리보기 모드'};
 $('reset').onclick=function(){fill();clr()};
 var shot=$('shot');
-$('savePng').onclick=function(){html2canvas(shot,{scale:3,useCORS:true,backgroundColor:'#fff'}).then(function(c){var a=document.createElement('a');a.download='facebook.png';a.href=c.toDataURL();a.click()})};
+$('savePng').onclick=function(){
+ var btn=this,oldText=btn.textContent;
+ btn.disabled=true;btn.textContent='저장 중...';
+ var w=shot.scrollWidth,h=shot.scrollHeight;
+ var scale=Math.min(5,16000/Math.max(w,h),Math.sqrt(80000000/(w*h)));
+ scale=Math.max(1,scale);
+ html2canvas(shot,{scale:scale,useCORS:true,allowTaint:false,backgroundColor:'#fff',imageTimeout:20000,logging:false,windowWidth:Math.max(document.documentElement.clientWidth,w),windowHeight:Math.max(document.documentElement.clientHeight,h),scrollX:0,scrollY:0}).then(function(c){
+  return new Promise(function(resolve,reject){
+   if(!c.toBlob){try{resolve(c.toDataURL('image/png'))}catch(e){reject(e)}return}
+   c.toBlob(function(blob){if(blob)resolve(blob);else reject(new Error('PNG encoding failed'))},'image/png');
+  });
+ }).then(function(data){
+  var url=typeof data==='string'?data:URL.createObjectURL(data),a=document.createElement('a');
+  a.download='facebook.png';a.href=url;document.body.appendChild(a);a.click();a.remove();
+  if(typeof data!=='string')setTimeout(function(){URL.revokeObjectURL(url)},30000);
+ }).catch(function(err){console.error('Legacy Facebook PNG export failed:',err);alert('PNG 저장에 실패했습니다. 이미지 크기를 확인한 뒤 다시 시도해 주세요.')})
+ .finally(function(){btn.disabled=false;btn.textContent=oldText});
+};
 function fit(){shot.style.fontSize=(shot.clientWidth/36)+'px'}
 fit();window.addEventListener('resize',fit);if(window.ResizeObserver)new ResizeObserver(fit).observe(shot);
 })();
