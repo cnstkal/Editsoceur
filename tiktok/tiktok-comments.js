@@ -29,6 +29,7 @@ $('iCnt').oninput=function(){S.cnt=this.value;draw()};
 $('iPh').oninput=function(){S.ph=this.value;draw()};
 $('fBg').onchange=function(){rd(this.files[0],function(d){S.bg=d;draw()})};
 $('fMe').onchange=function(){rd(this.files[0],function(d){S.me=d;draw()})};
+if($('fMe_del'))$('fMe_del').onclick=function(){S.me=''; $('fMe').value=''; draw();};
 $('add').onclick=function(){S.M.push(cm('add text here',''));ed();draw()};
 $('ed').addEventListener('input',function(ev){var t=ev.target;if(t.dataset.k){S.M[t.dataset.i][t.dataset.k]=t.value;draw()}});
 $('ed').addEventListener('change',function(ev){var t=ev.target;if(t.dataset.f)rd(t.files[0],function(d){S.M[t.dataset.i][t.dataset.f]=d;draw()})});
