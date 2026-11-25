@@ -123,16 +123,27 @@ body.studio .ps-side :is(.editor,.ed) input[type=file]::file-selector-button:hov
 body.studio .ps-side :is(.editor,.ed) input[type=file]::file-selector-button:focus-visible{outline:2px solid var(--pk);outline-offset:2px}
 body.studio .ps-side .ps-seg button:hover:not(.on){background:var(--gray-bg)}
 
-/* ===== 공용 이미지 업로드 필드 (.upl) ===== */
-.upl{display:flex;align-items:center;gap:12px;margin:0 0 14px;padding:10px;border:1px solid var(--ln);border-radius:14px;background:#fff}
-.upl-th{position:relative;width:52px;height:52px;flex:none;border-radius:10px;background:var(--gray-bg);overflow:hidden;display:flex;align-items:center;justify-content:center}
-.upl-th img{width:100%;height:100%;object-fit:cover;display:block}
-.upl-th span{font-size:11px;color:var(--mu)}
-.upl-body{flex:1 1 0;min-width:0;display:flex;flex-direction:column;gap:4px}
-.upl-label{font-size:12px;color:var(--label)}
-.upl-name{font-size:14px;font-weight:600;color:var(--ink);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-.upl-btn{align-self:flex-start;position:relative;overflow:hidden;display:inline-flex;align-items:center;height:32px;padding:0 12px;border:1px solid var(--ln);border-radius:10px;background:#fff;color:var(--txt2);font-size:13px;font-weight:600;cursor:pointer}
-.upl-btn:hover{border-color:var(--pk);color:var(--pk)}
-.upl-btn input{position:absolute;inset:0;width:100%;height:100%;opacity:0;cursor:pointer;margin:0;padding:0;border:0}
-.upl-del{align-self:flex-start;height:32px;padding:0 10px;border:0;border-radius:10px;background:transparent;color:var(--danger);font-size:13px;font-weight:600;cursor:pointer}
-.upl-del:hover{background:var(--gray-bg)}
+/* ===== 통일 보정: 글꼴 · 제목 · 탭 ===== */
+body.studio .ps-side,
+body.studio .ps-side :is(h2,h3,label,span,div,small,button,input,select,textarea,summary,b,i){font-family:Pretendard,-apple-system,BlinkMacSystemFont,"Apple SD Gothic Neo","Malgun Gothic",sans-serif!important}
+body.studio .ps-side>h2{font-size:26px;line-height:1.35;font-weight:700;color:var(--ink)}
+body.studio .ps-side .edit-tabs{display:flex;gap:4px;margin:18px 0 14px;padding:5px;background:#fff;border:1px solid var(--ln);border-radius:16px;overflow-x:auto;scrollbar-width:none}
+body.studio .ps-side .edit-tabs::-webkit-scrollbar{display:none}
+body.studio .ps-side .edit-tabs .edit-tab{flex:1 0 auto;height:40px;padding:0 14px;border:0;border-radius:12px;background:transparent;color:var(--txt2);font-size:14px;font-weight:500;box-shadow:none;white-space:nowrap;cursor:pointer}
+body.studio .ps-side .edit-tabs .edit-tab.active{background:var(--pk-bg);color:var(--pk);font-weight:700}
+
+/* ===== 공용 이미지 업로드 카드 (.upl): 모든 편집 패널 동일 ===== */
+body.studio .ps-side .upl{box-sizing:border-box;display:flex;align-items:center;gap:12px;width:100%;flex:1 1 100%;grid-column:1/-1;margin:0 0 16px;padding:10px;border:1px solid var(--ln);border-radius:14px;background:#fff}
+body.studio .ps-side .upl-th{position:relative;width:52px;height:52px;flex:none;border-radius:10px;background:var(--gray-bg);overflow:hidden;display:flex;align-items:center;justify-content:center}
+body.studio .ps-side .upl-th img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block}
+body.studio .ps-side .upl-th img:not([src]){display:none}
+body.studio .ps-side .upl-th span{font-size:11px;color:var(--mu);white-space:nowrap}
+body.studio .ps-side .upl-body{flex:1 1 0;min-width:0;display:flex;flex-direction:column;align-items:flex-start;gap:4px}
+body.studio .ps-side .upl-label{font-size:12px;line-height:1.3;color:var(--label)}
+body.studio .ps-side .upl-name{max-width:100%;font-size:14px;font-weight:600;color:var(--ink);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+body.studio .ps-side .upl-acts{display:flex;align-items:center;gap:6px}
+body.studio .ps-side .upl .upl-btn{position:relative;overflow:hidden;display:inline-flex;align-items:center;justify-content:center;width:auto;height:32px;margin:0;padding:0 12px;border:1px solid var(--ln);border-radius:10px;background:#fff;color:var(--txt2);font-size:13px;font-weight:600;line-height:1;cursor:pointer}
+body.studio .ps-side .upl .upl-btn:hover{border-color:var(--pk);color:var(--pk)}
+body.studio .ps-side .upl .upl-btn input{position:absolute;inset:0;width:100%;height:100%;min-height:0;opacity:0;cursor:pointer;margin:0;padding:0;border:0}
+body.studio .ps-side .upl .upl-del{width:auto;height:32px;margin:0;padding:0 10px;border:0;border-radius:10px;background:transparent;color:var(--danger);font-size:13px;font-weight:600;line-height:1;cursor:pointer}
+body.studio .ps-side .upl .upl-del:hover{background:var(--gray-bg)}
