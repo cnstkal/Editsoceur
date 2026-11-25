@@ -18,7 +18,8 @@ svg{display:block}
 /* 같은 사람이 연달아 보낸 말풍선 간격: 모든 행에 동일하게 고정 */
 .row+.row{margin-top:calc(var(--u)*.8)}
 .row.me{justify-content:flex-end}
-.av,.sp{width:calc(var(--u)*8.3);height:calc(var(--u)*8.3);margin-right:calc(var(--u)*3.4);flex:none}
+.av{width:calc(var(--u)*8.3);height:calc(var(--u)*8.3);margin-right:calc(var(--u)*3.4);flex:none}
+.sp{width:calc(var(--u)*8.3);height:0;margin-right:calc(var(--u)*3.4);flex:none}
 .av{border-radius:50%;overflow:hidden;background:#d7dde2}.av svg,.av img{width:100%;height:100%;display:block}.av img{object-fit:cover}
 .col{min-width:0}
 .name{font-size:calc(var(--u)*2.3);line-height:1.2;margin:calc(var(--u)*.3) 0 calc(var(--u)*.8) calc(var(--u)*.1)}
