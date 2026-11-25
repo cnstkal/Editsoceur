@@ -48,7 +48,7 @@
         if (first) { var av = el("div", "av"); if (S.av) { var ai = document.createElement("img"); ai.src = S.av; ai.alt = ""; av.append(ai); } else av.innerHTML = AVATAR; row.append(av); col.append(el("div", "name", S.room)); }
         else row.append(el("div", "sp"));
       }
-      var line = el("div", "line"), bb = el("div", "b" + (m.img ? " img" : ""), m.img ? null : m.t);
+      var line = el("div", "line"), bb = el("div", "b" + (m.img ? " img" : ""), m.img ? null : String(m.t == null ? "" : m.t).replace(/^\s+|\s+$/g, ""));
       if (m.img) { var im = document.createElement("img"); im.src = m.img; bb.append(im); }
       if (first && !m.img) bb.insertAdjacentHTML("beforeend", '<i class="tl">' + (me ? TR : TL) + "</i>");
       line.append(bb);
