@@ -56,7 +56,9 @@
       col.append(line); row.append(col); chat.append(row);
     });
     layoutBubbles();
+    fit(); // 말풍선이 모두 그려진 뒤에 높이를 맞춰야 긴 대화에서도 배경이 끝까지 이어짐
   }
+  if (window.ResizeObserver) new ResizeObserver(function () { fit(); }).observe($("cap"));
 
   // 말풍선의 줄바꿈과 너비는 브라우저 레이아웃에 맡김.
   // 띄어쓰기나 canvas 측정값으로 줄을 재조립하지 않고, CSS padding으로 내부 여백을 확보한다.
