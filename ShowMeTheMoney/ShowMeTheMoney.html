@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no"><script src="../nozoom.js?v=1"></script>
+<title>쇼미더머니 자막바</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.css">
+<link rel="stylesheet" href="../ps-editor.css?v=12">
+<link rel="stylesheet" href="ShowMeTheMoney.css">
+</head>
+<body class="studio">
+<div class="ps-wrap">
+<header class="ps-top"><a class="ps-back" href="../index.html" style="color:#0095f6;font-weight:600;font-size:15px;text-decoration:none">‹ 뒤로</a><span></span><span></span></header>
+<div class="ps-grid">
+<section class="ps-card ps-main">
+<div class="ps-lbl">Live Preview</div>
+<h2>쇼미더머니 자막바</h2>
+<p class="ps-sub">오른쪽에서 문구와 모양을 바로 수정해요</p>
+<div class="ps-stage"><div class="smm-st b-chk" id="st"><div id="fit">
+<div class="ov" id="ov">
+<div class="bn" id="bn"><div id="bs"></div><div class="tx" id="tx"><div id="x1"></div><div id="x2"></div></div></div>
+<div class="lg"><div class="cs"><div class="pl"><b>SHOW</b><i class="me"></i></div><span class="th">THE</span><span class="mn">MONEY</span></div><img id="li" alt="" src="show_me_the_money_43_transparent.png"><div class="ss"><span id="sn">12</span></div></div>
+</div>
+</div></div></div>
+</section>
+<section class="ps-card ps-side">
+<div class="ps-lbl">Edit Panel</div>
+<h2>자막 내용 수정</h2>
+<div class="ps-edwrap"><div class="editor">
+<div class="ps-pn" data-t="문구">
+<label>정보 타입<select id="ty"><option value="0">미션 / 카테고리</option><option value="1" selected>출연 정보</option><option value="2">라운드 / 스테이지</option></select></label>
+<label>첫째 줄<input id="t1" value="[본선] 제이통 X 허키"></label>
+<label>둘째 줄<input id="t2" value="나우아임영 & Royal 44 〈KISS KISS KISS〉"></label>
+<label>첫째 줄 색<input id="c1" type="color" value="#ffffff"></label>
+<label>둘째 줄 색<input id="c2" type="color" value="#ff5a1f"></label>
+<label>글자 크기<input id="fs" type="range" min="50" max="140" value="100"></label>
+</div>
+<div class="ps-pn" data-t="로고">
+<label>시즌 번호<input id="se" type="number" min="1" max="99" value="12"></label>
+<div class="ps-tg"><span>로고 표시</span><label class="sw"><input id="tLogo" type="checkbox" checked><i></i></label></div>
+<div class="ps-tg"><span>시즌 번호 표시</span><label class="sw"><input id="tSeason" type="checkbox"><i></i></label></div>
+<label>로고 크기<input id="ls" type="range" min="8" max="30" step=".1" value="18"></label>
+<label>로고 가로 위치<input id="lxp" type="range" min="-6" max="10" step=".1" value="0"></label>
+<label>로고 세로 위치<input id="lyp" type="range" min="-6" max="10" step=".1" value="0"></label>
+<label>다른 이미지 올리기<input id="lf" type="file" accept="image/*"></label>
+<button type="button" class="ps-ghost" id="lxx">기본 CSS 로고로</button>
+<p class="hint">기본은 ShowMeTheMoney 폴더의 로고 PNG예요. 번호가 이미 들어있으면 시즌 번호 표시는 꺼두세요</p>
+</div>
+<div class="ps-pn" data-t="배너">
+<label>배너 너비<input id="bw" type="range" min="22" max="64" value="40"></label>
+<label>배너 가로 위치<input id="bx" type="range" min="0" max="30" step=".1" value="14.5"></label>
+<label>배너 세로 위치<input id="by" type="range" min="-4" max="12" step=".1" value="3.6"></label>
+<label>전체 크기<input id="sc" type="range" min="40" max="150" value="100"></label>
+<label>배경 투명도<input id="op" type="range" min="0" max="100" value="92"></label>
+<label>미리보기 배경<select id="pb"><option value="b-chk">투명 (체크무늬)</option><option value="b-dk">어두움</option><option value="b-lt">밝음</option><option value="b-pu">보라</option></select></label>
+</div>
+</div></div>
+<div class="ps-acts"><button id="reset" type="button">초기화</button><button id="savePng">PNG 저장</button></div>
+</section>
+</div>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js"></script>
+<script src="ShowMeTheMoney.js"></script>
+</body>
+</html>
