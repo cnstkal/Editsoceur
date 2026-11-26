@@ -61,3 +61,8 @@ body.studio .stage{padding:0!important;margin:0!important;min-height:0!important
 body.studio .picker{position:relative;display:flex;flex-wrap:wrap;gap:8px;padding:12px 0 0;margin:0;background:transparent}
 body.studio .picker button{flex:1 1 calc(25% - 8px);min-width:0;height:42px}
 @media(max-width:1099px){body.studio .picker{padding-top:12px}body.studio .ps-main{padding-bottom:16px}}
+
+/* 시간 표시: 이름(첫 줄)과 같은 가로선에 맞춤 (텍스트 블록 중앙 기준 첫 줄 중심) */
+.banner{position:relative}
+.txt{padding-right:calc(150px*var(--u))}
+.time{position:absolute;right:calc(60px*var(--u));top:calc(50% - 32px*var(--u));transform:translateY(-50%);margin:0;align-self:auto;line-height:calc(42px*var(--u));white-space:nowrap}
