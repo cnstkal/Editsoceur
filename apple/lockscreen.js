@@ -6,6 +6,7 @@ var DEF={iZoom:100,iX:50,iY:50,iDim:0,iCol:'#8d9aa6',iTime:'9:41',iPick:'2021-06
 var CHK={iChg:false,iBtn:true,iHome:true};
 function v(id){return $(id).value}
 function n(id){return Number($(id).value)}
+function is16(){return v('iVer')==='16'}
 
 /* 둥근 사각형 (구형 브라우저 대응) */
 function rr(c,x,y,w,h,r){r=Math.min(r,w/2,h/2);c.beginPath();c.moveTo(x+r,y);c.arcTo(x+w,y,x+w,y+h,r);c.arcTo(x+w,y+h,x,y+h,r);c.arcTo(x,y+h,x,y,r);c.arcTo(x,y,x+w,y,r);c.closePath()}
@@ -63,14 +64,14 @@ function drawBottom(){
   ctx.restore();
  }
  ctx.save();ctx.fillStyle=v('iInk');
- text(v('iSwipe'),H-110,35,600,620);
+ if(!is16())text(v('iSwipe'),H-110,35,600,620); /* 안내 문구는 iOS 15만 */
  if($('iHome').checked){ctx.fillStyle='#fff';rr(ctx,(W-384)/2,H-52,384,12,6);ctx.fill()}
  ctx.restore();
 }
 
 /* 상단 상태바: 신호 · 와이파이 · 배터리 (오른쪽 정렬) */
 function drawStatus(){
- var ink=v('iInk'),x=962;
+ var ink=is16()?'#ffffff':v('iInk'),x=962; /* iOS 16은 글자 색을 바꿔도 상단바는 흰색 */
  ctx.save();ctx.translate(n('iSbX'),n('iSbY'));ctx.fillStyle=ink;ctx.strokeStyle=ink;
 
  /* 배터리 */
@@ -113,8 +114,13 @@ function render(){
  $('vBat').textContent=n('iBat')+'%';
  drawBg();
  ctx.save();ctx.fillStyle=v('iInk');ctx.textBaseline='alphabetic';
- text(v('iTime'),487+n('iTop'),206,300,1000);
- text(v('iDate'),588+n('iTop'),53,400,980);
+ if(is16()){ /* 날짜가 위, 굵고 큰 시계 */
+  text(v('iDate'),275+n('iTop'),57,600,980);
+  text(v('iTime'),535+n('iTop'),264,600,1000);
+ }else{ /* 얇은 시계, 날짜가 아래 */
+  text(v('iTime'),487+n('iTop'),206,300,1000);
+  text(v('iDate'),588+n('iTop'),53,400,980);
+ }
  ctx.restore();
  drawStatus();
  drawBottom();
@@ -135,10 +141,17 @@ function loadFonts(){
  return Promise.all(['300','400','600'].map(function(w){return document.fonts.load(w+' 56px Pretendard',t)})).catch(function(){});
 }
 
+/* iOS 버전 버튼 상태 맞추기 */
+function syncVer(){
+ [].forEach.call($('verSeg').children,function(b){var on=b.getAttribute('data-v')===v('iVer');b.classList.toggle('on',on);b.setAttribute('aria-pressed',on)});
+ $('swipeRow').hidden=is16();
+}
+[].forEach.call($('verSeg').children,function(b){b.onclick=function(){$('iVer').value=b.getAttribute('data-v');syncVer();render()}});
+
 function reset(){
  for(var k in DEF)$(k).value=DEF[k];
  for(var c in CHK)$(c).checked=CHK[c];
- seq++;bg=null;$('iBg').value='';render();
+ seq++;bg=null;$('iBg').value='';syncVer();render();
 }
 
 Object.keys(DEF).concat(Object.keys(CHK)).forEach(function(id){
