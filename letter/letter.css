@@ -1,31 +1,88 @@
-*{box-sizing:border-box;margin:0}
-body{background:#d9d4cf;min-height:100vh;font-family:sans-serif;display:flex;justify-content:center}
-.stage{padding:20px 14px 340px;width:100%;max-width:480px}
-.paper{width:100%;aspect-ratio:3/4.2;border-radius:6px;box-shadow:0 8px 24px #0003;padding:12% 10%;position:relative;overflow:hidden;transition:.25s}
-#text{outline:none;white-space:pre-wrap;word-break:break-all;height:100%;overflow:auto;font-size:22px;line-height:1.9;letter-spacing:-.02em;font-family:'Nanum Pen Script';color:#3a3330;background:none}
-/* 1 크림 줄노트 */
-.p1{background:#fdf8ec;background-image:repeating-linear-gradient(transparent 0 calc(1.9em - 1px),#d9c9a8 calc(1.9em - 1px) 1.9em);background-size:100% 1.9em;background-position:0 12%;background-image:none}
-.p1{background-color:#fdf8ec;border-left:3px double #e7a9a9}
-.p1 #text{background:repeating-linear-gradient(transparent 0 calc(1.9em - 1px),#dccdb0 calc(1.9em - 1px) 1.9em);background-attachment:local}
-/* 2 핑크 물방울 */
-.p2{background:#ffe9ef radial-gradient(#fff 22%,transparent 24%) 0 0/26px 26px;border:8px solid #fff;outline:2px dashed #f5a7be;outline-offset:-18px}
-/* 3 하늘 모눈 */
-.p3{background:#eef6ff;background-image:linear-gradient(#bcd7f2 1px,transparent 1px),linear-gradient(90deg,#bcd7f2 1px,transparent 1px);background-size:24px 24px}
-.p3::before{content:"☁";position:absolute;right:14px;top:8px;font-size:30px;color:#fff;text-shadow:0 0 4px #9cc}
-/* 4 빈티지 크래프트 */
-.p4{background:radial-gradient(ellipse at center,#ecd9b0,#d1b583);color:#4a3418;box-shadow:inset 0 0 60px #8a6a3a88,0 8px 24px #0003;border-radius:3px}
-.p4::after{content:"❦";position:absolute;bottom:12px;left:50%;transform:translateX(-50%);color:#8a6a3a;font-size:22px}
-/* 5 라벤더 그라데이션 */
-.p5{background:linear-gradient(160deg,#e9e1ff,#ffe1f1 60%,#fff2d9);border:1px solid #fff;box-shadow:inset 0 0 0 10px #ffffffaa,0 8px 24px #0003}
-.p5::before{content:"✿ ✿ ✿";position:absolute;top:12px;width:100%;left:0;text-align:center;color:#c9a7f0;letter-spacing:8px;font-size:14px}
-#fab{position:fixed;right:16px;bottom:16px;padding:12px 18px;border:0;border-radius:24px;background:#222;color:#fff;font-size:15px;z-index:5;display:none}
-#panel{position:fixed;left:0;right:0;bottom:0;max-width:480px;margin:auto;background:#fff;border-radius:18px 18px 0 0;padding:10px 18px 22px;box-shadow:0 -6px 24px #0003;transform:translateY(100%);transition:.25s;z-index:6;max-height:48vh;overflow:auto}
-#panel.open{transform:none}
-.grab{width:40px;height:4px;background:#ccc;border-radius:2px;margin:0 auto 8px}
-label{display:block;font-size:12px;color:#777;margin:10px 0 4px}label b{color:#222}
-.row{display:flex;gap:8px;align-items:center}
-.sw{width:44px;height:58px;border-radius:6px;border:2px solid #ddd;flex:none;cursor:pointer}
-.sw.on{border-color:#222}
-select,input[type=range]{width:100%}select{padding:8px;border-radius:8px}
-input[type=color]{width:44px;height:34px;border:0;padding:0}
-#rst{padding:8px 12px;border:1px solid #ccc;border-radius:8px;background:#fff}
+*{box-sizing:border-box}
+body.studio{margin:0;background:#f2f3f5;color:#111;min-height:100vh;font-family:Pretendard,sans-serif}
+button{font:inherit;cursor:pointer}
+.ps-wrap{max-width:1480px;margin:0 auto;padding:40px 48px 56px}
+.ps-top{display:flex;justify-content:space-between;align-items:center;margin-bottom:36px}
+.ps-pvbtn{height:52px;padding:0 36px;border:0;border-radius:14px;background:#15161a;color:#fff;font-size:16px;font-weight:600}
+.ps-grid{display:grid;grid-template-columns:minmax(0,1.6fr) minmax(380px,1fr);gap:24px;align-items:stretch}
+.ps-card{background:#fff;border-radius:26px;padding:34px 36px;min-width:0}
+.ps-main{background:#eceef2}
+.ps-lbl{font-size:12px;letter-spacing:.14em;color:#8a8f98;text-transform:uppercase}
+.ps-card h2{font-size:26px;font-weight:700;margin:8px 0 6px}
+.ps-sub{font-size:15px;color:#8a8f98;margin:0}
+.ps-stage{padding-top:28px;display:flex;justify-content:center}
+.ps-side{display:flex;flex-direction:column;--pk:#e8457a;--pk-bg:#fde8ef;--ln:#e9eaee}
+.ps-seg{display:flex;gap:4px;margin:18px 0 14px;padding:5px;background:#fff;border:1px solid var(--ln);border-radius:16px}
+.ps-seg button{flex:1;height:40px;border:0;border-radius:12px;background:transparent;color:#333;font-size:14px;font-weight:500}
+.ps-seg button.on{background:var(--pk-bg);color:var(--pk);font-weight:700}
+.ps-pn[hidden]{display:none!important}
+.editor{flex:1}
+.editor label{display:flex;align-items:center;justify-content:space-between;gap:14px;margin:0 0 16px;font-size:14px;font-weight:500;color:#222}
+.editor label>input:not([type=checkbox]):not([type=color]),.editor select{flex:0 0 56%;width:56%;height:44px;padding:0 14px;font-size:16px;border:1px solid var(--ln);border-radius:12px;background:#fff}
+.rr{flex:0 0 56%;display:flex;gap:8px;align-items:center}
+.editor .rr input{flex:1;width:0;height:44px;padding:0 10px;font-size:16px;border:1px solid var(--ln);border-radius:12px}
+.editor input[type=color]{width:56px;height:40px;border:1px solid var(--ln);border-radius:10px;padding:2px;background:#fff}
+.editor textarea{width:100%;height:260px;margin-top:10px;padding:14px;font:inherit;font-size:15px;border:1px solid var(--ln);border-radius:12px;resize:vertical}
+.ps-tg{display:flex;align-items:center;justify-content:space-between;min-height:44px;margin:0 0 8px;font-size:14px;font-weight:500}
+.sw{position:relative;width:50px;height:30px;display:block;flex:none}
+.sw input{opacity:0;position:absolute;inset:0;width:100%;height:100%;margin:0;z-index:2;cursor:pointer}
+.sw i{position:absolute;inset:0;border-radius:15px;background:#c7c7c7;transition:.2s}
+.sw i::after{content:'';position:absolute;top:3px;left:3px;width:24px;height:24px;border-radius:50%;background:#fff;transition:.2s}
+.sw input:checked+i{background:var(--pk)}.sw input:checked+i::after{left:23px}
+.pgrid{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}
+.pp{border:2px solid var(--ln);border-radius:12px;background:#fff;padding:6px;font-size:11px;font-weight:600;color:#555}
+.pp .paper{max-width:none;aspect-ratio:3/4;margin-bottom:5px;box-shadow:0 1px 3px #0003}
+.pp.on{border-color:var(--pk);box-shadow:0 0 0 3px var(--pk-bg);color:var(--pk)}
+.mt{position:absolute;left:12%;top:10%;font:700 calc(var(--u)*16)/1 Georgia,serif;z-index:1}
+.ps-acts{display:flex;gap:10px;margin-top:20px}
+.ps-acts button{height:52px;border:0;border-radius:14px;font-size:15px;font-weight:700}
+.ps-acts #reset{flex:1;background:#f2f3f5;color:#222}
+.ps-acts #savePng{flex:1.6;background:var(--pk);color:#fff}
+body.pvmode .ps-side{display:none}
+body.pvmode .ps-grid{grid-template-columns:1fr}
+
+/* ===== 편지지 공통 (--u = 가로폭 1%) ===== */
+.paper{--u:5px;--pad:10;--ink:#3a3330;position:relative;width:100%;max-width:520px;aspect-ratio:3/4.2;overflow:hidden;border-radius:calc(var(--u)*1.2);box-shadow:0 calc(var(--u)*1.5) calc(var(--u)*5) #0003}
+.paper::before,.paper::after{content:"";position:absolute;pointer-events:none}
+#text{position:absolute;inset:calc(var(--u)*var(--pad));z-index:1;outline:none;white-space:pre-wrap;word-break:break-all;overflow:hidden;font-family:'Nanum Pen Script'}
+/* 1 크림 레터 */
+.p1{background:linear-gradient(#fffaf0,#f5ead3);box-shadow:inset 0 0 0 calc(var(--u)*2.6) #fffaf0,inset 0 0 0 calc(var(--u)*2.9) #e3d1ac,0 calc(var(--u)*1.5) calc(var(--u)*5) #0003}
+.p1::before{left:calc(var(--u)*7.2);top:0;bottom:0;width:1px;background:#e59a9a}
+.p1 #text,.p8 #text{background:repeating-linear-gradient(transparent 0 calc(1em*var(--lh) - 1px),var(--rule,#dfcfae) calc(1em*var(--lh) - 1px) calc(1em*var(--lh)));background-attachment:local}
+/* 2 핑크 스캘럽 */
+.p2{background:radial-gradient(circle at 50% 100%,#ffb7cc 0 46%,transparent 47%) bottom/calc(var(--u)*8) calc(var(--u)*5) repeat-x,linear-gradient(#fff4f8,#ffe3ec)}
+.p2::before{left:0;right:0;top:0;height:calc(var(--u)*5);background:radial-gradient(circle at 50% 0,#ffb7cc 0 46%,transparent 47%) 0 0/calc(var(--u)*8) calc(var(--u)*5) repeat-x}
+.p2::after{inset:calc(var(--u)*6.5);border:1.5px dashed #ee8aa9;border-radius:calc(var(--u)*2)}
+/* 3 하늘 구름 */
+.p3{background:linear-gradient(#b9defa,#e6f4ff 38%,#fff 75%)}
+.p3::before{inset:0;background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 120 60'%3E%3Cg fill='white'%3E%3Ccircle cx='35' cy='38' r='18'/%3E%3Ccircle cx='60' cy='28' r='22'/%3E%3Ccircle cx='88' cy='38' r='17'/%3E%3Crect x='30' y='38' width='62' height='17' rx='8'/%3E%3C/g%3E%3C/svg%3E") 4% 3%/calc(var(--u)*28) no-repeat,url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 120 60'%3E%3Cg fill='white'%3E%3Ccircle cx='35' cy='38' r='18'/%3E%3Ccircle cx='60' cy='28' r='22'/%3E%3Ccircle cx='88' cy='38' r='17'/%3E%3Crect x='30' y='38' width='62' height='17' rx='8'/%3E%3C/g%3E%3C/svg%3E") 96% 14%/calc(var(--u)*20) no-repeat;opacity:.95}
+/* 4 빈티지 양피지 */
+.p4{background:radial-gradient(ellipse at 50% 40%,#f4e6c4,#dfc58f 80%,#bf9b55);box-shadow:inset 0 0 calc(var(--u)*12) #8a5a1f88,0 calc(var(--u)*1.5) calc(var(--u)*5) #0003;border-radius:calc(var(--u)*.6)}
+.p4::before{inset:calc(var(--u)*4);border:2px solid #7a5a2a99}
+.p4::after{inset:calc(var(--u)*5.4);border:1px solid #7a5a2a66}
+/* 5 라벤더 꽃 */
+.p5{background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 40 40'%3E%3Cg fill='%23d6b8ff'%3E%3Ccircle cx='20' cy='9' r='7'/%3E%3Ccircle cx='30.5' cy='16.5' r='7'/%3E%3Ccircle cx='26.5' cy='29' r='7'/%3E%3Ccircle cx='13.5' cy='29' r='7'/%3E%3Ccircle cx='9.5' cy='16.5' r='7'/%3E%3C/g%3E%3Ccircle cx='20' cy='20' r='5' fill='%23ffd86b'/%3E%3C/svg%3E") -5% -4%/calc(var(--u)*26) no-repeat,url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 40 40'%3E%3Cg fill='%23ffb3d1'%3E%3Ccircle cx='20' cy='9' r='7'/%3E%3Ccircle cx='30.5' cy='16.5' r='7'/%3E%3Ccircle cx='26.5' cy='29' r='7'/%3E%3Ccircle cx='13.5' cy='29' r='7'/%3E%3Ccircle cx='9.5' cy='16.5' r='7'/%3E%3C/g%3E%3Ccircle cx='20' cy='20' r='5' fill='%23fff1a8'/%3E%3C/svg%3E") 106% 104%/calc(var(--u)*32) no-repeat,linear-gradient(160deg,#f0e8ff,#ffe8f4 60%,#fff5e2)}
+.p5::after{inset:calc(var(--u)*3);border:1px solid #fff;border-radius:calc(var(--u)*1.5);box-shadow:0 0 0 1px #d9c4f655}
+/* 6 민트 깅엄 */
+.p6{background:repeating-linear-gradient(0deg,#8fd3b455 0 calc(var(--u)*3),transparent 0 calc(var(--u)*6)),repeating-linear-gradient(90deg,#8fd3b455 0 calc(var(--u)*3),transparent 0 calc(var(--u)*6)),#fff}
+.p6::before{inset:calc(var(--u)*6);background:#fffefa;border-radius:calc(var(--u)*2);box-shadow:0 0 0 1px #bfe6d4,0 calc(var(--u)*.6) calc(var(--u)*2) #0002}
+/* 7 별밤 */
+.p7{background:radial-gradient(circle,#fff 0 1px,transparent 1.7px) 0 0/47px 53px,radial-gradient(circle,#ffeaa8 0 1.3px,transparent 2.2px) 20px 30px/83px 71px,linear-gradient(#0e1a3d,#2a2558 70%,#5b3b70)}
+.p7::before{right:calc(var(--u)*7);top:calc(var(--u)*5);width:calc(var(--u)*9);height:calc(var(--u)*9);border-radius:50%;background:#fdf3c4;box-shadow:0 0 calc(var(--u)*5) #fdf3c4aa,inset calc(var(--u)*-2) 0 0 #e8d79a}
+/* 8 에어메일 */
+.p8{background:#fffdf8;--rule:#ece3d2}
+.p8::before{inset:0;border:calc(var(--u)*2.2) solid transparent;border-image:repeating-linear-gradient(-45deg,#e4455a 0 calc(var(--u)*2.5),#fffdf8 0 calc(var(--u)*5),#3b6fd4 0 calc(var(--u)*7.5),#fffdf8 0 calc(var(--u)*10)) 1}
+.p8::after{content:"PAR AVION";right:calc(var(--u)*5);top:calc(var(--u)*4);font:700 calc(var(--u)*2.2)/1 sans-serif;letter-spacing:.2em;color:#d7394e}
+@media(max-width:1099px){
+.ps-wrap{padding:0}
+.ps-top{margin:0;padding:14px 16px;background:#fff;border-bottom:1px solid #eee}
+.ps-pvbtn{display:none}
+.ps-grid{grid-template-columns:1fr;gap:0}
+.ps-card{border-radius:0;padding:0;background:#fff}
+.ps-main>.ps-lbl,.ps-main>h2,.ps-main>.ps-sub{display:none}
+.ps-main{background:#eceef2;padding:16px}.ps-stage{padding:0}
+.ps-side{padding:16px;border-top:8px solid #f2f3f5}
+.ps-side>.ps-lbl,.ps-side>h2{display:none}
+.pgrid{grid-template-columns:repeat(4,1fr)}
+.ps-acts{position:sticky;bottom:0;background:#fff;padding:12px 0 calc(12px + env(safe-area-inset-bottom))}
+}

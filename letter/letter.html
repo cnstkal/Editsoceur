@@ -4,30 +4,28 @@
 <title>편지지</title>
 <link href="https://fonts.googleapis.com/css2?family=Nanum+Pen+Script&family=Gaegu&family=Gowun+Batang&family=Hi+Melody&family=Nanum+Myeongjo&family=Gamja+Flower&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="letter.css"></head>
-<body>
-<div class="stage"><div id="paper" class="paper p1">
-<div id="text" contenteditable="true" spellcheck="false">사랑하는 너에게,
-
-오늘 문득 네 생각이 나서 편지를 써.
-요즘 날씨가 참 좋더라. 네가 보고 싶은 하루야.
-
-이 칸은 눌러서 마음대로 고칠 수 있어.
-
-- 나로부터</div></div></div>
-<button id="fab">✎ 편집</button>
-<div id="panel" class="open">
-<div class="grab"></div>
-<label>편지지</label>
-<div class="row" id="papers"></div>
-<label>폰트</label>
-<select id="font"></select>
-<label>글자 크기 <b id="sv">22</b></label>
-<input type="range" id="size" min="12" max="48" value="22">
-<label>자간 <b id="lv">-20</b></label>
-<input type="range" id="ls" min="-100" max="200" value="-20">
-<label>줄 간격 <b id="hv">1.9</b></label>
-<input type="range" id="lh" min="1.2" max="3" step=".1" value="1.9">
-<label>글자색</label>
-<div class="row"><input type="color" id="color" value="#3a3330"><button id="rst">자간 -20 초기화</button></div>
+<body class="studio"><div class="ps-wrap">
+<div class="ps-top"><div class="ps-lbl">Letter Studio</div><button class="ps-pvbtn" id="pv">미리보기</button></div>
+<div class="ps-grid">
+<div class="ps-card ps-main"><div class="ps-lbl">Preview</div><h2>편지지</h2><p class="ps-sub">종이를 눌러 바로 쓸 수도 있어요</p>
+<div class="ps-stage"><div id="paper" class="paper p1"><div id="text" contenteditable="true" spellcheck="false"></div></div></div></div>
+<div class="ps-card ps-side"><div class="ps-lbl">Editor</div><h2>편지지 편집</h2><p class="ps-sub">디자인·글꼴·자간·내용</p>
+<div class="ps-seg"><button class="on" data-t="a">편지지</button><button data-t="b">글꼴</button><button data-t="c">내용</button></div>
+<div class="editor">
+<div class="ps-pn" id="pa"><div class="pgrid" id="papers"></div>
+<label style="margin-top:20px">비율<select id="ratio"></select></label>
+<label>가로 : 세로<span class="rr"><input type="number" id="rw" value="3" min="1" step=".1"><b>:</b><input type="number" id="rh" value="4.2" min="1" step=".1"></span></label></div>
+<div class="ps-pn" id="pb" hidden>
+<label>폰트<select id="font"></select></label>
+<label>글자 크기<input type="number" id="size" value="22" min="10" max="60"></label>
+<label>자간 (기본 -20)<input type="number" id="ls" value="-20" min="-100" max="300"></label>
+<label>줄 간격<input type="number" id="lh" value="1.9" step=".1" min="1" max="4"></label>
+<label>여백<input type="number" id="pad" value="10" min="2" max="25" step=".5"></label>
+<label>글자색<input type="color" id="color" value="#3a3330"></label>
+<div class="ps-tg"><span>글자 가운데 정렬</span><span class="sw"><input type="checkbox" id="ctr"><i></i></span></div></div>
+<div class="ps-pn" id="pc" hidden><label style="display:block">내용<textarea id="body"></textarea></label></div>
 </div>
+<div class="ps-acts"><button id="reset">초기화</button><button id="savePng">PNG 저장</button></div>
+</div></div></div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
 <script src="letter.js"></script></body></html>
