@@ -20,17 +20,19 @@ var data=[
 {id:'everytime',label:'에브리타임',app:'에브리타임',title:'새 댓글',body:'내 글에 새 댓글이 달렸어요',time:'지금',icon:'everytime',img:'images/everytime/IMG_0672.png'}
 ];
 data.forEach(function(n){n.noSmall=false;n.style='normal';n.appImg='';n.avatar=''});
-var selected=0,color='#efefef',opacity=96;
+var selected=0,color='#efefef',opacity=96,cardW=100;
 function rgba(hex,a){var n=parseInt(hex.slice(1),16);return 'rgba('+(n>>16)+','+((n>>8)&255)+','+(n&255)+','+(a/100)+')'}
 function appIcon(n){var u=n.appImg||n.img;return u?'<img src="'+u+'" alt="" style="width:100%;height:100%;object-fit:cover;border-radius:22%;display:block">':icons[n.icon]}
 function icoHtml(n){
  if(n.style==='small')return '<div class="ico big"><div class="av">'+(n.avatar?'<img src="'+n.avatar+'" alt="">':'')+'</div><div class="badge">'+appIcon(n)+'</div></div>';
  return '<div class="ico">'+appIcon(n)+'</div>'}
+function applyWidth(){var b=$('banner');if(b)b.style.width='calc(1412px*var(--u)*'+cardW/100+')';$('cardWidth').value=cardW;$('widthValue').textContent=cardW+'%'}
+$('cardWidth').oninput=function(){cardW=+this.value;applyWidth()};
 function fit(){var st=$('stage');if(st)st.style.setProperty('--u',st.clientWidth/1412)}
 function render(){
  var n=data[selected],stage=$('stage');
  stage.innerHTML='<div class="banner" id="banner">'+icoHtml(n)+'<div class="txt"><b></b><p></p></div><span class="time"></span></div>';
- $('banner').style.background=rgba(color,opacity);
+ $('banner').style.background=rgba(color,opacity);applyWidth();
  $('banner').querySelector('b').textContent=n.title;$('banner').querySelector('p').textContent=n.body;$('banner').querySelector('.time').textContent=n.time;
  $('iconStyle').value=n.style;$('iconStyle').parentNode.style.display=n.noSmall?'none':'block';$('avatarRow').style.display=n.style==='small'?'block':'none';$('appName').value=n.app;$('title').value=n.title;$('bodyText').value=n.body;$('timeText').value=n.time;
  $('bgColor').value=color;$('opacity').value=opacity;$('opacityValue').textContent=opacity+'%';
@@ -47,12 +49,12 @@ readFile('appImgFile','appImg');readFile('avatarFile','avatar');
 $('appImgClear').onclick=function(){data[selected].appImg='';render()};
 $('bgColor').oninput=function(){color=this.value;renderKeepFocus()};
 $('opacity').oninput=function(){opacity=+this.value;$('opacityValue').textContent=opacity+'%';renderKeepFocus()};
-$('reset').onclick=function(){data[selected].app=data[selected].label;data[selected].title='알림 제목';data[selected].body='알림 내용을 입력하세요';data[selected].time='지금';data[selected].style='normal';data[selected].appImg='';data[selected].avatar='';color='#efefef';opacity=96;render()};
+$('reset').onclick=function(){data[selected].app=data[selected].label;data[selected].title='알림 제목';data[selected].body='알림 내용을 입력하세요';data[selected].time='지금';data[selected].style='normal';data[selected].appImg='';data[selected].avatar='';color='#efefef';opacity=96;cardW=100;render()};
 $('savePng').onclick=async function(){var b=this,t=b.textContent,el=$('banner');b.disabled=true;b.textContent='고화질 저장 중...';try{
  if(document.fonts&&document.fonts.ready)await document.fonts.ready;
  var waits=[];Array.prototype.forEach.call(el.querySelectorAll('img'),function(im){if(im.decode)waits.push(im.decode().catch(function(){}));else if(!im.complete)waits.push(new Promise(function(ok){im.onload=im.onerror=ok}))});
  await Promise.all(waits);await new Promise(function(ok){requestAnimationFrame(function(){requestAnimationFrame(ok)})});
- var c=await html2canvas(el,{scale:4*1412/el.offsetWidth,useCORS:true,allowTaint:false,backgroundColor:null,logging:false,imageTimeout:20000});
+ var c=await html2canvas(el,{scale:4*(parseFloat(getComputedStyle($('stage')).getPropertyValue('--u'))||1),useCORS:true,allowTaint:false,backgroundColor:null,logging:false,imageTimeout:20000});
  var blob=await new Promise(function(ok){c.toBlob(ok,'image/png')});if(!blob)throw new Error('PNG encode failed');
  var a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download='notification.png';document.body.appendChild(a);a.click();a.remove();setTimeout(function(){URL.revokeObjectURL(a.href)},1000);
  }catch(err){console.error(err);alert('PNG 저장에 실패했습니다.');}finally{b.disabled=false;b.textContent=t}};
