@@ -2,8 +2,7 @@
 <html lang="ko"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no,viewport-fit=cover"><script src="../nozoom.js?v=1"></script>
 <title>아이폰 잠금화면</title>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.css">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@200;300;400&display=swap">
-<link rel="stylesheet" href="../ps-base.css?v=4"><link rel="stylesheet" href="../ps-editor.css?v=12"><link rel="stylesheet" href="../ps-shell.css?v=2"><link rel="stylesheet" href="lockscreen.css?v=1"><style id="pa">body{animation:paIn .28s ease both}body.pa-out{animation:paOut .18s ease forwards}@keyframes paIn{from{opacity:0}to{opacity:1}}@keyframes paOut{to{opacity:0}}@media (prefers-reduced-motion:reduce){body,body.pa-out{animation:none}}</style><script id="pa-js">(function(){document.addEventListener("click",function(e){var a=e.target.closest&&e.target.closest("a[href]");if(!a||e.defaultPrevented||e.button||e.metaKey||e.ctrlKey||e.shiftKey||a.target||a.hasAttribute("download"))return;var h=a.getAttribute("href");if(!h||h[0]==="#"||/^(javascript:|mailto:|tel:)/.test(h))return;var u=new URL(a.href,location.href);if(u.origin!==location.origin)return;e.preventDefault();document.body.classList.add("pa-out");setTimeout(function(){location.href=u.href},180)},true)})();</script></head>
+<link rel="stylesheet" href="../ps-base.css?v=4"><link rel="stylesheet" href="../ps-editor.css?v=12"><link rel="stylesheet" href="../ps-shell.css?v=2"><link rel="stylesheet" href="lockscreen.css?v=2"></head>
 <body class="studio">
 <div class="ps-wrap">
 <header class="ps-top"><a class="ps-back" href="index.html">‹ 뒤로</a><button class="ps-pvbtn" id="pvBtn" type="button" hidden>미리보기 모드</button></header>
@@ -30,7 +29,7 @@
 <div class="ps-pn" data-t="시간·날짜">
 <label>시간<input id="iTime"></label>
 <label>날짜 선택<input id="iPick" type="date"></label>
-<label>날짜 언어<select id="iLang"><option value="en">영어</option><option value="ko">한국어</option></select></label>
+<label>날짜 언어<select id="iLang"><option value="ko">한국어</option><option value="en">영어</option></select></label>
 <label>날짜 문구<input id="iDate"></label>
 <label>위치 (위·아래)<input id="iTop" type="range" min="-120" max="400"></label>
 <label>글자 색상<input id="iInk" type="color"></label>
@@ -40,12 +39,16 @@
 <label>와이파이<select id="iWifi"><option value="3">강함</option><option value="2">보통</option><option value="1">약함</option><option value="0">숨기기</option></select></label>
 <label>배터리 <span id="vBat"></span><input id="iBat" type="range" min="0" max="100"></label>
 <div class="ps-tg"><span>충전 중</span><label class="sw"><input id="iChg" type="checkbox"><i></i></label></div>
-<div class="ps-tg"><span>상단 아래 선 표시</span><label class="sw"><input id="iBar" type="checkbox"><i></i></label></div>
+</div>
+<div class="ps-pn" data-t="하단">
+<div class="ps-tg"><span>손전등·카메라 버튼</span><label class="sw"><input id="iBtn" type="checkbox"><i></i></label></div>
+<div class="ps-tg"><span>홈 바 표시</span><label class="sw"><input id="iHome" type="checkbox"><i></i></label></div>
+<label>안내 문구<input id="iSwipe" placeholder="비우면 숨겨져요"></label>
 </div>
 </div></div>
 <div class="ps-acts"><button id="reset" type="button">초기화</button><button id="savePng" type="button">PNG 저장</button></div>
 </section>
 </div>
 </div>
-<script src="lockscreen.js?v=1"></script>
+<script src="lockscreen.js?v=2"></script>
 <script src="../ps-tabs.js?v=2"></script><script src="../upl.js?v=4" defer></script><script src="../back-anim.js?v=1" defer></script></body></html>

@@ -1,9 +1,9 @@
 (function(){
 var $=function(i){return document.getElementById(i)};
 var W=1080,H=1920,cv=$('cv'),ctx=cv.getContext('2d'),bg=null,seq=0;
-var FONT='-apple-system,BlinkMacSystemFont,Inter,Pretendard,"Apple SD Gothic Neo","Noto Sans KR",sans-serif';
-var DEF={iZoom:100,iX:50,iY:50,iDim:0,iCol:'#8d9aa6',iTime:'9:41',iPick:'2026-06-07',iLang:'en',iDate:'Monday, June 7',iTop:0,iInk:'#ffffff',iSig:'4',iWifi:'3',iBat:100};
-var CHK={iChg:false,iBar:true};
+var FONT='Pretendard,sans-serif',LS=-0.02; /* 자간 -20 */
+var DEF={iZoom:100,iX:50,iY:50,iDim:0,iCol:'#8d9aa6',iTime:'9:41',iPick:'2021-06-07',iLang:'ko',iDate:'6월 7일 월요일',iTop:0,iInk:'#ffffff',iSig:'4',iWifi:'3',iBat:100,iSwipe:'위로 쓸어올려 잠금 해제'};
+var CHK={iChg:false,iBtn:true,iHome:true};
 function v(id){return $(id).value}
 function n(id){return Number($(id).value)}
 
@@ -19,12 +19,53 @@ function drawBg(){
  if(n('iDim')){ctx.fillStyle='rgba(0,0,0,'+n('iDim')/100+')';ctx.fillRect(0,0,W,H)}
 }
 
-/* 가운데 글자: 화면보다 길면 글자 크기를 줄임 */
+/* 가운데 글자 (자간 적용). 브라우저마다 canvas 자간 지원이 달라 글자별로 배치하고, 길면 크기를 줄임 */
 function text(str,y,size,weight,max){
+ var ch=Array.from(str);if(!ch.length)return;
+ function width(){return ctx.measureText(str).width+LS*size*(ch.length-1)}
  ctx.font=weight+' '+size+'px '+FONT;
- var w=ctx.measureText(str).width;
- if(w>max){ctx.font=weight+' '+(size*max/w)+'px '+FONT}
- ctx.fillText(str,W/2,y);
+ var w=width();
+ if(w>max){size*=max/w;ctx.font=weight+' '+size+'px '+FONT;w=width()}
+ var x=(W-w)/2,pre='';
+ ctx.textAlign='left';
+ ch.forEach(function(c,i){
+  /* 앞뒤 글자 간격(커닝)은 유지 */
+  pre+=c;
+  ctx.fillText(c,x+ctx.measureText(pre).width-ctx.measureText(c).width+LS*size*i,y);
+ });
+}
+
+/* 하단 원형 버튼: 뒤 배경을 흐리게 만든 뒤 어둡게 덮음 */
+var small=document.createElement('canvas');small.width=small.height=10;
+function circle(cx,cy,r){
+ var s=small.getContext('2d');s.clearRect(0,0,10,10);s.drawImage(cv,cx-r,cy-r,r*2,r*2,0,0,10,10);
+ ctx.save();ctx.beginPath();ctx.arc(cx,cy,r,0,Math.PI*2);ctx.clip();
+ ctx.imageSmoothingEnabled=true;ctx.imageSmoothingQuality='high';ctx.drawImage(small,cx-r,cy-r,r*2,r*2);
+ ctx.fillStyle='rgba(30,30,30,.36)';ctx.fillRect(cx-r,cy-r,r*2,r*2);ctx.restore();
+}
+
+function drawBottom(){
+ if($('iBtn').checked){
+  var y=H-208,L=198,R=W-198;
+  circle(L,y,63);circle(R,y,63);
+  ctx.save();ctx.fillStyle='#fff';ctx.strokeStyle='#fff';ctx.lineJoin='round';
+  /* 손전등 */
+  rr(ctx,L-14,y-33,28,8,2);ctx.fill();
+  ctx.beginPath();ctx.moveTo(L-14,y-21);ctx.lineTo(L+14,y-21);ctx.lineTo(L+14,y-15);ctx.lineTo(L+8,y-5);ctx.lineTo(L+8,y+29);
+  ctx.quadraticCurveTo(L+8,y+33,L+4,y+33);ctx.lineTo(L-4,y+33);ctx.quadraticCurveTo(L-8,y+33,L-8,y+29);ctx.lineTo(L-8,y-5);ctx.lineTo(L-14,y-15);ctx.closePath();ctx.fill();
+  ctx.fillStyle='rgba(50,50,50,.75)';rr(ctx,L-3,y+1,6,15,3);ctx.fill();
+  ctx.fillStyle='#fff';ctx.beginPath();ctx.arc(L,y+11,2.5,0,Math.PI*2);ctx.fill();
+  /* 카메라 */
+  ctx.lineWidth=4;rr(ctx,R-27,y-15,54,38,8);ctx.stroke();
+  ctx.beginPath();ctx.moveTo(R-14,y-15);ctx.lineTo(R-9,y-23);ctx.lineTo(R+9,y-23);ctx.lineTo(R+14,y-15);ctx.stroke();
+  ctx.beginPath();ctx.arc(R,y+4,10.5,0,Math.PI*2);ctx.stroke();
+  ctx.beginPath();ctx.arc(R+18,y-6,3,0,Math.PI*2);ctx.fill();
+  ctx.restore();
+ }
+ ctx.save();ctx.fillStyle=v('iInk');
+ text(v('iSwipe'),H-110,35,600,620);
+ if($('iHome').checked){ctx.fillStyle='#fff';rr(ctx,(W-384)/2,H-52,384,12,6);ctx.fill()}
+ ctx.restore();
 }
 
 /* 상단 상태바: 신호 · 와이파이 · 배터리 (오른쪽 정렬) */
@@ -65,18 +106,18 @@ function drawStatus(){
  }
 
  ctx.globalAlpha=1;
- if($('iBar').checked){rr(ctx,862,106,132,8,4);ctx.fill()}
  ctx.restore();
 }
 
 function render(){
  $('vBat').textContent=n('iBat')+'%';
  drawBg();
- ctx.save();ctx.fillStyle=v('iInk');ctx.textAlign='center';ctx.textBaseline='alphabetic';
+ ctx.save();ctx.fillStyle=v('iInk');ctx.textBaseline='alphabetic';
  text(v('iTime'),487+n('iTop'),206,300,1000);
  text(v('iDate'),588+n('iTop'),53,400,980);
  ctx.restore();
  drawStatus();
+ drawBottom();
 }
 
 /* 날짜 선택 → 문구 자동 입력 */
@@ -87,13 +128,11 @@ function fillDate(){
  render();
 }
 
-/* 글꼴이 늦게 도착해도 다시 그림 */
+/* 프리텐다드가 늦게 도착해도 다시 그림 */
 function loadFonts(){
  if(!document.fonts)return Promise.resolve();
- var s=v('iTime')+v('iDate');
- return Promise.all(['300','400'].map(function(w){
-  return Promise.all([document.fonts.load(w+' 56px Inter',s),document.fonts.load(w+' 56px Pretendard',s)])
- })).catch(function(){});
+ var t=v('iTime')+v('iDate')+v('iSwipe');
+ return Promise.all(['300','400','600'].map(function(w){return document.fonts.load(w+' 56px Pretendard',t)})).catch(function(){});
 }
 
 function reset(){
@@ -106,7 +145,7 @@ Object.keys(DEF).concat(Object.keys(CHK)).forEach(function(id){
  var fn=id==='iPick'||id==='iLang'?fillDate:render;
  $(id).addEventListener('input',fn);$(id).addEventListener('change',fn);
 });
-$('iDate').addEventListener('change',function(){loadFonts().then(render)});
+['iDate','iSwipe'].forEach(function(id){$(id).addEventListener('change',function(){loadFonts().then(render)})});
 $('iBg').addEventListener('change',function(){
  var f=this.files[0];if(!f)return;
  var my=++seq,url=URL.createObjectURL(f),img=new Image();
@@ -123,15 +162,20 @@ $('reset').onclick=reset;
 
 /* PNG 저장 (1080x1920) */
 $('savePng').onclick=function(){
- render();
- cv.toBlob(function(b){
-  if(!b)return;
-  var u=URL.createObjectURL(b),a=document.createElement('a');a.download='iphone-lockscreen.png';a.href=u;
-  document.body.appendChild(a);a.click();a.remove();setTimeout(function(){URL.revokeObjectURL(u)},1000);
- },'image/png');
+ loadFonts().then(function(){
+  render();
+  cv.toBlob(function(b){
+   if(!b)return;
+   var u=URL.createObjectURL(b),a=document.createElement('a');a.download='iphone-lockscreen.png';a.href=u;
+   document.body.appendChild(a);a.click();a.remove();setTimeout(function(){URL.revokeObjectURL(u)},1000);
+  },'image/png');
+ });
 };
 
 reset();loadFonts().then(render);
 window.addEventListener('load',function(){loadFonts().then(render)});
 if(document.fonts&&document.fonts.addEventListener)document.fonts.addEventListener('loadingdone',render);
 })();
+
+/* 화면 전환 */
+(function(){document.addEventListener("click",function(e){var a=e.target.closest&&e.target.closest("a[href]");if(!a||e.defaultPrevented||e.button||e.metaKey||e.ctrlKey||e.shiftKey||a.target||a.hasAttribute("download"))return;var h=a.getAttribute("href");if(!h||h[0]==="#"||/^(javascript:|mailto:|tel:)/.test(h))return;var u=new URL(a.href,location.href);if(u.origin!==location.origin)return;e.preventDefault();document.body.classList.add("pa-out");setTimeout(function(){location.href=u.href},180)},true)})();
