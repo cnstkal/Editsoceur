@@ -119,11 +119,11 @@ function drawStatus(){
 
  /* 배터리 */
  var pct=n('iBat'),chg=$('iChg').checked;
- ctx.globalAlpha=.45;ctx.lineWidth=3;rr(ctx,x+1.5,53.5,55,28,9);ctx.stroke();
+ ctx.globalAlpha=.45;ctx.lineWidth=3.5;rr(ctx,x+1.75,53.75,54.5,27.5,13);ctx.stroke();
  rr(ctx,x+61,61,5,13,2.5);ctx.fill();ctx.globalAlpha=1;
  if(pct>0){
-  ctx.save();rr(ctx,x+6,58,46,19,5);ctx.clip();
-  ctx.fillStyle=chg?'#34c759':pct<=20?'#ff3b30':ink;ctx.fillRect(x+6,58,Math.max(4,46*pct/100),19);ctx.restore();
+  ctx.save();rr(ctx,x+6,58,46,19,9.5);ctx.clip();
+  ctx.fillStyle=chg?'#34c759':pct<=20?'#ff3b30':ink;ctx.fillRect(x+6,58,Math.max(9,46*pct/100),19);ctx.restore();
  }
  if(chg){
   ctx.beginPath();[[33,48],[19,70],[28,70],[24,87],[39,64],[30,64]].forEach(function(p,i){ctx[i?'lineTo':'moveTo'](x+p[0],p[1])});ctx.closePath();
