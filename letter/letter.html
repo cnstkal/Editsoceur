@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="ko"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>편지지</title>
+<link href="https://fonts.googleapis.com/css2?family=Nanum+Pen+Script&family=Gaegu&family=Gowun+Batang&family=Hi+Melody&family=Nanum+Myeongjo&family=Gamja+Flower&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="letter.css"></head>
+<body>
+<div class="stage"><div id="paper" class="paper p1">
+<div id="text" contenteditable="true" spellcheck="false">사랑하는 너에게,
+
+오늘 문득 네 생각이 나서 편지를 써.
+요즘 날씨가 참 좋더라. 네가 보고 싶은 하루야.
+
+이 칸은 눌러서 마음대로 고칠 수 있어.
+
+- 나로부터</div></div></div>
+<button id="fab">✎ 편집</button>
+<div id="panel" class="open">
+<div class="grab"></div>
+<label>편지지</label>
+<div class="row" id="papers"></div>
+<label>폰트</label>
+<select id="font"></select>
+<label>글자 크기 <b id="sv">22</b></label>
+<input type="range" id="size" min="12" max="48" value="22">
+<label>자간 <b id="lv">-20</b></label>
+<input type="range" id="ls" min="-100" max="200" value="-20">
+<label>줄 간격 <b id="hv">1.9</b></label>
+<input type="range" id="lh" min="1.2" max="3" step=".1" value="1.9">
+<label>글자색</label>
+<div class="row"><input type="color" id="color" value="#3a3330"><button id="rst">자간 -20 초기화</button></div>
+</div>
+<script src="letter.js"></script></body></html>
