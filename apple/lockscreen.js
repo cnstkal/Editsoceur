@@ -2,7 +2,7 @@
 var $=function(i){return document.getElementById(i)};
 var W=1080,H=1920,cv=$('cv'),ctx=cv.getContext('2d'),bg=null,seq=0;
 var FONT='Pretendard,sans-serif',LS=-0.02; /* 자간 -20 */
-var DEF={iZoom:100,iX:50,iY:50,iDim:0,iCol:'#8d9aa6',iTime:'9:41',iPick:'2021-06-07',iLang:'ko',iDate:'6월 7일 월요일',iTop:0,iInk:'#ffffff',iSig:'4',iWifi:'3',iBat:100,iSbX:0,iSbY:0,iSwipe:'위로 쓸어올려 잠금 해제'};
+var DEF={iAlpha:55,iBlur:60,iZoom:100,iX:50,iY:50,iDim:0,iCol:'#8d9aa6',iTime:'9:41',iPick:'2021-06-07',iLang:'ko',iDate:'6월 7일 월요일',iTop:0,iInk:'#ffffff',iSig:'4',iWifi:'3',iBat:100,iSbX:0,iSbY:0,iSwipe:'위로 쓸어올려 잠금 해제'};
 var CHK={iChg:false,iBtn:true,iHome:true};
 function v(id){return $(id).value}
 function n(id){return Number($(id).value)}
@@ -21,25 +21,68 @@ function drawBg(){
 }
 
 /* 가운데 글자 (자간 적용). 브라우저마다 canvas 자간 지원이 달라 글자별로 배치하고, 길면 크기를 줄임 */
-function text(str,y,size,weight,max){
+function text(str,y,size,weight,max,g){
+ g=g||ctx;
  var ch=Array.from(str);if(!ch.length)return;
- function width(){return ctx.measureText(str).width+LS*size*(ch.length-1)}
- ctx.font=weight+' '+size+'px '+FONT;
+ function width(){return g.measureText(str).width+LS*size*(ch.length-1)}
+ g.font=weight+' '+size+'px '+FONT;
  var w=width();
- if(w>max){size*=max/w;ctx.font=weight+' '+size+'px '+FONT;w=width()}
+ if(w>max){size*=max/w;g.font=weight+' '+size+'px '+FONT;w=width()}
  var x=(W-w)/2,pre='';
- ctx.textAlign='left';
+ g.textAlign='left';
  ch.forEach(function(c,i){
   /* 앞뒤 글자 간격(커닝)은 유지 */
   pre+=c;
-  ctx.fillText(c,x+ctx.measureText(pre).width-ctx.measureText(c).width+LS*size*i,y);
+  g.fillText(c,x+g.measureText(pre).width-g.measureText(c).width+LS*size*i,y);
  });
 }
 
+/* 시계 유리 효과: 흐린 배경을 글자 모양으로 잘라낸 뒤 반투명한 색을 덮음.
+   canvas filter를 지원하지 않는 브라우저(사파리)가 있어 흐림은 직접 계산 */
+function layer(w,h){var c=document.createElement('canvas');c.width=w;c.height=h;return c}
+var low=layer(W/4,H/4),glass=layer(W,H),mask=layer(W,H);
+var lg=low.getContext('2d',{willReadFrequently:true}),gg=glass.getContext('2d'),mg=mask.getContext('2d');
+function boxBlur(src,dst,w,h,r,step,line,lines,len){
+ for(var l=0;l<lines;l++){
+  var base=l*line;
+  for(var c=0;c<4;c++){
+   var sum=0,i;
+   for(i=-r;i<=r;i++)sum+=src[base+Math.max(0,Math.min(len-1,i))*step+c];
+   for(i=0;i<len;i++){
+    dst[base+i*step+c]=sum/(r*2+1);
+    sum+=src[base+Math.min(len-1,i+r+1)*step+c]-src[base+Math.max(0,i-r)*step+c];
+   }
+  }
+ }
+}
+function blurBg(){
+ var w=low.width,h=low.height,r=Math.round(n('iBlur')*0.14);
+ lg.drawImage(cv,0,0,w,h);
+ if(!r)return false;
+ var d=lg.getImageData(0,0,w,h),a=d.data,t=new Uint8ClampedArray(a.length);
+ for(var p=0;p<2;p++){boxBlur(a,t,w,h,r,4,w*4,h,w);boxBlur(t,a,w,h,r,w*4,4,w,h)}
+ lg.putImageData(d,0,0);return true;
+}
+/* 배경만 그려진 상태에서 호출해야 함 */
+function glassTime(y,size,weight){
+ var blurred=blurBg();
+ mg.clearRect(0,0,W,H);mg.fillStyle='#000';text(v('iTime'),y,size,weight,1000,mg);
+ gg.globalCompositeOperation='source-over';gg.globalAlpha=1;gg.clearRect(0,0,W,H);
+ gg.drawImage(blurred?low:cv,0,0,W,H);
+ /* 흐림이 클수록 살짝 밝게 해서 글자 윤곽이 보이게 함 */
+ gg.fillStyle='rgba(255,255,255,'+(n('iBlur')*0.0018)+')';gg.fillRect(0,0,W,H);
+ gg.globalAlpha=n('iAlpha')/100;gg.fillStyle=v('iInk');gg.fillRect(0,0,W,H);gg.globalAlpha=1;
+ gg.globalCompositeOperation='destination-in';gg.drawImage(mask,0,0);
+ ctx.drawImage(glass,0,0);
+}
+
 /* 하단 원형 버튼: 뒤 배경을 흐리게 만든 뒤 어둡게 덮음 */
-var small=document.createElement('canvas');small.width=small.height=10;
+var small=document.createElement('canvas');small.width=small.height=32;
 function circle(cx,cy,r){
- var s=small.getContext('2d');s.clearRect(0,0,10,10);s.drawImage(cv,cx-r,cy-r,r*2,r*2,0,0,10,10);
+ var s=small.getContext('2d',{willReadFrequently:true});s.drawImage(cv,cx-r,cy-r,r*2,r*2,0,0,32,32);
+ var d=s.getImageData(0,0,32,32),px=d.data,t=new Uint8ClampedArray(px.length);
+ for(var p=0;p<2;p++){boxBlur(px,t,32,32,4,4,128,32,32);boxBlur(t,px,32,32,4,128,4,32,32)}
+ s.putImageData(d,0,0);
  ctx.save();ctx.beginPath();ctx.arc(cx,cy,r,0,Math.PI*2);ctx.clip();
  ctx.imageSmoothingEnabled=true;ctx.imageSmoothingQuality='high';ctx.drawImage(small,cx-r,cy-r,r*2,r*2);
  ctx.fillStyle='rgba(30,30,30,.36)';ctx.fillRect(cx-r,cy-r,r*2,r*2);ctx.restore();
@@ -113,10 +156,10 @@ function drawStatus(){
 function render(){
  $('vBat').textContent=n('iBat')+'%';
  drawBg();
+ if(is16())glassTime(535+n('iTop'),264,600); /* 유리 효과 시계는 iOS 16 */
  ctx.save();ctx.fillStyle=v('iInk');ctx.textBaseline='alphabetic';
  if(is16()){ /* 날짜가 위, 굵고 큰 시계 */
   text(v('iDate'),275+n('iTop'),57,600,980);
-  text(v('iTime'),535+n('iTop'),264,600,1000);
  }else{ /* 얇은 시계, 날짜가 아래 */
   text(v('iTime'),487+n('iTop'),206,300,1000);
   text(v('iDate'),588+n('iTop'),53,400,980);
@@ -145,6 +188,7 @@ function loadFonts(){
 function syncVer(){
  [].forEach.call($('verSeg').children,function(b){var on=b.getAttribute('data-v')===v('iVer');b.classList.toggle('on',on);b.setAttribute('aria-pressed',on)});
  $('swipeRow').hidden=is16();
+ [].forEach.call(document.querySelectorAll('.only16'),function(e){e.hidden=!is16()});
 }
 [].forEach.call($('verSeg').children,function(b){b.onclick=function(){$('iVer').value=b.getAttribute('data-v');syncVer();render()}});
 

@@ -10,4 +10,5 @@ html,body,body *{font-family:Pretendard,sans-serif!important;letter-spacing:-.02
 body{animation:paIn .28s ease both}body.pa-out{animation:paOut .18s ease forwards}@keyframes paIn{from{opacity:0}to{opacity:1}}@keyframes paOut{to{opacity:0}}@media (prefers-reduced-motion:reduce){body,body.pa-out{animation:none}}
 
 /* iOS 버전 선택 */
-#swipeRow[hidden]{display:none!important}
+#swipeRow[hidden],.ps-side label.only16[hidden]{display:none!important}
+body.studio .ps-side .editor label.only16[hidden]{display:none!important}
