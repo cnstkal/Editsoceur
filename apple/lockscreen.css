@@ -1,0 +1,4 @@
+/* 아이폰 잠금화면: 1080x1920 캔버스를 비율 그대로 축소해서 보여줌 */
+.ps-pv9 canvas{display:block;width:100%;height:auto;aspect-ratio:9/16}
+body.studio .ps-side .ps-acts #reset{flex:1;background:#f2f3f5;color:#222}
+body.studio .ps-side .ps-acts #savePng{flex:1.6;background:var(--pk);color:#fff}
