@@ -2,7 +2,7 @@
 var $=function(i){return document.getElementById(i)};
 var W=1080,H=1920,cv=$('cv'),ctx=cv.getContext('2d'),bg=null,seq=0;
 var FONT='Pretendard,sans-serif',LS=-0.02; /* 자간 -20 */
-var DEF={iZoom:100,iX:50,iY:50,iDim:0,iCol:'#8d9aa6',iTime:'9:41',iPick:'2021-06-07',iLang:'ko',iDate:'6월 7일 월요일',iTop:0,iInk:'#ffffff',iSig:'4',iWifi:'3',iBat:100,iSwipe:'위로 쓸어올려 잠금 해제'};
+var DEF={iZoom:100,iX:50,iY:50,iDim:0,iCol:'#8d9aa6',iTime:'9:41',iPick:'2021-06-07',iLang:'ko',iDate:'6월 7일 월요일',iTop:0,iInk:'#ffffff',iSig:'4',iWifi:'3',iBat:100,iSbX:0,iSbY:0,iSwipe:'위로 쓸어올려 잠금 해제'};
 var CHK={iChg:false,iBtn:true,iHome:true};
 function v(id){return $(id).value}
 function n(id){return Number($(id).value)}
@@ -71,7 +71,7 @@ function drawBottom(){
 /* 상단 상태바: 신호 · 와이파이 · 배터리 (오른쪽 정렬) */
 function drawStatus(){
  var ink=v('iInk'),x=962;
- ctx.save();ctx.fillStyle=ink;ctx.strokeStyle=ink;
+ ctx.save();ctx.translate(n('iSbX'),n('iSbY'));ctx.fillStyle=ink;ctx.strokeStyle=ink;
 
  /* 배터리 */
  var pct=n('iBat'),chg=$('iChg').checked;
