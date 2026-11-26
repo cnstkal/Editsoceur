@@ -19,8 +19,9 @@
 <div class="ps-stage"><div class="smm-st b-chk" id="st"><div id="fit">
 <div class="ov" id="ov">
 <div class="bn" id="bn"><div id="bs"></div><div class="tx" id="tx"><div id="x1"></div><div id="x2"></div></div></div>
-<div class="lg"><div class="cs"><div class="pl"><b>SHOW</b><i class="me"></i></div><span class="th">THE</span><span class="mn">MONEY</span></div><img id="li" alt="" src="show_me_the_money_43_transparent.png"><div class="ss"><span id="sn">12</span></div></div>
+<img class="lg" id="li" alt="" src="show_me_the_money_12_transparent.png">
 </div>
+<div class="ov sv" id="ov2"><div class="bn2" id="bn2"><div id="bs2"></div><div class="nm" id="nm"><span id="y1"></span></div><div class="dl" id="dl"><span id="y2"></span></div></div></div>
 </div></div></div>
 </section>
 <section class="ps-card ps-side">
@@ -35,24 +36,20 @@
 <label>둘째 줄 색<input id="c2" type="color" value="#ff5a1f"></label>
 <label>글자 크기<input id="fs" type="range" min="50" max="140" value="100"></label>
 </div>
-<div class="ps-pn" data-t="로고">
-<label>시즌 번호<input id="se" type="number" min="1" max="99" value="12"></label>
-<div class="ps-tg"><span>로고 표시</span><label class="sw"><input id="tLogo" type="checkbox" checked><i></i></label></div>
-<div class="ps-tg"><span>시즌 번호 표시</span><label class="sw"><input id="tSeason" type="checkbox"><i></i></label></div>
-<label>로고 크기<input id="ls" type="range" min="8" max="30" step=".1" value="18"></label>
-<label>로고 가로 위치<input id="lxp" type="range" min="-6" max="10" step=".1" value="0"></label>
-<label>로고 세로 위치<input id="lyp" type="range" min="-6" max="10" step=".1" value="0"></label>
-<label>다른 이미지 올리기<input id="lf" type="file" accept="image/*"></label>
-<button type="button" class="ps-ghost" id="lxx">기본 CSS 로고로</button>
-<p class="hint">기본은 ShowMeTheMoney 폴더의 로고 PNG예요. 번호가 이미 들어있으면 시즌 번호 표시는 꺼두세요</p>
-</div>
 <div class="ps-pn" data-t="배너">
-<label>배너 너비<input id="bw" type="range" min="22" max="64" value="40"></label>
-<label>배너 가로 위치<input id="bx" type="range" min="0" max="30" step=".1" value="14.5"></label>
-<label>배너 세로 위치<input id="by" type="range" min="-4" max="12" step=".1" value="3.6"></label>
+<label>배너 너비<input id="bw" type="range" min="30" max="64" step=".1" value="41.5"></label>
 <label>전체 크기<input id="sc" type="range" min="40" max="150" value="100"></label>
 <label>배경 투명도<input id="op" type="range" min="0" max="100" value="92"></label>
-<label>미리보기 배경<select id="pb"><option value="b-chk">투명 (체크무늬)</option><option value="b-dk">어두움</option><option value="b-lt">밝음</option><option value="b-pu">보라</option></select></label>
+</div>
+<div class="ps-pn" data-t="대사 자막">
+<label>표시할 바<select id="md"><option value="0" selected>타이틀바</option><option value="1">대사 자막바</option></select></label>
+<label>이름<input id="n1" value="제네 더 질라"></label>
+<label>대사<input id="d1" value="이야 말이 안 되는 그림이"></label>
+<label>글자 크기<input id="fs2" type="range" min="50" max="140" value="100"></label>
+<label>바 너비<input id="w2" type="range" min="36" max="120" value="64"></label>
+<label>이름칸 너비<input id="nw" type="range" min="8" max="24" step=".1" value="13"></label>
+<label>바 투명도<input id="o2" type="range" min="0" max="100" value="85"></label>
+<p class="hint">위에서 '대사 자막바'를 고르면 미리보기·PNG 저장이 이 바로 바뀌어요. 배경은 투명해요</p>
 </div>
 </div></div>
 <div class="ps-acts"><button id="reset" type="button">초기화</button><button id="savePng">PNG 저장</button></div>
