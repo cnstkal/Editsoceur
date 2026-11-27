@@ -144,7 +144,11 @@
     capture(cap).then(function (c) {
       c.toBlob(function (bl) {
         var a = document.createElement("a"); a.href = URL.createObjectURL(bl);
-        a.download = mode === "tp" ? "kakao-chat-16x9-transparent.png" : mode === "bg" ? "kakao-chat-16x9-background.png" : "kakao-chat-16x9.png";
+        var d = new Date(), p2 = function (n) { return String(n).padStart(2, "0"); };
+        var stamp = d.getFullYear() + p2(d.getMonth() + 1) + p2(d.getDate()) + "-" + p2(d.getHours()) + p2(d.getMinutes()) + p2(d.getSeconds());
+        var rand = Math.random().toString(36).slice(2, 8).padEnd(6, "0");
+        var kind = mode === "tp" ? "-transparent" : mode === "bg" ? "-background" : "";
+        a.download = "kakao-chat-16x9" + kind + "-" + stamp + "-" + rand + ".png";
         document.body.appendChild(a); a.click(); a.remove();
       });
     }).catch(function () { alert("PNG 저장에 실패했습니다."); })
