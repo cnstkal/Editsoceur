@@ -2,7 +2,7 @@
 var $=function(i){return document.getElementById(i)},ov=$('ov'),H=5.6,
 P=[['60초 랩 미션',''],['[본선] 제이통 X 허키','나우아임영 & Royal 44 〈KISS KISS KISS〉'],['[세미파이널] 제이통 X 허키','나우아임영 〈Animal〉']];
 function cur(){return $('md').value==='1'?$('ov2'):ov}
-function fit(){var st=$('st'),o=cur(),k=Math.min(1,(st.clientWidth-24)/o.offsetWidth);$('fit').style.transform='scale('+k+')';st.style.height=o.offsetHeight*k+24+'px'}
+function fit(){var st=$('st'),o=cur(),k=Math.min(1,(st.clientWidth-24)/o.offsetWidth);$('fit').style.transform='scale('+k+')';st.style.minHeight=cur()===$('ov2')?'0px':'';st.style.height=o.offsetHeight*k+24+'px'}
 function render(){
 var t=+$('ty').value,f=$('fs').value/100,bw=+$('bw').value,op=$('op').value/100,ins=H*.55,LW=15.7,LH=LW*958/1642,BL=13.5,BT=.7;
 ov.className='ov';
@@ -16,6 +16,8 @@ a.textContent=$('t1').value;b.textContent=$('t2').value;
 a.style.color=$('c1').value;b.style.color=$('c2').value;b.style.display=t?'':'none';
 w.forEach(function(x){var k=f;x[0].style.fontSize=x[1]*k+'em';while(x[0].offsetWidth>tx.clientWidth&&k>.3){k-=.03;x[0].style.fontSize=x[1]*k+'em'}});
 $('st').className='smm-st b-chk';
+var lg=$('li'),fs=parseFloat(getComputedStyle(ov).fontSize)||16,mn=1e9;[a,b].forEach(function(x){if(x.style.display==='none')return;mn=Math.min(mn,$('bn').offsetLeft+tx.offsetLeft+(tx.clientWidth-x.offsetWidth)/2)});
+lg.style.left=(mn<1e9?Math.max(0,mn/fs-15.7-.3):0)+'em';
 fit();
 }
 [].forEach.call(document.querySelectorAll('.editor input,.editor select'),function(e){e.oninput=e.onchange=render});
