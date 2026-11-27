@@ -30,13 +30,11 @@ h+='<div class="mc" data-i="'+i+'"><div class="row"><label>보낸 사람<select 
 '<label>내용<textarea data-f="x" rows="3">'+esc(x.x)+'</textarea></label>'+'<label>사진 첨부<input type="file" accept="image/*" data-f="im"></label>'+(x.im?'<img class="ci" src="'+x.im+'" alt="" style="max-width:120px;border-radius:10px">':'')+
 '<div class="row"><button type="button" class="mb" data-a="u">↑</button><button type="button" class="mb" data-a="d">↓</button><button type="button" class="mb" data-a="x">✕ 삭제</button></div></div>'});
 $('mlist').innerHTML=h}
-function set(){$('iNm').value=S.nm;$('iCnt').value=S.cnt;$('iMode').value=S.mode;$('iRead').value=S.read;syncRatioButtons()}
-function syncRatioButtons(){var bar=$('ratioSeg');if(!bar)return;[].forEach.call(bar.querySelectorAll('[data-ratio]'),function(b){b.classList.toggle('on',(b.dataset.ratio==='16:9'?S.ratio==='16:9':S.ratio!=='16:9'))})}
-$('ratioSeg').addEventListener('click',function(e){var b=e.target.closest('[data-ratio]');if(!b)return;S.ratio=b.dataset.ratio==='16:9'?'16:9':'phone';persist();syncRatioButtons();render()});
+function set(){$('iRatio').value=S.ratio||'phone';$('iNm').value=S.nm;$('iCnt').value=S.cnt;$('iMode').value=S.mode;$('iRead').value=S.read}
 function load(reset){if(reset){try{localStorage.removeItem(STORE)}catch(e){}S=JSON.parse(JSON.stringify(DEF))}else{try{var sv=localStorage.getItem(STORE);S=sv?JSON.parse(sv):JSON.parse(JSON.stringify(DEF));if(!S||!Array.isArray(S.m))throw 0}catch(e){S=JSON.parse(JSON.stringify(DEF))}}set();list();render()}
 function rd(f,cb){var r=new FileReader();r.onload=function(){cb(r.result)};r.readAsDataURL(f)}
-function glob(){S.nm=$('iNm').value;S.cnt=$('iCnt').value;S.mode=$('iMode').value;S.read=$('iRead').value;persist();render()}
-['iNm','iCnt','iMode','iRead'].forEach(function(id){$(id).addEventListener('input',glob);$(id).addEventListener('change',glob)});
+function glob(){S.ratio=$('iRatio').value;S.nm=$('iNm').value;S.cnt=$('iCnt').value;S.mode=$('iMode').value;S.read=$('iRead').value;persist();render()}
+['iRatio','iNm','iCnt','iMode','iRead'].forEach(function(id){$(id).addEventListener('input',glob);$(id).addEventListener('change',glob)});
 $('iAv').addEventListener('change',function(e){var f=e.target.files[0];if(f)rd(f,function(d){S.av=d;persist();render()})});
 var L=$('mlist'),ix=function(e){return +e.target.closest('.mc').dataset.i};
 function ed(e){var f=e.target.dataset.f;if(!f||f==='im'||f==='im2')return;S.m[ix(e)][f]=f==='s'?+e.target.value:e.target.value;persist();render()}
