@@ -30,3 +30,8 @@ body.studio .ps-side>.ps-acts button{height:52px;min-width:0}
 
 /* 프리뷰 영역 넓히기 (이 페이지만) */
 body.studio .ps-grid{grid-template-columns:minmax(0,2.6fr) minmax(340px,1fr)}
+
+/* 프리뷰 칸을 가로 끝까지 채워서 캔버스를 키움 (여백 제거) */
+body.studio .ps-frame{display:block!important;width:100%!important;max-width:none!important;padding:0!important;margin:0!important}
+body.studio .ps-stage{width:100%}
+body.studio .kw{width:100%!important;margin:0!important}
