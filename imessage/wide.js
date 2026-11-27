@@ -52,6 +52,7 @@
       var row = el("div", "row" + (me ? " me" : "") + (first ? " first" : "") + (last ? " tail" : ""));
       var bb = el("div", "b" + (m.img ? " img" : ""), m.img ? null : String(m.t == null ? "" : m.t).trim());
       if (m.img) { var im = document.createElement("img"); im.src = m.img; bb.append(im); }
+      if (last && !m.img) bb.insertAdjacentHTML("beforeend", '<i class="tl"><svg viewBox="0 0 12 10"><path d="M12 0V7H9.2C6.8 7 5.6 8.3 3.3 9C2.2 9.3 1 9.2 0.2 8.6C2 8.1 2.9 6.5 3 4.6C3.1 2 5.5 0.2 12 0Z"/></svg></i>');
       row.append(bb); chat.append(row);
       if (m.rd) { chat.append(el("div", "read" + (me ? " me" : ""), m.rd)); prev = null; }
     });

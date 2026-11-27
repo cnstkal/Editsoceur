@@ -26,9 +26,13 @@ svg{display:block}
 .row.me{justify-content:flex-end}
 .b{position:relative;width:fit-content;max-width:calc(var(--u)*58);min-height:calc(var(--u)*5.8);padding:calc(var(--u)*1.1) calc(var(--u)*2.3);border-radius:calc(var(--u)*2.9);background:#e9e9eb;font-size:calc(var(--u)*2.85);line-height:calc(var(--u)*3.6);white-space:pre-wrap;word-break:keep-all;overflow-wrap:anywhere}
 .me .b{background:var(--sent);color:#fff}
-/* 꼬리: 배경색 가리개 없이 SVG라서 투명 저장에서도 깨끗함 */
-.tail .b:not(.img)::after{content:"";position:absolute;bottom:0;left:calc(var(--u)*-.9);width:calc(var(--u)*2.6);height:calc(var(--u)*2.6);background:#e9e9eb;clip-path:polygon(35% 0,100% 55%,90% 85%,65% 100%,0 100%,20% 85%,33% 60%)}
-.tail.me .b:not(.img)::after{left:auto;right:calc(var(--u)*-.9);background:var(--sent);transform:scaleX(-1)}
+/* 꼬리: 인라인 SVG(색 변수 사용)라 투명 저장에서도 깨끗함 */
+.b{isolation:isolate}
+.tl{z-index:-1;position:absolute;left:calc(var(--u)*-1.5);bottom:calc(var(--u)*-1.35);width:calc(var(--u)*5.4);height:calc(var(--u)*4.5);pointer-events:none}
+.tl svg{display:block;width:100%;height:100%;overflow:visible;fill:#e9e9eb}
+.me .tl{left:auto;right:calc(var(--u)*-1.5);transform:scaleX(-1)}
+.me .tl svg{fill:var(--sent)}
+.row.tail{margin-bottom:calc(var(--u)*.9)}
 .read{color:#8e8e93;font-size:calc(var(--u)*1.9);font-weight:600;margin:calc(var(--u)*.6) calc(var(--u)*1) 0}
 .read.me{text-align:right}
 .b.img{padding:0;background:none;min-height:0}
