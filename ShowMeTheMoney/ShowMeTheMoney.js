@@ -4,7 +4,7 @@ P=[['60초 랩 미션',''],['[본선] 제이통 X 허키','나우아임영 & Roy
 function cur(){return $('md').value==='1'?$('ov2'):ov}
 function fit(){var st=$('st'),o=cur(),k=Math.min(1,(st.clientWidth-24)/o.offsetWidth);$('fit').style.transform='scale('+k+')';st.style.minHeight=cur()===$('ov2')?'0px':'';st.style.height=o.offsetHeight*k+24+'px'}
 function render(){
-var t=+$('ty').value,f=$('fs').value/100,bw=+$('bw').value,op=$('op').value/100,ins=H*.55,LW=15.7,LH=LW*958/1642,BL=12.5,BT=.7;
+var t=+$('ty').value,f=$('fs').value/100,bw=+$('bw').value,op=$('op').value/100,ins=H*.55,LW=16.8,LH=LW*958/1642,BL=12.5,BT=.7;
 ov.className='ov';
 ov.style.fontSize=16*$('sc').value/100+'px';
 var px=16*$('sc').value/100,mw=0;[['x1',t?1.45:1.9,'t1'],['x2',1.45,'t2']].forEach(function(q){if(q[0]==='x2'&&!t)return;var e=$(q[0]);e.textContent=$(q[2]).value;e.style.fontSize=q[1]*f+'em';e.parentNode.style.display='';mw=Math.max(mw,e.offsetWidth/px)});bw=Math.max(20,mw+8+(bw-42.5));
