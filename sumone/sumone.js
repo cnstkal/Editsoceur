@@ -7,7 +7,7 @@ function dims(){var w=S.r==='16:9';W=w?2576:1449;H=w?1449:2576;ks.classList.togg
 function render(){dims();
  var h='<div class="lg">'+esc(S.lg)+'</div><div class="sb2">'+esc(S.sb)+'</div>';
  if(S.ill)h+='<div class="ill"'+(S.img?' style="background-image:url('+S.img+')"':'')+'></div>';
- h+='<div class="qt">'+esc(S.q)+'</div><div class="qd">'+esc(S.d)+'</div>';
+ h+='<div class="qw"><div class="qt">'+esc(S.q)+'</div><div class="qd">'+esc(S.d)+'</div></div>';
  h+='<div class="an">'+S.a.map(function(a){return'<div><b>'+esc(a.n)+'</b><p>'+esc(a.t)+'</p></div>'}).join('')+'</div>';
  ks.innerHTML=h}
 function fit(){var s=fr.clientWidth/W;ks.style.transform='scale('+s+')';kw.style.height=(H*s)+'px'}

@@ -22,8 +22,6 @@ body.studio .ps-side>.ps-acts button{height:52px;min-width:0}
 .w .lg{left:0;width:1288px;top:110px}
 .w .sb2{left:0;width:1288px;top:290px}
 .w .ill{left:364px;top:460px;width:560px;height:315px}
-.w .qt{left:0;width:1288px;top:830px;text-align:center;white-space:normal}
-.w .qd{left:0;width:1288px;top:950px;text-align:center}
 .w .an{left:1400px;right:99px;top:0;bottom:0;display:flex;flex-direction:column;justify-content:center}
 .w .an p{margin:16px 0 70px}
 .w .an>div:last-child p{margin-bottom:0}
@@ -35,3 +33,12 @@ body.studio .ps-grid{grid-template-columns:minmax(0,2.6fr) minmax(340px,1fr)}
 body.studio .ps-frame{display:block!important;width:100%!important;max-width:none!important;padding:0!important;margin:0!important}
 body.studio .ps-stage{width:100%}
 body.studio .kw{width:100%!important;margin:0!important}
+
+/* 질문+날짜를 한 덩어리로 묶어서 질문이 길어져도 날짜가 겹치지 않게 */
+.qw{position:absolute;left:99px;top:819px;width:1150px}
+.qw .qt,.qw .qd{position:relative!important;left:0!important;top:0!important}
+.w .qw{left:0;top:830px;width:1288px;text-align:center}
+.w .qw .qt{white-space:pre-line;line-height:1.5}
+.w .qw .qd{margin-top:18px}
+.qw .qt{white-space:pre-line!important}
+.w .qw{padding:0 70px;box-sizing:border-box}
