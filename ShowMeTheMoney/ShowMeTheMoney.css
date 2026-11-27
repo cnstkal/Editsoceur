@@ -7,10 +7,10 @@
 #bs{position:absolute;inset:0}
 #bs svg{width:100%;height:100%;display:block;overflow:visible}
 .tx{position:absolute;top:0;bottom:0;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;overflow:hidden;font-weight:800;letter-spacing:-.02em;padding-top:.2em}
-.tx div{white-space:nowrap;line-height:1.45;text-shadow:0 .05em .12em rgba(0,0,0,.75)}
+.tx div{white-space:nowrap;line-height:1.45}
 .lg{position:absolute;left:0;top:-.5em;width:16.8em;height:auto;z-index:2;display:block}
 .sv{position:absolute;left:0;top:0;padding:.5em;font-weight:800;letter-spacing:-.02em}
 .bn2{position:relative}
 #bs2 svg{position:absolute;left:0;top:0;width:100%;height:100%;display:block;overflow:visible}
-.nm,.dl{position:absolute;top:0;bottom:0;display:flex;align-items:center;justify-content:center;text-align:center;white-space:nowrap;overflow:hidden;color:#fff;font-weight:800;letter-spacing:-.02em;text-shadow:0 .05em .1em rgba(0,0,0,.7)}
+.nm,.dl{position:absolute;top:0;bottom:0;display:flex;align-items:center;justify-content:center;text-align:center;white-space:nowrap;overflow:hidden;color:#fff;font-weight:800;letter-spacing:-.02em}
 .nm span,.dl span{flex:none}
