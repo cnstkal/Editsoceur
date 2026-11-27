@@ -1,14 +1,14 @@
 (function(){
 var $=function(i){return document.getElementById(i)},W=1449,H=2576,ks=$('ks'),kw=$('kw'),fr=$('frame');
 function esc(s){return String(s).replace(/[&<>"]/g,function(c){return{'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]})}
-function defs(){return{r:'9:16',lg:'Sumone',sb:'우리의 하루 일기',q:'계획은 완벽',d:'#1번째 질문 Sep. 12 2025',ill:true,img:'heart.png',a:[{n:'유유',t:'빨리 말 걸어 보고싶어'},{n:'모모',t:'계획대로 되면 좋겠다 ㅎㅎ'}]}}
+function defs(){return{r:'9:16',ax:0,ay:0,lg:'Sumone',sb:'우리의 하루 일기',q:'계획은 완벽',d:'#1번째 질문 Sep. 12 2025',ill:true,img:'heart.png',a:[{n:'유유',t:'빨리 말 걸어 보고싶어'},{n:'모모',t:'계획대로 되면 좋겠다 ㅎㅎ'}]}}
 var S=defs();
 function dims(){var w=S.r==='16:9';W=w?2576:1449;H=w?1449:2576;ks.classList.toggle('w',w)}
 function render(){dims();
  var h='<div class="lg">'+esc(S.lg)+'</div><div class="sb2">'+esc(S.sb)+'</div>';
  if(S.ill)h+='<div class="ill"'+(S.img?' style="background-image:url('+S.img+')"':'')+'></div>';
  h+='<div class="qw"><div class="qt">'+esc(S.q)+'</div><div class="qd">'+esc(S.d)+'</div></div>';
- h+='<div class="an">'+S.a.map(function(a){return'<div><b>'+esc(a.n)+'</b><p>'+esc(a.t)+'</p></div>'}).join('')+'</div>';
+ h+='<div class="an" style="transform:translate('+(+S.ax||0)+'px,'+(+S.ay||0)+'px)">'+S.a.map(function(a){return'<div><b>'+esc(a.n)+'</b><p>'+esc(a.t)+'</p></div>'}).join('')+'</div>';
  ks.innerHTML=h}
 function fit(){var s=fr.clientWidth/W;ks.style.transform='scale('+s+')';kw.style.height=(H*s)+'px'}
 if(window.ResizeObserver)new ResizeObserver(fit).observe(fr);addEventListener('resize',fit);
@@ -18,7 +18,9 @@ $('ans').addEventListener('click',function(e){var d=e.target.dataset.del;if(d==n
 function cap(){$('add').disabled=S.a.length>=2;$('add').textContent=S.a.length>=2?'답변은 최대 2개':'+ 답변 추가'}
 $('add').onclick=function(){if(S.a.length>=2)return;S.a.push({n:'이름',t:'내용'});ans();render();cap()};
 var F=[['iLg','lg'],['iSb','sb'],['iQ','q'],['iD','d']];
-function sync(){$('iR').value=S.r||'9:16';F.forEach(function(f){$(f[0]).value=S[f[1]]});ans();render();cap()}
+function sync(){$('iR').value=S.r||'9:16';$('iAx').value=S.ax||0;$('iAy').value=S.ay||0;F.forEach(function(f){$(f[0]).value=S[f[1]]});ans();render();cap()}
+$('iAx').addEventListener('input',function(){S.ax=+this.value;render()});
+$('iAy').addEventListener('input',function(){S.ay=+this.value;render()});
 $('iR').addEventListener('change',function(){S.r=this.value;render();fit()});
 F.forEach(function(f){$(f[0]).addEventListener('input',function(){S[f[1]]=this.value;render()})});
 $('reset').onclick=function(){S=defs();sync()};
