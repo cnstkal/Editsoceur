@@ -52,7 +52,7 @@ $('y1').textContent=$('n1').value;$('y2').textContent=$('d1').value;
 fit();
 }
 [].forEach.call(document.querySelectorAll('#md,#n1,#d1,#fs2,#w2,#nw,#o2'),function(e){var f=e.oninput;e.oninput=e.onchange=function(){if(f)f();r2()}});
-window.addEventListener('resize',fit);
+window.addEventListener('resize',fit);window.addEventListener('load',fit);setTimeout(fit,300);
 render();r2();
 if(document.fonts)document.fonts.ready.then(function(){render();r2()});
 })();
