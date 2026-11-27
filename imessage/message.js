@@ -15,7 +15,7 @@ function lk(t){return esc(t).replace(/(https?:\/\/[^\s<>가-힣]+)/g,'<u>$1</u>'
 function render(){
 $('mCnt').textContent=S.cnt;$('mNm').textContent=S.nm;
 var av=$('mAv');av.style.backgroundImage=bgi(S.av);av.textContent=S.av?'':String(S.nm).charAt(0);
-$('mf').classList.toggle('ios',S.mode==='ios');$('mf').style.aspectRatio={'16:9':'16/9','4:3':'4/3'}[S.ratio]||'1179/2556';
+$('mf').classList.toggle('ios',S.mode==='ios');$('mf').classList.toggle('wide',S.ratio==='16:9');$('mf').style.aspectRatio={'16:9':'16/9','4:3':'4/3'}[S.ratio]||'1179/2556';
 $('mPh').textContent=S.mode==='ios'?'iMessage':'문자 메시지 · RCS';
 var h='',n=S.m.length;
 S.m.forEach(function(x,i){var nx=S.m[i+1],t=!nx||+nx.s!==+x.s||nx.l;
@@ -43,7 +43,9 @@ L.addEventListener('change',function(e){var t=e.target,k=t.dataset.f;if((k!=='im
 L.addEventListener('click',function(e){var a=e.target.dataset.a;if(!a)return;var i=ix(e),m=S.m;
 if(a==='x')m.splice(i,1);else if(a==='u'&&i>0){var t=m[i];m[i]=m[i-1];m[i-1]=t}else if(a==='d'&&i<m.length-1){var t2=m[i];m[i]=m[i+1];m[i+1]=t2}
 persist();list();render()});
-$('addM').onclick=function(){var l=S.m[S.m.length-1];S.m.push({s:l?+l.s:0,x:'새 메시지',l:''});persist();list();render()};
+$('addM').onclick=function(){var l=S.m[S.m.length-1];S.m.push({s:l?+l.s:0,x:'새 메시지',l:''});persist();list();render();
+var cards=$('mlist').querySelectorAll('.mc'),last=cards[cards.length-1];
+if(last){last.scrollIntoView({behavior:'smooth',block:'center'});var ta=last.querySelector('textarea');if(ta)setTimeout(function(){ta.focus();ta.select()},300)}};
 $('reset').onclick=function(){load(true)};
 $('savePng').onclick=function(){var b=this,t=b.textContent;b.disabled=true;b.textContent='저장 중...';
 (document.fonts&&document.fonts.ready?document.fonts.ready:Promise.resolve()).then(function(){

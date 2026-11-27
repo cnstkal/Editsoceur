@@ -6,7 +6,7 @@
 <title>아이메시지</title>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.css">
 <link rel="stylesheet" href="../instagram/story.css?v=3">
-<link rel="stylesheet" href="message.css?v=1">
+<link rel="stylesheet" href="message.css?v=3">
 <style data-hide-status>:is(span,b)[id$="Time"],#eTm,.isl,.ys,.ysig,.ywf,.ybt,.dsg,.dwf,#df .dbt,.msg,.mwf,.mbt,.ewf,.ebt,.nwf,.nbt,.sb:has([id$="Time"])>svg:not(.lc),.sb:has([id$="Time"])+.bt,.sb:has([id$="Time"]) .bt{display:none!important}</style><style id="ed-font">html,body,body *{font-family:Pretendard,-apple-system,"Apple SD Gothic Neo","Noto Sans KR",sans-serif!important;letter-spacing:-.02em!important}</style><link rel="stylesheet" href="studio.css?v=3">
 <link rel="stylesheet" href="../ps-editor.css?v=12"><style id="pa">body{animation:paIn .28s ease both}body.pa-out{animation:paOut .18s ease forwards}@keyframes paIn{from{opacity:0}to{opacity:1}}@keyframes paOut{to{opacity:0}}@media (prefers-reduced-motion:reduce){body,body.pa-out{animation:none}}</style><script id="pa-js">(function(){document.addEventListener("click",function(e){var a=e.target.closest&&e.target.closest("a[href]");if(!a||e.defaultPrevented||e.button||e.metaKey||e.ctrlKey||e.shiftKey||a.target||a.hasAttribute("download"))return;var h=a.getAttribute("href");if(!h||h[0]==="#"||/^(javascript:|mailto:|tel:)/.test(h))return;var u=new URL(a.href,location.href);if(u.origin!==location.origin)return;e.preventDefault();document.body.classList.add("pa-out");setTimeout(function(){location.href=u.href},180)},true)})();</script></head>
 <body class="studio"><div class="ps-wrap">
@@ -36,7 +36,7 @@
 <div class="ps-pn" data-t="기본">
 <h2>메시지 화면 편집</h2>
 <div class="row"><label>상대 이름<input id="iNm"></label><label>뒤로가기 숫자<input id="iCnt"></label></div>
-<input type="hidden" id="iRatio" value="phone">
+<div class="row"><label>비율<select id="iRatio"><option value="phone">세로 (폰 화면)</option><option value="16:9">16:9 (가로)</option></select></label></div>
 <div class="row"><label>상대 기기<select id="iMode"><option value="android">안드로이드 (초록)</option><option value="ios">아이폰 (파랑)</option></select></label><label>읽음 문구(비우면 숨김)<input id="iRead"></label></div>
 <div class="row"><label class="file">프로필 사진<input type="file" accept="image/*" id="iAv"></label></div>
 </div>
@@ -46,7 +46,7 @@
 </section></div><div class="ps-acts"><button id="savePng" class="primary">PNG 저장</button><button id="reset" class="secondary">초기화</button></div></section>
 </div></div>
 <script src="https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js"></script><script src="../chat-capture.js"></script>
-<script src="message.js?v=2"></script>
+<script src="message.js?v=4"></script>
 <script>(function(){var b=document.getElementById("pvBtn");b.onclick=function(){var on=document.body.classList.toggle("pvmode");this.textContent=on?"편집 모드":"미리보기 모드"}})();</script>
 <script src="studio.js?v=1"></script>
 <script src="../back-anim.js?v=1" defer></script><script src="../upl.js?v=4" defer></script></body>
