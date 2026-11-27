@@ -4,7 +4,7 @@ P=[['60초 랩 미션',''],['[본선] 제이통 X 허키','나우아임영 & Roy
 function cur(){return $('md').value==='1'?$('ov2'):ov}
 function fit(){var st=$('st'),o=cur(),k=Math.min(1,(st.clientWidth-24)/o.offsetWidth);$('fit').style.transform='scale('+k+')';st.style.height=o.offsetHeight*k+24+'px'}
 function render(){
-var t=+$('ty').value,f=$('fs').value/100,bw=+$('bw').value,op=$('op').value/100,ins=H*.55,LW=15.7,LH=LW*0.538341,BL=13.5,BT=.7;
+var t=+$('ty').value,f=$('fs').value/100,bw=+$('bw').value,op=$('op').value/100,ins=H*.55,LW=15.7,LH=LW*958/1642,BL=13.5,BT=.7;
 ov.className='ov';
 ov.style.fontSize=16*$('sc').value/100+'px';
 ov.style.width=BL+bw+'em';ov.style.height=Math.max(LH,BT+H)+'em';
