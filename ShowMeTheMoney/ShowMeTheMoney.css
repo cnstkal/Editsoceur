@@ -3,7 +3,7 @@
 .b-dk{background:#1b1d29}.b-lt{background:#f1f1f1}.b-pu{background:linear-gradient(135deg,#4a3f86,#9a5f8f)}
 #fit{position:absolute;left:12px;top:12px;transform-origin:0 0}
 .ov{--o:-.05em -.05em 0 #3a1a0c,.05em -.05em 0 #3a1a0c,-.05em .05em 0 #3a1a0c,.05em .05em 0 #3a1a0c,0 .1em 0 #3a1a0c;position:relative;font-family:Pretendard,'Apple SD Gothic Neo','Malgun Gothic',sans-serif;line-height:1;color:#fff}
-.bn{position:absolute;top:.7em;left:13.5em;height:5.6em;z-index:1}
+.bn{position:absolute;top:.7em;left:12.5em;height:5.6em;z-index:1}
 #bs{position:absolute;inset:0}
 #bs svg{width:100%;height:100%;display:block;overflow:visible}
 .tx{position:absolute;top:0;bottom:0;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;overflow:hidden;font-weight:800;letter-spacing:-.02em;padding-top:.2em}

@@ -4,20 +4,18 @@ P=[['60초 랩 미션',''],['[본선] 제이통 X 허키','나우아임영 & Roy
 function cur(){return $('md').value==='1'?$('ov2'):ov}
 function fit(){var st=$('st'),o=cur(),k=Math.min(1,(st.clientWidth-24)/o.offsetWidth);$('fit').style.transform='scale('+k+')';st.style.minHeight=cur()===$('ov2')?'0px':'';st.style.height=o.offsetHeight*k+24+'px'}
 function render(){
-var t=+$('ty').value,f=$('fs').value/100,bw=+$('bw').value,op=$('op').value/100,ins=H*.55,LW=15.7,LH=LW*958/1642,BL=13.5,BT=.7;
+var t=+$('ty').value,f=$('fs').value/100,bw=+$('bw').value,op=$('op').value/100,ins=H*.55,LW=15.7,LH=LW*958/1642,BL=12.5,BT=.7;
 ov.className='ov';
 ov.style.fontSize=16*$('sc').value/100+'px';
 ov.style.width=BL+bw+'em';ov.style.height=Math.max(LH,BT+H)+'em';
 $('bn').style.width=bw+'em';
 $('bs').innerHTML='<svg viewBox="0 0 '+bw+' '+H+'" preserveAspectRatio="none"><defs><linearGradient id="g1" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#2a201e"/><stop offset="1" stop-color="#0b0909"/></linearGradient><linearGradient id="g2" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#ffb400"/><stop offset=".3" stop-color="#ff5a14"/><stop offset="1" stop-color="#ff3a1a"/></linearGradient></defs><polygon points="0,0 '+bw+',0 '+(bw-ins)+','+H+' 0,'+H+'" fill="url(#g1)" fill-opacity="'+op+'"/><polygon points="0,.06 '+(bw-.06)+',.06 '+(bw-ins-.03)+','+(H-.06)+' 0,'+(H-.06)+'" fill="none" stroke="url(#g2)" stroke-width=".12"/><line x1="0" y1=".12" x2="'+bw+'" y2=".12" stroke="#ff2d16" stroke-width=".22"/><line x1="0" y1="'+(H-.08)+'" x2="'+(bw-ins)+'" y2="'+(H-.08)+'" stroke="#ff7a1a" stroke-width=".16"/></svg>';
 var tx=$('tx'),a=$('x1'),b=$('x2'),w=[[a,t?1.45:1.9],[b,1.45]];
-tx.style.left="2.6em";tx.style.right=ins*.5+.8+'em';
+tx.style.left="3.8em";tx.style.right=ins*.5+.8+'em';
 a.textContent=$('t1').value;b.textContent=$('t2').value;
 a.style.color=$('c1').value;b.style.color=$('c2').value;b.style.display=t?'':'none';
 w.forEach(function(x){var k=f;x[0].style.fontSize=x[1]*k+'em';while(x[0].offsetWidth>tx.clientWidth&&k>.3){k-=.03;x[0].style.fontSize=x[1]*k+'em'}});
 $('st').className='smm-st b-chk';
-var lg=$('li'),fs=parseFloat(getComputedStyle(ov).fontSize)||16,mn=1e9;[a,b].forEach(function(x){if(x.style.display==='none')return;mn=Math.min(mn,$('bn').offsetLeft+tx.offsetLeft+(tx.clientWidth-x.offsetWidth)/2)});
-lg.style.left=(mn<1e9?Math.max(0,mn/fs-15.7-.3):0)+'em';
 fit();
 }
 [].forEach.call(document.querySelectorAll('.editor input,.editor select'),function(e){e.oninput=e.onchange=render});
