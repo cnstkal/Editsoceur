@@ -40,7 +40,7 @@ $('pA').classList.toggle('on',S.tab==='0');$('pB').classList.toggle('on',S.tab==
 var h='';if(!S.p.length){for(var q=0;q<(w?28:18);q++)h+='<i class="ph"></i>'}else S.p.forEach(function(id,n){h+='<i data-i="'+n+'" class="'+(n===selIdx?'sel':'')+'" style="'+bg(id)+'">'+(isFav(id)?HEART:'')+'</i>'});
 $('pG').innerHTML=h}
 function list(){var h='';S.p.forEach(function(id,i){h+='<div class="pk" data-i="'+i+'"><i style="'+bg(id)+'"></i><span class="grip">⠿</span><button type="button" data-a="f" class="fb'+(isFav(id)?' on':'')+'">'+(isFav(id)?'♥':'♡')+'</button><button type="button" data-a="u">↑</button><button type="button" data-a="d">↓</button><button type="button" data-a="x">✕</button></div>'});$('plist').innerHTML=h}
-function set(){$('iR').value=S.r||'phone';$('iC').value=String(S.cols||7);$('iN').value=S.n;$('iTab').value=S.tab;$('iNav').checked=!!S.nav}
+function set(){$('iR').value=S.r||'phone';$('iC').value=String(S.cols||7);$('iN').value=S.n;$('iTab').value=S.tab;$('iNav').checked=!!S.nav;$('rTab').style.display=S.nav?'':'none'}
 function load(reset){
   if(reset){try{localStorage.removeItem(STORE)}catch(e){}S=JSON.parse(JSON.stringify(DEF));
     Object.keys(SRC).forEach(function(k){URL.revokeObjectURL(SRC[k]);delete SRC[k]});
@@ -51,7 +51,7 @@ function load(reset){
   set();list();render();
   migrate().then(loadImgs).then(function(){list();render()}).catch(function(){});
 }
-function glob(){S.t='보관함';S.r=$('iR').value;S.cols=+$('iC').value;S.n=$('iN').value;S.tab=$('iTab').value;S.nav=$('iNav').checked;persist();render()}
+function glob(){S.t='보관함';S.r=$('iR').value;S.cols=+$('iC').value;S.n=$('iN').value;S.tab=$('iTab').value;S.nav=$('iNav').checked;$('rTab').style.display=S.nav?'':'none';persist();render()}
 ['iR','iC','iN','iTab','iNav'].forEach(function(id){$(id).addEventListener('input',glob);$(id).addEventListener('change',glob)});
 /* 업로드: 최대 6000px로 줄이고 JPEG blob으로 만들기 */
 function shrink(f){return new Promise(function(ok){var u=URL.createObjectURL(f);var im=new Image();im.onload=function(){var m=6000,k=Math.min(1,m/Math.max(im.width,im.height)),c=document.createElement('canvas');c.width=Math.max(1,Math.round(im.width*k));c.height=Math.max(1,Math.round(im.height*k));var x=c.getContext('2d');x.imageSmoothingEnabled=true;x.imageSmoothingQuality='high';x.drawImage(im,0,0,c.width,c.height);c.toBlob(function(b){URL.revokeObjectURL(u);ok(b)},'image/jpeg',.98)};im.onerror=function(){URL.revokeObjectURL(u);ok(null)};im.src=u})}
