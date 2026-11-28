@@ -22,3 +22,29 @@
 .c3 .cb svg{opacity:.5}
 .c3 .cb:not(.ce){background:rgba(126,126,126,.24);-webkit-backdrop-filter:none;backdrop-filter:none}
 .c3 .cb:not(.ce)::before{opacity:.45}
+/* 16:9 가로 화면 — 비율에 맞춰 아이콘 위치/크기만 재배치 */
+.phone.is-wide{width:100%!important;max-width:960px!important}
+#cf.wide{aspect-ratio:16/9;border-radius:10px}
+.wide .chb{display:none!important}
+.wide .cst{top:5.2cqw;line-height:4cqw;font-size:2.4cqw}
+.wide .cnum{top:9.2cqw;line-height:5.6cqw;font-size:4.2cqw}
+.wide .ci{width:16cqw;margin-left:-8cqw}
+.wide .ci span{margin-top:.9cqw;font-size:1.7cqw;line-height:2.4cqw}
+.wide .cb{width:8.4cqw;height:8.4cqw}
+.wide .ci.k1,.wide .ci.k4{left:33cqw!important}
+.wide .ci.k2,.wide .ci.k5{left:50cqw!important}
+.wide .ci.k3,.wide .ci.k6{left:67cqw!important}
+.wide .ci.k1,.wide .ci.k2,.wide .ci.k3{top:27cqw!important}
+.wide .ci.k4,.wide .ci.k5,.wide .ci.k6{top:41cqw!important}
+.wide .k1 svg{width:3.74cqw!important}.wide .k2 svg{width:3.4cqw!important}.wide .k3 svg{width:2.7cqw!important}
+.wide .k4 svg{width:2.7cqw!important}.wide .k5 svg{width:3.7cqw!important}.wide .k6 svg{width:2.8cqw!important}
+.wide .rn{top:8cqw;line-height:5.6cqw;font-size:4.2cqw}
+.wide .rq{width:16cqw;margin-left:-8cqw;top:25cqw!important}
+.wide .rq.q1{left:36cqw!important}.wide .rq.q2{left:64cqw!important}
+.wide .q1 svg{width:3.1cqw!important}.wide .q2 svg{width:3.5cqw!important}
+.wide .rq span{margin-top:1cqw;font-size:1.7cqw;line-height:2.4cqw}
+.wide .rb{top:38cqw;width:9cqw;height:9cqw;margin-left:-4.5cqw}
+.wide .rd{left:36cqw}.wide .ra{left:64cqw}
+.wide .rd svg{width:3.9cqw!important}.wide .ra svg{width:3.7cqw!important}
+.wide .rt{top:48.2cqw;width:16cqw;margin-left:-8cqw;font-size:1.7cqw;line-height:2.4cqw}
+.wide #rR{left:36cqw!important}.wide #rA{left:64cqw!important}
