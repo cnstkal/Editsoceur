@@ -19,7 +19,10 @@ html,body{touch-action:manipulation;-webkit-text-size-adjust:100%}
 
 .pk{display:flex;gap:8px;align-items:center;background:#fff;border:1px solid #dbdbdb;border-radius:12px;padding:8px;margin-bottom:8px}
 .pk i{flex:none;width:56px;height:56px;border-radius:8px;background:#e5e5ea center/cover}
-.pk button{flex:1;height:38px;border:1px solid #dbdbdb;border-radius:8px;background:#f6f6f6;font-weight:700}
+.pk{user-select:none;-webkit-user-select:none;-webkit-touch-callout:none;touch-action:pan-y;cursor:grab}
+.pk.drag{opacity:.75;box-shadow:0 6px 18px rgba(0,0,0,.18);transform:scale(1.02);border-color:#e8457a}
+.grip{flex:1;text-align:center;font-size:22px;color:#b0b0b8;line-height:1}
+.pk button{flex:none;width:40px;height:38px;border:1px solid #dbdbdb;border-radius:8px;background:#f6f6f6;font-weight:700}
 .xk{display:flex!important;align-items:center;gap:8px;white-space:nowrap}.xk input{width:20px;height:20px}
 
 .pgi i{display:block;aspect-ratio:1/1;background-size:cover;background-position:center}
