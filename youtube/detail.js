@@ -1,7 +1,7 @@
 (function(){
 var $=function(i){return document.getElementById(i)};
 var DEF={time:'9:41',bat:'80',chg:false,
-m:{n:'샘플 영상 제목입니다. 여기에 원하는 제목을 적어 주세요',h:'@samplechannel',lk:'4.3천개',vw:'1.2만회',time:'2시간 전',sub:'구독',pg:'20'},
+m:{gs:false,thRaw:'',th:'',n:'샘플 영상 제목입니다. 여기에 원하는 제목을 적어 주세요',h:'@samplechannel',lk:'4.3천개',vw:'1.2만회',time:'2시간 전',sub:'구독',pg:'20'},
 c:{cnt:'350',x:'샘플 댓글입니다.\n여기에 원하는 댓글 내용을 적어 주세요.'},
 u:{n:'다른 샘플 영상의 긴 제목 예시입니다',ch:'샘플 채널',bd:true,vw:'12만',time:'5시간 전',dur:'28:40',pg:'100'}};
 var BD='<svg width="12" height="12" viewBox="0 0 24 24"><circle cx="12" cy="12" r="12" fill="#606060"/><path d="M13 6v7.200a2.600 2.600 0 1 0 1.500 2.300V9h3V6z" fill="#fff"/></svg>',
@@ -11,6 +11,10 @@ function persist(){try{localStorage.setItem(STORE,JSON.stringify(S))}catch(e){co
 function esc(t){return String(t==null?'':t).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;')}
 function pc(v){v=parseFloat(v);return isNaN(v)?0:Math.max(0,Math.min(100,v))}
 function bgi(u){return u?"background-image:url('"+u+"')":''}
+var KEYC={};
+function keyGreen(src,cb){
+var im=new Image();im.onload=function(){var m=Math.min(1,900/Math.max(im.width,im.height)),c=document.createElement('canvas');c.width=Math.round(im.width*m);c.height=Math.round(im.height*m);var x=c.getContext('2d');x.drawImage(im,0,0,c.width,c.height);try{var d=x.getImageData(0,0,c.width,c.height),p=d.data;for(var i=0;i<p.length;i+=4){var r=p[i],g=p[i+1],b=p[i+2];if(g>60&&g>r*1.25&&g>b*1.25)p[i+3]=0}x.putImageData(d,0,0);cb(c.toDataURL('image/png'))}catch(e){cb(src)}};im.onerror=function(){cb(src)};im.src=src}
+function buildTh(){var m=S.m;if(!m.thRaw){m.th='';return}if(!m.gs){m.th=m.thRaw;return}var k=m.thRaw;if(KEYC[k]){m.th=KEYC[k];return}keyGreen(k,function(d){KEYC[k]=d;S.m.th=d;persist();render()})}
 function render(){
 var m=S.m,p=pc(m.pg);
 $('dV').style.cssText=bgi(m.th);
@@ -27,9 +31,9 @@ var els=[].slice.call(document.querySelectorAll('[data-k]'));
 function set(){els.forEach(function(e){if(e.type==='file')return;var v=get(e.dataset.k);if(e.type==='checkbox')e.checked=!!v;else e.value=v==null?'':v})}
 function rd(f,cb){var r=new FileReader();r.onload=function(){cb(r.result)};r.readAsDataURL(f)}
 els.forEach(function(e){
-if(e.type==='file')e.addEventListener('change',function(){if(e.files[0])rd(e.files[0],function(d){put(e.dataset.k,d);persist();render()})});
-else{var h=function(){put(e.dataset.k,e.type==='checkbox'?e.checked:e.value);persist();render()};e.addEventListener('input',h);e.addEventListener('change',h)}});
-function load(reset){if(reset){try{localStorage.removeItem(STORE)}catch(e){}S=JSON.parse(JSON.stringify(DEF))}else{try{var saved=localStorage.getItem(STORE);S=saved?JSON.parse(saved):JSON.parse(JSON.stringify(DEF));if(!S||!S.m||!S.c||!S.u)throw new Error('invalid saved data')}catch(e){S=JSON.parse(JSON.stringify(DEF))}}set();render()}
+if(e.type==='file')e.addEventListener('change',function(){if(e.files[0])rd(e.files[0],function(d){put(e.dataset.k,d);if(e.dataset.k==='m.thRaw')buildTh();persist();render()})});
+else{var h=function(){put(e.dataset.k,e.type==='checkbox'?e.checked:e.value);if(e.dataset.k==='m.gs')buildTh();persist();render()};e.addEventListener('input',h);e.addEventListener('change',h)}});
+function load(reset){if(reset){try{localStorage.removeItem(STORE)}catch(e){}S=JSON.parse(JSON.stringify(DEF))}else{try{var saved=localStorage.getItem(STORE);S=saved?JSON.parse(saved):JSON.parse(JSON.stringify(DEF));if(!S||!S.m||!S.c||!S.u)throw new Error('invalid saved data')}catch(e){S=JSON.parse(JSON.stringify(DEF))}}if(S.m.th&&!S.m.thRaw)S.m.thRaw=S.m.th;buildTh();set();render()}
 $('reset').onclick=function(){load(true)};
 $('savePng').onclick=function(){var b=this,t=b.textContent;b.disabled=true;b.textContent='저장 중...';
 (document.fonts&&document.fonts.ready?document.fonts.ready:Promise.resolve()).then(function(){

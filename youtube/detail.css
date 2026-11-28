@@ -48,3 +48,5 @@
 /* 영상 상세: 모서리 전부 뾰족하게, 재생바도 일직선 */
 #df{border-radius:0!important}
 #df .dv,#df .dpg,#df .dpg i,#df .dpg u,#df .dth,#df .dpb,#df .dpb i,#df .dcd,#df .dcd *{border-radius:0!important}
+/* 상단 검은 상태바 영역 제거 */
+#df .dtop{display:none}
