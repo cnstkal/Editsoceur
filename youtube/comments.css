@@ -48,3 +48,6 @@
 .ek{display:flex!important;align-items:center;gap:8px;white-space:nowrap}.ek input{width:20px;height:20px}
 /* 재생바 끝 움푹 방지: 시트 윗모서리 직각 */
 #mf .msh{border-radius:0!important}
+/* 인기순/최신순 칩을 가운데 정렬 (칩 2개 + 간격 8px = 140px) */
+.mc1{left:calc(50% - 70px)!important}
+.mc2{left:calc(50% + 4px)!important}
