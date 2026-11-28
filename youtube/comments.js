@@ -10,6 +10,7 @@ IC=function(d,g){return '<svg width="18" height="18" viewBox="0 0 24 24" fill="n
 RP='<path d="M5 4h14a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2h-6l-4 3.500V17H5a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2zM7.500 8.500h9M7.500 12h6"/>',
 DOTS='<svg class="mdt" width="12" height="4" viewBox="0 0 12 4" fill="#0f0f0f"><circle cx="2" cy="2" r="1.900"/><circle cx="6" cy="2" r="1.900"/><circle cx="10" cy="2" r="1.900"/></svg>',
 CH='<svg width="7" height="12" viewBox="0 0 7 12" fill="none" stroke="#0f0f0f" stroke-width="2.200" stroke-linecap="round" stroke-linejoin="round"><path d="M1.200 1.200 5.800 6l-4.600 4.800"/></svg>';
+var LIKED='<svg width="18" height="18" viewBox="0 0 24 24" fill="#0f0f0f" stroke="#0f0f0f" stroke-width="1.800" stroke-linejoin="round" stroke-linecap="round">'+UP+'</svg>';
 var S,STORE='editsoceur-youtube-comments-v1';
 function persist(){try{localStorage.setItem(STORE,JSON.stringify(S))}catch(e){console.warn('댓글 데이터 저장 실패',e)}}
 function esc(t){return String(t==null?'':t).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;')}
@@ -25,9 +26,9 @@ var b=pc(S.bat);$('mBf').style.width=b+'%';$('mBt').textContent=Math.round(b);$(
 $('mV').style.backgroundImage=S.th?"url('"+S.th+"')":'';$('mV').style.display=S.showV===false?'none':'';$('mf').style.background=S.showV===false?'transparent':'';$('mPi').style.width=pc(S.pg)+'%';$('mPi').parentNode.style.display=S.showP===false?'none':'';var ib=document.querySelector('#mf .mcb');if(ib)ib.style.display=S.showI===false?'none':'';
 $('mTi').textContent=S.ti;$('mIp').textContent=S.ip;
 $('mC1').textContent=S.c1;$('mC2').textContent=S.c2;$('mC1').className='mc1'+(S.act==='0'?' on':'');$('mC2').className='mc2'+(S.act==='1'?' on':'');
-var h='';S.l.forEach(function(x){
+var h='';S.l.forEach(function(x,i){
 h+='<div class="mi"><i class="mav" style="background-color:'+esc(x.cl||'#999')+(x.av?";background-image:url('"+x.av+"')":'')+'">'+(x.av?'':esc(x.lt))+'</i>'+(x.rp?'<i class="cth"></i>':'')+
-'<div class="mb"><div class="mh">'+esc(x.h)+'<i class="md"></i>'+esc(x.time)+'</div><div class="mt">'+ts(x.x)+'</div><div class="ma">'+IC(UP)+'<span>'+esc(x.lk)+'</span>'+IC(UP,1)+IC(RP)+'</div>'+(x.rp?'<div class="mr">답글 '+esc(x.rp)+'개'+CH+'</div>':'')+'</div>'+DOTS+'</div>'});
+'<div class="mb"><div class="mh">'+esc(x.h)+'<i class="md"></i>'+esc(x.time)+'</div><div class="mt">'+ts(x.x)+'</div><div class="ma">'+'<span class="mlk" data-i="'+i+'" style="cursor:pointer">'+(x.liked?LIKED:IC(UP))+'</span><span>'+esc(x.lk)+'</span>'+IC(UP,1)+IC(RP)+'</div>'+(x.rp?'<div class="mr">답글 '+esc(x.rp)+'개'+CH+'</div>':'')+'</div>'+DOTS+'</div>'});
 $('mL').innerHTML=h;fit()}
 function fit(){var mf=$('mf'),ml=$('mL'),cb=document.querySelector('#mf .mcb');
 ml.style.height='auto';var lh=ml.offsetHeight,base=Math.max(369,lh),d=base-369;
@@ -55,6 +56,7 @@ L.addEventListener('change',function(e){var t=e.target;if(t.type==='file'&&t.fil
 L.addEventListener('click',function(e){var a=e.target.dataset.a;if(!a)return;var i=ix(e),m=S.l;
 if(a==='x')m.splice(i,1);else if(a==='u'&&i>0){var t=m[i];m[i]=m[i-1];m[i-1]=t}else if(a==='d'&&i<m.length-1){var t2=m[i];m[i]=m[i+1];m[i+1]=t2}
 persist();list();render()});
+$('mL').addEventListener('click',function(e){var k=e.target.closest&&e.target.closest('.mlk');if(!k)return;var x=S.l[+k.dataset.i];if(!x)return;x.liked=!x.liked;persist();render()});
 $('addC').onclick=function(){S.l.push({h:'@username',time:'1시간 전',x:'',lk:'',rp:'',lt:'',cl:'#999999'});persist();list();render()};
 function load(reset){if(reset){try{localStorage.removeItem(STORE)}catch(e){}S=JSON.parse(JSON.stringify(DEF))}else{try{var saved=localStorage.getItem(STORE);S=saved?JSON.parse(saved):JSON.parse(JSON.stringify(DEF));if(!S||!Array.isArray(S.l))throw new Error('invalid saved data')}catch(e){S=JSON.parse(JSON.stringify(DEF))}}if(S.th&&!S.thRaw)S.thRaw=S.th;buildTh();set();list();render()}
 $('reset').onclick=function(){load(true)};
