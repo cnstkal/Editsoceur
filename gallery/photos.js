@@ -1,6 +1,6 @@
 (function(){
 var $=function(i){return document.getElementById(i)};
-var DEF={t:'보관함',n:'19,305개의 항목',tab:'0',cut:true,nav:true,r:'phone',p:[]};
+var DEF={t:'보관함',n:'19,305개의 항목',tab:'0',cut:true,nav:true,r:'phone',cols:7,p:[]};
 var S,STORE='editsoceur-photos-v1';
 function persist(){try{localStorage.setItem(STORE,JSON.stringify(S))}catch(e){console.warn('저장 공간 부족 — 사진 일부가 새로고침 시 사라질 수 있어요',e)}}
 function esc(t){return String(t==null?'':t).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;')}
@@ -19,7 +19,7 @@ $('pG').addEventListener('click',function(e){
   render();
 });
 function render(){
-var w=S.r==='16:9';$('pf').classList.toggle('wide',w);document.querySelector('.phone').classList.toggle('wide',w);
+var w=S.r==='16:9';$('pG').style.gridTemplateColumns=w?'repeat('+(S.cols||7)+',1fr)':'';$('pf').classList.toggle('wide',w);document.querySelector('.phone').classList.toggle('wide',w);
 $('pT').textContent='보관함';$('pN').textContent=S.n;
 $('bottomTabs').style.display=S.nav?'flex':'none';
 $('pA').classList.toggle('on',S.tab==='0');$('pB').classList.toggle('on',S.tab==='1');
@@ -27,10 +27,10 @@ var h='';if(!S.p.length){for(var q=0;q<(w?28:18);q++)h+='<i class="ph"></i>'}els
 
 $('pG').innerHTML=h}
 function list(){var h='';S.p.forEach(function(u,i){h+='<div class="pk" data-i="'+i+'"><i style="'+bg(u)+'"></i><span class="grip">⠿</span><button type="button" data-a="f" class="fb'+(isFav(u)?' on':'')+'">'+(isFav(u)?'♥':'♡')+'</button><button type="button" data-a="u">↑</button><button type="button" data-a="d">↓</button><button type="button" data-a="x">✕</button></div>'});$('plist').innerHTML=h}
-function set(){$('iR').value=S.r||'phone';$('iN').value=S.n;$('iTab').value=S.tab;$('iNav').checked=!!S.nav}
+function set(){$('iR').value=S.r||'phone';$('iC').value=String(S.cols||7);$('iN').value=S.n;$('iTab').value=S.tab;$('iNav').checked=!!S.nav}
 function load(reset){if(reset){try{localStorage.removeItem(STORE)}catch(e){}S=JSON.parse(JSON.stringify(DEF))}else{try{var sv=localStorage.getItem(STORE);S=sv?JSON.parse(sv):JSON.parse(JSON.stringify(DEF));if(!S||!Array.isArray(S.p))throw 0}catch(e){S=JSON.parse(JSON.stringify(DEF))}}set();list();render()}
-function glob(){S.t='보관함';S.r=$('iR').value;S.n=$('iN').value;S.tab=$('iTab').value;S.nav=$('iNav').checked;persist();render()}
-['iR','iN','iTab','iNav'].forEach(function(id){$(id).addEventListener('input',glob);$(id).addEventListener('change',glob)});
+function glob(){S.t='보관함';S.r=$('iR').value;S.cols=+$('iC').value;S.n=$('iN').value;S.tab=$('iTab').value;S.nav=$('iNav').checked;persist();render()}
+['iR','iC','iN','iTab','iNav'].forEach(function(id){$(id).addEventListener('input',glob);$(id).addEventListener('change',glob)});
 function shrink(f){return new Promise(function(ok){var r=new FileReader();r.onload=function(){var im=new Image();im.onload=function(){var m=6000,k=Math.min(1,m/Math.max(im.width,im.height)),c=document.createElement('canvas');c.width=Math.max(1,Math.round(im.width*k));c.height=Math.max(1,Math.round(im.height*k));var x=c.getContext('2d');x.imageSmoothingEnabled=true;x.imageSmoothingQuality='high';x.drawImage(im,0,0,c.width,c.height);ok(c.toDataURL('image/jpeg',.98))};im.onerror=function(){ok(null)};im.src=r.result};r.onerror=function(){ok(null)};r.readAsDataURL(f)})}
 $('iP').addEventListener('change',function(e){var fs=Array.prototype.slice.call(e.target.files);if(!fs.length)return;
 Promise.all(fs.map(shrink)).then(function(a){a.forEach(function(u){if(u)S.p.push(u)});e.target.value='';persist();list();render()})});
