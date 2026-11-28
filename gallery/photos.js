@@ -26,20 +26,27 @@ if(a==='x')m.splice(i,1);else if(a==='u'&&i>0){var t=m[i];m[i]=m[i-1];m[i-1]=t}e
 persist();list();render()});
 $('reset').onclick=function(){load(true)};
 (function(){
-var pl=$('plist'),timer=null,sx=0,sy=0,drag=null;
+var pl=$('plist'),timer=null,sx=0,sy=0,drag=null,armRow=null,armId=null,armMouse=false;
 function clr(){clearTimeout(timer);timer=null}
+function start(row,id){
+  drag={i:+row.dataset.i};row.classList.add('drag');armRow=null;
+  try{pl.setPointerCapture(id)}catch(_){}
+  if(navigator.vibrate)navigator.vibrate(15);
+}
 pl.addEventListener('pointerdown',function(e){
-  if(e.target.closest('button'))return;
+  if(e.button!==0||e.target.closest('button'))return;
   var row=e.target.closest('.pk');if(!row)return;
-  sx=e.clientX;sy=e.clientY;clr();
-  timer=setTimeout(function(){
-    timer=null;drag={i:+row.dataset.i};row.classList.add('drag');
-    try{pl.setPointerCapture(e.pointerId)}catch(_){}
-    if(navigator.vibrate)navigator.vibrate(15);
-  },350);
+  sx=e.clientX;sy=e.clientY;clr();armRow=row;armId=e.pointerId;armMouse=e.pointerType==='mouse';
+  if(!armMouse){timer=setTimeout(function(){timer=null;if(armRow)start(armRow,armId)},350)}
 });
 pl.addEventListener('pointermove',function(e){
-  if(!drag){if(timer&&Math.hypot(e.clientX-sx,e.clientY-sy)>8)clr();return}
+  if(!drag){
+    if(!armRow)return;
+    var d=Math.hypot(e.clientX-sx,e.clientY-sy);
+    if(armMouse&&d>4)start(armRow,armId);      // PC: 누른 채 움직이면 바로 드래그
+    else if(!armMouse&&timer&&d>8)clr();      // 모바일: 길게 누르기 전 움직이면 취소(스크롤)
+    if(!drag)return;
+  }
   var under=document.elementFromPoint(e.clientX,e.clientY);
   var r=under&&under.closest&&under.closest('.pk');if(!r||!pl.contains(r))return;
   var j=+r.dataset.i;if(j===drag.i)return;
@@ -47,7 +54,7 @@ pl.addEventListener('pointermove',function(e){
   list();render();
   var el=pl.querySelector('.pk[data-i="'+j+'"]');if(el)el.classList.add('drag');
 });
-function end(){clr();if(drag){drag=null;persist();list();render()}}
+function end(){clr();armRow=null;if(drag){drag=null;persist();list();render()}}
 pl.addEventListener('pointerup',end);
 pl.addEventListener('pointercancel',end);
 pl.addEventListener('touchmove',function(e){if(drag)e.preventDefault()},{passive:false});
