@@ -50,3 +50,5 @@
 #df .dv,#df .dpg,#df .dpg i,#df .dpg u,#df .dth,#df .dpb,#df .dpb i,#df .dcd,#df .dcd *{border-radius:0!important}
 /* 상단 검은 상태바 영역 제거 */
 #df .dtop{display:none}
+/* 재생바 끝이 움푹 들어가지 않게 흰 시트 윗모서리도 직각 */
+#df .dsh{border-radius:0!important}
