@@ -52,3 +52,6 @@
 #df .dtop{display:none}
 /* 재생바 끝이 움푹 들어가지 않게 흰 시트 윗모서리도 직각 */
 #df .dsh{border-radius:0!important}
+/* 저장/초기화 버튼: 편집 패널 위쪽에 작게 */
+.ps-acts{margin:0 0 18px;display:flex;gap:8px}
+.ps-acts button{height:40px;padding:0 18px;font-size:14px;flex:none!important;width:auto!important}
