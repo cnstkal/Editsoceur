@@ -45,3 +45,6 @@
 .ec{background:#fff;border:1px solid #dbdbdb;border-radius:12px;padding:12px 12px 0;margin-bottom:12px}
 .ec .row{margin-bottom:0}.ek{display:flex!important;align-items:center;gap:8px;white-space:nowrap}.ek input{width:20px;height:20px}
 .ec textarea{display:block;width:100%;box-sizing:border-box;margin:4px 0 12px;padding:8px;border:1px solid #dbdbdb;border-radius:8px;font:inherit;resize:none}
+/* 영상 상세: 모서리 전부 뾰족하게, 재생바도 일직선 */
+#df{border-radius:0!important}
+#df .dv,#df .dpg,#df .dpg i,#df .dpg u,#df .dth,#df .dpb,#df .dpb i,#df .dcd,#df .dcd *{border-radius:0!important}
