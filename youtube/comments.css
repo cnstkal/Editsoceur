@@ -81,3 +81,4 @@
 #mf .ma>svg,#mf .ma img{width:18px;height:18px}
 /* 간격 좁힘 */
 #mf .ma{grid-template-columns:24px auto 24px 24px!important;column-gap:8px!important}
+#mf .ma{justify-content:start!important}
