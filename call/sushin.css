@@ -58,3 +58,5 @@
 #cf.c3 .cb svg>*{opacity:.5}
 /* 하단 홈 인디케이터(흰 막대) 제거 */
 #cf .chb{display:none!important}
+/* 상단 문구(상태/이름/시간) 위치 조절 */
+#cf .cst,#cf .cnum,#cf .rn{transform:translateY(var(--ty,0cqw))}

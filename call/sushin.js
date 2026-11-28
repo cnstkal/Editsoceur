@@ -1,14 +1,14 @@
 (function(){
 var $=function(i){return document.getElementById(i)};
-var DEF={st:'2',ar:'p',rn:'성화',num:'1588-3819',sub:'대한민국',cn:'연결 중...',tm:'00:00',ed:'통화 종료',bg:''};
+var DEF={st:'2',ar:'p',rn:'성화',num:'1588-3819',sub:'대한민국',cn:'연결 중...',tm:'00:00',ed:'통화 종료',bg:'',ty:'0'};
 var S,STORE='editsoceur-sushin-v1';
-var IDS={iSt:'st',iAr:'ar',iRn:'rn',iCn:'cn',iTm:'tm',iEd:'ed'};
+var IDS={iSt:'st',iAr:'ar',iRn:'rn',iCn:'cn',iTm:'tm',iEd:'ed',iTy:'ty'};
 function persist(){try{localStorage.setItem(STORE,JSON.stringify(S))}catch(e){}}
 function render(){
 var f=$('cf'),d=S.st==='3';
 f.classList.toggle('c0',S.st==='0'||d);f.classList.toggle('c2',S.st==='2');f.classList.toggle('c3',d);f.classList.toggle('wide',S.ar==='w');document.querySelector('.phone').classList.toggle('is-wide',S.ar==='w');
 $('rowEnd').style.display=d?'':'none';
-f.style.setProperty('background-image',S.bg?'linear-gradient(rgba(0,0,0,.25),rgba(0,0,0,.25)),url("'+S.bg+'")':'','important');f.style.backgroundSize='cover';f.style.backgroundPosition='center';
+f.style.setProperty('background-image',S.bg?'linear-gradient(rgba(0,0,0,.25),rgba(0,0,0,.25)),url("'+S.bg+'")':'','important');f.style.backgroundSize='cover';f.style.setProperty('--ty',(+S.ty||0)+'cqw');f.style.backgroundPosition='center';
 $('cS').textContent=d?S.ed:(S.st==='0'?S.cn:S.tm);
 $('cN').textContent=S.rn;
 
