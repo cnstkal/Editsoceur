@@ -19,7 +19,10 @@ html,body{touch-action:manipulation;-webkit-text-size-adjust:100%}
 
 .pk{display:flex;gap:8px;align-items:center;background:#fff;border:1px solid #dbdbdb;border-radius:12px;padding:8px;margin-bottom:8px}
 .pk i{flex:none;width:56px;height:56px;border-radius:8px;background:#e5e5ea center/cover}
-.pk button{flex:1;height:38px;border:1px solid #dbdbdb;border-radius:8px;background:#f6f6f6;font-weight:700}
+.pk{user-select:none;-webkit-user-select:none;-webkit-touch-callout:none;touch-action:pan-y;cursor:grab}
+.pk.drag{opacity:.75;box-shadow:0 6px 18px rgba(0,0,0,.18);transform:scale(1.02);border-color:#e8457a}
+.grip{flex:1;text-align:center;font-size:22px;color:#b0b0b8;line-height:1}
+.pk button{flex:none;width:40px;height:38px;border:1px solid #dbdbdb;border-radius:8px;background:#f6f6f6;font-weight:700}
 .xk{display:flex!important;align-items:center;gap:8px;white-space:nowrap}.xk input{width:20px;height:20px}
 
 .pgi i{display:block;aspect-ratio:1/1;background-size:cover;background-position:center}
@@ -27,3 +30,23 @@ html,body{touch-action:manipulation;-webkit-text-size-adjust:100%}
 
 /* 항목 수 문구·제목이 그리드 뒤에 가려지지 않도록 */
 .pt,.pn{z-index:3}
+
+/* ===== 16:9 가로 (1920x1080) ===== */
+.ps-frame .phone.wide{width:100%!important;max-width:960px!important}
+#pf.wide{width:100%;aspect-ratio:16/9;min-height:0;height:auto;overflow:hidden}
+#pf.wide .pt{left:2cqw;top:2.4cqw;line-height:4.4cqw;font-size:3.7cqw}
+#pf.wide .pn{left:2cqw;top:7cqw;line-height:2.3cqw;font-size:1.8cqw}
+#pf.wide .pbt{top:2.8cqw;height:4.4cqw;border-radius:2.2cqw;box-shadow:0 .3cqw 1cqw rgba(0,0,0,.1)}
+#pf.wide .pf1{left:87.2cqw;width:4.4cqw}
+#pf.wide .pf2{left:92.4cqw;width:6.2cqw;font-size:1.8cqw}
+#pf.wide .pf1 svg{width:2.4cqw!important}
+#pf.wide .pg{padding:10.6cqw 0 0}
+#pf.wide .pgi{grid-template-columns:repeat(7,1fr);gap:.16cqw}
+#pf.wide .ptb{left:50%;transform:translateX(-50%);bottom:1.4cqw;width:27cqw;height:6.2cqw;border-radius:3.1cqw;padding:.4cqw;box-shadow:0 .3cqw 1cqw rgba(0,0,0,.1)}
+#pf.wide .pti{padding-top:.75cqw;border-radius:2.7cqw}
+#pf.wide .pti.on{width:9.5cqw}
+#pf.wide .pti svg{max-height:2.55cqw}
+#pf.wide .pA svg,#pf.wide #pA svg{width:2.9cqw!important}
+#pf.wide #pB svg{width:2.5cqw!important}
+#pf.wide #pC svg{width:2.3cqw!important}
+#pf.wide .pti em{margin-top:.45cqw;font-size:1.45cqw;line-height:1.55cqw}
