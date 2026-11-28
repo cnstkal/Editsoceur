@@ -8,12 +8,22 @@ function bg(u){return "background-image:url('"+u+"')"}
 var HEART='<svg class="fv" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21.2l-1.45-1.32C5.4 15.14 2 12.06 2 8.28 2 5.2 4.42 2.8 7.5 2.8c1.74 0 3.41.81 4.5 2.09C13.09 3.61 14.76 2.8 16.5 2.8 19.58 2.8 22 5.2 22 8.28c0 3.78-3.4 6.86-8.55 11.54L12 21.2z" fill="#fff"/></svg>';
 function fk(u){return u.length+':'+u.slice(200,260)+u.slice(-60)}
 function isFav(u){return !!(S.fav&&S.fav[fk(u)])}
+var selIdx=null;
+function moveTo(from,to){var m=S.p,v=m.splice(from,1)[0];m.splice(to,0,v);persist()}
+$('pG').addEventListener('click',function(e){
+  var c=e.target.closest('i[data-i]');if(!c)return;
+  var n=+c.dataset.i;
+  if(selIdx===null){selIdx=n}
+  else if(selIdx===n){selIdx=null}
+  else{moveTo(selIdx,n);selIdx=null;list()}
+  render();
+});
 function render(){
 var w=S.r==='16:9';$('pf').classList.toggle('wide',w);document.querySelector('.phone').classList.toggle('wide',w);
 $('pT').textContent='보관함';$('pN').textContent=S.n;
 $('bottomTabs').style.display=S.nav?'flex':'none';
 $('pA').classList.toggle('on',S.tab==='0');$('pB').classList.toggle('on',S.tab==='1');
-var h='';if(!S.p.length){for(var q=0;q<(w?28:18);q++)h+='<i class="ph"></i>'}else S.p.forEach(function(u){h+='<i style="'+bg(u)+'">'+(isFav(u)?HEART:'')+'</i>'});
+var h='';if(!S.p.length){for(var q=0;q<(w?28:18);q++)h+='<i class="ph"></i>'}else S.p.forEach(function(u,n){h+='<i data-i="'+n+'" class="'+(n===selIdx?'sel':'')+'" style="'+bg(u)+'">'+(isFav(u)?HEART:'')+'</i>'});
 
 $('pG').innerHTML=h}
 function list(){var h='';S.p.forEach(function(u,i){h+='<div class="pk" data-i="'+i+'"><i style="'+bg(u)+'"></i><span class="grip">⠿</span><button type="button" data-a="f" class="fb'+(isFav(u)?' on':'')+'">'+(isFav(u)?'♥':'♡')+'</button><button type="button" data-a="u">↑</button><button type="button" data-a="d">↓</button><button type="button" data-a="x">✕</button></div>'});$('plist').innerHTML=h}

@@ -57,3 +57,6 @@ html,body{touch-action:manipulation;-webkit-text-size-adjust:100%}
 #pf.wide .pgi i .fv{width:15%}
 .pk button.fb{flex:none;width:40px;color:#e8457a;font-size:18px}
 .pk button.fb.on{background:#fde8ef;border-color:#f8c9d9}
+
+/* 미리보기에서 탭으로 이동: 선택된 칸 표시 */
+.pgi i.sel{outline:3px solid #e8457a;outline-offset:-3px}
