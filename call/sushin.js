@@ -1,14 +1,14 @@
 (function(){
 var $=function(i){return document.getElementById(i)};
-var DEF={st:'2',ar:'p',rn:'성화',num:'1588-3819',sub:'대한민국',cn:'연결 중...',tm:'00:00',c1:'#465b55',c2:'#2d453f',ed:'통화 종료',e1:'#3a5a52',e2:'#294a41'};
+var DEF={st:'2',ar:'p',rn:'성화',num:'1588-3819',sub:'대한민국',cn:'연결 중...',tm:'00:00',ed:'통화 종료',bg:''};
 var S,STORE='editsoceur-sushin-v1';
-var IDS={iSt:'st',iAr:'ar',iRn:'rn',iCn:'cn',iTm:'tm',iC1:'c1',iC2:'c2',iEd:'ed',iE1:'e1',iE2:'e2'};
+var IDS={iSt:'st',iAr:'ar',iRn:'rn',iCn:'cn',iTm:'tm',iEd:'ed'};
 function persist(){try{localStorage.setItem(STORE,JSON.stringify(S))}catch(e){}}
 function render(){
 var f=$('cf'),d=S.st==='3';
 f.classList.toggle('c0',S.st==='0'||d);f.classList.toggle('c2',S.st==='2');f.classList.toggle('c3',d);f.classList.toggle('wide',S.ar==='w');document.querySelector('.phone').classList.toggle('is-wide',S.ar==='w');
-$('rowEnd').style.display=d?'':'none';$('rowEnd2').style.display=d?'':'none';$('rowCol').style.display=(!d&&S.st!=='2')?'':'none';
-f.style.setProperty('--c1',d?S.e1:S.c1);f.style.setProperty('--c2',d?S.e2:S.c2);
+$('rowEnd').style.display=d?'':'none';
+f.style.setProperty('background-image',S.bg?'linear-gradient(rgba(0,0,0,.25),rgba(0,0,0,.25)),url("'+S.bg+'")':'','important');f.style.backgroundSize='cover';f.style.backgroundPosition='center';
 $('cS').textContent=d?S.ed:(S.st==='0'?S.cn:S.tm);
 $('cN').textContent=S.rn;
 
@@ -21,6 +21,8 @@ set();render()}
 function glob(){for(var k in IDS)S[IDS[k]]=$(k).value;persist();render()}
 Object.keys(IDS).forEach(function(id){$(id).addEventListener('input',glob);$(id).addEventListener('change',glob)});
 $('reset').onclick=function(){load(true)};
+$('iBg').addEventListener('change',function(){var f=this.files&&this.files[0];if(!f)return;var u=URL.createObjectURL(f),im=new Image();im.onload=function(){var m=Math.min(1,1000/Math.max(im.width,im.height)),c=document.createElement('canvas');c.width=Math.round(im.width*m);c.height=Math.round(im.height*m);c.getContext('2d').drawImage(im,0,0,c.width,c.height);S.bg=c.toDataURL('image/jpeg',.85);URL.revokeObjectURL(u);glob()};im.src=u});
+$('bgRm').onclick=function(){S.bg='';$('iBg').value='';persist();render()};
 $('savePng').onclick=function(){var b=this,t=b.textContent;b.disabled=true;b.textContent='저장 중...';
 (document.fonts&&document.fonts.ready?document.fonts.ready:Promise.resolve()).then(function(){
 return html2canvas($('cf'),{scale:4,useCORS:true,backgroundColor:null,logging:false})}).then(function(c){
