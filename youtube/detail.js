@@ -20,7 +20,7 @@ var m=S.m,p=pc(m.pg);
 $('dV').style.cssText=bgi(m.th);
 $('dPi').style.width=p+'%';$('dPu').style.left=p+'%';$('dPu').style.width=Math.min(7,100-p)+'%';
 $('dN').textContent=m.n;$('dH').textContent=m.h;
-$('dS').textContent='좋아요 '+m.lk+' 조회수 '+m.vw+' '+m.time;
+$('dS').textContent='좋아요 '+m.lk+' · 조회수 '+m.vw+' · '+m.time;
 $('dA0').style.cssText=bgi(m.av);$('dSb').textContent=m.sub;
 $('dCn').textContent=S.c.cnt;$('dCx').textContent=S.c.x;$('dCa').style.cssText=bgi(S.c.av);
 var u=S.u;
