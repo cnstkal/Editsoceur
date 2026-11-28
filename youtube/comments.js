@@ -11,6 +11,7 @@ RP='<path d="M5 4h14a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2h-6l-4 3.500V17H5a2 2 0 0 1-2-
 DOTS='<svg class="mdt" width="12" height="4" viewBox="0 0 12 4" fill="#0f0f0f"><circle cx="2" cy="2" r="1.900"/><circle cx="6" cy="2" r="1.900"/><circle cx="10" cy="2" r="1.900"/></svg>',
 CH='<svg width="7" height="12" viewBox="0 0 7 12" fill="none" stroke="#0f0f0f" stroke-width="2.200" stroke-linecap="round" stroke-linejoin="round"><path d="M1.200 1.200 5.800 6l-4.600 4.800"/></svg>';
 var LIKED='<svg width="18" height="18" viewBox="0 0 24 24" fill="#0f0f0f" stroke="#0f0f0f" stroke-width="1.800" stroke-linejoin="round" stroke-linecap="round">'+UP+'</svg>';
+function lkNum(s){s=String(s==null?'':s).replace(/,/g,'').trim();var m=s.match(/^([\d.]+)\s*(천|만)?/);if(!m)return 0;var v=parseFloat(m[1]);if(isNaN(v))return 0;if(m[2]==='천')v*=1000;if(m[2]==='만')v*=10000;return Math.round(v)}
 var S,STORE='editsoceur-youtube-comments-v1';
 function persist(){try{localStorage.setItem(STORE,JSON.stringify(S))}catch(e){console.warn('댓글 데이터 저장 실패',e)}}
 function esc(t){return String(t==null?'':t).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;')}
@@ -28,7 +29,7 @@ $('mTi').textContent=S.ti;$('mIp').textContent=S.ip;
 $('mC1').textContent=S.c1;$('mC2').textContent=S.c2;$('mC1').className='mc1'+(S.act==='0'?' on':'');$('mC2').className='mc2'+(S.act==='1'?' on':'');
 var h='';S.l.forEach(function(x,i){
 h+='<div class="mi"><i class="mav" style="background-color:'+esc(x.cl||'#999')+(x.av?";background-image:url('"+x.av+"')":'')+'">'+(x.av?'':esc(x.lt))+'</i>'+(x.rp?'<i class="cth"></i>':'')+
-'<div class="mb"><div class="mh">'+esc(x.h)+'<i class="md"></i>'+esc(x.time)+'</div><div class="mt">'+ts(x.x)+'</div><div class="ma">'+'<span class="mlk" data-i="'+i+'" style="cursor:pointer">'+(x.liked?LIKED:IC(UP))+'</span><span>'+esc(x.lk)+'</span>'+IC(UP,1)+IC(RP)+'</div>'+(x.rp?'<div class="mr">답글 '+esc(x.rp)+'개'+CH+'</div>':'')+'</div>'+DOTS+'</div>'});
+'<div class="mb"><div class="mh">'+esc(x.h)+'<i class="md"></i>'+esc(x.time)+'</div><div class="mt">'+ts(x.x)+'</div><div class="ma">'+'<span class="mlk" data-i="'+i+'" style="cursor:pointer">'+(x.liked?LIKED:IC(UP))+'</span><span>'+(x.liked?(lkNum(x.lk)+1).toLocaleString('en-US'):esc(x.lk))+'</span>'+IC(UP,1)+IC(RP)+'</div>'+(x.rp?'<div class="mr">답글 '+esc(x.rp)+'개'+CH+'</div>':'')+'</div>'+DOTS+'</div>'});
 $('mL').innerHTML=h;fit()}
 function fit(){var mf=$('mf'),ml=$('mL'),cb=document.querySelector('#mf .mcb');
 ml.style.height='auto';var lh=ml.offsetHeight,base=Math.max(369,lh),d=base-369;
