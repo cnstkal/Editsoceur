@@ -7,7 +7,7 @@
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.css">
 <link rel="stylesheet" href="../instagram/story.css?v=3">
 <link rel="stylesheet" href="call.css?v=1">
-<link rel="stylesheet" href="sushin.css?v=1">
+<link rel="stylesheet" href="sushin.css?v=2">
 <style data-hide-status>:is(span,b)[id$="Time"],#eTm,.isl,.ys,.ysig,.ywf,.ybt,.dsg,.dwf,#df .dbt,.msg,.mwf,.mbt,.ewf,.ebt,.nwf,.nbt,.sb:has([id$="Time"])>svg:not(.lc),.sb:has([id$="Time"])+.bt,.sb:has([id$="Time"]) .bt{display:none!important}</style><style id="ed-font">html,body,body *{font-family:Pretendard,-apple-system,"Apple SD Gothic Neo","Noto Sans KR",sans-serif!important;letter-spacing:-.02em!important}</style><link rel="stylesheet" href="studio.css?v=3">
 <link rel="stylesheet" href="../ps-editor.css?v=12"><style id="pa">body{animation:paIn .28s ease both}body.pa-out{animation:paOut .18s ease forwards}@keyframes paIn{from{opacity:0}to{opacity:1}}@keyframes paOut{to{opacity:0}}@media (prefers-reduced-motion:reduce){body,body.pa-out{animation:none}}</style><script id="pa-js">(function(){document.addEventListener("click",function(e){var a=e.target.closest&&e.target.closest("a[href]");if(!a||e.defaultPrevented||e.button||e.metaKey||e.ctrlKey||e.shiftKey||a.target||a.hasAttribute("download"))return;var h=a.getAttribute("href");if(!h||h[0]==="#"||/^(javascript:|mailto:|tel:)/.test(h))return;var u=new URL(a.href,location.href);if(u.origin!==location.origin)return;e.preventDefault();document.body.classList.add("pa-out");setTimeout(function(){location.href=u.href},180)},true)})();</script></head>
 <body class="studio"><div class="ps-wrap">
@@ -43,15 +43,17 @@
 <section class="ps-card ps-side"><div class="ps-lbl">Edit Panel</div><h2>전화 화면 내용 수정</h2><div class="ps-edwrap"><section class="editor">
 <div class="ps-pn" data-t="기본">
 <h2>전화 화면 편집</h2>
-<div class="row"><label>화면 상태<select id="iSt"><option value="2">수신 중 (받기 전)</option><option value="0">연결 중</option><option value="1">연결 후 (통화 중)</option></select></label><label>수신 이름<input id="iRn"></label></div>
+<div class="row"><label>화면 상태<select id="iSt"><option value="2">수신 중 (받기 전)</option><option value="0">연결 중</option><option value="1">연결 후 (통화 중)</option><option value="3">수신 거절 (통화 종료)</option></select></label><label>수신 이름<input id="iRn"></label></div>
 <div class="row"><label>수신 부제<input id="iRs"></label><label>수신 배경색<input id="iC3" type="color"></label></div>
 <div class="row"><label>전화번호/이름<input id="iNum"></label><label>연결 중 문구<input id="iCn"></label></div>
 <div class="row"><label>국가(연결 중, 비우면 숨김)<input id="iSub"></label><label>통화 시간<input id="iTm"></label></div>
+<div class="row"><label>종료 문구(수신 거절)<input id="iEd"></label><label>거절 배경 위쪽 색<input id="iE1" type="color"></label></div>
+<div class="row"><label>거절 배경 아래쪽 색<input id="iE2" type="color"></label></div>
 <div class="row"><label>배경 위쪽 색<input id="iC1" type="color"></label><label>배경 아래쪽 색<input id="iC2" type="color"></label></div>
 </div></section></div><div class="ps-acts"><button id="savePng" class="primary">PNG로 저장</button><button id="reset" class="secondary">초기화</button></div></section>
 </div></div>
 <script src="https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js"></script>
-<script src="sushin.js?v=1"></script>
+<script src="sushin.js?v=2"></script>
 <script>(function(){var b=document.getElementById("pvBtn");b.onclick=function(){var on=document.body.classList.toggle("pvmode");this.textContent=on?"편집 모드":"미리보기 모드"}})();</script>
 <script src="studio.js?v=1"></script>
 <script src="../back-anim.js?v=1" defer></script><script src="../upl.js?v=4" defer></script></body>

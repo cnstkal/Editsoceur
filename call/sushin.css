@@ -14,3 +14,11 @@
 .rd{left:22.900cqw;background:#ee3a2c}
 .ra{left:77.900cqw;background:#4cc764}
 .rt{position:absolute;top:188.600cqw;width:30cqw;margin-left:-15cqw;text-align:center;font-size:3.800cqw;line-height:5cqw;font-weight:400;color:#fff}
+/* 수신 거절(통화 종료) — 연결 중 화면(c0)에서 바뀐 부분만 */
+.c3 .chb{display:none}
+.c3 .cst{color:rgba(255,255,255,.27)}
+.c3 .cnum{color:rgba(255,255,255,.5)}
+.c3 .cft{color:#fff}
+.c3 .cb svg{opacity:.5}
+.c3 .cb:not(.ce){background:rgba(126,126,126,.24);-webkit-backdrop-filter:none;backdrop-filter:none}
+.c3 .cb:not(.ce)::before{opacity:.45}
