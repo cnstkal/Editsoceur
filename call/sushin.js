@@ -6,7 +6,7 @@ var IDS={iSt:'st',iAr:'ar',iRn:'rn',iCn:'cn',iTm:'tm',iEd:'ed',iTy:'ty'};
 function persist(){try{localStorage.setItem(STORE,JSON.stringify(S))}catch(e){}}
 function render(){
 var f=$('cf'),d=S.st==='3';
-f.classList.toggle('c0',S.st==='0'||d);f.classList.toggle('c2',S.st==='2');f.classList.toggle('c3',d);f.classList.toggle('wide',S.ar==='w');document.querySelector('.phone').classList.toggle('is-wide',S.ar==='w');
+f.classList.toggle('c0',S.st==='0'||d);f.classList.toggle('c2',S.st==='2');f.classList.toggle('c3',d);f.classList.toggle('wide',S.ar==='w');document.querySelector('.phone').classList.toggle('is-wide',S.ar==='w');var st=document.querySelector('.ps-stage'),w=S.ar==='w',cs=getComputedStyle(f);st.style.setProperty('background-image',w?cs.backgroundImage:'','important');st.style.setProperty('background-color',w?cs.backgroundColor:'','important');st.style.backgroundSize=w?'cover':'';st.style.backgroundPosition=w?'center':'';
 $('rowEnd').style.display=d?'':'none';
 f.style.setProperty('background-image',S.bg?'linear-gradient(rgba(0,0,0,.25),rgba(0,0,0,.25)),url("'+S.bg+'")':'','important');f.style.backgroundSize='cover';f.style.setProperty('--ty',(+S.ty||0)+'cqw');f.style.backgroundPosition='center';
 $('cS').textContent=d?S.ed:(S.st==='0'?S.cn:S.tm);
@@ -26,7 +26,7 @@ $('bgRm').onclick=function(){S.bg='';$('iBg').value='';persist();render()};
 $('savePng').onclick=function(){var b=this,t=b.textContent;b.disabled=true;b.textContent='저장 중...';
 (document.fonts&&document.fonts.ready?document.fonts.ready:Promise.resolve()).then(function(){
 return html2canvas($('cf'),{scale:4,useCORS:true,backgroundColor:null,logging:false})}).then(function(c){
-c.toBlob(function(bl){var a=document.createElement('a');a.href=URL.createObjectURL(bl);a.download='sushin.png';
+c.toBlob(function(bl){var a=document.createElement('a');a.href=URL.createObjectURL(bl);var n=new Date(),z=function(x,l){return String(x).padStart(l||2,'0')};a.download='sushin-'+n.getFullYear()+z(n.getMonth()+1)+z(n.getDate())+'-'+z(n.getHours())+z(n.getMinutes())+z(n.getSeconds())+z(n.getMilliseconds(),3)+'.png';
 document.body.appendChild(a);a.click();a.remove();b.disabled=false;b.textContent=t},'image/png')
 }).catch(function(){b.disabled=false;b.textContent=t;alert('PNG 저장에 실패했습니다.')})};
 document.addEventListener('gesturestart',function(e){e.preventDefault()},{passive:false});
