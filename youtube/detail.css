@@ -56,3 +56,5 @@
 .ps-acts{margin:0 0 18px;display:flex;gap:8px}
 .ps-acts button{height:40px;padding:0 18px;font-size:14px;flex:none!important;width:auto!important}
 .tsl{color:#065fd4}
+/* 영상 시간표: 살짝 둥글게 (위 모서리 직각 규칙에서 제외) */
+#df .dcd .dur{border-radius:6px!important}
