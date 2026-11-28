@@ -16,7 +16,7 @@ function esc(t){return String(t==null?'':t).replace(/&/g,'&amp;').replace(/</g,'
 function pc(v){v=parseFloat(v);return isNaN(v)?0:Math.max(0,Math.min(100,v))}
 var KEYC={};
 function keyGreen(src,cb){
-var im=new Image();im.onload=function(){var m=Math.min(1,900/Math.max(im.width,im.height)),c=document.createElement('canvas');c.width=Math.round(im.width*m);c.height=Math.round(im.height*m);var x=c.getContext('2d');x.drawImage(im,0,0,c.width,c.height);try{var d=x.getImageData(0,0,c.width,c.height),p=d.data;for(var i=0;i<p.length;i+=4){var r=p[i],g=p[i+1],b=p[i+2];if(g>60&&g>r*1.25&&g>b*1.25)p[i+3]=0}x.putImageData(d,0,0);cb(c.toDataURL('image/png'))}catch(e){cb(src)}};im.onerror=function(){cb(src)};im.src=src}
+var im=new Image();im.onload=function(){var m=Math.min(1,900/Math.max(im.width,im.height)),c=document.createElement('canvas');c.width=Math.round(im.width*m);c.height=Math.round(im.height*m);var x=c.getContext('2d');x.drawImage(im,0,0,c.width,c.height);try{var d=x.getImageData(0,0,c.width,c.height),p=d.data;for(var i=0;i<p.length;i+=4){var r=p[i],g=p[i+1],b=p[i+2];var df=g-Math.max(r,b);if(df>45)p[i+3]=0;else if(df>20)p[i+3]=Math.round(p[i+3]*(45-df)/25)}x.putImageData(d,0,0);cb(c.toDataURL('image/png'))}catch(e){cb(src)}};im.onerror=function(){cb(src)};im.src=src}
 function buildTh(){if(!S.thRaw){S.th='';return}if(!S.gs){S.th=S.thRaw;return}var k=S.thRaw;if(KEYC[k]){S.th=KEYC[k];return}keyGreen(k,function(d){KEYC[k]=d;S.th=d;persist();render()})}
 function render(){
 $('mTime').textContent=S.time;
