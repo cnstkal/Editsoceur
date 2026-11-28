@@ -58,3 +58,5 @@
 .tsl{color:#065fd4}
 /* 영상 시간표: 살짝 둥글게 (위 모서리 직각 규칙에서 제외) */
 #df .dcd .dur{border-radius:6px!important}
+/* 아래 영상 채널 프로필은 동그랗게 (직각 규칙에서 제외) */
+#df .dcd .dav{border-radius:50%!important}
