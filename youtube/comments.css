@@ -67,3 +67,5 @@
 .mcx{right:18px!important}
 .min{right:48px!important}
 .tsl{color:#065fd4}
+/* 프로필 글자: 기울임 제거, 원 정가운데 */
+#mf .mav{font-style:normal!important;display:flex!important;align-items:center;justify-content:center;line-height:1!important}
