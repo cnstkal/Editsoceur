@@ -50,3 +50,10 @@ html,body{touch-action:manipulation;-webkit-text-size-adjust:100%}
 #pf.wide #pB svg{width:2.5cqw!important}
 #pf.wide #pC svg{width:2.3cqw!important}
 #pf.wide .pti em{margin-top:.45cqw;font-size:1.45cqw;line-height:1.55cqw}
+
+/* 즐겨찾기 하트 (썸네일 오른쪽 아래) */
+.pgi i{position:relative}
+.pgi i .fv{position:absolute;right:6%;bottom:6%;width:17%;height:auto;filter:drop-shadow(0 1px 2px rgba(0,0,0,.45));pointer-events:none}
+#pf.wide .pgi i .fv{width:15%}
+.pk button.fb{flex:none;width:40px;color:#e8457a;font-size:18px}
+.pk button.fb.on{background:#fde8ef;border-color:#f8c9d9}
