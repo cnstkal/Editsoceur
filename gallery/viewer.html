@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="ko"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>사진 보기</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.css">
+<style>body{margin:0;padding:20px;background:#f2f3f5;font-family:Pretendard,sans-serif}main{max-width:390px;margin:auto}#sc{width:100%;height:auto;display:block;box-shadow:0 2px 12px #0002}label{display:block;margin-top:14px;font-weight:600}input{display:block;width:100%;box-sizing:border-box;margin-top:6px;font-size:16px}button{margin-top:16px;width:100%;height:46px;border:0;border-radius:12px;background:#111;color:#fff;font-size:15px}a{color:#0095f6;text-decoration:none}</style></head>
+<body><main><p><a href="index.html">‹ 뒤로</a></p>
+<svg id="sc" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1179 2556" width="1179" height="2556" font-family="Pretendard,-apple-system,sans-serif" text-anchor="middle" fill="#111"><rect width="1179" height="2556" fill="#fff"/><path d="M0 198h1179M0 2158h1179" stroke="#e6e6e8" stroke-width="2"/><image id="ph" x="0" y="696" width="1179" height="884" preserveAspectRatio="xMidYMid slice"/><circle cx="114" cy="103" r="67" fill="#fff" stroke="#dcdcde" stroke-width="2"/><rect x="348" y="22" width="482" height="162" rx="81" fill="#fff" stroke="#dcdcde" stroke-width="2"/><circle cx="1065" cy="103" r="67" fill="#fff" stroke="#dcdcde" stroke-width="2"/><path d="M123 76 94 103l29 28" fill="none" stroke="#111" stroke-width="10" stroke-linecap="round" stroke-linejoin="round"/><circle cx="1038" cy="103" r="7"/><circle cx="1064" cy="103" r="7"/><circle cx="1090" cy="103" r="7"/><text id="vD" x="589" y="95" font-size="46" font-weight="700">오늘</text><text id="vT" x="589" y="149" font-size="39" font-weight="500">오후 2:42</text><circle cx="156" cy="2260" r="73" fill="#fff" stroke="#dcdcde" stroke-width="2"/><rect x="337" y="2188" width="506" height="144" rx="72" fill="#fff" stroke="#dcdcde" stroke-width="2"/><circle cx="1023" cy="2260" r="73" fill="#fff" stroke="#dcdcde" stroke-width="2"/><g fill="none" stroke="#111" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"><path d="M142 2242h-6q-11 0-11 11v31q0 11 11 11h39q11 0 11-11v-31q0-11-11-11h-6M155 2265v-45M141 2232l14-14 14 14"/><path d="M421 2290c-22-16-35-29-35-45 0-23 27-25 35-6 8-19 35-17 35 6 0 16-13 29-35 45z"/><circle cx="589" cy="2260" r="34"/><path d="M582 2256h7v22M580 2278h18"/><path d="M724 2237h68M724 2260h68M724 2283h68"/><g fill="#fff"><rect x="761" y="2230" width="20" height="14" rx="7"/><rect x="735" y="2253" width="20" height="14" rx="7"/><rect x="761" y="2276" width="20" height="14" rx="7"/></g><path d="M991 2232h64M1010 2231v-11h26v11M998 2234l4 52q1 8 9 8h24q8 0 9-8l4-52M1012 2247v32M1023 2247v32M1034 2247v32"/></g><circle cx="589" cy="2243" r="5"/></svg>
+<label>사진<input id="iP" type="file" accept="image/*"></label><button id="del" type="button">사진 비우기</button>
+<label>날짜<input id="iD" value="오늘"></label><label>시간<input id="iT" value="오후 2:42"></label>
+<button id="save" type="button">PNG 저장</button></main>
+<script>
+(function(){
+var $=function(i){return document.getElementById(i)};
+$('iP').onchange=function(){var f=this.files[0];if(!f)return;var r=new FileReader();r.onload=function(){$('ph').setAttribute('href',r.result)};r.readAsDataURL(f)};
+$('del').onclick=function(){$('ph').removeAttribute('href');$('iP').value=''};
+$('iD').oninput=function(){$('vD').textContent=this.value};
+$('iT').oninput=function(){$('vT').textContent=this.value};
+$('save').onclick=function(){
+var im=new Image();
+im.onload=function(){setTimeout(function(){var c=document.createElement('canvas');c.width=1179;c.height=2556;c.getContext('2d').drawImage(im,0,0);var a=document.createElement('a');a.download='photo-viewer.png';a.href=c.toDataURL('image/png');a.click()},200)};
+im.src='data:image/svg+xml;charset=utf-8,'+encodeURIComponent(new XMLSerializer().serializeToString($('sc')));
+};
+})();
+</script></body></html>
