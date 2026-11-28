@@ -29,7 +29,7 @@ $('mV').style.backgroundImage=S.th?"url('"+S.th+"')":'';$('mV').style.display=S.
 $('mTi').textContent=S.ti;$('mIp').textContent=S.ip;
 $('mC1').textContent=S.c1;$('mC2').textContent=S.c2;$('mC1').className='mc1'+(S.act==='0'?' on':'');$('mC2').className='mc2'+(S.act==='1'?' on':'');
 var h='';S.l.forEach(function(x,i){
-h+='<div class="mi"><i class="mav" style="background-color:'+esc(x.cl||'#999')+(x.av?";background-image:url('"+x.av+"')":'')+'">'+(x.av?'':esc(x.lt))+'</i>'+(x.rp?'<i class="cth"></i>':'')+
+h+='<div class="mi">'+(x.av?'<img class="mav" alt="" src="'+x.av+'" style="object-fit:cover;background:#999">':'<i class="mav" style="background-color:'+esc(x.cl||'#999')+'">'+esc(x.lt)+'</i>')+(x.rp?'<i class="cth"></i>':'')+
 '<div class="mb"><div class="mh">'+esc(x.h)+'<i class="md"></i>'+esc(x.time)+'</div><div class="mt">'+ts(x.x)+'</div><div class="ma">'+'<span class="mlk" data-i="'+i+'" style="cursor:pointer">'+(x.liked?LIKED:IC(UP))+'</span><span>'+(x.liked?lkFmt(lkNum(x.lk)+1):esc(x.lk))+'</span>'+IC(UP,1)+IC(RP)+'</div>'+(x.rp?'<div class="mr">답글 '+esc(x.rp)+'개'+CH+'</div>':'')+'</div>'+DOTS+'</div>'});
 $('mL').innerHTML=h;fit()}
 function fit(){var mf=$('mf'),ml=$('mL'),cb=document.querySelector('#mf .mcb');
