@@ -21,7 +21,7 @@ function buildTh(){if(!S.thRaw){S.th='';return}if(!S.gs){S.th=S.thRaw;return}var
 function render(){
 $('mTime').textContent=S.time;
 var b=pc(S.bat);$('mBf').style.width=b+'%';$('mBt').textContent=Math.round(b);$('mBz').style.display=S.chg?'':'none';
-$('mV').style.backgroundImage=S.th?"url('"+S.th+"')":'';$('mV').style.display=S.showV===false?'none':'';$('mPi').style.width=pc(S.pg)+'%';$('mPi').parentNode.style.display=S.showP===false?'none':'';var ib=document.querySelector('#mf .mcb');if(ib)ib.style.display=S.showI===false?'none':'';
+$('mV').style.backgroundImage=S.th?"url('"+S.th+"')":'';$('mV').style.display=S.showV===false?'none':'';$('mf').style.background=S.showV===false?'transparent':'';$('mPi').style.width=pc(S.pg)+'%';$('mPi').parentNode.style.display=S.showP===false?'none':'';var ib=document.querySelector('#mf .mcb');if(ib)ib.style.display=S.showI===false?'none':'';
 $('mTi').textContent=S.ti;$('mIp').textContent=S.ip;
 $('mC1').textContent=S.c1;$('mC2').textContent=S.c2;$('mC1').className='mc1'+(S.act==='0'?' on':'');$('mC2').className='mc2'+(S.act==='1'?' on':'');
 var h='';S.l.forEach(function(x){
@@ -59,7 +59,7 @@ function load(reset){if(reset){try{localStorage.removeItem(STORE)}catch(e){}S=JS
 $('reset').onclick=function(){load(true)};
 $('savePng').onclick=function(){var b=this,t=b.textContent;b.disabled=true;b.textContent='저장 중...';
 (document.fonts&&document.fonts.ready?document.fonts.ready:Promise.resolve()).then(function(){
-return html2canvas($('mf'),{scale:4,useCORS:true,backgroundColor:'#fff',logging:false})}).then(function(c){
+return html2canvas($('mf'),{scale:4,useCORS:true,backgroundColor:S.showV===false?null:'#fff',logging:false})}).then(function(c){
 c.toBlob(function(bl){var a=document.createElement('a');a.href=URL.createObjectURL(bl);var n=new Date(),z=function(x,l){return String(x).padStart(l||2,'0')};a.download='youtube-comments-'+n.getFullYear()+z(n.getMonth()+1)+z(n.getDate())+'-'+z(n.getHours())+z(n.getMinutes())+z(n.getSeconds())+z(n.getMilliseconds(),3)+'.png';
 document.body.appendChild(a);a.click();a.remove();b.disabled=false;b.textContent=t},'image/png')
 }).catch(function(){b.disabled=false;b.textContent=t;alert('PNG 저장에 실패했습니다.')})};
