@@ -70,3 +70,6 @@
 /* 아래 영상 정보 줄: 가운뎃점 앞뒤 간격 좁게, 점 뒤 여백 정리 */
 #df .dmt .dsep{margin:0 3px 0 0!important}
 #df .dmt span.dsep+span{margin-left:3px!important}
+/* 가운뎃점: 앞뒤 간격을 똑같이 */
+#df .dmt .dsep{margin:0 6px!important}
+#df .dmt span.dsep+span{margin-left:0!important}
