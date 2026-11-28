@@ -33,3 +33,32 @@ body{background:#f5f5f5;color:#111}
 .bar{position:fixed;left:0;right:0;bottom:0;display:flex;gap:10px;justify-content:center;padding:12px 16px;background:rgba(255,255,255,.96);border-top:1px solid #dbdbdb;z-index:10}
 .bar button{height:48px;border-radius:12px;font-weight:700;font-size:16px;width:200px}
 .bar .primary{background:#3d8ef0;color:#fff}.bar .secondary{background:#efefef}
+
+/* 하단: 개념 · 공유 · 버튼 · 댓글 */
+.dc-vote{display:flex;justify-content:center;align-items:center;gap:11px;padding:36px 12px 0;margin-right:20px}
+.dc-num{display:flex;flex-direction:column;align-items:flex-end;color:#3b4890;font-weight:700;line-height:1.35}
+.dc-num b{font-size:18px}.dc-num span{display:flex;align-items:center;gap:4px;font-size:15px}
+.dc-star{width:64px;height:64px;border-radius:50%;background:#3b4890;color:#fff;display:flex;flex-direction:column;align-items:center;justify-content:center;font-size:12px;font-weight:700;line-height:1.2}
+.dc-share{display:flex;justify-content:space-between;align-items:center;width:fit-content;min-width:74%;max-width:calc(100% - 24px);margin:16px auto 36px;height:45px;padding:0 11px;gap:8px;background:#f9fafc;border:1px solid #d9dae6}
+.dc-share span{display:flex;align-items:center;gap:4px;font-size:12px;font-weight:600;color:#777;white-space:nowrap}
+.dc-share svg{flex:none;width:21px;height:21px}
+.dc-btns{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;padding:12px;border-top:2px solid #ececf1;border-bottom:4px solid #ececf1}
+.dc-btns span{height:34px;display:flex;align-items:center;justify-content:center;border:1px solid #c6c7da;background:#fff;color:#444;font-size:14px;font-weight:700;white-space:nowrap}
+.dc-btns .on{background:#3b4890;border-color:#3b4890;color:#fff}
+.dc-ch{display:flex;justify-content:space-between;align-items:center;height:43px;padding:0 12px;border-bottom:4px solid #ececf1;box-sizing:content-box}
+.dc-ch .l,.dc-ch .r,.dc-ch .r span{display:flex;align-items:center;gap:5px}
+.dc-ch .l{font-size:16px;font-weight:800}.dc-ch em{font-style:normal;font-weight:500;color:#d31900}
+.dc-ch .r{gap:11px;font-size:14px;color:#222}.dc-ch .r span{gap:7px}.dc-ch .r i{width:1px;height:12px;background:#ddd}
+.dc-cl{list-style:none;padding:0}
+.dc-cl li{position:relative;padding:10px 48px 10px 12px;border-bottom:1px solid #e0e1ea}
+.dc-cl li.re{background:#f9fafc;padding-left:38px}
+.dc-cl li.re::before{content:'';position:absolute;left:21px;top:15px;width:8px;height:8px;border-left:3px solid #3b4890;border-bottom:3px solid #3b4890}
+.dc-cl .who{display:flex;align-items:baseline;min-width:0;line-height:20px;white-space:nowrap}
+.dc-cl .who b{font-size:14.5px;font-weight:500;color:#111;overflow:hidden;text-overflow:ellipsis}
+.dc-cl .who span{font-size:12.5px;color:#999}
+.dc-cl p{margin:5px -32px 0 0;font-size:15.5px;line-height:1.5;color:#111;white-space:pre-wrap;word-break:break-all}
+.dc-cl .who+p{min-height:23px}
+.dc-cl a{color:#6b88cc}
+.dc-cl time{display:block;margin-top:3px;font-size:12.5px;line-height:17px;color:#999}
+.dc-x{position:absolute;right:16px;top:12px;width:17px;height:17px}
+.dc-x svg{display:block}
