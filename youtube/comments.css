@@ -73,3 +73,9 @@
 .ma .mlk{margin:0!important;display:inline-flex;align-items:center}
 .ma .mdk{margin-left:11.5px!important;display:inline-flex;align-items:center}
 .ma .mdk+svg{margin-left:11.5px!important}
+/* 좋아요/숫자/싫어요/답글 정렬: 칸을 고정해서 간격과 위치를 맞춤 */
+#mf .ma{display:grid!important;grid-template-columns:24px 44px 24px 24px;column-gap:14px;align-items:center;justify-items:start}
+#mf .ma>*{margin:0!important}
+#mf .ma .mlk,#mf .ma .mdk{display:inline-flex;align-items:center;justify-content:flex-start;width:24px;height:24px}
+#mf .ma>span:not(.mlk):not(.mdk){text-align:left;white-space:nowrap}
+#mf .ma>svg,#mf .ma img{width:18px;height:18px}
