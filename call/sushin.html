@@ -43,16 +43,16 @@
 <div class="ps-pn" data-t="기본">
 <h2>전화 화면 편집</h2>
 <div class="row"><label>화면 상태<select id="iSt"><option value="2">수신 중 (받기 전)</option><option value="0">연결 중</option><option value="1">연결 후 (통화 중)</option><option value="3">수신 거절 (통화 종료)</option></select></label><label>수신 이름<input id="iRn"></label></div>
-<div class="row"><label>수신 부제<input id="iRs"></label><label>수신 배경색<input id="iC3" type="color"></label></div>
+<div class="row"><label>수신 부제<input id="iRs"></label></div>
 <div class="row"><label>전화번호/이름<input id="iNum"></label><label>연결 중 문구<input id="iCn"></label></div>
 <div class="row"><label>통화 시간<input id="iTm"></label></div>
-<div class="row"><label>종료 문구(수신 거절)<input id="iEd"></label><label>거절 배경 위쪽 색<input id="iE1" type="color"></label></div>
-<div class="row"><label>거절 배경 아래쪽 색<input id="iE2" type="color"></label></div>
-<div class="row"><label>배경 위쪽 색<input id="iC1" type="color"></label><label>배경 아래쪽 색<input id="iC2" type="color"></label></div>
+<div class="row" id="rowEnd"><label>종료 문구(수신 거절)<input id="iEd"></label><label>거절 배경 위쪽 색<input id="iE1" type="color"></label></div>
+<div class="row" id="rowEnd2"><label>거절 배경 아래쪽 색<input id="iE2" type="color"></label></div>
+<div class="row" id="rowCol"><label>배경 위쪽 색<input id="iC1" type="color"></label><label>배경 아래쪽 색<input id="iC2" type="color"></label></div>
 </div></section></div><div class="ps-acts"><button id="savePng" class="primary">PNG로 저장</button><button id="reset" class="secondary">초기화</button></div></section>
 </div></div>
 <script src="https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js"></script>
-<script src="sushin.js?v=3"></script>
+<script src="sushin.js?v=4"></script>
 <script>(function(){var b=document.getElementById("pvBtn");b.onclick=function(){var on=document.body.classList.toggle("pvmode");this.textContent=on?"편집 모드":"미리보기 모드"}})();</script>
 <script src="studio.js?v=1"></script>
 <script src="../back-anim.js?v=1" defer></script><script src="../upl.js?v=4" defer></script></body>
