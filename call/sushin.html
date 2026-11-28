@@ -28,7 +28,6 @@
 <i class="chb"></i>
 <div class="rin">
 <div class="rn" id="rN"></div>
-<div class="rs" id="rS"></div>
 <div class="rq" style="left:22.9cqw;top:140cqw"><svg viewBox="0 0 32 32" style="width:6.200cqw"><circle cx="16" cy="17.500" r="10.500" fill="#fff"/><circle cx="6.500" cy="7.500" r="4.600" fill="#fff"/><circle cx="25.500" cy="7.500" r="4.600" fill="#fff"/><path d="M16 11v7h-4.500" fill="none" stroke="#303030" stroke-width="2.800" stroke-linecap="round" stroke-linejoin="round"/><path d="M9 26l-3.500 4.500M23 26l3.500 4.500" stroke="#fff" stroke-width="2.600" stroke-linecap="round"/></svg><span id="rL">나중에 보기</span></div>
 <div class="rq" style="left:77.9cqw;top:140cqw"><svg viewBox="0 0 34 30" style="width:7cqw"><path d="M17 1C8 1 1 6.500 1 13.500c0 3.500 1.800 6.600 4.700 8.800L4 29l7.200-3.800c1.900.5 3.800.8 5.800.8 9 0 16-5.500 16-12.500S26 1 17 1z" fill="#fff"/></svg><span id="rM">메시지</span></div>
 <div class="rb rd"><svg viewBox="0 0 24 24" style="width:9.600cqw"><path d="M12 9c-1.600 0-3.150.25-4.600.72v3.100c0 .39-.23.74-.56.9-.98.49-1.870 1.120-2.660 1.850-.18.18-.43.28-.7.28-.28 0-.53-.11-.71-.29L.29 13.080a.99.99 0 0 1-.29-.7c0-.28.11-.53.29-.71C3.340 8.780 7.460 7 12 7s8.660 1.780 11.710 4.670c.18.18.29.43.29.71 0 .28-.11.53-.29.71l-2.480 2.480c-.18.18-.43.29-.71.29-.27 0-.52-.11-.7-.28a11.270 11.270 0 0 0-2.670-1.850.996.996 0 0 1-.56-.9v-3.100C15.150 9.250 13.600 9 12 9z" fill="#fff"/></svg></div>
@@ -43,16 +42,15 @@
 <div class="ps-pn" data-t="기본">
 <h2>전화 화면 편집</h2>
 <div class="row"><label>화면 상태<select id="iSt"><option value="2">수신 중 (받기 전)</option><option value="0">연결 중</option><option value="1">연결 후 (통화 중)</option><option value="3">수신 거절 (통화 종료)</option></select></label><label>수신 이름<input id="iRn"></label></div>
-<div class="row"><label>수신 부제<input id="iRs"></label></div>
 <div class="row"><label>전화번호/이름<input id="iNum"></label><label>연결 중 문구<input id="iCn"></label></div>
-<div class="row"><label>통화 시간<input id="iTm"></label></div>
+<div class="row" id="rowTime"><label>통화 시간<input id="iTm"></label></div>
 <div class="row" id="rowEnd"><label>종료 문구(수신 거절)<input id="iEd"></label><label>거절 배경 위쪽 색<input id="iE1" type="color"></label></div>
 <div class="row" id="rowEnd2"><label>거절 배경 아래쪽 색<input id="iE2" type="color"></label></div>
 <div class="row" id="rowCol"><label>배경 위쪽 색<input id="iC1" type="color"></label><label>배경 아래쪽 색<input id="iC2" type="color"></label></div>
 </div></section></div><div class="ps-acts"><button id="savePng" class="primary">PNG로 저장</button><button id="reset" class="secondary">초기화</button></div></section>
 </div></div>
 <script src="https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js"></script>
-<script src="sushin.js?v=4"></script>
+<script src="sushin.js?v=5"></script>
 <script>(function(){var b=document.getElementById("pvBtn");b.onclick=function(){var on=document.body.classList.toggle("pvmode");this.textContent=on?"편집 모드":"미리보기 모드"}})();</script>
 <script src="studio.js?v=1"></script>
 <script src="../back-anim.js?v=1" defer></script><script src="../upl.js?v=4" defer></script></body>
