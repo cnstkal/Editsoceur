@@ -30,12 +30,10 @@ svg{display:block}
 .b{isolation:isolate}
 .tl{z-index:-1;position:absolute;left:0;bottom:0;width:0;height:0;pointer-events:none}
 .tl svg{display:none}
-.tl::before,.tl::after{content:"";position:absolute;bottom:0;pointer-events:none;height:calc(var(--u)*2.9)}
-.tl::before{left:calc(var(--u)*-.9);width:calc(var(--u)*3.1);background:#e9e9eb;border-bottom-right-radius:calc(var(--u)*3.1) calc(var(--u)*2.7)}
-.tl::after{left:calc(var(--u)*-2.25);width:calc(var(--u)*2.35);background:#fff;border-bottom-right-radius:calc(var(--u)*2.1) calc(var(--u)*2.7)}
+.tl::before{content:"";position:absolute;pointer-events:none;bottom:calc(var(--u)*-.997);left:calc(var(--u)*1.087);width:calc(var(--u)*2.084);height:calc(var(--u)*1.994);background:no-repeat 0 0/100% 100% url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='460' height='440' viewBox='-70 -22 46 44'%3E%3Cg transform='matrix%28-1 0 0 1 -94 0%29'%3E%3Cpath fill='%23e9e9eb' d='M-69 -5V-1C-65 -1-63 1-60 4C-50 11.5-39 19-31 21.5C-27 22.8-24.8 20-26.500 17C-30 12.500-32.500 8-33 2C-33.500-5-31-10-25.500-14L-45-22Z'/%3E%3C/g%3E%3C/svg%3E")}
 .me .tl{left:auto;right:0}
-.me .tl::before{left:auto;right:calc(var(--u)*-.9);background:var(--sent);border-bottom-right-radius:0;border-bottom-left-radius:calc(var(--u)*3.1) calc(var(--u)*2.7)}
-.me .tl::after{left:auto;right:calc(var(--u)*-2.25);border-bottom-right-radius:0;border-bottom-left-radius:calc(var(--u)*2.1) calc(var(--u)*2.7)}
+.me .tl::before{left:auto;right:calc(var(--u)*1.087);background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='460' height='440' viewBox='-70 -22 46 44'%3E%3Cpath fill='%230b84fe' d='M-69 -5V-1C-65 -1-63 1-60 4C-50 11.5-39 19-31 21.5C-27 22.8-24.8 20-26.500 17C-30 12.500-32.500 8-33 2C-33.500-5-31-10-25.500-14L-45-22Z'/%3E%3C/svg%3E")}
+.stage.green .me .tl::before{background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='460' height='440' viewBox='-70 -22 46 44'%3E%3Cpath fill='%2334c759' d='M-69 -5V-1C-65 -1-63 1-60 4C-50 11.5-39 19-31 21.5C-27 22.8-24.8 20-26.500 17C-30 12.500-32.500 8-33 2C-33.500-5-31-10-25.500-14L-45-22Z'/%3E%3C/svg%3E")}
 .row.tail{margin-bottom:calc(var(--u)*.9)}
 .read{color:#8e8e93;font-size:calc(var(--u)*1.9);font-weight:600;margin:calc(var(--u)*.6) calc(var(--u)*1) 0}
 .read.me{text-align:right}

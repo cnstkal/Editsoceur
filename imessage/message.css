@@ -15,11 +15,10 @@ html,body{touch-action:manipulation;-webkit-text-size-adjust:100%}
 .l{align-self:flex-start;margin-left:4.1cqw;background:#e9e9eb;color:#000}
 .r{align-self:flex-end;margin-right:4.1cqw;background:var(--sent);color:#fff}
 .b.t{margin-bottom:3.6cqw}
-.b.t::before,.b.t::after{content:'';position:absolute;bottom:0;height:2.9cqw;pointer-events:none}
-.r.t::before{right:-.9cqw;width:3.1cqw;background:var(--sent);border-bottom-left-radius:3.1cqw 2.7cqw;clip-path:polygon(0 0,100% 0,100% 68%,82% 82%,62% 100%,38% 86%,0 100%)}
-.r.t::after{right:-2.5cqw;width:2.35cqw;background:#fff;border-bottom-left-radius:2.1cqw 2.7cqw}
-.l.t::before{left:-.9cqw;width:3.1cqw;background:#e9e9eb;border-bottom-right-radius:3.1cqw 2.7cqw}
-.l.t::after{left:-2.25cqw;width:2.35cqw;background:#fff;border-bottom-right-radius:2.1cqw 2.7cqw}
+.b.t::before{content:'';position:absolute;bottom:-1.87cqw;width:3.9cqw;height:3.73cqw;background:no-repeat 0 0/100% 100%;pointer-events:none}
+.r.t::before{right:2.04cqw;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='460' height='440' viewBox='-70 -22 46 44'%3E%3Cpath fill='%2370d57b' d='M-69 -5V-1C-65 -1-63 1-60 4C-50 11.5-39 19-31 21.5C-27 22.8-24.8 20-26.500 17C-30 12.500-32.500 8-33 2C-33.500-5-31-10-25.500-14L-45-22Z'/%3E%3C/svg%3E")}
+#mf.ios .r.t::before{background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='460' height='440' viewBox='-70 -22 46 44'%3E%3Cpath fill='%230b84fe' d='M-69 -5V-1C-65 -1-63 1-60 4C-50 11.5-39 19-31 21.5C-27 22.8-24.8 20-26.500 17C-30 12.500-32.500 8-33 2C-33.500-5-31-10-25.500-14L-45-22Z'/%3E%3C/svg%3E")}
+.l.t::before{left:2.04cqw;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='460' height='440' viewBox='-70 -22 46 44'%3E%3Cg transform='matrix%28-1 0 0 1 -94 0%29'%3E%3Cpath fill='%23e9e9eb' d='M-69 -5V-1C-65 -1-63 1-60 4C-50 11.5-39 19-31 21.5C-27 22.8-24.8 20-26.500 17C-30 12.500-32.500 8-33 2C-33.500-5-31-10-25.500-14L-45-22Z'/%3E%3C/g%3E%3C/svg%3E")}
 .tm{flex:none;align-self:center;font-size:3.2cqw;line-height:4.3cqw;color:#8e8e93;font-weight:500;margin:2cqw 0 3.1cqw;white-space:nowrap}
 .tm b{font-weight:700}
 .rd{flex:none;align-self:flex-end;margin-right:9.2cqw;font-size:3.2cqw;line-height:4.3cqw;font-weight:600;color:#8e8e93}
