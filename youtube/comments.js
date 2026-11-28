@@ -32,11 +32,7 @@ var h='';S.l.forEach(function(x,i){
 h+='<div class="mi">'+(x.av?'<img class="mav" alt="" src="'+x.av+'" style="object-fit:cover;background:#999">':'<i class="mav" style="background-color:'+esc(x.cl||'#999')+'">'+esc(x.lt)+'</i>')+(x.rp?'<i class="cth"></i>':'')+
 '<div class="mb"><div class="mh">'+esc(x.h)+'<i class="md"></i>'+esc(x.time)+'</div><div class="mt">'+ts(x.x)+'</div><div class="ma">'+'<span class="mlk" data-i="'+i+'" style="cursor:pointer">'+(x.liked?LIKED:IC(UP))+'</span><span>'+(x.liked?lkFmt(lkNum(x.lk)+1):esc(x.lk))+'</span>'+IC(UP,1)+IC(RP)+'</div>'+(x.rp?'<div class="mr">답글 '+esc(x.rp)+'개'+CH+'</div>':'')+'</div>'+DOTS+'</div>'});
 $('mL').innerHTML=h;fit()}
-function fit(){var mf=$('mf'),ml=$('mL'),cb=document.querySelector('#mf .mcb');
-ml.style.height='auto';var lh=ml.offsetHeight,base=Math.max(369,lh),d=base-369;
-ml.style.height=base+'px';
-if(d<=0){mf.style.aspectRatio='';mf.style.height='';cb.style.top='';return}
-mf.style.aspectRatio='auto';mf.style.height=(mf.offsetWidth*2556/1179+d)+'px';cb.style.top=(766+d)+'px'}
+function fit(){var mf=$('mf'),ml=$('mL'),cb=document.querySelector('#mf .mcb');ml.style.height='auto';var lh=ml.offsetHeight;ml.style.height=lh+'px';var hide=cb&&cb.style.display==='none',top=397+lh+(hide?0:8),bh=hide?0:86;if(cb){cb.style.top=top+'px';cb.style.bottom='auto';cb.style.height=bh+'px'}mf.style.aspectRatio='auto';mf.style.height=Math.max(top+bh,200)+'px'}
 function get(p){return p.split('.').reduce(function(o,k){return o&&o[k]},S)}
 function put(p,v){var a=p.split('.'),l=a.pop();a.reduce(function(o,k){return o[k]},S)[l]=v}
 function rd(f,cb){var r=new FileReader();r.onload=function(){cb(r.result)};r.readAsDataURL(f)}
