@@ -50,3 +50,10 @@
 #mf .msh{border-radius:0!important}
 /* 칩 위치는 원래대로, 글자만 칩 안에서 가운데 정렬 */
 .mc1,.mc2{padding:0!important;text-align:center!important}
+/* PNG 저장 중 svg를 img로 바꾼 뒤에도 간격이 같도록 (저장용 규칙) */
+.ma img+img{margin-left:11.5px}
+.ma img+img+img{margin-left:34px}
+.ma span+img{margin-left:11.5px}
+.ma span+img+img{margin-left:34px}
+/* 시트 손잡이 바: 화면 가운데 정렬 (화면 너비가 달라도) */
+#mf .mhd{left:50%!important;margin-left:-19.5px!important}

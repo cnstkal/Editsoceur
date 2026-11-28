@@ -57,12 +57,14 @@ persist();list();render()});
 $('addC').onclick=function(){S.l.push({h:'@username',time:'1시간 전',x:'',lk:'',rp:'',lt:'',cl:'#999999'});persist();list();render()};
 function load(reset){if(reset){try{localStorage.removeItem(STORE)}catch(e){}S=JSON.parse(JSON.stringify(DEF))}else{try{var saved=localStorage.getItem(STORE);S=saved?JSON.parse(saved):JSON.parse(JSON.stringify(DEF));if(!S||!Array.isArray(S.l))throw new Error('invalid saved data')}catch(e){S=JSON.parse(JSON.stringify(DEF))}}if(S.th&&!S.thRaw)S.thRaw=S.th;buildTh();set();list();render()}
 $('reset').onclick=function(){load(true)};
-$('savePng').onclick=function(){var b=this,t=b.textContent;b.disabled=true;b.textContent='저장 중...';
-(document.fonts&&document.fonts.ready?document.fonts.ready:Promise.resolve()).then(function(){
-return html2canvas($('mf'),{scale:4,useCORS:true,backgroundColor:S.showV===false?null:'#fff',logging:false})}).then(function(c){
+function svgToImgs(root){var undo=[],svgs=[].slice.call(root.querySelectorAll('svg')),ps=[];svgs.forEach(function(sv){var r=sv.getBoundingClientRect();var c=sv.cloneNode(true);c.setAttribute('width',r.width);c.setAttribute('height',r.height);var im=new Image();im.className=sv.getAttribute('class')||'';im.setAttribute('style',sv.getAttribute('style')||'');im.style.width=r.width+'px';im.style.height=r.height+'px';im.src='data:image/svg+xml;charset=utf-8,'+encodeURIComponent(new XMLSerializer().serializeToString(c));var par=sv.parentNode,nx=sv.nextSibling;par.replaceChild(im,sv);undo.push(function(){par.insertBefore(sv,im.nextSibling);par.removeChild(im)});ps.push(im.decode?im.decode().catch(function(){}):Promise.resolve())});
+return Promise.all(ps).then(function(){return function(){undo.forEach(function(f){f()})}})}
+$('savePng').onclick=function(){var b=this,t=b.textContent,restore=function(){};b.disabled=true;b.textContent='저장 중...';
+(document.fonts&&document.fonts.ready?document.fonts.ready:Promise.resolve()).then(function(){return svgToImgs($('mf'))}).then(function(rs){restore=rs;
+return html2canvas($('mf'),{scale:4,useCORS:true,backgroundColor:S.showV===false?null:'#fff',logging:false})}).then(function(c){restore();
 c.toBlob(function(bl){var a=document.createElement('a');a.href=URL.createObjectURL(bl);var n=new Date(),z=function(x,l){return String(x).padStart(l||2,'0')};a.download='youtube-comments-'+n.getFullYear()+z(n.getMonth()+1)+z(n.getDate())+'-'+z(n.getHours())+z(n.getMinutes())+z(n.getSeconds())+z(n.getMilliseconds(),3)+'.png';
 document.body.appendChild(a);a.click();a.remove();b.disabled=false;b.textContent=t},'image/png')
-}).catch(function(){b.disabled=false;b.textContent=t;alert('PNG 저장에 실패했습니다.')})};
+}).catch(function(){restore();b.disabled=false;b.textContent=t;alert('PNG 저장에 실패했습니다.')})};
 document.addEventListener('gesturestart',function(e){e.preventDefault()},{passive:false});
 load(false);
 })();
