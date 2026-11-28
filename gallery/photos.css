@@ -33,14 +33,14 @@ html,body{touch-action:manipulation;-webkit-text-size-adjust:100%}
 
 /* ===== 16:9 가로 (1920x1080) ===== */
 .ps-frame .phone.wide{width:100%!important;max-width:960px!important}
-#pf.wide{width:100%;aspect-ratio:16/9;min-height:0;height:auto;overflow:hidden}
+#pf.wide{width:100%;aspect-ratio:auto;min-height:56.25cqw;height:auto;overflow:visible}
 #pf.wide .pt{left:2cqw;top:2.4cqw;line-height:4.4cqw;font-size:3.7cqw}
 #pf.wide .pn{left:2cqw;top:7cqw;line-height:2.3cqw;font-size:1.8cqw}
 #pf.wide .pbt{top:2.8cqw;height:4.4cqw;border-radius:2.2cqw;box-shadow:0 .3cqw 1cqw rgba(0,0,0,.1)}
 #pf.wide .pf1{left:87.2cqw;width:4.4cqw}
 #pf.wide .pf2{left:92.4cqw;width:6.2cqw;font-size:1.8cqw}
 #pf.wide .pf1 svg{width:2.4cqw!important}
-#pf.wide .pg{padding:10.6cqw 0 0}
+#pf.wide .pg{padding:10.6cqw 0 10cqw}
 #pf.wide .pgi{grid-template-columns:repeat(7,1fr);gap:.16cqw}
 #pf.wide .ptb{left:50%;transform:translateX(-50%);bottom:1.4cqw;width:27cqw;height:6.2cqw;border-radius:3.1cqw;padding:.4cqw;box-shadow:0 .3cqw 1cqw rgba(0,0,0,.1)}
 #pf.wide .pti{padding-top:.75cqw;border-radius:2.7cqw}
