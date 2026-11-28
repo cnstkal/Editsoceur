@@ -63,3 +63,6 @@
 .mdt{display:none!important}
 .mi .mb{margin-right:16px}
 .mt{width:auto!important;word-break:normal!important;overflow-wrap:break-word}
+/* 상단 아이콘 살짝 왼쪽으로 */
+.mcx{right:18px!important}
+.min{right:48px!important}
