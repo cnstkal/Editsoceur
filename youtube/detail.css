@@ -63,3 +63,6 @@
 /* 제목 끝 페이드: 마지막 48px을 끝까지 자연스럽게 흐리게 (마스크) */
 #df .dn{-webkit-mask-image:linear-gradient(90deg,#000 calc(100% - 48px),transparent 100%);mask-image:linear-gradient(90deg,#000 calc(100% - 48px),transparent 100%)}
 #df .dn::after{display:none}
+/* 제목 끝 페이드: 저장 캡처(html2canvas)가 mask를 무시해서 흰색 그라데이션 방식으로 되돌림 (더 넓게) */
+#df .dn{-webkit-mask-image:none;mask-image:none}
+#df .dn::after{display:block!important;content:"";position:absolute;right:-6px;top:0;bottom:0;width:80px;background:linear-gradient(90deg,rgba(255,255,255,0),#fff 45%)}
