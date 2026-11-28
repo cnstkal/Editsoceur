@@ -79,3 +79,5 @@
 #mf .ma .mlk,#mf .ma .mdk{display:inline-flex;align-items:center;justify-content:flex-start;width:24px;height:24px}
 #mf .ma>span:not(.mlk):not(.mdk){text-align:left;white-space:nowrap}
 #mf .ma>svg,#mf .ma img{width:18px;height:18px}
+/* 간격 좁힘 */
+#mf .ma{grid-template-columns:24px auto 24px 24px!important;column-gap:8px!important}
