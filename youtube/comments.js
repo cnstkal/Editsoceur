@@ -13,6 +13,7 @@ CH='<svg width="7" height="12" viewBox="0 0 7 12" fill="none" stroke="#0f0f0f" s
 var LIKED='<svg width="18" height="18" viewBox="0 0 24 24" fill="#0f0f0f" stroke="#0f0f0f" stroke-width="1.800" stroke-linejoin="round" stroke-linecap="round">'+UP+'</svg>';
 function lkFmt(n){var f=function(v){return v.toFixed(1).replace(/\.0$/,'')};if(n>=10000)return f(n/10000)+'만';if(n>=1000)return f(n/1000)+'천';return String(n)}
 function lkNum(s){s=String(s==null?'':s).replace(/,/g,'').trim();var m=s.match(/^([\d.]+)\s*(천|만)?/);if(!m)return 0;var v=parseFloat(m[1]);if(isNaN(v))return 0;if(m[2]==='천')v*=1000;if(m[2]==='만')v*=10000;return Math.round(v)}
+var DLIKED='<svg width="18" height="18" viewBox="0 0 24 24" fill="#0f0f0f" stroke="#0f0f0f" stroke-width="1.800" stroke-linejoin="round" stroke-linecap="round"><g transform="rotate(180 12 12)">'+UP+'</g></svg>';
 var S,STORE='editsoceur-youtube-comments-v1';
 function persist(){try{localStorage.setItem(STORE,JSON.stringify(S))}catch(e){console.warn('댓글 데이터 저장 실패',e)}}
 function esc(t){return String(t==null?'':t).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;')}
@@ -30,7 +31,7 @@ $('mTi').textContent=S.ti;$('mIp').textContent=S.ip;
 $('mC1').textContent=S.c1;$('mC2').textContent=S.c2;$('mC1').className='mc1'+(S.act==='0'?' on':'');$('mC2').className='mc2'+(S.act==='1'?' on':'');
 var h='';S.l.forEach(function(x,i){
 h+='<div class="mi">'+(x.av?'<img class="mav" alt="" src="'+x.av+'" style="object-fit:cover;background:#999">':'<i class="mav" style="background-color:'+esc(x.cl||'#999')+'">'+esc(x.lt)+'</i>')+(x.rp?'<i class="cth"></i>':'')+
-'<div class="mb"><div class="mh">'+esc(x.h)+'<i class="md"></i>'+esc(x.time)+'</div><div class="mt">'+ts(x.x)+'</div><div class="ma">'+'<span class="mlk" data-i="'+i+'" style="cursor:pointer">'+(x.liked?LIKED:IC(UP))+'</span><span>'+(x.liked?lkFmt(lkNum(x.lk)+1):esc(x.lk))+'</span>'+IC(UP,1)+IC(RP)+'</div>'+(x.rp?'<div class="mr">답글 '+esc(x.rp)+'개'+CH+'</div>':'')+'</div>'+DOTS+'</div>'});
+'<div class="mb"><div class="mh">'+esc(x.h)+'<i class="md"></i>'+esc(x.time)+'</div><div class="mt">'+ts(x.x)+'</div><div class="ma">'+'<span class="mlk" data-i="'+i+'" style="cursor:pointer">'+(x.liked?LIKED:IC(UP))+'</span><span>'+(x.liked?lkFmt(lkNum(x.lk)+1):esc(x.lk))+'</span>'+'<span class="mdk" data-i="'+i+'" style="cursor:pointer">'+(x.disliked?DLIKED:IC(UP,1))+'</span>'+IC(RP)+'</div>'+(x.rp?'<div class="mr">답글 '+esc(x.rp)+'개'+CH+'</div>':'')+'</div>'+DOTS+'</div>'});
 $('mL').innerHTML=h;fit()}
 function fit(){var mf=$('mf'),ml=$('mL'),cb=document.querySelector('#mf .mcb');ml.style.height='auto';var lh=ml.offsetHeight;ml.style.height=lh+'px';var hide=cb&&cb.style.display==='none',top=397+lh+(hide?0:8),bh=hide?0:86;if(cb){cb.style.top=top+'px';cb.style.bottom='auto';cb.style.height=bh+'px'}mf.style.aspectRatio='auto';mf.style.height=Math.max(top+bh,200)+'px'}
 function get(p){return p.split('.').reduce(function(o,k){return o&&o[k]},S)}
@@ -54,7 +55,8 @@ L.addEventListener('change',function(e){var t=e.target;if(t.type==='file'&&t.fil
 L.addEventListener('click',function(e){var a=e.target.dataset.a;if(!a)return;var i=ix(e),m=S.l;
 if(a==='x')m.splice(i,1);else if(a==='u'&&i>0){var t=m[i];m[i]=m[i-1];m[i-1]=t}else if(a==='d'&&i<m.length-1){var t2=m[i];m[i]=m[i+1];m[i+1]=t2}
 persist();list();render()});
-$('mL').addEventListener('click',function(e){var k=e.target.closest&&e.target.closest('.mlk');if(!k)return;var x=S.l[+k.dataset.i];if(!x)return;x.liked=!x.liked;persist();render()});
+$('mL').addEventListener('click',function(e){var k=e.target.closest&&e.target.closest('.mlk');if(!k)return;var x=S.l[+k.dataset.i];if(!x)return;x.liked=!x.liked;if(x.liked)x.disliked=false;persist();render()});
+$('mL').addEventListener('click',function(e){var k=e.target.closest&&e.target.closest('.mdk');if(!k)return;var x=S.l[+k.dataset.i];if(!x)return;x.disliked=!x.disliked;if(x.disliked)x.liked=false;persist();render()});
 $('addC').onclick=function(){S.l.push({h:'@username',time:'1시간 전',x:'',lk:'',rp:'',lt:'',cl:'#999999'});persist();list();render()};
 function load(reset){if(reset){try{localStorage.removeItem(STORE)}catch(e){}S=JSON.parse(JSON.stringify(DEF))}else{try{var saved=localStorage.getItem(STORE);S=saved?JSON.parse(saved):JSON.parse(JSON.stringify(DEF));if(!S||!Array.isArray(S.l))throw new Error('invalid saved data')}catch(e){S=JSON.parse(JSON.stringify(DEF))}}if(S.th&&!S.thRaw)S.thRaw=S.th;buildTh();set();list();render()}
 $('reset').onclick=function(){load(true)};

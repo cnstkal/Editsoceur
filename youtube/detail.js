@@ -17,7 +17,7 @@ function keyGreen(src,cb){
 var im=new Image();im.onload=function(){var m=Math.min(1,900/Math.max(im.width,im.height)),c=document.createElement('canvas');c.width=Math.round(im.width*m);c.height=Math.round(im.height*m);var x=c.getContext('2d');x.drawImage(im,0,0,c.width,c.height);try{var d=x.getImageData(0,0,c.width,c.height),p=d.data;for(var i=0;i<p.length;i+=4){var r=p[i],g=p[i+1],b=p[i+2];var df=g-Math.max(r,b);if(df>45)p[i+3]=0;else if(df>20)p[i+3]=Math.round(p[i+3]*(45-df)/25)}x.putImageData(d,0,0);cb(c.toDataURL('image/png'))}catch(e){cb(src)}};im.onerror=function(){cb(src)};im.src=src}
 function buildTh(){var m=S.m;if(!m.thRaw){m.th='';return}if(!m.gs){m.th=m.thRaw;return}var k=m.thRaw;if(KEYC[k]){m.th=KEYC[k];return}keyGreen(k,function(d){KEYC[k]=d;S.m.th=d;persist();render()})}
 function render(){
-var m=S.m,p=pc(m.pg);
+var m=S.m,p=pc(m.pg);$('dLkU').setAttribute('fill',m.liked?'#0f0f0f':'none');$('dLkD').setAttribute('fill',m.disliked?'#0f0f0f':'none');
 $('dV').style.cssText=bgi(m.th);
 $('dPi').style.width=p+'%';$('dPu').style.left=p+'%';$('dPu').style.width=Math.min(7,100-p)+'%';
 $('dN').textContent=m.n;$('dH').textContent=m.h;
@@ -36,6 +36,8 @@ if(e.type==='file')e.addEventListener('change',function(){if(e.files[0])rd(e.fil
 else{var h=function(){put(e.dataset.k,e.type==='checkbox'?e.checked:e.value);if(e.dataset.k==='m.gs')buildTh();persist();render()};e.addEventListener('input',h);e.addEventListener('change',h)}});
 function load(reset){if(reset){try{localStorage.removeItem(STORE)}catch(e){}S=JSON.parse(JSON.stringify(DEF))}else{try{var saved=localStorage.getItem(STORE);S=saved?JSON.parse(saved):JSON.parse(JSON.stringify(DEF));if(!S||!S.m||!S.c||!S.u)throw new Error('invalid saved data')}catch(e){S=JSON.parse(JSON.stringify(DEF))}}if(S.m.th&&!S.m.thRaw)S.m.thRaw=S.m.th;buildTh();set();render()}
 $('reset').onclick=function(){load(true)};
+$('dLkU').addEventListener('click',function(){S.m.liked=!S.m.liked;if(S.m.liked)S.m.disliked=false;persist();render()});
+$('dLkD').addEventListener('click',function(){S.m.disliked=!S.m.disliked;if(S.m.disliked)S.m.liked=false;persist();render()});
 $('savePng').onclick=function(){var b=this,t=b.textContent;b.disabled=true;b.textContent='저장 중...';
 (document.fonts&&document.fonts.ready?document.fonts.ready:Promise.resolve()).then(function(){
 return html2canvas($('df'),{scale:4,useCORS:true,backgroundColor:'#fff',logging:false})}).then(function(c){
