@@ -25,7 +25,7 @@ $('dS').textContent='좋아요 '+m.lk+' · 조회수 '+m.vw+' · '+m.time;
 $('dA0').style.cssText=bgi(m.av);$('dSb').textContent=m.sub;
 $('dCn').textContent=S.c.cnt;$('dCx').innerHTML=ts(S.c.x);$('dCa').style.cssText=bgi(S.c.av);
 var u=S.u;
-$('dL').innerHTML='<div class="dcd"><div class="dth" style="'+bgi(u.th)+'">'+(u.dur?'<div class="dur">'+esc(u.dur)+'</div>':'')+'<div class="dpb"><i style="width:'+pc(u.pg)+'%"></i></div></div><div class="dif"><i class="dav" style="'+bgi(u.av)+'"></i><div class="dtx"><div class="dtt">'+esc(u.n)+'</div><div class="dmt">'+esc(u.ch)+(u.bd?BD:'')+'<span>▷'+esc(u.vw)+'</span><span>'+esc(u.time)+'</span></div></div></div>'+DOTS+'</div>'}
+$('dL').innerHTML='<div class="dcd"><div class="dth" style="'+bgi(u.th)+'">'+(u.dur?'<div class="dur">'+esc(u.dur)+'</div>':'')+'<div class="dpb"><i style="width:'+pc(u.pg)+'%"></i></div></div><div class="dif"><i class="dav" style="'+bgi(u.av)+'"></i><div class="dtx"><div class="dtt">'+esc(u.n)+'</div><div class="dmt">'+esc(u.ch)+(u.bd?BD:'')+'<span>▷'+esc(u.vw)+'</span><span class="dsep">·</span><span>'+esc(u.time)+'</span></div></div></div>'+DOTS+'</div>'}
 function get(p){return p.split('.').reduce(function(o,k){return o&&o[k]},S)}
 function put(p,v){var a=p.split('.'),l=a.pop();a.reduce(function(o,k){return o[k]},S)[l]=v}
 var els=[].slice.call(document.querySelectorAll('[data-k]'));
