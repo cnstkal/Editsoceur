@@ -58,7 +58,7 @@ $('savePng').onclick=async function(){var b=this,t=b.textContent,el=$('banner');
  await Promise.all(waits);await new Promise(function(ok){requestAnimationFrame(function(){requestAnimationFrame(ok)})});
  var c=await html2canvas(el,{scale:4*(parseFloat(getComputedStyle($('stage')).getPropertyValue('--u'))||1),useCORS:true,allowTaint:false,backgroundColor:null,logging:false,imageTimeout:20000});
  var blob=await new Promise(function(ok){c.toBlob(ok,'image/png')});if(!blob)throw new Error('PNG encode failed');
- var a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download='notification.png';document.body.appendChild(a);a.click();a.remove();setTimeout(function(){URL.revokeObjectURL(a.href)},1000);
+ var a=document.createElement('a');a.href=URL.createObjectURL(blob);var __d=new Date(),__p=function(n){return String(n).padStart(2,'0')};a.download='notification-'+__d.getFullYear()+__p(__d.getMonth()+1)+__p(__d.getDate())+'-'+__p(__d.getHours())+__p(__d.getMinutes())+__p(__d.getSeconds())+'-'+Math.random().toString(36).slice(2,8)+'.png';document.body.appendChild(a);a.click();a.remove();setTimeout(function(){URL.revokeObjectURL(a.href)},1000);
  }catch(err){console.error(err);alert('PNG 저장에 실패했습니다.');}finally{b.disabled=false;b.textContent=t}};
 render();
 })();
