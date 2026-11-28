@@ -2,7 +2,7 @@
 var $=function(i){return document.getElementById(i)};
 var DEF={st:'2',rn:'성화',rs:'휴대전화',c3:'#303030',num:'1588-3819',sub:'대한민국',cn:'연결 중...',tm:'00:00',c1:'#465b55',c2:'#2d453f',ed:'통화 종료',e1:'#3a5a52',e2:'#294a41'};
 var S,STORE='editsoceur-sushin-v1';
-var IDS={iSt:'st',iRn:'rn',iRs:'rs',iC3:'c3',iNum:'num',iSub:'sub',iCn:'cn',iTm:'tm',iC1:'c1',iC2:'c2',iEd:'ed',iE1:'e1',iE2:'e2'};
+var IDS={iSt:'st',iRn:'rn',iRs:'rs',iC3:'c3',iNum:'num',iCn:'cn',iTm:'tm',iC1:'c1',iC2:'c2',iEd:'ed',iE1:'e1',iE2:'e2'};
 function persist(){try{localStorage.setItem(STORE,JSON.stringify(S))}catch(e){}}
 function render(){
 var f=$('cf'),d=S.st==='3';
@@ -10,7 +10,7 @@ f.classList.toggle('c0',S.st==='0'||d);f.classList.toggle('c2',S.st==='2');f.cla
 f.style.setProperty('--c1',d?S.e1:S.c1);f.style.setProperty('--c2',d?S.e2:S.c2);f.style.setProperty('--c3',S.c3);
 $('cS').textContent=d?S.ed:(S.st==='0'?S.cn:S.tm);
 $('cN').textContent=d?S.rn:S.num;
-$('cSub').textContent=S.sub;$('cSub').style.display=(S.st==='0'&&S.sub)?'':'none';
+
 $('rN').textContent=S.rn;$('rS').textContent=S.rs;$('rS').style.display=S.rs?'':'none'}
 function set(){for(var k in IDS)$(k).value=S[IDS[k]]}
 function load(reset){
