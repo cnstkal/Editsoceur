@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>사진 보기 (16:9)</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.css">
+<link rel="stylesheet" href="studio.css?v=3">
+<link rel="stylesheet" href="../ps-editor.css?v=12">
+<style>
+#snap{width:100%;max-width:960px;margin:0 auto;height:auto;background:#fff}
+#sc{width:100%;height:auto;display:block;box-shadow:0 2px 12px rgba(0,0,0,.2)}
+.ps-stage{padding-top:12px}#sc{aspect-ratio:16/9}
+</style>
+</head>
+<body class="studio">
+<div class="ps-wrap">
+<header class="ps-top"><a class="ps-back" href="index.html" style="color:#0095f6;font-weight:600;font-size:15px;text-decoration:none">‹ 뒤로</a><span></span><button class="ps-pvbtn" id="pvBtn" type="button" hidden>미리보기 모드</button></header>
+<div class="ps-grid">
+<section class="ps-card ps-main">
+<div class="ps-lbl">Live Preview</div><h2>사진 보기</h2><p class="ps-sub">실제 화면 비율로 확인하고, 오른쪽에서 바로 수정해요</p>
+<div class="ps-stage"><div id="snap">
+<svg id="sc" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 1920 1080" width="1920" height="1080" font-family="Pretendard,-apple-system,sans-serif" text-anchor="middle" fill="#111"><defs><g id="orig"><circle cx="114" cy="103" r="67" fill="#fff" stroke="#dcdcde" stroke-width="2"/><rect x="348" y="22" width="482" height="162" rx="81" fill="#fff" stroke="#dcdcde" stroke-width="2"/><circle cx="1065" cy="103" r="67" fill="#fff" stroke="#dcdcde" stroke-width="2"/><path d="M123 76 94 103l29 28" fill="none" stroke="#111" stroke-width="10" stroke-linecap="round" stroke-linejoin="round"/><circle cx="1038" cy="103" r="7"/><circle cx="1064" cy="103" r="7"/><circle cx="1090" cy="103" r="7"/><text id="vD" x="589" y="95" font-size="46" font-weight="700">오늘</text><text id="vT" x="589" y="149" font-size="39" font-weight="500">오후 2:42</text><circle cx="156" cy="2260" r="73" fill="#fff" stroke="#dcdcde" stroke-width="2"/><rect x="337" y="2188" width="506" height="144" rx="72" fill="#fff" stroke="#dcdcde" stroke-width="2"/><circle cx="1023" cy="2260" r="73" fill="#fff" stroke="#dcdcde" stroke-width="2"/><g fill="none" stroke="#111" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"><path d="M142 2242h-6q-11 0-11 11v31q0 11 11 11h39q11 0 11-11v-31q0-11-11-11h-6M155 2265v-45M141 2232l14-14 14 14"/><path d="M421 2290c-22-16-35-29-35-45 0-23 27-25 35-6 8-19 35-17 35 6 0 16-13 29-35 45z"/><circle cx="589" cy="2260" r="34"/><path d="M582 2256h7v22M580 2278h18"/><path d="M724 2237h68M724 2260h68M724 2283h68"/><g fill="#fff"><rect x="761" y="2230" width="20" height="14" rx="7"/><rect x="735" y="2253" width="20" height="14" rx="7"/><rect x="761" y="2276" width="20" height="14" rx="7"/></g><path d="M991 2232h64M1010 2231v-11h26v11M998 2234l4 52q1 8 9 8h24q8 0 9-8l4-52M1012 2247v32M1023 2247v32M1034 2247v32"/></g><circle cx="589" cy="2243" r="5"/></g></defs><rect width="1920" height="1080" fill="#fff"/><path d="M0 198h1920M0 880h1920" stroke="#e6e6e8" stroke-width="2"/><image id="ph" x="0" y="200" width="1920" height="678" preserveAspectRatio="xMidYMid slice"/><svg x="40" y="15" width="150" height="170" viewBox="40 20 150 170" overflow="hidden"><use href="#orig"/></svg><svg x="707" y="22" width="506" height="162" viewBox="337 22 506 162" overflow="hidden"><use href="#orig"/></svg><svg x="1700" y="30" width="150" height="134" viewBox="990 36 150 134" overflow="hidden"><use href="#orig"/></svg><svg x="70" y="900" width="160" height="160" viewBox="80 2180 160 160" overflow="hidden"><use href="#orig"/></svg><svg x="700" y="900" width="520" height="160" viewBox="330 2180 520 160" overflow="hidden"><use href="#orig"/></svg><svg x="1690" y="900" width="160" height="160" viewBox="940 2180 160 160" overflow="hidden"><use href="#orig"/></svg></svg>
+</div></div>
+</section>
+<section class="ps-card ps-side">
+<div class="ps-lbl">Edit Panel</div><h2>사진 보기 수정</h2>
+<div class="ps-edwrap"><section class="editor">
+<div class="ps-pn" data-t="기본">
+<div class="row"><label>날짜<input id="iD" value="오늘"></label><label>시간<input id="iT" value="오후 2:42"></label></div>
+</div>
+<div class="ps-pn" data-t="이미지" hidden>
+<label class="f">사진<input id="iP" type="file" accept="image/*"></label>
+<button class="upl-del" id="del" type="button">사진 비우기</button>
+</div>
+</section></div>
+<div class="ps-acts"><button id="reset" type="button" class="secondary">초기화</button><button id="save" type="button" class="primary">PNG 저장</button></div>
+</section>
+</div></div>
+<script>
+(function(){
+var $=function(i){return document.getElementById(i)};
+var DATE='오늘',TIME='오후 2:42';
+function setImg(u){if(u)$('ph').setAttribute('href',u);else $('ph').removeAttribute('href')}
+function pick(f){if(!f)return;var r=new FileReader();r.onload=function(){setImg(r.result)};r.readAsDataURL(f)}
+$('iP').onchange=function(){pick(this.files[0])};
+$('del').onclick=function(){setImg(null);$('iP').value=''};
+$('iD').oninput=function(){$('vD').textContent=this.value};
+$('iT').oninput=function(){$('vT').textContent=this.value};
+$('reset').onclick=function(){setImg(null);$('iP').value='';$('iD').value=DATE;$('iT').value=TIME;$('vD').textContent=DATE;$('vT').textContent=TIME};
+(function(){var ed=document.querySelector('.editor'),g=[].slice.call(ed.querySelectorAll('.ps-pn')),bar=document.createElement('div');bar.className='ps-seg';
+g.forEach(function(p,i){var b=document.createElement('button');b.type='button';b.textContent=p.getAttribute('data-t');if(!i)b.className='on';b.onclick=function(){g.forEach(function(x,j){x.hidden=j!==i});[].forEach.call(bar.children,function(c,j){c.classList.toggle('on',j===i)})};bar.appendChild(b)});ed.parentNode.insertBefore(bar,ed)})();
+var pv=$('pvBtn');pv.onclick=function(){var on=document.body.classList.toggle('pvmode');this.textContent=on?'편집 모드':'미리보기 모드'};
+$('save').onclick=function(){
+var im=new Image();
+im.onload=function(){var c=document.createElement('canvas');c.width=1920;c.height=1080;c.getContext('2d').drawImage(im,0,0);var a=document.createElement('a');a.download='photo-viewer-16x9.png';a.href=c.toDataURL('image/png');a.click()};
+im.src='data:image/svg+xml;charset=utf-8,'+encodeURIComponent(new XMLSerializer().serializeToString($('sc')));
+};
+})();
+</script>
+</body>
+</html>
