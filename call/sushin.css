@@ -48,3 +48,11 @@
 .wide .rd svg{width:3.9cqw!important}.wide .ra svg{width:3.7cqw!important}
 .wide .rt{top:48.2cqw;width:16cqw;margin-left:-8cqw;font-size:1.7cqw;line-height:2.4cqw}
 .wide #rR{left:36cqw!important}.wide #rA{left:64cqw!important}
+/* 글래스모피즘 제거: html2canvas가 inset 그림자/blur를 못 그려 저장본이 하얗게 뜨는 문제 */
+#cf .cb{background:rgba(255,255,255,.13);box-shadow:none;-webkit-backdrop-filter:none;backdrop-filter:none}
+#cf .cb::before,#cf .cb::after{content:none}
+#cf .cb.ce{background:#c82d21}
+#cf.c3 .cb:not(.ce){background:rgba(126,126,126,.24)}
+/* 거절 화면: svg 자체 opacity는 저장 때 두 번 적용돼서 안쪽 도형에 적용 */
+#cf.c3 .cb svg{opacity:1}
+#cf.c3 .cb svg>*{opacity:.5}
