@@ -67,3 +67,6 @@
 #df .dn{-webkit-mask-image:none;mask-image:none}
 #df .dn::after{display:block!important;content:"";position:absolute;right:-6px;top:0;bottom:0;width:44px;background:linear-gradient(90deg,rgba(255,255,255,0),#fff)}
 .dsep{margin:0 4px}
+/* 아래 영상 정보 줄: 가운뎃점 앞뒤 간격 좁게, 점 뒤 여백 정리 */
+#df .dmt .dsep{margin:0 3px 0 0!important}
+#df .dmt span.dsep+span{margin-left:3px!important}
