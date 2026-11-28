@@ -13,6 +13,7 @@ CH='<svg width="7" height="12" viewBox="0 0 7 12" fill="none" stroke="#0f0f0f" s
 var S,STORE='editsoceur-youtube-comments-v1';
 function persist(){try{localStorage.setItem(STORE,JSON.stringify(S))}catch(e){console.warn('댓글 데이터 저장 실패',e)}}
 function esc(t){return String(t==null?'':t).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;')}
+function ts(t){return esc(t).replace(/(\d{1,2}:\d{2}(?::\d{2})?)/g,'<span class="tsl">$1</span>')}
 function pc(v){v=parseFloat(v);return isNaN(v)?0:Math.max(0,Math.min(100,v))}
 var KEYC={};
 function keyGreen(src,cb){
@@ -26,7 +27,7 @@ $('mTi').textContent=S.ti;$('mIp').textContent=S.ip;
 $('mC1').textContent=S.c1;$('mC2').textContent=S.c2;$('mC1').className='mc1'+(S.act==='0'?' on':'');$('mC2').className='mc2'+(S.act==='1'?' on':'');
 var h='';S.l.forEach(function(x){
 h+='<div class="mi"><i class="mav" style="background-color:'+esc(x.cl||'#999')+(x.av?";background-image:url('"+x.av+"')":'')+'">'+(x.av?'':esc(x.lt))+'</i>'+(x.rp?'<i class="cth"></i>':'')+
-'<div class="mb"><div class="mh">'+esc(x.h)+'<i class="md"></i>'+esc(x.time)+'</div><div class="mt">'+esc(x.x)+'</div><div class="ma">'+IC(UP)+'<span>'+esc(x.lk)+'</span>'+IC(UP,1)+IC(RP)+'</div>'+(x.rp?'<div class="mr">답글 '+esc(x.rp)+'개'+CH+'</div>':'')+'</div>'+DOTS+'</div>'});
+'<div class="mb"><div class="mh">'+esc(x.h)+'<i class="md"></i>'+esc(x.time)+'</div><div class="mt">'+ts(x.x)+'</div><div class="ma">'+IC(UP)+'<span>'+esc(x.lk)+'</span>'+IC(UP,1)+IC(RP)+'</div>'+(x.rp?'<div class="mr">답글 '+esc(x.rp)+'개'+CH+'</div>':'')+'</div>'+DOTS+'</div>'});
 $('mL').innerHTML=h;fit()}
 function fit(){var mf=$('mf'),ml=$('mL'),cb=document.querySelector('#mf .mcb');
 ml.style.height='auto';var lh=ml.offsetHeight,base=Math.max(369,lh),d=base-369;

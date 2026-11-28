@@ -55,3 +55,4 @@
 /* 저장/초기화 버튼: 편집 패널 위쪽에 작게 */
 .ps-acts{margin:0 0 18px;display:flex;gap:8px}
 .ps-acts button{height:40px;padding:0 18px;font-size:14px;flex:none!important;width:auto!important}
+.tsl{color:#065fd4}

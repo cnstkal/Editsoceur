@@ -10,6 +10,7 @@ var S,STORE='editsoceur-youtube-detail-v2';
 function persist(){try{localStorage.setItem(STORE,JSON.stringify(S))}catch(e){console.warn('영상 세부 데이터 저장 실패',e)}}
 function esc(t){return String(t==null?'':t).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;')}
 function pc(v){v=parseFloat(v);return isNaN(v)?0:Math.max(0,Math.min(100,v))}
+function ts(t){return esc(t).replace(/(\d{1,2}:\d{2}(?::\d{2})?)/g,'<span class="tsl">$1</span>')}
 function bgi(u){return u?"background-image:url('"+u+"')":''}
 var KEYC={};
 function keyGreen(src,cb){
@@ -22,7 +23,7 @@ $('dPi').style.width=p+'%';$('dPu').style.left=p+'%';$('dPu').style.width=Math.m
 $('dN').textContent=m.n;$('dH').textContent=m.h;
 $('dS').textContent='좋아요 '+m.lk+' · 조회수 '+m.vw+' · '+m.time;
 $('dA0').style.cssText=bgi(m.av);$('dSb').textContent=m.sub;
-$('dCn').textContent=S.c.cnt;$('dCx').textContent=S.c.x;$('dCa').style.cssText=bgi(S.c.av);
+$('dCn').textContent=S.c.cnt;$('dCx').innerHTML=ts(S.c.x);$('dCa').style.cssText=bgi(S.c.av);
 var u=S.u;
 $('dL').innerHTML='<div class="dcd"><div class="dth" style="'+bgi(u.th)+'">'+(u.dur?'<div class="dur">'+esc(u.dur)+'</div>':'')+'<div class="dpb"><i style="width:'+pc(u.pg)+'%"></i></div></div><div class="dif"><i class="dav" style="'+bgi(u.av)+'"></i><div class="dtx"><div class="dtt">'+esc(u.n)+'</div><div class="dmt">'+esc(u.ch)+(u.bd?BD:'')+'<span>▷'+esc(u.vw)+'</span><span>'+esc(u.time)+'</span></div></div></div>'+DOTS+'</div>'}
 function get(p){return p.split('.').reduce(function(o,k){return o&&o[k]},S)}
