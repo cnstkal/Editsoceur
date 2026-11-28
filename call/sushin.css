@@ -56,3 +56,5 @@
 /* 거절 화면: svg 자체 opacity는 저장 때 두 번 적용돼서 안쪽 도형에 적용 */
 #cf.c3 .cb svg{opacity:1}
 #cf.c3 .cb svg>*{opacity:.5}
+/* 하단 홈 인디케이터(흰 막대) 제거 */
+#cf .chb{display:none!important}
