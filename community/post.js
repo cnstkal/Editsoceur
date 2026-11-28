@@ -1,6 +1,6 @@
 (function(){
   var $=function(i){return document.getElementById(i)},STORE='editsoceur-community-post-v1',S;
-  var DEF={tabs:['DC','마이너갤','미니갤','인물갤'],act:1,gal:'임시게시판',nick:'ㅇㅇ',title:'임시 제목입니다',date:'2026.01.01 12:00',view:'1234',rec:'56',fixed:'3',cmt:'8',body:'임시 내용입니다\n임시 내용입니다',note:'',img:'',showImg:true,comments:[
+  var DEF={tabs:['DC','마이너갤','미니갤','인물갤'],act:1,gal:'임시게시판',nick:'ㅇㅇ',title:'임시 제목입니다',date:'2026.01.01 12:00',view:'1234',rec:'56',fixed:'3',cmt:'8',body:'임시 내용입니다\n임시 내용입니다',note:'',imgs:[],comments:[
     {name:'감귤장수',ip:'121.88',time:'01.01 12:04',text:'오 이거 나만 궁금한 거 아니었네'},
     {reply:true,name:'ㅇㅇ',ip:'39.7',time:'01.01 12:06',to:'감귤장수(121.88)',text:'나도 어제부터 계속 찾아봤음'},
     {reply:true,name:'감귤장수',ip:'121.88',time:'01.01 12:09',to:'ㅇㅇ(39.7)',text:'뭐 좀 나온 거 있음? - dc App'},
@@ -43,17 +43,18 @@
     h+='<div class="gh"><div class="g">'+esc(S.gal)+'<span class="m">m</span></div><div class="r"><span class="ic">i</span><i></i><span>설정<span class="n">N</span></span><i></i><span>연관</span><span class="wr">글쓰기</span></div></div>';
     h+='<div class="ti"><h1>'+esc(S.title)+'</h1><div class="au"><div class="l"><b>'+esc(S.nick)+'</b><i></i><span>'+esc(S.date)+'</span></div><div class="r"><span class="gl">갤로그가기</span></div></div></div>';
     h+='<div class="st"><span>조회수 '+esc(S.view)+'</span><i></i><span>추천 '+esc(S.rec)+'</span><i></i><span class="cm">댓글 <b>'+esc(S.cmt)+'</b></span></div>';
-    if(S.showImg)h+='<div class="im">'+(S.img?'<img src="'+S.img+'">':'')+'</div>';
+    if(S.imgs.length)h+='<div class="im">'+S.imgs.map(function(s){return '<img src="'+s+'">'}).join('')+'</div>';
     h+='<div class="bd2">'+esc(S.body)+'</div>';
     if(S.note)h+='<div class="nt">'+esc(S.note)+'</div>';
     $('cap').innerHTML=h+lower();
   }
   function persist(){try{localStorage.setItem(STORE,JSON.stringify(S))}catch(e){}}
   var F={t0:0,t1:1,t2:2,t3:3};
-  function set(){[0,1,2,3].forEach(function(i){$('t'+i).value=S.tabs[i]});['gal','nick','title','date','view','rec','fixed','cmt','body','note'].forEach(function(k){$(k).value=S[k]});$('showImg').checked=!!S.showImg}
+  function renderImgs(){$('imgList').innerHTML=S.imgs.map(function(s,i){return '<div class="ps-imgrow"><img src="'+s+'" alt=""><span>사진 '+(i+1)+'</span><button type="button" class="ps-ghost" data-img="'+i+'">삭제</button></div>'}).join('')}
+  function set(){[0,1,2,3].forEach(function(i){$('t'+i).value=S.tabs[i]});['gal','nick','title','date','view','rec','fixed','cmt','body','note'].forEach(function(k){$(k).value=S[k]});renderImgs()}
   function load(r){if(r)try{localStorage.removeItem(STORE)}catch(e){}try{var s=!r&&localStorage.getItem(STORE);S=s?JSON.parse(s):JSON.parse(JSON.stringify(DEF));if(!Array.isArray(S.tabs))throw 0;
     /* 이전에 저장한 내용에는 없는 항목을 기본값으로 채움 */
-    Object.keys(DEF).forEach(function(k){if(S[k]==null)S[k]=JSON.parse(JSON.stringify(DEF[k]))})}catch(e){S=JSON.parse(JSON.stringify(DEF))}set();cmEditor();render()}
+    Object.keys(DEF).forEach(function(k){if(S[k]==null)S[k]=JSON.parse(JSON.stringify(DEF[k]))});if(S.img&&!S.imgs.length)S.imgs=[S.img];delete S.img;delete S.showImg}catch(e){S=JSON.parse(JSON.stringify(DEF))}set();cmEditor();render()}
   /* 댓글을 추가·삭제하면 댓글 수도 같은 만큼 바뀜 */
   function count(d){var n=parseInt(S.cmt,10);if(!isNaN(n)){S.cmt=String(Math.max(0,n+d));$('cmt').value=S.cmt}}
   function onCm(e){var x=e.target,d=x.dataset;if(d.i==null)return;var c=S.comments[d.i];c[d.f]=x.type==='checkbox'?x.checked:x.value;persist();render();if(x.type==='checkbox')cmEditor()}
@@ -62,9 +63,9 @@
   $('addCm').onclick=function(){S.comments.push({name:'ㅇㅇ',ip:'123.45',time:'01.01 13:00',text:'내용',to:'',reply:false});count(1);persist();cmEditor();render()};
   [0,1,2,3].forEach(function(i){$('t'+i).addEventListener('input',function(){S.tabs[i]=this.value;persist();render()})});
   ['gal','nick','title','date','view','rec','fixed','cmt','body','note'].forEach(function(k){$(k).addEventListener('input',function(){S[k]=this.value;persist();render()})});
-  $('showImg').addEventListener('change',function(){S.showImg=this.checked;persist();render()});
-  $('img').addEventListener('change',function(){var f=this.files[0];if(!f)return;var r=new FileReader();r.onload=function(){S.img=r.result;persist();render()};r.readAsDataURL(f)});
-$('img_del').onclick=function(){S.img=''; $('img').value=''; persist(); render();};
+  $('img').addEventListener('change',function(){var inp=this,fs=[].slice.call(inp.files||[]);if(!fs.length)return;
+    Promise.all(fs.map(function(f){return new Promise(function(ok){var r=new FileReader();r.onload=function(){ok(r.result)};r.readAsDataURL(f)})})).then(function(urls){S.imgs=S.imgs.concat(urls);inp.value='';persist();renderImgs();render()})});
+  $('imgList').addEventListener('click',function(e){var d=e.target.dataset.img;if(d==null)return;S.imgs.splice(+d,1);persist();renderImgs();render()});
   $('reset').onclick=function(){load(true)};
   $('savePng').onclick=function(){var b=this,t=b.textContent;b.disabled=true;b.textContent='저장 중...';
     (document.fonts&&document.fonts.ready||Promise.resolve()).then(function(){return html2canvas($('cap'),{scale:4,useCORS:true,backgroundColor:'#fff',logging:false})}).then(function(c){
