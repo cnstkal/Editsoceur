@@ -43,3 +43,6 @@
 .ec .row{margin-bottom:0}.ek{display:flex!important;align-items:center;gap:8px;white-space:nowrap}.ek input{width:20px;height:20px}
 .ec textarea{display:block;width:100%;box-sizing:border-box;margin:4px 0 12px;padding:8px;border:1px solid #dbdbdb;border-radius:8px;font:inherit;resize:none}
 .eb{flex:1;height:38px;border:1px solid #dbdbdb;border-radius:8px;background:#f6f6f6;font-weight:700;margin-bottom:12px}
+/* 검은 상단 영역 제거, 체크박스 줄 */
+#mf .mtop{display:none}
+.ek{display:flex!important;align-items:center;gap:8px;white-space:nowrap}.ek input{width:20px;height:20px}
