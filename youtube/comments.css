@@ -82,3 +82,5 @@
 /* 간격 좁힘 */
 #mf .ma{grid-template-columns:24px auto 24px 24px!important;column-gap:8px!important}
 #mf .ma{justify-content:start!important}
+/* 좋아요 숫자를 좋아요 쪽으로 당김 */
+#mf .ma>span:not(.mlk):not(.mdk){margin-left:-6px!important}
