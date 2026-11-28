@@ -41,3 +41,5 @@
 .ps-edwrap .editor .ps-pn>h2{grid-column:1/-1}
 .ps-edwrap .editor .ps-pn .row{display:contents}
 }
+/* 화면 모서리는 항상 각지게 (저장본과 미리보기 동일) */
+#cf,#cf.wide{border-radius:0!important}
