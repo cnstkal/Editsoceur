@@ -51,7 +51,7 @@
   function persist(){try{localStorage.setItem(STORE,JSON.stringify(S))}catch(e){}}
   var F={t0:0,t1:1,t2:2,t3:3};
   function renderImgs(){$('imgList').innerHTML=S.imgs.map(function(s,i){return '<div class="ps-imgrow"><img src="'+s+'" alt=""><span>사진 '+(i+1)+'</span><button type="button" class="ps-ghost" data-img="'+i+'">삭제</button></div>'}).join('')}
-  function set(){[0,1,2,3].forEach(function(i){$('t'+i).value=S.tabs[i]});['gal','nick','title','date','view','rec','fixed','cmt','body','note'].forEach(function(k){$(k).value=S[k]});renderImgs()}
+  function set(){['gal','nick','title','date','view','rec','fixed','cmt','body','note'].forEach(function(k){$(k).value=S[k]});renderImgs()}
   function load(r){if(r)try{localStorage.removeItem(STORE)}catch(e){}try{var s=!r&&localStorage.getItem(STORE);S=s?JSON.parse(s):JSON.parse(JSON.stringify(DEF));if(!Array.isArray(S.tabs))throw 0;
     /* 이전에 저장한 내용에는 없는 항목을 기본값으로 채움 */
     Object.keys(DEF).forEach(function(k){if(S[k]==null)S[k]=JSON.parse(JSON.stringify(DEF[k]))});if(S.img&&!S.imgs.length)S.imgs=[S.img];delete S.img;delete S.showImg}catch(e){S=JSON.parse(JSON.stringify(DEF))}set();cmEditor();render()}
@@ -61,7 +61,6 @@
   $('cmList').addEventListener('input',onCm);
   $('cmList').addEventListener('click',function(e){var d=e.target.dataset.del;if(d==null)return;S.comments.splice(+d,1);count(-1);persist();cmEditor();render()});
   $('addCm').onclick=function(){S.comments.push({name:'ㅇㅇ',ip:'123.45',time:'01.01 13:00',text:'내용',to:'',reply:false});count(1);persist();cmEditor();render()};
-  [0,1,2,3].forEach(function(i){$('t'+i).addEventListener('input',function(){S.tabs[i]=this.value;persist();render()})});
   ['gal','nick','title','date','view','rec','fixed','cmt','body','note'].forEach(function(k){$(k).addEventListener('input',function(){S[k]=this.value;persist();render()})});
   $('img').addEventListener('change',function(){var inp=this,fs=[].slice.call(inp.files||[]);if(!fs.length)return;
     Promise.all(fs.map(function(f){return new Promise(function(ok){var r=new FileReader();r.onload=function(){ok(r.result)};r.readAsDataURL(f)})})).then(function(urls){S.imgs=S.imgs.concat(urls);inp.value='';persist();renderImgs();render()})});
