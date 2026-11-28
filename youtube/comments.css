@@ -57,3 +57,9 @@
 .ma span+img+img{margin-left:34px}
 /* 시트 손잡이 바: 화면 가운데 정렬 (화면 너비가 달라도) */
 #mf .mhd{left:50%!important;margin-left:-19.5px!important}
+/* 아이콘 오른쪽으로, 댓글 점 세 개 제거, 댓글 줄 길게(직접 줄바꿈은 그대로 반영) */
+.mcx{left:auto!important;right:10px}
+.min{left:auto!important;right:40px}
+.mdt{display:none!important}
+.mi .mb{margin-right:16px}
+.mt{width:auto!important;word-break:normal!important;overflow-wrap:break-word}
